@@ -12,6 +12,7 @@
       android:layout_height="match_parent"
       android:layout_width="match_parent"
       android:text="@string/activity_main_welcome"
+      android:textSize="@dimen/activity_main_font_size"
     />
   </androidx.cardview.widget.CardView>
   <androidx.cardview.widget.CardView
@@ -23,6 +24,7 @@
       android:hint="@string/activity_main_input_hint"
       android:importantForAutofill="no"
       android:inputType="text"
+      android:textSize="@dimen/activity_main_font_size"
     />
   </androidx.cardview.widget.CardView>
 </LinearLayout>
