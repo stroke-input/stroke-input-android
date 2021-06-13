@@ -6,4 +6,7 @@
   <string name="activity_main_test_input_hint">
     Test input here 在此測試輸入
   </string>
+  <string name="activity_main_input_settings_button_label">
+    Input method settings 輸入法設定
+  </string>
 </resources>
