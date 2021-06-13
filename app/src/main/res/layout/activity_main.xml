@@ -17,13 +17,13 @@
   </androidx.cardview.widget.CardView>
   <androidx.cardview.widget.CardView
     style="@style/MainActivityCardView"
-    >
+  >
     <TextView
       android:layout_height="match_parent"
       android:layout_width="match_parent"
       android:text="@string/activity_main_input_settings_information"
       android:textSize="@dimen/activity_main_font_size"
-      />
+    />
   </androidx.cardview.widget.CardView>
   <androidx.cardview.widget.CardView
     style="@style/MainActivityCardView"
@@ -36,13 +36,13 @@
   </androidx.cardview.widget.CardView>
   <androidx.cardview.widget.CardView
     style="@style/MainActivityCardView"
-    >
+  >
     <TextView
       android:layout_height="match_parent"
       android:layout_width="match_parent"
       android:text="@string/activity_main_switch_keyboard_information"
       android:textSize="@dimen/activity_main_font_size"
-      />
+    />
   </androidx.cardview.widget.CardView>
   <androidx.cardview.widget.CardView
     style="@style/MainActivityCardView"
