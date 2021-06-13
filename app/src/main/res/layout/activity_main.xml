@@ -14,4 +14,15 @@
       android:text="@string/activity_main_welcome"
     />
   </androidx.cardview.widget.CardView>
+  <androidx.cardview.widget.CardView
+    style="@style/MainActivityCardView"
+  >
+    <EditText
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:hint="@string/activity_main_input_hint"
+      android:importantForAutofill="no"
+      android:inputType="text"
+    />
+  </androidx.cardview.widget.CardView>
 </LinearLayout>
