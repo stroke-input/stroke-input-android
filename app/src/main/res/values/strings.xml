@@ -4,7 +4,7 @@
     Welcome to Stroke Input Method!\n歡迎使用筆畫輸入法！
   </string>
   <string name="activity_main_input_settings_information">
-    Custom keyboards must first be enabled in the system settings
+    Custom keyboards must be manually enabled in the system settings
     before they can be used. If you have not yet enabled Stroke Input Method:
     \n特製之鍵盤，必先在系統設定人手啟動，方能使用。有勞未啟動筆畫輸入法者：
   </string>
