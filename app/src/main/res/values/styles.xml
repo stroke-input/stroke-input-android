@@ -3,6 +3,7 @@
   <style name="MainActivityCardView">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">match_parent</item>
-    <item name="contentPadding">8dp</item>
+    <item name="contentPadding">12dp</item>
+    <item name="contentPaddingBottom">0dp</item>
   </style>
 </resources>
