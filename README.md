@@ -1,4 +1,4 @@
-# stroke-input
+# StrokeInput
 
 An attempt at making an Android custom keyboard
 for the Stroke Input Method (筆畫輸入法) in Chinese.
