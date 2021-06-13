@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">Stroke Input</string>
+  <string name="app_name">Stroke Input Method</string>
   <string name="activity_main_welcome">
     Welcome to Stroke Input Method!\n歡迎使用筆畫輸入法！
   </string>
