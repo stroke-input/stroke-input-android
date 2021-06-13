@@ -21,7 +21,7 @@
     <EditText
       android:layout_height="match_parent"
       android:layout_width="match_parent"
-      android:hint="@string/activity_main_input_hint"
+      android:hint="@string/activity_main_test_input_hint"
       android:importantForAutofill="no"
       android:inputType="text"
       android:textSize="@dimen/activity_main_font_size"
