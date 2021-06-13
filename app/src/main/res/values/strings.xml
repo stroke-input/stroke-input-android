@@ -11,6 +11,10 @@
   <string name="activity_main_input_settings_button_label">
     Input method settings 輸入法設定
   </string>
+  <string name="activity_main_switch_keyboard_information">
+    If your existing input method provides no means of switching keyboards:
+    \n現有輸入法無以轉鍵盤者：
+  </string>
   <string name="activity_main_switch_keyboard_button_label">
     Switch keyboard 轉鍵盤
   </string>
