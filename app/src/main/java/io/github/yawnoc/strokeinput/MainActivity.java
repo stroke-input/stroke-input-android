@@ -17,8 +17,7 @@ public class MainActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
-    Button switchKeyboardButton =
-      (Button) findViewById(R.id.switch_keyboard_button);
+    Button switchKeyboardButton = findViewById(R.id.switch_keyboard_button);
     switchKeyboardButton.setOnClickListener(this);
     
   }
