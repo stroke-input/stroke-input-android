@@ -29,8 +29,8 @@
         android:textSize="@dimen/activity_main_font_size"
       />
     </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityCardView"
+    <LinearLayout
+      style="@style/MainActivityButtonContainer"
     >
       <Button
         android:id="@+id/input_settings_button"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:text="@string/activity_main_input_settings_button_label"
       />
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
     <androidx.cardview.widget.CardView
       style="@style/MainActivityCardView"
     >
@@ -49,8 +49,8 @@
         android:textSize="@dimen/activity_main_font_size"
       />
     </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityCardView"
+    <LinearLayout
+      style="@style/MainActivityButtonContainer"
     >
       <Button
         android:id="@+id/switch_keyboard_button"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:text="@string/activity_main_switch_keyboard_button_label"
       />
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
     <androidx.cardview.widget.CardView
       style="@style/MainActivityCardView"
     >
