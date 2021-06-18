@@ -1,6 +1,7 @@
 package io.github.yawnoc.strokeinput;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -9,7 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 public class MainActivity
-  extends Activity
+  extends AppCompatActivity
   implements View.OnClickListener
 {
   @Override
