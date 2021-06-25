@@ -37,10 +37,10 @@ public class InputContainer
   int DEFAULT_KEY_TEXT_SIZE_PX = 36;
   
   // Container meta-properties
-  private Keyboard currentKeyboard;
-  private Keyboard.Key[] currentKeyArray;
-  private Context currentContext;
-  private Paint currentPaint;
+  private Keyboard inputKeyboard;
+  private Keyboard.Key[] inputKeyArray;
+  private Context inputContext;
+  private Paint inputPaint;
   
   // Keyboard styles
   private int keyFillColour;
@@ -69,7 +69,7 @@ public class InputContainer
   {
     super(context, attributes, defaultStyleAttribute, defaultStyleResourceId);
     
-    currentContext = context;
+    inputContext = context;
     TypedArray attributesArray =
       context.obtainStyledAttributes(
         attributes,
@@ -103,16 +103,16 @@ public class InputContainer
     
     attributesArray.recycle();
     
-    currentPaint = new Paint();
-    currentPaint.setAntiAlias(true);
-    currentPaint.setTextSize(keyTextSize);
-    currentPaint.setTextAlign(Paint.Align.CENTER);
+    inputPaint = new Paint();
+    inputPaint.setAntiAlias(true);
+    inputPaint.setTextSize(keyTextSize);
+    inputPaint.setTextAlign(Paint.Align.CENTER);
   }
   
   public void setKeyboard(Keyboard keyboard) {
-    currentKeyboard = keyboard;
-    List<Keyboard.Key> keyList = currentKeyboard.getKeyList();
-    currentKeyArray = keyList.toArray(new Keyboard.Key[0]);
+    inputKeyboard = keyboard;
+    List<Keyboard.Key> keyList = inputKeyboard.getKeyList();
+    inputKeyArray = keyList.toArray(new Keyboard.Key[0]);
     requestLayout();
   }
   
@@ -121,12 +121,12 @@ public class InputContainer
     
     super.onDraw(canvas);
     
-    if (currentKeyboard == null) {
+    if (inputKeyboard == null) {
       return;
     }
     
-    final Paint paint = currentPaint;
-    final Keyboard.Key[] keyArray = currentKeyArray;
+    final Paint paint = inputPaint;
+    final Keyboard.Key[] keyArray = inputKeyArray;
     
     canvas.drawColor(Color.YELLOW); // TODO: remove me
     
