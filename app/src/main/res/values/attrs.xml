@@ -2,6 +2,9 @@
 <resources>
   <declare-styleable name="InputContainer">
     <attr name="keyboardViewStyle" format="reference" />
+    <attr name="keyFillColour" format="color" />
+    <attr name="keyTextColour" format="color" />
+    <attr name="keyTextSize" format="dimension" />
   </declare-styleable>
   <declare-styleable name="Keyboard">
     <attr name="valueText" format="string" />
