@@ -195,7 +195,6 @@ public class Keyboard {
     boolean currentlyInKey = false;
     boolean currentlyInRow = false;
     
-    int currentRowIndex = 0;
     int currentX = 0;
     int currentY = 0;
     
@@ -247,7 +246,6 @@ public class Keyboard {
             else if (currentlyInRow) {
               currentlyInRow = false;
               currentY += currentRow.defaultKeyHeight;
-              currentRowIndex++;
             }
             break;
         }
