@@ -12,7 +12,11 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
+import android.util.Xml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +55,24 @@ public class Keyboard {
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
-    private Keyboard parent;
+    private Keyboard parentKeyboard;
+    
+    public Row(
+      Keyboard parentKeyboard,
+      Resources resources,
+      XmlResourceParser xmlResourceParser
+    )
+    {
+      this.parentKeyboard = parentKeyboard;
+      
+      TypedArray attributesArray =
+        resources.obtainAttributes(
+          Xml.asAttributeSet(xmlResourceParser),
+          R.styleable.Keyboard
+        );
+      
+      attributesArray.recycle();
+    }
     
   }
   
