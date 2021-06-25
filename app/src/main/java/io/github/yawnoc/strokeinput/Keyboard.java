@@ -96,6 +96,10 @@ public class Keyboard {
     keyboardWidth = newWidth;
   }
   
+  public List<Key> getKeyList() {
+    return keyList;
+  }
+  
   /*
    A container that holds keys.
   */
