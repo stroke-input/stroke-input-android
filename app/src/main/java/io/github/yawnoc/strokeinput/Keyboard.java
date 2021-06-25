@@ -40,6 +40,7 @@ public class Keyboard {
   
   // Keyboard properties
   private int width;
+  private int height;
   private ArrayList<Row> rowArrayList = new ArrayList<Row>();
   private List<Key> keyList;
   
@@ -222,6 +223,10 @@ public class Keyboard {
   
   public int getWidth() {
     return width;
+  }
+  
+  public int getHeight() {
+    return height;
   }
   
   private void loadKeyboard(
