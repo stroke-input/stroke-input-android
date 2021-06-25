@@ -42,6 +42,15 @@ public class Keyboard {
    A container that holds keys.
   */
   public static class Row {
+    
+    // Key properties
+    public int defaultKeyWidth;
+    public int defaultKeyHeight;
+    
+    // Row properties
+    ArrayList<Key> keyArrayList = new ArrayList<>();
+    private Keyboard parent;
+    
   }
   
   /*
