@@ -18,6 +18,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
 
@@ -30,14 +31,13 @@ import java.util.List;
 public class Keyboard {
   
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
+  int DEFAULT_KEY_HEIGHT_PX = 64;
   
   // Key properties
   private int defaultKeyWidth;
   private int defaultKeyHeight;
   
   // Keyboard properties
-  private int width;
-  private int height;
   private ArrayList<Row> rowArrayList = new ArrayList<Row>();
   private List<Key> keyList;
   
@@ -58,7 +58,8 @@ public class Keyboard {
     defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
     defaultKeyHeight = defaultKeyWidth;
     keyList = new ArrayList<>();
-    // TODO: loadKeyboard
+    
+    loadKeyboard(context, context.getResources().getXml(layoutResourceId));
   }
   
   /*
@@ -183,6 +184,107 @@ public class Keyboard {
       
       attributesArray.recycle();
     }
+  }
+  
+  private void loadKeyboard(
+    Context context,
+    XmlResourceParser xmlResourceParser
+  )
+  {
+    boolean currentlyInKey = false;
+    boolean currentlyInRow = false;
+    
+    int currentRowIndex = 0;
+    int currentX = 0;
+    int currentY = 0;
+    
+    Key currentKey = null;
+    Row currentRow = null;
+    Resources resources = context.getResources();
+    
+    try {
+      int event;
+      while (
+        (event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT
+      )
+      {
+        switch (event) {
+          case XmlResourceParser.START_TAG:
+            String currentTag = xmlResourceParser.getName();
+            switch (currentTag) {
+              case "Keyboard":
+                parseKeyboardAttributes(resources, xmlResourceParser);
+                break;
+              case "Row":
+                currentlyInRow = true;
+                currentX = 0;
+                currentRow = new Row(this, resources, xmlResourceParser);
+                rowArrayList.add(currentRow);
+                break;
+              case "Key":
+                currentlyInKey = true;
+                currentKey =
+                  new Key(
+                    currentRow,
+                    currentX,
+                    currentY,
+                    resources,
+                    xmlResourceParser
+                  );
+                keyList.add(currentKey);
+                if (currentRow != null) {
+                  currentRow.keyArrayList.add(currentKey);
+                }
+                break;
+            }
+            break;
+          case XmlResourceParser.END_TAG:
+            if (currentlyInKey) {
+              currentlyInKey = false;
+              currentX += currentKey.width;
+            }
+            else if (currentlyInRow) {
+              currentlyInRow = false;
+              currentY += currentRow.defaultKeyHeight;
+              currentRowIndex++;
+            }
+            break;
+        }
+      }
+    }
+    catch (Exception exception) {
+      Log.e("Keyboard.loadKeyboard", "Exception: " + exception);
+      exception.printStackTrace();
+    }
+  }
+  
+  private void parseKeyboardAttributes(
+    Resources resources,
+    XmlResourceParser xmlResourceParser
+  )
+  {
+    TypedArray attributesArray =
+      resources.obtainAttributes(
+        Xml.asAttributeSet(xmlResourceParser),
+        R.styleable.Keyboard
+      );
+    
+    defaultKeyWidth =
+      getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyWidth,
+        screenWidth,
+        (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth)
+      );
+    defaultKeyHeight =
+      getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyHeight,
+        screenHeight,
+        DEFAULT_KEY_HEIGHT_PX
+      );
+    
+    attributesArray.recycle();
   }
   
   static int getDimensionOrFraction(
