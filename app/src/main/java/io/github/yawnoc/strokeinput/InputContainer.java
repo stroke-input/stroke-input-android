@@ -10,6 +10,8 @@ package io.github.yawnoc.strokeinput;
 import android.content.Context;
 import android.view.View;
 
+import java.util.List;
+
 /*
   A container that holds:
   - TODO: Candidates bar
@@ -18,8 +20,16 @@ import android.view.View;
 public class InputContainer
   extends View
 {
+  private Keyboard currentKeyboard;
+  
   public InputContainer(Context context) {
     super(context);
+  }
+  
+  public void setKeyboard(Keyboard keyboard) {
+    currentKeyboard = keyboard;
+    List<Keyboard.Key> keyList = currentKeyboard.getKeyList();
+    requestLayout();
   }
   
 }
