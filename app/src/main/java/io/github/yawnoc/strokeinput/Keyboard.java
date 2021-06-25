@@ -239,9 +239,12 @@ public class Keyboard {
     
     int currentX = 0;
     int currentY = 0;
-    
     Key currentKey = null;
     Row currentRow = null;
+    
+    int maximumX = 0;
+    int maximumY = 0;
+    
     Resources resources = context.getResources();
     
     try {
@@ -284,14 +287,18 @@ public class Keyboard {
             if (currentlyInKey) {
               currentlyInKey = false;
               currentX += currentKey.width;
+              maximumX = Math.max(currentX, maximumX);
             }
             else if (currentlyInRow) {
               currentlyInRow = false;
               currentY += currentRow.defaultKeyHeight;
+              maximumY = Math.max(currentY, maximumY);
             }
             break;
         }
       }
+      width = maximumX;
+      height = maximumY;
     }
     catch (Exception exception) {
       Log.e("Keyboard.loadKeyboard", "Exception: " + exception);

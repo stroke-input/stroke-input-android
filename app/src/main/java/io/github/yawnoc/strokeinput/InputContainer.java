@@ -117,6 +117,29 @@ public class InputContainer
   }
   
   @Override
+  public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    
+    int paddingHorizontal = getPaddingLeft() + getPaddingRight();
+    int paddingVertical = getPaddingTop() + getPaddingBottom();
+    
+    int keyboardWidth;
+    int keyboardHeight;
+    if (inputKeyboard == null) {
+      keyboardWidth = 0;
+      keyboardHeight = 0;
+    }
+    else {
+      keyboardWidth = inputKeyboard.getWidth();
+      keyboardHeight = inputKeyboard.getHeight();
+    }
+    
+    setMeasuredDimension(
+      keyboardWidth + paddingHorizontal,
+      keyboardHeight + paddingVertical
+    );
+  }
+  
+  @Override
   public void onDraw(Canvas canvas) {
     
     super.onDraw(canvas);
