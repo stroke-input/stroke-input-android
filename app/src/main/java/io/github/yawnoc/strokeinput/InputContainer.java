@@ -141,6 +141,7 @@ public class InputContainer
       }
       
       if (displayIcon == null) {
+        paint.setColor(keyTextColour);
         paint.setTextSize(keyTextSize);
         paint.setTypeface(Typeface.DEFAULT);
         canvas.drawText(
