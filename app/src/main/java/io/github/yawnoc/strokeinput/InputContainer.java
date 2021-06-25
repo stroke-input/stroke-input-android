@@ -8,6 +8,7 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.List;
@@ -22,8 +23,27 @@ public class InputContainer
 {
   private Keyboard currentKeyboard;
   
-  public InputContainer(Context context) {
-    super(context);
+  public InputContainer(Context context, AttributeSet attributes) {
+    this(context, attributes, R.attr.keyboardViewStyle);
+  }
+  
+  public InputContainer(
+    Context context,
+    AttributeSet attributes,
+    int defaultStyleAttribute
+  )
+  {
+    this(context, attributes, defaultStyleAttribute, 0);
+  }
+  
+  public InputContainer(
+    Context context,
+    AttributeSet attributes,
+    int defaultStyleAttribute,
+    int defaultStyleResourceId
+  )
+  {
+    super(context, attributes, defaultStyleAttribute, defaultStyleResourceId);
   }
   
   public void setKeyboard(Keyboard keyboard) {
