@@ -43,10 +43,6 @@ public class Keyboard {
   private ArrayList<Row> rowArrayList = new ArrayList<Row>();
   private List<Key> keyList;
   
-  // Variables for loading the keyboard
-  private int currentKeyWidth;
-  private int currentKeyHeight;
-  
   // Screen properties
   private int screenWidth;
   private int screenHeight;
