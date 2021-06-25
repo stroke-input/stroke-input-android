@@ -16,6 +16,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.util.Xml;
 
 import java.util.ArrayList;
@@ -71,6 +72,21 @@ public class Keyboard {
           R.styleable.Keyboard
         );
       
+      defaultKeyWidth =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_keyWidth,
+          parentKeyboard.screenWidth,
+          parentKeyboard.defaultKeyWidth
+        );
+      defaultKeyHeight =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_keyHeight,
+          parentKeyboard.screenHeight,
+          parentKeyboard.defaultKeyHeight
+        );
+      
       attributesArray.recycle();
     }
     
@@ -95,6 +111,29 @@ public class Keyboard {
     public int x;
     public int y;
     
+  }
+  
+  static int getDimensionOrFraction(
+    TypedArray array,
+    int attributeIndex,
+    int baseValue,
+    int defaultValue
+  )
+  {
+    TypedValue value = array.peekValue(attributeIndex);
+    if (value == null) {
+      return defaultValue;
+    }
+    switch (value.type) {
+      case TypedValue.TYPE_DIMENSION:
+        return array.getDimensionPixelOffset(attributeIndex, defaultValue);
+      case TypedValue.TYPE_FRACTION:
+        return Math.round(
+          array.getFraction(attributeIndex, baseValue, baseValue, defaultValue)
+        );
+      default:
+        return defaultValue;
+    }
   }
   
 }
