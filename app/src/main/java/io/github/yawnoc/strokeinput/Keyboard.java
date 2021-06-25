@@ -30,6 +30,7 @@ import java.util.List;
 */
 public class Keyboard {
   
+  float DEFAULT_KEY_ASPECT_RATIO = 1f;
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   int DEFAULT_KEY_HEIGHT_PX = 64;
   
@@ -56,7 +57,7 @@ public class Keyboard {
     screenHeight = displayMetrics.heightPixels;
     
     defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
-    defaultKeyHeight = defaultKeyWidth;
+    defaultKeyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * defaultKeyWidth);
     keyList = new ArrayList<>();
     
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
