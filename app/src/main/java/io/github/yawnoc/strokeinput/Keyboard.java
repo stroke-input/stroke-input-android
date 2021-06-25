@@ -137,6 +137,15 @@ public class Keyboard {
           R.styleable.Keyboard
         );
       
+      valueText =
+        attributesArray.getString(R.styleable.Keyboard_valueText);
+      displayText =
+        attributesArray.getString(R.styleable.Keyboard_displayText);
+      displayIcon =
+        attributesArray.getDrawable(R.styleable.Keyboard_displayIcon);
+      isRepeatable =
+        attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
+      
       width =
         getDimensionOrFraction(
           attributesArray,
