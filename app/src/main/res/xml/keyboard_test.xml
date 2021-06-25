@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+  <Row>
+    <Key app:valueText="a" />
+    <Key app:valueText="b" />
+    <Key app:valueText="c" />
+    <Key app:valueText="d" />
+  </Row>
+  <Row>
+    <Key app:valueText="1" />
+    <Key app:valueText="2" />
+    <Key app:valueText="3" />
+  </Row>
+</Keyboard>
