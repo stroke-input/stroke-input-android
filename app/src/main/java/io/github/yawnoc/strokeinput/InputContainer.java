@@ -4,6 +4,11 @@
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
 */
+/*
+  This is a re-implementation of the deprecated `KeyboardView` class,
+  which is licensed under the Apache License 2.0,
+  see <https://www.apache.org/licenses/LICENSE-2.0.html>.
+*/
 
 package io.github.yawnoc.strokeinput;
 
