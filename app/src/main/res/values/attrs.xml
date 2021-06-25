@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="InputContainer">
-    <attr name="keyboardViewStyle" format="reference" />
+    <attr name="inputContainerStyle" format="reference" />
     <attr name="keyFillColour" format="color" />
     <attr name="keyTextColour" format="color" />
     <attr name="keyTextSize" format="dimension" />

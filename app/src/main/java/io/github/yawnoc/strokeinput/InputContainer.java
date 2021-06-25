@@ -44,7 +44,7 @@ public class InputContainer
   private int keyTextSize;
   
   public InputContainer(Context context, AttributeSet attributes) {
-    this(context, attributes, R.attr.keyboardViewStyle);
+    this(context, attributes, R.attr.inputContainerStyle);
   }
   
   public InputContainer(
