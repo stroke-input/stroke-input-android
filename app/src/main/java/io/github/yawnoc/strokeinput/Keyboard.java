@@ -12,6 +12,8 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,21 @@ public class Keyboard {
     An individual key.
   */
   public static class Key {
+    
+    // Key behaviour
+    public String valueText;
+    public String displayText; // overrides valueText
+    public Drawable displayIcon; // overrides displayText
+    public boolean isRepeatable;
+    
+    // Key dimensions
+    public int width;
+    public int height;
+    
+    // Key position
+    public int x;
+    public int y;
+    
   }
   
 }
