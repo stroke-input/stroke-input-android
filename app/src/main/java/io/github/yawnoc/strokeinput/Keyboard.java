@@ -58,6 +58,10 @@ public class Keyboard {
     ArrayList<Key> keyArrayList = new ArrayList<>();
     private Keyboard parentKeyboard;
     
+    public Row(Keyboard parentKeyboard) {
+      this.parentKeyboard = parentKeyboard;
+    }
+    
     public Row(
       Keyboard parentKeyboard,
       Resources resources,
