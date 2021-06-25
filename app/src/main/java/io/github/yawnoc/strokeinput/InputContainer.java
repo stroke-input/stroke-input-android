@@ -98,7 +98,7 @@ public class InputContainer
     }
     
     attributesArray.recycle();
-  
+    
     currentPaint = new Paint();
     currentPaint.setAntiAlias(true);
     currentPaint.setTextSize(keyTextSize);
