@@ -12,10 +12,12 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.util.Xml;
 
@@ -26,6 +28,8 @@ import java.util.List;
   A container that holds rows of keys, to be declared in a layout XML.
 */
 public class Keyboard {
+  
+  float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   
   // Key properties
   private int defaultKeyWidth;
@@ -44,6 +48,18 @@ public class Keyboard {
   // Screen properties
   private int screenWidth;
   private int screenHeight;
+  
+  public Keyboard(Context context, int layoutResourceId) {
+    
+    DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    screenWidth = displayMetrics.widthPixels;
+    screenHeight = displayMetrics.heightPixels;
+    
+    defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
+    defaultKeyHeight = defaultKeyWidth;
+    keyList = new ArrayList<>();
+    // TODO: loadKeyboard
+  }
   
   /*
    A container that holds keys.
