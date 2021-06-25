@@ -14,8 +14,11 @@ package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -30,15 +33,16 @@ public class InputContainer
   extends View
 {
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
-  int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
+  int DEFAULT_KEY_TEXT_COLOUR = Color.BLUE; // TODO: revert to Color.WHITE
   int DEFAULT_KEY_TEXT_SIZE_PX = 36;
   
   // Container meta-properties
   private Keyboard currentKeyboard;
+  private Keyboard.Key[] currentKeyArray;
   private Context currentContext;
   private Paint currentPaint;
   
-  // Keyboard properties
+  // Keyboard styles
   private int keyFillColour;
   private int keyTextColour;
   private int keyTextSize;
@@ -108,7 +112,46 @@ public class InputContainer
   public void setKeyboard(Keyboard keyboard) {
     currentKeyboard = keyboard;
     List<Keyboard.Key> keyList = currentKeyboard.getKeyList();
+    currentKeyArray = keyList.toArray(new Keyboard.Key[0]);
     requestLayout();
+  }
+  
+  @Override
+  public void onDraw(Canvas canvas) {
+    
+    super.onDraw(canvas);
+    
+    if (currentKeyboard == null) {
+      return;
+    }
+    
+    final Paint paint = currentPaint;
+    final Keyboard.Key[] keyArray = currentKeyArray;
+    
+    canvas.drawColor(Color.YELLOW); // TODO: remove me
+    
+    for (final Keyboard.Key currentKey : keyArray) {
+      
+      String valueText = currentKey.valueText;
+      String displayText = currentKey.displayText;
+      Drawable displayIcon = currentKey.displayIcon;
+      
+      if (displayText == null) {
+        displayText = valueText;
+      }
+      
+      if (displayIcon == null) {
+        paint.setTextSize(keyTextSize);
+        paint.setTypeface(Typeface.DEFAULT);
+        canvas.drawText(
+          displayText,
+          currentKey.width / 2,
+          currentKey.height / 2,
+          paint
+        );
+      }
+    }
+    
   }
   
 }
