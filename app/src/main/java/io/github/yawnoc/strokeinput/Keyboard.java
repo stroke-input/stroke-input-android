@@ -71,7 +71,6 @@ public class Keyboard {
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
         );
-      
       defaultKeyWidth =
         getDimensionOrFraction(
           attributesArray,
@@ -86,7 +85,6 @@ public class Keyboard {
           parentKeyboard.screenHeight,
           parentKeyboard.defaultKeyHeight
         );
-      
       attributesArray.recycle();
     }
     
@@ -111,6 +109,51 @@ public class Keyboard {
     public int x;
     public int y;
     
+    // Key meta-properties
+    private Keyboard grandparentKeyboard;
+    
+    public Key(Row parentRow) {
+      grandparentKeyboard = parentRow.parentKeyboard;
+      width = parentRow.defaultKeyWidth;
+      height = parentRow.defaultKeyHeight;
+    }
+    
+    public Key(
+      Row parentRow,
+      int x,
+      int y,
+      Resources resources,
+      XmlResourceParser xmlResourceParser
+    )
+    {
+      this(parentRow);
+      
+      this.x = x;
+      this.y = y;
+  
+      TypedArray attributesArray =
+        resources.obtainAttributes(
+          Xml.asAttributeSet(xmlResourceParser),
+          R.styleable.Keyboard
+        );
+      
+      width =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_keyWidth,
+          grandparentKeyboard.screenWidth,
+          parentRow.defaultKeyWidth
+        );
+      height =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_keyHeight,
+          grandparentKeyboard.screenHeight,
+          parentRow.defaultKeyHeight
+        );
+      
+      attributesArray.recycle();
+    }
   }
   
   static int getDimensionOrFraction(
