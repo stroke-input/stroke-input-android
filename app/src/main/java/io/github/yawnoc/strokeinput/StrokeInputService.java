@@ -8,10 +8,25 @@
 package io.github.yawnoc.strokeinput;
 
 import android.inputmethodservice.InputMethodService;
+import android.view.View;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
   Currently does nothing.
 */
 public class StrokeInputService extends InputMethodService {
+  
+  @Override
+  public View onCreateInputView() {
+  
+    InputContainer inputContainer =
+      (InputContainer)
+        getLayoutInflater().inflate(R.layout.input_container, null);
+    Keyboard keyboard = new Keyboard(this, R.xml.keyboard_test);
+    
+    inputContainer.setKeyboard(keyboard);
+    
+    return inputContainer;
+  }
+  
 }
