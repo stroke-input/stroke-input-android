@@ -9,5 +9,9 @@ package io.github.yawnoc.strokeinput;
 
 import android.inputmethodservice.InputMethodService;
 
+/*
+  An InputMethodService for the Stroke Input Method (筆畫輸入法).
+  Currently does nothing.
+*/
 public class StrokeInputService extends InputMethodService {
 }

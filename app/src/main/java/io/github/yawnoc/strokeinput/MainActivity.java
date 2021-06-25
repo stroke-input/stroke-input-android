@@ -16,6 +16,17 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
+/*
+  The main activity of the application.
+  Contains:
+    - Welcome
+    - Button for enabling the Stroke Input Method
+    - Button for switching keyboards
+    - Box for testing input
+  TODO:
+    - About
+    - Link to <https://github.com/yawnoc/StrokeInput>
+*/
 public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
