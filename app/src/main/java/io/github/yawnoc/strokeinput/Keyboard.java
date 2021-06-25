@@ -39,7 +39,7 @@ public class Keyboard {
   private int defaultKeyHeight;
   
   // Keyboard properties
-  private int keyboardWidth;
+  private int width;
   private ArrayList<Row> rowArrayList = new ArrayList<Row>();
   private List<Key> keyList;
   
@@ -89,7 +89,7 @@ public class Keyboard {
       }
     }
     
-    keyboardWidth = newWidth;
+    width = newWidth;
   }
   
   public List<Key> getKeyList() {
@@ -218,6 +218,10 @@ public class Keyboard {
       
       attributesArray.recycle();
     }
+  }
+  
+  public int getWidth() {
+    return width;
   }
   
   private void loadKeyboard(
