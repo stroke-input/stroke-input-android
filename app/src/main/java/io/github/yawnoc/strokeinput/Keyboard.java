@@ -60,11 +60,6 @@ public class Keyboard {
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
     
-    keyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
-    keyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * keyWidth);
-    keyFillColour = DEFAULT_KEY_FILL_COLOUR;
-    keyTextSize = DEFAULT_KEY_TEXT_SIZE;
-    
     keyList = new ArrayList<>();
     
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
@@ -367,6 +362,7 @@ public class Keyboard {
         screenHeight,
         DEFAULT_KEY_HEIGHT_PX
       );
+    
     keyFillColour =
       attributesArray.getColor(
         R.styleable.Keyboard_keyFillColour,
