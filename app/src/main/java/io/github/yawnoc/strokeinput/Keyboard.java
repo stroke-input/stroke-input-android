@@ -199,7 +199,7 @@ public class Keyboard {
       
       this.x = x;
       this.y = y;
-  
+      
       TypedArray attributesArray =
         resources.obtainAttributes(
           Xml.asAttributeSet(xmlResourceParser),
@@ -214,7 +214,7 @@ public class Keyboard {
         attributesArray.getDrawable(R.styleable.Keyboard_displayIcon);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
-  
+      
       keyFillColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
@@ -309,14 +309,7 @@ public class Keyboard {
                 break;
               case "Key":
                 inKey = true;
-                key =
-                  new Key(
-                    row,
-                    x,
-                    y,
-                    resources,
-                    xmlResourceParser
-                  );
+                key = new Key(row, x, y, resources, xmlResourceParser);
                 keyList.add(key);
                 if (row != null) {
                   row.keyArrayList.add(key);
