@@ -103,6 +103,7 @@ public class InputContainer
       int key_y_px = px_from_dp(key.y);
       int key_width_px = px_from_dp(key.width);
       int key_height_px = px_from_dp(key.height);
+      int key_border_thickness_px = px_from_dp(key.keyBorderThickness);
       
       String valueText = key.valueText;
       String displayText = key.displayText;
@@ -114,7 +115,7 @@ public class InputContainer
       
       keyFillPaint.setColor(key.keyFillColour);
       keyBorderPaint.setColor(key.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(px_from_dp(key.keyBorderThickness));
+      keyBorderPaint.setStrokeWidth(key_border_thickness_px);
       keyRectangle.set(
         0,
         0,
