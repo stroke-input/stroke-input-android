@@ -49,7 +49,12 @@
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key app:valueText="，" app:keyWidth="10%" />
     <!-- Space bar -->
-    <Key app:valueText=" " app:displayText="中文筆畫" app:keyWidth="40%" />
+    <Key
+      app:valueText=" "
+      app:displayText="中文筆畫"
+      app:keyTextSize="20sp"
+      app:keyWidth="40%"
+    />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key app:valueText="。" app:keyWidth="10%" />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
