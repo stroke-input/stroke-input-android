@@ -11,6 +11,6 @@
   <Row>
     <Key app:valueText="1" />
     <Key app:valueText="2" />
-    <Key app:valueText="3" />
+    <Key app:valueText="3" app:keyFillColour="@color/teal_700" />
   </Row>
 </Keyboard>
