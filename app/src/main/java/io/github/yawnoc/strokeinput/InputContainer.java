@@ -110,7 +110,7 @@ public class InputContainer
       
       keyFillPaint.setColor(currentKey.keyFillColour);
       keyBorderPaint.setColor(currentKey.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(currentKey.keyBorderThickness);
+      keyBorderPaint.setStrokeWidth(px_from_dp(currentKey.keyBorderThickness));
       keyRectangle.set(
         0,
         0,
