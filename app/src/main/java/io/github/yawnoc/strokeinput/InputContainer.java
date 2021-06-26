@@ -86,14 +86,13 @@ public class InputContainer
   @Override
   public void onDraw(Canvas canvas) {
     
-    int VOID_COLOUR = Color.BLACK;
-    
     super.onDraw(canvas);
     
     if (inputKeyboard == null) {
       return;
     }
     
+    int VOID_COLOUR = Color.BLACK;
     canvas.drawColor(VOID_COLOUR);
     
     final Keyboard.Key[] keyArray = inputKeyArray;
