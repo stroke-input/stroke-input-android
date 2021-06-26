@@ -101,6 +101,8 @@ public class InputContainer
       
       int key_x_px = px_from_dp(key.x);
       int key_y_px = px_from_dp(key.y);
+      int key_width_px = px_from_dp(key.width);
+      int key_height_px = px_from_dp(key.height);
       
       String valueText = key.valueText;
       String displayText = key.displayText;
@@ -116,8 +118,8 @@ public class InputContainer
       keyRectangle.set(
         0,
         0,
-        px_from_dp(key.width),
-        px_from_dp(key.height)
+        key_width_px,
+        key_height_px
       );
       
       canvas.translate(key_x_px, key_y_px);
