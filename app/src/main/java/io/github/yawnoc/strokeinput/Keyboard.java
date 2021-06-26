@@ -48,7 +48,6 @@ public class Keyboard {
   // Keyboard properties
   private int width;
   private int height;
-  private final ArrayList<Row> rowArrayList = new ArrayList<>();
   private final List<Key> keyList;
   
   // Screen properties
@@ -272,7 +271,6 @@ public class Keyboard {
                 currentlyInRow = true;
                 currentX = 0;
                 currentRow = new Row(this, resources, xmlResourceParser);
-                rowArrayList.add(currentRow);
                 break;
               case "Key":
                 currentlyInKey = true;
