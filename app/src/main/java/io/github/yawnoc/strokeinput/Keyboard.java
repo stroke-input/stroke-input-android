@@ -39,10 +39,10 @@ public class Keyboard {
   int DEFAULT_KEY_TEXT_SIZE = 36;
   
   // Key properties
-  private int defaultKeyWidth;
-  private int defaultKeyHeight;
-  private int defaultKeyFillColour;
-  private int defaultKeyTextSize;
+  private int keyWidth;
+  private int keyHeight;
+  private int keyFillColour;
+  private int keyTextSize;
   
   // Keyboard properties
   private int width;
@@ -60,10 +60,10 @@ public class Keyboard {
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
     
-    defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
-    defaultKeyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * defaultKeyWidth);
-    defaultKeyFillColour = DEFAULT_KEY_FILL_COLOUR;
-    defaultKeyTextSize = DEFAULT_KEY_TEXT_SIZE;
+    keyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
+    keyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * keyWidth);
+    keyFillColour = DEFAULT_KEY_FILL_COLOUR;
+    keyTextSize = DEFAULT_KEY_TEXT_SIZE;
     
     keyList = new ArrayList<>();
     
@@ -112,10 +112,10 @@ public class Keyboard {
   public static class Row {
     
     // Key properties
-    public int defaultKeyWidth;
-    public int defaultKeyHeight;
-    private int defaultKeyFillColour;
-    private int defaultKeyTextSize;
+    public int keyWidth;
+    public int keyHeight;
+    private int keyFillColour;
+    private int keyTextSize;
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
@@ -138,29 +138,29 @@ public class Keyboard {
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
         );
-      defaultKeyWidth =
+      keyWidth =
         getDimensionOrFraction(
           attributesArray,
           R.styleable.Keyboard_keyWidth,
           parentKeyboard.screenWidth,
-          parentKeyboard.defaultKeyWidth
+          parentKeyboard.keyWidth
         );
-      defaultKeyHeight =
+      keyHeight =
         getDimensionOrFraction(
           attributesArray,
           R.styleable.Keyboard_keyHeight,
           parentKeyboard.screenHeight,
-          parentKeyboard.defaultKeyHeight
+          parentKeyboard.keyHeight
         );
-      defaultKeyFillColour =
+      keyFillColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
-          parentKeyboard.defaultKeyFillColour
+          parentKeyboard.keyFillColour
         );
-      defaultKeyTextSize =
+      keyTextSize =
         attributesArray.getInt(
           R.styleable.Keyboard_keyTextSize,
-          parentKeyboard.defaultKeyTextSize
+          parentKeyboard.keyTextSize
         );
       attributesArray.recycle();
     }
@@ -195,8 +195,8 @@ public class Keyboard {
     
     public Key(Row parentRow) {
       grandparentKeyboard = parentRow.parentKeyboard;
-      width = parentRow.defaultKeyWidth;
-      height = parentRow.defaultKeyHeight;
+      width = parentRow.keyWidth;
+      height = parentRow.keyHeight;
     }
     
     public Key(
@@ -230,12 +230,12 @@ public class Keyboard {
       keyFillColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
-          parentRow.defaultKeyFillColour
+          parentRow.keyFillColour
         );
       keyTextSize =
         attributesArray.getInt(
           R.styleable.Keyboard_keyTextSize,
-          parentRow.defaultKeyTextSize
+          parentRow.keyTextSize
         );
       
       width =
@@ -243,14 +243,14 @@ public class Keyboard {
           attributesArray,
           R.styleable.Keyboard_keyWidth,
           grandparentKeyboard.screenWidth,
-          parentRow.defaultKeyWidth
+          parentRow.keyWidth
         );
       height =
         getDimensionOrFraction(
           attributesArray,
           R.styleable.Keyboard_keyHeight,
           grandparentKeyboard.screenHeight,
-          parentRow.defaultKeyHeight
+          parentRow.keyHeight
         );
       
       attributesArray.recycle();
@@ -327,7 +327,7 @@ public class Keyboard {
             }
             else if (currentlyInRow) {
               currentlyInRow = false;
-              currentY += currentRow.defaultKeyHeight;
+              currentY += currentRow.keyHeight;
               maximumY = Math.max(currentY, maximumY);
             }
             break;
@@ -353,21 +353,21 @@ public class Keyboard {
         R.styleable.Keyboard
       );
     
-    defaultKeyWidth =
+    keyWidth =
       getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyWidth,
         screenWidth,
         (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth)
       );
-    defaultKeyHeight =
+    keyHeight =
       getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         screenHeight,
         DEFAULT_KEY_HEIGHT_PX
       );
-    defaultKeyTextSize =
+    keyTextSize =
       attributesArray.getInt(
         R.styleable.Keyboard_keyTextSize,
         DEFAULT_KEY_TEXT_SIZE
