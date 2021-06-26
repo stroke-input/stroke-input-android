@@ -42,7 +42,7 @@ public class Keyboard {
   // Keyboard properties
   private int width;
   private int height;
-  private ArrayList<Row> rowArrayList = new ArrayList<Row>();
+  private ArrayList<Row> rowArrayList = new ArrayList<>();
   private List<Key> keyList;
   
   // Screen properties
