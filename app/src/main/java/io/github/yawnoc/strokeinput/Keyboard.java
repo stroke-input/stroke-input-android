@@ -35,12 +35,14 @@ public class Keyboard {
   int DEFAULT_KEY_HEIGHT = 64;
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+  int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   int DEFAULT_KEY_TEXT_SIZE = 36;
   
   // Key properties
   private int keyWidth;
   private int keyHeight;
   private int keyFillColour;
+  private int keyTextColour;
   private int keyTextSize;
   
   // Keyboard properties
@@ -109,6 +111,7 @@ public class Keyboard {
     public int keyWidth;
     public int keyHeight;
     private int keyFillColour;
+    private int keyTextColour;
     private int keyTextSize;
     
     // Row properties
@@ -151,6 +154,11 @@ public class Keyboard {
           R.styleable.Keyboard_keyFillColour,
           parentKeyboard.keyFillColour
         );
+      keyTextColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyTextColour,
+          parentKeyboard.keyTextColour
+        );
       keyTextSize =
         attributesArray.getInt(
           R.styleable.Keyboard_keyTextSize,
@@ -174,6 +182,7 @@ public class Keyboard {
     
     // Key styles
     public int keyFillColour;
+    public int keyTextColour;
     public int keyTextSize;
     
     // Key dimensions
@@ -225,6 +234,11 @@ public class Keyboard {
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
           parentRow.keyFillColour
+        );
+      keyTextColour =
+        attributesArray.getInt(
+          R.styleable.Keyboard_keyTextColour,
+          parentRow.keyTextColour
         );
       keyTextSize =
         attributesArray.getInt(
@@ -366,6 +380,11 @@ public class Keyboard {
       attributesArray.getColor(
         R.styleable.Keyboard_keyFillColour,
         DEFAULT_KEY_FILL_COLOUR
+      );
+    keyTextColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_keyTextColour,
+        DEFAULT_KEY_TEXT_COLOUR
       );
     keyTextSize =
       attributesArray.getInt(

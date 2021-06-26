@@ -38,9 +38,6 @@ public class InputContainer
   private Keyboard inputKeyboard;
   private Keyboard.Key[] inputKeyArray;
   
-  // Keyboard styles
-  private int keyTextColour;
-  
   // Keyboard drawing
   Paint keyFillPaint;
   Rect keyRectangle;
@@ -80,11 +77,6 @@ public class InputContainer
     for (int index = 0; index < indexCount; index++) {
       
       int populatedIndex = attributesArray.getIndex(index);
-      
-      if (populatedIndex == R.styleable.InputContainer_keyTextColour) {
-        keyTextColour =
-          attributesArray.getColor(populatedIndex, DEFAULT_KEY_TEXT_COLOUR);
-      }
     }
     
     attributesArray.recycle();
