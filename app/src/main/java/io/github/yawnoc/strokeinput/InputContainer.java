@@ -17,6 +17,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -36,9 +37,10 @@ public class InputContainer
   private Keyboard.Key[] inputKeyArray;
   
   // Keyboard drawing
+  Rect keyRectangle;
   Paint keyFillPaint;
   Paint keyBorderPaint;
-  Rect keyRectangle;
+  Paint keyTextPaint;
   
   public InputContainer(Context context, AttributeSet attributes) {
     
@@ -49,6 +51,10 @@ public class InputContainer
     
     keyBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyBorderPaint.setStyle(Paint.Style.STROKE);
+    
+    keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyTextPaint.setTypeface(Typeface.DEFAULT);
+    keyTextPaint.setTextAlign(Paint.Align.CENTER);
     
     keyRectangle = new Rect();
   }
@@ -111,14 +117,26 @@ public class InputContainer
         displayText = valueText;
       }
       
+      keyRectangle.set(0, 0, key_width_px, key_height_px);
+      
       keyFillPaint.setColor(key.keyFillColour);
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key_border_thickness_px);
-      keyRectangle.set(0, 0, key_width_px, key_height_px);
+      
+      keyTextPaint.setColor(key.keyTextColour);
+      keyTextPaint.setTextSize(key.keyTextSize);
       
       canvas.translate(key_x_px, key_y_px);
+      
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
+      canvas.drawText(
+        displayText,
+        key_width_px / 2,
+        key_height_px / 2,
+        keyTextPaint
+      );
+      
       canvas.translate(-key_x_px, -key_y_px);
     }
     
