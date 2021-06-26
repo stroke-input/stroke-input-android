@@ -107,8 +107,6 @@ public class InputContainer
       
       String valueText = key.valueText;
       String displayText = key.displayText;
-      Drawable displayIcon = key.displayIcon;
-      
       if (displayText == null) {
         displayText = valueText;
       }
