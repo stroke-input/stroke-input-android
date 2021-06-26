@@ -32,7 +32,8 @@ import java.util.List;
 public class Keyboard {
   
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
-  int DEFAULT_KEY_HEIGHT = 64;
+  int DEFAULT_KEY_HEIGHT_DP = 64;
+  int default_key_height_px;
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
@@ -61,8 +62,12 @@ public class Keyboard {
   public Keyboard(Context context, int layoutResourceId) {
     
     DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
+    
+    default_key_height_px =
+      (int) (DEFAULT_KEY_HEIGHT_DP * displayMetrics.density);
     
     keyList = new ArrayList<>();
     
@@ -365,7 +370,7 @@ public class Keyboard {
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         screenHeight,
-        DEFAULT_KEY_HEIGHT
+        default_key_height_px
       );
     
     keyFillColour =
