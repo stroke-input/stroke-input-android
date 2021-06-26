@@ -33,7 +33,7 @@ public class Keyboard {
   
   float DEFAULT_KEY_ASPECT_RATIO = 1f;
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
-  int DEFAULT_KEY_HEIGHT_PX = 64;
+  int DEFAULT_KEY_HEIGHT = 64;
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   int DEFAULT_KEY_TEXT_SIZE = 36;
@@ -360,7 +360,7 @@ public class Keyboard {
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         screenHeight,
-        DEFAULT_KEY_HEIGHT_PX
+        DEFAULT_KEY_HEIGHT
       );
     
     keyFillColour =
