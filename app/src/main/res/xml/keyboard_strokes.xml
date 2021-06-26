@@ -15,11 +15,11 @@
     <Key app:valueText="9" />
     <Key app:valueText="0" />
   </Row>
-  <Row>
+  <Row app:keyWidth="20%">
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
-    <Key app:valueText="？" />
+    <Key app:valueText="？" app:keyWidth="10%" />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key app:valueText="！" />
+    <Key app:valueText="！" app:keyWidth="10%" />
     <!-- U+31D0 CJK STROKE H -->
     <Key app:valueText="㇐" />
     <!-- U+31D1 CJK STROKE S -->
@@ -29,11 +29,11 @@
     <!-- About -->
     <Key app:valueText="i" />
   </Row>
-  <Row>
+  <Row app:keyWidth="20%">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key app:valueText="、" />
+    <Key app:valueText="、" app:keyWidth="10%" />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
-    <Key app:valueText="；" />
+    <Key app:valueText="；" app:keyWidth="10%" />
     <!-- U+31D4 CJK STROKE D -->
     <Key app:valueText="㇔" />
     <!-- U+31D6 CJK STROKE HG -->
@@ -43,15 +43,15 @@
     <!-- U+232B ERASE TO THE LEFT -->
     <Key app:valueText="⌫" />
   </Row>
-  <Row>
+  <Row app:keyWidth="20%">
     <!-- Switch to punctuation: U+FF08, U+FF09, U+FF1A -->
     <Key app:valueText="PUNCTUATION" app:displayText="（）：" />
     <!-- U+FF0C FULLWIDTH COMMA -->
-    <Key app:valueText="，" />
+    <Key app:valueText="，" app:keyWidth="10%" />
     <!-- Space bar -->
-    <Key app:valueText=" " app:displayText="中文筆畫" />
+    <Key app:valueText=" " app:displayText="中文筆畫" app:keyWidth="40%" />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
-    <Key app:valueText="。" />
+    <Key app:valueText="。" app:keyWidth="10%" />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
     <Key app:valueText="↵" />
   </Row>
