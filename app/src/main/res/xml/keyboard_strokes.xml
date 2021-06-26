@@ -63,6 +63,7 @@
     <Key
       app:valueText="↵"
       app:keyTextSize="64sp"
+      app:keyFillColour="@color/enter_key_fill"
     />
   </Row>
 </Keyboard>
