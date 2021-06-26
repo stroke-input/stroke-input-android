@@ -137,15 +137,17 @@ public class InputContainer
   @Override
   public void onDraw(Canvas canvas) {
     
+    int VOID_COLOUR = Color.BLACK;
+    
     super.onDraw(canvas);
     
     if (inputKeyboard == null) {
       return;
     }
     
-    final Keyboard.Key[] keyArray = inputKeyArray;
+    canvas.drawColor(VOID_COLOUR);
     
-    canvas.drawColor(Color.YELLOW); // TODO: remove me
+    final Keyboard.Key[] keyArray = inputKeyArray;
     
     for (final Keyboard.Key currentKey : keyArray) {
       
