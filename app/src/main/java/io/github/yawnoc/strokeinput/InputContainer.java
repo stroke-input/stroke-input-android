@@ -99,6 +99,9 @@ public class InputContainer
     
     for (final Keyboard.Key key : keyArray) {
       
+      int key_x_px = px_from_dp(key.x);
+      int key_y_px = px_from_dp(key.y);
+      
       String valueText = key.valueText;
       String displayText = key.displayText;
       Drawable displayIcon = key.displayIcon;
@@ -117,10 +120,10 @@ public class InputContainer
         px_from_dp(key.height)
       );
       
-      canvas.translate(px_from_dp(key.x), px_from_dp(key.y));
+      canvas.translate(key_x_px, key_y_px);
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
-      canvas.translate(-px_from_dp(key.x), -px_from_dp(key.y));
+      canvas.translate(-key_x_px, -key_y_px);
     }
     
   }
