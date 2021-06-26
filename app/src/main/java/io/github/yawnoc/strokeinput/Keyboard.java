@@ -31,7 +31,6 @@ import java.util.List;
 */
 public class Keyboard {
   
-  float DEFAULT_KEY_ASPECT_RATIO = 1f;
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   int DEFAULT_KEY_HEIGHT = 64;
   
