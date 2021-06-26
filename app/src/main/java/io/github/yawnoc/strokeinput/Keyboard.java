@@ -48,12 +48,12 @@ public class Keyboard {
   // Keyboard properties
   private int width;
   private int height;
-  private ArrayList<Row> rowArrayList = new ArrayList<>();
-  private List<Key> keyList;
+  private final ArrayList<Row> rowArrayList = new ArrayList<>();
+  private final List<Key> keyList;
   
   // Screen properties
-  private int screenWidth;
-  private int screenHeight;
+  private final int screenWidth;
+  private final int screenHeight;
   
   public Keyboard(Context context, int layoutResourceId) {
     
@@ -116,7 +116,7 @@ public class Keyboard {
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
-    private Keyboard parentKeyboard;
+    private final Keyboard parentKeyboard;
     
     public Row(Keyboard parentKeyboard) {
       this.parentKeyboard = parentKeyboard;
@@ -194,7 +194,7 @@ public class Keyboard {
     public int y;
     
     // Key meta-properties
-    private Keyboard grandparentKeyboard;
+    private final Keyboard grandparentKeyboard;
     
     public Key(Row parentRow) {
       grandparentKeyboard = parentRow.parentKeyboard;
