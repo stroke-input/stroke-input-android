@@ -17,7 +17,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -40,12 +40,15 @@ public class InputContainer
   private Keyboard inputKeyboard;
   private Keyboard.Key[] inputKeyArray;
   private Context inputContext;
-  private Paint inputPaint;
   
   // Keyboard styles
   private int keyFillColour;
   private int keyTextColour;
   private int keyTextSize;
+  
+  // Keyboard drawing
+  Paint keyFillPaint;
+  Rect keyRectangle;
   
   public InputContainer(Context context, AttributeSet attributes) {
     this(context, attributes, R.attr.inputContainerStyle);
@@ -103,10 +106,8 @@ public class InputContainer
     
     attributesArray.recycle();
     
-    inputPaint = new Paint();
-    inputPaint.setAntiAlias(true);
-    inputPaint.setTextSize(keyTextSize);
-    inputPaint.setTextAlign(Paint.Align.CENTER);
+    keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyRectangle = new Rect();
   }
   
   public void setKeyboard(Keyboard keyboard) {
@@ -148,7 +149,6 @@ public class InputContainer
       return;
     }
     
-    final Paint paint = inputPaint;
     final Keyboard.Key[] keyArray = inputKeyArray;
     
     canvas.drawColor(Color.YELLOW); // TODO: remove me
@@ -163,17 +163,17 @@ public class InputContainer
         displayText = valueText;
       }
       
-      if (displayIcon == null) {
-        paint.setColor(keyTextColour);
-        paint.setTextSize(keyTextSize);
-        paint.setTypeface(Typeface.DEFAULT);
-        canvas.drawText(
-          displayText,
-          currentKey.width / 2,
-          currentKey.height / 2,
-          paint
-        );
-      }
+      keyFillPaint.setColor(Color.BLACK); // TODO: generalise
+      keyRectangle.set(
+        0,
+        0,
+        px_from_dp(currentKey.width),
+        px_from_dp(currentKey.height)
+      );
+      
+      canvas.translate(px_from_dp(currentKey.x), px_from_dp(currentKey.y));
+      canvas.drawRect(keyRectangle, keyFillPaint);
+      canvas.translate(-px_from_dp(currentKey.x), -px_from_dp(currentKey.y));
     }
     
   }
