@@ -134,8 +134,8 @@ public class InputContainer
     }
     
     setMeasuredDimension(
-      keyboardWidth + paddingHorizontal,
-      keyboardHeight + paddingVertical
+      px_from_dp(keyboardWidth + paddingHorizontal),
+      px_from_dp(keyboardHeight + paddingVertical)
     );
   }
   
@@ -176,6 +176,10 @@ public class InputContainer
       }
     }
     
+  }
+  
+  int px_from_dp(int dp) {
+    return (int) (getResources().getDisplayMetrics().density * dp);
   }
   
 }
