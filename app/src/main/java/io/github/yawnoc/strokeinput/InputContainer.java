@@ -31,8 +31,6 @@ import java.util.List;
 public class InputContainer
   extends View
 {
-  int DEFAULT_KEY_TEXT_COLOUR = Color.BLUE; // TODO: revert to Color.WHITE
-  
   // Container meta-properties
   private Keyboard inputKeyboard;
   private Keyboard.Key[] inputKeyArray;
