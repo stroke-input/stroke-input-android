@@ -37,7 +37,6 @@ public class InputContainer
   // Container meta-properties
   private Keyboard inputKeyboard;
   private Keyboard.Key[] inputKeyArray;
-  private Context inputContext;
   
   // Keyboard styles
   private int keyTextColour;
@@ -68,7 +67,6 @@ public class InputContainer
   {
     super(context, attributes, defaultStyleAttribute, defaultStyleResourceId);
     
-    inputContext = context;
     TypedArray attributesArray =
       context.obtainStyledAttributes(
         attributes,
