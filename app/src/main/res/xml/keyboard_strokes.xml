@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  app:keyHeight="64dp"
-  app:keyWidth="10%"
+  app:keyHeight="@dimen/key_height"
+  app:keyWidth="@dimen/key_width_digit"
 >
   <Row>
     <!-- Digits -->
@@ -17,11 +17,17 @@
     <Key app:valueText="9" />
     <Key app:valueText="0" />
   </Row>
-  <Row app:keyWidth="20%">
+  <Row app:keyWidth="@dimen/key_width_stroke">
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
-    <Key app:valueText="？" app:keyWidth="10%" />
+    <Key
+      app:valueText="？"
+      app:keyWidth="@dimen/key_width_digit"
+    />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key app:valueText="！" app:keyWidth="10%" />
+    <Key
+      app:valueText="！"
+      app:keyWidth="@dimen/key_width_digit"
+    />
     <!-- U+31D0 CJK STROKE H -->
     <Key
       app:valueText="STROKE_1"
@@ -43,11 +49,16 @@
       app:displayText="i"
     />
   </Row>
-  <Row app:keyWidth="20%">
+  <Row app:keyWidth="@dimen/key_width_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key app:valueText="、" app:keyWidth="10%" />
+    <Key
+      app:valueText="、"
+      app:keyWidth="@dimen/key_width_digit" />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
-    <Key app:valueText="；" app:keyWidth="10%" />
+    <Key
+      app:valueText="；"
+      app:keyWidth="@dimen/key_width_digit"
+    />
     <!-- U+31D4 CJK STROKE D -->
     <Key
       app:valueText="STROKE_4"
@@ -69,23 +80,29 @@
       app:displayText="⌫"
     />
   </Row>
-  <Row app:keyWidth="20%">
+  <Row app:keyWidth="@dimen/key_width_stroke">
     <!-- Switch to punctuation: U+FF08, U+FF09, U+FF1A -->
     <Key
       app:valueText="PUNCTUATION"
       app:displayText="（）："
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
-    <Key app:valueText="，" app:keyWidth="10%" />
+    <Key
+      app:valueText="，"
+      app:keyWidth="@dimen/key_width_digit"
+    />
     <!-- Space bar -->
     <Key
       app:valueText="SPACE"
       app:displayText="中文筆畫"
       app:keyTextSize="20sp"
-      app:keyWidth="40%"
+      app:keyWidth="@dimen/key_width_space_bar"
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
-    <Key app:valueText="。" app:keyWidth="10%" />
+    <Key
+      app:valueText="。"
+      app:keyWidth="@dimen/key_width_digit"
+    />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
     <Key
       app:valueText="ENTER"
