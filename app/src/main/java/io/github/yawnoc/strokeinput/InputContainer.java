@@ -33,7 +33,6 @@ public class InputContainer
   extends View
 {
   int DEFAULT_KEY_TEXT_COLOUR = Color.BLUE; // TODO: revert to Color.WHITE
-  int DEFAULT_KEY_TEXT_SIZE_PX = 36;
   
   // Container meta-properties
   private Keyboard inputKeyboard;
@@ -42,7 +41,6 @@ public class InputContainer
   
   // Keyboard styles
   private int keyTextColour;
-  private int keyTextSize;
   
   // Keyboard drawing
   Paint keyFillPaint;
@@ -88,13 +86,6 @@ public class InputContainer
       if (populatedIndex == R.styleable.InputContainer_keyTextColour) {
         keyTextColour =
           attributesArray.getColor(populatedIndex, DEFAULT_KEY_TEXT_COLOUR);
-      }
-      else if (populatedIndex == R.styleable.InputContainer_keyTextSize) {
-        keyTextSize =
-          attributesArray.getDimensionPixelSize(
-            populatedIndex,
-            DEFAULT_KEY_TEXT_SIZE_PX
-          );
       }
     }
     

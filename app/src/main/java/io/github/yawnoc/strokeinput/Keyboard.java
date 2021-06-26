@@ -36,11 +36,13 @@ public class Keyboard {
   int DEFAULT_KEY_HEIGHT_PX = 64;
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+  int DEFAULT_KEY_TEXT_SIZE = 36;
   
   // Key properties
   private int defaultKeyWidth;
   private int defaultKeyHeight;
   private int defaultKeyFillColour;
+  private int defaultKeyTextSize;
   
   // Keyboard properties
   private int width;
@@ -61,6 +63,7 @@ public class Keyboard {
     defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
     defaultKeyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * defaultKeyWidth);
     defaultKeyFillColour = DEFAULT_KEY_FILL_COLOUR;
+    defaultKeyTextSize = DEFAULT_KEY_TEXT_SIZE;
     
     keyList = new ArrayList<>();
     
@@ -112,6 +115,7 @@ public class Keyboard {
     public int defaultKeyWidth;
     public int defaultKeyHeight;
     private int defaultKeyFillColour;
+    private int defaultKeyTextSize;
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
@@ -153,6 +157,11 @@ public class Keyboard {
           R.styleable.Keyboard_keyFillColour,
           parentKeyboard.defaultKeyFillColour
         );
+      defaultKeyTextSize =
+        attributesArray.getInt(
+          R.styleable.Keyboard_keyTextSize,
+          parentKeyboard.defaultKeyTextSize
+        );
       attributesArray.recycle();
     }
     
@@ -171,6 +180,7 @@ public class Keyboard {
     
     // Key styles
     public int keyFillColour;
+    public int keyTextSize;
     
     // Key dimensions
     public int width;
@@ -221,6 +231,11 @@ public class Keyboard {
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
           parentRow.defaultKeyFillColour
+        );
+      keyTextSize =
+        attributesArray.getInt(
+          R.styleable.Keyboard_keyTextSize,
+          parentRow.defaultKeyTextSize
         );
       
       width =
@@ -351,6 +366,11 @@ public class Keyboard {
         R.styleable.Keyboard_keyHeight,
         screenHeight,
         DEFAULT_KEY_HEIGHT_PX
+      );
+    defaultKeyTextSize =
+      attributesArray.getInt(
+        R.styleable.Keyboard_keyTextSize,
+        DEFAULT_KEY_TEXT_SIZE
       );
     
     attributesArray.recycle();
