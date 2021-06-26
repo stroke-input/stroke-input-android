@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <declare-styleable name="InputContainer">
-    <attr name="inputContainerStyle" format="reference" />
-  </declare-styleable>
   <declare-styleable name="Keyboard">
     <attr name="valueText" format="string" />
     <attr name="displayText" format="string" />
