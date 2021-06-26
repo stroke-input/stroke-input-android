@@ -110,17 +110,13 @@ public class Keyboard {
     // Key properties
     public int keyWidth;
     public int keyHeight;
-    private int keyFillColour;
-    private int keyTextColour;
-    private int keyTextSize;
+    private final int keyFillColour;
+    private final int keyTextColour;
+    private final int keyTextSize;
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
     private final Keyboard parentKeyboard;
-    
-    public Row(Keyboard parentKeyboard) {
-      this.parentKeyboard = parentKeyboard;
-    }
     
     public Row(
       Keyboard parentKeyboard,
