@@ -5,4 +5,7 @@
   <dimen name="key_width_digit">10%</dimen>
   <dimen name="key_width_stroke">20%</dimen>
   <dimen name="key_width_space_bar">40%</dimen>
+  <dimen name="key_text_font_size">32sp</dimen>
+  <dimen name="key_text_font_size_space_bar">20sp</dimen>
+  <dimen name="key_text_font_size_enter_key">64sp</dimen>
 </resources>

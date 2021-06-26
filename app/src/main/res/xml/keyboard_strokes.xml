@@ -3,6 +3,7 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height"
   app:keyWidth="@dimen/key_width_digit"
+  app:keyTextSize="@dimen/key_text_font_size"
 >
   <Row>
     <!-- Digits -->
@@ -95,7 +96,7 @@
     <Key
       app:valueText="SPACE"
       app:displayText="中文筆畫"
-      app:keyTextSize="20sp"
+      app:keyTextSize="@dimen/key_text_font_size_space_bar"
       app:keyWidth="@dimen/key_width_space_bar"
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
@@ -107,7 +108,7 @@
     <Key
       app:valueText="ENTER"
       app:displayText="↵"
-      app:keyTextSize="64sp"
+      app:keyTextSize="@dimen/key_text_font_size_enter_key"
       app:keyFillColour="@color/enter_key_fill"
     />
   </Row>
