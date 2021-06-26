@@ -36,6 +36,7 @@ public class Keyboard {
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   int DEFAULT_KEY_BORDER_COLOUR = Color.DKGRAY;
+  int DEFAULT_KEY_BORDER_THICKNESS = 4;
   int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   int DEFAULT_KEY_TEXT_SIZE = 36;
   
@@ -44,6 +45,7 @@ public class Keyboard {
   private int keyHeight;
   private int keyFillColour;
   private int keyBorderColour;
+  private int keyBorderThickness;
   private int keyTextColour;
   private int keyTextSize;
   
@@ -81,6 +83,7 @@ public class Keyboard {
     public int keyHeight;
     private final int keyFillColour;
     private final int keyBorderColour;
+    private final int keyBorderThickness;
     private final int keyTextColour;
     private final int keyTextSize;
     
@@ -127,6 +130,11 @@ public class Keyboard {
           R.styleable.Keyboard_keyBorderColour,
           parentKeyboard.keyBorderColour
         );
+      keyBorderThickness =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyBorderThickness,
+          parentKeyboard.keyBorderThickness
+        );
       
       keyTextColour =
         attributesArray.getColor(
@@ -158,6 +166,7 @@ public class Keyboard {
     // Key styles
     public int keyFillColour;
     public int keyBorderColour;
+    public int keyBorderThickness;
     public int keyTextColour;
     public int keyTextSize;
     
@@ -215,6 +224,11 @@ public class Keyboard {
         attributesArray.getColor(
           R.styleable.Keyboard_keyBorderColour,
           parentRow.keyBorderColour
+        );
+      keyBorderThickness =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyBorderThickness,
+          parentRow.keyBorderThickness
         );
       
       keyTextColour =
@@ -366,6 +380,11 @@ public class Keyboard {
       attributesArray.getColor(
         R.styleable.Keyboard_keyBorderColour,
         DEFAULT_KEY_BORDER_COLOUR
+      );
+    keyBorderThickness =
+      attributesArray.getDimensionPixelSize(
+        R.styleable.Keyboard_keyBorderThickness,
+        DEFAULT_KEY_BORDER_THICKNESS
       );
     
     keyTextColour =
