@@ -274,21 +274,23 @@ public class Keyboard {
     XmlResourceParser xmlResourceParser
   )
   {
-    boolean currentlyInKey = false;
-    boolean currentlyInRow = false;
-    
-    int currentX = 0;
-    int currentY = 0;
-    Key currentKey = null;
-    Row currentRow = null;
-    
-    int maximumX = 0;
-    int maximumY = 0;
-    
-    Resources resources = context.getResources();
-    
     try {
+      
+      boolean currentlyInKey = false;
+      boolean currentlyInRow = false;
+      
+      int currentX = 0;
+      int currentY = 0;
+      Key currentKey = null;
+      Row currentRow = null;
+      
+      int maximumX = 0;
+      int maximumY = 0;
+      
+      Resources resources = context.getResources();
+      
       int event;
+      
       while (
         (event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT
       )
@@ -336,8 +338,10 @@ public class Keyboard {
             break;
         }
       }
+      
       width = maximumX;
       height = maximumY;
+      
     }
     catch (Exception exception) {
       Log.e("Keyboard.loadKeyboard", "Exception: " + exception);
