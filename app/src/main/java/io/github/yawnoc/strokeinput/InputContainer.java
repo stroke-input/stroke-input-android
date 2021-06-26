@@ -97,30 +97,30 @@ public class InputContainer
     
     final Keyboard.Key[] keyArray = inputKeyArray;
     
-    for (final Keyboard.Key currentKey : keyArray) {
+    for (final Keyboard.Key key : keyArray) {
       
-      String valueText = currentKey.valueText;
-      String displayText = currentKey.displayText;
-      Drawable displayIcon = currentKey.displayIcon;
+      String valueText = key.valueText;
+      String displayText = key.displayText;
+      Drawable displayIcon = key.displayIcon;
       
       if (displayText == null) {
         displayText = valueText;
       }
       
-      keyFillPaint.setColor(currentKey.keyFillColour);
-      keyBorderPaint.setColor(currentKey.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(px_from_dp(currentKey.keyBorderThickness));
+      keyFillPaint.setColor(key.keyFillColour);
+      keyBorderPaint.setColor(key.keyBorderColour);
+      keyBorderPaint.setStrokeWidth(px_from_dp(key.keyBorderThickness));
       keyRectangle.set(
         0,
         0,
-        px_from_dp(currentKey.width),
-        px_from_dp(currentKey.height)
+        px_from_dp(key.width),
+        px_from_dp(key.height)
       );
       
-      canvas.translate(px_from_dp(currentKey.x), px_from_dp(currentKey.y));
+      canvas.translate(px_from_dp(key.x), px_from_dp(key.y));
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
-      canvas.translate(-px_from_dp(currentKey.x), -px_from_dp(currentKey.y));
+      canvas.translate(-px_from_dp(key.x), -px_from_dp(key.y));
     }
     
   }
