@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+  <Row>
+    <!-- Digits -->
+    <Key app:valueText="1" />
+    <Key app:valueText="2" />
+    <Key app:valueText="3" />
+    <Key app:valueText="4" />
+    <Key app:valueText="5" />
+    <Key app:valueText="6" />
+    <Key app:valueText="7" />
+    <Key app:valueText="8" />
+    <Key app:valueText="9" />
+    <Key app:valueText="0" />
+  </Row>
+  <Row>
+    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
+    <Key app:valueText="？" />
+    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
+    <Key app:valueText="！" />
+    <!-- U+31D0 CJK STROKE H -->
+    <Key app:valueText="㇐" />
+    <!-- U+31D1 CJK STROKE S -->
+    <Key app:valueText="㇑" />
+    <!-- U+31D2 CJK STROKE P -->
+    <Key app:valueText="㇒" />
+    <!-- About -->
+    <Key app:valueText="i" />
+  </Row>
+  <Row>
+    <!-- U+3001 IDEOGRAPHIC COMMA -->
+    <Key app:valueText="、" />
+    <!-- U+FF1B FULLWIDTH SEMICOLON -->
+    <Key app:valueText="；" />
+    <!-- U+31D4 CJK STROKE D -->
+    <Key app:valueText="㇔" />
+    <!-- U+31D6 CJK STROKE HG -->
+    <Key app:valueText="㇖" />
+    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
+    <Key app:valueText="々" />
+    <!-- U+232B ERASE TO THE LEFT -->
+    <Key app:valueText="⌫" />
+  </Row>
+  <Row>
+    <!-- Switch to punctuation: U+FF08, U+FF09, U+FF1A -->
+    <Key app:valueText="PUNCTUATION" app:displayText="（）：" />
+    <!-- U+FF0C FULLWIDTH COMMA -->
+    <Key app:valueText="，" />
+    <!-- Space bar -->
+    <Key app:valueText=" " app:displayText="中文筆畫" />
+    <!-- U+3002 IDEOGRAPHIC FULL STOP -->
+    <Key app:valueText="。" />
+    <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
+    <Key app:valueText="↵" />
+  </Row>
+</Keyboard>

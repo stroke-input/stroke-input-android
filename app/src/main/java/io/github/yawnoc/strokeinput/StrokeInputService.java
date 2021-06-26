@@ -24,7 +24,7 @@ public class StrokeInputService extends InputMethodService {
     InputContainer inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
-    Keyboard keyboard = new Keyboard(this, R.xml.keyboard_test);
+    Keyboard keyboard = new Keyboard(this, R.xml.keyboard_strokes);
     
     inputContainer.setKeyboard(keyboard);
     
