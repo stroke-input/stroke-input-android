@@ -83,8 +83,8 @@ public class InputContainer
     }
     
     setMeasuredDimension(
-      px_from_dp(keyboardWidth + paddingHorizontal),
-      px_from_dp(keyboardHeight + paddingVertical)
+      keyboardWidth + paddingHorizontal,
+      keyboardHeight + paddingVertical
     );
   }
   
@@ -104,45 +104,35 @@ public class InputContainer
     
     for (final Keyboard.Key key : keyArray) {
       
-      int key_x_px = px_from_dp(key.x);
-      int key_y_px = px_from_dp(key.y);
-      int key_width_px = px_from_dp(key.width);
-      int key_height_px = px_from_dp(key.height);
-      int key_border_thickness_px = px_from_dp(key.keyBorderThickness);
-      
       String valueText = key.valueText;
       String displayText = key.displayText;
       if (displayText == null) {
         displayText = valueText;
       }
       
-      keyRectangle.set(0, 0, key_width_px, key_height_px);
+      keyRectangle.set(0, 0, key.width, key.height);
       
       keyFillPaint.setColor(key.keyFillColour);
       keyBorderPaint.setColor(key.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(key_border_thickness_px);
+      keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
       keyTextPaint.setColor(key.keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
-      canvas.translate(key_x_px, key_y_px);
+      canvas.translate(key.x, key.y);
       
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
         displayText,
-        (float) key_width_px / 2,
-        (key_height_px - keyTextPaint.ascent() - keyTextPaint.descent()) / 2,
+        (float) key.width / 2,
+        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2,
         keyTextPaint
       );
       
-      canvas.translate(-key_x_px, -key_y_px);
+      canvas.translate(-key.x, -key.y);
     }
     
-  }
-  
-  int px_from_dp(int dp) {
-    return (int) (getResources().getDisplayMetrics().density * dp);
   }
   
 }
