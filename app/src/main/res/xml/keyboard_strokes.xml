@@ -80,6 +80,7 @@
     <Key
       app:valueText="DITTO"
       app:displayText="々"
+      app:keyTextSize="@dimen/key_text_font_size_ditto_key"
     />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
