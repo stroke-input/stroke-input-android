@@ -10,6 +10,8 @@
     <attr name="keyBorderThickness" format="dimension" />
     <attr name="keyTextColour" format="color" />
     <attr name="keyTextSize" format="dimension" />
+    <attr name="keyTextOffsetX" format="dimension" />
+    <attr name="keyTextOffsetY" format="dimension" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
   </declare-styleable>

@@ -180,6 +180,8 @@ public class Keyboard {
     public int keyBorderThickness;
     public int keyTextColour;
     public int keyTextSize;
+    public int keyTextOffsetX;
+    public int keyTextOffsetY;
     
     // Key dimensions
     public int width;
@@ -255,6 +257,16 @@ public class Keyboard {
         attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextSize,
           parentRow.keyTextSize
+        );
+      keyTextOffsetX =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyTextOffsetX,
+          0
+        );
+      keyTextOffsetY =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyTextOffsetY,
+          0
         );
       
       width =

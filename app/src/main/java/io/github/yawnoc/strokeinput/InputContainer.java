@@ -113,14 +113,23 @@ public class InputContainer
       keyTextPaint.setColor(key.keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
+      float key_text_x = (
+        (float) key.width / 2
+          + key.keyTextOffsetX
+      );
+      float key_text_y = (
+        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2
+          + key.keyTextOffsetY
+      );
+      
       canvas.translate(key.x, key.y);
       
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
         key.displayText,
-        (float) key.width / 2,
-        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2,
+        key_text_x,
+        key_text_y,
         keyTextPaint
       );
       
