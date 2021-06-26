@@ -104,12 +104,6 @@ public class InputContainer
     
     for (final Keyboard.Key key : keyArray) {
       
-      String valueText = key.valueText;
-      String displayText = key.displayText;
-      if (displayText == null) {
-        displayText = valueText;
-      }
-      
       keyRectangle.set(0, 0, key.width, key.height);
       
       keyFillPaint.setColor(key.keyFillColour);
@@ -124,7 +118,7 @@ public class InputContainer
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
-        displayText,
+        key.displayText,
         (float) key.width / 2,
         (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2,
         keyTextPaint

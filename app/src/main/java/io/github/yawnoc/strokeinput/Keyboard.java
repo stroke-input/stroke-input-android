@@ -221,6 +221,10 @@ public class Keyboard {
         attributesArray.getString(R.styleable.Keyboard_valueText);
       displayText =
         attributesArray.getString(R.styleable.Keyboard_displayText);
+      if (displayText == null) {
+        displayText = valueText;
+      }
+      
       displayIcon =
         attributesArray.getDrawable(R.styleable.Keyboard_displayIcon);
       isRepeatable =
