@@ -45,6 +45,8 @@ public class InputContainer
     
     super(context, attributes);
     
+    keyRectangle = new Rect();
+    
     keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyFillPaint.setStyle(Paint.Style.FILL);
     
@@ -54,8 +56,6 @@ public class InputContainer
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyTextPaint.setTypeface(Typeface.DEFAULT);
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
-    
-    keyRectangle = new Rect();
   }
   
   public void setKeyboard(Keyboard keyboard) {
