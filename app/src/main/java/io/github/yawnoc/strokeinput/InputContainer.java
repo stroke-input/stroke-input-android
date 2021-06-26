@@ -116,12 +116,7 @@ public class InputContainer
       keyFillPaint.setColor(key.keyFillColour);
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key_border_thickness_px);
-      keyRectangle.set(
-        0,
-        0,
-        key_width_px,
-        key_height_px
-      );
+      keyRectangle.set(0, 0, key_width_px, key_height_px);
       
       canvas.translate(key_x_px, key_y_px);
       canvas.drawRect(keyRectangle, keyFillPaint);
