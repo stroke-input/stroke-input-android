@@ -276,13 +276,13 @@ public class Keyboard {
   {
     try {
       
-      boolean currentlyInKey = false;
-      boolean currentlyInRow = false;
+      boolean inKey = false;
+      boolean inRow = false;
       
-      int currentX = 0;
-      int currentY = 0;
-      Key currentKey = null;
-      Row currentRow = null;
+      int x = 0;
+      int y = 0;
+      Key key = null;
+      Row row = null;
       
       int maximumX = 0;
       int maximumY = 0;
@@ -297,43 +297,43 @@ public class Keyboard {
       {
         switch (event) {
           case XmlResourceParser.START_TAG:
-            String currentTag = xmlResourceParser.getName();
-            switch (currentTag) {
+            String xmlTag = xmlResourceParser.getName();
+            switch (xmlTag) {
               case "Keyboard":
                 parseKeyboardAttributes(resources, xmlResourceParser);
                 break;
               case "Row":
-                currentlyInRow = true;
-                currentX = 0;
-                currentRow = new Row(this, resources, xmlResourceParser);
+                inRow = true;
+                x = 0;
+                row = new Row(this, resources, xmlResourceParser);
                 break;
               case "Key":
-                currentlyInKey = true;
-                currentKey =
+                inKey = true;
+                key =
                   new Key(
-                    currentRow,
-                    currentX,
-                    currentY,
+                    row,
+                    x,
+                    y,
                     resources,
                     xmlResourceParser
                   );
-                keyList.add(currentKey);
-                if (currentRow != null) {
-                  currentRow.keyArrayList.add(currentKey);
+                keyList.add(key);
+                if (row != null) {
+                  row.keyArrayList.add(key);
                 }
                 break;
             }
             break;
           case XmlResourceParser.END_TAG:
-            if (currentlyInKey) {
-              currentlyInKey = false;
-              currentX += currentKey.width;
-              maximumX = Math.max(currentX, maximumX);
+            if (inKey) {
+              inKey = false;
+              x += key.width;
+              maximumX = Math.max(x, maximumX);
             }
-            else if (currentlyInRow) {
-              currentlyInRow = false;
-              currentY += currentRow.keyHeight;
-              maximumY = Math.max(currentY, maximumY);
+            else if (inRow) {
+              inRow = false;
+              y += row.keyHeight;
+              maximumY = Math.max(y, maximumY);
             }
             break;
         }
