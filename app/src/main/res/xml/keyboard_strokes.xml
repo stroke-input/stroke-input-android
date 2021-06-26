@@ -120,6 +120,7 @@
       app:displayText="↵"
       app:keyTextSize="@dimen/key_text_font_size_enter_key"
       app:keyFillColour="@color/enter_key_fill"
+      app:keyTextOffsetY="@dimen/key_text_offset_y_enter_key"
     />
   </Row>
 </Keyboard>

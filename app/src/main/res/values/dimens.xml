@@ -7,8 +7,9 @@
   <dimen name="key_width_space_bar">40%</dimen>
   <dimen name="key_text_font_size">32sp</dimen>
   <dimen name="key_text_font_size_space_bar">20sp</dimen>
-  <dimen name="key_text_font_size_enter_key">64sp</dimen>
+  <dimen name="key_text_font_size_enter_key">96sp</dimen>
   <dimen name="key_text_offset_x_punctuation">8sp</dimen>
   <dimen name="key_text_offset_x_small_punctuation">9sp</dimen>
   <dimen name="key_text_offset_y_small_punctuation">-6sp</dimen>
+  <dimen name="key_text_offset_y_enter_key">-18sp</dimen>
 </resources>
