@@ -132,7 +132,7 @@ public class InputContainer
       canvas.drawText(
         displayText,
         key_width_px / 2,
-        key_height_px / 2,
+        (key_height_px - keyTextPaint.ascent() - keyTextPaint.descent()) / 2,
         keyTextPaint
       );
       
