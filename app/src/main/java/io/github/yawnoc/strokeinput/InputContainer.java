@@ -37,6 +37,7 @@ public class InputContainer
   
   // Keyboard drawing
   Paint keyFillPaint;
+  Paint keyBorderPaint;
   Rect keyRectangle;
   
   public InputContainer(Context context, AttributeSet attributes) {
@@ -44,6 +45,11 @@ public class InputContainer
     super(context, attributes);
     
     keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyFillPaint.setStyle(Paint.Style.FILL);
+    
+    keyBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyBorderPaint.setStyle(Paint.Style.STROKE);
+    
     keyRectangle = new Rect();
   }
   
@@ -103,6 +109,7 @@ public class InputContainer
       }
       
       keyFillPaint.setColor(currentKey.keyFillColour);
+      keyBorderPaint.setColor(currentKey.keyBorderColour);
       keyRectangle.set(
         0,
         0,
@@ -112,6 +119,7 @@ public class InputContainer
       
       canvas.translate(px_from_dp(currentKey.x), px_from_dp(currentKey.y));
       canvas.drawRect(keyRectangle, keyFillPaint);
+      canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.translate(-px_from_dp(currentKey.x), -px_from_dp(currentKey.y));
     }
     

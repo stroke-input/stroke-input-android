@@ -6,6 +6,7 @@
     <attr name="displayIcon" format="reference" />
     <attr name="isRepeatable" format="boolean" />
     <attr name="keyFillColour" format="color" />
+    <attr name="keyBorderColour" format="color" />
     <attr name="keyTextColour" format="color" />
     <attr name="keyTextSize" format="dimension" />
     <attr name="keyWidth" format="dimension|fraction" />

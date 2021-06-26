@@ -35,6 +35,7 @@ public class Keyboard {
   int DEFAULT_KEY_HEIGHT = 64;
   
   int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+  int DEFAULT_KEY_BORDER_COLOUR = Color.DKGRAY;
   int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   int DEFAULT_KEY_TEXT_SIZE = 36;
   
@@ -42,6 +43,7 @@ public class Keyboard {
   private int keyWidth;
   private int keyHeight;
   private int keyFillColour;
+  private int keyBorderColour;
   private int keyTextColour;
   private int keyTextSize;
   
@@ -78,6 +80,7 @@ public class Keyboard {
     public int keyWidth;
     public int keyHeight;
     private final int keyFillColour;
+    private final int keyBorderColour;
     private final int keyTextColour;
     private final int keyTextSize;
     
@@ -98,6 +101,7 @@ public class Keyboard {
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
         );
+      
       keyWidth =
         getDimensionOrFraction(
           attributesArray,
@@ -112,11 +116,18 @@ public class Keyboard {
           parentKeyboard.screenHeight,
           parentKeyboard.keyHeight
         );
+      
       keyFillColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
           parentKeyboard.keyFillColour
         );
+      keyBorderColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyBorderColour,
+          parentKeyboard.keyBorderColour
+        );
+      
       keyTextColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyTextColour,
@@ -127,6 +138,7 @@ public class Keyboard {
           R.styleable.Keyboard_keyTextSize,
           parentKeyboard.keyTextSize
         );
+      
       attributesArray.recycle();
     }
     
@@ -145,6 +157,7 @@ public class Keyboard {
     
     // Key styles
     public int keyFillColour;
+    public int keyBorderColour;
     public int keyTextColour;
     public int keyTextSize;
     
@@ -198,6 +211,12 @@ public class Keyboard {
           R.styleable.Keyboard_keyFillColour,
           parentRow.keyFillColour
         );
+      keyBorderColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyBorderColour,
+          parentRow.keyBorderColour
+        );
+      
       keyTextColour =
         attributesArray.getInt(
           R.styleable.Keyboard_keyTextColour,
@@ -343,6 +362,12 @@ public class Keyboard {
         R.styleable.Keyboard_keyFillColour,
         DEFAULT_KEY_FILL_COLOUR
       );
+    keyBorderColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_keyBorderColour,
+        DEFAULT_KEY_BORDER_COLOUR
+      );
+    
     keyTextColour =
       attributesArray.getColor(
         R.styleable.Keyboard_keyTextColour,
