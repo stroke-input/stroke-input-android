@@ -66,38 +66,6 @@ public class Keyboard {
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
   }
   
-  final void resize(int newWidth, int newHeight) {
-    
-    int rowCount = rowArrayList.size();
-    
-    for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
-      
-      Row currentRow = rowArrayList.get(rowIndex);
-      int keyCount = currentRow.keyArrayList.size();
-      int totalWidth = 0;
-      
-      for (int keyIndex = 0; keyIndex < keyCount; ++keyIndex) {
-        Key currentKey = currentRow.keyArrayList.get(keyIndex);
-        totalWidth += currentKey.width;
-      }
-      
-      if (totalWidth > newWidth) {
-        
-        int currentX = 0;
-        float correctionFactor = (float) newWidth / totalWidth;
-        
-        for (int keyIndex = 0; keyIndex < keyCount; ++keyIndex) {
-          Key currentKey = currentRow.keyArrayList.get(keyIndex);
-          currentKey.width *= correctionFactor;
-          currentKey.x = currentX;
-          currentX += currentKey.width;
-        }
-      }
-    }
-    
-    width = newWidth;
-  }
-  
   public List<Key> getKeyList() {
     return keyList;
   }
