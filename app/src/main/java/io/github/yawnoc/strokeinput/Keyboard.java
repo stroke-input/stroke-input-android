@@ -367,6 +367,11 @@ public class Keyboard {
         screenHeight,
         DEFAULT_KEY_HEIGHT_PX
       );
+    keyFillColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_keyFillColour,
+        DEFAULT_KEY_FILL_COLOUR
+      );
     keyTextSize =
       attributesArray.getInt(
         R.styleable.Keyboard_keyTextSize,
