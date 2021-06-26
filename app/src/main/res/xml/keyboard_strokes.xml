@@ -60,6 +60,9 @@
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key app:valueText="。" app:keyWidth="10%" />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
-    <Key app:valueText="↵" />
+    <Key
+      app:valueText="↵"
+      app:keyTextSize="64sp"
+    />
   </Row>
 </Keyboard>
