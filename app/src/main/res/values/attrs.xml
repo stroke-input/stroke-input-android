@@ -2,7 +2,6 @@
 <resources>
   <declare-styleable name="InputContainer">
     <attr name="inputContainerStyle" format="reference" />
-    <attr name="keyFillColour" format="color" />
     <attr name="keyTextColour" format="color" />
     <attr name="keyTextSize" format="dimension" />
   </declare-styleable>
@@ -11,6 +10,7 @@
     <attr name="displayText" format="string" />
     <attr name="displayIcon" format="reference" />
     <attr name="isRepeatable" format="boolean" />
+    <attr name="keyFillColour" format="color" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
   </declare-styleable>

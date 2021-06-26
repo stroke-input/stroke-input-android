@@ -32,7 +32,6 @@ import java.util.List;
 public class InputContainer
   extends View
 {
-  int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   int DEFAULT_KEY_TEXT_COLOUR = Color.BLUE; // TODO: revert to Color.WHITE
   int DEFAULT_KEY_TEXT_SIZE_PX = 36;
   
@@ -42,7 +41,6 @@ public class InputContainer
   private Context inputContext;
   
   // Keyboard styles
-  private int keyFillColour;
   private int keyTextColour;
   private int keyTextSize;
   
@@ -87,11 +85,7 @@ public class InputContainer
       
       int populatedIndex = attributesArray.getIndex(index);
       
-      if (populatedIndex == R.styleable.InputContainer_keyFillColour) {
-        keyFillColour =
-          attributesArray.getColor(populatedIndex, DEFAULT_KEY_FILL_COLOUR);
-      }
-      else if (populatedIndex == R.styleable.InputContainer_keyTextColour) {
+      if (populatedIndex == R.styleable.InputContainer_keyTextColour) {
         keyTextColour =
           attributesArray.getColor(populatedIndex, DEFAULT_KEY_TEXT_COLOUR);
       }
@@ -163,7 +157,7 @@ public class InputContainer
         displayText = valueText;
       }
       
-      keyFillPaint.setColor(Color.BLACK); // TODO: generalise
+      keyFillPaint.setColor(currentKey.keyFillColour);
       keyRectangle.set(
         0,
         0,

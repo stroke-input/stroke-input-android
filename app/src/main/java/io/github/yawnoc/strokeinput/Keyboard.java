@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -151,11 +152,16 @@ public class Keyboard {
   */
   public static class Key {
     
+    int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+    
     // Key behaviour
     public String valueText;
     public String displayText; // overrides valueText
     public Drawable displayIcon; // overrides displayText
     public boolean isRepeatable;
+    
+    // Key styles
+    public int keyFillColour;
     
     // Key dimensions
     public int width;
@@ -201,6 +207,12 @@ public class Keyboard {
         attributesArray.getDrawable(R.styleable.Keyboard_displayIcon);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
+  
+      keyFillColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyFillColour,
+          DEFAULT_KEY_FILL_COLOUR
+        );
       
       width =
         getDimensionOrFraction(
