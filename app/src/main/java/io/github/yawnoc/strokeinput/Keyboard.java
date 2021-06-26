@@ -40,7 +40,8 @@ public class Keyboard {
   int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
   int default_key_border_thickness_px;
   int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
-  int DEFAULT_KEY_TEXT_SIZE = 48;
+  int DEFAULT_KEY_TEXT_SIZE_SP = 48;
+  int default_key_text_size_px;
   
   // Key properties
   private int keyWidth;
@@ -71,6 +72,8 @@ public class Keyboard {
       (int) (DEFAULT_KEY_HEIGHT_DP * displayMetrics.density);
     default_key_border_thickness_px =
       (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
+    default_key_text_size_px =
+      (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
     
     keyList = new ArrayList<>();
     
@@ -400,7 +403,7 @@ public class Keyboard {
     keyTextSize =
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextSize,
-        DEFAULT_KEY_TEXT_SIZE
+        default_key_text_size_px
       );
     
     attributesArray.recycle();
