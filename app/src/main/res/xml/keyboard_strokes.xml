@@ -23,13 +23,25 @@
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
     <Key app:valueText="！" app:keyWidth="10%" />
     <!-- U+31D0 CJK STROKE H -->
-    <Key app:valueText="㇐" />
+    <Key
+      app:valueText="STROKE_1"
+      app:displayText="㇐"
+    />
     <!-- U+31D1 CJK STROKE S -->
-    <Key app:valueText="㇑" />
+    <Key
+      app:valueText="STROKE_2"
+      app:displayText="㇑"
+    />
     <!-- U+31D2 CJK STROKE P -->
-    <Key app:valueText="㇒" />
+    <Key
+      app:valueText="STROKE_3"
+      app:displayText="㇒"
+    />
     <!-- About -->
-    <Key app:valueText="i" />
+    <Key
+      app:valueText="ABOUT"
+      app:displayText="i"
+    />
   </Row>
   <Row app:keyWidth="20%">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
@@ -37,22 +49,37 @@
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
     <Key app:valueText="；" app:keyWidth="10%" />
     <!-- U+31D4 CJK STROKE D -->
-    <Key app:valueText="㇔" />
+    <Key
+      app:valueText="STROKE_4"
+      app:displayText="㇔"
+    />
     <!-- U+31D6 CJK STROKE HG -->
-    <Key app:valueText="㇖" />
+    <Key
+      app:valueText="STROKE_5"
+      app:displayText="㇖"
+    />
     <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key app:valueText="々" />
-    <!-- U+232B ERASE TO THE LEFT -->
-    <Key app:valueText="⌫" />
+    <Key
+      app:valueText="DITTO"
+      app:displayText="々"
+    />
+    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <Key
+      app:valueText="BACKSPACE"
+      app:displayText="⌫"
+    />
   </Row>
   <Row app:keyWidth="20%">
     <!-- Switch to punctuation: U+FF08, U+FF09, U+FF1A -->
-    <Key app:valueText="PUNCTUATION" app:displayText="（）：" />
+    <Key
+      app:valueText="PUNCTUATION"
+      app:displayText="（）："
+    />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key app:valueText="，" app:keyWidth="10%" />
     <!-- Space bar -->
     <Key
-      app:valueText=" "
+      app:valueText="SPACE"
       app:displayText="中文筆畫"
       app:keyTextSize="20sp"
       app:keyWidth="40%"
@@ -61,7 +88,8 @@
     <Key app:valueText="。" app:keyWidth="10%" />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
     <Key
-      app:valueText="↵"
+      app:valueText="ENTER"
+      app:displayText="↵"
       app:keyTextSize="64sp"
       app:keyFillColour="@color/enter_key_fill"
     />
