@@ -72,13 +72,6 @@ public class InputContainer
         defaultStyleResourceId
       );
     
-    int indexCount = attributesArray.getIndexCount();
-    
-    for (int index = 0; index < indexCount; index++) {
-      
-      int populatedIndex = attributesArray.getIndex(index);
-    }
-    
     attributesArray.recycle();
     
     keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
