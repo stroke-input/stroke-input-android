@@ -43,36 +43,8 @@ public class InputContainer
   Rect keyRectangle;
   
   public InputContainer(Context context, AttributeSet attributes) {
-    this(context, attributes, R.attr.inputContainerStyle);
-  }
-  
-  public InputContainer(
-    Context context,
-    AttributeSet attributes,
-    int defaultStyleAttribute
-  )
-  {
-    this(context, attributes, defaultStyleAttribute, 0);
-  }
-  
-  public InputContainer(
-    Context context,
-    AttributeSet attributes,
-    int defaultStyleAttribute,
-    int defaultStyleResourceId
-  )
-  {
-    super(context, attributes, defaultStyleAttribute, defaultStyleResourceId);
     
-    TypedArray attributesArray =
-      context.obtainStyledAttributes(
-        attributes,
-        R.styleable.InputContainer,
-        defaultStyleAttribute,
-        defaultStyleResourceId
-      );
-    
-    attributesArray.recycle();
+    super(context, attributes);
     
     keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyRectangle = new Rect();
