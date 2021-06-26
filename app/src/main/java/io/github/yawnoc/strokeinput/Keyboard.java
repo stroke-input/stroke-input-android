@@ -38,7 +38,7 @@ public class Keyboard {
   int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
   int DEFAULT_KEY_BORDER_THICKNESS = 2;
   int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
-  int DEFAULT_KEY_TEXT_SIZE = 36;
+  int DEFAULT_KEY_TEXT_SIZE = 48;
   
   // Key properties
   private int keyWidth;
