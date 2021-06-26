@@ -142,7 +142,7 @@ public class Keyboard {
           parentKeyboard.keyTextColour
         );
       keyTextSize =
-        attributesArray.getInt(
+        attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextSize,
           parentKeyboard.keyTextSize
         );
@@ -232,12 +232,12 @@ public class Keyboard {
         );
       
       keyTextColour =
-        attributesArray.getInt(
+        attributesArray.getColor(
           R.styleable.Keyboard_keyTextColour,
           parentRow.keyTextColour
         );
       keyTextSize =
-        attributesArray.getInt(
+        attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextSize,
           parentRow.keyTextSize
         );
@@ -393,7 +393,7 @@ public class Keyboard {
         DEFAULT_KEY_TEXT_COLOUR
       );
     keyTextSize =
-      attributesArray.getInt(
+      attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextSize,
         DEFAULT_KEY_TEXT_SIZE
       );
