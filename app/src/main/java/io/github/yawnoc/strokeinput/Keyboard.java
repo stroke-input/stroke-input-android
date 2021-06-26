@@ -35,9 +35,12 @@ public class Keyboard {
   float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   int DEFAULT_KEY_HEIGHT_PX = 64;
   
+  int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+  
   // Key properties
   private int defaultKeyWidth;
   private int defaultKeyHeight;
+  private int defaultKeyFillColour;
   
   // Keyboard properties
   private int width;
@@ -57,6 +60,8 @@ public class Keyboard {
     
     defaultKeyWidth = (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth);
     defaultKeyHeight = (int) (DEFAULT_KEY_ASPECT_RATIO * defaultKeyWidth);
+    defaultKeyFillColour = DEFAULT_KEY_FILL_COLOUR;
+    
     keyList = new ArrayList<>();
     
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
@@ -106,6 +111,7 @@ public class Keyboard {
     // Key properties
     public int defaultKeyWidth;
     public int defaultKeyHeight;
+    private int defaultKeyFillColour;
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
@@ -142,6 +148,11 @@ public class Keyboard {
           parentKeyboard.screenHeight,
           parentKeyboard.defaultKeyHeight
         );
+      defaultKeyFillColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyFillColour,
+          parentKeyboard.defaultKeyFillColour
+        );
       attributesArray.recycle();
     }
     
@@ -151,8 +162,6 @@ public class Keyboard {
     An individual key.
   */
   public static class Key {
-    
-    int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
     
     // Key behaviour
     public String valueText;
@@ -211,7 +220,7 @@ public class Keyboard {
       keyFillColour =
         attributesArray.getColor(
           R.styleable.Keyboard_keyFillColour,
-          DEFAULT_KEY_FILL_COLOUR
+          parentRow.defaultKeyFillColour
         );
       
       width =
