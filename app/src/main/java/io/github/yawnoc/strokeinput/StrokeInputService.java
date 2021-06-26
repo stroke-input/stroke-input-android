@@ -7,6 +7,7 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.view.View;
 
@@ -18,7 +19,8 @@ public class StrokeInputService extends InputMethodService {
   
   @Override
   public View onCreateInputView() {
-  
+    
+    @SuppressLint("InflateParams")
     InputContainer inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
