@@ -5,6 +5,7 @@
 
 - Updated `README.md` links given GitHub organisation move
 - Changed keyboard font to [Stroke Input Keyboard v1.0.2]
+- Made key text offsets inherit from Row from Keyboard
 
 
 ## [v0.1.0] Implemented drawing (2021-06-27)

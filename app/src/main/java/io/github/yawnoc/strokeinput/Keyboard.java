@@ -51,6 +51,8 @@ public class Keyboard {
   private int keyBorderThickness;
   private int keyTextColour;
   private int keyTextSize;
+  private int keyTextOffsetX;
+  private int keyTextOffsetY;
   
   // Keyboard properties
   private int width;
@@ -97,6 +99,8 @@ public class Keyboard {
     private final int keyBorderThickness;
     private final int keyTextColour;
     private final int keyTextSize;
+    private final int keyTextOffsetX;
+    private final int keyTextOffsetY;
     
     // Row properties
     ArrayList<Key> keyArrayList = new ArrayList<>();
@@ -156,6 +160,17 @@ public class Keyboard {
         attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextSize,
           parentKeyboard.keyTextSize
+        );
+      
+      keyTextOffsetX =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyTextOffsetX,
+          parentKeyboard.keyTextOffsetX
+        );
+      keyTextOffsetY =
+        attributesArray.getDimensionPixelSize(
+          R.styleable.Keyboard_keyTextOffsetY,
+          parentKeyboard.keyTextOffsetY
         );
       
       attributesArray.recycle();
@@ -261,12 +276,12 @@ public class Keyboard {
       keyTextOffsetX =
         attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextOffsetX,
-          0
+          parentRow.keyTextOffsetX
         );
       keyTextOffsetY =
         attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextOffsetY,
-          0
+          parentRow.keyTextOffsetY
         );
       
       width =
@@ -420,6 +435,17 @@ public class Keyboard {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextSize,
         default_key_text_size_px
+      );
+    
+    keyTextOffsetX =
+      attributesArray.getDimensionPixelSize(
+        R.styleable.Keyboard_keyTextOffsetX,
+        0
+      );
+    keyTextOffsetY =
+      attributesArray.getDimensionPixelSize(
+        R.styleable.Keyboard_keyTextOffsetY,
+        0
       );
     
     attributesArray.recycle();
