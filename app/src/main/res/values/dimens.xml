@@ -7,6 +7,7 @@
   <dimen name="key_width_space_bar">40%</dimen>
   <dimen name="key_text_font_size">32dp</dimen>
   <dimen name="key_text_font_size_digits">28dp</dimen>
+  <dimen name="key_text_font_size_strokes">36dp</dimen>
   <dimen name="key_text_font_size_ditto_key">28dp</dimen>
   <dimen name="key_text_font_size_backspace">42dp</dimen>
   <dimen name="key_text_font_size_space_bar">24dp</dimen>

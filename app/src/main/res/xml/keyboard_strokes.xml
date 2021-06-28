@@ -36,16 +36,19 @@
     <Key
       app:valueText="STROKE_1"
       app:displayText="㇐"
+      app:keyTextSize="@dimen/key_text_font_size_strokes"
     />
     <!-- U+31D1 CJK STROKE S -->
     <Key
       app:valueText="STROKE_2"
       app:displayText="㇑"
+      app:keyTextSize="@dimen/key_text_font_size_strokes"
     />
     <!-- U+31D2 CJK STROKE P -->
     <Key
       app:valueText="STROKE_3"
       app:displayText="㇒"
+      app:keyTextSize="@dimen/key_text_font_size_strokes"
     />
     <!-- About: U+1F6C8 CIRCLED INFORMATION SOURCE -->
     <Key
@@ -68,11 +71,13 @@
     <Key
       app:valueText="STROKE_4"
       app:displayText="㇔"
+      app:keyTextSize="@dimen/key_text_font_size_strokes"
     />
     <!-- U+31D6 CJK STROKE HG -->
     <Key
       app:valueText="STROKE_5"
       app:displayText="㇖"
+      app:keyTextSize="@dimen/key_text_font_size_strokes"
     />
     <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
     <Key
