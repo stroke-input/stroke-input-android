@@ -99,9 +99,7 @@ public class InputContainer
       return;
     }
     
-    final Keyboard.Key[] keyArray = inputKeyArray;
-    
-    for (final Keyboard.Key key : keyArray) {
+    for (final Keyboard.Key key : inputKeyArray) {
       
       keyRectangle.set(0, 0, key.width, key.height);
       
