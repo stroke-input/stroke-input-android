@@ -81,6 +81,7 @@
     <Key
       app:valueText="BACKSPACE"
       app:displayText="⌫"
+      app:keyTextSize="@dimen/key_text_font_size_backspace"
     />
   </Row>
   <Row app:keyWidth="@dimen/key_width_stroke">
