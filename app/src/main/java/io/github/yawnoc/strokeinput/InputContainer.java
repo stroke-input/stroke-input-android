@@ -17,9 +17,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.List;
 
@@ -54,7 +55,9 @@ public class InputContainer
     keyBorderPaint.setStyle(Paint.Style.STROKE);
     
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyTextPaint.setTypeface(Typeface.DEFAULT);
+    keyTextPaint.setTypeface(
+      ResourcesCompat.getFont(context, R.font.stroke_input_keyboard)
+    );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
