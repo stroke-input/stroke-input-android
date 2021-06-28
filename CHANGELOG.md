@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated `README.md` links given GitHub organisation move
+
 
 ## [v0.1.0] Implemented drawing (2021-06-27)
 
