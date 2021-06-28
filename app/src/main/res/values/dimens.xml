@@ -8,6 +8,5 @@
   <dimen name="key_text_font_size">32sp</dimen>
   <dimen name="key_text_font_size_ditto_key">24sp</dimen>
   <dimen name="key_text_font_size_space_bar">20sp</dimen>
-  <dimen name="key_text_font_size_enter_key">96sp</dimen>
-  <dimen name="key_text_offset_y_enter_key">-18sp</dimen>
+  <dimen name="key_text_font_size_enter_key">54sp</dimen>
 </resources>
