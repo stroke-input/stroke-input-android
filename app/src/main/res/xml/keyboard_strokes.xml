@@ -23,13 +23,11 @@
     <Key
       app:valueText="？"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_punctuation"
     />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
     <Key
       app:valueText="！"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_punctuation"
     />
     <!-- U+31D0 CJK STROKE H -->
     <Key
@@ -57,14 +55,11 @@
     <Key
       app:valueText="、"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_small_punctuation"
-      app:keyTextOffsetY="@dimen/key_text_offset_y_small_punctuation"
     />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
     <Key
       app:valueText="；"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_punctuation"
     />
     <!-- U+31D4 CJK STROKE D -->
     <Key
@@ -98,8 +93,6 @@
     <Key
       app:valueText="，"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_small_punctuation"
-      app:keyTextOffsetY="@dimen/key_text_offset_y_small_punctuation"
     />
     <!-- Space bar -->
     <Key
@@ -112,8 +105,6 @@
     <Key
       app:valueText="。"
       app:keyWidth="@dimen/key_width_digit"
-      app:keyTextOffsetX="@dimen/key_text_offset_x_small_punctuation"
-      app:keyTextOffsetY="@dimen/key_text_offset_y_small_punctuation"
     />
     <!-- Enter key: U+21B5 DOWNWARDS ARROW WITH CORNER LEFTWARDS -->
     <Key
