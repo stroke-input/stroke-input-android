@@ -4,6 +4,7 @@
   app:keyHeight="@dimen/key_height"
   app:keyWidth="@dimen/key_width_digit"
   app:keyTextSize="@dimen/key_text_font_size"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction"
 >
   <Row>
     <!-- Digits -->
