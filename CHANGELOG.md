@@ -15,8 +15,10 @@ Note that the keyboard is literally a bunch of drawn rectangles;
 the actual functionality has not been implemented yet.
 
 
+[Unreleased]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.1.0...HEAD
+[v0.1.0]:
+  https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
+
 [Stroke Input Keyboard v1.0.2]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.0.2
-
-[Unreleased]: https://github.com/stroke-input/stroke-input-android/compare/v0.1.0...HEAD
-[v0.1.0]: https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
