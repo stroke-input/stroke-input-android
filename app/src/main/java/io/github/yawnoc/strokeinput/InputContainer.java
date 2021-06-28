@@ -14,7 +14,6 @@ package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -99,9 +98,6 @@ public class InputContainer
     if (inputKeyboard == null) {
       return;
     }
-    
-    int VOID_COLOUR = Color.BLACK;
-    canvas.drawColor(VOID_COLOUR);
     
     final Keyboard.Key[] keyArray = inputKeyArray;
     
