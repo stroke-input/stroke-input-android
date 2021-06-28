@@ -6,7 +6,9 @@
   app:keyTextSize="@dimen/key_text_font_size"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction"
 >
-  <Row>
+  <Row
+    app:keyTextSize="@dimen/key_text_font_size_digits"
+  >
     <!-- Digits -->
     <Key app:valueText="1" />
     <Key app:valueText="2" />
