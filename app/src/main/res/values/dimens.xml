@@ -5,10 +5,10 @@
   <dimen name="key_width_digit">10%</dimen>
   <dimen name="key_width_stroke">20%</dimen>
   <dimen name="key_width_space_bar">40%</dimen>
-  <dimen name="key_text_font_size">32sp</dimen>
-  <dimen name="key_text_font_size_ditto_key">24sp</dimen>
-  <dimen name="key_text_font_size_backspace">42sp</dimen>
-  <dimen name="key_text_font_size_space_bar">24sp</dimen>
-  <dimen name="key_text_font_size_enter_key">54sp</dimen>
-  <dimen name="key_text_baseline_correction">2sp</dimen>
+  <dimen name="key_text_font_size">32dp</dimen>
+  <dimen name="key_text_font_size_ditto_key">24dp</dimen>
+  <dimen name="key_text_font_size_backspace">42dp</dimen>
+  <dimen name="key_text_font_size_space_bar">24dp</dimen>
+  <dimen name="key_text_font_size_enter_key">54dp</dimen>
+  <dimen name="key_text_baseline_correction">2dp</dimen>
 </resources>
