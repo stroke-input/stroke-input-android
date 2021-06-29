@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Reduced key heights
+- Reduced key text font sizes
 
 
 ## [v0.1.1] New keyboard font (2021-06-29)
