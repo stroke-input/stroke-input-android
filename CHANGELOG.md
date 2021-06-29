@@ -5,6 +5,7 @@
 
 - Reduced key heights
 - Reduced key text font sizes
+- Styled stroke key text yellow
 
 
 ## [v0.1.1] New keyboard font (2021-06-29)

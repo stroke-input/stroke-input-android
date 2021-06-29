@@ -9,6 +9,7 @@
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>
   <!-- Stroke input -->
+  <color name="stroke_key_text">#FFFFFF00</color>
   <color name="space_bar_text">#FF959595</color>
   <color name="enter_key_fill">#FF00CE00</color>
 </resources>
