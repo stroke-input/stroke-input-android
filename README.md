@@ -17,6 +17,6 @@ from an Apache 2.0 version of Noto Sans CJK TC,
 see [stroke-input-font].
 
 
-[stroke-input-data]: https://github.com/stroke-input/stroke-input-data
 [LICENSE]: LICENSE
+[stroke-input-data]: https://github.com/stroke-input/stroke-input-data
 [stroke-input-font]: https://github.com/stroke-input/stroke-input-font
