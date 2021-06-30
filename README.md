@@ -14,9 +14,9 @@ This repository is licensed under GPL-3.0-only, see [LICENSE].
 
 The font used on the keyboard is modified
 from an Apache 2.0 version of Noto Sans CJK TC,
-see [noto-sans-cjk-tc-fix].
+see [stroke-input-font].
 
 
 [stroke-input-data]: https://github.com/stroke-input/stroke-input-data
 [LICENSE]: LICENSE
-[noto-sans-cjk-tc-fix]: https://github.com/stroke-input/noto-sans-cjk-tc-fix
+[stroke-input-font]: https://github.com/stroke-input/stroke-input-font
