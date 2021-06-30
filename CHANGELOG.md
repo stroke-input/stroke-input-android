@@ -6,6 +6,7 @@
 - Reduced key heights
 - Reduced key text font sizes
 - Styled stroke key text yellow
+- Cleaned up `README.md`
 
 
 ## [v0.1.1] New keyboard font (2021-06-29)
