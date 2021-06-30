@@ -8,7 +8,7 @@ Eventually the plan is to utilise the "yawnoc" stroke data set
 that I am currently compiling in [stroke-input-data].
 
 
-## Licensing
+## License
 
 This repository is licensed under GPL-3.0-only, see [LICENSE].
 
