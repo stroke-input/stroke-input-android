@@ -36,10 +36,10 @@ public class InputContainer
   private Keyboard.Key[] inputKeyArray;
   
   // Keyboard drawing
-  Rect keyRectangle;
-  Paint keyFillPaint;
-  Paint keyBorderPaint;
-  Paint keyTextPaint;
+  private final Rect keyRectangle;
+  private final Paint keyFillPaint;
+  private final Paint keyBorderPaint;
+  private final Paint keyTextPaint;
   
   public InputContainer(Context context, AttributeSet attributes) {
     
