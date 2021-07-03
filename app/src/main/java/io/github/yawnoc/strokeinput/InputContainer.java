@@ -111,11 +111,11 @@ public class InputContainer
       keyTextPaint.setTextSize(key.keyTextSize);
       
       float key_text_x = (
-        (float) key.width / 2
+        key.width / 2f
           + key.keyTextOffsetX
       );
       float key_text_y = (
-        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2
+        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
           + key.keyTextOffsetY
       );
       
