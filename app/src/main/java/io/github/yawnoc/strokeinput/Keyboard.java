@@ -31,17 +31,17 @@ import java.util.List;
 */
 public class Keyboard {
   
-  float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
-  int DEFAULT_KEY_HEIGHT_DP = 64;
-  int default_key_height_px;
+  private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
+  private static final int DEFAULT_KEY_HEIGHT_DP = 64;
+  private final int default_key_height_px;
   
-  int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
-  int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
-  int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
-  int default_key_border_thickness_px;
-  int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
-  int DEFAULT_KEY_TEXT_SIZE_SP = 32;
-  int default_key_text_size_px;
+  private static final int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
+  private static final int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
+  private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
+  private final int default_key_border_thickness_px;
+  private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
+  private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
+  private final int default_key_text_size_px;
   
   // Key properties
   private int keyWidth;
