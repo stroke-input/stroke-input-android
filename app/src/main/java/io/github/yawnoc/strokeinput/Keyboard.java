@@ -92,8 +92,8 @@ public class Keyboard {
   public static class Row {
     
     // Key properties
-    public int keyWidth;
-    public int keyHeight;
+    private final int keyWidth;
+    private final int keyHeight;
     private final int keyFillColour;
     private final int keyBorderColour;
     private final int keyBorderThickness;
@@ -447,7 +447,7 @@ public class Keyboard {
     attributesArray.recycle();
   }
   
-  static int getDimensionOrFraction(
+  private static int getDimensionOrFraction(
     TypedArray array,
     int attributeIndex,
     int baseValue,
