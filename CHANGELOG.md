@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Cleaned up Java variables
 - Reduced key heights
 - Reduced key text font sizes
 - Styled stroke key text yellow

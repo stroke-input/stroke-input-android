@@ -103,7 +103,6 @@ public class Keyboard {
     private final int keyTextOffsetY;
     
     // Row properties
-    ArrayList<Key> keyArrayList = new ArrayList<>();
     private final Keyboard parentKeyboard;
     
     public Row(
@@ -353,9 +352,6 @@ public class Keyboard {
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
                 keyList.add(key);
-                if (row != null) {
-                  row.keyArrayList.add(key);
-                }
                 break;
             }
             break;
