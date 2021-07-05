@@ -27,9 +27,11 @@ public class StrokeInputService
     InputContainer inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
+    
     Keyboard keyboard = new Keyboard(this, R.xml.keyboard_strokes);
     
     inputContainer.setKeyboard(keyboard);
+    inputContainer.setOnInputListener(this);
     
     return inputContainer;
   }
