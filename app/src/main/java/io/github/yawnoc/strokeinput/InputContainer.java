@@ -32,8 +32,8 @@ public class InputContainer
   extends View
 {
   // Container meta-properties
-  private Keyboard inputKeyboard;
-  private Keyboard.Key[] inputKeyArray;
+  private Keyboard keyboard;
+  private Keyboard.Key[] keyArray;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -61,9 +61,9 @@ public class InputContainer
   }
   
   public void setKeyboard(Keyboard keyboard) {
-    inputKeyboard = keyboard;
-    List<Keyboard.Key> keyList = inputKeyboard.getKeyList();
-    inputKeyArray = keyList.toArray(new Keyboard.Key[0]);
+    this.keyboard = keyboard;
+    List<Keyboard.Key> keyList = this.keyboard.getKeyList();
+    keyArray = keyList.toArray(new Keyboard.Key[0]);
     requestLayout();
   }
   
@@ -75,13 +75,13 @@ public class InputContainer
     
     int keyboardWidth;
     int keyboardHeight;
-    if (inputKeyboard == null) {
+    if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
     }
     else {
-      keyboardWidth = inputKeyboard.getWidth();
-      keyboardHeight = inputKeyboard.getHeight();
+      keyboardWidth = keyboard.getWidth();
+      keyboardHeight = keyboard.getHeight();
     }
     
     setMeasuredDimension(
@@ -95,11 +95,11 @@ public class InputContainer
     
     super.onDraw(canvas);
     
-    if (inputKeyboard == null) {
+    if (keyboard == null) {
       return;
     }
     
-    for (final Keyboard.Key key : inputKeyArray) {
+    for (final Keyboard.Key key : keyArray) {
       
       keyRectangle.set(0, 0, key.width, key.height);
       
