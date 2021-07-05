@@ -15,7 +15,10 @@ import android.view.View;
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
   Currently does nothing.
 */
-public class StrokeInputService extends InputMethodService {
+public class StrokeInputService
+  extends InputMethodService
+  implements InputContainer.OnInputListener
+{
   
   @Override
   public View onCreateInputView() {

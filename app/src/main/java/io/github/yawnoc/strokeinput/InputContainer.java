@@ -61,6 +61,12 @@ public class InputContainer
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
+  /*
+    A listener for input events.
+  */
+  public interface OnInputListener {
+  }
+  
   public void setKeyboard(Keyboard keyboard) {
     this.keyboard = keyboard;
     List<Keyboard.Key> keyList = this.keyboard.getKeyList();
