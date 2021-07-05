@@ -33,6 +33,7 @@ public class InputContainer
   implements View.OnClickListener
 {
   // Container meta-properties
+  private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
   
@@ -65,6 +66,10 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
+  }
+  
+  public void setOnInputListener(OnInputListener listener) {
+    inputListener = listener;
   }
   
   public void setKeyboard(Keyboard keyboard) {
