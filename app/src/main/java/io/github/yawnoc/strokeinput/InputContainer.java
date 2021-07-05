@@ -30,6 +30,7 @@ import java.util.List;
 */
 public class InputContainer
   extends View
+  implements View.OnClickListener
 {
   // Container meta-properties
   private Keyboard keyboard;
@@ -65,6 +66,9 @@ public class InputContainer
     List<Keyboard.Key> keyList = this.keyboard.getKeyList();
     keyArray = keyList.toArray(new Keyboard.Key[0]);
     requestLayout();
+  }
+  
+  public void onClick(View view) {
   }
   
   @Override
