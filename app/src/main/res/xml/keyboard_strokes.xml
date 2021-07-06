@@ -98,9 +98,9 @@
     />
   </Row>
   <Row app:keyWidth="@dimen/key_width_stroke">
-    <!-- Switch to punctuation: U+FF08, U+FF09, U+FF1A -->
+    <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
-      app:valueText="PUNCTUATION"
+      app:valueText="SYMBOLS"
       app:displayText="（）："
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
