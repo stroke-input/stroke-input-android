@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Implemented enter key behaviour
 - Removed key attribute `displayIcon`
 
 

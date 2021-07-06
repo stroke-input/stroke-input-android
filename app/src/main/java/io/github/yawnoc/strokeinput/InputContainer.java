@@ -34,7 +34,6 @@ import java.util.List;
     - Cancel key press if move outside keyboard
     - Long press space for switching keyboard
     - Backspace
-    - Enter key
     - Switch to symbols keyboard
     - Candidates
 */

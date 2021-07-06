@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
 /*
@@ -19,6 +20,8 @@ public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener
 {
+  private static final String NEWLINE = "\n";
+  
   @Override
   public View onCreateInputView() {
     
@@ -44,6 +47,20 @@ public class StrokeInputService
     }
     
     switch (valueText) {
+      
+      case "ENTER":
+        EditorInfo editorInfo = getCurrentInputEditorInfo();
+        int editorActionBits = editorInfo.imeOptions;
+        boolean enterKeyHasAction =
+          (editorActionBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
+        if (enterKeyHasAction) {
+          inputConnection.performEditorAction(editorActionBits);
+        }
+        else {
+          inputConnection.commitText(NEWLINE, 1);
+        }
+        break;
+      
       default:
         inputConnection.commitText(valueText, 1);
     }
