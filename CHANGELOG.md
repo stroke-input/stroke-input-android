@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Removed key attribute `displayIcon`
+
 
 ## [v0.2.0] Default key behaviour (2021-07-06)
 

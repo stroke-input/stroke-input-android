@@ -17,7 +17,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -185,7 +184,6 @@ public class Keyboard {
     // Key behaviour
     public String valueText;
     public String displayText; // overrides valueText
-    public Drawable displayIcon; // overrides displayText
     public boolean isRepeatable;
     
     // Key styles
@@ -241,8 +239,6 @@ public class Keyboard {
         displayText = valueText;
       }
       
-      displayIcon =
-        attributesArray.getDrawable(R.styleable.Keyboard_displayIcon);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
       
