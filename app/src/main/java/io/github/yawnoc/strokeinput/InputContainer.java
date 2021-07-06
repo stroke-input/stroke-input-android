@@ -266,6 +266,7 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_UP:
+        setKeyPressedState(key, false);
         inputListener.onKey(valueText);
         break;
       
