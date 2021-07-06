@@ -240,7 +240,7 @@ public class InputContainer
     
     int touchX = (int) motionEvent.getX() - getPaddingLeft();
     int touchY = (int) motionEvent.getY() - getPaddingTop();
-    int keyIndex = getKeyIndexFromPosition(touchX, touchY);
+    int keyIndex = getKeyIndexAtPoint(touchX, touchY);
     String valueText = keyArray[keyIndex].valueText;
     
     int eventAction = motionEvent.getAction();
@@ -258,7 +258,7 @@ public class InputContainer
     return true;
   }
   
-  public int getKeyIndexFromPosition(int x, int y) {
+  public int getKeyIndexAtPoint(int x, int y) {
     
     int keyCount = keyArray.length;
     Keyboard.Key key;
