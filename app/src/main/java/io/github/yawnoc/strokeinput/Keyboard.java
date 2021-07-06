@@ -300,6 +300,14 @@ public class Keyboard {
       
       attributesArray.recycle();
     }
+    
+    public boolean containsPoint(int x, int y) {
+      return (
+        this.x <= x && x <= this.x + this.width
+          &&
+        this.y <= y && y <= this.y + this.height
+      );
+    }
   }
   
   public int getWidth() {

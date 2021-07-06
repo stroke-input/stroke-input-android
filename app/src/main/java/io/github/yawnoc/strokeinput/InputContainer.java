@@ -34,6 +34,8 @@ public class InputContainer
   extends View
   implements View.OnClickListener
 {
+  private static final int NONEXISTENT_KEY_INDEX = -1;
+  
   // Container meta-properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
@@ -257,8 +259,18 @@ public class InputContainer
   }
   
   public int getKeyIndexFromPosition(int x, int y) {
-    // TODO: implement actual functionality
-    return 0;
+    
+    int keyCount = keyArray.length;
+    Keyboard.Key key;
+    
+    for (int keyIndex = 0; keyIndex < keyCount; keyIndex++) {
+      key = keyArray[keyIndex];
+      if (key.containsPoint(x, y)) {
+        return keyIndex;
+      }
+    }
+    
+    return NONEXISTENT_KEY_INDEX;
   }
   
 }
