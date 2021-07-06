@@ -262,8 +262,7 @@ public class InputContainer
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
-        key.setPressedState(true);
-        invalidate();
+        setKeyPressedState(key, true);
         break;
       
       case MotionEvent.ACTION_UP:
@@ -292,4 +291,8 @@ public class InputContainer
     return NONEXISTENT_KEY_INDEX;
   }
   
+  public void setKeyPressedState(Keyboard.Key key, boolean state) {
+    key.setPressedState(state);
+    invalidate();
+  }
 }
