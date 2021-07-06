@@ -36,4 +36,8 @@ public class StrokeInputService
     return inputContainer;
   }
   
+  @Override
+  public void onKey(String valueText) {
+  }
+  
 }

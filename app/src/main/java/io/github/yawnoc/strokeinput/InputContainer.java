@@ -12,11 +12,13 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -36,6 +38,11 @@ public class InputContainer
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
+  
+  // Pointer properties
+  private int pointerCount = 1;
+  private float pointerX;
+  private float pointerY;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -66,6 +73,11 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
+    
+    /*
+      Send a key event for a key.
+    */
+    void onKey(String valueText);
   }
   
   public void setOnInputListener(OnInputListener listener) {
@@ -150,4 +162,88 @@ public class InputContainer
     
   }
   
+  /*
+    Handle logic for multiple pointers (e.g. two-thumb typing).
+  */
+  @SuppressLint("ClickableViewAccessibility")
+  @Override
+  public boolean onTouchEvent(MotionEvent motionEvent) {
+    
+    int newPointerCount = motionEvent.getPointerCount();
+    int eventAction = motionEvent.getAction();
+    long eventTime = motionEvent.getEventTime();
+    boolean eventHandled;
+    
+    if (newPointerCount == pointerCount) {
+      
+      // Still a single pointer as before (e.g. release)
+      if (newPointerCount == 1) {
+        eventHandled = onTouchEventSinglePointer(motionEvent);
+        pointerX = motionEvent.getX();
+        pointerY = motionEvent.getY();
+      }
+      
+      // Still multiple pointers as before (e.g. moving pointers)
+      else {
+        eventHandled = true; // do nothing
+      }
+    }
+    
+    else {
+      
+      // Changed to a single pointer (e.g. press)
+      if (newPointerCount == 1) {
+        // Send a down event for the new pointer
+        MotionEvent downEvent =
+          MotionEvent.obtain(
+            eventTime,
+            eventTime,
+            MotionEvent.ACTION_DOWN,
+            motionEvent.getX(),
+            motionEvent.getY(),
+            motionEvent.getMetaState()
+          );
+        eventHandled = onTouchEventSinglePointer(downEvent);
+        downEvent.recycle();
+        // Send an up event too if appropriate
+        if (eventAction == MotionEvent.ACTION_UP) {
+          eventHandled = onTouchEventSinglePointer(motionEvent);
+        }
+      }
+      
+      // Changed to multiple pointers (e.g. second-thumb press)
+      else {
+        // Send an up event for the existing pointer
+        MotionEvent upEvent =
+          MotionEvent.obtain(
+            eventTime,
+            eventTime,
+            MotionEvent.ACTION_UP,
+            pointerX,
+            pointerY,
+            motionEvent.getMetaState()
+          );
+        eventHandled = onTouchEventSinglePointer(motionEvent);
+        upEvent.recycle();
+      }
+      
+    }
+    
+    pointerCount = newPointerCount;
+    
+    return eventHandled;
+  }
+  
+  private boolean onTouchEventSinglePointer(MotionEvent motionEvent) {
+    
+    int eventAction = motionEvent.getAction();
+    
+    switch (eventAction) {
+      case MotionEvent.ACTION_DOWN:
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_MOVE:
+    }
+    
+    return true;
+  }
 }
