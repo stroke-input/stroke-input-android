@@ -205,6 +205,7 @@ public class Keyboard {
     
     // Key meta-properties
     private final Keyboard grandparentKeyboard;
+    public boolean isPressed = false;
     
     public Key(Row parentRow) {
       grandparentKeyboard = parentRow.parentKeyboard;
@@ -303,6 +304,10 @@ public class Keyboard {
           &&
         this.y <= y && y <= this.y + this.height
       );
+    }
+    
+    public void setPressedState(boolean state) {
+      isPressed = state;
     }
   }
   

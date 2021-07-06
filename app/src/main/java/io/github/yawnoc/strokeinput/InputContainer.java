@@ -22,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 
 /*
   A container that holds:
@@ -40,6 +41,9 @@ public class InputContainer
   implements View.OnClickListener
 {
   private static final int NONEXISTENT_KEY_INDEX = -1;
+  
+  private static final int DEFAULT_KEY_ALPHA = 0xFF;
+  private static final int PRESSED_KEY_ALPHA = 0x7F;
   
   // Container meta-properties
   private OnInputListener inputListener;
@@ -136,7 +140,12 @@ public class InputContainer
       
       keyRectangle.set(0, 0, key.width, key.height);
       
-      keyFillPaint.setColor(key.keyFillColour);
+      int key_fill_colour =
+        ColorUtils.setAlphaComponent(
+          key.keyFillColour,
+          key.isPressed ? PRESSED_KEY_ALPHA : DEFAULT_KEY_ALPHA
+        );
+      keyFillPaint.setColor(key_fill_colour);
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
@@ -245,16 +254,22 @@ public class InputContainer
     int touchX = (int) motionEvent.getX() - getPaddingLeft();
     int touchY = (int) motionEvent.getY() - getPaddingTop();
     int keyIndex = getKeyIndexAtPoint(touchX, touchY);
+    Keyboard.Key key = keyArray[keyIndex];
     String valueText = keyArray[keyIndex].valueText;
     
     int eventAction = motionEvent.getAction();
     
     switch (eventAction) {
+      
       case MotionEvent.ACTION_DOWN:
+        key.setPressedState(true);
+        invalidate();
         break;
+      
       case MotionEvent.ACTION_UP:
         inputListener.onKey(valueText);
         break;
+      
       case MotionEvent.ACTION_MOVE:
         break;
     }
