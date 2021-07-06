@@ -23,8 +23,6 @@ import android.view.View;
 
 import androidx.core.content.res.ResourcesCompat;
 
-import java.util.List;
-
 /*
   A container that holds:
     - Candidates bar
@@ -95,8 +93,7 @@ public class InputContainer
   
   public void setKeyboard(Keyboard keyboard) {
     this.keyboard = keyboard;
-    List<Keyboard.Key> keyList = this.keyboard.getKeyList();
-    keyArray = keyList.toArray(new Keyboard.Key[0]);
+    keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     requestLayout();
   }
   
