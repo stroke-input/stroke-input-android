@@ -14,7 +14,6 @@ import android.view.inputmethod.InputConnection;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
-  Currently does nothing.
 */
 public class StrokeInputService
   extends InputMethodService

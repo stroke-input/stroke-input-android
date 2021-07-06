@@ -27,8 +27,16 @@ import java.util.List;
 
 /*
   A container that holds:
-  - TODO: Candidates bar
-  - TODO: Keyboard
+    - Candidates bar
+    - Keyboard
+  TODO:
+    - Change appearance of currently pressed key
+    - Cancel key press if move outside keyboard
+    - Long press space for switching keyboard
+    - Backspace
+    - Enter key
+    - Switch to symbols keyboard
+    - Candidates
 */
 public class InputContainer
   extends View
