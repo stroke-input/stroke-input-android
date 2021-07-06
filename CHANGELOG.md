@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-- Implemented default key event (commit `valueText`)
+- Implemented default key behaviour (commit `valueText`)
 - Updated keyboard font to [Stroke Input Keyboard v1.2.0]
 - Cleaned up Java variables
 - Reduced key heights
