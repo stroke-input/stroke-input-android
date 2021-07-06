@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.2.0] Default key behaviour (2021-07-06)
+
 - Implemented default key behaviour (commit `valueText`)
 - Updated keyboard font to [Stroke Input Keyboard v1.2.0]
 - Cleaned up Java variables
@@ -28,7 +31,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.1.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.2.0...HEAD
+[v0.2.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.1.1...v0.2.0
 [v0.1.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.1.0...v0.1.1
 [v0.1.0]:
