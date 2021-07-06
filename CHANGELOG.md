@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Implemented default key event (commit `valueText`)
 - Cleaned up Java variables
 - Reduced key heights
 - Reduced key text font sizes

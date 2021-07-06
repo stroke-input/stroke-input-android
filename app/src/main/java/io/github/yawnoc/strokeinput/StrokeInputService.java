@@ -10,7 +10,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.view.View;
-import android.widget.Toast;
+import android.view.inputmethod.InputConnection;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
@@ -20,11 +20,6 @@ public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener
 {
-  // TODO: remove when development is over
-  public void makeToast(String message) {
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-  }
-  
   @Override
   public View onCreateInputView() {
     
@@ -43,8 +38,16 @@ public class StrokeInputService
   
   @Override
   public void onKey(String valueText) {
-    // TODO: replace with actual onKey actions
-    makeToast("onKey(" + valueText + ")");
+  
+    InputConnection inputConnection = getCurrentInputConnection();
+    if (inputConnection == null) {
+      return;
+    }
+    
+    switch (valueText) {
+      default:
+        inputConnection.commitText(valueText, 1);
+    }
   }
   
 }
