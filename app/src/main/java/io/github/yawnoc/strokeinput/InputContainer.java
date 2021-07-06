@@ -236,14 +236,29 @@ public class InputContainer
   
   private boolean onTouchEventSinglePointer(MotionEvent motionEvent) {
     
+    int touchX = (int) motionEvent.getX() - getPaddingLeft();
+    int touchY = (int) motionEvent.getY() - getPaddingTop();
+    int keyIndex = getKeyIndexFromPosition(touchX, touchY);
+    String valueText = keyArray[keyIndex].valueText;
+    
     int eventAction = motionEvent.getAction();
     
     switch (eventAction) {
       case MotionEvent.ACTION_DOWN:
+        break;
       case MotionEvent.ACTION_UP:
+        inputListener.onKey(valueText);
+        break;
       case MotionEvent.ACTION_MOVE:
+        break;
     }
     
     return true;
   }
+  
+  public int getKeyIndexFromPosition(int x, int y) {
+    // TODO: implement actual functionality
+    return 0;
+  }
+  
 }
