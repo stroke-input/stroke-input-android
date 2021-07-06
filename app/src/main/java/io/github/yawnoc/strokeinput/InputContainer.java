@@ -255,7 +255,7 @@ public class InputContainer
     int touchY = (int) motionEvent.getY() - getPaddingTop();
     int keyIndex = getKeyIndexAtPoint(touchX, touchY);
     Keyboard.Key key = keyArray[keyIndex];
-    String valueText = keyArray[keyIndex].valueText;
+    String valueText = key.valueText;
     
     int eventAction = motionEvent.getAction();
     
