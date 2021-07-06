@@ -36,3 +36,5 @@ the actual functionality has not been implemented yet.
 
 [Stroke Input Keyboard v1.1.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.1.0
+[Stroke Input Keyboard v1.2.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.2.0
