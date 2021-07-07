@@ -361,8 +361,7 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_MOVE:
-        removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
-        removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
+        removeAllMessagesExtendedPressHandler();
         setCurrentlyPressedKey(key);
         if (key.isRepeatable) {
           sendMessageExtendedPressHandler(
@@ -379,8 +378,7 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_UP:
-        removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
-        removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
+        removeAllMessagesExtendedPressHandler();
         setCurrentlyPressedKey(null);
         inputListener.onKey(valueText);
         break;
@@ -414,6 +412,11 @@ public class InputContainer
       extendedPressHandler.obtainMessage(messageWhat),
       delayMilliseconds
     );
+  }
+  
+  private void removeAllMessagesExtendedPressHandler() {
+    removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
+    removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
   }
   
   private void removeMessagesExtendedPressHandler(int messageWhat) {
