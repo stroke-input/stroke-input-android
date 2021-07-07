@@ -291,12 +291,12 @@ public class InputContainer
         setPressedKey(key);
         break;
       
+      case MotionEvent.ACTION_MOVE:
+        break;
+      
       case MotionEvent.ACTION_UP:
         setPressedKey(null);
         inputListener.onKey(valueText);
-        break;
-      
-      case MotionEvent.ACTION_MOVE:
         break;
     }
     
