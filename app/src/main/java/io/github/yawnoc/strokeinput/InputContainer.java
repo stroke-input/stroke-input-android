@@ -180,6 +180,7 @@ public class InputContainer
   
   /*
     Handle logic for multiple pointers (e.g. two-thumb typing).
+    // TODO: fix unexpected behaviour when two pointers merge
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
