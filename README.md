@@ -8,18 +8,15 @@ Eventually the plan is to utilise the "yawnoc" stroke data set
 that I am currently compiling in [stroke-input-data].
 
 
-## Useful resources
+## License
 
-- [Suragch on "How can you make a custom keyboard in Android?"]
-  (but this uses the now deprecated `Keyboard` and `KeyboardView` classes)
+This repository is licensed under GPL-3.0-only, see [LICENSE].
 
-- [suragch/TodoKeyboard]
+The font used on the keyboard is modified
+from an Apache 2.0 version of Noto Sans CJK TC,
+see [stroke-input-font].
 
-- [suragch/mongol-library]
 
-
+[LICENSE]: LICENSE
 [stroke-input-data]: https://github.com/stroke-input/stroke-input-data
-[Suragch on "How can you make a custom keyboard in Android?"]:
-  https://stackoverflow.com/a/44939816
-[suragch/TodoKeyboard]: https://github.com/suragch/TodoKeyboard
-[suragch/mongol-library]: https://github.com/suragch/mongol-library
+[stroke-input-font]: https://github.com/stroke-input/stroke-input-font

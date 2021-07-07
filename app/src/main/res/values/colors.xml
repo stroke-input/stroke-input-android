@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- Default theme -->
   <color name="purple_200">#FFBB86FC</color>
   <color name="purple_500">#FF6200EE</color>
   <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,8 @@
   <color name="teal_700">#FF018786</color>
   <color name="black">#FF000000</color>
   <color name="white">#FFFFFFFF</color>
+  <!-- Stroke input -->
+  <color name="stroke_key_text">#FFFFFF00</color>
+  <color name="space_bar_text">#FF959595</color>
+  <color name="enter_key_fill">#FF00CE00</color>
 </resources>

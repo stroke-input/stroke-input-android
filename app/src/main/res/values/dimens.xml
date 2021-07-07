@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <dimen name="activity_main_font_size">16sp</dimen>
+  <dimen name="key_height">60dp</dimen>
+  <dimen name="key_width_digit">10%</dimen>
+  <dimen name="key_width_stroke">20%</dimen>
+  <dimen name="key_width_space_bar">40%</dimen>
+  <dimen name="key_text_font_size">28dp</dimen>
+  <dimen name="key_text_font_size_digits">24dp</dimen>
+  <dimen name="key_text_font_size_strokes">32dp</dimen>
+  <dimen name="key_text_font_size_ditto_key">24dp</dimen>
+  <dimen name="key_text_font_size_backspace">36dp</dimen>
+  <dimen name="key_text_font_size_space_bar">20dp</dimen>
+  <dimen name="key_text_font_size_enter_key">36dp</dimen>
+  <dimen name="key_text_baseline_correction">2dp</dimen>
 </resources>
