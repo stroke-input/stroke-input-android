@@ -53,7 +53,7 @@ public class StrokeInputService
       case "BACKSPACE":
         CharSequence selectedText = inputConnection.getSelectedText(0);
         if (TextUtils.isEmpty(selectedText)) {
-          inputConnection.deleteSurroundingText(1, 0);
+          inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
         else {
           inputConnection.commitText(EMPTY_STRING, 1);
