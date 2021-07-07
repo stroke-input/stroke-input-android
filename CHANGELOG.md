@@ -3,8 +3,11 @@
 
 ## [Unreleased]
 
-- Implemented backspace, space bar, enter key behaviour
+Implemented everything that a normal (non-stroke-input) keyboard should do.
+
+- Improved logic for multiple pointers (e.g. two-thumb typing)
 - Implemented extended press behaviour (long presses and key repeats)
+- Implemented backspace, space bar, enter key behaviour
 - Implemented currently pressed key behaviour and appearance
 - Removed key attribute `displayIcon`
 
