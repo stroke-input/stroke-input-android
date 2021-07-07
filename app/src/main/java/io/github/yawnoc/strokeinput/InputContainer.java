@@ -90,8 +90,7 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
-                setCurrentlyPressedKey(null);
-                activePointerId = NONEXISTENT_POINTER_ID;
+                abortAllKeyBehaviour();
             }
           }
         }
@@ -223,9 +222,7 @@ public class InputContainer
   public boolean onTouchEvent(MotionEvent motionEvent) {
     
     if (motionEvent.getPointerCount() > 2) {
-      // Unset the pressed key & active pointer and abort
-      setCurrentlyPressedKey(null);
-      activePointerId = NONEXISTENT_POINTER_ID;
+      abortAllKeyBehaviour();
       return true;
     }
     
@@ -421,5 +418,10 @@ public class InputContainer
   
   private void removeExtendedPressHandlerMessages(int messageWhat) {
     extendedPressHandler.removeMessages(messageWhat);
+  }
+  
+  private void abortAllKeyBehaviour() {
+    setCurrentlyPressedKey(null);
+    activePointerId = NONEXISTENT_POINTER_ID;
   }
 }
