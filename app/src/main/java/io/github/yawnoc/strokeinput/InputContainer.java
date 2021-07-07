@@ -34,7 +34,6 @@ import androidx.core.graphics.ColorUtils;
   TODO:
     - Cancel key press if move outside keyboard
     - Long press space for switching keyboard
-    - Backspace
     - Switch to symbols keyboard
     - Candidates
 */

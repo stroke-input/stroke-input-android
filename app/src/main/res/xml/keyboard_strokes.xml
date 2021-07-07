@@ -94,6 +94,7 @@
     <Key
       app:valueText="BACKSPACE"
       app:displayText="⌫"
+      app:isRepeatable="true"
       app:keyTextSize="@dimen/key_text_font_size_backspace"
     />
   </Row>
