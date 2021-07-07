@@ -200,7 +200,6 @@ public class InputContainer
     int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
     int eventMetaState = motionEvent.getMetaState();
     
-    MotionEvent sentEvent;
     boolean eventHandled = true;
     
     switch (eventAction) {
@@ -214,28 +213,23 @@ public class InputContainer
         )
         {
           // Send an up event for the active pointer
-          sentEvent =
-            MotionEvent.obtain(
-              eventTime,
-              eventTime,
-              MotionEvent.ACTION_UP,
-              activePointerX,
-              activePointerY,
-              eventMetaState
-            );
-          onTouchEventSinglePointer(sentEvent);
+          sendMotionEventSinglePointer(
+            eventTime,
+            MotionEvent.ACTION_UP,
+            activePointerX,
+            activePointerY,
+            eventMetaState
+          );
         }
         // Send a down event for the event pointer
-        sentEvent =
-          MotionEvent.obtain(
-            eventTime,
+        eventHandled =
+          sendMotionEventSinglePointer(
             eventTime,
             MotionEvent.ACTION_DOWN,
             eventPointerX,
             eventPointerY,
             eventMetaState
           );
-        eventHandled = onTouchEventSinglePointer(sentEvent);
         // Update the active pointer
         activePointerId = eventPointerId;
         activePointerX = eventPointerX;
@@ -249,16 +243,14 @@ public class InputContainer
       case MotionEvent.ACTION_POINTER_UP:
         if (eventPointerId == activePointerId) {
           // Send an up event for the event pointer
-          sentEvent =
-            MotionEvent.obtain(
-              eventTime,
+          eventHandled =
+            sendMotionEventSinglePointer(
               eventTime,
               MotionEvent.ACTION_UP,
               eventPointerX,
               eventPointerY,
               eventMetaState
             );
-          eventHandled = onTouchEventSinglePointer(sentEvent);
           // Unset the active pointer
           activePointerId = NONEXISTENT_POINTER_ID;
         }
@@ -266,6 +258,20 @@ public class InputContainer
     }
     
     return eventHandled;
+  }
+  
+  private boolean sendMotionEventSinglePointer(
+    long time,
+    int action,
+    int x,
+    int y,
+    int metaState
+  )
+  {
+    MotionEvent sentEvent =
+      MotionEvent.obtain(time, time, action, x, y, metaState);
+    
+    return onTouchEventSinglePointer(sentEvent);
   }
   
   private boolean onTouchEventSinglePointer(MotionEvent motionEvent) {
