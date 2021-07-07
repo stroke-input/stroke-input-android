@@ -343,35 +343,13 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
         // TODO: long press behaviour
         setCurrentlyPressedKey(key);
-        if (key.isRepeatable) {
-          sendExtendedPressHandlerMessage(
-            MESSAGE_KEY_REPEAT,
-            KEY_REPEAT_START_MILLISECONDS
-          );
-        }
-        else {
-          sendExtendedPressHandlerMessage(
-            MESSAGE_LONG_PRESS,
-            KEY_LONG_PRESS_MILLISECONDS
-          );
-        }
+        sendAppropriateExtendedPressHandlerMessage(key);
         break;
       
       case MotionEvent.ACTION_MOVE:
         removeAllExtendedPressHandlerMessages();
         setCurrentlyPressedKey(key);
-        if (key.isRepeatable) {
-          sendExtendedPressHandlerMessage(
-            MESSAGE_KEY_REPEAT,
-            KEY_REPEAT_START_MILLISECONDS
-          );
-        }
-        else {
-          sendExtendedPressHandlerMessage(
-            MESSAGE_LONG_PRESS,
-            KEY_LONG_PRESS_MILLISECONDS
-          );
-        }
+        sendAppropriateExtendedPressHandlerMessage(key);
         break;
       
       case MotionEvent.ACTION_UP:
@@ -398,6 +376,21 @@ public class InputContainer
   private void setCurrentlyPressedKey(Keyboard.Key key) {
     currentlyPressedKey = key;
     invalidate();
+  }
+  
+  private void sendAppropriateExtendedPressHandlerMessage(Keyboard.Key key) {
+    if (key.isRepeatable) {
+      sendExtendedPressHandlerMessage(
+        MESSAGE_KEY_REPEAT,
+        KEY_REPEAT_START_MILLISECONDS
+      );
+    }
+    else {
+      sendExtendedPressHandlerMessage(
+        MESSAGE_LONG_PRESS,
+        KEY_LONG_PRESS_MILLISECONDS
+      );
+    }
   }
   
   private void sendExtendedPressHandlerMessage(
