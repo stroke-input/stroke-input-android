@@ -83,7 +83,7 @@ public class InputContainer
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
                 inputListener.onKey(currentlyPressedKey.valueText);
-                sendMessageExtendedPressHandler(
+                sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   KEY_REPEAT_INTERVAL_MILLISECONDS
                 );
@@ -347,13 +347,13 @@ public class InputContainer
         // TODO: long press behaviour
         setCurrentlyPressedKey(key);
         if (key.isRepeatable) {
-          sendMessageExtendedPressHandler(
+          sendExtendedPressHandlerMessage(
             MESSAGE_KEY_REPEAT,
             KEY_REPEAT_START_MILLISECONDS
           );
         }
         else {
-          sendMessageExtendedPressHandler(
+          sendExtendedPressHandlerMessage(
             MESSAGE_LONG_PRESS,
             KEY_LONG_PRESS_MILLISECONDS
           );
@@ -361,16 +361,16 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_MOVE:
-        removeAllMessagesExtendedPressHandler();
+        removeAllExtendedPressHandlerMessages();
         setCurrentlyPressedKey(key);
         if (key.isRepeatable) {
-          sendMessageExtendedPressHandler(
+          sendExtendedPressHandlerMessage(
             MESSAGE_KEY_REPEAT,
             KEY_REPEAT_START_MILLISECONDS
           );
         }
         else {
-          sendMessageExtendedPressHandler(
+          sendExtendedPressHandlerMessage(
             MESSAGE_LONG_PRESS,
             KEY_LONG_PRESS_MILLISECONDS
           );
@@ -378,7 +378,7 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_UP:
-        removeAllMessagesExtendedPressHandler();
+        removeAllExtendedPressHandlerMessages();
         setCurrentlyPressedKey(null);
         inputListener.onKey(valueText);
         break;
@@ -403,7 +403,7 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendMessageExtendedPressHandler(
+  private void sendExtendedPressHandlerMessage(
     int messageWhat,
     long delayMilliseconds
   )
@@ -414,12 +414,12 @@ public class InputContainer
     );
   }
   
-  private void removeAllMessagesExtendedPressHandler() {
-    removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
-    removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
+  private void removeAllExtendedPressHandlerMessages() {
+    removeExtendedPressHandlerMessages(MESSAGE_KEY_REPEAT);
+    removeExtendedPressHandlerMessages(MESSAGE_LONG_PRESS);
   }
   
-  private void removeMessagesExtendedPressHandler(int messageWhat) {
+  private void removeExtendedPressHandlerMessages(int messageWhat) {
     extendedPressHandler.removeMessages(messageWhat);
   }
 }
