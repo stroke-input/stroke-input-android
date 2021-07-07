@@ -372,6 +372,12 @@ public class InputContainer
             KEY_REPEAT_START_MILLISECONDS
           );
         }
+        else {
+          sendMessageExtendedPressHandler(
+            MESSAGE_LONG_PRESS,
+            KEY_LONG_PRESS_MILLISECONDS
+          );
+        }
         break;
       
       case MotionEvent.ACTION_UP:
