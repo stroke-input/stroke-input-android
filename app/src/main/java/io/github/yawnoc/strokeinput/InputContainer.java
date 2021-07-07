@@ -50,6 +50,7 @@ public class InputContainer
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
+  private Keyboard.Key currentlyPressedKey;
   
   // Pointer properties
   private int activePointerId = NONEXISTENT_POINTER_ID;
@@ -144,7 +145,7 @@ public class InputContainer
       int key_fill_colour =
         ColorUtils.setAlphaComponent(
           key.keyFillColour,
-          key.isPressed ? PRESSED_KEY_ALPHA : DEFAULT_KEY_ALPHA
+          key == currentlyPressedKey ? PRESSED_KEY_ALPHA : DEFAULT_KEY_ALPHA
         );
       keyFillPaint.setColor(key_fill_colour);
       keyBorderPaint.setColor(key.keyBorderColour);
@@ -288,11 +289,11 @@ public class InputContainer
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
-        setKeyPressedState(key, true);
+        setPressedKey(key);
         break;
       
       case MotionEvent.ACTION_UP:
-        setKeyPressedState(key, false);
+        setPressedKey(null);
         inputListener.onKey(valueText);
         break;
       
@@ -318,8 +319,8 @@ public class InputContainer
     return NONEXISTENT_KEY_INDEX;
   }
   
-  public void setKeyPressedState(Keyboard.Key key, boolean state) {
-    key.setPressedState(state);
+  public void setPressedKey(Keyboard.Key key) {
+    currentlyPressedKey = key;
     invalidate();
   }
 }
