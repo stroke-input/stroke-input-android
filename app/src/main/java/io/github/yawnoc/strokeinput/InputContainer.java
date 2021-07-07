@@ -41,6 +41,7 @@ public class InputContainer
   implements View.OnClickListener
 {
   private static final int NONEXISTENT_KEY_INDEX = -1;
+  private static final int NONEXISTENT_POINTER_ID = -1;
   
   private static final int DEFAULT_KEY_ALPHA = 0xFF;
   private static final int PRESSED_KEY_ALPHA = 0x7F;
@@ -51,9 +52,9 @@ public class InputContainer
   private Keyboard.Key[] keyArray;
   
   // Pointer properties
-  private int pointerCount = 1;
-  private float pointerX;
-  private float pointerY;
+  private int activePointerId = NONEXISTENT_POINTER_ID;
+  private int activePointerX;
+  private int activePointerY;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -184,67 +185,85 @@ public class InputContainer
   @Override
   public boolean onTouchEvent(MotionEvent motionEvent) {
     
-    int newPointerCount = motionEvent.getPointerCount();
-    int eventAction = motionEvent.getAction();
-    long eventTime = motionEvent.getEventTime();
-    boolean eventHandled;
-    
-    if (newPointerCount == pointerCount) {
-      
-      // Still a single pointer as before (e.g. release)
-      if (newPointerCount == 1) {
-        eventHandled = onTouchEventSinglePointer(motionEvent);
-        pointerX = motionEvent.getX();
-        pointerY = motionEvent.getY();
-      }
-      
-      // Still multiple pointers as before (e.g. moving pointers)
-      else {
-        eventHandled = true; // do nothing
-      }
+    if (motionEvent.getPointerCount() > 2) {
+      // Unset the active pointer and abort
+      activePointerId = NONEXISTENT_POINTER_ID;
+      return true;
     }
     
-    else {
+    long eventTime = motionEvent.getEventTime();
+    int eventAction = motionEvent.getActionMasked();
+    int eventActionIndex = motionEvent.getActionIndex();
+    int eventPointerId = motionEvent.getPointerId(eventActionIndex);
+    int eventPointerIndex = motionEvent.findPointerIndex(eventPointerId);
+    int eventPointerX = (int) motionEvent.getX(eventPointerIndex);
+    int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
+    int eventMetaState = motionEvent.getMetaState();
+    
+    MotionEvent sentEvent;
+    boolean eventHandled = true;
+    
+    switch (eventAction) {
       
-      // Changed to a single pointer (e.g. press)
-      if (newPointerCount == 1) {
-        // Send a down event for the new pointer
-        MotionEvent downEvent =
+      case MotionEvent.ACTION_DOWN:
+      case MotionEvent.ACTION_POINTER_DOWN:
+        if (
+          eventPointerId != activePointerId
+            &&
+          activePointerId != NONEXISTENT_POINTER_ID
+        )
+        {
+          // Send an up event for the active pointer
+          sentEvent =
+            MotionEvent.obtain(
+              eventTime,
+              eventTime,
+              MotionEvent.ACTION_UP,
+              activePointerX,
+              activePointerY,
+              eventMetaState
+            );
+          onTouchEventSinglePointer(sentEvent);
+        }
+        // Send a down event for the event pointer
+        sentEvent =
           MotionEvent.obtain(
             eventTime,
             eventTime,
             MotionEvent.ACTION_DOWN,
-            motionEvent.getX(),
-            motionEvent.getY(),
-            motionEvent.getMetaState()
+            eventPointerX,
+            eventPointerY,
+            eventMetaState
           );
-        eventHandled = onTouchEventSinglePointer(downEvent);
-        downEvent.recycle();
-        // Send an up event too if appropriate
-        if (eventAction == MotionEvent.ACTION_UP) {
-          eventHandled = onTouchEventSinglePointer(motionEvent);
+        eventHandled = onTouchEventSinglePointer(sentEvent);
+        // Update the active pointer
+        activePointerId = eventPointerId;
+        activePointerX = eventPointerX;
+        activePointerY = eventPointerY;
+        break;
+      
+      case MotionEvent.ACTION_MOVE:
+        break;
+      
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_POINTER_UP:
+        if (eventPointerId == activePointerId) {
+          // Send an up event for the event pointer
+          sentEvent =
+            MotionEvent.obtain(
+              eventTime,
+              eventTime,
+              MotionEvent.ACTION_UP,
+              eventPointerX,
+              eventPointerY,
+              eventMetaState
+            );
+          eventHandled = onTouchEventSinglePointer(sentEvent);
+          // Unset the active pointer
+          activePointerId = NONEXISTENT_POINTER_ID;
         }
-      }
-      
-      // Changed to multiple pointers (e.g. second-thumb press)
-      else {
-        // Send an up event for the existing pointer
-        MotionEvent upEvent =
-          MotionEvent.obtain(
-            eventTime,
-            eventTime,
-            MotionEvent.ACTION_UP,
-            pointerX,
-            pointerY,
-            motionEvent.getMetaState()
-          );
-        eventHandled = onTouchEventSinglePointer(motionEvent);
-        upEvent.recycle();
-      }
-      
+        break;
     }
-    
-    pointerCount = newPointerCount;
     
     return eventHandled;
   }
