@@ -251,7 +251,7 @@ public class InputContainer
         )
         {
           // Send an up event for the active pointer
-          sendMotionEventSinglePointer(
+          sendSinglePointerMotionEvent(
             eventTime,
             MotionEvent.ACTION_UP,
             activePointerX,
@@ -261,7 +261,7 @@ public class InputContainer
         }
         // Send a down event for the event pointer
         eventHandled =
-          sendMotionEventSinglePointer(
+          sendSinglePointerMotionEvent(
             eventTime,
             MotionEvent.ACTION_DOWN,
             eventPointerX,
@@ -283,7 +283,7 @@ public class InputContainer
         {
           // Send a move event for the event pointer
           eventHandled =
-            sendMotionEventSinglePointer(
+            sendSinglePointerMotionEvent(
               eventTime,
               MotionEvent.ACTION_MOVE,
               eventPointerX,
@@ -302,7 +302,7 @@ public class InputContainer
         if (eventPointerId == activePointerId) {
           // Send an up event for the event pointer
           eventHandled =
-            sendMotionEventSinglePointer(
+            sendSinglePointerMotionEvent(
               eventTime,
               MotionEvent.ACTION_UP,
               eventPointerX,
@@ -318,7 +318,7 @@ public class InputContainer
     return eventHandled;
   }
   
-  private boolean sendMotionEventSinglePointer(
+  private boolean sendSinglePointerMotionEvent(
     long time,
     int action,
     int x,
@@ -329,10 +329,10 @@ public class InputContainer
     MotionEvent sentEvent =
       MotionEvent.obtain(time, time, action, x, y, metaState);
     
-    return onTouchEventSinglePointer(sentEvent);
+    return onSinglePointerTouchEvent(sentEvent);
   }
   
-  private boolean onTouchEventSinglePointer(MotionEvent motionEvent) {
+  private boolean onSinglePointerTouchEvent(MotionEvent motionEvent) {
     
     int touchX = (int) motionEvent.getX() - getPaddingLeft();
     int touchY = (int) motionEvent.getY() - getPaddingTop();
