@@ -331,9 +331,9 @@ public class InputContainer
   
   private boolean onSinglePointerTouchEvent(MotionEvent motionEvent) {
     
-    int touchX = (int) motionEvent.getX() - getPaddingLeft();
-    int touchY = (int) motionEvent.getY() - getPaddingTop();
-    Keyboard.Key key = getKeyAtPoint(touchX, touchY);
+    int eventX = (int) motionEvent.getX() - getPaddingLeft();
+    int eventY = (int) motionEvent.getY() - getPaddingTop();
+    Keyboard.Key key = getKeyAtPoint(eventX, eventY);
     String valueText = key.valueText;
     
     int eventAction = motionEvent.getAction();
