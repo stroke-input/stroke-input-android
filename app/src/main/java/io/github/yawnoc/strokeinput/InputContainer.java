@@ -376,6 +376,7 @@ public class InputContainer
       
       case MotionEvent.ACTION_UP:
         removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
+        removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
         setPressedKey(null);
         inputListener.onKey(valueText);
         break;
