@@ -23,6 +23,7 @@ public class StrokeInputService
   implements InputContainer.OnInputListener
 {
   private static final String EMPTY_STRING = "";
+  private static final String SPACE = " ";
   private static final String NEWLINE = "\n";
   
   @Override
@@ -59,6 +60,10 @@ public class StrokeInputService
         else {
           inputConnection.commitText(EMPTY_STRING, 1);
         }
+        break;
+      
+      case "SPACE":
+        inputConnection.commitText(SPACE, 1);
         break;
       
       case "ENTER":
