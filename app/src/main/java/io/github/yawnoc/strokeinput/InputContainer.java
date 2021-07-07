@@ -187,7 +187,8 @@ public class InputContainer
   public boolean onTouchEvent(MotionEvent motionEvent) {
     
     if (motionEvent.getPointerCount() > 2) {
-      // Unset the active pointer and abort
+      // Unset the pressed key & active pointer and abort
+      setPressedKey(null);
       activePointerId = NONEXISTENT_POINTER_ID;
       return true;
     }
