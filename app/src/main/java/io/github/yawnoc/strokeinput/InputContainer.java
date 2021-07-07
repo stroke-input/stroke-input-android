@@ -17,6 +17,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,6 +44,10 @@ public class InputContainer
 {
   private static final int NONEXISTENT_POINTER_ID = -1;
   
+  private static final int MESSAGE_KEY_REPEAT = 1;
+  private static final int KEY_REPEAT_INTERVAL_MILLISECONDS = 100;
+  private static final int KEY_REPEAT_START_MILLISECONDS = 500;
+  
   private static final int DEFAULT_KEY_ALPHA = 0xFF;
   private static final int PRESSED_KEY_ALPHA = 0x7F;
   
@@ -55,6 +62,9 @@ public class InputContainer
   private int activePointerX;
   private int activePointerY;
   
+  // Long presses and key repeats
+  private final Handler extendedPressHandler;
+  
   // Keyboard drawing
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
@@ -64,6 +74,24 @@ public class InputContainer
   public InputContainer(Context context, AttributeSet attributes) {
     
     super(context, attributes);
+    
+    extendedPressHandler =
+      new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message message) {
+          switch (message.what) {
+            case MESSAGE_KEY_REPEAT:
+              if (currentlyPressedKey != null) {
+                inputListener.onKey(currentlyPressedKey.valueText);
+                sendMessageExtendedPressHandler(
+                  MESSAGE_KEY_REPEAT,
+                  KEY_REPEAT_INTERVAL_MILLISECONDS
+                );
+              }
+              break;
+          }
+        }
+      };
     
     keyRectangle = new Rect();
     
@@ -309,6 +337,12 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
         // TODO: long press behaviour
         setPressedKey(key);
+        if (key.isRepeatable) {
+          sendMessageExtendedPressHandler(
+            MESSAGE_KEY_REPEAT,
+            KEY_REPEAT_START_MILLISECONDS
+          );
+        }
         break;
       
       case MotionEvent.ACTION_MOVE:
@@ -338,5 +372,16 @@ public class InputContainer
   public void setPressedKey(Keyboard.Key key) {
     currentlyPressedKey = key;
     invalidate();
+  }
+  
+  private void sendMessageExtendedPressHandler(
+    int messageWhat,
+    long delayMilliseconds
+  )
+  {
+    extendedPressHandler.sendMessageDelayed(
+      extendedPressHandler.obtainMessage(messageWhat),
+      delayMilliseconds
+    );
   }
 }
