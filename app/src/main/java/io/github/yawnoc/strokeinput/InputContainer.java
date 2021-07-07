@@ -395,7 +395,7 @@ public class InputContainer
     return null;
   }
   
-  public void setPressedKey(Keyboard.Key key) {
+  private void setPressedKey(Keyboard.Key key) {
     currentlyPressedKey = key;
     invalidate();
   }
