@@ -90,7 +90,7 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
-                setPressedKey(null);
+                setCurrentlyPressedKey(null);
                 activePointerId = NONEXISTENT_POINTER_ID;
             }
           }
@@ -224,7 +224,7 @@ public class InputContainer
     
     if (motionEvent.getPointerCount() > 2) {
       // Unset the pressed key & active pointer and abort
-      setPressedKey(null);
+      setCurrentlyPressedKey(null);
       activePointerId = NONEXISTENT_POINTER_ID;
       return true;
     }
@@ -345,7 +345,7 @@ public class InputContainer
       
       case MotionEvent.ACTION_DOWN:
         // TODO: long press behaviour
-        setPressedKey(key);
+        setCurrentlyPressedKey(key);
         if (key.isRepeatable) {
           sendMessageExtendedPressHandler(
             MESSAGE_KEY_REPEAT,
@@ -363,7 +363,7 @@ public class InputContainer
       case MotionEvent.ACTION_MOVE:
         removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
         removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
-        setPressedKey(key);
+        setCurrentlyPressedKey(key);
         if (key.isRepeatable) {
           sendMessageExtendedPressHandler(
             MESSAGE_KEY_REPEAT,
@@ -381,7 +381,7 @@ public class InputContainer
       case MotionEvent.ACTION_UP:
         removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
         removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
-        setPressedKey(null);
+        setCurrentlyPressedKey(null);
         inputListener.onKey(valueText);
         break;
     }
@@ -400,7 +400,7 @@ public class InputContainer
     return null;
   }
   
-  private void setPressedKey(Keyboard.Key key) {
+  private void setCurrentlyPressedKey(Keyboard.Key key) {
     currentlyPressedKey = key;
     invalidate();
   }
