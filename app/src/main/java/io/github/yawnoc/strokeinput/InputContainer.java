@@ -40,7 +40,6 @@ public class InputContainer
   extends View
   implements View.OnClickListener
 {
-  private static final int NONEXISTENT_KEY_INDEX = -1;
   private static final int NONEXISTENT_POINTER_ID = -1;
   
   private static final int DEFAULT_KEY_ALPHA = 0xFF;
@@ -280,8 +279,7 @@ public class InputContainer
     
     int touchX = (int) motionEvent.getX() - getPaddingLeft();
     int touchY = (int) motionEvent.getY() - getPaddingTop();
-    int keyIndex = getKeyIndexAtPoint(touchX, touchY);
-    Keyboard.Key key = keyArray[keyIndex];
+    Keyboard.Key key = getKeyAtPoint(touchX, touchY);
     String valueText = key.valueText;
     
     int eventAction = motionEvent.getAction();
@@ -304,19 +302,15 @@ public class InputContainer
     return true;
   }
   
-  public int getKeyIndexAtPoint(int x, int y) {
+  public Keyboard.Key getKeyAtPoint(int x, int y) {
     
-    int keyCount = keyArray.length;
-    Keyboard.Key key;
-    
-    for (int keyIndex = 0; keyIndex < keyCount; keyIndex++) {
-      key = keyArray[keyIndex];
+    for (Keyboard.Key key : keyArray) {
       if (key.containsPoint(x, y)) {
-        return keyIndex;
+        return key;
       }
     }
     
-    return NONEXISTENT_KEY_INDEX;
+    return null;
   }
   
   public void setPressedKey(Keyboard.Key key) {
