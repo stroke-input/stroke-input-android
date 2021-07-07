@@ -91,6 +91,7 @@ public class InputContainer
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
                 abortAllKeyBehaviour();
+                break;
             }
           }
         }
