@@ -78,4 +78,8 @@ public class StrokeInputService
     }
   }
   
+  @Override
+  public void onLongPress(String valueText) {
+  }
+  
 }

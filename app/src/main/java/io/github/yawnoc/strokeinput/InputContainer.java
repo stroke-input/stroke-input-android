@@ -44,8 +44,10 @@ public class InputContainer
   private static final int NONEXISTENT_POINTER_ID = -1;
   
   private static final int MESSAGE_KEY_REPEAT = 1;
+  private static final int MESSAGE_LONG_PRESS = 2;
   private static final int KEY_REPEAT_INTERVAL_MILLISECONDS = 100;
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
+  private static final int KEY_LONG_PRESS_MILLISECONDS = 1000;
   
   private static final int DEFAULT_KEY_ALPHA = 0xFF;
   private static final int PRESSED_KEY_ALPHA = 0x7F;
@@ -88,6 +90,12 @@ public class InputContainer
                 );
               }
               break;
+            case MESSAGE_LONG_PRESS:
+              if (currentlyPressedKey != null) {
+                inputListener.onLongPress(currentlyPressedKey.valueText);
+                setPressedKey(null);
+                activePointerId = NONEXISTENT_POINTER_ID;
+              }
           }
         }
       };
@@ -116,6 +124,11 @@ public class InputContainer
       Send a key event for a key.
     */
     void onKey(String valueText);
+    
+    /*
+      Send a long press event for a key.
+    */
+    void onLongPress(String valueText);
   }
   
   public void setOnInputListener(OnInputListener listener) {
@@ -342,10 +355,17 @@ public class InputContainer
             KEY_REPEAT_START_MILLISECONDS
           );
         }
+        else {
+          sendMessageExtendedPressHandler(
+            MESSAGE_LONG_PRESS,
+            KEY_LONG_PRESS_MILLISECONDS
+          );
+        }
         break;
       
       case MotionEvent.ACTION_MOVE:
         removeMessagesExtendedPressHandler(MESSAGE_KEY_REPEAT);
+        removeMessagesExtendedPressHandler(MESSAGE_LONG_PRESS);
         setPressedKey(key);
         if (key.isRepeatable) {
           sendMessageExtendedPressHandler(
