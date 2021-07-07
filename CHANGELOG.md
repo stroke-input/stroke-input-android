@@ -3,10 +3,9 @@
 
 ## [Unreleased]
 
-- Implemented long press (including long press space for keyboard switcher)
-- Implemented key repeat (including backspace)
+- Implemented backspace, space bar, enter key behaviour
+- Implemented extended press behaviour (long presses and key repeats)
 - Implemented currently pressed key behaviour and appearance
-- Implemented enter key behaviour
 - Removed key attribute `displayIcon`
 
 
