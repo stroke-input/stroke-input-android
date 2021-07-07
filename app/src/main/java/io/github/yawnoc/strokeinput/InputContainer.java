@@ -79,22 +79,20 @@ public class InputContainer
       new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message message) {
-          switch (message.what) {
-            case MESSAGE_KEY_REPEAT:
-              if (currentlyPressedKey != null) {
+          if (currentlyPressedKey != null) {
+            switch (message.what) {
+              case MESSAGE_KEY_REPEAT:
                 inputListener.onKey(currentlyPressedKey.valueText);
                 sendMessageExtendedPressHandler(
                   MESSAGE_KEY_REPEAT,
                   KEY_REPEAT_INTERVAL_MILLISECONDS
                 );
-              }
-              break;
-            case MESSAGE_LONG_PRESS:
-              if (currentlyPressedKey != null) {
+                break;
+              case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
                 setPressedKey(null);
                 activePointerId = NONEXISTENT_POINTER_ID;
-              }
+            }
           }
         }
       };
