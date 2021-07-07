@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.3.0] Basic keyboard behaviour (2021-07-08)
+
 Implemented everything that a normal (non-stroke-input) keyboard should do.
 
 - Improved logic for multiple pointers (e.g. two-thumb typing)
@@ -39,7 +42,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.2.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.3.0...HEAD
+[v0.3.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.2.0...v0.3.0
 [v0.2.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.1.1...v0.2.0
 [v0.1.1]:
