@@ -341,7 +341,6 @@ public class InputContainer
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
-        // TODO: long press behaviour
         setCurrentlyPressedKey(key);
         sendAppropriateExtendedPressHandlerMessage(key);
         break;
@@ -385,7 +384,7 @@ public class InputContainer
         KEY_REPEAT_START_MILLISECONDS
       );
     }
-    else {
+    else if (key.isLongPressable) {
       sendExtendedPressHandlerMessage(
         MESSAGE_LONG_PRESS,
         KEY_LONG_PRESS_MILLISECONDS

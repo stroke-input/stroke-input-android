@@ -184,7 +184,8 @@ public class Keyboard {
     // Key behaviour
     public String valueText;
     public String displayText; // overrides valueText
-    public boolean isRepeatable;
+    public boolean isLongPressable;
+    public boolean isRepeatable; // overrides isLongPressable
     
     // Key styles
     public int keyFillColour;
@@ -239,6 +240,8 @@ public class Keyboard {
         displayText = valueText;
       }
       
+      isLongPressable =
+        attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
       
