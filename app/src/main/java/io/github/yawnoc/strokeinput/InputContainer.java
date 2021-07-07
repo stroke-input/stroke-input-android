@@ -29,7 +29,6 @@ import androidx.core.graphics.ColorUtils;
     - Candidates bar
     - Keyboard
   TODO:
-    - Change appearance of currently pressed key
     - Cancel key press if move outside keyboard
     - Long press space for switching keyboard
     - Backspace
@@ -239,6 +238,26 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_MOVE:
+        if (
+          eventPointerId == activePointerId
+            &&
+          getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+        )
+        {
+          // Send a move event for the event pointer
+          eventHandled =
+            sendMotionEventSinglePointer(
+              eventTime,
+              MotionEvent.ACTION_MOVE,
+              eventPointerX,
+              eventPointerY,
+              eventMetaState
+            );
+          // Update the active pointer
+          activePointerId = eventPointerId;
+          activePointerX = eventPointerX;
+          activePointerY = eventPointerY;
+        }
         break;
       
       case MotionEvent.ACTION_UP:
@@ -288,10 +307,12 @@ public class InputContainer
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
+        // TODO: long press behaviour
         setPressedKey(key);
         break;
       
       case MotionEvent.ACTION_MOVE:
+        setPressedKey(key);
         break;
       
       case MotionEvent.ACTION_UP:
