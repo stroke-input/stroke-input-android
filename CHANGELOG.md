@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-- Implemented long press
+- Implemented long press (including long press space for keyboard switcher)
 - Implemented repeatable keys (including backspace)
 - Implemented currently pressed key behaviour and appearance
 - Implemented enter key behaviour

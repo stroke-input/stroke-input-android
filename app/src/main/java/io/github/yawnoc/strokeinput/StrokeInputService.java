@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
@@ -80,6 +81,12 @@ public class StrokeInputService
   
   @Override
   public void onLongPress(String valueText) {
+    
+    if (valueText.equals("SPACE")) {
+      InputMethodManager inputMethodManager =
+        (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+      inputMethodManager.showInputMethodPicker();
+    }
   }
   
 }

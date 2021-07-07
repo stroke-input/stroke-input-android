@@ -33,7 +33,6 @@ import androidx.core.graphics.ColorUtils;
     - Keyboard
   TODO:
     - Cancel key press if move outside keyboard
-    - Long press space for switching keyboard
     - Switch to symbols keyboard
     - Candidates
 */
