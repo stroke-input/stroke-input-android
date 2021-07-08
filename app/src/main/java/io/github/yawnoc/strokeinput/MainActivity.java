@@ -47,8 +47,9 @@ public class MainActivity
     final int viewId = view.getId();
     
     if (viewId == R.id.input_settings_button) {
-      final Intent intent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-      startActivity(intent);
+      final Intent inputSettingsIntent =
+        new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+      startActivity(inputSettingsIntent);
     }
     else if (viewId == R.id.switch_keyboard_button) {
       final InputMethodManager inputMethodManager =
