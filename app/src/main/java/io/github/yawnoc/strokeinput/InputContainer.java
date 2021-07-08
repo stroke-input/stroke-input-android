@@ -167,8 +167,6 @@ public class InputContainer
   @Override
   public void onDraw(Canvas canvas) {
     
-    super.onDraw(canvas);
-    
     if (keyboard == null) {
       return;
     }
