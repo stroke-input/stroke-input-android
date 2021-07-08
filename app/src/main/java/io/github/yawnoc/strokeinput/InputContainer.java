@@ -32,7 +32,6 @@ import androidx.core.graphics.ColorUtils;
     - Candidates bar
     - Keyboard
   TODO:
-    - Switch to symbols keyboard
     - Candidates
 */
 public class InputContainer

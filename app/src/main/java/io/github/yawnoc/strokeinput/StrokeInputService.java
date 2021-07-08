@@ -26,17 +26,22 @@ public class StrokeInputService
   private static final String SPACE = " ";
   private static final String NEWLINE = "\n";
   
+  InputContainer inputContainer;
+  Keyboard strokesKeyboard;
+  Keyboard symbolsKeyboard;
+  
+  @SuppressLint("InflateParams")
   @Override
   public View onCreateInputView() {
     
-    @SuppressLint("InflateParams")
-    final InputContainer inputContainer =
+    inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
     
-    final Keyboard keyboard = new Keyboard(this, R.xml.keyboard_strokes);
+    strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
+    symbolsKeyboard = new Keyboard(this, R.xml.keyboard_symbols);
     
-    inputContainer.setKeyboard(keyboard);
+    inputContainer.setKeyboard(strokesKeyboard);
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
@@ -60,6 +65,14 @@ public class StrokeInputService
         else {
           inputConnection.commitText(EMPTY_STRING, 1);
         }
+        break;
+      
+      case "STROKES":
+        inputContainer.setKeyboard(strokesKeyboard);
+        break;
+      
+      case "SYMBOLS":
+        inputContainer.setKeyboard(symbolsKeyboard);
         break;
       
       case "SPACE":
