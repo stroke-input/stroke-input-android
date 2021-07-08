@@ -2,6 +2,7 @@
 <resources>
   <dimen name="activity_main_font_size">16sp</dimen>
   <dimen name="key_height">60dp</dimen>
+  <dimen name="key_height_digits">56dp</dimen>
   <dimen name="key_height_space_bar">54dp</dimen>
   <dimen name="key_width_digit">10%</dimen>
   <dimen name="key_width_stroke">20%</dimen>
@@ -14,5 +15,6 @@
   <dimen name="key_text_font_size_space_bar">20dp</dimen>
   <dimen name="key_text_font_size_enter_key">36dp</dimen>
   <dimen name="key_text_baseline_correction">2dp</dimen>
+  <dimen name="key_text_baseline_correction_digits">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_space_bar">0.5dp</dimen>
 </resources>

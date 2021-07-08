@@ -8,7 +8,9 @@
   app:keyFillColour="@color/key_fill"
 >
   <Row
+    app:keyHeight="@dimen/key_height_digits"
     app:keyTextSize="@dimen/key_text_font_size_digits"
+    app:keyTextOffsetY="@dimen/key_text_baseline_correction_digits"
   >
     <!-- Digits -->
     <Key app:valueText="1" />

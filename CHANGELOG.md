@@ -5,6 +5,7 @@
 
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
 - Reduced space bar height
+- Reduced digit row key height
 - Added fillColour attribute for the keyboard as a whole
 - Lightened key fill and text colours slightly
 
