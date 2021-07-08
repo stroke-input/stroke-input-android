@@ -5,6 +5,7 @@
   app:keyWidth="@dimen/key_width_digit"
   app:keyTextSize="@dimen/key_text_font_size"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction"
+  app:keyFillColour="@color/key_fill"
 >
   <Row
     app:keyTextSize="@dimen/key_text_font_size_digits"
