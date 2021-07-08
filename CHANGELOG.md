@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
+
 
 ## [v0.3.0] Basic keyboard behaviour (2021-07-08)
 

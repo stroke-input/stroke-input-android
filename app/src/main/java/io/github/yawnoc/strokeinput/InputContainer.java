@@ -334,7 +334,12 @@ public class InputContainer
     
     int eventX = (int) motionEvent.getX() - getPaddingLeft();
     int eventY = (int) motionEvent.getY() - getPaddingTop();
+    
     Keyboard.Key key = getKeyAtPoint(eventX, eventY);
+    if (key == null) {
+      abortAllKeyBehaviour();
+      return true;
+    }
     String valueText = key.valueText;
     
     int eventAction = motionEvent.getAction();
