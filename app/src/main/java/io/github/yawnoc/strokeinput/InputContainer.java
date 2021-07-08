@@ -48,8 +48,7 @@ public class InputContainer
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
   private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
   
-  private static final int DEFAULT_KEY_ALPHA = 0xFF;
-  private static final int PRESSED_KEY_ALPHA = 0x7F;
+  private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // Container meta-properties
   private OnInputListener inputListener;
@@ -177,11 +176,11 @@ public class InputContainer
       
       keyRectangle.set(0, 0, key.width, key.height);
       
-      int key_fill_colour =
-        ColorUtils.setAlphaComponent(
-          key.keyFillColour,
-          key == currentlyPressedKey ? PRESSED_KEY_ALPHA : DEFAULT_KEY_ALPHA
-        );
+      int key_fill_colour = key.keyFillColour;
+      if (key == currentlyPressedKey) {
+        key_fill_colour = getContrastingColour(key_fill_colour);
+      }
+      
       keyFillPaint.setColor(key_fill_colour);
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
@@ -212,6 +211,28 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
+  }
+  
+  /*
+    Lighten a dark colour and darken a light colour.
+    Used for key press colour changes.
+  */
+  private static int getContrastingColour(int colour) {
+    
+    float[] colourHSL = new float[3];
+    ColorUtils.colorToHSL(colour, colourHSL);
+    
+    float colourLightness = colourHSL[2];
+    if (colourLightness < COLOUR_LIGHTNESS_CUTOFF) {
+      colourLightness = (2 * colourLightness + 1) / 3;
+    }
+    else {
+      colourLightness = (2 * colourLightness) / 3;
+    }
+    
+    colourHSL[2] = colourLightness;
+    
+    return ColorUtils.HSLToColor(colourHSL);
   }
   
   /*
