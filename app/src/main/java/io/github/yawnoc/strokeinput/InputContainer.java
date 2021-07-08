@@ -69,7 +69,7 @@ public class InputContainer
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
   
-  public InputContainer(Context context, AttributeSet attributes) {
+  public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
     
@@ -126,27 +126,30 @@ public class InputContainer
     void onLongPress(String valueText);
   }
   
-  public void setOnInputListener(OnInputListener listener) {
+  public void setOnInputListener(final OnInputListener listener) {
     inputListener = listener;
   }
   
-  public void setKeyboard(Keyboard keyboard) {
+  public void setKeyboard(final Keyboard keyboard) {
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     requestLayout();
   }
   
-  public void onClick(View view) {
+  public void onClick(final View view) {
   }
   
   @Override
-  public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+  public void onMeasure(
+    final int widthMeasureSpec,
+    final int heightMeasureSpec
+  )
+  {
+    final int paddingHorizontal = getPaddingLeft() + getPaddingRight();
+    final int paddingVertical = getPaddingTop() + getPaddingBottom();
     
-    int paddingHorizontal = getPaddingLeft() + getPaddingRight();
-    int paddingVertical = getPaddingTop() + getPaddingBottom();
-    
-    int keyboardWidth;
-    int keyboardHeight;
+    final int keyboardWidth;
+    final int keyboardHeight;
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
@@ -163,7 +166,7 @@ public class InputContainer
   }
   
   @Override
-  public void onDraw(Canvas canvas) {
+  public void onDraw(final Canvas canvas) {
     
     if (keyboard == null) {
       return;
@@ -187,11 +190,11 @@ public class InputContainer
       keyTextPaint.setColor(key.keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
-      float key_text_x = (
+      final float key_text_x = (
         key.width / 2f
           + key.keyTextOffsetX
       );
-      float key_text_y = (
+      final float key_text_y = (
         (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
           + key.keyTextOffsetY
       );
@@ -216,9 +219,9 @@ public class InputContainer
     Lighten a dark colour and darken a light colour.
     Used for key press colour changes.
   */
-  private static int getContrastingColour(int colour) {
+  private static int getContrastingColour(final int colour) {
     
-    float[] colourHSL = new float[3];
+    final float[] colourHSL = new float[3];
     ColorUtils.colorToHSL(colour, colourHSL);
     
     float colourLightness = colourHSL[2];
@@ -240,21 +243,21 @@ public class InputContainer
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
-  public boolean onTouchEvent(MotionEvent motionEvent) {
+  public boolean onTouchEvent(final MotionEvent motionEvent) {
     
     if (motionEvent.getPointerCount() > 2) {
       abortAllKeyBehaviour();
       return true;
     }
     
-    long eventTime = motionEvent.getEventTime();
-    int eventAction = motionEvent.getActionMasked();
-    int eventActionIndex = motionEvent.getActionIndex();
-    int eventPointerId = motionEvent.getPointerId(eventActionIndex);
-    int eventPointerIndex = motionEvent.findPointerIndex(eventPointerId);
-    int eventPointerX = (int) motionEvent.getX(eventPointerIndex);
-    int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
-    int eventMetaState = motionEvent.getMetaState();
+    final long eventTime = motionEvent.getEventTime();
+    final int eventAction = motionEvent.getActionMasked();
+    final int eventActionIndex = motionEvent.getActionIndex();
+    final int eventPointerId = motionEvent.getPointerId(eventActionIndex);
+    final int eventPointerIndex = motionEvent.findPointerIndex(eventPointerId);
+    final int eventPointerX = (int) motionEvent.getX(eventPointerIndex);
+    final int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
+    final int eventMetaState = motionEvent.getMetaState();
     
     boolean eventHandled = true;
     
@@ -337,32 +340,32 @@ public class InputContainer
   }
   
   private boolean sendSinglePointerMotionEvent(
-    long time,
-    int action,
-    int x,
-    int y,
-    int metaState
+    final long time,
+    final int action,
+    final int x,
+    final int y,
+    final int metaState
   )
   {
-    MotionEvent sentEvent =
+    final MotionEvent sentEvent =
       MotionEvent.obtain(time, time, action, x, y, metaState);
     
     return onSinglePointerTouchEvent(sentEvent);
   }
   
-  private boolean onSinglePointerTouchEvent(MotionEvent motionEvent) {
+  private boolean onSinglePointerTouchEvent(final MotionEvent motionEvent) {
     
-    int eventX = (int) motionEvent.getX() - getPaddingLeft();
-    int eventY = (int) motionEvent.getY() - getPaddingTop();
+    final int eventX = (int) motionEvent.getX() - getPaddingLeft();
+    final int eventY = (int) motionEvent.getY() - getPaddingTop();
     
-    Keyboard.Key key = getKeyAtPoint(eventX, eventY);
+    final Keyboard.Key key = getKeyAtPoint(eventX, eventY);
     if (key == null) {
       abortAllKeyBehaviour();
       return true;
     }
-    String valueText = key.valueText;
+    final String valueText = key.valueText;
     
-    int eventAction = motionEvent.getAction();
+    final int eventAction = motionEvent.getAction();
     
     switch (eventAction) {
       
@@ -387,9 +390,9 @@ public class InputContainer
     return true;
   }
   
-  private Keyboard.Key getKeyAtPoint(int x, int y) {
+  private Keyboard.Key getKeyAtPoint(final int x, final int y) {
     
-    for (Keyboard.Key key : keyArray) {
+    for (final Keyboard.Key key : keyArray) {
       if (key.containsPoint(x, y)) {
         return key;
       }
@@ -398,12 +401,15 @@ public class InputContainer
     return null;
   }
   
-  private void setCurrentlyPressedKey(Keyboard.Key key) {
+  private void setCurrentlyPressedKey(final Keyboard.Key key) {
     currentlyPressedKey = key;
     invalidate();
   }
   
-  private void sendAppropriateExtendedPressHandlerMessage(Keyboard.Key key) {
+  private void sendAppropriateExtendedPressHandlerMessage(
+    final Keyboard.Key key
+  )
+  {
     if (key.isRepeatable) {
       sendExtendedPressHandlerMessage(
         MESSAGE_KEY_REPEAT,
@@ -419,8 +425,8 @@ public class InputContainer
   }
   
   private void sendExtendedPressHandlerMessage(
-    int messageWhat,
-    long delayMilliseconds
+    final int messageWhat,
+    final long delayMilliseconds
   )
   {
     extendedPressHandler.sendMessageDelayed(
@@ -434,7 +440,7 @@ public class InputContainer
     removeExtendedPressHandlerMessages(MESSAGE_LONG_PRESS);
   }
   
-  private void removeExtendedPressHandlerMessages(int messageWhat) {
+  private void removeExtendedPressHandlerMessages(final int messageWhat) {
     extendedPressHandler.removeMessages(messageWhat);
   }
   

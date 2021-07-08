@@ -66,9 +66,10 @@ public class Keyboard {
   private final int screenWidth;
   private final int screenHeight;
   
-  public Keyboard(Context context, int layoutResourceId) {
+  public Keyboard(final Context context, final int layoutResourceId) {
     
-    DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    final DisplayMetrics displayMetrics =
+      context.getResources().getDisplayMetrics();
     
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
@@ -109,14 +110,14 @@ public class Keyboard {
     private final Keyboard parentKeyboard;
     
     public Row(
-      Keyboard parentKeyboard,
-      Resources resources,
-      XmlResourceParser xmlResourceParser
+      final Keyboard parentKeyboard,
+      final Resources resources,
+      final XmlResourceParser xmlResourceParser
     )
     {
       this.parentKeyboard = parentKeyboard;
       
-      TypedArray attributesArray =
+      final TypedArray attributesArray =
         resources.obtainAttributes(
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
@@ -211,18 +212,18 @@ public class Keyboard {
     // Key meta-properties
     private final Keyboard grandparentKeyboard;
     
-    public Key(Row parentRow) {
+    public Key(final Row parentRow) {
       grandparentKeyboard = parentRow.parentKeyboard;
       width = parentRow.keyWidth;
       height = parentRow.keyHeight;
     }
     
     public Key(
-      Row parentRow,
-      int x,
-      int y,
-      Resources resources,
-      XmlResourceParser xmlResourceParser
+      final Row parentRow,
+      final int x,
+      final int y,
+      final Resources resources,
+      final XmlResourceParser xmlResourceParser
     )
     {
       this(parentRow);
@@ -230,7 +231,7 @@ public class Keyboard {
       this.x = x;
       this.y = y;
       
-      TypedArray attributesArray =
+      final TypedArray attributesArray =
         resources.obtainAttributes(
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
@@ -304,7 +305,7 @@ public class Keyboard {
       attributesArray.recycle();
     }
     
-    public boolean containsPoint(int x, int y) {
+    public boolean containsPoint(final int x, final int y) {
       return (
         this.x <= x && x <= this.x + this.width
           &&
@@ -322,8 +323,8 @@ public class Keyboard {
   }
   
   private void loadKeyboard(
-    Context context,
-    XmlResourceParser xmlResourceParser
+    final Context context,
+    final XmlResourceParser xmlResourceParser
   )
   {
     try {
@@ -339,7 +340,7 @@ public class Keyboard {
       int maximumX = x;
       int maximumY = y;
       
-      Resources resources = context.getResources();
+      final Resources resources = context.getResources();
       
       int event;
       
@@ -349,7 +350,7 @@ public class Keyboard {
       {
         switch (event) {
           case XmlResourceParser.START_TAG:
-            String xmlTag = xmlResourceParser.getName();
+            final String xmlTag = xmlResourceParser.getName();
             switch (xmlTag) {
               case "Keyboard":
                 parseKeyboardAttributes(resources, xmlResourceParser);
@@ -392,11 +393,11 @@ public class Keyboard {
   }
   
   private void parseKeyboardAttributes(
-    Resources resources,
-    XmlResourceParser xmlResourceParser
+    final Resources resources,
+    final XmlResourceParser xmlResourceParser
   )
   {
-    TypedArray attributesArray =
+    final TypedArray attributesArray =
       resources.obtainAttributes(
         Xml.asAttributeSet(xmlResourceParser),
         R.styleable.Keyboard
@@ -465,13 +466,13 @@ public class Keyboard {
   }
   
   private static int getDimensionOrFraction(
-    TypedArray array,
-    int attributeIndex,
-    int baseValue,
-    int defaultValue
+    final TypedArray array,
+    final int attributeIndex,
+    final int baseValue,
+    final int defaultValue
   )
   {
-    TypedValue value = array.peekValue(attributeIndex);
+    final TypedValue value = array.peekValue(attributeIndex);
     if (value == null) {
       return defaultValue;
     }

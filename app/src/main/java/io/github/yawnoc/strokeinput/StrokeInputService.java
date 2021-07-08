@@ -30,11 +30,11 @@ public class StrokeInputService
   public View onCreateInputView() {
     
     @SuppressLint("InflateParams")
-    InputContainer inputContainer =
+    final InputContainer inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
     
-    Keyboard keyboard = new Keyboard(this, R.xml.keyboard_strokes);
+    final Keyboard keyboard = new Keyboard(this, R.xml.keyboard_strokes);
     
     inputContainer.setKeyboard(keyboard);
     inputContainer.setOnInputListener(this);
@@ -43,9 +43,9 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKey(String valueText) {
+  public void onKey(final String valueText) {
   
-    InputConnection inputConnection = getCurrentInputConnection();
+    final InputConnection inputConnection = getCurrentInputConnection();
     if (inputConnection == null) {
       return;
     }
@@ -53,7 +53,7 @@ public class StrokeInputService
     switch (valueText) {
       
       case "BACKSPACE":
-        CharSequence selectedText = inputConnection.getSelectedText(0);
+        final CharSequence selectedText = inputConnection.getSelectedText(0);
         if (TextUtils.isEmpty(selectedText)) {
           inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
@@ -67,9 +67,9 @@ public class StrokeInputService
         break;
       
       case "ENTER":
-        EditorInfo editorInfo = getCurrentInputEditorInfo();
-        int editorActionBits = editorInfo.imeOptions;
-        boolean enterKeyHasAction =
+        final EditorInfo editorInfo = getCurrentInputEditorInfo();
+        final int editorActionBits = editorInfo.imeOptions;
+        final boolean enterKeyHasAction =
           (editorActionBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
         if (enterKeyHasAction) {
           inputConnection.performEditorAction(editorActionBits);
@@ -85,10 +85,10 @@ public class StrokeInputService
   }
   
   @Override
-  public void onLongPress(String valueText) {
+  public void onLongPress(final String valueText) {
     
     if (valueText.equals("SPACE")) {
-      InputMethodManager inputMethodManager =
+      final InputMethodManager inputMethodManager =
         (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
       inputMethodManager.showInputMethodPicker();
     }

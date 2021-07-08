@@ -10,6 +10,7 @@
 - Reduced digit row key height
 - Added fillColour attribute for the keyboard as a whole
 - Lightened key fill and text colours slightly
+- Made parameters/variables final where possible
 
 
 ## [v0.3.0] Basic keyboard behaviour (2021-07-08)
