@@ -37,13 +37,8 @@ public class MainActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
-    final Button inputSettingsButton =
-      findViewById(R.id.input_settings_button);
-    inputSettingsButton.setOnClickListener(this);
-    
-    final Button switchKeyboardButton =
-      findViewById(R.id.switch_keyboard_button);
-    switchKeyboardButton.setOnClickListener(this);
+    findViewById(R.id.input_settings_button).setOnClickListener(this);
+    findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
     
   }
   
