@@ -99,7 +99,10 @@
       app:keyTextSize="@dimen/key_text_font_size_backspace"
     />
   </Row>
-  <Row app:keyWidth="@dimen/key_width_stroke">
+  <Row
+    app:keyHeight="@dimen/key_height_space_bar"
+    app:keyWidth="@dimen/key_width_stroke"
+  >
     <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
       app:valueText="SYMBOLS"
@@ -116,6 +119,7 @@
       app:displayText="中文筆畫"
       app:isLongPressable="true"
       app:keyTextSize="@dimen/key_text_font_size_space_bar"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width_space_bar"
     />
