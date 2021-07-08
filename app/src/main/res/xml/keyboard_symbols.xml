@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height"
+  app:keyWidth="@dimen/key_width_digit"
+  app:keyTextSize="@dimen/key_text_font_size"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row
+    app:keyHeight="@dimen/key_height_digits"
+    app:keyTextSize="@dimen/key_text_font_size_digits"
+    app:keyTextOffsetY="@dimen/key_text_baseline_correction_digits"
+  >
+    <!-- U+FF1A FULLWIDTH COLON -->
+    <Key
+      app:keyWidth="@dimen/key_width_stroke"
+      app:valueText="："
+    />
+    <!-- Corner brackets: U+300C to U+300F -->
+    <Key app:valueText="「" />
+    <Key app:valueText="」" />
+    <Key app:valueText="『" />
+    <Key app:valueText="』" />
+    <!-- Angle brackets: U+3008 to U+300B -->
+    <Key app:valueText="〈" />
+    <Key app:valueText="〉" />
+    <Key app:valueText="《" />
+    <Key app:valueText="》" />
+  </Row>
+  <Row>
+    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
+    <Key
+      app:valueText="？"
+      app:keyWidth="@dimen/key_width_stroke"
+    />
+    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
+    <Key
+      app:valueText="！"
+      app:keyWidth="@dimen/key_width_stroke"
+    />
+    <!-- U+301C WAVE DASH -->
+    <Key
+      app:valueText="〜"
+      app:keyWidth="@dimen/key_width_stroke"
+    />
+    <!-- Round brackets: U+FF08, U+FF09 -->
+    <Key app:valueText="（" />
+    <Key app:valueText="）" />
+    <!-- Lenticular brackets: U+3010, U+3011 -->
+    <Key app:valueText="【" />
+    <Key app:valueText="】" />
+  </Row>
+  <Row app:keyWidth="@dimen/key_width_stroke">
+    <!-- U+3001 IDEOGRAPHIC COMMA -->
+    <Key app:valueText="、" />
+    <!-- U+FF1B FULLWIDTH SEMICOLON -->
+    <Key app:valueText="；" />
+    <!-- U+3000 IDEOGRAPHIC SPACE -->
+    <Key app:valueText="　" />
+    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
+    <Key app:valueText="・" />
+    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <Key
+      app:valueText="BACKSPACE"
+      app:displayText="⌫"
+      app:isRepeatable="true"
+      app:keyTextSize="@dimen/key_text_font_size_backspace"
+    />
+  </Row>
+  <Row
+    app:keyHeight="@dimen/key_height_space_bar"
+    app:keyWidth="@dimen/key_width_stroke"
+  >
+    <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
+    <Key
+      app:valueText="STROKES"
+      app:displayText="㇐㇑㇒"
+      app:keyTextColour="@color/stroke_key_text"
+    />
+    <!-- U+FF0C FULLWIDTH COMMA -->
+    <Key
+      app:valueText="，"
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Space bar -->
+    <Key
+      app:valueText="SPACE"
+      app:displayText="中文筆畫"
+      app:isLongPressable="true"
+      app:keyTextSize="@dimen/key_text_font_size_space_bar"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width_space_bar"
+    />
+    <!-- U+3002 IDEOGRAPHIC FULL STOP -->
+    <Key
+      app:valueText="。"
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Enter key: U+23CE RETURN SYMBOL -->
+    <Key
+      app:valueText="ENTER"
+      app:displayText="⏎"
+      app:keyTextSize="@dimen/key_text_font_size_enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+    />
+  </Row>
+</Keyboard>

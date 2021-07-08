@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Added symbols keyboard
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
 - Fixed key press colour change dependent on activity background
 - Implemented abort on move outside keyboard (by adding 1 px gutter)
