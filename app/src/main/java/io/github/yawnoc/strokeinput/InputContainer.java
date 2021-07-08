@@ -367,7 +367,7 @@ public class InputContainer
     return true;
   }
   
-  public Keyboard.Key getKeyAtPoint(int x, int y) {
+  private Keyboard.Key getKeyAtPoint(int x, int y) {
     
     for (Keyboard.Key key : keyArray) {
       if (key.containsPoint(x, y)) {
