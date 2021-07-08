@@ -32,7 +32,6 @@ import androidx.core.graphics.ColorUtils;
     - Candidates bar
     - Keyboard
   TODO:
-    - Cancel key press if move outside keyboard
     - Switch to symbols keyboard
     - Candidates
 */

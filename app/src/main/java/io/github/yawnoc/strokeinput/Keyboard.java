@@ -41,7 +41,9 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int default_key_text_size_px;
+  
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
+  private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Key properties
   private int keyWidth;
@@ -330,12 +332,12 @@ public class Keyboard {
       boolean inRow = false;
       
       int x = 0;
-      int y = 0;
+      int y = KEYBOARD_GUTTER_HEIGHT_PX;
       Key key = null;
       Row row = null;
       
-      int maximumX = 0;
-      int maximumY = 0;
+      int maximumX = x;
+      int maximumY = y;
       
       Resources resources = context.getResources();
       

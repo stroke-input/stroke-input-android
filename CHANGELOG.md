@@ -5,6 +5,7 @@
 
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
 - Fixed key press colour change dependent on activity background
+- Implemented abort on move outside keyboard (by adding 1 px gutter)
 - Reduced space bar height
 - Reduced digit row key height
 - Added fillColour attribute for the keyboard as a whole
