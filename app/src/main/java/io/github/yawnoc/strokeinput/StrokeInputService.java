@@ -67,11 +67,11 @@ public class StrokeInputService
         }
         break;
       
-      case "STROKES":
+      case "SWITCH_TO_STROKES":
         inputContainer.setKeyboard(strokesKeyboard);
         break;
       
-      case "SYMBOLS":
+      case "SWITCH_TO_SYMBOLS":
         inputContainer.setKeyboard(symbolsKeyboard);
         break;
       
