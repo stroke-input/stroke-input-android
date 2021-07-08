@@ -109,6 +109,7 @@
     <Key
       app:valueText="SYMBOLS"
       app:displayText="（）："
+      app:keyTextSize="@dimen/key_text_font_size_switch_to_symbols"
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
