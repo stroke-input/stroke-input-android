@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
+- Added fillColour attribute for the keyboard as a whole
 
 
 ## [v0.3.0] Basic keyboard behaviour (2021-07-08)

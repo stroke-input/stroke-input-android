@@ -41,6 +41,7 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int default_key_text_size_px;
+  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   
   // Key properties
   private int keyWidth;
@@ -57,6 +58,7 @@ public class Keyboard {
   private int width;
   private int height;
   private final List<Key> keyList;
+  public int fillColour;
   
   // Screen properties
   private final int screenWidth;
@@ -449,6 +451,12 @@ public class Keyboard {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextOffsetY,
         0
+      );
+    
+    fillColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_fillColour,
+        DEFAULT_KEYBOARD_FILL_COLOUR
       );
     
     attributesArray.recycle();

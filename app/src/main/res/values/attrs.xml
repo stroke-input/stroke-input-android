@@ -14,5 +14,6 @@
     <attr name="keyTextOffsetY" format="dimension" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
+    <attr name="fillColour" format="color" />
   </declare-styleable>
 </resources>

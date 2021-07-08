@@ -171,6 +171,8 @@ public class InputContainer
       return;
     }
     
+    canvas.drawColor(keyboard.fillColour);
+    
     for (final Keyboard.Key key : keyArray) {
       
       keyRectangle.set(0, 0, key.width, key.height);
