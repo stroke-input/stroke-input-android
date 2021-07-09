@@ -241,7 +241,7 @@ public class InputContainer
     The correct handling of a pointer moving outside the keyboard
     is ensured by including a 1-pixel gutter at the top of the keyboard
     (so that the pointer must move through a key-free row of pixels).
-    // TODO: fix unexpected behaviour when two pointers merge
+    The correct handling of merging pointers has not been implemented.
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
