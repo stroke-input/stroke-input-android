@@ -7,6 +7,7 @@
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
 - Fixed key press colour change dependent on activity background
 - Implemented abort on move outside keyboard (by adding 1 px gutter)
+- Update keyboard font to [Stroke Input Keyboard v1.2.1]
 - Reduced space bar height
 - Reduced digit row key height
 - Added fillColour attribute for the keyboard as a whole
@@ -62,6 +63,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.2.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.2.1
 [Stroke Input Keyboard v1.1.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.1.0
 [Stroke Input Keyboard v1.2.0]:
