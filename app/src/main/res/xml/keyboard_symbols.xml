@@ -77,7 +77,7 @@
       app:valueText="SWITCH_TO_STROKES"
       app:displayText="㇐㇑㇒"
       app:keyTextColour="@color/stroke_key_text"
-      app:keyTextSize="@dimen/key_text_font_size_switch_to_strokes"
+      app:keyTextSize="@dimen/key_text_font_size_switch_key"
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
