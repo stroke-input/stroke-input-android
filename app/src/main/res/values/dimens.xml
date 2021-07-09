@@ -17,5 +17,6 @@
   <dimen name="key_text_font_size_enter_key">36dp</dimen>
   <dimen name="key_text_baseline_correction">2dp</dimen>
   <dimen name="key_text_baseline_correction_digits">0.75dp</dimen>
+  <dimen name="key_text_baseline_correction_switch_key">0.5dp</dimen>
   <dimen name="key_text_baseline_correction_space_bar">0.5dp</dimen>
 </resources>

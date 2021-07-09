@@ -8,6 +8,7 @@
 - Fixed key press colour change dependent on activity background
 - Implemented abort on move outside keyboard (by adding 1 px gutter)
 - Update keyboard font to [Stroke Input Keyboard v1.2.1]
+- Improved "switch to symbols" label aesthetics
 - Reduced space bar height
 - Reduced digit row key height
 - Added fillColour attribute for the keyboard as a whole
