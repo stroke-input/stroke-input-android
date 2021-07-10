@@ -128,6 +128,10 @@ public class InputContainer
     inputListener = listener;
   }
   
+  public Keyboard getKeyboard() {
+    return keyboard;
+  }
+  
   public void setKeyboard(final Keyboard keyboard) {
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);

@@ -10,7 +10,6 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -30,6 +29,7 @@ public class StrokeInputService
   InputContainer inputContainer;
   Keyboard strokesKeyboard;
   Keyboard symbolsKeyboard;
+  Keyboard qwertyKeyboard;
   
   @SuppressLint("InflateParams")
   @Override
@@ -41,6 +41,7 @@ public class StrokeInputService
     
     strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
     symbolsKeyboard = new Keyboard(this, R.xml.keyboard_symbols);
+    qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
     
     inputContainer.setKeyboard(strokesKeyboard);
     inputContainer.setOnInputListener(this);
@@ -110,7 +111,17 @@ public class StrokeInputService
   
   @Override
   public void onSwipe(final String valueText) {
-    Log.d("onSwipe test", "onSwipe(" + valueText + ")");
+    
+    if (valueText.equals("SPACE")) {
+      final Keyboard keyboard = inputContainer.getKeyboard();
+      if (keyboard == strokesKeyboard || keyboard == symbolsKeyboard) {
+        inputContainer.setKeyboard(qwertyKeyboard);
+      }
+      else {
+        inputContainer.setKeyboard(strokesKeyboard);
+      }
+    }
+    
   }
   
 }
