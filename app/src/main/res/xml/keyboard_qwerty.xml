@@ -60,6 +60,15 @@
     <Key app:valueText="b" />
     <Key app:valueText="n" />
     <Key app:valueText="m" />
+    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <Key
+      app:valueText="BACKSPACE"
+      app:displayText="⌫"
+      app:isRepeatable="true"
+      app:keyTextSize="@dimen/key_text_font_size_qwerty_backspace"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_backspace"
+      app:keyWidth="@dimen/key_width_qwerty_shift"
+    />
   </Row>
   <Row
     app:keyWidth="@dimen/key_width_strokes_stroke"

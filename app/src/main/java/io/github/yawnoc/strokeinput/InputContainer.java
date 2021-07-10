@@ -33,6 +33,7 @@ import androidx.core.graphics.ColorUtils;
     - Keyboard
   TODO:
     - Candidates
+    - Increase backspace speed for ASCII text
 */
 public class InputContainer
   extends View
