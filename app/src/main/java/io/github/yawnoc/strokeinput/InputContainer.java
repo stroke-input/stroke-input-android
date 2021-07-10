@@ -46,6 +46,8 @@ public class InputContainer
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
   private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
   
+  private static final int SWIPE_ACTIVATION_DISTANCE = 40;
+  
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // Container meta-properties
@@ -61,6 +63,10 @@ public class InputContainer
   
   // Long presses and key repeats
   private final Handler extendedPressHandler;
+  
+  // Horizontal swipes
+  private int pointerDownX;
+  private boolean swipeModeIsActivated = false;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -113,16 +119,9 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
-    
-    /*
-      Send a key event for a key.
-    */
     void onKey(String valueText);
-    
-    /*
-      Send a long press event for a key.
-    */
     void onLongPress(String valueText);
+    void onSwipe(String valueText);
   }
   
   public void setOnInputListener(final OnInputListener listener) {
@@ -186,7 +185,14 @@ public class InputContainer
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
-      keyTextPaint.setColor(key.keyTextColour);
+      final int keyTextColour;
+      if (key == currentlyPressedKey && swipeModeIsActivated) {
+        keyTextColour = key.keyTextSwipeColour;
+      }
+      else {
+        keyTextColour = key.keyTextColour;
+      }
+      keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
       final float key_text_x = (
@@ -301,7 +307,11 @@ public class InputContainer
         if (
           eventPointerId == activePointerId
             &&
-          getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+          (
+            getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+              ||
+            currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+          )
         )
         {
           // Send a move event for the event pointer
@@ -360,7 +370,13 @@ public class InputContainer
     final int eventX = (int) motionEvent.getX() - getPaddingLeft();
     final int eventY = (int) motionEvent.getY() - getPaddingTop();
     
-    final Keyboard.Key key = getKeyAtPoint(eventX, eventY);
+    final Keyboard.Key key;
+    if (swipeModeIsActivated) {
+      key = currentlyPressedKey;
+    }
+    else {
+      key = getKeyAtPoint(eventX, eventY);
+    }
     if (key == null) {
       abortAllKeyBehaviour();
       return true;
@@ -374,18 +390,43 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
         setCurrentlyPressedKey(key);
         sendAppropriateExtendedPressHandlerMessage(key);
+        deactivateSwipeMode();
+        if (key.isSwipeable) {
+          pointerDownX = eventX;
+        }
         break;
       
       case MotionEvent.ACTION_MOVE:
-        removeAllExtendedPressHandlerMessages();
-        setCurrentlyPressedKey(key);
-        sendAppropriateExtendedPressHandlerMessage(key);
+        if (swipeModeIsActivated) {
+          if (Math.abs(eventX - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
+            deactivateSwipeMode();
+          }
+        }
+        else {
+          if (key == currentlyPressedKey && key.isSwipeable) {
+            if (Math.abs(eventX - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
+              activateSwipeMode();
+              removeAllExtendedPressHandlerMessages();
+            }
+          }
+          else { // move is a key change
+            removeAllExtendedPressHandlerMessages();
+            setCurrentlyPressedKey(key);
+            sendAppropriateExtendedPressHandlerMessage(key);
+          }
+        }
         break;
       
       case MotionEvent.ACTION_UP:
         removeAllExtendedPressHandlerMessages();
         setCurrentlyPressedKey(null);
-        inputListener.onKey(valueText);
+        if (swipeModeIsActivated) {
+          inputListener.onSwipe(valueText);
+          deactivateSwipeMode();
+        }
+        else {
+          inputListener.onKey(valueText);
+        }
         break;
     }
     
@@ -405,6 +446,16 @@ public class InputContainer
   
   private void setCurrentlyPressedKey(final Keyboard.Key key) {
     currentlyPressedKey = key;
+    invalidate();
+  }
+  
+  private void activateSwipeMode() {
+    swipeModeIsActivated = true;
+    invalidate();
+  }
+  
+  private void deactivateSwipeMode() {
+    swipeModeIsActivated = false;
     invalidate();
   }
   

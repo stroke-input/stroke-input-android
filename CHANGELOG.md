@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Implemented horizontal swiping of a key
+
 
 ## [v0.4.0] Symbols keyboard and fixes (2021-07-09)
 

@@ -39,6 +39,7 @@ public class Keyboard {
   private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
   private final int default_key_border_thickness_px;
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
+  private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int default_key_text_size_px;
   
@@ -52,6 +53,7 @@ public class Keyboard {
   private int keyBorderColour;
   private int keyBorderThickness;
   private int keyTextColour;
+  private int keyTextSwipeColour;
   private int keyTextSize;
   private int keyTextOffsetX;
   private int keyTextOffsetY;
@@ -102,6 +104,7 @@ public class Keyboard {
     private final int keyBorderColour;
     private final int keyBorderThickness;
     private final int keyTextColour;
+    private final int keyTextSwipeColour;
     private final int keyTextSize;
     private final int keyTextOffsetX;
     private final int keyTextOffsetY;
@@ -159,6 +162,11 @@ public class Keyboard {
           R.styleable.Keyboard_keyTextColour,
           parentKeyboard.keyTextColour
         );
+      keyTextSwipeColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyTextSwipeColour,
+          parentKeyboard.keyTextSwipeColour
+        );
       keyTextSize =
         attributesArray.getDimensionPixelSize(
           R.styleable.Keyboard_keyTextSize,
@@ -191,12 +199,14 @@ public class Keyboard {
     public String displayText; // overrides valueText
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
+    public boolean isSwipeable;
     
     // Key styles
     public int keyFillColour;
     public int keyBorderColour;
     public int keyBorderThickness;
     public int keyTextColour;
+    public int keyTextSwipeColour;
     public int keyTextSize;
     public int keyTextOffsetX;
     public int keyTextOffsetY;
@@ -249,6 +259,8 @@ public class Keyboard {
         attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
+      isSwipeable =
+        attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
       
       keyFillColour =
         attributesArray.getColor(
@@ -270,6 +282,11 @@ public class Keyboard {
         attributesArray.getColor(
           R.styleable.Keyboard_keyTextColour,
           parentRow.keyTextColour
+        );
+      keyTextSwipeColour =
+        attributesArray.getColor(
+          R.styleable.Keyboard_keyTextSwipeColour,
+          parentRow.keyTextSwipeColour
         );
       keyTextSize =
         attributesArray.getDimensionPixelSize(
@@ -438,6 +455,11 @@ public class Keyboard {
       attributesArray.getColor(
         R.styleable.Keyboard_keyTextColour,
         DEFAULT_KEY_TEXT_COLOUR
+      );
+    keyTextSwipeColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_keyTextSwipeColour,
+        DEFAULT_KEY_TEXT_SWIPE_COLOUR
       );
     keyTextSize =
       attributesArray.getDimensionPixelSize(

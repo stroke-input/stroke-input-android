@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -105,6 +106,11 @@ public class StrokeInputService
         (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
       inputMethodManager.showInputMethodPicker();
     }
+  }
+  
+  @Override
+  public void onSwipe(final String valueText) {
+    Log.d("onSwipe test", "onSwipe(" + valueText + ")");
   }
   
 }
