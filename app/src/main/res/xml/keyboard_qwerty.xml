@@ -46,6 +46,12 @@
     <Key app:valueText="l" />
   </Row>
   <Row>
+    <!-- Shift key: U+21E7 UPWARDS WHITE ARROW -->
+    <Key
+      app:valueText="SHIFT"
+      app:displayText="⇧"
+      app:keyWidth="@dimen/key_width_qwerty_shift"
+    />
     <!-- Letters row 3 -->
     <Key app:valueText="z" />
     <Key app:valueText="x" />
