@@ -390,8 +390,7 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
         setCurrentlyPressedKey(key);
         sendAppropriateExtendedPressHandlerMessage(key);
-        swipeModeIsActivated = false;
-        invalidate();
+        deactivateSwipeMode();
         if (key.isSwipeable) {
           pointerDownX = eventX;
         }
@@ -400,15 +399,13 @@ public class InputContainer
       case MotionEvent.ACTION_MOVE:
         if (swipeModeIsActivated) {
           if (Math.abs(eventX - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
-            swipeModeIsActivated = false;
-            invalidate();
+            deactivateSwipeMode();
           }
         }
         else {
           if (key == currentlyPressedKey && key.isSwipeable) {
             if (Math.abs(eventX - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
-              swipeModeIsActivated = true;
-              invalidate();
+              activateSwipeMode();
               removeAllExtendedPressHandlerMessages();
             }
           }
@@ -425,8 +422,7 @@ public class InputContainer
         setCurrentlyPressedKey(null);
         if (swipeModeIsActivated) {
           inputListener.onSwipe(valueText);
-          swipeModeIsActivated = false;
-          invalidate();
+          deactivateSwipeMode();
         }
         else {
           inputListener.onKey(valueText);
@@ -450,6 +446,16 @@ public class InputContainer
   
   private void setCurrentlyPressedKey(final Keyboard.Key key) {
     currentlyPressedKey = key;
+    invalidate();
+  }
+  
+  private void activateSwipeMode() {
+    swipeModeIsActivated = true;
+    invalidate();
+  }
+  
+  private void deactivateSwipeMode() {
+    swipeModeIsActivated = false;
     invalidate();
   }
   
