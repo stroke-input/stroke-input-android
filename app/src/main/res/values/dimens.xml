@@ -2,6 +2,7 @@
 <resources>
   <dimen name="activity_main_font_size">16sp</dimen>
   <dimen name="key_height">60dp</dimen>
+  <dimen name="key_height_qwerty">48dp</dimen>
   <dimen name="key_height_digits">56dp</dimen>
   <dimen name="key_height_space_bar">54dp</dimen>
   <dimen name="key_width_digit">10%</dimen>

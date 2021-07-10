@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height_qwerty"
+  app:keyWidth="@dimen/key_width_digit"
+  app:keyTextSize="@dimen/key_text_font_size"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row>
+    <!-- Digits -->
+    <Key app:valueText="1" />
+    <Key app:valueText="2" />
+    <Key app:valueText="3" />
+    <Key app:valueText="4" />
+    <Key app:valueText="5" />
+    <Key app:valueText="6" />
+    <Key app:valueText="7" />
+    <Key app:valueText="8" />
+    <Key app:valueText="9" />
+    <Key app:valueText="0" />
+  </Row>
+  <Row>
+    <!-- Letters row 1 -->
+    <Key app:valueText="q" />
+    <Key app:valueText="w" />
+    <Key app:valueText="e" />
+    <Key app:valueText="r" />
+    <Key app:valueText="t" />
+    <Key app:valueText="y" />
+    <Key app:valueText="u" />
+    <Key app:valueText="i" />
+    <Key app:valueText="o" />
+    <Key app:valueText="p" />
+  </Row>
+  <Row>
+    <!-- Letters row 2 -->
+    <Key app:valueText="a" />
+    <Key app:valueText="s" />
+    <Key app:valueText="d" />
+    <Key app:valueText="f" />
+    <Key app:valueText="g" />
+    <Key app:valueText="h" />
+    <Key app:valueText="j" />
+    <Key app:valueText="k" />
+    <Key app:valueText="l" />
+  </Row>
+  <Row>
+    <!-- Letters row 3 -->
+    <Key app:valueText="z" />
+    <Key app:valueText="x" />
+    <Key app:valueText="c" />
+    <Key app:valueText="v" />
+    <Key app:valueText="b" />
+    <Key app:valueText="n" />
+    <Key app:valueText="m" />
+  </Row>
+  <Row
+    app:keyWidth="@dimen/key_width_stroke"
+  >
+    <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
+    <Key
+      app:valueText="SWITCH_TO_SYMBOLS"
+      app:displayText="（）："
+      app:keyTextSize="@dimen/key_text_font_size_switch_key"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
+    />
+    <!-- Comma -->
+    <Key
+      app:valueText=","
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Space bar: U+25C0, U+25B6 (triangles) -->
+    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
+    <Key
+      app:valueText="SPACE"
+      app:displayText="◀ English ▶"
+      app:isLongPressable="true"
+      app:isSwipeable="true"
+      app:keyTextSize="@dimen/key_text_font_size_space_bar"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width_space_bar"
+    />
+    <!-- Full stop -->
+    <Key
+      app:valueText="."
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Enter key: U+23CE RETURN SYMBOL -->
+    <Key
+      app:valueText="ENTER"
+      app:displayText="⏎"
+      app:keyTextSize="@dimen/key_text_font_size_enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+    />
+  </Row>
+</Keyboard>
