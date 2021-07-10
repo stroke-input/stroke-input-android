@@ -32,31 +32,27 @@
     <Key app:valueText="|" />
     <Key app:valueText="\\" />
   </Row>
-  <Row
-    app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
-  >
+  <Row>
+    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
     <Key app:valueText="~" />
     <Key app:valueText="`" />
-    <Key app:valueText="" />
-    <Key app:valueText="" />
-    <Key app:valueText="" />
+    <Key app:valueText="−" /> <!-- U+2212 MINUS SIGN -->
+    <Key app:valueText="×" /> <!-- U+00D7 MULTIPLICATION SIGN -->
+    <Key app:valueText="÷" /> <!-- U+00F7 DIVISION SIGN -->
+    <Key app:valueText="°" /> <!-- U+00B0 DEGREE SIGN -->
     <Key app:valueText=":" />
     <Key app:valueText=";" />
     <Key app:valueText="&quot;" />
     <Key app:valueText="'" />
   </Row>
-  <Row>
-    <!-- Shift key: U+21E7 UPWARDS WHITE ARROW -->
-    <!-- TODO: add up arrow glyph to stroke_input_keyboard.ttf -->
-    <Key
-      app:valueText="SHIFT"
-      app:displayText="⇧"
-      app:keyWidth="@dimen/key_width_qwerty_shift"
-    />
-    <!-- Letters row 3 -->
-    <Key app:valueText="" />
-    <Key app:valueText="" />
-    <Key app:valueText="" />
+  <Row
+    app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
+  >
+    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
+    <Key app:valueText="¥"/> <!-- U+00A5 YEN SIGN -->
+    <Key app:valueText="£" /> <!-- U+00A3 POUND SIGN -->
+    <Key app:valueText="€" /> <!-- U+20AC EURO SIGN -->
+    <Key app:valueText="¢" /> <!-- U+00A2 CENT SIGN -->
     <Key app:valueText="&lt;" />
     <Key app:valueText="&gt;" />
     <Key app:valueText="\?" />
