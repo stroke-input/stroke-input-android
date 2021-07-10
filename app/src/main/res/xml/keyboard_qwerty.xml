@@ -33,7 +33,9 @@
     <Key app:valueText="o" />
     <Key app:valueText="p" />
   </Row>
-  <Row>
+  <Row
+    app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
+  >
     <!-- Letters row 2 -->
     <Key app:valueText="a" />
     <Key app:valueText="s" />

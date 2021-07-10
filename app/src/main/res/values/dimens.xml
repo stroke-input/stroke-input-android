@@ -30,4 +30,6 @@
   <dimen name="key_text_baseline_correction_strokes_digit">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_qwerty">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_qwerty_backspace">1.75dp</dimen>
+  <!-- Row horizontal offset -->
+  <dimen name="row_horizontal_offset_qwerty_row_2">5%</dimen>
 </resources>

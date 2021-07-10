@@ -43,6 +43,7 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
+  private static final int DEFAULT_OFFSET_X = 0;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
@@ -111,6 +112,7 @@ public class Keyboard {
     
     // Row properties
     private final Keyboard parentKeyboard;
+    private final int offsetX;
     
     public Row(
       final Keyboard parentKeyboard,
@@ -124,6 +126,14 @@ public class Keyboard {
         resources.obtainAttributes(
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
+        );
+  
+      offsetX =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_offsetX,
+          parentKeyboard.screenWidth,
+          DEFAULT_OFFSET_X
         );
       
       keyWidth =
@@ -374,8 +384,8 @@ public class Keyboard {
                 break;
               case "Row":
                 inRow = true;
-                x = 0;
                 row = new Row(this, resources, xmlResourceParser);
+                x = row.offsetX;
                 break;
               case "Key":
                 inKey = true;
