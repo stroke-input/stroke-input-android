@@ -34,6 +34,7 @@ import androidx.core.graphics.ColorUtils;
   TODO:
     - Candidates
     - Increase backspace speed for ASCII text
+    - Qwerty shift key functionality
 */
 public class InputContainer
   extends View
