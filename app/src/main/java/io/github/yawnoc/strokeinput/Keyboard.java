@@ -32,16 +32,16 @@ public class Keyboard {
   
   private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
-  private final int default_key_height_px;
+  private final int defaultKeyHeightPx;
   
   private static final int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   private static final int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
   private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
-  private final int default_key_border_thickness_px;
+  private final int defaultKeyBorderThicknessPx;
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
-  private final int default_key_text_size_px;
+  private final int defaultKeyTextSizePx;
   
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
@@ -76,11 +76,11 @@ public class Keyboard {
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
     
-    default_key_height_px =
+    defaultKeyHeightPx =
       (int) (DEFAULT_KEY_HEIGHT_DP * displayMetrics.density);
-    default_key_border_thickness_px =
+    defaultKeyBorderThicknessPx =
       (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
-    default_key_text_size_px =
+    defaultKeyTextSizePx =
       (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
     
     keyList = new ArrayList<>();
@@ -432,7 +432,7 @@ public class Keyboard {
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         screenHeight,
-        default_key_height_px
+        defaultKeyHeightPx
       );
     
     keyFillColour =
@@ -448,7 +448,7 @@ public class Keyboard {
     keyBorderThickness =
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyBorderThickness,
-        default_key_border_thickness_px
+        defaultKeyBorderThicknessPx
       );
     
     keyTextColour =
@@ -464,7 +464,7 @@ public class Keyboard {
     keyTextSize =
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextSize,
-        default_key_text_size_px
+        defaultKeyTextSizePx
       );
     
     keyTextOffsetX =

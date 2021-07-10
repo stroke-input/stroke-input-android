@@ -176,12 +176,12 @@ public class InputContainer
       
       keyRectangle.set(0, 0, key.width, key.height);
       
-      int key_fill_colour = key.keyFillColour;
+      int keyFillColour = key.keyFillColour;
       if (key == currentlyPressedKey) {
-        key_fill_colour = getContrastingColour(key_fill_colour);
+        keyFillColour = getContrastingColour(keyFillColour);
       }
       
-      keyFillPaint.setColor(key_fill_colour);
+      keyFillPaint.setColor(keyFillColour);
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
@@ -195,11 +195,11 @@ public class InputContainer
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
-      final float key_text_x = (
+      final float keyTextX = (
         key.width / 2f
           + key.keyTextOffsetX
       );
-      final float key_text_y = (
+      final float keyTextY = (
         (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
           + key.keyTextOffsetY
       );
@@ -210,8 +210,8 @@ public class InputContainer
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
         key.displayText,
-        key_text_x,
-        key_text_y,
+        keyTextX,
+        keyTextY,
         keyTextPaint
       );
       
