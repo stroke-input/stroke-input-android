@@ -3,8 +3,8 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height_qwerty"
   app:keyWidth="@dimen/key_width_digit"
-  app:keyTextSize="@dimen/key_text_font_size"
-  app:keyTextOffsetY="@dimen/key_text_baseline_correction"
+  app:keyTextSize="@dimen/key_text_font_size_strokes"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
   app:keyFillColour="@color/key_fill"
 >
   <Row>
@@ -56,7 +56,7 @@
     <Key app:valueText="m" />
   </Row>
   <Row
-    app:keyWidth="@dimen/key_width_stroke"
+    app:keyWidth="@dimen/key_width_strokes_stroke"
   >
     <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
