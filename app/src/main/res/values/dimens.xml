@@ -20,9 +20,11 @@
   <dimen name="key_text_font_size_strokes_stroke">32dp</dimen>
   <dimen name="key_text_font_size_strokes_ditto_key">24dp</dimen>
   <dimen name="key_text_font_size_strokes_backspace">36dp</dimen>
+  <dimen name="key_text_font_size_qwerty">24dp</dimen>
   <!-- Key text baseline correction -->
   <dimen name="key_text_baseline_correction_switch_key">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_space_bar">0.5dp</dimen>
   <dimen name="key_text_baseline_correction_strokes">2dp</dimen>
   <dimen name="key_text_baseline_correction_strokes_digit">0.75dp</dimen>
+  <dimen name="key_text_baseline_correction_qwerty">0.75dp</dimen>
 </resources>
