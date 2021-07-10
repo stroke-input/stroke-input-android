@@ -49,6 +49,7 @@
   </Row>
   <Row>
     <!-- Shift key: U+21E7 UPWARDS WHITE ARROW -->
+    <!-- TODO: add up arrow glyph to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SHIFT"
       app:displayText="⇧"
