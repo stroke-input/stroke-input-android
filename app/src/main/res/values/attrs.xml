@@ -10,6 +10,7 @@
     <attr name="keyBorderColour" format="color" />
     <attr name="keyBorderThickness" format="dimension" />
     <attr name="keyTextColour" format="color" />
+    <attr name="keyTextSwipeColour" format="color" />
     <attr name="keyTextSize" format="dimension" />
     <attr name="keyTextOffsetX" format="dimension" />
     <attr name="keyTextOffsetY" format="dimension" />

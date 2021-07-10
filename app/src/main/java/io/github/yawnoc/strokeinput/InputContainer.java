@@ -15,7 +15,6 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -188,7 +187,7 @@ public class InputContainer
       
       final int keyTextColour;
       if (key == currentlyPressedKey && swipeModeIsActivated) {
-        keyTextColour = Color.RED;
+        keyTextColour = key.keyTextSwipeColour;
       }
       else {
         keyTextColour = key.keyTextColour;
