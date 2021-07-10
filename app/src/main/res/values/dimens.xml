@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- Main activity -->
   <dimen name="activity_main_font_size">16sp</dimen>
+  <!-- Key height -->
   <dimen name="key_height_strokes">60dp</dimen>
   <dimen name="key_height_strokes_digit">56dp</dimen>
   <dimen name="key_height_strokes_space_bar">54dp</dimen>
   <dimen name="key_height_qwerty">48dp</dimen>
+  <!-- Key width -->
   <dimen name="key_width_digit">10%</dimen>
   <dimen name="key_width_strokes_stroke">20%</dimen>
   <dimen name="key_width_space_bar">40%</dimen>
+  <!-- Key text font size -->
   <dimen name="key_text_font_size_strokes">28dp</dimen>
   <dimen name="key_text_font_size_strokes_digit">24dp</dimen>
   <dimen name="key_text_font_size_strokes_stroke">32dp</dimen>
@@ -16,6 +20,7 @@
   <dimen name="key_text_font_size_switch_key">20dp</dimen>
   <dimen name="key_text_font_size_space_bar">20dp</dimen>
   <dimen name="key_text_font_size_enter_key">36dp</dimen>
+  <!-- Key text baseline correction -->
   <dimen name="key_text_baseline_correction_strokes">2dp</dimen>
   <dimen name="key_text_baseline_correction_strokes_digit">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_switch_key">0.75dp</dimen>
