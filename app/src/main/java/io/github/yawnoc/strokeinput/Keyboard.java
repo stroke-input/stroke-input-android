@@ -191,6 +191,7 @@ public class Keyboard {
     public String displayText; // overrides valueText
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
+    public boolean isSwipeable;
     
     // Key styles
     public int keyFillColour;
@@ -249,6 +250,8 @@ public class Keyboard {
         attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
       isRepeatable =
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
+      isSwipeable =
+        attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
       
       keyFillColour =
         attributesArray.getColor(
