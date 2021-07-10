@@ -46,6 +46,8 @@ public class InputContainer
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
   private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
   
+  private static final int SWIPE_ACTIVATION_DISTANCE = 40;
+  
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // Container meta-properties
@@ -61,6 +63,10 @@ public class InputContainer
   
   // Long presses and key repeats
   private final Handler extendedPressHandler;
+  
+  // Horizontal swipes
+  private int pointerDownX;
+  private boolean swipeModeIsActivated = false;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -115,6 +121,7 @@ public class InputContainer
   public interface OnInputListener {
     void onKey(String valueText);
     void onLongPress(String valueText);
+    void onSwipe(String valueText);
   }
   
   public void setOnInputListener(final OnInputListener listener) {
@@ -293,7 +300,11 @@ public class InputContainer
         if (
           eventPointerId == activePointerId
             &&
-          getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+          (
+            getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+              ||
+            currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+          )
         )
         {
           // Send a move event for the event pointer
@@ -352,7 +363,13 @@ public class InputContainer
     final int eventX = (int) motionEvent.getX() - getPaddingLeft();
     final int eventY = (int) motionEvent.getY() - getPaddingTop();
     
-    final Keyboard.Key key = getKeyAtPoint(eventX, eventY);
+    final Keyboard.Key key;
+    if (swipeModeIsActivated) {
+      key = currentlyPressedKey;
+    }
+    else {
+      key = getKeyAtPoint(eventX, eventY);
+    }
     if (key == null) {
       abortAllKeyBehaviour();
       return true;
@@ -366,18 +383,43 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
         setCurrentlyPressedKey(key);
         sendAppropriateExtendedPressHandlerMessage(key);
+        swipeModeIsActivated = false;
+        if (key.isSwipeable) {
+          pointerDownX = eventX;
+        }
         break;
       
       case MotionEvent.ACTION_MOVE:
-        removeAllExtendedPressHandlerMessages();
-        setCurrentlyPressedKey(key);
-        sendAppropriateExtendedPressHandlerMessage(key);
+        if (swipeModeIsActivated) {
+          if (Math.abs(eventX - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
+            swipeModeIsActivated = false;
+          }
+        }
+        else {
+          if (key.isSwipeable) {
+            if (Math.abs(eventX - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
+              swipeModeIsActivated = true;
+              removeAllExtendedPressHandlerMessages();
+            }
+          }
+          else { // move is a key change
+            removeAllExtendedPressHandlerMessages();
+            setCurrentlyPressedKey(key);
+            sendAppropriateExtendedPressHandlerMessage(key);
+          }
+        }
         break;
       
       case MotionEvent.ACTION_UP:
         removeAllExtendedPressHandlerMessages();
         setCurrentlyPressedKey(null);
-        inputListener.onKey(valueText);
+        if (swipeModeIsActivated) {
+          inputListener.onSwipe(valueText);
+          swipeModeIsActivated = false;
+        }
+        else {
+          inputListener.onKey(valueText);
+        }
         break;
     }
     

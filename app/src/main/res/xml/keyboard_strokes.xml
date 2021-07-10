@@ -122,6 +122,7 @@
       app:valueText="SPACE"
       app:displayText="中文筆畫"
       app:isLongPressable="true"
+      app:isSwipeable="true"
       app:keyTextSize="@dimen/key_text_font_size_space_bar"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
