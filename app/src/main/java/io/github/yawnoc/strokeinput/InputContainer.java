@@ -15,6 +15,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -185,7 +186,14 @@ public class InputContainer
       keyBorderPaint.setColor(key.keyBorderColour);
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
-      keyTextPaint.setColor(key.keyTextColour);
+      final int keyTextColour;
+      if (key == currentlyPressedKey && swipeModeIsActivated) {
+        keyTextColour = Color.RED;
+      }
+      else {
+        keyTextColour = key.keyTextColour;
+      }
+      keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
       final float key_text_x = (
@@ -384,6 +392,7 @@ public class InputContainer
         setCurrentlyPressedKey(key);
         sendAppropriateExtendedPressHandlerMessage(key);
         swipeModeIsActivated = false;
+        invalidate();
         if (key.isSwipeable) {
           pointerDownX = eventX;
         }
@@ -393,12 +402,14 @@ public class InputContainer
         if (swipeModeIsActivated) {
           if (Math.abs(eventX - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
             swipeModeIsActivated = false;
+            invalidate();
           }
         }
         else {
-          if (key.isSwipeable) {
+          if (key == currentlyPressedKey && key.isSwipeable) {
             if (Math.abs(eventX - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
               swipeModeIsActivated = true;
+              invalidate();
               removeAllExtendedPressHandlerMessages();
             }
           }
@@ -416,6 +427,7 @@ public class InputContainer
         if (swipeModeIsActivated) {
           inputListener.onSwipe(valueText);
           swipeModeIsActivated = false;
+          invalidate();
         }
         else {
           inputListener.onKey(valueText);
