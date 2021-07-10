@@ -28,7 +28,7 @@ public class StrokeInputService
   
   InputContainer inputContainer;
   Keyboard strokesKeyboard;
-  Keyboard symbolsKeyboard;
+  Keyboard strokesSymbolsKeyboard;
   Keyboard qwertyKeyboard;
   
   @SuppressLint("InflateParams")
@@ -40,7 +40,8 @@ public class StrokeInputService
         getLayoutInflater().inflate(R.layout.input_container, null);
     
     strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
-    symbolsKeyboard = new Keyboard(this, R.xml.keyboard_symbols);
+    strokesSymbolsKeyboard =
+      new Keyboard(this, R.xml.keyboard_strokes_symbols);
     qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
     
     inputContainer.setKeyboard(strokesKeyboard);
@@ -73,8 +74,8 @@ public class StrokeInputService
         inputContainer.setKeyboard(strokesKeyboard);
         break;
       
-      case "SWITCH_TO_SYMBOLS":
-        inputContainer.setKeyboard(symbolsKeyboard);
+      case "SWITCH_TO_STROKES_SYMBOLS":
+        inputContainer.setKeyboard(strokesSymbolsKeyboard);
         break;
       
       case "SPACE":
@@ -114,7 +115,7 @@ public class StrokeInputService
     
     if (valueText.equals("SPACE")) {
       final Keyboard keyboard = inputContainer.getKeyboard();
-      if (keyboard == strokesKeyboard || keyboard == symbolsKeyboard) {
+      if (keyboard == strokesKeyboard || keyboard == strokesSymbolsKeyboard) {
         inputContainer.setKeyboard(qwertyKeyboard);
       }
       else {

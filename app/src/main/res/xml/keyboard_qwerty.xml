@@ -78,7 +78,7 @@
   >
     <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
-      app:valueText="SWITCH_TO_SYMBOLS"
+      app:valueText="SWITCH_TO_STROKES_SYMBOLS"
       app:displayText="（）："
       app:keyTextSize="@dimen/key_text_font_size_switch_key"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
