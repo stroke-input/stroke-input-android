@@ -113,15 +113,7 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
-    
-    /*
-      Send a key event for a key.
-    */
     void onKey(String valueText);
-    
-    /*
-      Send a long press event for a key.
-    */
     void onLongPress(String valueText);
   }
   
