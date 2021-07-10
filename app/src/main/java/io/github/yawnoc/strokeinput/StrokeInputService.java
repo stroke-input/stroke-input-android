@@ -30,6 +30,7 @@ public class StrokeInputService
   Keyboard strokesKeyboard;
   Keyboard strokesSymbolsKeyboard;
   Keyboard qwertyKeyboard;
+  Keyboard qwertySymbolsKeyboard;
   
   @SuppressLint("InflateParams")
   @Override
@@ -43,6 +44,8 @@ public class StrokeInputService
     strokesSymbolsKeyboard =
       new Keyboard(this, R.xml.keyboard_strokes_symbols);
     qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard =
+      new Keyboard(this, R.xml.keyboard_qwerty_symbols);
     
     inputContainer.setKeyboard(strokesKeyboard);
     inputContainer.setOnInputListener(this);
@@ -76,6 +79,14 @@ public class StrokeInputService
       
       case "SWITCH_TO_STROKES_SYMBOLS":
         inputContainer.setKeyboard(strokesSymbolsKeyboard);
+        break;
+      
+      case "SWITCH_TO_QWERTY":
+        inputContainer.setKeyboard(qwertyKeyboard);
+        break;
+      
+      case "SWITCH_TO_QWERTY_SYMBOLS":
+        inputContainer.setKeyboard(qwertySymbolsKeyboard);
         break;
       
       case "SPACE":

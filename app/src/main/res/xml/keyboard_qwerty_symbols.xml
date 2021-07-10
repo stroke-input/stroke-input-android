@@ -8,44 +8,42 @@
   app:keyFillColour="@color/key_fill"
 >
   <Row>
-    <!-- Digits -->
-    <Key app:valueText="1" />
-    <Key app:valueText="2" />
-    <Key app:valueText="3" />
-    <Key app:valueText="4" />
-    <Key app:valueText="5" />
-    <Key app:valueText="6" />
-    <Key app:valueText="7" />
-    <Key app:valueText="8" />
-    <Key app:valueText="9" />
-    <Key app:valueText="0" />
+    <!-- Digits row -->
+    <Key app:valueText="!" />
+    <Key app:valueText="\@" />
+    <Key app:valueText="#" />
+    <Key app:valueText="$" />
+    <Key app:valueText="%" />
+    <Key app:valueText="^" />
+    <Key app:valueText="&amp;" />
+    <Key app:valueText="*" />
+    <Key app:valueText="(" />
+    <Key app:valueText=")" />
   </Row>
   <Row>
-    <!-- Letters row 1 -->
-    <Key app:valueText="q" />
-    <Key app:valueText="w" />
-    <Key app:valueText="e" />
-    <Key app:valueText="r" />
-    <Key app:valueText="t" />
-    <Key app:valueText="y" />
-    <Key app:valueText="u" />
-    <Key app:valueText="i" />
-    <Key app:valueText="o" />
-    <Key app:valueText="p" />
+    <Key app:valueText="_" />
+    <Key app:valueText="-" />
+    <Key app:valueText="+" />
+    <Key app:valueText="=" />
+    <Key app:valueText="{" />
+    <Key app:valueText="}" />
+    <Key app:valueText="[" />
+    <Key app:valueText="]" />
+    <Key app:valueText="|" />
+    <Key app:valueText="\\" />
   </Row>
   <Row
     app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
   >
-    <!-- Letters row 2 -->
-    <Key app:valueText="a" />
-    <Key app:valueText="s" />
-    <Key app:valueText="d" />
-    <Key app:valueText="f" />
-    <Key app:valueText="g" />
-    <Key app:valueText="h" />
-    <Key app:valueText="j" />
-    <Key app:valueText="k" />
-    <Key app:valueText="l" />
+    <Key app:valueText="~" />
+    <Key app:valueText="`" />
+    <Key app:valueText="" />
+    <Key app:valueText="" />
+    <Key app:valueText="" />
+    <Key app:valueText=":" />
+    <Key app:valueText=";" />
+    <Key app:valueText="&quot;" />
+    <Key app:valueText="'" />
   </Row>
   <Row>
     <!-- Shift key: U+21E7 UPWARDS WHITE ARROW -->
@@ -56,13 +54,13 @@
       app:keyWidth="@dimen/key_width_qwerty_shift"
     />
     <!-- Letters row 3 -->
-    <Key app:valueText="z" />
-    <Key app:valueText="x" />
-    <Key app:valueText="c" />
-    <Key app:valueText="v" />
-    <Key app:valueText="b" />
-    <Key app:valueText="n" />
-    <Key app:valueText="m" />
+    <Key app:valueText="" />
+    <Key app:valueText="" />
+    <Key app:valueText="" />
+    <Key app:valueText="&lt;" />
+    <Key app:valueText="&gt;" />
+    <Key app:valueText="\?" />
+    <Key app:valueText="/" />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
       app:valueText="BACKSPACE"
@@ -76,10 +74,10 @@
   <Row
     app:keyWidth="@dimen/key_width_strokes_stroke"
   >
-    <!-- Switch to qwerty symbols keyboard -->
+    <!-- Switch to qwerty keyboard -->
     <Key
-      app:valueText="SWITCH_TO_QWERTY_SYMBOLS"
-      app:displayText="!@#"
+      app:valueText="SWITCH_TO_QWERTY"
+      app:displayText="abc"
       app:keyTextSize="@dimen/key_text_font_size_switch_key"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
     />

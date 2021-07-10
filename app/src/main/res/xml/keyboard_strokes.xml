@@ -105,7 +105,7 @@
     app:keyHeight="@dimen/key_height_strokes_space_bar"
     app:keyWidth="@dimen/key_width_strokes_stroke"
   >
-    <!-- Switch to symbols keyboard: U+FF08, U+FF09, U+FF1A -->
+    <!-- Switch to strokes symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
       app:valueText="SWITCH_TO_STROKES_SYMBOLS"
       app:displayText="（）："
