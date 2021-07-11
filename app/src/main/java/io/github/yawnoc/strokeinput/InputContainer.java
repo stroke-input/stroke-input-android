@@ -33,7 +33,6 @@ import androidx.core.graphics.ColorUtils;
     - Keyboard
   TODO:
     - Candidates
-    - Increase backspace speed for ASCII text
 */
 public class InputContainer
   extends View
@@ -153,6 +152,10 @@ public class InputContainer
   
   public void resetKeyRepeatIntervalMilliseconds() {
     keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
+  }
+  
+  public void setKeyRepeatIntervalMilliseconds(final int milliseconds) {
+    keyRepeatIntervalMilliseconds = milliseconds;
   }
   
   public int getShiftMode() {
@@ -456,6 +459,7 @@ public class InputContainer
             removeAllExtendedPressHandlerMessages();
             setCurrentlyPressedKey(key);
             sendAppropriateExtendedPressHandlerMessage(key);
+            resetKeyRepeatIntervalMilliseconds();
           }
         }
         break;
@@ -470,6 +474,7 @@ public class InputContainer
         else {
           inputListener.onKey(valueText, valueTextShifted);
         }
+        resetKeyRepeatIntervalMilliseconds();
         break;
     }
     

@@ -22,6 +22,9 @@ public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener
 {
+  private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
+  private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
+  
   private static final String SPACE = " ";
   private static final String NEWLINE = "\n";
   
@@ -70,6 +73,16 @@ public class StrokeInputService
         );
         inputConnection.sendKeyEvent(
           new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+        );
+        final String characterBeforeCursor =
+          (String) inputConnection.getTextBeforeCursor(1, 0);
+        final int nextBackspaceIntervalMilliseconds = (
+          isAscii(characterBeforeCursor)
+            ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+            : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+        );
+        inputContainer.setKeyRepeatIntervalMilliseconds(
+          nextBackspaceIntervalMilliseconds
         );
         break;
       
@@ -164,6 +177,10 @@ public class StrokeInputService
       }
     }
     
+  }
+  
+  private static boolean isAscii(final String string) {
+    return string.matches("\\p{ASCII}*");
   }
   
 }
