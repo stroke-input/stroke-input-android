@@ -70,7 +70,7 @@ public class MainActivity
       htmlAlertDialogBuilder = new AlertDialog.Builder(this);
       htmlAlertDialogBuilder
         .setView(htmlWebView)
-        .setPositiveButton("Return", null)
+        .setPositiveButton(R.string.activity_main_return_label, null)
         .show()
       ;
     }

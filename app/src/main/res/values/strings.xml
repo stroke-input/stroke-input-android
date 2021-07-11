@@ -27,4 +27,7 @@
   <string name="activity_main_test_input_hint">
     Test input here 在此測試輸入
   </string>
+  <string name="activity_main_return_label">
+    Return 回
+  </string>
 </resources>
