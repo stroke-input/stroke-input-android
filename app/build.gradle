@@ -5,7 +5,6 @@ plugins {
 android {
   compileSdkVersion 30
   buildToolsVersion "30.0.3"
-  
   defaultConfig {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 14
@@ -13,7 +12,6 @@ android {
     versionCode 6
     versionName "0.4.0"
   }
-  
   buildTypes {
     release {
       minifyEnabled true
