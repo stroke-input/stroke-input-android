@@ -20,14 +20,6 @@ import android.webkit.WebView;
 
 /*
   The main activity of the application.
-  Contains:
-    - Welcome
-    - Button for enabling the Stroke Input Method
-    - Button for switching keyboards
-    - Box for testing input
-  TODO:
-    - About
-    - Link to <https://github.com/yawnoc/StrokeInput>
 */
 public class MainActivity
   extends AppCompatActivity
