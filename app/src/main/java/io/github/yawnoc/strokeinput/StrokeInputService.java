@@ -9,7 +9,7 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
-import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -22,7 +22,6 @@ public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener
 {
-  private static final String EMPTY_STRING = "";
   private static final String SPACE = " ";
   private static final String NEWLINE = "\n";
   
@@ -66,13 +65,12 @@ public class StrokeInputService
     switch (valueText) {
       
       case "BACKSPACE":
-        final CharSequence selectedText = inputConnection.getSelectedText(0);
-        if (TextUtils.isEmpty(selectedText)) {
-          inputConnection.deleteSurroundingTextInCodePoints(1, 0);
-        }
-        else {
-          inputConnection.commitText(EMPTY_STRING, 1);
-        }
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
+        );
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+        );
         break;
       
       case "SHIFT":

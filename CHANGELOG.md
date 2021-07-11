@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Fixed backspace not working in Termux
 - Implemented qwerty keyboard (swipe space bar to switch)
 - Implemented horizontal swiping of a key
 
