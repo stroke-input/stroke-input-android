@@ -216,6 +216,14 @@ public class InputContainer
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
+      final String keyDisplayText;
+      if (getShiftMode() == SHIFT_DISABLED || !key.isShiftable) {
+        keyDisplayText = key.displayText;
+      }
+      else {
+        keyDisplayText = key.displayTextShifted;
+      }
+      
       final float keyTextX = (
         key.width / 2f
           + key.keyTextOffsetX
@@ -230,7 +238,7 @@ public class InputContainer
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
-        key.displayText,
+        keyDisplayText,
         keyTextX,
         keyTextY,
         keyTextPaint
