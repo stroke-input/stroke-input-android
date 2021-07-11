@@ -52,7 +52,7 @@ public class InputContainer
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  // Container meta-properties
+  // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
