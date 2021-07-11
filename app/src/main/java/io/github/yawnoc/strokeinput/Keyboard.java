@@ -214,8 +214,8 @@ public class Keyboard {
     
     // Key behaviour
     public String valueText;
-    public String displayText; // overrides valueText
-    public String valueTextShifted; // overrides displayText when shifted
+    public String displayText; // overrides valueText drawn
+    public String valueTextShifted; // overrides displayText drawn when shifted
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
     public boolean isSwipeable;
