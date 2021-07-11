@@ -215,7 +215,7 @@ public class Keyboard {
     // Key behaviour
     public String valueText;
     public String displayText; // overrides valueText
-    public String displayTextShifted; // overrides displayText when shifted
+    public String valueTextShifted; // overrides displayText when shifted
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
     public boolean isSwipeable;
@@ -274,10 +274,10 @@ public class Keyboard {
       if (displayText == null) {
         displayText = valueText;
       }
-      displayTextShifted =
-        attributesArray.getString(R.styleable.Keyboard_displayTextShifted);
-      if (displayTextShifted == null) {
-        displayTextShifted = displayText.toUpperCase();
+      valueTextShifted =
+        attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
+      if (valueTextShifted == null) {
+        valueTextShifted = displayText.toUpperCase();
       }
       
       isLongPressable =

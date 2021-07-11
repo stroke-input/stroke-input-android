@@ -226,7 +226,7 @@ public class InputContainer
         keyDisplayText = key.displayText;
       }
       else {
-        keyDisplayText = key.displayTextShifted;
+        keyDisplayText = key.valueTextShifted;
       }
       
       final float keyTextX = (

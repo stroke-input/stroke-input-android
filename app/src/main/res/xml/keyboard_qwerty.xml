@@ -58,7 +58,7 @@
     <Key
       app:valueText="SHIFT"
       app:displayText="⇧"
-      app:displayTextShifted="⬆"
+      app:valueTextShifted="⬆"
       app:keyWidth="@dimen/key_width_qwerty_shift"
     />
     <!-- Letters row 3 -->

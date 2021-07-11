@@ -3,7 +3,7 @@
   <declare-styleable name="Keyboard">
     <attr name="valueText" format="string" />
     <attr name="displayText" format="string" />
-    <attr name="displayTextShifted" format="string" />
+    <attr name="valueTextShifted" format="string" />
     <attr name="isLongPressable" format="boolean" />
     <attr name="isRepeatable" format="boolean" />
     <attr name="isSwipeable" format="boolean" />
