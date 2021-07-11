@@ -25,9 +25,6 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
-  private AlertDialog.Builder htmlAlertDialogBuilder;
-  private WebView htmlWebView;
-  
   public static final String SOURCE_CODE_URL =
     "https://github.com/stroke-input/stroke-input-android";
   public static final String ABOUT_URI =
@@ -57,9 +54,10 @@ public class MainActivity
       startActivity(sourceCodeIntent);
     }
     else if (viewId == R.id.about_button) {
-      htmlWebView = new WebView(this);
+      final WebView htmlWebView = new WebView(this);
       htmlWebView.loadUrl(ABOUT_URI);
-      htmlAlertDialogBuilder = new AlertDialog.Builder(this);
+      final AlertDialog.Builder htmlAlertDialogBuilder =
+        new AlertDialog.Builder(this);
       htmlAlertDialogBuilder
         .setView(htmlWebView)
         .setPositiveButton(R.string.activity_main_return_label, null)
