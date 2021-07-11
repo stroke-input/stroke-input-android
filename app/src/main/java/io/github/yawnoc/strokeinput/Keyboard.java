@@ -48,6 +48,7 @@ public class Keyboard {
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Key properties
+  private boolean keysAreShiftable;
   private int keyWidth;
   private int keyHeight;
   private int keyFillColour;
@@ -99,6 +100,7 @@ public class Keyboard {
   public static class Row {
     
     // Key properties
+    private final boolean keysAreShiftable;
     private final int keyWidth;
     private final int keyHeight;
     private final int keyFillColour;
@@ -134,6 +136,12 @@ public class Keyboard {
           R.styleable.Keyboard_offsetX,
           parentKeyboard.screenWidth,
           DEFAULT_OFFSET_X
+        );
+      
+      keysAreShiftable =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isShiftable,
+          false
         );
       
       keyWidth =
@@ -207,9 +215,11 @@ public class Keyboard {
     // Key behaviour
     public String valueText;
     public String displayText; // overrides valueText
+    public String displayTextShifted; // overrides displayText when shifted
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
     public boolean isSwipeable;
+    public boolean isShiftable;
     
     // Key styles
     public int keyFillColour;
@@ -264,6 +274,11 @@ public class Keyboard {
       if (displayText == null) {
         displayText = valueText;
       }
+      displayTextShifted =
+        attributesArray.getString(R.styleable.Keyboard_displayTextShifted);
+      if (displayTextShifted == null) {
+        displayTextShifted = displayText.toUpperCase();
+      }
       
       isLongPressable =
         attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
@@ -271,6 +286,11 @@ public class Keyboard {
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
       isSwipeable =
         attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
+      isShiftable =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isShiftable,
+          parentRow.keysAreShiftable
+        );
       
       keyFillColour =
         attributesArray.getColor(
@@ -444,6 +464,9 @@ public class Keyboard {
         screenHeight,
         defaultKeyHeightPx
       );
+    
+    keysAreShiftable =
+      attributesArray.getBoolean(R.styleable.Keyboard_isShiftable, false);
     
     keyFillColour =
       attributesArray.getColor(
