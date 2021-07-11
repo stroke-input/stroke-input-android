@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -30,12 +31,16 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
+  public static final String SOURCE_CODE_URL =
+    "https://github.com/stroke-input/stroke-input-android";
+  
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
+    findViewById(R.id.source_code_button).setOnClickListener(this);
     findViewById(R.id.input_settings_button).setOnClickListener(this);
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
     
@@ -46,7 +51,12 @@ public class MainActivity
     
     final int viewId = view.getId();
     
-    if (viewId == R.id.input_settings_button) {
+    if (viewId == R.id.source_code_button) {
+      final Intent sourceCodeIntent =
+        new Intent(Intent.ACTION_VIEW, Uri.parse(SOURCE_CODE_URL));
+      startActivity(sourceCodeIntent);
+    }
+    else if (viewId == R.id.input_settings_button) {
       final Intent inputSettingsIntent =
         new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
       startActivity(inputSettingsIntent);

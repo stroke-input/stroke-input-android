@@ -3,6 +3,9 @@
   <string name="activity_main_welcome">
     Welcome to Stroke Input Method!\n歡迎使用筆畫輸入法！
   </string>
+  <string name="activity_main_source_code_button_label">
+    Source code 源碼
+  </string>
   <string name="activity_main_input_settings_information">
     If you have installed Stroke Input Method for the first time,
     you must manually enable it in the system settings before it can be used:
