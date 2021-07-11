@@ -6,8 +6,12 @@
 */
 /*
   This file contains bytes copied from the deprecated `KeyboardView` class,
+  i.e. `core/java/android/inputmethodservice/KeyboardView.java`
+  from <https://android.googlesource.com/platform/frameworks/base>,
   which is licensed under the Apache License 2.0,
   see <https://www.apache.org/licenses/LICENSE-2.0.html>.
+  ---
+  Copyright (C) 2008--2009 Google Inc.
 */
 
 package io.github.yawnoc.strokeinput;
