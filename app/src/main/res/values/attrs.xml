@@ -3,9 +3,11 @@
   <declare-styleable name="Keyboard">
     <attr name="valueText" format="string" />
     <attr name="displayText" format="string" />
+    <attr name="valueTextShifted" format="string" />
     <attr name="isLongPressable" format="boolean" />
     <attr name="isRepeatable" format="boolean" />
     <attr name="isSwipeable" format="boolean" />
+    <attr name="isShiftable" format="boolean" />
     <attr name="keyFillColour" format="color" />
     <attr name="keyBorderColour" format="color" />
     <attr name="keyBorderThickness" format="dimension" />
@@ -16,6 +18,7 @@
     <attr name="keyTextOffsetY" format="dimension" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
+    <attr name="offsetX" format="dimension|fraction" />
     <attr name="fillColour" format="color" />
   </declare-styleable>
 </resources>

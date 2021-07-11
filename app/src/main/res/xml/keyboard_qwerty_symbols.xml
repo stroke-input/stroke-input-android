@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height_qwerty"
+  app:keyWidth="@dimen/key_width_digit"
+  app:keyTextSize="@dimen/key_text_font_size_qwerty"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row>
+    <!-- Digits row -->
+    <Key app:valueText="!" />
+    <Key app:valueText="\@" />
+    <Key app:valueText="#" />
+    <Key app:valueText="$" />
+    <Key app:valueText="%" />
+    <Key app:valueText="^" />
+    <Key app:valueText="&amp;" />
+    <Key app:valueText="*" />
+    <Key app:valueText="(" />
+    <Key app:valueText=")" />
+  </Row>
+  <Row>
+    <Key app:valueText="_" />
+    <Key app:valueText="-" />
+    <Key app:valueText="+" />
+    <Key app:valueText="=" />
+    <Key app:valueText="{" />
+    <Key app:valueText="}" />
+    <Key app:valueText="[" />
+    <Key app:valueText="]" />
+    <Key app:valueText="|" />
+    <Key app:valueText="\\" />
+  </Row>
+  <Row>
+    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
+    <Key app:valueText="~" />
+    <Key app:valueText="`" />
+    <Key app:valueText="−" /> <!-- U+2212 MINUS SIGN -->
+    <Key app:valueText="×" /> <!-- U+00D7 MULTIPLICATION SIGN -->
+    <Key app:valueText="÷" /> <!-- U+00F7 DIVISION SIGN -->
+    <Key app:valueText="°" /> <!-- U+00B0 DEGREE SIGN -->
+    <Key app:valueText=":" />
+    <Key app:valueText=";" />
+    <Key app:valueText="&quot;" />
+    <Key app:valueText="'" />
+  </Row>
+  <Row
+    app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
+  >
+    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
+    <Key app:valueText="¢" /> <!-- U+00A2 CENT SIGN -->
+    <Key app:valueText="¥"/> <!-- U+00A5 YEN SIGN -->
+    <Key app:valueText="€" /> <!-- U+20AC EURO SIGN -->
+    <Key app:valueText="£" /> <!-- U+00A3 POUND SIGN -->
+    <Key app:valueText="&lt;" />
+    <Key app:valueText="&gt;" />
+    <Key app:valueText="\?" />
+    <Key app:valueText="/" />
+    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <Key
+      app:valueText="BACKSPACE"
+      app:displayText="⌫"
+      app:isRepeatable="true"
+      app:keyTextSize="@dimen/key_text_font_size_qwerty_backspace"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_backspace"
+      app:keyWidth="@dimen/key_width_qwerty_shift"
+    />
+  </Row>
+  <Row
+    app:keyWidth="@dimen/key_width_strokes_stroke"
+  >
+    <!-- Switch to qwerty keyboard -->
+    <Key
+      app:valueText="SWITCH_TO_QWERTY"
+      app:displayText="ABC"
+      app:keyTextSize="@dimen/key_text_font_size_switch_key"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
+    />
+    <!-- Comma -->
+    <Key
+      app:valueText=","
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Space bar: U+25C0, U+25B6 (triangles) -->
+    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
+    <Key
+      app:valueText="SPACE"
+      app:displayText="◀ English ▶"
+      app:isLongPressable="true"
+      app:isSwipeable="true"
+      app:keyTextSize="@dimen/key_text_font_size_space_bar"
+      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width_space_bar"
+    />
+    <!-- Full stop -->
+    <Key
+      app:valueText="."
+      app:keyWidth="@dimen/key_width_digit"
+    />
+    <!-- Enter key: U+23CE RETURN SYMBOL -->
+    <Key
+      app:valueText="ENTER"
+      app:displayText="⏎"
+      app:keyTextSize="@dimen/key_text_font_size_enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+    />
+  </Row>
+</Keyboard>

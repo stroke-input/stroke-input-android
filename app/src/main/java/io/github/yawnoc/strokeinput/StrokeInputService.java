@@ -10,7 +10,6 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -29,7 +28,9 @@ public class StrokeInputService
   
   InputContainer inputContainer;
   Keyboard strokesKeyboard;
-  Keyboard symbolsKeyboard;
+  Keyboard strokesSymbolsKeyboard;
+  Keyboard qwertyKeyboard;
+  Keyboard qwertySymbolsKeyboard;
   
   @SuppressLint("InflateParams")
   @Override
@@ -40,7 +41,11 @@ public class StrokeInputService
         getLayoutInflater().inflate(R.layout.input_container, null);
     
     strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
-    symbolsKeyboard = new Keyboard(this, R.xml.keyboard_symbols);
+    strokesSymbolsKeyboard =
+      new Keyboard(this, R.xml.keyboard_strokes_symbols);
+    qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard =
+      new Keyboard(this, R.xml.keyboard_qwerty_symbols);
     
     inputContainer.setKeyboard(strokesKeyboard);
     inputContainer.setOnInputListener(this);
@@ -49,12 +54,14 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKey(final String valueText) {
+  public void onKey(final String valueText, final String valueTextShifted) {
   
     final InputConnection inputConnection = getCurrentInputConnection();
     if (inputConnection == null) {
       return;
     }
+    
+    final int shiftMode = inputContainer.getShiftMode();
     
     switch (valueText) {
       
@@ -68,12 +75,34 @@ public class StrokeInputService
         }
         break;
       
+      case "SHIFT":
+        switch (shiftMode) {
+          case InputContainer.SHIFT_DISABLED:
+            inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
+            break;
+          case InputContainer.SHIFT_SINGLE:
+            inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
+            break;
+          case InputContainer.SHIFT_PERSISTENT:
+            inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
+            break;
+        }
+        break;
+      
       case "SWITCH_TO_STROKES":
         inputContainer.setKeyboard(strokesKeyboard);
         break;
       
-      case "SWITCH_TO_SYMBOLS":
-        inputContainer.setKeyboard(symbolsKeyboard);
+      case "SWITCH_TO_STROKES_SYMBOLS":
+        inputContainer.setKeyboard(strokesSymbolsKeyboard);
+        break;
+      
+      case "SWITCH_TO_QWERTY":
+        inputContainer.setKeyboard(qwertyKeyboard);
+        break;
+      
+      case "SWITCH_TO_QWERTY_SYMBOLS":
+        inputContainer.setKeyboard(qwertySymbolsKeyboard);
         break;
       
       case "SPACE":
@@ -94,7 +123,17 @@ public class StrokeInputService
         break;
       
       default:
-        inputConnection.commitText(valueText, 1);
+        final String committedText;
+        if (shiftMode == InputContainer.SHIFT_DISABLED) {
+          committedText = valueText;
+        }
+        else {
+          committedText = valueTextShifted;
+        }
+        inputConnection.commitText(committedText, 1);
+        if (shiftMode == InputContainer.SHIFT_SINGLE) {
+          inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
+        }
     }
   }
   
@@ -110,7 +149,23 @@ public class StrokeInputService
   
   @Override
   public void onSwipe(final String valueText) {
-    Log.d("onSwipe test", "onSwipe(" + valueText + ")");
+    
+    if (valueText.equals("SPACE")) {
+      final Keyboard keyboard = inputContainer.getKeyboard();
+      if (keyboard == strokesKeyboard) {
+        inputContainer.setKeyboard(qwertyKeyboard);
+      }
+      else if (keyboard == strokesSymbolsKeyboard) {
+        inputContainer.setKeyboard(qwertySymbolsKeyboard);
+      }
+      else if (keyboard == qwertyKeyboard) {
+        inputContainer.setKeyboard(strokesKeyboard);
+      }
+      else if (keyboard == qwertySymbolsKeyboard) {
+        inputContainer.setKeyboard(strokesSymbolsKeyboard);
+      }
+    }
+    
   }
   
 }

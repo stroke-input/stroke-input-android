@@ -43,10 +43,12 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
+  private static final int DEFAULT_OFFSET_X = 0;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Key properties
+  private boolean keysAreShiftable;
   private int keyWidth;
   private int keyHeight;
   private int keyFillColour;
@@ -98,6 +100,7 @@ public class Keyboard {
   public static class Row {
     
     // Key properties
+    private final boolean keysAreShiftable;
     private final int keyWidth;
     private final int keyHeight;
     private final int keyFillColour;
@@ -111,6 +114,7 @@ public class Keyboard {
     
     // Row properties
     private final Keyboard parentKeyboard;
+    private final int offsetX;
     
     public Row(
       final Keyboard parentKeyboard,
@@ -124,6 +128,20 @@ public class Keyboard {
         resources.obtainAttributes(
           Xml.asAttributeSet(xmlResourceParser),
           R.styleable.Keyboard
+        );
+  
+      offsetX =
+        getDimensionOrFraction(
+          attributesArray,
+          R.styleable.Keyboard_offsetX,
+          parentKeyboard.screenWidth,
+          DEFAULT_OFFSET_X
+        );
+      
+      keysAreShiftable =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isShiftable,
+          parentKeyboard.keysAreShiftable
         );
       
       keyWidth =
@@ -196,10 +214,12 @@ public class Keyboard {
     
     // Key behaviour
     public String valueText;
-    public String displayText; // overrides valueText
+    public String displayText; // overrides valueText drawn
+    public String valueTextShifted; // overrides displayText drawn when shifted
     public boolean isLongPressable;
     public boolean isRepeatable; // overrides isLongPressable
     public boolean isSwipeable;
+    public boolean isShiftable;
     
     // Key styles
     public int keyFillColour;
@@ -261,6 +281,20 @@ public class Keyboard {
         attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
       isSwipeable =
         attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
+      isShiftable =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isShiftable,
+          parentRow.keysAreShiftable
+        );
+      
+      valueTextShifted =
+        attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
+      if (isShiftable && valueTextShifted == null) {
+        valueTextShifted = displayText.toUpperCase();
+      }
+      else if (valueTextShifted == null) {
+        valueTextShifted = displayText;
+      }
       
       keyFillColour =
         attributesArray.getColor(
@@ -374,8 +408,8 @@ public class Keyboard {
                 break;
               case "Row":
                 inRow = true;
-                x = 0;
                 row = new Row(this, resources, xmlResourceParser);
+                x = row.offsetX;
                 break;
               case "Key":
                 inKey = true;
@@ -434,6 +468,9 @@ public class Keyboard {
         screenHeight,
         defaultKeyHeightPx
       );
+    
+    keysAreShiftable =
+      attributesArray.getBoolean(R.styleable.Keyboard_isShiftable, false);
     
     keyFillColour =
       attributesArray.getColor(

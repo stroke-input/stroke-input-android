@@ -33,6 +33,8 @@ import androidx.core.graphics.ColorUtils;
     - Keyboard
   TODO:
     - Candidates
+    - Increase backspace speed for ASCII text
+    - Qwerty shift key functionality
 */
 public class InputContainer
   extends View
@@ -48,9 +50,13 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
+  public static final int SHIFT_DISABLED = 0;
+  public static final int SHIFT_SINGLE = 1;
+  public static final int SHIFT_PERSISTENT = 2;
+  
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  // Container meta-properties
+  // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
@@ -67,6 +73,9 @@ public class InputContainer
   // Horizontal swipes
   private int pointerDownX;
   private boolean swipeModeIsActivated = false;
+  
+  // Shift key
+  private int shiftMode;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -85,7 +94,10 @@ public class InputContainer
           if (currentlyPressedKey != null) {
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
-                inputListener.onKey(currentlyPressedKey.valueText);
+                inputListener.onKey(
+                  currentlyPressedKey.valueText,
+                  currentlyPressedKey.valueTextShifted
+                );
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   KEY_REPEAT_INTERVAL_MILLISECONDS
@@ -119,7 +131,7 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
-    void onKey(String valueText);
+    void onKey(String valueText, String valueTextShifted);
     void onLongPress(String valueText);
     void onSwipe(String valueText);
   }
@@ -128,10 +140,22 @@ public class InputContainer
     inputListener = listener;
   }
   
+  public Keyboard getKeyboard() {
+    return keyboard;
+  }
+  
   public void setKeyboard(final Keyboard keyboard) {
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     requestLayout();
+  }
+  
+  public int getShiftMode() {
+    return shiftMode;
+  }
+  
+  public void setShiftMode(final int state) {
+    shiftMode = state;
   }
   
   public void onClick(final View view) {
@@ -177,7 +201,12 @@ public class InputContainer
       keyRectangle.set(0, 0, key.width, key.height);
       
       int keyFillColour = key.keyFillColour;
-      if (key == currentlyPressedKey) {
+      if (
+        key == currentlyPressedKey
+          ||
+        key.valueText.equals("SHIFT") && getShiftMode() == SHIFT_PERSISTENT
+      )
+      {
         keyFillColour = getContrastingColour(keyFillColour);
       }
       
@@ -195,6 +224,14 @@ public class InputContainer
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.keyTextSize);
       
+      final String keyDisplayText;
+      if (getShiftMode() == SHIFT_DISABLED) {
+        keyDisplayText = key.displayText;
+      }
+      else {
+        keyDisplayText = key.valueTextShifted;
+      }
+      
       final float keyTextX = (
         key.width / 2f
           + key.keyTextOffsetX
@@ -209,7 +246,7 @@ public class InputContainer
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(
-        key.displayText,
+        keyDisplayText,
         keyTextX,
         keyTextY,
         keyTextPaint
@@ -382,6 +419,7 @@ public class InputContainer
       return true;
     }
     final String valueText = key.valueText;
+    final String valueTextShifted = key.valueTextShifted;
     
     final int eventAction = motionEvent.getAction();
     
@@ -425,7 +463,7 @@ public class InputContainer
           deactivateSwipeMode();
         }
         else {
-          inputListener.onKey(valueText);
+          inputListener.onKey(valueText, valueTextShifted);
         }
         break;
     }

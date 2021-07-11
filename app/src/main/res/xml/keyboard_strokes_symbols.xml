@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  app:keyHeight="@dimen/key_height"
+  app:keyHeight="@dimen/key_height_strokes"
   app:keyWidth="@dimen/key_width_digit"
-  app:keyTextSize="@dimen/key_text_font_size"
-  app:keyTextOffsetY="@dimen/key_text_baseline_correction"
+  app:keyTextSize="@dimen/key_text_font_size_strokes"
+  app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
   app:keyFillColour="@color/key_fill"
 >
   <Row
-    app:keyHeight="@dimen/key_height_digits"
-    app:keyTextSize="@dimen/key_text_font_size_digits"
-    app:keyTextOffsetY="@dimen/key_text_baseline_correction_digits"
+    app:keyHeight="@dimen/key_height_strokes_digit"
+    app:keyTextSize="@dimen/key_text_font_size_strokes_digit"
+    app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes_digit"
   >
     <!-- U+FF1A FULLWIDTH COLON -->
     <Key
-      app:keyWidth="@dimen/key_width_stroke"
+      app:keyWidth="@dimen/key_width_strokes_stroke"
       app:valueText="："
     />
     <!-- Corner brackets: U+300C to U+300F -->
@@ -32,17 +32,17 @@
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
     <Key
       app:valueText="？"
-      app:keyWidth="@dimen/key_width_stroke"
+      app:keyWidth="@dimen/key_width_strokes_stroke"
     />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
     <Key
       app:valueText="！"
-      app:keyWidth="@dimen/key_width_stroke"
+      app:keyWidth="@dimen/key_width_strokes_stroke"
     />
     <!-- U+301C WAVE DASH -->
     <Key
       app:valueText="〜"
-      app:keyWidth="@dimen/key_width_stroke"
+      app:keyWidth="@dimen/key_width_strokes_stroke"
     />
     <!-- Round brackets: U+FF08, U+FF09 -->
     <Key app:valueText="（" />
@@ -51,7 +51,7 @@
     <Key app:valueText="【" />
     <Key app:valueText="】" />
   </Row>
-  <Row app:keyWidth="@dimen/key_width_stroke">
+  <Row app:keyWidth="@dimen/key_width_strokes_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
     <Key app:valueText="、" />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
@@ -65,12 +65,12 @@
       app:valueText="BACKSPACE"
       app:displayText="⌫"
       app:isRepeatable="true"
-      app:keyTextSize="@dimen/key_text_font_size_backspace"
+      app:keyTextSize="@dimen/key_text_font_size_strokes_backspace"
     />
   </Row>
   <Row
-    app:keyHeight="@dimen/key_height_space_bar"
-    app:keyWidth="@dimen/key_width_stroke"
+    app:keyHeight="@dimen/key_height_strokes_space_bar"
+    app:keyWidth="@dimen/key_width_strokes_stroke"
   >
     <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
     <Key
@@ -85,11 +85,13 @@
       app:valueText="，"
       app:keyWidth="@dimen/key_width_digit"
     />
-    <!-- Space bar -->
+    <!-- Space bar: U+25C0, U+25B6 (triangles) -->
+    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SPACE"
-      app:displayText="中文筆畫"
+      app:displayText="◀ 中文筆畫 ▶"
       app:isLongPressable="true"
+      app:isSwipeable="true"
       app:keyTextSize="@dimen/key_text_font_size_space_bar"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
