@@ -292,7 +292,7 @@ public class Keyboard {
       if (isShiftable && valueTextShifted == null) {
         valueTextShifted = displayText.toUpperCase();
       }
-      else {
+      else if (valueTextShifted == null) {
         valueTextShifted = displayText;
       }
       
