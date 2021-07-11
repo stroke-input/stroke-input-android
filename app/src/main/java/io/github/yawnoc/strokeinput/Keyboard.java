@@ -141,7 +141,7 @@ public class Keyboard {
       keysAreShiftable =
         attributesArray.getBoolean(
           R.styleable.Keyboard_isShiftable,
-          false
+          parentKeyboard.keysAreShiftable
         );
       
       keyWidth =
