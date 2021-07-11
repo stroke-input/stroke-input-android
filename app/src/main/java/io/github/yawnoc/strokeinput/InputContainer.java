@@ -198,7 +198,12 @@ public class InputContainer
       keyRectangle.set(0, 0, key.width, key.height);
       
       int keyFillColour = key.keyFillColour;
-      if (key == currentlyPressedKey) {
+      if (
+        key == currentlyPressedKey
+          ||
+        key.valueText.equals("SHIFT") && getShiftMode() == SHIFT_PERSISTENT
+      )
+      {
         keyFillColour = getContrastingColour(keyFillColour);
       }
       
