@@ -27,7 +27,7 @@
 %%
 
 
-# Stroke Input Method (0.4.0) #
+# Stroke Input Method (v0.4.0) #
 
 ----
 __[Stroke Input Method (<span class="zh-Hant">筆畫輸入法</span>)][stroke]__
@@ -50,19 +50,19 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Build dependencies ##
 
-### [Android AppCompat Library] (1.3.0) ###
+### [Android AppCompat Library] (v1.3.0) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
-### [Android ConstraintLayout] (2.0.4) ###
+### [Android ConstraintLayout] (v2.0.4) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
-### [Material Components For Android] (1.4.0) ###
+### [Material Components For Android] (v1.4.0) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
@@ -71,7 +71,7 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Keyboard font ##
 
-### [Stroke Input Keyboard] (1.2.1) ###
+### [Stroke Input Keyboard] (v1.2.1) ###
 ----{.notice}
 ©~2021 Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
