@@ -12,11 +12,10 @@ that I am currently compiling in [stroke-input-data].
 
 This repository is licensed under GPL-3.0-only, see [LICENSE].
 
-The font used on the keyboard is modified
-from an Apache 2.0 version of Noto Sans CJK TC,
-see [stroke-input-font].
+For detailed copyright information, see [app/src/main/assets/about.html].
 
 
 [LICENSE]: LICENSE
 [stroke-input-data]: https://github.com/stroke-input/stroke-input-data
-[stroke-input-font]: https://github.com/stroke-input/stroke-input-font
+[app/src/main/assets/about.html]:
+  https://htmlpreview.github.io/?https://github.com/stroke-input/stroke-input-android/blob/master/app/src/main/assets/about.html
