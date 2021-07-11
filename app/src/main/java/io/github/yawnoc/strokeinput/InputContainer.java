@@ -43,7 +43,7 @@ public class InputContainer
   
   private static final int MESSAGE_KEY_REPEAT = 1;
   private static final int MESSAGE_LONG_PRESS = 2;
-  private static final int KEY_REPEAT_INTERVAL_MILLISECONDS = 100;
+  private static final int DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS = 100;
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
   private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
   
@@ -68,6 +68,7 @@ public class InputContainer
   
   // Long presses and key repeats
   private final Handler extendedPressHandler;
+  private int keyRepeatIntervalMilliseconds;
   
   // Horizontal swipes
   private int pointerDownX;
@@ -86,6 +87,7 @@ public class InputContainer
     
     super(context, attributes);
     
+    resetKeyRepeatIntervalMilliseconds();
     extendedPressHandler =
       new Handler(Looper.getMainLooper()) {
         @Override
@@ -99,7 +101,7 @@ public class InputContainer
                 );
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
-                  KEY_REPEAT_INTERVAL_MILLISECONDS
+                  keyRepeatIntervalMilliseconds
                 );
                 break;
               case MESSAGE_LONG_PRESS:
@@ -147,6 +149,10 @@ public class InputContainer
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     requestLayout();
+  }
+  
+  public void resetKeyRepeatIntervalMilliseconds() {
+    keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
   }
   
   public int getShiftMode() {
