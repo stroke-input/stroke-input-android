@@ -8,7 +8,7 @@
 - Fixed backspace not working in Termux
 - Increased backspace repeat speed for ASCII
 - Prevented keyboard from showing on main activity startup
-- Added source code link to main activity
+- Added Source code (link) and About to main activity
 - Improved main activity information text
 - Reduced main activity padding sizes
 
