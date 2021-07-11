@@ -7,11 +7,12 @@
   %css
     body {
       font-family: sans-serif;
+      font-size: 15px;
       overflow-wrap: break-word;
       padding: 0.5em;
     }
     h1 {
-      font-size: 1.7em;
+      font-size: 1.6em;
       margin-top: 0.3em;
     }
     h2 {
@@ -23,7 +24,7 @@
     }
     .notice {
       border: 1px solid black;
-      padding: 0.3em;
+      padding: 0.5em;
     }
 %%
 
