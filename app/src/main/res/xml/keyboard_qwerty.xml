@@ -20,7 +20,9 @@
     <Key app:valueText="9" />
     <Key app:valueText="0" />
   </Row>
-  <Row>
+  <Row
+    app:isShiftable="true"
+  >
     <!-- Letters row 1 -->
     <Key app:valueText="q" />
     <Key app:valueText="w" />
@@ -35,6 +37,7 @@
   </Row>
   <Row
     app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
+    app:isShiftable="true"
   >
     <!-- Letters row 2 -->
     <Key app:valueText="a" />
@@ -47,7 +50,9 @@
     <Key app:valueText="k" />
     <Key app:valueText="l" />
   </Row>
-  <Row>
+  <Row
+    app:isShiftable="true"
+  >
     <!-- Shift key: U+21E7 UPWARDS WHITE ARROW -->
     <!-- TODO: add up arrow glyph to stroke_input_keyboard.ttf -->
     <Key
@@ -68,6 +73,7 @@
       app:valueText="BACKSPACE"
       app:displayText="⌫"
       app:isRepeatable="true"
+      app:isShiftable="false"
       app:keyTextSize="@dimen/key_text_font_size_qwerty_backspace"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_backspace"
       app:keyWidth="@dimen/key_width_qwerty_shift"
