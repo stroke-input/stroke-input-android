@@ -129,6 +129,9 @@ public class StrokeInputService
           committedText = valueTextShifted;
         }
         inputConnection.commitText(committedText, 1);
+        if (inputContainer.getShiftMode() == InputContainer.SHIFT_SINGLE) {
+          inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
+        }
     }
   }
   
