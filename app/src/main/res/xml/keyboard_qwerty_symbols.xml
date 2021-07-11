@@ -73,7 +73,7 @@
     <!-- Switch to qwerty keyboard -->
     <Key
       app:valueText="SWITCH_TO_QWERTY"
-      app:displayText="abc"
+      app:displayText="ABC"
       app:keyTextSize="@dimen/key_text_font_size_switch_key"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
     />
