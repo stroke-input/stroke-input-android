@@ -94,7 +94,10 @@ public class InputContainer
           if (currentlyPressedKey != null) {
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
-                inputListener.onKey(currentlyPressedKey.valueText);
+                inputListener.onKey(
+                  currentlyPressedKey.valueText,
+                  currentlyPressedKey.valueTextShifted
+                );
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   KEY_REPEAT_INTERVAL_MILLISECONDS
@@ -128,7 +131,7 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
-    void onKey(String valueText);
+    void onKey(String valueText, String valueTextShifted);
     void onLongPress(String valueText);
     void onSwipe(String valueText);
   }
@@ -416,6 +419,7 @@ public class InputContainer
       return true;
     }
     final String valueText = key.valueText;
+    final String valueTextShifted = key.valueTextShifted;
     
     final int eventAction = motionEvent.getAction();
     
@@ -459,7 +463,7 @@ public class InputContainer
           deactivateSwipeMode();
         }
         else {
-          inputListener.onKey(valueText);
+          inputListener.onKey(valueText, valueTextShifted);
         }
         break;
     }

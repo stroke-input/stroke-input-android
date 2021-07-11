@@ -274,11 +274,6 @@ public class Keyboard {
       if (displayText == null) {
         displayText = valueText;
       }
-      valueTextShifted =
-        attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
-      if (valueTextShifted == null) {
-        valueTextShifted = displayText.toUpperCase();
-      }
       
       isLongPressable =
         attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
@@ -291,6 +286,15 @@ public class Keyboard {
           R.styleable.Keyboard_isShiftable,
           parentRow.keysAreShiftable
         );
+      
+      valueTextShifted =
+        attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
+      if (isShiftable && valueTextShifted == null) {
+        valueTextShifted = displayText.toUpperCase();
+      }
+      else {
+        valueTextShifted = displayText;
+      }
       
       keyFillColour =
         attributesArray.getColor(

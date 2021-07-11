@@ -54,7 +54,7 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKey(final String valueText) {
+  public void onKey(final String valueText, final String valueTextShifted) {
   
     final InputConnection inputConnection = getCurrentInputConnection();
     if (inputConnection == null) {
@@ -121,7 +121,14 @@ public class StrokeInputService
         break;
       
       default:
-        inputConnection.commitText(valueText, 1);
+        final String committedText;
+        if (inputContainer.getShiftMode() == InputContainer.SHIFT_DISABLED) {
+          committedText = valueText;
+        }
+        else {
+          committedText = valueTextShifted;
+        }
+        inputConnection.commitText(committedText, 1);
     }
   }
   
