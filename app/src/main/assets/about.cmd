@@ -29,6 +29,10 @@
 
 # Stroke Input Method (0.4.0) #
 
+----
+__[Stroke Input Method (<span class="zh-Hant">筆畫輸入法</span>)][stroke]__
+is free software with NO WARRANTY etc. etc.
+----
 ----{.notice}
 ©~2021~Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
@@ -64,6 +68,11 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
+
+<## This app ##>
+@@[stroke]
+  https://github.com/stroke-input/stroke-input-android
+@@
 
 <## Deprecated classes ##>
 @@[`Keyboard.java`]
