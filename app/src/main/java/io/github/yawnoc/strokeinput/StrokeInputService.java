@@ -61,6 +61,8 @@ public class StrokeInputService
       return;
     }
     
+    final int shiftMode = inputContainer.getShiftMode();
+    
     switch (valueText) {
       
       case "BACKSPACE":
@@ -74,7 +76,7 @@ public class StrokeInputService
         break;
       
       case "SHIFT":
-        switch (inputContainer.getShiftMode()) {
+        switch (shiftMode) {
           case InputContainer.SHIFT_DISABLED:
             inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
             break;
@@ -122,14 +124,14 @@ public class StrokeInputService
       
       default:
         final String committedText;
-        if (inputContainer.getShiftMode() == InputContainer.SHIFT_DISABLED) {
+        if (shiftMode == InputContainer.SHIFT_DISABLED) {
           committedText = valueText;
         }
         else {
           committedText = valueTextShifted;
         }
         inputConnection.commitText(committedText, 1);
-        if (inputContainer.getShiftMode() == InputContainer.SHIFT_SINGLE) {
+        if (shiftMode == InputContainer.SHIFT_SINGLE) {
           inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
         }
     }
