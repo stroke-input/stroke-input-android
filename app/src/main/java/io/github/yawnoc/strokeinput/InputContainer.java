@@ -42,7 +42,7 @@ public class InputContainer
   
   private static final int MESSAGE_KEY_REPEAT = 1;
   private static final int MESSAGE_LONG_PRESS = 2;
-  private static final int DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS = 100;
+  private static final int DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS = 75;
   private static final int KEY_REPEAT_START_MILLISECONDS = 500;
   private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
   
