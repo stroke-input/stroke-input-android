@@ -6,9 +6,9 @@
 - Implemented qwerty keyboard (swipe space bar to switch)
 - Implemented horizontal swiping of a key
 - Fixed backspace not working in Termux
+- Prevented keyboard from showing on main activity startup
 - Improved main activity information text
 - Reduced main activity padding sizes
-- Prevented keyboard from showing on main activity startup
 
 
 ## [v0.4.0] Symbols keyboard and fixes (2021-07-09)
