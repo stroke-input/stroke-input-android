@@ -11,7 +11,11 @@
   which is licensed under the Apache License 2.0,
   see <https://www.apache.org/licenses/LICENSE-2.0.html>.
   ---
-  Copyright (C) 2008--2009 Google Inc.
+  Take your pick from the following out-of-date notices:
+  In `core/java/android/inputmethodservice/KeyboardView.java`:
+    Copyright (C) 2008-2009 Google Inc.
+  In `NOTICE`:
+    Copyright 2005-2008 The Android Open Source Project
 */
 
 package io.github.yawnoc.strokeinput;
