@@ -38,7 +38,7 @@ is free software with NO WARRANTY etc. etc.
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----
-Contains bytes copied from the deprecated
+It contains bytes copied from the deprecated classes
 [`Keyboard.java`] and [`KeyboardView.java`],
 which are:
 ----
