@@ -69,12 +69,27 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
 
-<## This app ##>
+## Keyboard font ##
+
+### [Stroke Input Keyboard] (1.2.1) ###
+----{.notice}
+©~2021 Conway \+
+Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
+----
+----
+Modified from a [2015 version of Noto Sans CJK TC],
+which is:
+----
+----{.notice}
+©~2015 Google and others \+
+Licensed under Apache-2.0, see \Apache-2.0. \+
+----
+
+
 @@[stroke]
   https://github.com/stroke-input/stroke-input-android
 @@
 
-<## Deprecated classes ##>
 @@[`Keyboard.java`]
   https://android.googlesource.com/platform/frameworks/base/+/\
     33f921769531968a3ba9bc73fb2410f95868cb8d/\
@@ -86,7 +101,6 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
     core/java/android/inputmethodservice/KeyboardView.java
 @@
 
-<## Build dependencies ##>
 @@[Android AppCompat Library]
   https://mvnrepository.com/artifact/androidx.appcompat/appcompat
 @@
@@ -97,6 +111,13 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
-<## Licenses ##>
+@@[Stroke Input Keyboard]
+  https://github.com/stroke-input/stroke-input-font
+@@
+@@[2015 version of Noto Sans CJK TC]
+  https://github.com/googlefonts/noto-cjk/\
+    tree/2663656870e92c0dcbe891590681815ebb509c05
+@@
+
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
 {: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
