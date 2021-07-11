@@ -73,6 +73,20 @@ public class StrokeInputService
         }
         break;
       
+      case "SHIFT":
+        switch (inputContainer.getShiftMode()) {
+          case InputContainer.SHIFT_DISABLED:
+            inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
+            break;
+          case InputContainer.SHIFT_SINGLE:
+            inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
+            break;
+          case InputContainer.SHIFT_PERSISTENT:
+            inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
+            break;
+        }
+        break;
+      
       case "SWITCH_TO_STROKES":
         inputContainer.setKeyboard(strokesKeyboard);
         break;
