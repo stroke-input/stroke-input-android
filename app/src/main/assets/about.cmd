@@ -11,6 +11,11 @@
       overflow-wrap: break-word;
       padding: 0.5em;
     }
+    footer {
+      border-top: 2px solid black;
+      margin-top: 1.5em;
+      padding-top: 0.75em;
+    }
     h1 {
       font-size: 1.6em;
       margin-top: 0.3em;
@@ -88,6 +93,11 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
 
+<footer>
+  This page's [CMD] source: [`about.cmd`]
+</footer>
+
+
 @@[stroke]
   https://github.com/stroke-input/stroke-input-android
 @@
@@ -119,6 +129,15 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 @@[2015 version of Noto Sans CJK TC]
   https://github.com/googlefonts/noto-cjk/\
     tree/2663656870e92c0dcbe891590681815ebb509c05
+@@
+
+@@[CMD]
+  https://github.com/conway-markdown/conway-markdown
+@@
+@@[`about.cmd`]
+  https://github.com/stroke-input/stroke-input-android/\
+    blob/master/\
+    app/src/main/assets/about.cmd
 @@
 
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
