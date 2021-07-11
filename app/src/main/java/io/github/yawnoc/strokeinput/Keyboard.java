@@ -5,7 +5,7 @@
   see LICENSE or <https://www.gnu.org/licenses/>.
 */
 /*
-  This is a re-implementation of the deprecated `Keyboard` class,
+  This file contains bytes copied from the deprecated `Keyboard` class,
   which is licensed under the Apache License 2.0,
   see <https://www.apache.org/licenses/LICENSE-2.0.html>.
 */
