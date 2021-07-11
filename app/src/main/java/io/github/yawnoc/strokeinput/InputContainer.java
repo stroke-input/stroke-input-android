@@ -50,6 +50,10 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
+  public static final int SHIFT_DISABLED = 0;
+  public static final int SHIFT_SINGLE = 1;
+  public static final int SHIFT_PERSISTENT = 2;
+  
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // Container properties
@@ -69,6 +73,9 @@ public class InputContainer
   // Horizontal swipes
   private int pointerDownX;
   private boolean swipeModeIsActivated = false;
+  
+  // Shift key
+  private int shiftMode;
   
   // Keyboard drawing
   private final Rect keyRectangle;
@@ -138,6 +145,14 @@ public class InputContainer
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     requestLayout();
+  }
+  
+  public int getShiftMode() {
+    return shiftMode;
+  }
+  
+  public void setShiftMode(final int state) {
+    shiftMode = state;
   }
   
   public void onClick(final View view) {
