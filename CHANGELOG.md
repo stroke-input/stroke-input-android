@@ -7,6 +7,7 @@
 - Implemented horizontal swiping of a key
 - Fixed backspace not working in Termux
 - Improved main activity information text
+- Reduced main activity padding sizes
 - Prevented keyboard from showing on main activity startup
 
 

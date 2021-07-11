@@ -10,8 +10,8 @@
     <item name="android:layout_width">match_parent</item>
     <item name="cardBackgroundColor">@android:color/transparent</item>
     <item name="cardElevation">0dp</item>
-    <item name="contentPadding">18dp</item>
-    <item name="contentPaddingBottom">8dp</item>
+    <item name="contentPadding">14dp</item>
+    <item name="contentPaddingBottom">4dp</item>
   </style>
   <style name="MainActivityButtonContainer">
     <item name="android:layout_height">0dp</item>
