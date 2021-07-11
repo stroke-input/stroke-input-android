@@ -7,6 +7,7 @@
   %css
     body {
       font-family: sans-serif;
+      overflow-wrap: break-word;
       padding: 0.5em;
     }
     h1 {
