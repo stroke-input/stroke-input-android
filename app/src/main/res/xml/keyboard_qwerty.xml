@@ -7,7 +7,9 @@
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty"
   app:keyFillColour="@color/key_fill"
 >
-  <Row>
+  <Row
+    app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_digit"
+  >
     <!-- Digits -->
     <Key app:valueText="1" />
     <Key app:valueText="2" />

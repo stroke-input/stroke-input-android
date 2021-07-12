@@ -5,6 +5,7 @@
 
 - Updated keyboard font to [Stroke Input Keyboard v1.3.1]
   (adds glyphs for qwerty symbols etc.)
+- Reduced key label font sizes
 
 
 ## [v0.5.0] Implemented qwerty (2021-07-12)
