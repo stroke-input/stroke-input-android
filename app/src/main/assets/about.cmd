@@ -78,7 +78,7 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Keyboard font ##
 
-### [Stroke Input Keyboard] (v1.2.1) ###
+### [Stroke Input Keyboard] (v1.3.1) ###
 ----{.notice}
 ©~2021 Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
