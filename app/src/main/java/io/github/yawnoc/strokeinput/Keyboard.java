@@ -53,7 +53,7 @@ public class Keyboard {
   
   private static final int DEFAULT_OFFSET_X = 0;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
-  private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Key properties
   private boolean keysAreShiftable;

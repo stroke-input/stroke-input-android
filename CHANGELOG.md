@@ -7,6 +7,7 @@
   (adds glyphs for qwerty symbols etc.)
 - Reduced key label font sizes
 - Fixed InputContainer background not transparent
+- Fixed keyboard background bounds (fill only the keyboard, not the whole view)
 
 
 ## [v0.5.0] Implemented qwerty (2021-07-12)

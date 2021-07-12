@@ -86,6 +86,8 @@ public class InputContainer
   private int shiftMode;
   
   // Keyboard drawing
+  private final Rect keyboardRectangle;
+  private final Paint keyboardFillPaint;
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;
@@ -123,6 +125,9 @@ public class InputContainer
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
+    keyboardRectangle = new Rect();
+    keyboardFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    
     keyRectangle = new Rect();
     
     keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -158,6 +163,7 @@ public class InputContainer
   public void setKeyboard(final Keyboard keyboard) {
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
+    keyboardFillPaint.setColor(keyboard.fillColour);
     requestLayout();
   }
   
@@ -200,6 +206,13 @@ public class InputContainer
       keyboardHeight = keyboard.getHeight();
     }
     
+    keyboardRectangle.set(
+      0,
+      Keyboard.KEYBOARD_GUTTER_HEIGHT_PX,
+      keyboardWidth,
+      Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
+    );
+    
     setMeasuredDimension(
       keyboardWidth + paddingHorizontal,
       keyboardHeight + paddingVertical
@@ -213,7 +226,7 @@ public class InputContainer
       return;
     }
     
-    canvas.drawColor(keyboard.fillColour);
+    canvas.drawRect(keyboardRectangle, keyboardFillPaint);
     
     for (final Keyboard.Key key : keyArray) {
       
