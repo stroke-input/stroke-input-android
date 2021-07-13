@@ -8,7 +8,7 @@
   <color name="umbrella_grey">#FFCECECE</color>
   <color name="very_dark_grey">#FF222222</color>
   <!-- Keyboard -->
-  <color name="stroke_key_text">#FFFFFF00</color>
+  <color name="stroke_key_text">@color/umbrella_yellow</color>
   <color name="space_bar_text">#FFA3A3A3</color>
   <color name="key_fill">#FF181818</color>
   <color name="enter_key_fill">#FF00CE00</color>

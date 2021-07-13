@@ -6,6 +6,7 @@
 - Implemented dark theme for main activity and About
 - Made About show full screen on mobile
 - Made About have `max-width` on desktop
+- Made stroke keys text colour match theme (umbrella yellow)
 
 
 ## [v0.5.1] Visual improvements (2021-07-13)
