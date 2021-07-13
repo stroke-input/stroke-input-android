@@ -11,6 +11,9 @@
     <item name="colorSecondary">@color/umbrella_orange</item>
     <item name="colorSecondaryVariant">@color/orange</item>
     <item name="colorOnSecondary">@color/black</item>
+    <!-- Entirety -->
+    <item name="android:textColor">@color/white</item>
+    <item name="android:windowBackground">@color/very_dark_grey</item>
     <!-- Components -->
     <item name="toolbarStyle">@style/StrokeInputToolbar</item>
   </style>
