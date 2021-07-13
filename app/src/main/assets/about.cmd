@@ -5,14 +5,21 @@
 %%
   %title About
   %css
+    {: @color/umbrella_orange : #FFCE73 :}
+    {: @color/key_fill : #181818 :}
     body {
+      background: @color/key_fill;
+      color: white;
       font-family: sans-serif;
       font-size: 15px;
       overflow-wrap: break-word;
       padding: 0.5em;
     }
+    a {
+      color: @color/umbrella_orange;
+    }
     footer {
-      border-top: 2px solid black;
+      border-top: 2px solid white;
       margin-top: 1.5em;
       padding-top: 0.75em;
     }
@@ -28,11 +35,12 @@
       font-size: 1.1em;
     }
     html {
+      background: grey;
       margin: 0 auto;
       max-width: 44em;
     }
     .notice {
-      border: 1px solid black;
+      border: 1px solid white;
       padding: 0.5em;
     }
 %%

@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-- Made app main activity theme dark
+- Implemented dark theme for main activity and About
 - Made `about.html` show full screen
 - Set `max-width` for `about.html`
 
