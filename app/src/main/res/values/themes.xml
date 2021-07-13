@@ -3,11 +3,11 @@
     name="Theme.StrokeInput"
     parent="Theme.MaterialComponents.Light.DarkActionBar"
   >
-    <!-- Primary brand -->
+    <!-- Primary -->
     <item name="colorPrimary">@color/umbrella_yellow</item>
     <item name="colorPrimaryVariant">@color/yellow</item>
     <item name="colorOnPrimary">@color/black</item>
-    <!-- Secondary brand -->
+    <!-- Secondary -->
     <item name="colorSecondary">@color/umbrella_orange</item>
     <item name="colorSecondaryVariant">@color/orange</item>
     <item name="colorOnSecondary">@color/black</item>
