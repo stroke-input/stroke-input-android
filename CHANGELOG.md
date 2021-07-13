@@ -4,8 +4,8 @@
 ## [Unreleased]
 
 - Implemented dark theme for main activity and About
-- Made `about.html` show full screen
-- Set `max-width` for `about.html`
+- Made About show full screen on mobile
+- Made About have `max-width` on desktop
 
 
 ## [v0.5.1] Visual improvements (2021-07-13)
