@@ -20,6 +20,9 @@
     <item name="android:orientation">horizontal</item>
     <item name="android:gravity">center</item>
   </style>
+  <style name="StrokeInputText" parent="android:Widget.EditText">
+    <item name="android:textColor">@color/white</item>
+  </style>
   <style name="StrokeInputToolbar">
     <item name="titleTextColor">?attr/colorOnPrimary</item>
   </style>

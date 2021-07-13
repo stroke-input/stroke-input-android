@@ -16,6 +16,7 @@
     <item name="android:textColorHint">@color/umbrella_grey</item>
     <item name="android:windowBackground">@color/very_dark_grey</item>
     <!-- Components -->
+    <item name="editTextStyle">@style/StrokeInputText</item>
     <item name="toolbarStyle">@style/StrokeInputToolbar</item>
   </style>
 </resources>
