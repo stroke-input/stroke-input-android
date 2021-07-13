@@ -8,6 +8,7 @@
   <color name="yellow">#FFFFFF00</color>
   <color name="umbrella_orange">#FFFFCE73</color>
   <color name="orange">#FFFFA500</color>
+  <color name="umbrella_grey">#FFCECECE</color>
   <color name="very_dark_grey">#FF222222</color>
   <!-- Keyboard -->
   <color name="stroke_key_text">#FFFFFF00</color>

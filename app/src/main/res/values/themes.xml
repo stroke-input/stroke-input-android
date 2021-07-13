@@ -13,6 +13,7 @@
     <item name="colorOnSecondary">@color/black</item>
     <!-- Entirety -->
     <item name="android:textColor">@color/white</item>
+    <item name="android:textColorHint">@color/umbrella_grey</item>
     <item name="android:windowBackground">@color/very_dark_grey</item>
     <!-- Components -->
     <item name="toolbarStyle">@style/StrokeInputToolbar</item>
