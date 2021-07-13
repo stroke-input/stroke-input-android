@@ -192,11 +192,9 @@ public class InputContainer
     final int heightMeasureSpec
   )
   {
-    final int paddingHorizontal = getPaddingLeft() + getPaddingRight();
-    final int paddingVertical = getPaddingTop() + getPaddingBottom();
-    
     final int keyboardWidth;
     final int keyboardHeight;
+    
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
@@ -213,10 +211,7 @@ public class InputContainer
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
     );
     
-    setMeasuredDimension(
-      keyboardWidth + paddingHorizontal,
-      keyboardHeight + paddingVertical
-    );
+    setMeasuredDimension(keyboardWidth, keyboardHeight);
   }
   
   @Override
@@ -436,8 +431,8 @@ public class InputContainer
   
   private boolean onSinglePointerTouchEvent(final MotionEvent motionEvent) {
     
-    final int eventX = (int) motionEvent.getX() - getPaddingLeft();
-    final int eventY = (int) motionEvent.getY() - getPaddingTop();
+    final int eventX = (int) motionEvent.getX();
+    final int eventY = (int) motionEvent.getY();
     
     final Keyboard.Key key;
     if (swipeModeIsActivated) {
