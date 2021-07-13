@@ -3,6 +3,10 @@
     name="Theme.StrokeInput"
     parent="Theme.MaterialComponents.Light.DarkActionBar"
   >
+    <!-- Base -->
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textColorHint">@color/umbrella_grey</item>
+    <item name="android:windowBackground">@color/very_dark_grey</item>
     <!-- Primary -->
     <item name="colorPrimary">@color/umbrella_yellow</item>
     <item name="colorPrimaryVariant">@color/yellow</item>
@@ -11,10 +15,6 @@
     <item name="colorSecondary">@color/umbrella_orange</item>
     <item name="colorSecondaryVariant">@color/orange</item>
     <item name="colorOnSecondary">@color/black</item>
-    <!-- Entirety -->
-    <item name="android:textColor">@color/white</item>
-    <item name="android:textColorHint">@color/umbrella_grey</item>
-    <item name="android:windowBackground">@color/very_dark_grey</item>
     <!-- Components -->
     <item name="editTextStyle">@style/StrokeInputText</item>
     <item name="toolbarStyle">@style/StrokeInputToolbar</item>
