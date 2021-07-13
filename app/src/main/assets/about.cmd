@@ -12,8 +12,9 @@
       color: white;
       font-family: sans-serif;
       font-size: 15px;
+      margin: 0;
       overflow-wrap: break-word;
-      padding: 0.5em;
+      padding: 1em;
     }
     a {
       color: @color/umbrella_orange;
