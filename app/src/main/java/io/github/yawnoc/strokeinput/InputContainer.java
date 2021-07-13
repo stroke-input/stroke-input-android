@@ -179,8 +179,8 @@ public class InputContainer
     return shiftMode;
   }
   
-  public void setShiftMode(final int state) {
-    shiftMode = state;
+  public void setShiftMode(final int mode) {
+    shiftMode = mode;
   }
   
   public void onClick(final View view) {
