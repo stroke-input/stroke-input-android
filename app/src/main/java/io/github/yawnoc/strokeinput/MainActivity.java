@@ -57,7 +57,7 @@ public class MainActivity
       final WebView htmlWebView = new WebView(this);
       htmlWebView.loadUrl(ABOUT_URI);
       final AlertDialog.Builder htmlAlertDialogBuilder =
-        new AlertDialog.Builder(this);
+        new AlertDialog.Builder(this, R.style.StrokeInputAlert);
       htmlAlertDialogBuilder
         .setView(htmlWebView)
         .setPositiveButton(R.string.activity_main_return_label, null)

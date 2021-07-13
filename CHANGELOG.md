@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Made app main activity theme dark
+- Made `about.html` show full screen
 
 
 ## [v0.5.1] Visual improvements (2021-07-13)
