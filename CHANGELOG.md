@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.5.1] Visual improvements (2021-07-13)
+
 - Updated keyboard font to [Stroke Input Keyboard v1.3.1]
   (adds glyphs for qwerty symbols etc.)
 - Reduced key label font sizes
@@ -75,7 +78,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.5.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.5.1...HEAD
+[v0.5.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.5.0...v0.5.1
 [v0.5.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.4.0...v0.5.0
 [v0.4.0]:
