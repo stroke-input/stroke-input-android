@@ -23,7 +23,7 @@
   <style name="StrokeInputText" parent="android:Widget.EditText">
     <item name="android:textColor">?android:textColor</item>
   </style>
-  <style name="StrokeInputToolbar">
+  <style name="StrokeInputToolbar" parent="Widget.MaterialComponents.Toolbar">
     <item name="titleTextColor">?attr/colorOnPrimary</item>
   </style>
 </resources>
