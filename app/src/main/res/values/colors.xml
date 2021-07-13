@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!-- Ought to be built-in -->
-  <color name="black">#FF000000</color>
-  <color name="white">#FFFFFFFF</color>
   <!-- Theme -->
   <color name="umbrella_yellow">#FFFFFF80</color>
   <color name="yellow">#FFFFFF00</color>
