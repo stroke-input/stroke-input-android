@@ -76,7 +76,7 @@ Implemented everything that a normal (non-stroke-input) keyboard should do.
 
 ## [v0.1.0] Implemented drawing (2021-06-27)
 
-This milestone marks the successful re-implmentation
+This milestone marks the successful re-implementation
 of the drawing part of AOSP's `Keyboard.java` and `KeyboardView.java`.
 Note that the keyboard is literally a bunch of drawn rectangles;
 the actual functionality has not been implemented yet.
