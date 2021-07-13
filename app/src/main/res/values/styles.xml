@@ -20,4 +20,7 @@
     <item name="android:orientation">horizontal</item>
     <item name="android:gravity">center</item>
   </style>
+  <style name="StrokeInputToolbar">
+    <item name="titleTextColor">?attr/colorOnPrimary</item>
+  </style>
 </resources>

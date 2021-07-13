@@ -11,5 +11,7 @@
     <item name="colorSecondary">@color/umbrella_orange</item>
     <item name="colorSecondaryVariant">@color/orange</item>
     <item name="colorOnSecondary">@color/black</item>
+    <!-- Components -->
+    <item name="toolbarStyle">@style/StrokeInputToolbar</item>
   </style>
 </resources>
