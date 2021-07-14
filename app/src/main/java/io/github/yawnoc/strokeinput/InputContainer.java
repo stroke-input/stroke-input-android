@@ -335,7 +335,15 @@ public class InputContainer
     final boolean eventHandled;
     
     if (eventKey != null && eventKey.valueText.equals("SHIFT")) {
-      eventHandled = true; // TODO
+      eventHandled =
+        handleTouchLogicShiftKey(
+          eventTime,
+          eventAction,
+          eventPointerId,
+          eventPointerX,
+          eventPointerY,
+          eventMetaState
+        );
     }
     else {
       eventHandled =
@@ -348,6 +356,20 @@ public class InputContainer
           eventMetaState
         );
     }
+    
+    return eventHandled;
+  }
+  
+  private boolean handleTouchLogicShiftKey(
+    final long eventTime,
+    final int eventAction,
+    final int eventPointerId,
+    final int eventPointerX,
+    final int eventPointerY,
+    final int eventMetaState
+  )
+  {
+    boolean eventHandled = true;
     
     return eventHandled;
   }
