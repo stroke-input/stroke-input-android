@@ -188,7 +188,6 @@ public class InputContainer
   
   public void setShiftMode(final int mode) {
     shiftMode = mode;
-    invalidate();
   }
   
   public void onClick(final View view) {
@@ -240,6 +239,8 @@ public class InputContainer
         key == currentlyPressedKey
           ||
         key.valueText.equals("SHIFT") && (
+          shiftPointerId != NONEXISTENT_POINTER_ID
+            ||
           getShiftMode() == SHIFT_PERSISTENT
             ||
           getShiftMode() == SHIFT_INITIATED
@@ -406,6 +407,8 @@ public class InputContainer
         shiftPointerId = NONEXISTENT_POINTER_ID;
         break;
     }
+    
+    invalidate();
     
     return true;
   }
