@@ -83,6 +83,9 @@ public class InputContainer
   private boolean swipeModeIsActivated = false;
   
   // Shift key
+  private int shiftPointerId = NONEXISTENT_POINTER_ID;
+  private int shiftPointerX;
+  private int shiftPointerY;
   private int shiftMode;
   
   // Keyboard drawing
@@ -334,7 +337,12 @@ public class InputContainer
     final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
     final boolean eventHandled;
     
-    if (eventKey != null && eventKey.valueText.equals("SHIFT")) {
+    if (
+      eventPointerId == shiftPointerId
+        ||
+      eventKey != null && eventKey.valueText.equals("SHIFT")
+    )
+    {
       eventHandled =
         handleTouchLogicShiftKey(
           eventTime,
@@ -370,6 +378,41 @@ public class InputContainer
   )
   {
     boolean eventHandled = true;
+    
+    switch (eventAction) {
+      
+      case MotionEvent.ACTION_DOWN:
+      case MotionEvent.ACTION_POINTER_DOWN:
+        // Send a down event for the event pointer
+        eventHandled =
+          sendSinglePointerMotionEvent(
+            eventTime,
+            MotionEvent.ACTION_DOWN,
+            eventPointerX,
+            eventPointerY,
+            eventMetaState
+          );
+        // Update the shift pointer
+        shiftPointerId = eventPointerId;
+        shiftPointerX = eventPointerX;
+        shiftPointerY = eventPointerY;
+        break;
+      
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_POINTER_UP:
+        // Send an up event for the shift pointer
+        eventHandled =
+          sendSinglePointerMotionEvent(
+            eventTime,
+            MotionEvent.ACTION_UP,
+            shiftPointerX,
+            shiftPointerY,
+            eventMetaState
+          );
+        // Unset the shift pointer
+        shiftPointerId = NONEXISTENT_POINTER_ID;
+        break;
+    }
     
     return eventHandled;
   }
