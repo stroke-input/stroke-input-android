@@ -60,6 +60,8 @@ public class InputContainer
   public static final int SHIFT_DISABLED = 0;
   public static final int SHIFT_SINGLE = 1;
   public static final int SHIFT_PERSISTENT = 2;
+  public static final int SHIFT_INITIATED = 3;
+  public static final int SHIFT_PRESSED = 4;
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -152,6 +154,8 @@ public class InputContainer
   public interface OnInputListener {
     void onKey(String valueText, String valueTextShifted);
     void onLongPress(String valueText);
+    void onShiftDown();
+    void onShiftUp();
     void onSwipe(String valueText);
   }
   
@@ -377,21 +381,11 @@ public class InputContainer
     final int eventMetaState
   )
   {
-    boolean eventHandled = true;
-    
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
-        // Send a down event for the event pointer
-        eventHandled =
-          sendSinglePointerMotionEvent(
-            eventTime,
-            MotionEvent.ACTION_DOWN,
-            eventPointerX,
-            eventPointerY,
-            eventMetaState
-          );
+        inputListener.onShiftDown();
         // Update the shift pointer
         shiftPointerId = eventPointerId;
         shiftPointerX = eventPointerX;
@@ -400,21 +394,13 @@ public class InputContainer
       
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_POINTER_UP:
-        // Send an up event for the shift pointer
-        eventHandled =
-          sendSinglePointerMotionEvent(
-            eventTime,
-            MotionEvent.ACTION_UP,
-            shiftPointerX,
-            shiftPointerY,
-            eventMetaState
-          );
+        inputListener.onShiftUp();
         // Unset the shift pointer
         shiftPointerId = NONEXISTENT_POINTER_ID;
         break;
     }
     
-    return eventHandled;
+    return true;
   }
   
   private boolean handleTouchLogicNotShiftKey(
@@ -438,14 +424,19 @@ public class InputContainer
           activePointerId != NONEXISTENT_POINTER_ID
         )
         {
-          // Send an up event for the active pointer
-          sendSinglePointerMotionEvent(
-            eventTime,
-            MotionEvent.ACTION_UP,
-            activePointerX,
-            activePointerY,
-            eventMetaState
-          );
+          if (activePointerId == shiftPointerId) {
+            setShiftMode(SHIFT_PRESSED);
+          }
+          else {
+            // Send an up event for the active pointer
+            sendSinglePointerMotionEvent(
+              eventTime,
+              MotionEvent.ACTION_UP,
+              activePointerX,
+              activePointerY,
+              eventMetaState
+            );
+          }
         }
         // Send a down event for the event pointer
         eventHandled =

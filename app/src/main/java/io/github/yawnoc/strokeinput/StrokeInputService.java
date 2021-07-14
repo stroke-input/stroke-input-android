@@ -86,20 +86,6 @@ public class StrokeInputService
         );
         break;
       
-      case "SHIFT":
-        switch (shiftMode) {
-          case InputContainer.SHIFT_DISABLED:
-            inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
-            break;
-          case InputContainer.SHIFT_SINGLE:
-            inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
-            break;
-          case InputContainer.SHIFT_PERSISTENT:
-            inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
-            break;
-        }
-        break;
-      
       case "SWITCH_TO_STROKES":
         inputContainer.setKeyboard(strokesKeyboard);
         break;
@@ -155,6 +141,36 @@ public class StrokeInputService
       final InputMethodManager inputMethodManager =
         (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
       inputMethodManager.showInputMethodPicker();
+    }
+  }
+  
+  @Override
+  public void onShiftDown() {
+    
+    final int shiftMode = inputContainer.getShiftMode();
+    if (shiftMode == InputContainer.SHIFT_DISABLED) {
+      inputContainer.setShiftMode(InputContainer.SHIFT_INITIATED);
+    }
+  }
+  
+  @Override
+  public void onShiftUp() {
+    
+    final int shiftMode = inputContainer.getShiftMode();
+    switch (shiftMode) {
+      
+      case InputContainer.SHIFT_SINGLE:
+        inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
+        break;
+      
+      case InputContainer.SHIFT_INITIATED:
+        inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
+        break;
+      
+      case InputContainer.SHIFT_PERSISTENT:
+      case InputContainer.SHIFT_PRESSED:
+        inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
+        break;
     }
   }
   
