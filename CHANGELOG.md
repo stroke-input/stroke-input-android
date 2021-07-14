@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Reimplemented shift key logic to allow for "held" mode
+
 
 ## [v0.5.2] Dark theme (2021-07-14)
 
