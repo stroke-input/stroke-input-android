@@ -331,6 +331,28 @@ public class InputContainer
     final int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
     final int eventMetaState = motionEvent.getMetaState();
     
+    boolean eventHandled =
+      handleTouchLogicNotShiftKey(
+        eventTime,
+        eventAction,
+        eventPointerId,
+        eventPointerX,
+        eventPointerY,
+        eventMetaState
+      );
+    
+    return eventHandled;
+  }
+  
+  private boolean handleTouchLogicNotShiftKey(
+    final long eventTime,
+    final int eventAction,
+    final int eventPointerId,
+    final int eventPointerX,
+    final int eventPointerY,
+    final int eventMetaState
+  )
+  {
     boolean eventHandled = true;
     
     switch (eventAction) {
