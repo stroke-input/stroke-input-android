@@ -426,24 +426,26 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
         if (
+          shiftPointerId != NONEXISTENT_POINTER_ID
+            &&
+          getShiftMode() == SHIFT_INITIATED
+        ) {
+          setShiftMode(SHIFT_PRESSED);
+        }
+        else if (
           eventPointerId != activePointerId
             &&
           activePointerId != NONEXISTENT_POINTER_ID
         )
         {
-          if (activePointerId == shiftPointerId) {
-            setShiftMode(SHIFT_PRESSED);
-          }
-          else {
-            // Send an up event for the active pointer
-            sendSinglePointerMotionEvent(
-              eventTime,
-              MotionEvent.ACTION_UP,
-              activePointerX,
-              activePointerY,
-              eventMetaState
-            );
-          }
+          // Send an up event for the active pointer
+          sendSinglePointerMotionEvent(
+            eventTime,
+            MotionEvent.ACTION_UP,
+            activePointerX,
+            activePointerY,
+            eventMetaState
+          );
         }
         // Send a down event for the event pointer
         eventHandled =
