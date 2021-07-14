@@ -61,7 +61,7 @@ public class InputContainer
   public static final int SHIFT_SINGLE = 1;
   public static final int SHIFT_PERSISTENT = 2;
   public static final int SHIFT_INITIATED = 3;
-  public static final int SHIFT_PRESSED = 4;
+  public static final int SHIFT_HELD = 4;
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -243,7 +243,7 @@ public class InputContainer
             ||
           getShiftMode() == SHIFT_INITIATED
             ||
-          getShiftMode() == SHIFT_PRESSED
+          getShiftMode() == SHIFT_HELD
         )
       )
       {
@@ -417,7 +417,7 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
         if (shiftPointerId != NONEXISTENT_POINTER_ID) {
-          setShiftMode(SHIFT_PRESSED);
+          setShiftMode(SHIFT_HELD);
         }
         else if (
           eventPointerId != activePointerId

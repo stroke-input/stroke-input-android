@@ -168,7 +168,7 @@ public class StrokeInputService
         break;
       
       case InputContainer.SHIFT_PERSISTENT:
-      case InputContainer.SHIFT_PRESSED:
+      case InputContainer.SHIFT_HELD:
         inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
         break;
     }
