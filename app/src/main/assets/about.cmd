@@ -47,7 +47,7 @@
 %%
 
 
-# Stroke Input Method (v0.5.1) #
+# Stroke Input Method (v0.5.2) #
 
 ----
 __[Stroke Input Method (<span class="zh-Hant">筆畫輸入法</span>)][stroke]__

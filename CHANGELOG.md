@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.5.2] Dark theme (2021-07-14)
+
 - Implemented dark theme for main activity and About
 - Made About show full screen on mobile
 - Made About have `max-width` on desktop
@@ -83,7 +86,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.5.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.5.2...HEAD
+[v0.5.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.5.1...v0.5.2
 [v0.5.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.5.0...v0.5.1
 [v0.5.0]:
