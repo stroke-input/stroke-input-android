@@ -428,11 +428,7 @@ public class InputContainer
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
-        if (
-          shiftPointerId != NONEXISTENT_POINTER_ID
-            &&
-          getShiftMode() == SHIFT_INITIATED
-        ) {
+        if (shiftPointerId != NONEXISTENT_POINTER_ID) {
           setShiftMode(SHIFT_PRESSED);
         }
         else if (
