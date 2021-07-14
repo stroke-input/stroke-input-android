@@ -86,8 +86,6 @@ public class InputContainer
   
   // Shift key
   private int shiftPointerId = NONEXISTENT_POINTER_ID;
-  private int shiftPointerX;
-  private int shiftPointerY;
   private int shiftMode;
   
   // Keyboard drawing
@@ -392,8 +390,6 @@ public class InputContainer
         inputListener.onShiftDown();
         // Update the shift pointer
         shiftPointerId = eventPointerId;
-        shiftPointerX = eventPointerX;
-        shiftPointerY = eventPointerY;
         break;
       
       case MotionEvent.ACTION_UP:
