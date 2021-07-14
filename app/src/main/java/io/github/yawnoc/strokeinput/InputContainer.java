@@ -188,6 +188,7 @@ public class InputContainer
   
   public void setShiftMode(final int mode) {
     shiftMode = mode;
+    invalidate();
   }
   
   public void onClick(final View view) {
@@ -238,7 +239,13 @@ public class InputContainer
       if (
         key == currentlyPressedKey
           ||
-        key.valueText.equals("SHIFT") && getShiftMode() == SHIFT_PERSISTENT
+        key.valueText.equals("SHIFT") && (
+          getShiftMode() == SHIFT_PERSISTENT
+            ||
+          getShiftMode() == SHIFT_INITIATED
+            ||
+          getShiftMode() == SHIFT_PRESSED
+        )
       )
       {
         keyFillColour = getContrastingColour(keyFillColour);
