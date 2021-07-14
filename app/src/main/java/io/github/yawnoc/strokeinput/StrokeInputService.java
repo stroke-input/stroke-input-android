@@ -57,7 +57,7 @@ public class StrokeInputService
   
   @Override
   public void onKey(final String valueText, final String valueTextShifted) {
-  
+    
     final InputConnection inputConnection = getCurrentInputConnection();
     if (inputConnection == null) {
       return;
