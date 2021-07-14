@@ -154,6 +154,7 @@ public class InputContainer
     void onLongPress(String valueText);
     void onShiftDown();
     void onShiftUp();
+    void onKeyWhileShiftPressed();
     void onSwipe(String valueText);
   }
   
@@ -417,7 +418,7 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
         if (shiftPointerId != NONEXISTENT_POINTER_ID) {
-          setShiftMode(SHIFT_HELD);
+          inputListener.onKeyWhileShiftPressed();
         }
         else if (
           eventPointerId != activePointerId
