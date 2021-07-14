@@ -170,6 +170,9 @@ public class InputContainer
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);
+    if (getShiftMode() != SHIFT_PERSISTENT) {
+      setShiftMode(SHIFT_DISABLED);
+    }
     requestLayout();
   }
   

@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Reimplemented shift key logic to allow for "held" mode
+- Reset shift mode on change keyboard (unless persistent)
 
 
 ## [v0.5.2] Dark theme (2021-07-14)
