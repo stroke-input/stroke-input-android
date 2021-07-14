@@ -357,12 +357,10 @@ public class InputContainer
     {
       eventHandled =
         handleTouchLogicShiftKey(
-          eventTime,
           eventAction,
           eventPointerId,
           eventPointerX,
-          eventPointerY,
-          eventMetaState
+          eventPointerY
         );
     }
     else {
@@ -381,12 +379,10 @@ public class InputContainer
   }
   
   private boolean handleTouchLogicShiftKey(
-    final long eventTime,
     final int eventAction,
     final int eventPointerId,
     final int eventPointerX,
-    final int eventPointerY,
-    final int eventMetaState
+    final int eventPointerY
   )
   {
     switch (eventAction) {
