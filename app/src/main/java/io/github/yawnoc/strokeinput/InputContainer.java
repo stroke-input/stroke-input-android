@@ -65,6 +65,9 @@ public class InputContainer
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
+  public static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
+  public static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
+  
   // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
@@ -95,6 +98,7 @@ public class InputContainer
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
+  private final Paint debugPaint;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     
@@ -144,6 +148,9 @@ public class InputContainer
       ResourcesCompat.getFont(context, R.font.stroke_input_keyboard)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
+    debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    debugPaint.setStyle(Paint.Style.STROKE);
   }
   
   /*
@@ -299,6 +306,16 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
+    // Debugging
+    if (activePointerId != NONEXISTENT_POINTER_ID) {
+      debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
+      canvas.drawCircle(
+        activePointerX,
+        activePointerY,
+        DEBUG_ACTIVE_POINTER_RADIUS,
+        debugPaint
+      );
+    }
   }
   
   /*
