@@ -423,6 +423,9 @@ public class InputContainer
           
           if (movePointerId == activePointerId) {
             
+            final boolean currentlyPressedKeyIsSwipeable =
+              currentlyPressedKey != null && currentlyPressedKey.isSwipeable;
+            
             if (isShiftKey(moveKey)) {
               inputListener.onShiftDown();
               shiftPointerId = movePointerId;
@@ -434,7 +437,7 @@ public class InputContainer
             if (
               moveKey != currentlyPressedKey
                 ||
-              currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+              currentlyPressedKeyIsSwipeable
             )
             {
               sendMoveEvent(moveKey, movePointerX);
