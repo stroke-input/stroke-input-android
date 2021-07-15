@@ -378,7 +378,6 @@ public class InputContainer
         }
         
         sendDownEvent(eventKey, eventPointerX);
-        
         activePointerId = eventPointerId;
         activePointerX = eventPointerX;
         activePointerY = eventPointerY;
@@ -410,9 +409,8 @@ public class InputContainer
         
         if (eventPointerId == activePointerId) {
           sendUpEvent(eventKey);
+          activePointerId = NONEXISTENT_POINTER_ID;
         }
-        
-        activePointerId = NONEXISTENT_POINTER_ID;
         
         break;
     }
