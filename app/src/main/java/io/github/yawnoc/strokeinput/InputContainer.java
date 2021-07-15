@@ -90,6 +90,7 @@ public class InputContainer
   // Shift key
   private int shiftPointerId = NONEXISTENT_POINTER_ID;
   private int shiftMode;
+  private boolean shiftModeIsActivated = false;
   
   // Keyboard drawing
   private final Rect keyboardRectangle;
@@ -112,10 +113,7 @@ public class InputContainer
           if (currentlyPressedKey != null) {
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
-                inputListener.onKey(
-                  currentlyPressedKey.valueText,
-                  currentlyPressedKey.valueTextShifted
-                );
+                inputListener.onKey(currentlyPressedKey.valueText);
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   keyRepeatIntervalMilliseconds
@@ -157,7 +155,7 @@ public class InputContainer
     A listener for input events.
   */
   public interface OnInputListener {
-    void onKey(String valueText, String valueTextShifted);
+    void onKey(String valueText);
     void onLongPress(String valueText);
     void onShiftDown();
     void onShiftUp();
@@ -197,6 +195,7 @@ public class InputContainer
   
   public void setShiftMode(final int mode) {
     shiftMode = mode;
+    shiftModeIsActivated = shiftMode != SHIFT_DISABLED;
   }
   
   public void onClick(final View view) {
@@ -362,6 +361,8 @@ public class InputContainer
     final int eventPointerX = (int) motionEvent.getX(eventActionIndex);
     final int eventPointerY = (int) motionEvent.getY(eventActionIndex);
     
+    final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
+    
     switch (eventAction) {
       
       case MotionEvent.ACTION_DOWN:
@@ -372,7 +373,7 @@ public class InputContainer
           eventPointerId != activePointerId
         )
         {
-          // TODO: Send an up event for the active pointer
+          sendUpEvent(eventKey);
         }
         // TODO: Send a down event for the event pointer
         // Update the active pointer
@@ -403,12 +404,33 @@ public class InputContainer
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_POINTER_UP:
         if (eventPointerId == activePointerId) {
-          // TODO: Send an up event for the event pointer
+          sendUpEvent(eventKey);
         }
         break;
     }
     
     return true;
+  }
+  
+  private void sendUpEvent(final Keyboard.Key key) {
+    
+    removeAllExtendedPressHandlerMessages();
+    setCurrentlyPressedKey(null);
+    resetKeyRepeatIntervalMilliseconds();
+    
+    if (key == null) {
+      return;
+    }
+    
+    if (swipeModeIsActivated) {
+      inputListener.onSwipe(currentlyPressedKey.valueText);
+    }
+    else if (shiftModeIsActivated) {
+      inputListener.onKey(key.valueTextShifted);
+    }
+    else {
+      inputListener.onKey(key.valueText);
+    }
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
