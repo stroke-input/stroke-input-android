@@ -431,8 +431,14 @@ public class InputContainer
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_POINTER_UP:
         
-        if (eventPointerId == activePointerId) {
-          sendUpEvent(eventKey);
+        final int upPointerIndex = event.getActionIndex();
+        final int upPointerId = event.getPointerId(upPointerIndex);
+        final int upPointerX = (int) event.getX(upPointerIndex);
+        final int upPointerY = (int) event.getY(upPointerIndex);
+        final Keyboard.Key upKey = getKeyAtPoint(upPointerX, upPointerY);
+        
+        if (upPointerId == activePointerId) {
+          sendUpEvent(upKey);
           activePointerId = NONEXISTENT_POINTER_ID;
         }
         
