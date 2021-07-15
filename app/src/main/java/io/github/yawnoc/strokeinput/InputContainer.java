@@ -375,6 +375,9 @@ public class InputContainer
       return true;
     }
     
+    final boolean currentlyPressedKeyIsSwipeable =
+      currentlyPressedKey != null && currentlyPressedKey.isSwipeable;
+    
     final int eventAction = event.getActionMasked();
     
     switch (eventAction) {
@@ -423,10 +426,7 @@ public class InputContainer
           
           if (movePointerId == activePointerId) {
             
-            final boolean currentlyPressedKeyIsSwipeable =
-              currentlyPressedKey != null && currentlyPressedKey.isSwipeable;
-            
-            if (isShiftKey(moveKey)) {
+            if (isShiftKey(moveKey) && !currentlyPressedKeyIsSwipeable) {
               inputListener.onShiftDown();
               shiftPointerId = movePointerId;
               abortAllKeyBehaviour();
@@ -459,7 +459,12 @@ public class InputContainer
         final int upPointerY = (int) event.getY(upPointerIndex);
         final Keyboard.Key upKey = getKeyAtPoint(upPointerX, upPointerY);
         
-        if (upPointerId == shiftPointerId || isShiftKey(upKey)) {
+        if (
+          (upPointerId == shiftPointerId || isShiftKey(upKey))
+            &&
+          !currentlyPressedKeyIsSwipeable
+        )
+        {
           inputListener.onShiftUp();
           shiftPointerId = NONEXISTENT_POINTER_ID;
           invalidate();
