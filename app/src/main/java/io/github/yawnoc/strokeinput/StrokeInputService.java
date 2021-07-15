@@ -175,7 +175,7 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKeyWhileShiftPressed() {
+  public void onKeyDownWhileShiftPressed() {
     inputContainer.setShiftMode(InputContainer.SHIFT_HELD);
   }
   
