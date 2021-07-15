@@ -397,7 +397,7 @@ public class InputContainer
           )
         )
         {
-          sendDownEvent(eventKey, eventPointerX);
+          // TODO: Send a move event for the event pointer
         }
         
         activePointerId = eventPointerId;
