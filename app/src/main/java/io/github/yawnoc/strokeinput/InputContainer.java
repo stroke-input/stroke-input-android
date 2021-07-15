@@ -398,11 +398,10 @@ public class InputContainer
         )
         {
           sendMoveEvent(eventKey, eventPointerX);
+          activePointerId = eventPointerId;
+          activePointerX = eventPointerX;
+          activePointerY = eventPointerY;
         }
-        
-        activePointerId = eventPointerId;
-        activePointerX = eventPointerX;
-        activePointerY = eventPointerY;
         
         break;
       
