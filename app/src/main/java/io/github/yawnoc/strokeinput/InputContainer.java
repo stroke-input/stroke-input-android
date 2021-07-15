@@ -366,18 +366,18 @@ public class InputContainer
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
-  public boolean onTouchEvent(final MotionEvent motionEvent) {
+  public boolean onTouchEvent(final MotionEvent event) {
     
-    if (motionEvent.getPointerCount() > 2) {
+    if (event.getPointerCount() > 2) {
       abortAllKeyBehaviour();
       return true;
     }
     
-    final int eventAction = motionEvent.getActionMasked();
-    final int eventActionIndex = motionEvent.getActionIndex();
-    final int eventPointerId = motionEvent.getPointerId(eventActionIndex);
-    final int eventPointerX = (int) motionEvent.getX(eventActionIndex);
-    final int eventPointerY = (int) motionEvent.getY(eventActionIndex);
+    final int eventAction = event.getActionMasked();
+    final int eventActionIndex = event.getActionIndex();
+    final int eventPointerId = event.getPointerId(eventActionIndex);
+    final int eventPointerX = (int) event.getX(eventActionIndex);
+    final int eventPointerY = (int) event.getY(eventActionIndex);
     
     final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
     
