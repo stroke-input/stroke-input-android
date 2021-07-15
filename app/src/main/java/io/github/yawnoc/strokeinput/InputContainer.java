@@ -389,7 +389,7 @@ public class InputContainer
           eventPointerId != activePointerId
         )
         {
-          sendUpEvent(eventKey);
+          sendUpEvent(currentlyPressedKey);
         }
         
         sendDownEvent(eventKey, eventPointerX);
