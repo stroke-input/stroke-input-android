@@ -5,6 +5,7 @@
 
 - Reimplemented shift key logic to allow for "held" mode
 - Reset shift mode on change keyboard (unless persistent)
+- Added toggleable debug mode showing currently pressed key and active pointer
 
 
 ## [v0.5.2] Dark theme (2021-07-14)
