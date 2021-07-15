@@ -413,6 +413,8 @@ public class InputContainer
           sendUpEvent(eventKey);
         }
         
+        activePointerId = NONEXISTENT_POINTER_ID;
+        
         break;
     }
     
