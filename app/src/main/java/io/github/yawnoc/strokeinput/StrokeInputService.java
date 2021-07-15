@@ -135,6 +135,9 @@ public class StrokeInputService
         (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
       inputMethodManager.showInputMethodPicker();
     }
+    else if (valueText.equals("ABOUT")) {
+      inputContainer.toggleDebugMode();
+    }
   }
   
   @Override

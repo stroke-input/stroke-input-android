@@ -32,6 +32,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
@@ -100,6 +101,9 @@ public class InputContainer
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
   private final Paint debugPaint;
+  
+  // Debugging
+  private boolean debugModeIsActivated = true;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     
@@ -196,6 +200,15 @@ public class InputContainer
   public void setShiftMode(final int mode) {
     shiftMode = mode;
     shiftModeIsActivated = shiftMode != SHIFT_DISABLED;
+  }
+  
+  public void toggleDebugMode() {
+    debugModeIsActivated = !debugModeIsActivated;
+    Toast.makeText(
+      getContext(),
+      "debug mode " + (debugModeIsActivated ? "ON" : "OFF"),
+      Toast.LENGTH_SHORT
+    ).show();
   }
   
   public void onClick(final View view) {
@@ -305,8 +318,7 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
-    // Debugging
-    if (activePointerId != NONEXISTENT_POINTER_ID) {
+    if (debugModeIsActivated && activePointerId != NONEXISTENT_POINTER_ID) {
       debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
       canvas.drawCircle(
         activePointerX,

@@ -60,6 +60,7 @@
     <Key
       app:valueText="ABOUT"
       app:displayText="🛈"
+      app:isLongPressable="true"
     />
   </Row>
   <Row app:keyWidth="@dimen/key_width_strokes_stroke">
