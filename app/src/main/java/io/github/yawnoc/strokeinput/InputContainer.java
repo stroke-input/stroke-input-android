@@ -397,7 +397,7 @@ public class InputContainer
           )
         )
         {
-          // TODO: Send a move event for the event pointer
+          sendMoveEvent(eventKey, eventPointerX);
         }
         
         activePointerId = eventPointerId;
@@ -428,6 +428,29 @@ public class InputContainer
     if (key.isSwipeable) {
       pointerDownX = x;
     }
+  }
+  
+  private void sendMoveEvent(final Keyboard.Key key, final int x) {
+    
+    if (swipeModeIsActivated) {
+      if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
+        deactivateSwipeMode();
+      }
+      return;
+    }
+    
+    if (key != null && key == currentlyPressedKey && key.isSwipeable) {
+      if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
+        activateSwipeMode();
+        removeAllExtendedPressHandlerMessages();
+      }
+      return;
+    }
+    
+    removeAllExtendedPressHandlerMessages();
+    setCurrentlyPressedKey(key);
+    sendAppropriateExtendedPressHandlerMessage(key);
+    resetKeyRepeatIntervalMilliseconds();
   }
   
   private void sendUpEvent(final Keyboard.Key key) {
@@ -481,6 +504,9 @@ public class InputContainer
     final Keyboard.Key key
   )
   {
+    if (key == null) {
+      return;
+    }
     if (key.isRepeatable) {
       sendExtendedPressHandlerMessage(
         MESSAGE_KEY_REPEAT,
