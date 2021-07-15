@@ -387,7 +387,7 @@ public class InputContainer
           eventPointerId == activePointerId
             &&
           (
-            getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+            eventKey != currentlyPressedKey
               ||
             currentlyPressedKey != null && currentlyPressedKey.isSwipeable
           )
