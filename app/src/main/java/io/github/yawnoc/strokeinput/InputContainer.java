@@ -374,11 +374,11 @@ public class InputContainer
     }
     
     final int eventAction = event.getActionMasked();
+    // TODO: remove the following, which should not be used for ACTION_MOVE:
     final int eventActionIndex = event.getActionIndex();
     final int eventPointerId = event.getPointerId(eventActionIndex);
     final int eventPointerX = (int) event.getX(eventActionIndex);
     final int eventPointerY = (int) event.getY(eventActionIndex);
-    
     final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
     
     switch (eventAction) {
@@ -386,19 +386,25 @@ public class InputContainer
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
         
+        final int downPointerIndex = event.getActionIndex();
+        final int downPointerId = event.getPointerId(downPointerIndex);
+        final int downPointerX = (int) event.getX(downPointerIndex);
+        final int downPointerY = (int) event.getY(downPointerIndex);
+        final Keyboard.Key downKey = getKeyAtPoint(downPointerX, downPointerY);
+        
         if (
           activePointerId != NONEXISTENT_POINTER_ID
             &&
-          eventPointerId != activePointerId
+          downPointerId != activePointerId
         )
         {
           sendUpEvent(currentlyPressedKey);
         }
         
-        sendDownEvent(eventKey, eventPointerX);
-        activePointerId = eventPointerId;
-        activePointerX = eventPointerX;
-        activePointerY = eventPointerY;
+        sendDownEvent(downKey, downPointerX);
+        activePointerId = downPointerId;
+        activePointerX = downPointerX;
+        activePointerY = downPointerY;
         
         break;
       
