@@ -375,7 +375,7 @@ public class InputContainer
         {
           sendUpEvent(eventKey);
         }
-        // TODO: Send a down event for the event pointer
+        sendDownEvent(eventKey, eventPointerX);
         // Update the active pointer
         activePointerId = eventPointerId;
         activePointerX = eventPointerX;
@@ -393,7 +393,7 @@ public class InputContainer
           )
         )
         {
-          // TODO: Send a move event for the event pointer
+          sendDownEvent(eventKey, eventPointerX);
         }
         // Update the active pointer
         activePointerId = eventPointerId;
@@ -410,6 +410,17 @@ public class InputContainer
     }
     
     return true;
+  }
+  
+  private void sendDownEvent(final Keyboard.Key key, final int x) {
+    
+    setCurrentlyPressedKey(key);
+    sendAppropriateExtendedPressHandlerMessage(key);
+    
+    deactivateSwipeMode();
+    if (key.isSwipeable) {
+      pointerDownX = x;
+    }
   }
   
   private void sendUpEvent(final Keyboard.Key key) {
