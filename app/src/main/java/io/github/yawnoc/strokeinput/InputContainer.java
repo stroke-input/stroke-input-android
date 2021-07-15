@@ -356,6 +356,22 @@ public class InputContainer
       return true;
     }
     
+    final int eventAction = motionEvent.getActionMasked();
+    
+    switch (eventAction) {
+      
+      case MotionEvent.ACTION_DOWN:
+      case MotionEvent.ACTION_POINTER_DOWN:
+        break;
+      
+      case MotionEvent.ACTION_MOVE:
+        break;
+      
+      case MotionEvent.ACTION_UP:
+      case MotionEvent.ACTION_POINTER_UP:
+        break;
+    }
+    
     return true;
   }
   
