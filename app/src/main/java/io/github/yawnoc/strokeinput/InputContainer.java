@@ -367,6 +367,7 @@ public class InputContainer
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
+        
         if (
           activePointerId != NONEXISTENT_POINTER_ID
             &&
@@ -375,14 +376,17 @@ public class InputContainer
         {
           sendUpEvent(eventKey);
         }
+        
         sendDownEvent(eventKey, eventPointerX);
-        // Update the active pointer
+        
         activePointerId = eventPointerId;
         activePointerX = eventPointerX;
         activePointerY = eventPointerY;
+        
         break;
       
       case MotionEvent.ACTION_MOVE:
+        
         if (
           eventPointerId == activePointerId
             &&
@@ -395,17 +399,20 @@ public class InputContainer
         {
           sendDownEvent(eventKey, eventPointerX);
         }
-        // Update the active pointer
+        
         activePointerId = eventPointerId;
         activePointerX = eventPointerX;
         activePointerY = eventPointerY;
+        
         break;
       
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_POINTER_UP:
+        
         if (eventPointerId == activePointerId) {
           sendUpEvent(eventKey);
         }
+        
         break;
     }
     
