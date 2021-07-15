@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Fixed broken logic for second moving pointer
 - Reimplemented shift key logic to allow for "held" mode
 - Reset shift mode on change keyboard (unless persistent)
 - Added toggleable debug mode showing currently pressed key and active pointer

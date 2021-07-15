@@ -376,12 +376,6 @@ public class InputContainer
     }
     
     final int eventAction = event.getActionMasked();
-    // TODO: remove the following, which should not be used for ACTION_MOVE:
-    final int eventActionIndex = event.getActionIndex();
-    final int eventPointerId = event.getPointerId(eventActionIndex);
-    final int eventPointerX = (int) event.getX(eventActionIndex);
-    final int eventPointerY = (int) event.getY(eventActionIndex);
-    final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
     
     switch (eventAction) {
       
@@ -412,20 +406,29 @@ public class InputContainer
       
       case MotionEvent.ACTION_MOVE:
         
-        if (
-          eventPointerId == activePointerId
-            &&
-          (
-            eventKey != currentlyPressedKey
-              ||
-            currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+        for (int index = 0; index < eventPointerCount; index++) {
+          
+          final int movePointerId = event.getPointerId(index);
+          final int movePointerX = (int) event.getX(index);
+          final int movePointerY = (int) event.getY(index);
+          final Keyboard.Key moveKey =
+            getKeyAtPoint(movePointerX, movePointerY);
+          
+          if (
+            movePointerId == activePointerId
+              &&
+            (
+              moveKey != currentlyPressedKey
+                ||
+              currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+            )
           )
-        )
-        {
-          sendMoveEvent(eventKey, eventPointerX);
-          activePointerId = eventPointerId;
-          activePointerX = eventPointerX;
-          activePointerY = eventPointerY;
+          {
+            sendMoveEvent(moveKey, movePointerX);
+            activePointerId = movePointerId;
+            activePointerX = movePointerX;
+            activePointerY = movePointerY;
+          }
         }
         
         break;
