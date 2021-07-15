@@ -388,6 +388,13 @@ public class InputContainer
         final int downPointerY = (int) event.getY(downPointerIndex);
         final Keyboard.Key downKey = getKeyAtPoint(downPointerX, downPointerY);
         
+        if (isShiftKey(downKey)) {
+          inputListener.onShiftDown();
+          shiftPointerId = downPointerId;
+          invalidate();
+          return true;
+        }
+        
         if (
           activePointerId != NONEXISTENT_POINTER_ID
             &&
@@ -415,6 +422,15 @@ public class InputContainer
             getKeyAtPoint(movePointerX, movePointerY);
           
           if (movePointerId == activePointerId) {
+            
+            if (isShiftKey(moveKey)) {
+              inputListener.onShiftDown();
+              shiftPointerId = movePointerId;
+              abortAllKeyBehaviour();
+              invalidate();
+              return true;
+            }
+            
             if (
               moveKey != currentlyPressedKey
                 ||
@@ -440,6 +456,13 @@ public class InputContainer
         final int upPointerY = (int) event.getY(upPointerIndex);
         final Keyboard.Key upKey = getKeyAtPoint(upPointerX, upPointerY);
         
+        if (upPointerId == shiftPointerId || isShiftKey(upKey)) {
+          inputListener.onShiftUp();
+          shiftPointerId = NONEXISTENT_POINTER_ID;
+          invalidate();
+          return true;
+        }
+        
         if (upPointerId == activePointerId) {
           sendUpEvent(upKey);
           activePointerId = NONEXISTENT_POINTER_ID;
@@ -452,6 +475,10 @@ public class InputContainer
   }
   
   private void sendDownEvent(final Keyboard.Key key, final int x) {
+    
+    if (shiftPointerId != NONEXISTENT_POINTER_ID) {
+      inputListener.onKeyDownWhileShiftPressed();
+    }
     
     setCurrentlyPressedKey(key);
     sendAppropriateExtendedPressHandlerMessage(key);
@@ -513,6 +540,10 @@ public class InputContainer
     }
     
     return null;
+  }
+  
+  private boolean isShiftKey(final Keyboard.Key key) {
+    return key != null && key.valueText.equals("SHIFT");
   }
   
   private void setCurrentlyPressedKey(final Keyboard.Key key) {
