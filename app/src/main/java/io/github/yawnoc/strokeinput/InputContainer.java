@@ -288,7 +288,14 @@ public class InputContainer
       keyTextPaint.setTextSize(key.keyTextSize);
       
       final String keyDisplayText;
-      if (getShiftMode() == SHIFT_DISABLED) {
+      if (debugModeIsActivated && key.valueText.equals("SPACE")) {
+        keyDisplayText = (
+          currentlyPressedKey == null
+            ? "null"
+            : currentlyPressedKey.valueText
+        );
+      }
+      else if (getShiftMode() == SHIFT_DISABLED) {
         keyDisplayText = key.displayText;
       }
       else {
