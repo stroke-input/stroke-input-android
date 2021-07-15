@@ -414,20 +414,18 @@ public class InputContainer
           final Keyboard.Key moveKey =
             getKeyAtPoint(movePointerX, movePointerY);
           
-          if (
-            movePointerId == activePointerId
-              &&
-            (
+          if (movePointerId == activePointerId) {
+            if (
               moveKey != currentlyPressedKey
                 ||
               currentlyPressedKey != null && currentlyPressedKey.isSwipeable
             )
-          )
-          {
-            sendMoveEvent(moveKey, movePointerX);
-            activePointerId = movePointerId;
-            activePointerX = movePointerX;
-            activePointerY = movePointerY;
+            {
+              sendMoveEvent(moveKey, movePointerX);
+              activePointerId = movePointerId;
+              activePointerX = movePointerX;
+              activePointerY = movePointerY;
+            }
           }
         }
         
