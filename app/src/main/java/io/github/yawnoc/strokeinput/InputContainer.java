@@ -366,10 +366,7 @@ public class InputContainer
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
-        if (shiftPointerId != NONEXISTENT_POINTER_ID) {
-          inputListener.onKeyDownWhileShiftPressed();
-        }
-        else if (
+        if (
           activePointerId != NONEXISTENT_POINTER_ID
             &&
           eventPointerId != activePointerId
