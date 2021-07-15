@@ -403,7 +403,7 @@ public class InputContainer
       case MotionEvent.ACTION_UP:
       case MotionEvent.ACTION_POINTER_UP:
         if (eventPointerId == activePointerId) {
-          // TODO: Send a move event for the event pointer
+          // TODO: Send an up event for the event pointer
         }
         break;
     }
