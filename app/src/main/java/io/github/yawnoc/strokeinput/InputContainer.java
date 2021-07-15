@@ -473,23 +473,21 @@ public class InputContainer
   
   private void sendUpEvent(final Keyboard.Key key) {
     
-    removeAllExtendedPressHandlerMessages();
-    setCurrentlyPressedKey(null);
-    resetKeyRepeatIntervalMilliseconds();
-    
-    if (key == null) {
-      return;
-    }
-    
     if (swipeModeIsActivated) {
       inputListener.onSwipe(currentlyPressedKey.valueText);
     }
-    else if (shiftModeIsActivated) {
-      inputListener.onKey(key.valueTextShifted);
+    else if (key != null) {
+      if (shiftModeIsActivated) {
+        inputListener.onKey(key.valueTextShifted);
+      }
+      else {
+        inputListener.onKey(key.valueText);
+      }
     }
-    else {
-      inputListener.onKey(key.valueText);
-    }
+    
+    removeAllExtendedPressHandlerMessages();
+    setCurrentlyPressedKey(null);
+    resetKeyRepeatIntervalMilliseconds();
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
