@@ -100,9 +100,9 @@ public class InputContainer
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
-  private final Paint debugPaint;
   
   // Debugging
+  private final Paint debugPaint;
   private final Toast debugToast;
   private boolean debugModeIsActivated = true;
   
