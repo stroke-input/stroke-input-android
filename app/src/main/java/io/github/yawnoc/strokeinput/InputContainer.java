@@ -518,7 +518,7 @@ public class InputContainer
       inputListener.onSwipe(currentlyPressedKey.valueText);
     }
     else if (key != null) {
-      if (shiftModeIsActivated) {
+      if (shiftModeIsActivated && key.isShiftable) {
         inputListener.onKey(key.valueTextShifted);
       }
       else {
