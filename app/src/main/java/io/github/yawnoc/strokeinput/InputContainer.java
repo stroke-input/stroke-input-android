@@ -362,6 +362,9 @@ public class InputContainer
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
+        if (shiftPointerId != NONEXISTENT_POINTER_ID) {
+          inputListener.onKeyWhileShiftPressed();
+        }
         break;
       
       case MotionEvent.ACTION_MOVE:
