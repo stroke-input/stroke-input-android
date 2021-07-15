@@ -382,6 +382,22 @@ public class InputContainer
         break;
       
       case MotionEvent.ACTION_MOVE:
+        if (
+          eventPointerId == activePointerId
+            &&
+          (
+            getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
+              ||
+            currentlyPressedKey != null && currentlyPressedKey.isSwipeable
+          )
+        )
+        {
+          // TODO: Send a move event for the event pointer
+        }
+        // Update the active pointer
+        activePointerId = eventPointerId;
+        activePointerX = eventPointerX;
+        activePointerY = eventPointerY;
         break;
       
       case MotionEvent.ACTION_UP:
