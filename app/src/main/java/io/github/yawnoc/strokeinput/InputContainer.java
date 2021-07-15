@@ -357,6 +357,10 @@ public class InputContainer
     }
     
     final int eventAction = motionEvent.getActionMasked();
+    final int eventActionIndex = motionEvent.getActionIndex();
+    final int eventPointerId = motionEvent.getPointerId(eventActionIndex);
+    final int eventPointerX = (int) motionEvent.getX(eventActionIndex);
+    final int eventPointerY = (int) motionEvent.getY(eventActionIndex);
     
     switch (eventAction) {
       
@@ -365,6 +369,19 @@ public class InputContainer
         if (shiftPointerId != NONEXISTENT_POINTER_ID) {
           inputListener.onKeyDownWhileShiftPressed();
         }
+        else if (
+          activePointerId != NONEXISTENT_POINTER_ID
+            &&
+          eventPointerId != activePointerId
+        )
+        {
+          // TODO: Send an up event for the active pointer
+        }
+        // TODO: Send a down event for the event pointer
+        // Update the active pointer
+        activePointerId = eventPointerId;
+        activePointerX = eventPointerX;
+        activePointerY = eventPointerY;
         break;
       
       case MotionEvent.ACTION_MOVE:
