@@ -204,11 +204,7 @@ public class InputContainer
   
   public void toggleDebugMode() {
     debugModeIsActivated = !debugModeIsActivated;
-    Toast.makeText(
-      getContext(),
-      "debug mode " + (debugModeIsActivated ? "ON" : "OFF"),
-      Toast.LENGTH_SHORT
-    ).show();
+    showDebugToast("debug mode " + (debugModeIsActivated ? "ON" : "OFF"));
   }
   
   public void onClick(final View view) {
@@ -560,5 +556,9 @@ public class InputContainer
   private void abortAllKeyBehaviour() {
     setCurrentlyPressedKey(null);
     activePointerId = NONEXISTENT_POINTER_ID;
+  }
+  
+  private void showDebugToast(final String message) {
+    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
   }
 }
