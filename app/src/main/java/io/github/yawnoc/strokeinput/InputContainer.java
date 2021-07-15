@@ -368,7 +368,9 @@ public class InputContainer
   @Override
   public boolean onTouchEvent(final MotionEvent event) {
     
-    if (event.getPointerCount() > 2) {
+    final int eventPointerCount = event.getPointerCount();
+    
+    if (eventPointerCount > 2) {
       abortAllKeyBehaviour();
       return true;
     }
