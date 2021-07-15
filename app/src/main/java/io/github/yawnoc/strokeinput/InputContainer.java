@@ -103,6 +103,7 @@ public class InputContainer
   private final Paint debugPaint;
   
   // Debugging
+  private final Toast debugToast;
   private boolean debugModeIsActivated = true;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
@@ -153,6 +154,8 @@ public class InputContainer
     
     debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     debugPaint.setStyle(Paint.Style.STROKE);
+    
+    debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
   }
   
   /*
@@ -559,6 +562,7 @@ public class InputContainer
   }
   
   private void showDebugToast(final String message) {
-    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    debugToast.setText(message);
+    debugToast.show();
   }
 }
