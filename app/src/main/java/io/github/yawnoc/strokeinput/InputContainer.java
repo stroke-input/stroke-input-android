@@ -375,9 +375,6 @@ public class InputContainer
       return true;
     }
     
-    final boolean currentlyPressedKeyIsSwipeable =
-      currentlyPressedKey != null && currentlyPressedKey.isSwipeable;
-    
     switch (event.getActionMasked()) {
       
       case MotionEvent.ACTION_DOWN:
@@ -416,7 +413,7 @@ public class InputContainer
           
           if (movePointerId == activePointerId) {
             
-            if (isShiftKey(moveKey) && !currentlyPressedKeyIsSwipeable) {
+            if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
               inputListener.onShiftDown();
               shiftPointerId = movePointerId;
               abortAllKeyBehaviour();
@@ -426,7 +423,7 @@ public class InputContainer
             if (
               moveKey != currentlyPressedKey
                 ||
-              currentlyPressedKeyIsSwipeable
+              isSwipeableKey(currentlyPressedKey)
             )
             {
               sendMoveEvent(
@@ -455,7 +452,7 @@ public class InputContainer
         if (
           (upPointerId == shiftPointerId || isShiftKey(upKey))
             &&
-          !currentlyPressedKeyIsSwipeable
+          !isSwipeableKey(currentlyPressedKey)
         )
         {
           inputListener.onShiftUp();
@@ -485,7 +482,7 @@ public class InputContainer
       inputListener.onKeyDownWhileShiftPressed();
     }
     
-    if (key != null && key.isSwipeable) {
+    if (isSwipeableKey(key)) {
       pointerDownX = x;
     }
     
@@ -516,7 +513,7 @@ public class InputContainer
         shouldRedrawKeyboard = true;
       }
     }
-    else if (key != null && key == currentlyPressedKey && key.isSwipeable) {
+    else if (key == currentlyPressedKey && isSwipeableKey(key)) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = true;
         shouldRedrawKeyboard = true;
@@ -581,6 +578,10 @@ public class InputContainer
   
   private boolean isShiftKey(final Keyboard.Key key) {
     return key != null && key.valueText.equals("SHIFT");
+  }
+  
+  private boolean isSwipeableKey(final Keyboard.Key key) {
+    return key != null && key.isSwipeable;
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
