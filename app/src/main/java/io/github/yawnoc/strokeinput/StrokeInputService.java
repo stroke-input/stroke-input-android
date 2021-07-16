@@ -63,8 +63,6 @@ public class StrokeInputService
       return;
     }
     
-    final int shiftMode = inputContainer.getShiftMode();
-    
     switch (valueText) {
       
       case "BACKSPACE":
@@ -121,9 +119,6 @@ public class StrokeInputService
       
       default:
         inputConnection.commitText(valueText, 1);
-        if (shiftMode == InputContainer.SHIFT_SINGLE) {
-          inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
-        }
     }
   }
   

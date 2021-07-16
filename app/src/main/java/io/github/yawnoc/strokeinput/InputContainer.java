@@ -535,11 +535,16 @@ public class InputContainer
       inputListener.onSwipe(currentlyPressedKey.valueText);
     }
     else if (key != null) {
+      
       if (shiftMode != SHIFT_DISABLED && key.isShiftable) {
         inputListener.onKey(key.valueTextShifted);
       }
       else {
         inputListener.onKey(key.valueText);
+      }
+      
+      if (shiftMode == SHIFT_SINGLE) {
+        shiftMode = SHIFT_DISABLED;
       }
     }
     
