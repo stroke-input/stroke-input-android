@@ -398,12 +398,7 @@ public class InputContainer
           return true;
         }
         
-        if (
-          activePointerId != NONEXISTENT_POINTER_ID
-            &&
-          downPointerId != activePointerId
-        )
-        {
+        if (activePointerId != NONEXISTENT_POINTER_ID) {
           sendUpEvent(currentlyPressedKey);
         }
         
