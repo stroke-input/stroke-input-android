@@ -139,21 +139,28 @@ public class StrokeInputService
   public void onSwipe(final String valueText) {
     
     if (valueText.equals("SPACE")) {
+      
       final Keyboard keyboard = inputContainer.getKeyboard();
+      final Keyboard newKeyboard;
+      
       if (keyboard == strokesKeyboard) {
-        inputContainer.setKeyboard(qwertyKeyboard);
+        newKeyboard = qwertyKeyboard;
       }
       else if (keyboard == strokesSymbolsKeyboard) {
-        inputContainer.setKeyboard(qwertySymbolsKeyboard);
+        newKeyboard = qwertySymbolsKeyboard;
       }
       else if (keyboard == qwertyKeyboard) {
-        inputContainer.setKeyboard(strokesKeyboard);
+        newKeyboard = strokesKeyboard;
       }
       else if (keyboard == qwertySymbolsKeyboard) {
-        inputContainer.setKeyboard(strokesSymbolsKeyboard);
+        newKeyboard = strokesSymbolsKeyboard;
       }
+      else {
+        newKeyboard = keyboard;
+      }
+      
+      inputContainer.setKeyboard(newKeyboard);
     }
-    
   }
   
   private static boolean isAscii(final String string) {
