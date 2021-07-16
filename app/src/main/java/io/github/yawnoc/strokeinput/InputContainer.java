@@ -400,12 +400,7 @@ public class InputContainer
           sendUpEvent(currentlyPressedKey, false);
         }
         
-        sendDownEvent(downKey, downPointerX);
-        activePointerId = downPointerId;
-        activePointerX = downPointerX;
-        activePointerY = downPointerY;
-        
-        invalidate();
+        sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
         
         break;
       
@@ -478,19 +473,30 @@ public class InputContainer
     return true;
   }
   
-  private void sendDownEvent(final Keyboard.Key key, final int x) {
-    
+  private void sendDownEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
     if (shiftPointerId != NONEXISTENT_POINTER_ID) {
       inputListener.onKeyDownWhileShiftPressed();
     }
     
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
     currentlyPressedKey = key;
+    
     sendAppropriateExtendedPressHandlerMessage(key);
     
     swipeModeIsActivated = false;
     if (key != null && key.isSwipeable) {
       pointerDownX = x;
     }
+    
+    invalidate();
   }
   
   private void sendMoveEvent(final Keyboard.Key key, final int x) {
