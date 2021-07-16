@@ -192,14 +192,6 @@ public class InputContainer
     keyRepeatIntervalMilliseconds = milliseconds;
   }
   
-  public int getShiftMode() {
-    return shiftMode;
-  }
-  
-  public void setShiftMode(final int mode) {
-    shiftMode = mode;
-  }
-  
   public void toggleDebugMode() {
     debugModeIsActivated = !debugModeIsActivated;
     showDebugToast("debug mode " + (debugModeIsActivated ? "ON" : "OFF"));
