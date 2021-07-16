@@ -453,9 +453,7 @@ public class InputContainer
           !isSwipeableKey(currentlyPressedKey)
         )
         {
-          inputListener.onShiftUp();
-          shiftPointerId = NONEXISTENT_POINTER_ID;
-          invalidate();
+          sendShiftUpEvent();
           return true;
         }
         
@@ -567,6 +565,12 @@ public class InputContainer
     inputListener.onShiftDown();
     shiftPointerId = pointerId;
     abortAllKeyBehaviour();
+  }
+  
+  private void sendShiftUpEvent() {
+    inputListener.onShiftUp();
+    shiftPointerId = NONEXISTENT_POINTER_ID;
+    invalidate();
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
