@@ -58,16 +58,16 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
-  public static final int SHIFT_DISABLED = 0;
-  public static final int SHIFT_SINGLE = 1;
-  public static final int SHIFT_PERSISTENT = 2;
-  public static final int SHIFT_INITIATED = 3;
-  public static final int SHIFT_HELD = 4;
+  private static final int SHIFT_DISABLED = 0;
+  private static final int SHIFT_SINGLE = 1;
+  private static final int SHIFT_PERSISTENT = 2;
+  private static final int SHIFT_INITIATED = 3;
+  private static final int SHIFT_HELD = 4;
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  public static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
-  public static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
+  private static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
+  private static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
   
   // Container properties
   private OnInputListener inputListener;
