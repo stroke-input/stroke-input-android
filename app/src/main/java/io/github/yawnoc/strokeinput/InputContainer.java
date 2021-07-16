@@ -517,8 +517,9 @@ public class InputContainer
       return;
     }
     
-    removeAllExtendedPressHandlerMessages();
     currentlyPressedKey = key;
+    
+    removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
   }
