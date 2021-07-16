@@ -484,17 +484,18 @@ public class InputContainer
       inputListener.onKeyDownWhileShiftPressed();
     }
     
+    if (key != null && key.isSwipeable) {
+      pointerDownX = x;
+    }
+    
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
     currentlyPressedKey = key;
     
-    sendAppropriateExtendedPressHandlerMessage(key);
-    
     swipeModeIsActivated = false;
-    if (key != null && key.isSwipeable) {
-      pointerDownX = x;
-    }
+    
+    sendAppropriateExtendedPressHandlerMessage(key);
     
     invalidate();
   }
