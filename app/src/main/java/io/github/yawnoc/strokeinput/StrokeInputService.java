@@ -141,27 +141,6 @@ public class StrokeInputService
   }
   
   @Override
-  public void onShiftUp() {
-    
-    final int shiftMode = inputContainer.getShiftMode();
-    switch (shiftMode) {
-      
-      case InputContainer.SHIFT_SINGLE:
-        inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
-        break;
-      
-      case InputContainer.SHIFT_INITIATED:
-        inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
-        break;
-      
-      case InputContainer.SHIFT_PERSISTENT:
-      case InputContainer.SHIFT_HELD:
-        inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
-        break;
-    }
-  }
-  
-  @Override
   public void onKeyDownWhileShiftPressed() {
     inputContainer.setShiftMode(InputContainer.SHIFT_HELD);
   }
