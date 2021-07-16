@@ -126,7 +126,7 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
-                abortAllKeyBehaviour();
+                abortCurrentlyPressedKey();
                 break;
             }
           }
@@ -371,7 +371,7 @@ public class InputContainer
     final int eventPointerCount = event.getPointerCount();
     
     if (eventPointerCount > 2) {
-      abortAllKeyBehaviour();
+      abortCurrentlyPressedKey();
       return true;
     }
     
@@ -562,7 +562,7 @@ public class InputContainer
   private void sendShiftDownEvent(final int pointerId) {
     inputListener.onShiftDown();
     shiftPointerId = pointerId;
-    abortAllKeyBehaviour();
+    abortCurrentlyPressedKey();
   }
   
   private void sendShiftUpEvent() {
@@ -631,7 +631,7 @@ public class InputContainer
     extendedPressHandler.removeMessages(messageWhat);
   }
   
-  private void abortAllKeyBehaviour() {
+  private void abortCurrentlyPressedKey() {
     currentlyPressedKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     invalidate();
