@@ -508,19 +508,24 @@ public class InputContainer
     final int y
   )
   {
+    boolean shouldRedrawKeyboard = false;
+    
     if (swipeModeIsActivated) {
       if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = false;
+        shouldRedrawKeyboard = true;
       }
     }
     else if (key != null && key == currentlyPressedKey && key.isSwipeable) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = true;
+        shouldRedrawKeyboard = true;
         removeAllExtendedPressHandlerMessages();
       }
     }
     else { // move is a key change
       currentlyPressedKey = key;
+      shouldRedrawKeyboard = true;
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
@@ -530,7 +535,9 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    invalidate();
+    if (shouldRedrawKeyboard) {
+      invalidate();
+    }
   }
   
   private void sendUpEvent(
