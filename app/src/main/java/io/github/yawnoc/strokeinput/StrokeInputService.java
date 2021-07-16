@@ -141,11 +141,6 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKeyDownWhileShiftPressed() {
-    inputContainer.setShiftMode(InputContainer.SHIFT_HELD);
-  }
-  
-  @Override
   public void onSwipe(final String valueText) {
     
     if (valueText.equals("SPACE")) {

@@ -163,7 +163,6 @@ public class InputContainer
   public interface OnInputListener {
     void onKey(String valueText);
     void onLongPress(String valueText);
-    void onKeyDownWhileShiftPressed();
     void onSwipe(String valueText);
   }
   
@@ -469,7 +468,7 @@ public class InputContainer
   )
   {
     if (shiftPointerId != NONEXISTENT_POINTER_ID) {
-      inputListener.onKeyDownWhileShiftPressed();
+      shiftMode = SHIFT_HELD;
     }
     
     if (isSwipeableKey(key)) {
