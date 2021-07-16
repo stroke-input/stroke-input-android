@@ -405,6 +405,8 @@ public class InputContainer
         activePointerX = downPointerX;
         activePointerY = downPointerY;
         
+        invalidate();
+        
         break;
       
       case MotionEvent.ACTION_MOVE:
@@ -423,7 +425,6 @@ public class InputContainer
               inputListener.onShiftDown();
               shiftPointerId = movePointerId;
               abortAllKeyBehaviour();
-              invalidate();
               return true;
             }
             
@@ -437,7 +438,10 @@ public class InputContainer
               activePointerId = movePointerId;
               activePointerX = movePointerX;
               activePointerY = movePointerY;
+              invalidate();
             }
+            
+            break;
           }
         }
         
@@ -467,6 +471,7 @@ public class InputContainer
         if (upPointerId == activePointerId) {
           sendUpEvent(upKey);
           activePointerId = NONEXISTENT_POINTER_ID;
+          invalidate();
         }
         
         break;
@@ -549,17 +554,14 @@ public class InputContainer
   
   private void setCurrentlyPressedKey(final Keyboard.Key key) {
     currentlyPressedKey = key;
-    invalidate();
   }
   
   private void activateSwipeMode() {
     swipeModeIsActivated = true;
-    invalidate();
   }
   
   private void deactivateSwipeMode() {
     swipeModeIsActivated = false;
-    invalidate();
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
@@ -606,6 +608,7 @@ public class InputContainer
   private void abortAllKeyBehaviour() {
     setCurrentlyPressedKey(null);
     activePointerId = NONEXISTENT_POINTER_ID;
+    invalidate();
   }
   
   private void showDebugToast(final String message) {
