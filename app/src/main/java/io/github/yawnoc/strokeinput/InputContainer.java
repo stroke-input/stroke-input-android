@@ -486,7 +486,7 @@ public class InputContainer
       inputListener.onKeyDownWhileShiftPressed();
     }
     
-    setCurrentlyPressedKey(key);
+    currentlyPressedKey = key;
     sendAppropriateExtendedPressHandlerMessage(key);
     
     deactivateSwipeMode();
@@ -513,7 +513,7 @@ public class InputContainer
     }
     
     removeAllExtendedPressHandlerMessages();
-    setCurrentlyPressedKey(key);
+    currentlyPressedKey = key;
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
   }
@@ -533,7 +533,7 @@ public class InputContainer
     }
     
     removeAllExtendedPressHandlerMessages();
-    setCurrentlyPressedKey(null);
+    currentlyPressedKey = null;
     resetKeyRepeatIntervalMilliseconds();
   }
   
@@ -550,10 +550,6 @@ public class InputContainer
   
   private boolean isShiftKey(final Keyboard.Key key) {
     return key != null && key.valueText.equals("SHIFT");
-  }
-  
-  private void setCurrentlyPressedKey(final Keyboard.Key key) {
-    currentlyPressedKey = key;
   }
   
   private void activateSwipeMode() {
@@ -606,7 +602,7 @@ public class InputContainer
   }
   
   private void abortAllKeyBehaviour() {
-    setCurrentlyPressedKey(null);
+    currentlyPressedKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     invalidate();
   }
