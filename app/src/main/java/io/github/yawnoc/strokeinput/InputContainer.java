@@ -91,7 +91,6 @@ public class InputContainer
   // Shift key
   private int shiftPointerId = NONEXISTENT_POINTER_ID;
   private int shiftMode;
-  private boolean shiftModeIsActivated = false;
   
   // Keyboard drawing
   private final Rect keyboardRectangle;
@@ -200,7 +199,6 @@ public class InputContainer
   
   public void setShiftMode(final int mode) {
     shiftMode = mode;
-    shiftModeIsActivated = shiftMode != SHIFT_DISABLED;
   }
   
   public void toggleDebugMode() {
@@ -538,7 +536,7 @@ public class InputContainer
       inputListener.onSwipe(currentlyPressedKey.valueText);
     }
     else if (key != null) {
-      if (shiftModeIsActivated && key.isShiftable) {
+      if (shiftMode != SHIFT_DISABLED && key.isShiftable) {
         inputListener.onKey(key.valueTextShifted);
       }
       else {
@@ -581,7 +579,6 @@ public class InputContainer
         shiftMode = SHIFT_DISABLED;
         break;
     }
-    shiftModeIsActivated = shiftMode != SHIFT_DISABLED;
     
     shiftPointerId = NONEXISTENT_POINTER_ID;
     invalidate();
