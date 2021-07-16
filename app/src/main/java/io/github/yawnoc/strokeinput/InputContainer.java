@@ -429,11 +429,12 @@ public class InputContainer
               currentlyPressedKeyIsSwipeable
             )
             {
-              sendMoveEvent(moveKey, movePointerX);
-              activePointerId = movePointerId;
-              activePointerX = movePointerX;
-              activePointerY = movePointerY;
-              invalidate();
+              sendMoveEvent(
+                moveKey,
+                movePointerId,
+                movePointerX,
+                movePointerY
+              );
             }
             
             break;
@@ -500,28 +501,36 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendMoveEvent(final Keyboard.Key key, final int x) {
-    
+  private void sendMoveEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
     if (swipeModeIsActivated) {
       if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = false;
       }
-      return;
     }
-    
-    if (key != null && key == currentlyPressedKey && key.isSwipeable) {
+    else if (key != null && key == currentlyPressedKey && key.isSwipeable) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = true;
         removeAllExtendedPressHandlerMessages();
       }
-      return;
+    }
+    else { // move is a key change
+      currentlyPressedKey = key;
+      removeAllExtendedPressHandlerMessages();
+      sendAppropriateExtendedPressHandlerMessage(key);
+      resetKeyRepeatIntervalMilliseconds();
     }
     
-    currentlyPressedKey = key;
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
     
-    removeAllExtendedPressHandlerMessages();
-    sendAppropriateExtendedPressHandlerMessage(key);
-    resetKeyRepeatIntervalMilliseconds();
+    invalidate();
   }
   
   private void sendUpEvent(
