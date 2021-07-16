@@ -492,7 +492,7 @@ public class InputContainer
     sendAppropriateExtendedPressHandlerMessage(key);
     
     deactivateSwipeMode();
-    if (key.isSwipeable) {
+    if (key != null && key.isSwipeable) {
       pointerDownX = x;
     }
   }
