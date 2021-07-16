@@ -387,9 +387,7 @@ public class InputContainer
         final Keyboard.Key downKey = getKeyAtPoint(downPointerX, downPointerY);
         
         if (isShiftKey(downKey)) {
-          inputListener.onShiftDown();
-          shiftPointerId = downPointerId;
-          invalidate();
+          sendShiftDownEvent(downPointerId);
           return true;
         }
         
