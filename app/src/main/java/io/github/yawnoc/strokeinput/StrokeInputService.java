@@ -141,15 +141,6 @@ public class StrokeInputService
   }
   
   @Override
-  public void onShiftDown() {
-    
-    final int shiftMode = inputContainer.getShiftMode();
-    if (shiftMode == InputContainer.SHIFT_DISABLED) {
-      inputContainer.setShiftMode(InputContainer.SHIFT_INITIATED);
-    }
-  }
-  
-  @Override
   public void onShiftUp() {
     
     final int shiftMode = inputContainer.getShiftMode();

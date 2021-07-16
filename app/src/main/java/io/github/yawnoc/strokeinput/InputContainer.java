@@ -164,7 +164,6 @@ public class InputContainer
   public interface OnInputListener {
     void onKey(String valueText);
     void onLongPress(String valueText);
-    void onShiftDown();
     void onShiftUp();
     void onKeyDownWhileShiftPressed();
     void onSwipe(String valueText);
@@ -560,7 +559,11 @@ public class InputContainer
   }
   
   private void sendShiftDownEvent(final int pointerId) {
-    inputListener.onShiftDown();
+    
+    if (shiftMode == SHIFT_DISABLED) {
+      shiftMode = SHIFT_INITIATED;
+    }
+    
     shiftPointerId = pointerId;
     abortCurrentlyPressedKey();
   }
