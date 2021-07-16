@@ -397,7 +397,7 @@ public class InputContainer
         }
         
         if (activePointerId != NONEXISTENT_POINTER_ID) {
-          sendUpEvent(currentlyPressedKey);
+          sendUpEvent(currentlyPressedKey, false);
         }
         
         sendDownEvent(downKey, downPointerX);
@@ -469,9 +469,7 @@ public class InputContainer
         }
         
         if (upPointerId == activePointerId) {
-          sendUpEvent(upKey);
-          activePointerId = NONEXISTENT_POINTER_ID;
-          invalidate();
+          sendUpEvent(upKey, true);
         }
         
         break;
@@ -518,8 +516,11 @@ public class InputContainer
     resetKeyRepeatIntervalMilliseconds();
   }
   
-  private void sendUpEvent(final Keyboard.Key key) {
-    
+  private void sendUpEvent(
+    final Keyboard.Key key,
+    final boolean shouldRedrawKeyboard
+  )
+  {
     if (swipeModeIsActivated) {
       inputListener.onSwipe(currentlyPressedKey.valueText);
     }
@@ -533,8 +534,13 @@ public class InputContainer
     }
     
     removeAllExtendedPressHandlerMessages();
+    activePointerId = NONEXISTENT_POINTER_ID;
     currentlyPressedKey = null;
     resetKeyRepeatIntervalMilliseconds();
+    
+    if (shouldRedrawKeyboard) {
+      invalidate();
+    }
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
