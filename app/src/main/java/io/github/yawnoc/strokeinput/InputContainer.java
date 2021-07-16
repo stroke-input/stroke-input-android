@@ -179,7 +179,7 @@ public class InputContainer
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);
-    if (getShiftMode() != SHIFT_PERSISTENT) {
+    if (shiftMode != SHIFT_PERSISTENT) {
       setShiftMode(SHIFT_DISABLED);
     }
     requestLayout();
@@ -257,11 +257,11 @@ public class InputContainer
         key.valueText.equals("SHIFT") && (
           shiftPointerId != NONEXISTENT_POINTER_ID
             ||
-          getShiftMode() == SHIFT_PERSISTENT
+          shiftMode == SHIFT_PERSISTENT
             ||
-          getShiftMode() == SHIFT_INITIATED
+          shiftMode == SHIFT_INITIATED
             ||
-          getShiftMode() == SHIFT_HELD
+          shiftMode == SHIFT_HELD
         )
       )
       {
@@ -290,7 +290,7 @@ public class InputContainer
             : currentlyPressedKey.valueText
         );
       }
-      else if (getShiftMode() == SHIFT_DISABLED) {
+      else if (shiftMode == SHIFT_DISABLED) {
         keyDisplayText = key.displayText;
       }
       else {
