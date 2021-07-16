@@ -378,9 +378,7 @@ public class InputContainer
     final boolean currentlyPressedKeyIsSwipeable =
       currentlyPressedKey != null && currentlyPressedKey.isSwipeable;
     
-    final int eventAction = event.getActionMasked();
-    
-    switch (eventAction) {
+    switch (event.getActionMasked()) {
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
