@@ -414,9 +414,7 @@ public class InputContainer
           if (movePointerId == activePointerId) {
             
             if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
-              inputListener.onShiftDown();
-              shiftPointerId = movePointerId;
-              abortAllKeyBehaviour();
+              sendShiftDownEvent(movePointerId);
               return true;
             }
             
@@ -563,6 +561,12 @@ public class InputContainer
     if (shouldRedrawKeyboard) {
       invalidate();
     }
+  }
+  
+  private void sendShiftDownEvent(final int pointerId) {
+    inputListener.onShiftDown();
+    shiftPointerId = pointerId;
+    abortAllKeyBehaviour();
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
