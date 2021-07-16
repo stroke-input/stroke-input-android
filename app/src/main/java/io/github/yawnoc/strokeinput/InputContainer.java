@@ -489,7 +489,7 @@ public class InputContainer
     currentlyPressedKey = key;
     sendAppropriateExtendedPressHandlerMessage(key);
     
-    deactivateSwipeMode();
+    swipeModeIsActivated = false;
     if (key != null && key.isSwipeable) {
       pointerDownX = x;
     }
@@ -499,14 +499,14 @@ public class InputContainer
     
     if (swipeModeIsActivated) {
       if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
-        deactivateSwipeMode();
+        swipeModeIsActivated = false;
       }
       return;
     }
     
     if (key != null && key == currentlyPressedKey && key.isSwipeable) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
-        activateSwipeMode();
+        swipeModeIsActivated = true;
         removeAllExtendedPressHandlerMessages();
       }
       return;
@@ -550,14 +550,6 @@ public class InputContainer
   
   private boolean isShiftKey(final Keyboard.Key key) {
     return key != null && key.valueText.equals("SHIFT");
-  }
-  
-  private void activateSwipeMode() {
-    swipeModeIsActivated = true;
-  }
-  
-  private void deactivateSwipeMode() {
-    swipeModeIsActivated = false;
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
