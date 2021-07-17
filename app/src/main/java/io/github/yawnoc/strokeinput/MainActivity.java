@@ -37,7 +37,7 @@ public class MainActivity
     
     findViewById(R.id.source_code_button).setOnClickListener(this);
     findViewById(R.id.about_button).setOnClickListener(this);
-    findViewById(R.id.input_settings_button).setOnClickListener(this);
+    findViewById(R.id.input_method_settings_button).setOnClickListener(this);
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
     
   }
@@ -64,7 +64,7 @@ public class MainActivity
         .show()
       ;
     }
-    else if (viewId == R.id.input_settings_button) {
+    else if (viewId == R.id.input_method_settings_button) {
       Utilities.showSystemInputMethodSettings(this);
     }
     else if (viewId == R.id.switch_keyboard_button) {

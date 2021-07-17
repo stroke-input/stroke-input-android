@@ -14,7 +14,7 @@
     you must manually enable it in the system settings before it can be used:
     \n若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
   </string>
-  <string name="activity_main_input_settings_button_label">
+  <string name="activity_main_input_method_settings_button_label">
     Input method settings 輸入法設定
   </string>
   <string name="activity_main_switch_keyboard_information">

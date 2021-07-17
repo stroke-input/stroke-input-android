@@ -55,10 +55,10 @@
       style="@style/MainActivityButtonContainer"
     >
       <Button
-        android:id="@+id/input_settings_button"
+        android:id="@+id/input_method_settings_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/activity_main_input_settings_button_label"
+        android:text="@string/activity_main_input_method_settings_button_label"
       />
     </LinearLayout>
     <androidx.cardview.widget.CardView

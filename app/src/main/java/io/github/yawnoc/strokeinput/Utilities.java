@@ -20,10 +20,10 @@ public final class Utilities {
   
   public static void showSystemInputMethodSettings(final Context context) {
     
-    final Intent inputSettingsIntent =
+    final Intent inputMethodSettingsIntent =
       new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
     
-    context.startActivity(inputSettingsIntent);
+    context.startActivity(inputMethodSettingsIntent);
   }
   
   public static void showSystemKeyboardSwitcher(final Context context) {
