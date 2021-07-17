@@ -570,8 +570,8 @@ public class InputContainer
           : SHIFT_HELD
       );
     }
-    
     shiftPointerId = pointerId;
+    
     invalidate();
   }
   
