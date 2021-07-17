@@ -508,16 +508,16 @@ public class InputContainer
     else if (key == activeKey && isSwipeableKey(key)) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = true;
-        shouldRedrawKeyboard = true;
         removeAllExtendedPressHandlerMessages();
+        shouldRedrawKeyboard = true;
       }
     }
     else { // move is a key change
       activeKey = key;
-      shouldRedrawKeyboard = true;
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
+      shouldRedrawKeyboard = true;
     }
     
     activePointerId = pointerId;
