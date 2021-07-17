@@ -472,23 +472,21 @@ public class InputContainer
     final int y
   )
   {
+    if (isSwipeableKey(key)) {
+      pointerDownX = x;
+    }
+    swipeModeIsActivated = false;
+    
     if (shiftPointerId != NONEXISTENT_POINTER_ID) {
       shiftMode = SHIFT_HELD;
     }
     
-    if (isSwipeableKey(key)) {
-      pointerDownX = x;
-    }
-    
+    activeKey = key;
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
-    activeKey = key;
-    
-    swipeModeIsActivated = false;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    
     invalidate();
   }
   
