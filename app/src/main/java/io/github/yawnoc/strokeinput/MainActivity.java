@@ -23,10 +23,9 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
+  public static final String ASSETS_DIRECTORY = "file:///android_asset/";
   public static final String SOURCE_CODE_URI =
     "https://github.com/stroke-input/stroke-input-android";
-  public static final String ABOUT_URI =
-    "file:///android_asset/about.html";
   
   AlertDialog.Builder htmlWebViewContainer;
   WebView htmlWebView;
@@ -53,7 +52,7 @@ public class MainActivity
       Utilities.openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.about_button) {
-      showHtmlWebView(ABOUT_URI);
+      showHtmlWebView(R.string.about_html_file_name);
     }
     else if (viewId == R.id.input_method_settings_button) {
       Utilities.showSystemInputMethodSettings(this);
@@ -85,6 +84,10 @@ public class MainActivity
         dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView)
       )
       .show();
+  }
+  
+  private void showHtmlWebView(final int fileNameResourceId) {
+    showHtmlWebView(ASSETS_DIRECTORY + getString(fileNameResourceId));
   }
   
 }

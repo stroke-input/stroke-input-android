@@ -1,4 +1,5 @@
 <resources>
+  <!-- Main activity -->
   <string name="app_name">Stroke Input Method 筆畫輸入法</string>
   <string name="activity_main_welcome">
     Welcome to Stroke Input Method!\n歡迎使用筆畫輸入法！
@@ -30,4 +31,6 @@
   <string name="activity_main_return_label">
     Return 回
   </string>
+  <!-- Asset file names for localisation -->
+  <string name="about_html_file_name">about.html</string>
 </resources>
