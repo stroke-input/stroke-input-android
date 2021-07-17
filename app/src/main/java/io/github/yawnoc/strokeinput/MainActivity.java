@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 
 /*
@@ -26,6 +27,9 @@ public class MainActivity
     "https://github.com/stroke-input/stroke-input-android";
   public static final String ABOUT_URI =
     "file:///android_asset/about.html";
+  
+  AlertDialog.Builder htmlWebViewContainer;
+  WebView htmlWebView;
   
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -49,16 +53,7 @@ public class MainActivity
       Utilities.openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.about_button) {
-      final WebView htmlWebView = new WebView(this);
-      htmlWebView.setBackgroundColor(Color.TRANSPARENT);
-      htmlWebView.loadUrl(ABOUT_URI);
-      final AlertDialog.Builder htmlAlertDialogBuilder =
-        new AlertDialog.Builder(this, R.style.StrokeInputAlert);
-      htmlAlertDialogBuilder
-        .setView(htmlWebView)
-        .setPositiveButton(R.string.activity_main_return_label, null)
-        .show()
-      ;
+      showHtmlWebView(ABOUT_URI);
     }
     else if (viewId == R.id.input_method_settings_button) {
       Utilities.showSystemInputMethodSettings(this);
@@ -67,6 +62,29 @@ public class MainActivity
       Utilities.showSystemKeyboardSwitcher(this);
     }
     
+  }
+  
+  private void showHtmlWebView(final String uri) {
+    
+    if (htmlWebViewContainer == null) {
+      htmlWebViewContainer =
+        new AlertDialog.Builder(this, R.style.StrokeInputAlert);
+      htmlWebViewContainer
+        .setPositiveButton(R.string.activity_main_return_label, null);
+    }
+    
+    if (htmlWebView == null) {
+      htmlWebView = new WebView(this);
+      htmlWebView.setBackgroundColor(Color.TRANSPARENT);
+    }
+  
+    htmlWebView.loadUrl(uri);
+    htmlWebViewContainer
+      .setView(htmlWebView)
+      .setOnDismissListener(
+        dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView)
+      )
+      .show();
   }
   
 }
