@@ -419,6 +419,19 @@ public class InputContainer
             
             break touchLogic;
           }
+          
+          if (movePointerId == shiftPointerId) {
+            
+            if (!isShiftKey(moveKey)) {
+              sendShiftMoveFromEvent(
+                moveKey,
+                movePointerId,
+                movePointerX,
+                movePointerY
+              );
+              break touchLogic;
+            }
+          }
         }
         
         break;
@@ -560,6 +573,25 @@ public class InputContainer
     
     shiftPointerId = pointerId;
     abortCurrentlyPressedKey();
+  }
+  
+  private void sendShiftMoveFromEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
+    currentlyPressedKey = key;
+    removeAllExtendedPressHandlerMessages();
+    sendAppropriateExtendedPressHandlerMessage(key);
+    resetKeyRepeatIntervalMilliseconds();
+    
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
+    
+    sendShiftUpEvent();
   }
   
   private void sendShiftUpEvent() {
