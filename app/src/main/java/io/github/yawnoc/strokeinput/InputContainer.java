@@ -398,7 +398,7 @@ public class InputContainer
           if (movePointerId == activePointerId) {
             
             if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
-              sendShiftDownEvent(movePointerId);
+              sendShiftMoveToEvent(movePointerId);
               break touchLogic;
             }
             
@@ -573,6 +573,19 @@ public class InputContainer
     
     shiftPointerId = pointerId;
     abortCurrentlyPressedKey();
+  }
+  
+  private void sendShiftMoveToEvent(final int pointerId) {
+    
+    shiftMode = SHIFT_HELD;
+    
+    currentlyPressedKey = null;
+    removeAllExtendedPressHandlerMessages();
+    
+    activePointerId = NONEXISTENT_POINTER_ID;
+    shiftPointerId = pointerId;
+    
+    invalidate();
   }
   
   private void sendShiftMoveFromEvent(
