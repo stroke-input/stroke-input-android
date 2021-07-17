@@ -1,35 +1,27 @@
 <resources>
   <!-- Main activity -->
-  <string name="app_name">Stroke Input Method 筆畫輸入法</string>
-  <string name="activity_main_welcome">
-    Welcome to Stroke Input Method!\n歡迎使用筆畫輸入法！
-  </string>
-  <string name="activity_main_source_code_button_label">
-    Source code 源碼
-  </string>
-  <string name="activity_main_about_button_label">
-    About 關於
-  </string>
+  <string name="app_name">Stroke Input Method</string>
+  <string name="activity_main_welcome">Welcome to Stroke Input Method!</string>
+  <string name="activity_main_source_code_button_label">Source code</string>
+  <string name="activity_main_about_button_label">About</string>
   <string name="activity_main_input_settings_information">
     If you have installed Stroke Input Method for the first time,
     you must manually enable it in the system settings before it can be used:
-    \n若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
   </string>
   <string name="activity_main_input_method_settings_button_label">
-    Input method settings 輸入法設定
+    Input method settings
   </string>
   <string name="activity_main_switch_keyboard_information">
     If your existing input method provides no means of switching keyboards:
-    \n若現有之輸入法無以轉鍵盤：
   </string>
   <string name="activity_main_switch_keyboard_button_label">
-    Switch keyboard 轉鍵盤
+    Switch keyboard
   </string>
   <string name="activity_main_test_input_hint">
-    Test input here 在此測試輸入
+    Test input here
   </string>
   <string name="activity_main_return_label">
-    Return 回
+    Return
   </string>
   <!-- Asset file names for localisation -->
   <string name="about_html_file_name">about.html</string>

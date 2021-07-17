@@ -1,0 +1,21 @@
+<resources>
+  <!-- Main activity -->
+  <string name="app_name">Stroke Input Method</string>
+  <string name="activity_main_welcome">歡迎使用筆畫輸入法！</string>
+  <string name="activity_main_source_code_button_label">源碼</string>
+  <string name="activity_main_about_button_label">關於</string>
+  <string name="activity_main_input_settings_information">
+    若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
+  </string>
+  <string name="activity_main_input_method_settings_button_label">
+    輸入法設定
+  </string>
+  <string name="activity_main_switch_keyboard_information">
+    若現有之輸入法無以轉鍵盤：
+  </string>
+  <string name="activity_main_switch_keyboard_button_label">轉鍵盤</string>
+  <string name="activity_main_test_input_hint">在此測試輸入</string>
+  <string name="activity_main_return_label">回</string>
+  <!-- Asset file names for localisation -->
+  <string name="about_html_file_name">about-zh-Hant.html</string>
+</resources>
