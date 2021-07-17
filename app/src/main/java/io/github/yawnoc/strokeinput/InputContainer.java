@@ -450,7 +450,7 @@ public class InputContainer
           !isSwipeableKey(activeKey)
         )
         {
-          sendShiftUpEvent();
+          sendShiftUpEvent(true);
           break;
         }
         
@@ -603,10 +603,10 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    sendShiftUpEvent();
+    sendShiftUpEvent(true);
   }
   
-  private void sendShiftUpEvent() {
+  private void sendShiftUpEvent(boolean shouldRedrawKeyboard) {
     
     switch (shiftMode) {
       case SHIFT_SINGLE:
@@ -622,7 +622,10 @@ public class InputContainer
     }
     
     shiftPointerId = NONEXISTENT_POINTER_ID;
-    invalidate();
+    
+    if (shouldRedrawKeyboard) {
+      invalidate();
+    }
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
