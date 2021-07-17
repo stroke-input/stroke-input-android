@@ -103,7 +103,7 @@ public class InputContainer
   // Debugging
   private final Paint debugPaint;
   private final Toast debugToast;
-  private boolean debugModeIsActivated = true;
+  private boolean debugModeIsActivated = false;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     
