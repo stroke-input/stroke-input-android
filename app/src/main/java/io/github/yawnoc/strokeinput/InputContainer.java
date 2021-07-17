@@ -125,7 +125,9 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(activeKey.valueText);
-                abortActiveKey();
+                activeKey = null;
+                activePointerId = NONEXISTENT_POINTER_ID;
+                invalidate();
                 break;
             }
           }
@@ -358,7 +360,9 @@ public class InputContainer
     final int eventPointerCount = event.getPointerCount();
     
     if (eventPointerCount > 2) {
-      abortActiveKey();
+      activeKey = null;
+      activePointerId = NONEXISTENT_POINTER_ID;
+      invalidate();
       return true;
     }
     
@@ -683,12 +687,6 @@ public class InputContainer
   
   private void removeExtendedPressHandlerMessages(final int messageWhat) {
     extendedPressHandler.removeMessages(messageWhat);
-  }
-  
-  private void abortActiveKey() {
-    activeKey = null;
-    activePointerId = NONEXISTENT_POINTER_ID;
-    invalidate();
   }
   
   private void showDebugToast(final String message) {
