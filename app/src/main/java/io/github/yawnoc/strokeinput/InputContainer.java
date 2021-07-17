@@ -73,9 +73,9 @@ public class InputContainer
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Keyboard.Key[] keyArray;
-  private Keyboard.Key currentlyPressedKey;
   
-  // Pointer properties
+  // Active key
+  private Keyboard.Key activeKey;
   private int activePointerId = NONEXISTENT_POINTER_ID;
   private int activePointerX;
   private int activePointerY;
@@ -114,17 +114,17 @@ public class InputContainer
       new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message message) {
-          if (currentlyPressedKey != null) {
+          if (activeKey != null) {
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
-                inputListener.onKey(currentlyPressedKey.valueText);
+                inputListener.onKey(activeKey.valueText);
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   keyRepeatIntervalMilliseconds
                 );
                 break;
               case MESSAGE_LONG_PRESS:
-                inputListener.onLongPress(currentlyPressedKey.valueText);
+                inputListener.onLongPress(activeKey.valueText);
                 abortCurrentlyPressedKey();
                 break;
             }
@@ -243,7 +243,7 @@ public class InputContainer
       
       int keyFillColour = key.keyFillColour;
       if (
-        key == currentlyPressedKey
+        key == activeKey
           ||
         key.valueText.equals("SHIFT") && (
           shiftPointerId != NONEXISTENT_POINTER_ID
@@ -264,7 +264,7 @@ public class InputContainer
       keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
       
       final int keyTextColour;
-      if (key == currentlyPressedKey && swipeModeIsActivated) {
+      if (key == activeKey && swipeModeIsActivated) {
         keyTextColour = key.keyTextSwipeColour;
       }
       else {
@@ -276,9 +276,9 @@ public class InputContainer
       final String keyDisplayText;
       if (debugModeIsActivated && key.valueText.equals("SPACE")) {
         keyDisplayText = (
-          currentlyPressedKey == null
+          activeKey == null
             ? "null"
-            : currentlyPressedKey.valueText
+            : activeKey.valueText
         );
       }
       else if (shiftMode == SHIFT_DISABLED) {
@@ -380,7 +380,7 @@ public class InputContainer
         }
         
         if (activePointerId != NONEXISTENT_POINTER_ID) {
-          sendUpEvent(currentlyPressedKey, false);
+          sendUpEvent(activeKey, false);
         }
         sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
         break;
@@ -397,17 +397,12 @@ public class InputContainer
           
           if (movePointerId == activePointerId) {
             
-            if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
+            if (isShiftKey(moveKey) && !isSwipeableKey(activeKey)) {
               sendShiftMoveToEvent(movePointerId);
               break touchLogic;
             }
             
-            if (
-              moveKey != currentlyPressedKey
-                ||
-              isSwipeableKey(currentlyPressedKey)
-            )
-            {
+            if (moveKey != activeKey || isSwipeableKey(activeKey)) {
               sendMoveEvent(
                 moveKey,
                 movePointerId,
@@ -448,7 +443,7 @@ public class InputContainer
         if (
           (upPointerId == shiftPointerId || isShiftKey(upKey))
             &&
-          !isSwipeableKey(currentlyPressedKey)
+          !isSwipeableKey(activeKey)
         )
         {
           sendShiftUpEvent();
@@ -484,7 +479,7 @@ public class InputContainer
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
-    currentlyPressedKey = key;
+    activeKey = key;
     
     swipeModeIsActivated = false;
     
@@ -508,7 +503,7 @@ public class InputContainer
         shouldRedrawKeyboard = true;
       }
     }
-    else if (key == currentlyPressedKey && isSwipeableKey(key)) {
+    else if (key == activeKey && isSwipeableKey(key)) {
       if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
         swipeModeIsActivated = true;
         shouldRedrawKeyboard = true;
@@ -516,7 +511,7 @@ public class InputContainer
       }
     }
     else { // move is a key change
-      currentlyPressedKey = key;
+      activeKey = key;
       shouldRedrawKeyboard = true;
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
@@ -538,7 +533,7 @@ public class InputContainer
   )
   {
     if (swipeModeIsActivated) {
-      inputListener.onSwipe(currentlyPressedKey.valueText);
+      inputListener.onSwipe(activeKey.valueText);
     }
     else if (key != null) {
       
@@ -555,7 +550,7 @@ public class InputContainer
     }
     
     activePointerId = NONEXISTENT_POINTER_ID;
-    currentlyPressedKey = null;
+    activeKey = null;
     
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
@@ -569,7 +564,7 @@ public class InputContainer
     
     if (shiftMode == SHIFT_DISABLED) {
       shiftMode = (
-        currentlyPressedKey == null
+        activeKey == null
           ? SHIFT_INITIATED
           : SHIFT_HELD
       );
@@ -583,7 +578,7 @@ public class InputContainer
     
     shiftMode = SHIFT_HELD;
     
-    currentlyPressedKey = null;
+    activeKey = null;
     removeAllExtendedPressHandlerMessages();
     
     activePointerId = NONEXISTENT_POINTER_ID;
@@ -599,7 +594,7 @@ public class InputContainer
     final int y
   )
   {
-    currentlyPressedKey = key;
+    activeKey = key;
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
@@ -691,7 +686,7 @@ public class InputContainer
   }
   
   private void abortCurrentlyPressedKey() {
-    currentlyPressedKey = null;
+    activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     invalidate();
   }
