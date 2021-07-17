@@ -362,6 +362,7 @@ public class InputContainer
       return true;
     }
     
+    touchLogic:
     switch (event.getActionMasked()) {
       
       case MotionEvent.ACTION_DOWN:
@@ -375,15 +376,13 @@ public class InputContainer
         
         if (isShiftKey(downKey)) {
           sendShiftDownEvent(downPointerId);
-          return true;
+          break;
         }
         
         if (activePointerId != NONEXISTENT_POINTER_ID) {
           sendUpEvent(currentlyPressedKey, false);
         }
-        
         sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
-        
         break;
       
       case MotionEvent.ACTION_MOVE:
@@ -400,7 +399,7 @@ public class InputContainer
             
             if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
               sendShiftDownEvent(movePointerId);
-              return true;
+              break touchLogic;
             }
             
             if (
@@ -415,9 +414,10 @@ public class InputContainer
                 movePointerX,
                 movePointerY
               );
+              break touchLogic;
             }
             
-            break;
+            break touchLogic;
           }
         }
         
@@ -439,11 +439,12 @@ public class InputContainer
         )
         {
           sendShiftUpEvent();
-          return true;
+          break;
         }
         
         if (upPointerId == activePointerId) {
           sendUpEvent(upKey, true);
+          break;
         }
         
         break;
