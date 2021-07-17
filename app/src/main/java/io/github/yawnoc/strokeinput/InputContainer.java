@@ -125,7 +125,7 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(activeKey.valueText);
-                abortCurrentlyPressedKey();
+                abortActiveKey();
                 break;
             }
           }
@@ -358,7 +358,7 @@ public class InputContainer
     final int eventPointerCount = event.getPointerCount();
     
     if (eventPointerCount > 2) {
-      abortCurrentlyPressedKey();
+      abortActiveKey();
       return true;
     }
     
@@ -685,7 +685,7 @@ public class InputContainer
     extendedPressHandler.removeMessages(messageWhat);
   }
   
-  private void abortCurrentlyPressedKey() {
+  private void abortActiveKey() {
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     invalidate();
