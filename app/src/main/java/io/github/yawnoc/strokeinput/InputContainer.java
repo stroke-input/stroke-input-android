@@ -594,16 +594,17 @@ public class InputContainer
     final int y
   )
   {
-    activeKey = key;
-    removeAllExtendedPressHandlerMessages();
-    sendAppropriateExtendedPressHandlerMessage(key);
-    resetKeyRepeatIntervalMilliseconds();
+    sendShiftUpEvent(false);
     
+    activeKey = key;
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
     
-    sendShiftUpEvent(true);
+    removeAllExtendedPressHandlerMessages();
+    sendAppropriateExtendedPressHandlerMessage(key);
+    resetKeyRepeatIntervalMilliseconds();
+    invalidate();
   }
   
   private void sendShiftUpEvent(boolean shouldRedrawKeyboard) {
