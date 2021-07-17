@@ -578,13 +578,12 @@ public class InputContainer
   private void sendShiftMoveToEvent(final int pointerId) {
     
     shiftMode = SHIFT_HELD;
-    
-    activeKey = null;
-    removeAllExtendedPressHandlerMessages();
-    
-    activePointerId = NONEXISTENT_POINTER_ID;
     shiftPointerId = pointerId;
     
+    activeKey = null;
+    activePointerId = NONEXISTENT_POINTER_ID;
+    
+    removeAllExtendedPressHandlerMessages();
     invalidate();
   }
   
