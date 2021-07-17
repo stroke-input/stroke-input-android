@@ -56,14 +56,12 @@ public class StrokeInputService
   }
   
   @Override
-  public void onKey(final String valueText, final String valueTextShifted) {
+  public void onKey(final String valueText) {
     
     final InputConnection inputConnection = getCurrentInputConnection();
     if (inputConnection == null) {
       return;
     }
-    
-    final int shiftMode = inputContainer.getShiftMode();
     
     switch (valueText) {
       
@@ -120,17 +118,7 @@ public class StrokeInputService
         break;
       
       default:
-        final String committedText;
-        if (shiftMode == InputContainer.SHIFT_DISABLED) {
-          committedText = valueText;
-        }
-        else {
-          committedText = valueTextShifted;
-        }
-        inputConnection.commitText(committedText, 1);
-        if (shiftMode == InputContainer.SHIFT_SINGLE) {
-          inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
-        }
+        inputConnection.commitText(valueText, 1);
     }
   }
   
@@ -142,62 +130,37 @@ public class StrokeInputService
         (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
       inputMethodManager.showInputMethodPicker();
     }
-  }
-  
-  @Override
-  public void onShiftDown() {
-    
-    final int shiftMode = inputContainer.getShiftMode();
-    if (shiftMode == InputContainer.SHIFT_DISABLED) {
-      inputContainer.setShiftMode(InputContainer.SHIFT_INITIATED);
+    else if (valueText.equals("ABOUT")) {
+      inputContainer.toggleDebugMode();
     }
-  }
-  
-  @Override
-  public void onShiftUp() {
-    
-    final int shiftMode = inputContainer.getShiftMode();
-    switch (shiftMode) {
-      
-      case InputContainer.SHIFT_SINGLE:
-        inputContainer.setShiftMode(InputContainer.SHIFT_PERSISTENT);
-        break;
-      
-      case InputContainer.SHIFT_INITIATED:
-        inputContainer.setShiftMode(InputContainer.SHIFT_SINGLE);
-        break;
-      
-      case InputContainer.SHIFT_PERSISTENT:
-      case InputContainer.SHIFT_HELD:
-        inputContainer.setShiftMode(InputContainer.SHIFT_DISABLED);
-        break;
-    }
-  }
-  
-  @Override
-  public void onKeyWhileShiftPressed() {
-    inputContainer.setShiftMode(InputContainer.SHIFT_HELD);
   }
   
   @Override
   public void onSwipe(final String valueText) {
     
     if (valueText.equals("SPACE")) {
+      
       final Keyboard keyboard = inputContainer.getKeyboard();
+      final Keyboard newKeyboard;
+      
       if (keyboard == strokesKeyboard) {
-        inputContainer.setKeyboard(qwertyKeyboard);
+        newKeyboard = qwertyKeyboard;
       }
       else if (keyboard == strokesSymbolsKeyboard) {
-        inputContainer.setKeyboard(qwertySymbolsKeyboard);
+        newKeyboard = qwertySymbolsKeyboard;
       }
       else if (keyboard == qwertyKeyboard) {
-        inputContainer.setKeyboard(strokesKeyboard);
+        newKeyboard = strokesKeyboard;
       }
       else if (keyboard == qwertySymbolsKeyboard) {
-        inputContainer.setKeyboard(strokesSymbolsKeyboard);
+        newKeyboard = strokesSymbolsKeyboard;
       }
+      else {
+        newKeyboard = keyboard;
+      }
+      
+      inputContainer.setKeyboard(newKeyboard);
     }
-    
   }
   
   private static boolean isAscii(final String string) {

@@ -32,6 +32,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
@@ -57,13 +58,16 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
-  public static final int SHIFT_DISABLED = 0;
-  public static final int SHIFT_SINGLE = 1;
-  public static final int SHIFT_PERSISTENT = 2;
-  public static final int SHIFT_INITIATED = 3;
-  public static final int SHIFT_HELD = 4;
+  private static final int SHIFT_DISABLED = 0;
+  private static final int SHIFT_SINGLE = 1;
+  private static final int SHIFT_PERSISTENT = 2;
+  private static final int SHIFT_INITIATED = 3;
+  private static final int SHIFT_HELD = 4;
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
+  
+  private static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
+  private static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
   
   // Container properties
   private OnInputListener inputListener;
@@ -96,6 +100,11 @@ public class InputContainer
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
   
+  // Debugging
+  private final Paint debugPaint;
+  private final Toast debugToast;
+  private boolean debugModeIsActivated = true;
+  
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
@@ -108,10 +117,7 @@ public class InputContainer
           if (currentlyPressedKey != null) {
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
-                inputListener.onKey(
-                  currentlyPressedKey.valueText,
-                  currentlyPressedKey.valueTextShifted
-                );
+                inputListener.onKey(currentlyPressedKey.valueText);
                 sendExtendedPressHandlerMessage(
                   MESSAGE_KEY_REPEAT,
                   keyRepeatIntervalMilliseconds
@@ -119,7 +125,7 @@ public class InputContainer
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(currentlyPressedKey.valueText);
-                abortAllKeyBehaviour();
+                abortCurrentlyPressedKey();
                 break;
             }
           }
@@ -144,17 +150,19 @@ public class InputContainer
       ResourcesCompat.getFont(context, R.font.stroke_input_keyboard)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
+    debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    debugPaint.setStyle(Paint.Style.STROKE);
+    
+    debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
   }
   
   /*
     A listener for input events.
   */
   public interface OnInputListener {
-    void onKey(String valueText, String valueTextShifted);
+    void onKey(String valueText);
     void onLongPress(String valueText);
-    void onShiftDown();
-    void onShiftUp();
-    void onKeyWhileShiftPressed();
     void onSwipe(String valueText);
   }
   
@@ -170,8 +178,8 @@ public class InputContainer
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);
-    if (getShiftMode() != SHIFT_PERSISTENT) {
-      setShiftMode(SHIFT_DISABLED);
+    if (shiftMode != SHIFT_PERSISTENT) {
+      shiftMode = SHIFT_DISABLED;
     }
     requestLayout();
   }
@@ -184,12 +192,9 @@ public class InputContainer
     keyRepeatIntervalMilliseconds = milliseconds;
   }
   
-  public int getShiftMode() {
-    return shiftMode;
-  }
-  
-  public void setShiftMode(final int mode) {
-    shiftMode = mode;
+  public void toggleDebugMode() {
+    debugModeIsActivated = !debugModeIsActivated;
+    showDebugToast("debug mode " + (debugModeIsActivated ? "ON" : "OFF"));
   }
   
   public void onClick(final View view) {
@@ -243,11 +248,11 @@ public class InputContainer
         key.valueText.equals("SHIFT") && (
           shiftPointerId != NONEXISTENT_POINTER_ID
             ||
-          getShiftMode() == SHIFT_PERSISTENT
+          shiftMode == SHIFT_PERSISTENT
             ||
-          getShiftMode() == SHIFT_INITIATED
+          shiftMode == SHIFT_INITIATED
             ||
-          getShiftMode() == SHIFT_HELD
+          shiftMode == SHIFT_HELD
         )
       )
       {
@@ -269,7 +274,14 @@ public class InputContainer
       keyTextPaint.setTextSize(key.keyTextSize);
       
       final String keyDisplayText;
-      if (getShiftMode() == SHIFT_DISABLED) {
+      if (debugModeIsActivated && key.valueText.equals("SPACE")) {
+        keyDisplayText = (
+          currentlyPressedKey == null
+            ? "null"
+            : currentlyPressedKey.valueText
+        );
+      }
+      else if (shiftMode == SHIFT_DISABLED) {
         keyDisplayText = key.displayText;
       }
       else {
@@ -299,6 +311,15 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
+    if (debugModeIsActivated && activePointerId != NONEXISTENT_POINTER_ID) {
+      debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
+      canvas.drawCircle(
+        activePointerX,
+        activePointerY,
+        DEBUG_ACTIVE_POINTER_RADIUS,
+        debugPaint
+      );
+    }
   }
   
   /*
@@ -332,258 +353,281 @@ public class InputContainer
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
-  public boolean onTouchEvent(final MotionEvent motionEvent) {
+  public boolean onTouchEvent(final MotionEvent event) {
     
-    if (motionEvent.getPointerCount() > 2) {
-      abortAllKeyBehaviour();
+    final int eventPointerCount = event.getPointerCount();
+    
+    if (eventPointerCount > 2) {
+      abortCurrentlyPressedKey();
       return true;
     }
     
-    final long eventTime = motionEvent.getEventTime();
-    final int eventAction = motionEvent.getActionMasked();
-    final int eventActionIndex = motionEvent.getActionIndex();
-    final int eventPointerId = motionEvent.getPointerId(eventActionIndex);
-    final int eventPointerIndex = motionEvent.findPointerIndex(eventPointerId);
-    final int eventPointerX = (int) motionEvent.getX(eventPointerIndex);
-    final int eventPointerY = (int) motionEvent.getY(eventPointerIndex);
-    final int eventMetaState = motionEvent.getMetaState();
-    
-    final Keyboard.Key eventKey = getKeyAtPoint(eventPointerX, eventPointerY);
-    final boolean eventHandled;
-    
-    if (
-      eventPointerId == shiftPointerId
-        ||
-      eventKey != null && eventKey.valueText.equals("SHIFT")
-    )
-    {
-      eventHandled =
-        handleTouchLogicShiftKey(
-          eventAction,
-          eventPointerId
-        );
-    }
-    else {
-      eventHandled =
-        handleTouchLogicNotShiftKey(
-          eventTime,
-          eventAction,
-          eventPointerId,
-          eventPointerX,
-          eventPointerY,
-          eventMetaState
-        );
-    }
-    
-    return eventHandled;
-  }
-  
-  private boolean handleTouchLogicShiftKey(
-    final int eventAction,
-    final int eventPointerId
-  )
-  {
-    switch (eventAction) {
+    touchLogic:
+    switch (event.getActionMasked()) {
       
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
-        inputListener.onShiftDown();
-        // Update the shift pointer
-        shiftPointerId = eventPointerId;
-        break;
-      
-      case MotionEvent.ACTION_UP:
-      case MotionEvent.ACTION_POINTER_UP:
-        inputListener.onShiftUp();
-        // Unset the shift pointer
-        shiftPointerId = NONEXISTENT_POINTER_ID;
-        break;
-    }
-    
-    invalidate();
-    
-    return true;
-  }
-  
-  private boolean handleTouchLogicNotShiftKey(
-    final long eventTime,
-    final int eventAction,
-    final int eventPointerId,
-    final int eventPointerX,
-    final int eventPointerY,
-    final int eventMetaState
-  )
-  {
-    boolean eventHandled = true;
-    
-    switch (eventAction) {
-      
-      case MotionEvent.ACTION_DOWN:
-      case MotionEvent.ACTION_POINTER_DOWN:
-        if (shiftPointerId != NONEXISTENT_POINTER_ID) {
-          inputListener.onKeyWhileShiftPressed();
+        
+        final int downPointerIndex = event.getActionIndex();
+        final int downPointerId = event.getPointerId(downPointerIndex);
+        final int downPointerX = (int) event.getX(downPointerIndex);
+        final int downPointerY = (int) event.getY(downPointerIndex);
+        final Keyboard.Key downKey = getKeyAtPoint(downPointerX, downPointerY);
+        
+        if (isShiftKey(downKey)) {
+          sendShiftDownEvent(downPointerId);
+          break;
         }
-        else if (
-          eventPointerId != activePointerId
-            &&
-          activePointerId != NONEXISTENT_POINTER_ID
-        )
-        {
-          // Send an up event for the active pointer
-          sendSinglePointerMotionEvent(
-            eventTime,
-            MotionEvent.ACTION_UP,
-            activePointerX,
-            activePointerY,
-            eventMetaState
-          );
+        
+        if (activePointerId != NONEXISTENT_POINTER_ID) {
+          sendUpEvent(currentlyPressedKey, false);
         }
-        // Send a down event for the event pointer
-        eventHandled =
-          sendSinglePointerMotionEvent(
-            eventTime,
-            MotionEvent.ACTION_DOWN,
-            eventPointerX,
-            eventPointerY,
-            eventMetaState
-          );
-        // Update the active pointer
-        activePointerId = eventPointerId;
-        activePointerX = eventPointerX;
-        activePointerY = eventPointerY;
+        sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
         break;
       
       case MotionEvent.ACTION_MOVE:
-        if (
-          eventPointerId == activePointerId
-            &&
-          (
-            getKeyAtPoint(eventPointerX, eventPointerY) != currentlyPressedKey
-              ||
-            currentlyPressedKey != null && currentlyPressedKey.isSwipeable
-          )
-        )
-        {
-          // Send a move event for the event pointer
-          eventHandled =
-            sendSinglePointerMotionEvent(
-              eventTime,
-              MotionEvent.ACTION_MOVE,
-              eventPointerX,
-              eventPointerY,
-              eventMetaState
-            );
-          // Update the active pointer
-          activePointerId = eventPointerId;
-          activePointerX = eventPointerX;
-          activePointerY = eventPointerY;
-        }
-        break;
-      
-      case MotionEvent.ACTION_UP:
-      case MotionEvent.ACTION_POINTER_UP:
-        if (eventPointerId == activePointerId) {
-          // Send an up event for the event pointer
-          eventHandled =
-            sendSinglePointerMotionEvent(
-              eventTime,
-              MotionEvent.ACTION_UP,
-              eventPointerX,
-              eventPointerY,
-              eventMetaState
-            );
-          // Unset the active pointer
-          activePointerId = NONEXISTENT_POINTER_ID;
-        }
-        break;
-    }
-    
-    return eventHandled;
-  }
-  
-  private boolean sendSinglePointerMotionEvent(
-    final long time,
-    final int action,
-    final int x,
-    final int y,
-    final int metaState
-  )
-  {
-    final MotionEvent sentEvent =
-      MotionEvent.obtain(time, time, action, x, y, metaState);
-    
-    return onSinglePointerTouchEvent(sentEvent);
-  }
-  
-  private boolean onSinglePointerTouchEvent(final MotionEvent motionEvent) {
-    
-    final int eventX = (int) motionEvent.getX();
-    final int eventY = (int) motionEvent.getY();
-    
-    final Keyboard.Key key;
-    if (swipeModeIsActivated) {
-      key = currentlyPressedKey;
-    }
-    else {
-      key = getKeyAtPoint(eventX, eventY);
-    }
-    if (key == null) {
-      abortAllKeyBehaviour();
-      return true;
-    }
-    final String valueText = key.valueText;
-    final String valueTextShifted = key.valueTextShifted;
-    
-    final int eventAction = motionEvent.getAction();
-    
-    switch (eventAction) {
-      
-      case MotionEvent.ACTION_DOWN:
-        setCurrentlyPressedKey(key);
-        sendAppropriateExtendedPressHandlerMessage(key);
-        deactivateSwipeMode();
-        if (key.isSwipeable) {
-          pointerDownX = eventX;
-        }
-        break;
-      
-      case MotionEvent.ACTION_MOVE:
-        if (swipeModeIsActivated) {
-          if (Math.abs(eventX - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
-            deactivateSwipeMode();
+        
+        for (int index = 0; index < eventPointerCount; index++) {
+          
+          final int movePointerId = event.getPointerId(index);
+          final int movePointerX = (int) event.getX(index);
+          final int movePointerY = (int) event.getY(index);
+          final Keyboard.Key moveKey =
+            getKeyAtPoint(movePointerX, movePointerY);
+          
+          if (movePointerId == activePointerId) {
+            
+            if (isShiftKey(moveKey) && !isSwipeableKey(currentlyPressedKey)) {
+              sendShiftMoveToEvent(movePointerId);
+              break touchLogic;
+            }
+            
+            if (
+              moveKey != currentlyPressedKey
+                ||
+              isSwipeableKey(currentlyPressedKey)
+            )
+            {
+              sendMoveEvent(
+                moveKey,
+                movePointerId,
+                movePointerX,
+                movePointerY
+              );
+              break touchLogic;
+            }
+            
+            break touchLogic;
           }
-        }
-        else {
-          if (key == currentlyPressedKey && key.isSwipeable) {
-            if (Math.abs(eventX - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
-              activateSwipeMode();
-              removeAllExtendedPressHandlerMessages();
+          
+          if (movePointerId == shiftPointerId) {
+            
+            if (!isShiftKey(moveKey)) {
+              sendShiftMoveFromEvent(
+                moveKey,
+                movePointerId,
+                movePointerX,
+                movePointerY
+              );
+              break touchLogic;
             }
           }
-          else { // move is a key change
-            removeAllExtendedPressHandlerMessages();
-            setCurrentlyPressedKey(key);
-            sendAppropriateExtendedPressHandlerMessage(key);
-            resetKeyRepeatIntervalMilliseconds();
-          }
         }
+        
         break;
       
       case MotionEvent.ACTION_UP:
-        removeAllExtendedPressHandlerMessages();
-        setCurrentlyPressedKey(null);
-        if (swipeModeIsActivated) {
-          inputListener.onSwipe(valueText);
-          deactivateSwipeMode();
+      case MotionEvent.ACTION_POINTER_UP:
+        
+        final int upPointerIndex = event.getActionIndex();
+        final int upPointerId = event.getPointerId(upPointerIndex);
+        final int upPointerX = (int) event.getX(upPointerIndex);
+        final int upPointerY = (int) event.getY(upPointerIndex);
+        final Keyboard.Key upKey = getKeyAtPoint(upPointerX, upPointerY);
+        
+        if (
+          (upPointerId == shiftPointerId || isShiftKey(upKey))
+            &&
+          !isSwipeableKey(currentlyPressedKey)
+        )
+        {
+          sendShiftUpEvent();
+          break;
         }
-        else {
-          inputListener.onKey(valueText, valueTextShifted);
+        
+        if (upPointerId == activePointerId) {
+          sendUpEvent(upKey, true);
+          break;
         }
-        resetKeyRepeatIntervalMilliseconds();
+        
         break;
     }
     
     return true;
+  }
+  
+  private void sendDownEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
+    if (shiftPointerId != NONEXISTENT_POINTER_ID) {
+      shiftMode = SHIFT_HELD;
+    }
+    
+    if (isSwipeableKey(key)) {
+      pointerDownX = x;
+    }
+    
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
+    currentlyPressedKey = key;
+    
+    swipeModeIsActivated = false;
+    
+    sendAppropriateExtendedPressHandlerMessage(key);
+    
+    invalidate();
+  }
+  
+  private void sendMoveEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
+    boolean shouldRedrawKeyboard = false;
+    
+    if (swipeModeIsActivated) {
+      if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
+        swipeModeIsActivated = false;
+        shouldRedrawKeyboard = true;
+      }
+    }
+    else if (key == currentlyPressedKey && isSwipeableKey(key)) {
+      if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
+        swipeModeIsActivated = true;
+        shouldRedrawKeyboard = true;
+        removeAllExtendedPressHandlerMessages();
+      }
+    }
+    else { // move is a key change
+      currentlyPressedKey = key;
+      shouldRedrawKeyboard = true;
+      removeAllExtendedPressHandlerMessages();
+      sendAppropriateExtendedPressHandlerMessage(key);
+      resetKeyRepeatIntervalMilliseconds();
+    }
+    
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
+    
+    if (shouldRedrawKeyboard) {
+      invalidate();
+    }
+  }
+  
+  private void sendUpEvent(
+    final Keyboard.Key key,
+    final boolean shouldRedrawKeyboard
+  )
+  {
+    if (swipeModeIsActivated) {
+      inputListener.onSwipe(currentlyPressedKey.valueText);
+    }
+    else if (key != null) {
+      
+      if (shiftMode != SHIFT_DISABLED && key.isShiftable) {
+        inputListener.onKey(key.valueTextShifted);
+      }
+      else {
+        inputListener.onKey(key.valueText);
+      }
+      
+      if (shiftMode == SHIFT_SINGLE) {
+        shiftMode = SHIFT_DISABLED;
+      }
+    }
+    
+    activePointerId = NONEXISTENT_POINTER_ID;
+    currentlyPressedKey = null;
+    
+    removeAllExtendedPressHandlerMessages();
+    resetKeyRepeatIntervalMilliseconds();
+    
+    if (shouldRedrawKeyboard) {
+      invalidate();
+    }
+  }
+  
+  private void sendShiftDownEvent(final int pointerId) {
+    
+    if (shiftMode == SHIFT_DISABLED) {
+      shiftMode = (
+        currentlyPressedKey == null
+          ? SHIFT_INITIATED
+          : SHIFT_HELD
+      );
+    }
+    
+    shiftPointerId = pointerId;
+    invalidate();
+  }
+  
+  private void sendShiftMoveToEvent(final int pointerId) {
+    
+    shiftMode = SHIFT_HELD;
+    
+    currentlyPressedKey = null;
+    removeAllExtendedPressHandlerMessages();
+    
+    activePointerId = NONEXISTENT_POINTER_ID;
+    shiftPointerId = pointerId;
+    
+    invalidate();
+  }
+  
+  private void sendShiftMoveFromEvent(
+    final Keyboard.Key key,
+    final int pointerId,
+    final int x,
+    final int y
+  )
+  {
+    currentlyPressedKey = key;
+    removeAllExtendedPressHandlerMessages();
+    sendAppropriateExtendedPressHandlerMessage(key);
+    resetKeyRepeatIntervalMilliseconds();
+    
+    activePointerId = pointerId;
+    activePointerX = x;
+    activePointerY = y;
+    
+    sendShiftUpEvent();
+  }
+  
+  private void sendShiftUpEvent() {
+    
+    switch (shiftMode) {
+      case SHIFT_SINGLE:
+        shiftMode = SHIFT_PERSISTENT;
+        break;
+      case SHIFT_INITIATED:
+        shiftMode = SHIFT_SINGLE;
+        break;
+      case SHIFT_PERSISTENT:
+      case SHIFT_HELD:
+        shiftMode = SHIFT_DISABLED;
+        break;
+    }
+    
+    shiftPointerId = NONEXISTENT_POINTER_ID;
+    invalidate();
   }
   
   private Keyboard.Key getKeyAtPoint(final int x, final int y) {
@@ -597,25 +641,21 @@ public class InputContainer
     return null;
   }
   
-  private void setCurrentlyPressedKey(final Keyboard.Key key) {
-    currentlyPressedKey = key;
-    invalidate();
+  private boolean isShiftKey(final Keyboard.Key key) {
+    return key != null && key.valueText.equals("SHIFT");
   }
   
-  private void activateSwipeMode() {
-    swipeModeIsActivated = true;
-    invalidate();
-  }
-  
-  private void deactivateSwipeMode() {
-    swipeModeIsActivated = false;
-    invalidate();
+  private boolean isSwipeableKey(final Keyboard.Key key) {
+    return key != null && key.isSwipeable;
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
     final Keyboard.Key key
   )
   {
+    if (key == null) {
+      return;
+    }
     if (key.isRepeatable) {
       sendExtendedPressHandlerMessage(
         MESSAGE_KEY_REPEAT,
@@ -650,8 +690,14 @@ public class InputContainer
     extendedPressHandler.removeMessages(messageWhat);
   }
   
-  private void abortAllKeyBehaviour() {
-    setCurrentlyPressedKey(null);
+  private void abortCurrentlyPressedKey() {
+    currentlyPressedKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
+    invalidate();
+  }
+  
+  private void showDebugToast(final String message) {
+    debugToast.setText(message);
+    debugToast.show();
   }
 }
