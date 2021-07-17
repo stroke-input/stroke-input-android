@@ -551,12 +551,11 @@ public class InputContainer
       }
     }
     
-    activePointerId = NONEXISTENT_POINTER_ID;
     activeKey = null;
+    activePointerId = NONEXISTENT_POINTER_ID;
     
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
-    
     if (shouldRedrawKeyboard) {
       invalidate();
     }
