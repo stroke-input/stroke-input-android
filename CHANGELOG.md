@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.6.0] Touch logic rewrite (2021-07-17)
+
 - Rewrote touch logic:
   - Fixed broken logic for second moving pointer
   - Reimplemented shift key logic to allow for:
@@ -95,7 +98,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.5.2...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.0...HEAD
+[v0.6.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.5.2...v0.6.0
 [v0.5.2]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.5.1...v0.5.2
 [v0.5.1]:
