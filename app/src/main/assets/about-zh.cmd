@@ -122,7 +122,7 @@ r{%
 @@[`about.cmd`]
   https://github.com/stroke-input/stroke-input-android/\
     blob/master/\
-    app/src/main/assets/about-zh-Hant.cmd
+    app/src/main/assets/about-zh.cmd
 @@
 
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
