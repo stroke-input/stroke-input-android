@@ -22,7 +22,7 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
-  public static final String SOURCE_CODE_URL =
+  public static final String SOURCE_CODE_URI =
     "https://github.com/stroke-input/stroke-input-android";
   public static final String ABOUT_URI =
     "file:///android_asset/about.html";
@@ -46,7 +46,7 @@ public class MainActivity
     final int viewId = view.getId();
     
     if (viewId == R.id.source_code_button) {
-      Utilities.openInBrowser(this, SOURCE_CODE_URL);
+      Utilities.openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.about_button) {
       final WebView htmlWebView = new WebView(this);
