@@ -16,7 +16,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 
 /*
@@ -72,9 +71,7 @@ public class MainActivity
       startActivity(inputSettingsIntent);
     }
     else if (viewId == R.id.switch_keyboard_button) {
-      final InputMethodManager inputMethodManager =
-        (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-      inputMethodManager.showInputMethodPicker();
+      Utilities.showSystemKeyboardSwitcher(this);
     }
     
   }
