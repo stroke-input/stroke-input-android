@@ -12,6 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 
 public final class Utilities {
   
+  public static boolean isAscii(final String string) {
+    return string.matches("\\p{ASCII}*");
+  }
+  
   public static void showSystemKeyboardSwitcher(final Context context) {
     
     final InputMethodManager inputMethodManager =

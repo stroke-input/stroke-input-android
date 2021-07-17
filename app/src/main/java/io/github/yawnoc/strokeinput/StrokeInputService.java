@@ -74,7 +74,7 @@ public class StrokeInputService
         final String characterBeforeCursor =
           (String) inputConnection.getTextBeforeCursor(1, 0);
         final int nextBackspaceIntervalMilliseconds = (
-          isAscii(characterBeforeCursor)
+          Utilities.isAscii(characterBeforeCursor)
             ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
             : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
         );
@@ -158,10 +158,6 @@ public class StrokeInputService
       
       inputContainer.setKeyboard(newKeyboard);
     }
-  }
-  
-  private static boolean isAscii(final String string) {
-    return string.matches("\\p{ASCII}*");
   }
   
 }
