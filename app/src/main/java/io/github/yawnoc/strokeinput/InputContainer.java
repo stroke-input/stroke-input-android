@@ -621,7 +621,6 @@ public class InputContainer
         shiftMode = SHIFT_DISABLED;
         break;
     }
-    
     shiftPointerId = NONEXISTENT_POINTER_ID;
     
     if (shouldRedrawKeyboard) {
