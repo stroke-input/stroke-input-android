@@ -572,7 +572,7 @@ public class InputContainer
     }
     
     shiftPointerId = pointerId;
-    abortCurrentlyPressedKey();
+    invalidate();
   }
   
   private void sendShiftMoveToEvent(final int pointerId) {
