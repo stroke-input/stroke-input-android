@@ -10,9 +10,7 @@ package io.github.yawnoc.strokeinput;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -48,9 +46,7 @@ public class MainActivity
     final int viewId = view.getId();
     
     if (viewId == R.id.source_code_button) {
-      final Intent sourceCodeIntent =
-        new Intent(Intent.ACTION_VIEW, Uri.parse(SOURCE_CODE_URL));
-      startActivity(sourceCodeIntent);
+      Utilities.openInBrowser(this, SOURCE_CODE_URL);
     }
     else if (viewId == R.id.about_button) {
       final WebView htmlWebView = new WebView(this);

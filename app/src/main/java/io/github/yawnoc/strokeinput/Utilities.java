@@ -9,6 +9,7 @@ package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
 
@@ -16,6 +17,14 @@ public final class Utilities {
   
   public static boolean isAscii(final String string) {
     return string.matches("\\p{ASCII}*");
+  }
+  
+  public static void openInBrowser(final Context context, final String uri) {
+    
+    final Intent browserIntent =
+      new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+    
+    context.startActivity(browserIntent);
   }
   
   public static void showSystemInputMethodSettings(final Context context) {
