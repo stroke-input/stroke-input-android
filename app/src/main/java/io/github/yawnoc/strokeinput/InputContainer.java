@@ -568,7 +568,11 @@ public class InputContainer
   private void sendShiftDownEvent(final int pointerId) {
     
     if (shiftMode == SHIFT_DISABLED) {
-      shiftMode = SHIFT_INITIATED;
+      shiftMode = (
+        currentlyPressedKey == null
+          ? SHIFT_INITIATED
+          : SHIFT_HELD
+      );
     }
     
     shiftPointerId = pointerId;
