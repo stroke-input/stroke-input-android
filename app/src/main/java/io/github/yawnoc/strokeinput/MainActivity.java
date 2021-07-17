@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -55,6 +56,7 @@ public class MainActivity
     }
     else if (viewId == R.id.about_button) {
       final WebView htmlWebView = new WebView(this);
+      htmlWebView.setBackgroundColor(Color.TRANSPARENT);
       htmlWebView.loadUrl(ABOUT_URI);
       final AlertDialog.Builder htmlAlertDialogBuilder =
         new AlertDialog.Builder(this, R.style.StrokeInputAlert);

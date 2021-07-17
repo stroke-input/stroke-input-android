@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed flash of white background when loading About
+
 
 ## [v0.6.0] Touch logic rewrite (2021-07-17)
 
