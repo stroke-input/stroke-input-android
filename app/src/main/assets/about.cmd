@@ -4,46 +4,7 @@
 ##>
 %%
   %title About
-  %css
-    {: @color/umbrella_orange : #FFCE73 :}
-    {: @color/key_fill : #181818 :}
-    body {
-      background: @color/key_fill;
-      color: white;
-      font-family: sans-serif;
-      font-size: 15px;
-      margin: 0;
-      overflow-wrap: break-word;
-      padding: 1em;
-    }
-    a {
-      color: @color/umbrella_orange;
-    }
-    footer {
-      border-top: 2px solid white;
-      margin-top: 1.5em;
-      padding-top: 0.75em;
-    }
-    h1 {
-      font-size: 1.6em;
-      margin-top: 0.3em;
-    }
-    h2 {
-      font-size: 1.4em;
-      margin-top: 1.5em;
-    }
-    h3 {
-      font-size: 1.1em;
-    }
-    html {
-      background: grey;
-      margin: 0 auto;
-      max-width: 44em;
-    }
-    .notice {
-      border: 1px solid white;
-      padding: 0.5em;
-    }
+  %resources <link rel="stylesheet" href="dark.css">
 %%
 
 
