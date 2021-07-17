@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -66,9 +65,7 @@ public class MainActivity
       ;
     }
     else if (viewId == R.id.input_settings_button) {
-      final Intent inputSettingsIntent =
-        new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-      startActivity(inputSettingsIntent);
+      Utilities.showSystemInputMethodSettings(this);
     }
     else if (viewId == R.id.switch_keyboard_button) {
       Utilities.showSystemKeyboardSwitcher(this);
