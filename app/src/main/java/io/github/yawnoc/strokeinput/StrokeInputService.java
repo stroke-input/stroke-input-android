@@ -27,6 +27,8 @@ public class StrokeInputService
   private static final String SPACE = " ";
   private static final String NEWLINE = "\n";
   
+  private static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  
   InputContainer inputContainer;
   Keyboard strokesKeyboard;
   Keyboard strokesSymbolsKeyboard;
@@ -48,7 +50,11 @@ public class StrokeInputService
     qwertySymbolsKeyboard =
       new Keyboard(this, R.xml.keyboard_qwerty_symbols);
     
-    inputContainer.setKeyboard(strokesKeyboard);
+    Keyboard keyboard = getSavedKeyboard();
+    if (keyboard == null) {
+      keyboard = strokesKeyboard;
+    }
+    switchKeyboardWithSave(keyboard);
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
@@ -84,19 +90,19 @@ public class StrokeInputService
         break;
       
       case "SWITCH_TO_STROKES":
-        inputContainer.setKeyboard(strokesKeyboard);
+        switchKeyboardWithSave(strokesKeyboard);
         break;
       
       case "SWITCH_TO_STROKES_SYMBOLS":
-        inputContainer.setKeyboard(strokesSymbolsKeyboard);
+        switchKeyboardWithSave(strokesSymbolsKeyboard);
         break;
       
       case "SWITCH_TO_QWERTY":
-        inputContainer.setKeyboard(qwertyKeyboard);
+        switchKeyboardWithSave(qwertyKeyboard);
         break;
       
       case "SWITCH_TO_QWERTY_SYMBOLS":
-        inputContainer.setKeyboard(qwertySymbolsKeyboard);
+        switchKeyboardWithSave(qwertySymbolsKeyboard);
         break;
       
       case "SPACE":
@@ -147,8 +153,77 @@ public class StrokeInputService
         newKeyboard = strokesKeyboard;
       }
       
-      inputContainer.setKeyboard(newKeyboard);
+      switchKeyboardWithSave(newKeyboard);
     }
   }
   
+  private void switchKeyboardWithSave(final Keyboard keyboard) {
+    
+    inputContainer.setKeyboard(keyboard);
+    setSavedKeyboard(keyboard);
+  }
+  
+  private Keyboard getSavedKeyboard() {
+    
+    String keyboardName = Utilities.loadPreferenceString(
+      getApplicationContext(),
+      PREFERENCES_FILE_NAME,
+      "keyboardName"
+    );
+    
+    return keyboardFromName(keyboardName);
+  }
+  
+  private void setSavedKeyboard(final Keyboard keyboard) {
+    
+    String keyboardName = nameFromKeyboard(keyboard);
+    
+    Utilities.savePreferenceString(
+      getApplicationContext(),
+      PREFERENCES_FILE_NAME,
+      "keyboardName",
+      keyboardName
+    );
+  }
+  
+  /*
+    TODO: replace with non hard-coded version (or BiMap)
+  */
+  private Keyboard keyboardFromName(final String keyboardName) {
+    
+    switch (keyboardName) {
+      case "STROKES":
+        return strokesKeyboard;
+      case "STROKES_SYMBOLS":
+        return strokesSymbolsKeyboard;
+      case "QWERTY":
+        return qwertyKeyboard;
+      case "QWERTY_SYMBOLS":
+        return qwertySymbolsKeyboard;
+      default:
+        return null;
+    }
+  }
+  
+  /*
+    TODO: replace with non hard-coded version (or BiMap)
+  */
+  private String nameFromKeyboard(final Keyboard keyboard) {
+    
+    if (keyboard == strokesKeyboard) {
+      return "STROKES";
+    }
+    else if (keyboard == strokesSymbolsKeyboard) {
+      return "STROKES_SYMBOLS";
+    }
+    else if (keyboard == qwertyKeyboard) {
+      return "QWERTY";
+    }
+    else if (keyboard == qwertySymbolsKeyboard) {
+      return "QWERTY_SYMBOLS";
+    }
+    else {
+      return "";
+    }
+  }
 }

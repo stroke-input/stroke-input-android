@@ -41,6 +41,16 @@ public final class Utilities {
     return preferences.getString(preferenceKey, preferenceDefaultValue);
   }
   
+  public static String loadPreferenceString(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey
+  )
+  {
+    return
+      loadPreferenceString(context, preferenceFileName, preferenceKey, "");
+  }
+  
   public static void savePreferenceString(
     final Context context,
     final String preferenceFileName,
