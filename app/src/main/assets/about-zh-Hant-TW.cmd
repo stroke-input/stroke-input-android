@@ -56,7 +56,7 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 ## 鍵盤字體 ##
 
-### [Stroke Input Keyboard] (v1.3.1) ###
+### [Stroke Input Keyboard] (v1.4.0) ###
 ----{.notice}
 ©~2021 Conway \+
 以 {GPL-3.0-only} 授權，見\GPL-3.0-only。 \+

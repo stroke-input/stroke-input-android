@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated keyboard font to [Stroke Input Keyboard v1.4.0]
+  (adds glyph `U+82F1 英` for localised space bar)
 - Replaced parallel text with proper localisation
 - Fixed flash of white background when loading About
 
@@ -121,6 +123,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.4.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.4.0
 [Stroke Input Keyboard v1.3.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.3.1
 [Stroke Input Keyboard v1.2.1]:
