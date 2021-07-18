@@ -56,7 +56,6 @@
     app:isShiftable="true"
   >
     <!-- Shift key: U+21E7, U+2B06 -->
-    <!-- TODO: add up arrow glyph to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SHIFT"
       app:displayText="⇧"
@@ -98,7 +97,6 @@
       app:keyWidth="@dimen/key_width_digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
-    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SPACE"
       app:displayText="@string/keyboard_qwerty_space_bar_display_text"

@@ -119,7 +119,6 @@
       app:keyWidth="@dimen/key_width_digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
-    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SPACE"
       app:displayText="@string/keyboard_strokes_space_bar_display_text"

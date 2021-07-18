@@ -33,7 +33,6 @@
     <Key app:valueText="\\" />
   </Row>
   <Row>
-    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
     <Key app:valueText="~" />
     <Key app:valueText="`" />
     <Key app:valueText="−" /> <!-- U+2212 MINUS SIGN -->
@@ -48,7 +47,6 @@
   <Row
     app:offsetX="@dimen/row_horizontal_offset_qwerty_row_2"
   >
-    <!-- TODO: add non-ASCII glyphs to stroke_input_keyboard.ttf -->
     <Key app:valueText="¢" /> <!-- U+00A2 CENT SIGN -->
     <Key app:valueText="¥"/> <!-- U+00A5 YEN SIGN -->
     <Key app:valueText="€" /> <!-- U+20AC EURO SIGN -->
@@ -83,7 +81,6 @@
       app:keyWidth="@dimen/key_width_digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
-    <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SPACE"
       app:displayText="@string/keyboard_qwerty_space_bar_display_text"
