@@ -178,11 +178,12 @@ public class StrokeInputService
   
   private Keyboard getSavedKeyboard() {
     
-    String keyboardName = Utilities.loadPreferenceString(
-      getApplicationContext(),
-      PREFERENCES_FILE_NAME,
-      "keyboardName"
-    );
+    String keyboardName =
+      Utilities.loadPreferenceString(
+        getApplicationContext(),
+        PREFERENCES_FILE_NAME,
+        "keyboardName"
+      );
     
     return keyboardFromName.get(keyboardName);
   }
