@@ -31,24 +31,13 @@ public final class Utilities {
   public static String loadPreferenceString(
     final Context context,
     final String preferenceFileName,
-    final String preferenceKey,
-    final String preferenceDefaultValue
+    final String preferenceKey
   )
   {
     SharedPreferences preferences =
       context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
     
-    return preferences.getString(preferenceKey, preferenceDefaultValue);
-  }
-  
-  public static String loadPreferenceString(
-    final Context context,
-    final String preferenceFileName,
-    final String preferenceKey
-  )
-  {
-    return
-      loadPreferenceString(context, preferenceFileName, preferenceKey, "");
+    return preferences.getString(preferenceKey, null);
   }
   
   public static void savePreferenceString(
