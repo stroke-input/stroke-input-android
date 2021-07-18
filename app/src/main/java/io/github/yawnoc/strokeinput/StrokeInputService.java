@@ -66,12 +66,7 @@ public class StrokeInputService
     keyboardFromName = Utilities.invertMap(nameFromKeyboard);
     
     final String savedKeyboardName = getSavedKeyboardName();
-    if (savedKeyboardName == null) {
-      switchKeyboardAndSaveName(nameFromKeyboard.get(strokesKeyboard));
-    }
-    else {
-      switchKeyboardAndSaveName(savedKeyboardName);
-    }
+    switchKeyboardAndSaveName(savedKeyboardName);
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
@@ -185,9 +180,11 @@ public class StrokeInputService
     
     final Keyboard keyboard = keyboardFromName.get(keyboardName);
     if (keyboard == null) {
-      return;
+      inputContainer.setKeyboard(strokesKeyboard);
     }
-    inputContainer.setKeyboard(keyboard);
+    else {
+      inputContainer.setKeyboard(keyboard);
+    }
     
     Utilities.savePreferenceString(
       getApplicationContext(),
