@@ -107,19 +107,11 @@ public class StrokeInputService
         break;
       
       case "SWITCH_TO_STROKES":
-        switchKeyboardAndSaveName("STROKES");
-        break;
-      
       case "SWITCH_TO_STROKES_SYMBOLS":
-        switchKeyboardAndSaveName("STROKES_SYMBOLS");
-        break;
-      
       case "SWITCH_TO_QWERTY":
-        switchKeyboardAndSaveName("QWERTY");
-        break;
-      
       case "SWITCH_TO_QWERTY_SYMBOLS":
-        switchKeyboardAndSaveName("QWERTY_SYMBOLS");
+        final String keyboardName = valueText.replaceFirst("^SWITCH_TO_", "");
+        switchKeyboardAndSaveName(keyboardName);
         break;
       
       case "SPACE":
