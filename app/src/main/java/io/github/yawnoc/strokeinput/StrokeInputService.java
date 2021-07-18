@@ -65,11 +65,13 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
     keyboardFromName = Utilities.invertMap(nameFromKeyboard);
     
-    Keyboard keyboard = getSavedKeyboard();
-    if (keyboard == null) {
-      keyboard = strokesKeyboard;
+    final String savedKeyboardName = getSavedKeyboardName();
+    if (savedKeyboardName == null) {
+      switchKeyboardAndSaveName(nameFromKeyboard.get(strokesKeyboard));
     }
-    switchKeyboardWithSave(keyboard);
+    else {
+      switchKeyboardAndSaveName(savedKeyboardName);
+    }
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
@@ -105,19 +107,19 @@ public class StrokeInputService
         break;
       
       case "SWITCH_TO_STROKES":
-        switchKeyboardWithSave(strokesKeyboard);
+        switchKeyboardAndSaveName("STROKES");
         break;
       
       case "SWITCH_TO_STROKES_SYMBOLS":
-        switchKeyboardWithSave(strokesSymbolsKeyboard);
+        switchKeyboardAndSaveName("STROKES_SYMBOLS");
         break;
       
       case "SWITCH_TO_QWERTY":
-        switchKeyboardWithSave(qwertyKeyboard);
+        switchKeyboardAndSaveName("QWERTY");
         break;
       
       case "SWITCH_TO_QWERTY_SYMBOLS":
-        switchKeyboardWithSave(qwertySymbolsKeyboard);
+        switchKeyboardAndSaveName("QWERTY_SYMBOLS");
         break;
       
       case "SPACE":
@@ -168,31 +170,27 @@ public class StrokeInputService
         newKeyboard = strokesKeyboard;
       }
       
-      switchKeyboardWithSave(newKeyboard);
+      switchKeyboardAndSaveName(nameFromKeyboard.get(newKeyboard));
     }
   }
   
-  private void switchKeyboardWithSave(final Keyboard keyboard) {
+  private String getSavedKeyboardName() {
     
-    inputContainer.setKeyboard(keyboard);
-    setSavedKeyboard(keyboard);
-  }
-  
-  private Keyboard getSavedKeyboard() {
-    
-    String keyboardName =
+    return
       Utilities.loadPreferenceString(
         getApplicationContext(),
         PREFERENCES_FILE_NAME,
         "keyboardName"
       );
-    
-    return keyboardFromName.get(keyboardName);
   }
   
-  private void setSavedKeyboard(final Keyboard keyboard) {
+  private void switchKeyboardAndSaveName(final String keyboardName) {
     
-    String keyboardName = nameFromKeyboard.get(keyboard);
+    final Keyboard keyboard = keyboardFromName.get(keyboardName);
+    if (keyboard == null) {
+      return;
+    }
+    inputContainer.setKeyboard(keyboard);
     
     Utilities.savePreferenceString(
       getApplicationContext(),
