@@ -3,7 +3,7 @@
   see <https://github.com/conway-markdown/conway-markdown>.
 ##>
 %%
-  %lang zh-Hant
+  %lang zh-Hant-HK
   %title 關於
   %resources <link rel="stylesheet" href="dark.css">
 %%
@@ -122,7 +122,7 @@ r{%
 @@[`about.cmd`]
   https://github.com/stroke-input/stroke-input-android/\
     blob/master/\
-    app/src/main/assets/about-zh.cmd
+    app/src/main/assets/about-zh-Hant-HK.cmd
 @@
 
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
