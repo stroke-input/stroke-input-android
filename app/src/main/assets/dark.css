@@ -11,6 +11,9 @@ body {
   overflow-wrap: break-word;
   padding: 1em;
 }
+body:lang(zh) {
+  font-size: 16px;
+}
 a {
   color: var(--umbrella-orange);
 }
