@@ -153,16 +153,21 @@ public class StrokeInputService
     if (valueText.equals("SPACE")) {
       
       final Keyboard keyboard = inputContainer.getKeyboard();
-      final Keyboard newKeyboard;
+      final String keyboardName = nameFromKeyboard.get(keyboard);
       
-      if (keyboard == strokesKeyboard || keyboard == strokesSymbolsKeyboard) {
-        newKeyboard = qwertyKeyboard;
+      if (keyboardName == null) {
+        return;
       }
-      else {
-        newKeyboard = strokesKeyboard;
+      switch (keyboardName) {
+        case "STROKES":
+        case "STROKES_SYMBOLS":
+          switchKeyboardAndSaveName("QWERTY");
+          break;
+        case "QWERTY":
+        case "QWERTY_SYMBOLS":
+          switchKeyboardAndSaveName("STROKES");
+          break;
       }
-      
-      switchKeyboardAndSaveName(nameFromKeyboard.get(newKeyboard));
     }
   }
   
