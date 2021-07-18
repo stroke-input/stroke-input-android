@@ -23,6 +23,14 @@ public final class Utilities {
     return string.matches("\\p{ASCII}*");
   }
   
+  public static String removePrefix(
+    final String prefixRegex,
+    final String string
+  )
+  {
+    return string.replaceFirst("^" + prefixRegex, "");
+  }
+  
   public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap) {
     
     Map<V, K> inverseMap = new HashMap<>();

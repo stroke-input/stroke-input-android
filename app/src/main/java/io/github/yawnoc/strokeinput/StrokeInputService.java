@@ -17,6 +17,8 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.github.yawnoc.strokeinput.Utilities.removePrefix;
+
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
 */
@@ -105,7 +107,7 @@ public class StrokeInputService
       case "SWITCH_TO_STROKES_SYMBOLS":
       case "SWITCH_TO_QWERTY":
       case "SWITCH_TO_QWERTY_SYMBOLS":
-        final String keyboardName = valueText.replaceFirst("^SWITCH_TO_", "");
+        final String keyboardName = removePrefix("SWITCH_TO_", valueText);
         switchKeyboardAndSaveName(keyboardName);
         break;
       
