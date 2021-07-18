@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
 */
@@ -35,6 +38,9 @@ public class StrokeInputService
   Keyboard qwertyKeyboard;
   Keyboard qwertySymbolsKeyboard;
   
+  Map<Keyboard, String> nameFromKeyboard;
+  Map<String, Keyboard> keyboardFromName;
+  
   @SuppressLint("InflateParams")
   @Override
   public View onCreateInputView() {
@@ -49,6 +55,13 @@ public class StrokeInputService
     qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
     qwertySymbolsKeyboard =
       new Keyboard(this, R.xml.keyboard_qwerty_symbols);
+  
+    nameFromKeyboard = new HashMap<>();
+    nameFromKeyboard.put(strokesKeyboard, "STROKES");
+    nameFromKeyboard.put(strokesSymbolsKeyboard, "STROKES_SYMBOLS");
+    nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
+    nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
+    keyboardFromName = Utilities.invertMap(nameFromKeyboard);
     
     Keyboard keyboard = getSavedKeyboard();
     if (keyboard == null) {
@@ -171,12 +184,12 @@ public class StrokeInputService
       "keyboardName"
     );
     
-    return keyboardFromName(keyboardName);
+    return keyboardFromName.get(keyboardName);
   }
   
   private void setSavedKeyboard(final Keyboard keyboard) {
     
-    String keyboardName = nameFromKeyboard(keyboard);
+    String keyboardName = nameFromKeyboard.get(keyboard);
     
     Utilities.savePreferenceString(
       getApplicationContext(),
@@ -184,46 +197,5 @@ public class StrokeInputService
       "keyboardName",
       keyboardName
     );
-  }
-  
-  /*
-    TODO: replace with non hard-coded version (or BiMap)
-  */
-  private Keyboard keyboardFromName(final String keyboardName) {
-    
-    switch (keyboardName) {
-      case "STROKES":
-        return strokesKeyboard;
-      case "STROKES_SYMBOLS":
-        return strokesSymbolsKeyboard;
-      case "QWERTY":
-        return qwertyKeyboard;
-      case "QWERTY_SYMBOLS":
-        return qwertySymbolsKeyboard;
-      default:
-        return null;
-    }
-  }
-  
-  /*
-    TODO: replace with non hard-coded version (or BiMap)
-  */
-  private String nameFromKeyboard(final Keyboard keyboard) {
-    
-    if (keyboard == strokesKeyboard) {
-      return "STROKES";
-    }
-    else if (keyboard == strokesSymbolsKeyboard) {
-      return "STROKES_SYMBOLS";
-    }
-    else if (keyboard == qwertyKeyboard) {
-      return "QWERTY";
-    }
-    else if (keyboard == qwertySymbolsKeyboard) {
-      return "QWERTY_SYMBOLS";
-    }
-    else {
-      return "";
-    }
   }
 }
