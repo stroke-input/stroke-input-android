@@ -140,20 +140,11 @@ public class StrokeInputService
       final Keyboard keyboard = inputContainer.getKeyboard();
       final Keyboard newKeyboard;
       
-      if (keyboard == strokesKeyboard) {
+      if (keyboard == strokesKeyboard || keyboard == strokesSymbolsKeyboard) {
         newKeyboard = qwertyKeyboard;
       }
-      else if (keyboard == strokesSymbolsKeyboard) {
-        newKeyboard = qwertySymbolsKeyboard;
-      }
-      else if (keyboard == qwertyKeyboard) {
-        newKeyboard = strokesKeyboard;
-      }
-      else if (keyboard == qwertySymbolsKeyboard) {
-        newKeyboard = strokesSymbolsKeyboard;
-      }
       else {
-        newKeyboard = keyboard;
+        newKeyboard = strokesKeyboard;
       }
       
       inputContainer.setKeyboard(newKeyboard);

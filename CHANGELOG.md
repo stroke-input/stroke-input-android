@@ -7,6 +7,7 @@
   (adds glyph `U+82F1 英` for localised space bar)
 - Replaced parallel text with proper localisation
 - Fixed flash of white background when loading About
+- Made change keyboard go to main rather than symbols
 
 
 ## [v0.6.0] Touch logic rewrite (2021-07-17)
