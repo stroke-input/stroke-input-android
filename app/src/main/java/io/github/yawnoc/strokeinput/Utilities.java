@@ -9,6 +9,7 @@ package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
@@ -25,6 +26,34 @@ public final class Utilities {
       new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     
     context.startActivity(browserIntent);
+  }
+  
+  public static String loadPreferenceString(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final String preferenceDefaultValue
+  )
+  {
+    SharedPreferences preferences =
+      context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    
+    return preferences.getString(preferenceKey, preferenceDefaultValue);
+  }
+  
+  public static void savePreferenceString(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final String preferenceValue
+  )
+  {
+    SharedPreferences preferences =
+      context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    
+    SharedPreferences.Editor preferencesEditor = preferences.edit();
+    preferencesEditor.putString(preferenceKey, preferenceValue);
+    preferencesEditor.apply();
   }
   
   public static void showSystemInputMethodSettings(final Context context) {
