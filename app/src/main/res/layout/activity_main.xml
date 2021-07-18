@@ -27,9 +27,8 @@
       style="@style/MainActivityButtonContainer"
     >
       <Button
+        style="@style/MainActivityButton"
         android:id="@+id/source_code_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:text="@string/activity_main_source_code_button_label"
       />
     </LinearLayout>
@@ -37,9 +36,8 @@
       style="@style/MainActivityButtonContainer"
     >
       <Button
+        style="@style/MainActivityButton"
         android:id="@+id/about_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:text="@string/activity_main_about_button_label"
       />
     </LinearLayout>
@@ -55,9 +53,8 @@
       style="@style/MainActivityButtonContainer"
     >
       <Button
+        style="@style/MainActivityButton"
         android:id="@+id/input_method_settings_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:text="@string/activity_main_input_method_settings_button_label"
       />
     </LinearLayout>
@@ -73,9 +70,8 @@
       style="@style/MainActivityButtonContainer"
     >
       <Button
+        style="@style/MainActivityButton"
         android:id="@+id/switch_keyboard_button"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:text="@string/activity_main_switch_keyboard_button_label"
       />
     </LinearLayout>
