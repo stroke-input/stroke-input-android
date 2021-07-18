@@ -86,7 +86,7 @@
     <!-- TODO: add triangle glyphs to stroke_input_keyboard.ttf -->
     <Key
       app:valueText="SPACE"
-      app:displayText="◀ English ▶"
+      app:displayText="@string/keyboard_qwerty_space_bar_display_text"
       app:isLongPressable="true"
       app:isSwipeable="true"
       app:keyTextSize="@dimen/key_text_font_size_space_bar"

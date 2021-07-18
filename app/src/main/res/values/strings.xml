@@ -25,4 +25,7 @@
   </string>
   <!-- Asset file names for localisation -->
   <string name="about_html_file_name">about.html</string>
+  <!-- Space bar display text -->
+  <string name="keyboard_qwerty_space_bar_display_text">◀ English ▶</string>
+  <string name="keyboard_strokes_space_bar_display_text">◀ Chinese ▶</string>
 </resources>
