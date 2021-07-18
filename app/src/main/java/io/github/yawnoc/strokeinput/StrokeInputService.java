@@ -17,7 +17,12 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.github.yawnoc.strokeinput.Utilities.invertMap;
+import static io.github.yawnoc.strokeinput.Utilities.isAscii;
+import static io.github.yawnoc.strokeinput.Utilities.loadPreferenceString;
 import static io.github.yawnoc.strokeinput.Utilities.removePrefix;
+import static io.github.yawnoc.strokeinput.Utilities.savePreferenceString;
+import static io.github.yawnoc.strokeinput.Utilities.showSystemKeyboardSwitcher;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
@@ -65,7 +70,7 @@ public class StrokeInputService
     nameFromKeyboard.put(strokesSymbolsKeyboard, "STROKES_SYMBOLS");
     nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
-    keyboardFromName = Utilities.invertMap(nameFromKeyboard);
+    keyboardFromName = invertMap(nameFromKeyboard);
     
     final String savedKeyboardName = getSavedKeyboardName();
     switchKeyboardAndSaveName(savedKeyboardName);
@@ -94,7 +99,7 @@ public class StrokeInputService
         final String characterBeforeCursor =
           (String) inputConnection.getTextBeforeCursor(1, 0);
         final int nextBackspaceIntervalMilliseconds = (
-          Utilities.isAscii(characterBeforeCursor)
+          isAscii(characterBeforeCursor)
             ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
             : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
         );
@@ -137,7 +142,7 @@ public class StrokeInputService
   public void onLongPress(final String valueText) {
     
     if (valueText.equals("SPACE")) {
-      Utilities.showSystemKeyboardSwitcher(this);
+      showSystemKeyboardSwitcher(this);
     }
     else if (valueText.equals("ABOUT")) {
       inputContainer.toggleDebugMode();
@@ -171,7 +176,7 @@ public class StrokeInputService
   private String getSavedKeyboardName() {
     
     return
-      Utilities.loadPreferenceString(
+      loadPreferenceString(
         getApplicationContext(),
         PREFERENCES_FILE_NAME,
         "keyboardName"
@@ -188,7 +193,7 @@ public class StrokeInputService
       inputContainer.setKeyboard(keyboard);
     }
     
-    Utilities.savePreferenceString(
+    savePreferenceString(
       getApplicationContext(),
       PREFERENCES_FILE_NAME,
       "keyboardName",

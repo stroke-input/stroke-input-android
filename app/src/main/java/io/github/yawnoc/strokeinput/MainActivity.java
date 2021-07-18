@@ -16,6 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import static io.github.yawnoc.strokeinput.Utilities.openInBrowser;
+import static io.github.yawnoc.strokeinput.Utilities.showSystemInputMethodSettings;
+import static io.github.yawnoc.strokeinput.Utilities.showSystemKeyboardSwitcher;
+
 /*
   The main activity of the application.
 */
@@ -49,16 +53,16 @@ public class MainActivity
     final int viewId = view.getId();
     
     if (viewId == R.id.source_code_button) {
-      Utilities.openInBrowser(this, SOURCE_CODE_URI);
+      openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.about_button) {
       showHtmlWebView(R.string.about_html_file_name);
     }
     else if (viewId == R.id.input_method_settings_button) {
-      Utilities.showSystemInputMethodSettings(this);
+      showSystemInputMethodSettings(this);
     }
     else if (viewId == R.id.switch_keyboard_button) {
-      Utilities.showSystemKeyboardSwitcher(this);
+      showSystemKeyboardSwitcher(this);
     }
     
   }
