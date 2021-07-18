@@ -8,6 +8,8 @@
     <attr name="isRepeatable" format="boolean" />
     <attr name="isSwipeable" format="boolean" />
     <attr name="isShiftable" format="boolean" />
+    <attr name="isExtendedLeft" format="boolean" />
+    <attr name="isExtendedRight" format="boolean" />
     <attr name="keyFillColour" format="color" />
     <attr name="keyBorderColour" format="color" />
     <attr name="keyBorderThickness" format="dimension" />

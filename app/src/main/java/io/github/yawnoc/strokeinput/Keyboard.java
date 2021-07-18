@@ -228,6 +228,8 @@ public class Keyboard {
     public boolean isRepeatable; // overrides isLongPressable
     public boolean isSwipeable;
     public boolean isShiftable;
+    public boolean isExtendedLeft;
+    public boolean isExtendedRight;
     
     // Key styles
     public int keyFillColour;
@@ -293,6 +295,16 @@ public class Keyboard {
         attributesArray.getBoolean(
           R.styleable.Keyboard_isShiftable,
           parentRow.keysAreShiftable
+        );
+      isExtendedLeft =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isExtendedLeft,
+          false
+        );
+      isExtendedRight =
+        attributesArray.getBoolean(
+          R.styleable.Keyboard_isExtendedRight,
+          false
         );
       
       valueTextShifted =
@@ -366,7 +378,9 @@ public class Keyboard {
     
     public boolean containsPoint(final int x, final int y) {
       return (
-        this.x <= x && x <= this.x + this.width
+        (this.isExtendedLeft || this.x <= x)
+          &&
+        (this.isExtendedRight || x <= this.x + this.width)
           &&
         this.y <= y && y <= this.y + this.height
       );
