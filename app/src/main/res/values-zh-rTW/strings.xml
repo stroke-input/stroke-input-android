@@ -17,5 +17,5 @@
   <string name="activity_main_test_input_hint">在此測試輸入</string>
   <string name="activity_main_return_label">回</string>
   <!-- Asset file names for localisation -->
-  <string name="about_html_file_name">about-zh-Hant-HK.html</string>
+  <string name="about_html_file_name">about-zh-Hant-TW.html</string>
 </resources>
