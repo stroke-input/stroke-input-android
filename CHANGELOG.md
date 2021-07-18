@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Replaced parallel text with proper localisation
 - Fixed flash of white background when loading About
 
 
