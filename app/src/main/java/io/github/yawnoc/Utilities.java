@@ -93,4 +93,16 @@ public final class Utilities {
     context.startActivity(browserIntent);
   }
   
+  public static void launchApplication(
+    final Context context,
+    final String packageName
+  )
+  {
+    final Intent launchIntent =
+      context.getPackageManager().getLaunchIntentForPackage(packageName);
+    
+    if (launchIntent != null) {
+      context.startActivity(launchIntent);
+    }
+  }
 }

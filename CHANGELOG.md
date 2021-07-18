@@ -9,6 +9,7 @@
 - Fixed flash of white background when loading About
 - Fixed keyboard not persistent on screen rotate or change app
 - Made change keyboard go to main rather than symbols
+- Made About key (circled information) launch Main Activity
 - Implemented extended keys to left/right edge (`a`, `l`, `¢`)
 
 

@@ -19,6 +19,7 @@ import java.util.Map;
 
 import static io.github.yawnoc.Utilities.invertMap;
 import static io.github.yawnoc.Utilities.isAscii;
+import static io.github.yawnoc.Utilities.launchApplication;
 import static io.github.yawnoc.Utilities.loadPreferenceString;
 import static io.github.yawnoc.Utilities.removePrefix;
 import static io.github.yawnoc.Utilities.savePreferenceString;
@@ -88,6 +89,10 @@ public class StrokeInputService
     }
     
     switch (valueText) {
+      
+      case "ABOUT":
+        launchApplication(this, BuildConfig.APPLICATION_ID);
+        break;
       
       case "BACKSPACE":
         inputConnection.sendKeyEvent(
