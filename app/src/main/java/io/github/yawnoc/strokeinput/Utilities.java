@@ -19,6 +19,10 @@ import java.util.Map;
 
 public final class Utilities {
   
+  public static boolean isAscii(final String string) {
+    return string.matches("\\p{ASCII}*");
+  }
+  
   public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap) {
     
     Map<V, K> inverseMap = new HashMap<>();
@@ -27,18 +31,6 @@ public final class Utilities {
     }
     
     return inverseMap;
-  }
-  
-  public static boolean isAscii(final String string) {
-    return string.matches("\\p{ASCII}*");
-  }
-  
-  public static void openInBrowser(final Context context, final String uri) {
-    
-    final Intent browserIntent =
-      new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-    
-    context.startActivity(browserIntent);
   }
   
   public static String loadPreferenceString(
@@ -83,6 +75,14 @@ public final class Utilities {
         context.getSystemService(Context.INPUT_METHOD_SERVICE);
     
     inputMethodManager.showInputMethodPicker();
+  }
+  
+  public static void openInBrowser(final Context context, final String uri) {
+    
+    final Intent browserIntent =
+      new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+    
+    context.startActivity(browserIntent);
   }
   
 }
