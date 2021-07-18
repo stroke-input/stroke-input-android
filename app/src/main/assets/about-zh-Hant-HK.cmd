@@ -71,7 +71,7 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
 
 
 <footer>
-  此頁之 [CMD] 源：[`about.cmd`]
+  此頁之 [CMD] 源：[`about-zh-Hant-HK.cmd`]
 </footer>
 
 
@@ -119,7 +119,7 @@ r{%
 @@[CMD]
   https://github.com/conway-markdown/conway-markdown
 @@
-@@[`about.cmd`]
+@@[`about-zh-Hant-HK.cmd`]
   https://github.com/stroke-input/stroke-input-android/\
     blob/master/\
     app/src/main/assets/about-zh-Hant-HK.cmd
