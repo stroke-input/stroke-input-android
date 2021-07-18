@@ -49,13 +49,15 @@ public class StrokeInputService
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
     
-    strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
+    strokesKeyboard =
+      new Keyboard(this, R.xml.keyboard_strokes);
     strokesSymbolsKeyboard =
       new Keyboard(this, R.xml.keyboard_strokes_symbols);
-    qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
+    qwertyKeyboard =
+      new Keyboard(this, R.xml.keyboard_qwerty);
     qwertySymbolsKeyboard =
       new Keyboard(this, R.xml.keyboard_qwerty_symbols);
-  
+    
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, "STROKES");
     nameFromKeyboard.put(strokesSymbolsKeyboard, "STROKES_SYMBOLS");
