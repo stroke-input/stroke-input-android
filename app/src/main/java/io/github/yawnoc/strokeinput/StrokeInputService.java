@@ -17,12 +17,12 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.github.yawnoc.strokeinput.Utilities.invertMap;
-import static io.github.yawnoc.strokeinput.Utilities.isAscii;
-import static io.github.yawnoc.strokeinput.Utilities.loadPreferenceString;
-import static io.github.yawnoc.strokeinput.Utilities.removePrefix;
-import static io.github.yawnoc.strokeinput.Utilities.savePreferenceString;
-import static io.github.yawnoc.strokeinput.Utilities.showSystemKeyboardSwitcher;
+import static io.github.yawnoc.Utilities.invertMap;
+import static io.github.yawnoc.Utilities.isAscii;
+import static io.github.yawnoc.Utilities.loadPreferenceString;
+import static io.github.yawnoc.Utilities.removePrefix;
+import static io.github.yawnoc.Utilities.savePreferenceString;
+import static io.github.yawnoc.Utilities.showSystemKeyboardSwitcher;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).

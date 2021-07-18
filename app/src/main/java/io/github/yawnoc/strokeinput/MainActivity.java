@@ -16,9 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import static io.github.yawnoc.strokeinput.Utilities.openInBrowser;
-import static io.github.yawnoc.strokeinput.Utilities.showSystemInputMethodSettings;
-import static io.github.yawnoc.strokeinput.Utilities.showSystemKeyboardSwitcher;
+import static io.github.yawnoc.Utilities.openInBrowser;
+import static io.github.yawnoc.Utilities.showSystemInputMethodSettings;
+import static io.github.yawnoc.Utilities.showSystemKeyboardSwitcher;
 
 /*
   The main activity of the application.
