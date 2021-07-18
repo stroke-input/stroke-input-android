@@ -42,7 +42,10 @@
     app:isShiftable="true"
   >
     <!-- Letters row 2 -->
-    <Key app:valueText="a" />
+    <Key
+      app:valueText="a"
+      app:isExtendedLeft="true"
+    />
     <Key app:valueText="s" />
     <Key app:valueText="d" />
     <Key app:valueText="f" />
@@ -50,7 +53,10 @@
     <Key app:valueText="h" />
     <Key app:valueText="j" />
     <Key app:valueText="k" />
-    <Key app:valueText="l" />
+    <Key
+      app:valueText="l"
+      app:isExtendedRight="true"
+    />
   </Row>
   <Row
     app:isShiftable="true"

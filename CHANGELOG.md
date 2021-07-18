@@ -9,6 +9,7 @@
 - Fixed flash of white background when loading About
 - Fixed keyboard not persistent on screen rotate or change app
 - Made change keyboard go to main rather than symbols
+- Implemented extended keys to left/right edge (`a`, `l`, `¢`)
 
 
 ## [v0.6.0] Touch logic rewrite (2021-07-17)
