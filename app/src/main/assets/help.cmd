@@ -44,7 +44,7 @@
   , Change to other keyboard
 ==
   , Long press \about-key
-  , Testing use
+  , Testing use only
 ''''
 
 
