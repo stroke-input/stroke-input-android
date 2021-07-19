@@ -3,7 +3,7 @@
   see <https://github.com/conway-markdown/conway-markdown>.
 ##>
 
-{+ common.txt +}
+{+ links.txt +}
 
 %%
   %lang zh-Hant-TW
