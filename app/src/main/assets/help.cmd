@@ -13,19 +13,19 @@
 
 ''''
 ==
-  , <kbd lang="zh-Hant">㇐</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">㇐</kbd>
   , horizontal; raise
 ==
-  , <kbd lang="zh-Hant">㇑</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">㇑</kbd>
   , vertical; vertical-with-hook
 ==
-  , <kbd lang="zh-Hant">㇒</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">㇒</kbd>
   , left-slash
 ==
-  , <kbd lang="zh-Hant">㇔</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">㇔</kbd>
   , right-press; dot
 ==
-  , <kbd lang="zh-Hant">㇖</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">㇖</kbd>
   , turn; bend
 ''''
 

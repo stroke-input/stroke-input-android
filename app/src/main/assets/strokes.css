@@ -1,5 +1,6 @@
 :root{
   --umbrella-orange: #FFCE73;
+  --umbrella-yellow: #FFFF80;
   --key-fill: #181818;
 }
 
@@ -77,6 +78,10 @@ td {
   padding: 0.5em;
 }
 
+.stroke-key {
+  color: var(--umbrella-yellow);
+  font-weight: bold;
+}
 .space-bar {
   font-size: 0.8em;
 }
