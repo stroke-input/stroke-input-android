@@ -2,6 +2,9 @@
   To be compiled with Conway-Markdown (CMD),
   see <https://github.com/conway-markdown/conway-markdown>.
 ##>
+
+{+ common.txt +}
+
 %%
   %title About
   %resources <link rel="stylesheet" href="dark.css">
@@ -71,47 +74,8 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 </footer>
 
 
-@@[Stroke Input Method]
-  https://github.com/stroke-input/stroke-input-android
-@@
-
-@@[`Keyboard.java`]
-  https://android.googlesource.com/platform/frameworks/base/+/\
-    33f921769531968a3ba9bc73fb2410f95868cb8d/\
-    core/java/android/inputmethodservice/Keyboard.java
-@@
-@@[`KeyboardView.java`]
-  https://android.googlesource.com/platform/frameworks/base/+/\
-    33f921769531968a3ba9bc73fb2410f95868cb8d/\
-    core/java/android/inputmethodservice/KeyboardView.java
-@@
-
-@@[Android AppCompat Library]
-  https://mvnrepository.com/artifact/androidx.appcompat/appcompat
-@@
-@@[Android ConstraintLayout]
-  https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
-@@
-@@[Material Components For Android]
-  https://mvnrepository.com/artifact/com.google.android.material/material
-@@
-
-@@[Stroke Input Keyboard]
-  https://github.com/stroke-input/stroke-input-font
-@@
-@@[2015 version of Noto Sans CJK TC]
-  https://github.com/googlefonts/noto-cjk/\
-    tree/2663656870e92c0dcbe891590681815ebb509c05
-@@
-
-@@[CMD]
-  https://github.com/conway-markdown/conway-markdown
-@@
 @@[`about.cmd`]
   https://github.com/stroke-input/stroke-input-android/\
     blob/master/\
     app/src/main/assets/about.cmd
 @@
-
-{: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
-{: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
