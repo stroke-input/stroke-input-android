@@ -4,18 +4,13 @@
 ##>
 
 {+ links.txt +}
+{+ lang.txt +}
 
 %%
   %lang zh-Hant-HK
   %title 關於
   %resources <link rel="stylesheet" href="strokes.css">
 %%
-
-Z{%
-  \{ (?P<ascii_content> [!-~]+?) \}
-%
-  <span lang="en">\g<ascii_content></span>
-%}
 
 
 # 筆畫輸入法 (\stroke-input-version) #
@@ -77,14 +72,6 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
   此頁之 [CMD] 源：[`about-zh-Hant-HK.cmd`]
 </footer>
 
-
-r{%
-  (?P<link_definition_opening>
-    @@\[ [!-~]+? \]
-  )
-%
-  \g<link_definition_opening>{lang=en}
-%}
 
 @@[`about-zh-Hant-HK.cmd`]
   https://github.com/stroke-input/stroke-input-android/\
