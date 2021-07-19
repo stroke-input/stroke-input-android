@@ -7,7 +7,7 @@
 
 %%
   %title About
-  %resources <link rel="stylesheet" href="dark.css">
+  %resources <link rel="stylesheet" href="strokes.css">
 %%
 
 

@@ -8,7 +8,7 @@
 %%
   %lang zh-Hant-TW
   %title 關於
-  %resources <link rel="stylesheet" href="dark.css">
+  %resources <link rel="stylesheet" href="strokes.css">
 %%
 
 Z{%
