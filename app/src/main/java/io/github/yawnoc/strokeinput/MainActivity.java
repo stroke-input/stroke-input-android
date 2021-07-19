@@ -41,6 +41,7 @@ public class MainActivity
     setContentView(R.layout.activity_main);
     
     findViewById(R.id.source_code_button).setOnClickListener(this);
+    findViewById(R.id.help_button).setOnClickListener(this);
     findViewById(R.id.about_button).setOnClickListener(this);
     findViewById(R.id.input_method_settings_button).setOnClickListener(this);
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
@@ -54,6 +55,9 @@ public class MainActivity
     
     if (viewId == R.id.source_code_button) {
       openInBrowser(this, SOURCE_CODE_URI);
+    }
+    else if (viewId == R.id.help_button) {
+      showHtmlWebView(R.string.about_help_file_name);
     }
     else if (viewId == R.id.about_button) {
       showHtmlWebView(R.string.about_html_file_name);

@@ -37,6 +37,15 @@
     >
       <Button
         style="@style/MainActivityButton"
+        android:id="@+id/help_button"
+        android:text="@string/activity_main_help_button_label"
+      />
+    </LinearLayout>
+    <LinearLayout
+      style="@style/MainActivityButtonContainer"
+    >
+      <Button
+        style="@style/MainActivityButton"
         android:id="@+id/about_button"
         android:text="@string/activity_main_about_button_label"
       />

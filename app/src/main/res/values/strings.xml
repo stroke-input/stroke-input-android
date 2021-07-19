@@ -3,6 +3,7 @@
   <string name="app_name">Stroke Input Method</string>
   <string name="activity_main_welcome">Welcome to Stroke Input Method!</string>
   <string name="activity_main_source_code_button_label">Source code</string>
+  <string name="activity_main_help_button_label">Help</string>
   <string name="activity_main_about_button_label">About</string>
   <string name="activity_main_input_settings_information">
     If you have installed Stroke Input Method for the first time,
@@ -24,6 +25,7 @@
     Return
   </string>
   <!-- Asset file names for localisation -->
+  <string name="about_help_file_name">help.html</string>
   <string name="about_html_file_name">about.html</string>
   <!-- Space bar display text -->
   <string name="keyboard_qwerty_space_bar_display_text">◀ English ▶</string>
