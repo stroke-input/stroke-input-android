@@ -4,7 +4,7 @@
 %%
   %lang zh-Hant-HK
   %title 關於
-  %resources <link rel="stylesheet" href="strokes.css">
+  %resources <link rel="stylesheet" href="webview.css">
 %%
 
 

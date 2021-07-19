@@ -2,7 +2,7 @@
 
 %%
   %title About
-  %resources <link rel="stylesheet" href="strokes.css">
+  %resources <link rel="stylesheet" href="webview.css">
 %%
 
 
