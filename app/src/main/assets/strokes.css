@@ -2,6 +2,7 @@
   --umbrella-orange: #FFCE73;
   --key-fill: #181818;
 }
+
 body {
   background: var(--key-fill);
   color: white;
@@ -11,17 +12,21 @@ body {
   overflow-wrap: break-word;
   padding: 1em;
 }
+
 body:lang(zh) {
   font-size: 16px;
 }
+
 a {
   color: var(--umbrella-orange);
 }
+
 footer {
   border-top: 2px solid white;
   margin-top: 1.5em;
   padding-top: 0.75em;
 }
+
 h1 {
   font-size: 1.6em;
   margin-top: 0.3em;
@@ -33,12 +38,33 @@ h2 {
 h3 {
   font-size: 1.1em;
 }
+
 html {
   background: grey;
   margin: 0 auto;
   max-width: 44em;
 }
+
+kbd {
+  border: 2px grey solid;
+  padding: 0.15em 0.3em;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid white;
+  padding: 0.5em;
+  vertical-align: middle;
+}
+
 .notice {
   border: 1px solid white;
   padding: 0.5em;
+}
+
+.space-bar {
+  font-size: 0.75em;
 }
