@@ -3,6 +3,11 @@
   --key-fill: #181818;
 }
 
+@font-face {
+  font-family: 'Stroke Input Keyboard';
+  src: url('stroke_input_keyboard.ttf') format('truetype');
+}
+
 body {
   background: var(--key-fill);
   color: white;
@@ -47,8 +52,11 @@ html {
 
 kbd {
   border: 2px grey solid;
-  margin: 0.3em;
-  padding: 0.15em 0.3em;
+  display: inline-block;
+  font-family: 'Stroke Input Keyboard', sans-serif;
+  min-width: 1em;
+  padding: 0.15em 0.3em 0.1em;
+  text-align: center;
   vertical-align: middle;
   white-space: pre;
 }
@@ -69,5 +77,5 @@ td {
 }
 
 .space-bar {
-  font-size: 0.75em;
+  font-size: 0.8em;
 }
