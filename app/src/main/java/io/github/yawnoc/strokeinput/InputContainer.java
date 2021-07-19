@@ -26,6 +26,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -34,7 +35,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 
 /*
@@ -63,6 +63,8 @@ public class InputContainer
   private static final int SHIFT_PERSISTENT = 2;
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
+  
+  private static final String KEYBOARD_FONT = "stroke_input_keyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -149,7 +151,7 @@ public class InputContainer
     
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyTextPaint.setTypeface(
-      ResourcesCompat.getFont(context, R.font.stroke_input_keyboard)
+      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
     
