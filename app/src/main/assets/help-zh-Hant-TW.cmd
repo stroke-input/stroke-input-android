@@ -51,12 +51,5 @@
 
 
 <footer>
-  此頁之 [CMD] 源碼： [`help-zh-Hant-TW.cmd`]
+  此頁之 [CMD] 源碼： \cmd-source
 </footer>
-
-
-@@[`help-zh-Hant-TW.cmd`]
-  https://github.com/stroke-input/stroke-input-android/\
-    blob/master/\
-    app/src/main/assets/help-zh-Hant-TW.cmd
-@@

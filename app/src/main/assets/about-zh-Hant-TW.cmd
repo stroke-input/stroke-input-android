@@ -64,12 +64,5 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 
 <footer>
-  此頁之 [CMD] 原始程式： [`about-zh-Hant-TW.cmd`]
+  此頁之 [CMD] 原始程式： \cmd-source
 </footer>
-
-
-@@[`about-zh-Hant-TW.cmd`]
-  https://github.com/stroke-input/stroke-input-android/\
-    blob/master/\
-    app/src/main/assets/about-zh-Hant-TW.cmd
-@@

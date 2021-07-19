@@ -49,3 +49,10 @@
 @@[CMD]
   https://github.com/conway-markdown/conway-markdown
 @@
+
+{: \cmd-source :
+  [<code>%cmd-name-file.cmd</code>](
+    https://github.com/stroke-input/stroke-input-android/blob/master/\
+      %cmd-name.cmd
+  )
+:}

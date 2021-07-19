@@ -65,12 +65,5 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 
 <footer>
-  This page's [CMD] source: [`about.cmd`]
+  This page's [CMD] source: \cmd-source
 </footer>
-
-
-@@[`about.cmd`]
-  https://github.com/stroke-input/stroke-input-android/\
-    blob/master/\
-    app/src/main/assets/about.cmd
-@@

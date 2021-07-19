@@ -49,12 +49,5 @@
 
 
 <footer>
-  This page's [CMD] source: [`help.cmd`]
+  This page's [CMD] source: \cmd-source
 </footer>
-
-
-@@[`help.cmd`]
-  https://github.com/stroke-input/stroke-input-android/\
-    blob/master/\
-    app/src/main/assets/help.cmd
-@@
