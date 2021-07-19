@@ -1,3 +1,5 @@
+{+ links.txt +}
+
 %%
   %title Help
   %resources <link rel="stylesheet" href="strokes.css">
