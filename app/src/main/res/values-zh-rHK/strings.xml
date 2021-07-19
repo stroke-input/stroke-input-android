@@ -22,5 +22,5 @@
   <string name="keyboard_qwerty_space_bar_display_text">◀ 英文 ▶</string>
   <string name="keyboard_strokes_space_bar_display_text">◀ 中文 ▶</string>
   <string name="activity_main_help_button_label">説明</string>
-  <string name="about_help_file_name">help.html</string>
+  <string name="about_help_file_name">help-zh-Hant-HK.html</string>
 </resources>
