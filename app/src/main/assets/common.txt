@@ -1,6 +1,7 @@
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
 {: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
 
+{: \stroke-input-version: v0.6.0 :}
 {: \stroke-input-url :
   https://github.com/stroke-input/stroke-input-android
 :}
@@ -18,16 +19,22 @@
     core/java/android/inputmethodservice/KeyboardView.java
 @@
 
+{: \appcompat-version : v1.3.0 :}
 @@[Android AppCompat Library]
   https://mvnrepository.com/artifact/androidx.appcompat/appcompat
 @@
+
+{: \constraintlayout-version : v2.0.4 :}
 @@[Android ConstraintLayout]
   https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
 @@
+
+{: \material-version : v1.4.0 :}
 @@[Material Components For Android]
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
+{: \keyboard-font-version : v1.4.0 :}
 @@[Stroke Input Keyboard]
   https://github.com/stroke-input/stroke-input-font
 @@

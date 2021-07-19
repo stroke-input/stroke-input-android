@@ -11,7 +11,7 @@
 %%
 
 
-# Stroke Input Method (v0.6.0) #
+# Stroke Input Method (\stroke-input-version) #
 
 ----
 __[Stroke Input Method]__ is free software with ABSOLUTELY NO WARRANTY.
@@ -33,19 +33,19 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Build dependencies ##
 
-### [Android AppCompat Library] (v1.3.0) ###
+### [Android AppCompat Library] (\appcompat-version) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
-### [Android ConstraintLayout] (v2.0.4) ###
+### [Android ConstraintLayout] (\constraintlayout-version) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
-### [Material Components For Android] (v1.4.0) ###
+### [Material Components For Android] (\material-version) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
@@ -54,7 +54,7 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Keyboard font ##
 
-### [Stroke Input Keyboard] (v1.4.0) ###
+### [Stroke Input Keyboard] (\keyboard-font-version) ###
 ----{.notice}
 ©~2021 Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+

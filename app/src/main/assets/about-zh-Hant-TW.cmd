@@ -18,7 +18,7 @@ Z{%
 %}
 
 
-# 筆畫輸入法 (v0.6.0) #
+# 筆畫輸入法 (\stroke-input-version) #
 
 ----
 __[筆畫輸入法]__為自由軟體，恕無擔保。
@@ -38,19 +38,19 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 ## 建體所靠者 ##
 
-### [Android AppCompat Library] (v1.3.0) ###
+### [Android AppCompat Library] (\appcompat-version) ###
 ----{.notice}
 ©~2021 {Android} 開源項目 \+
 以 {Apache-2.0} 授權，見\Apache-2.0。 \+
 ----
 
-### [Android ConstraintLayout] (v2.0.4) ###
+### [Android ConstraintLayout] (\constraintlayout-version) ###
 ----{.notice}
 ©~2021 {Android} 開源項目 \+
 以 {Apache-2.0} 授權，見\Apache-2.0。 \+
 ----
 
-### [Material Components For Android] (v1.4.0) ###
+### [Material Components For Android] (\material-version) ###
 ----{.notice}
 ©~2021 {Android} 開源項目 \+
 以 {Apache-2.0} 授權，見\Apache-2.0。 \+
@@ -59,7 +59,7 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 ## 鍵盤字體 ##
 
-### [Stroke Input Keyboard] (v1.4.0) ###
+### [Stroke Input Keyboard] (\keyboard-font-version) ###
 ----{.notice}
 ©~2021 Conway \+
 以 {GPL-3.0-only} 授權，見\GPL-3.0-only。 \+
