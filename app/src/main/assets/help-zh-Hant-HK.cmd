@@ -51,7 +51,7 @@
 
 
 <footer>
-  此頁之 [CMD] 源：[`help.cmd`]
+  此頁之 [CMD] 源： [`help.cmd`]
 </footer>
 
 
