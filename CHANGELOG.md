@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.6.1] User interface improvements (2021-07-20)
+
 - Updated keyboard font to [Stroke Input Keyboard v1.4.0]
   (adds glyph `U+82F1 英` for localised space bar)
 - Added proper localisation (instead of parallel text)
@@ -108,7 +111,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.6.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.1...HEAD
+[v0.6.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.0...v0.6.1
 [v0.6.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.5.2...v0.6.0
 [v0.5.2]:
