@@ -64,7 +64,7 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
 
 
 <footer>
-  此頁之 [CMD] 源： [`about-zh-Hant-HK.cmd`]
+  此頁之 [CMD] 源碼： [`about-zh-Hant-HK.cmd`]
 </footer>
 
 
