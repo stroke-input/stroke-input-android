@@ -1,8 +1,3 @@
-<##
-  To be compiled with Conway-Markdown (CMD),
-  see <https://github.com/conway-markdown/conway-markdown>.
-##>
-
 {+ links.txt +}
 {+ lang.txt +}
 
