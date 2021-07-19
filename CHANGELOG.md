@@ -5,7 +5,7 @@
 
 - Updated keyboard font to [Stroke Input Keyboard v1.4.0]
   (adds glyph `U+82F1 英` for localised space bar)
-- Replaced parallel text with proper localisation
+- Added proper localisation (instead of parallel text)
 - Fixed flash of white background when loading About
 - Fixed keyboard not persistent on screen rotate or change app
 - Made change keyboard go to main rather than symbols
