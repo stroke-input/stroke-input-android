@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.6.2] Code cleanup (2021-07-21)
+
 - Simplified structure of Main Activity layout XML
 - Removed unused dependencies (AppCompat, ConstraintLayout)
 - Fixed shift pointer not unset on 3 or more pointers
@@ -116,7 +119,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.6.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.2...HEAD
+[v0.6.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.1...v0.6.2
 [v0.6.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.6.0...v0.6.1
 [v0.6.0]:
