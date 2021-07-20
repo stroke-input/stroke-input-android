@@ -15,78 +15,43 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
   >
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityTextContainer"
-    >
       <TextView
         style="@style/MainActivityText"
         android:text="@string/activity_main_welcome"
       />
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-      style="@style/MainActivityButtonContainer"
-    >
       <Button
         style="@style/MainActivityButton"
         android:id="@+id/source_code_button"
         android:text="@string/activity_main_source_code_button_label"
       />
-    </LinearLayout>
-    <LinearLayout
-      style="@style/MainActivityButtonContainer"
-    >
       <Button
         style="@style/MainActivityButton"
         android:id="@+id/help_button"
         android:text="@string/activity_main_help_button_label"
       />
-    </LinearLayout>
-    <LinearLayout
-      style="@style/MainActivityButtonContainer"
-    >
       <Button
         style="@style/MainActivityButton"
         android:id="@+id/about_button"
         android:text="@string/activity_main_about_button_label"
       />
-    </LinearLayout>
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityTextContainer"
-    >
       <TextView
         style="@style/MainActivityText"
         android:text="@string/activity_main_input_settings_information"
       />
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-      style="@style/MainActivityButtonContainer"
-    >
       <Button
         style="@style/MainActivityButton"
         android:id="@+id/input_method_settings_button"
         android:text="@string/activity_main_input_method_settings_button_label"
       />
-    </LinearLayout>
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityTextContainer"
-    >
       <TextView
         style="@style/MainActivityText"
         android:text="@string/activity_main_switch_keyboard_information"
       />
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-      style="@style/MainActivityButtonContainer"
-    >
       <Button
         style="@style/MainActivityButton"
         android:id="@+id/switch_keyboard_button"
         android:text="@string/activity_main_switch_keyboard_button_label"
       />
-    </LinearLayout>
-    <androidx.cardview.widget.CardView
-      style="@style/MainActivityTextContainer"
-    >
       <EditText
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -95,6 +60,5 @@
         android:inputType="text"
         android:textSize="@dimen/activity_main_font_size"
       />
-    </androidx.cardview.widget.CardView>
   </LinearLayout>
 </ScrollView>
