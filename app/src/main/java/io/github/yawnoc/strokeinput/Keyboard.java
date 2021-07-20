@@ -51,22 +51,21 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
-  private static final int DEFAULT_OFFSET_X = 0;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Key properties
-  private boolean keysAreShiftable;
-  private int keyWidth;
-  private int keyHeight;
-  private int keyFillColour;
-  private int keyBorderColour;
-  private int keyBorderThickness;
-  private int keyTextColour;
-  private int keyTextSwipeColour;
-  private int keyTextSize;
-  private int keyTextOffsetX;
-  private int keyTextOffsetY;
+  public boolean keysAreShiftable;
+  public int keyWidth;
+  public int keyHeight;
+  public int keyFillColour;
+  public int keyBorderColour;
+  public int keyBorderThickness;
+  public int keyTextColour;
+  public int keyTextSwipeColour;
+  public int keyTextSize;
+  public int keyTextOffsetX;
+  public int keyTextOffsetY;
   
   // Keyboard properties
   private int width;
@@ -100,119 +99,6 @@ public class Keyboard {
   
   public List<Key> getKeyList() {
     return keyList;
-  }
-  
-  /*
-   A container that holds keys.
-  */
-  public static class Row {
-    
-    // Key properties
-    public final boolean keysAreShiftable;
-    public final int keyWidth;
-    public final int keyHeight;
-    public final int keyFillColour;
-    public final int keyBorderColour;
-    public final int keyBorderThickness;
-    public final int keyTextColour;
-    public final int keyTextSwipeColour;
-    public final int keyTextSize;
-    public final int keyTextOffsetX;
-    public final int keyTextOffsetY;
-    
-    // Row properties
-    public final Keyboard parentKeyboard;
-    private final int offsetX;
-    
-    public Row(
-      final Keyboard parentKeyboard,
-      final Resources resources,
-      final XmlResourceParser xmlResourceParser
-    )
-    {
-      this.parentKeyboard = parentKeyboard;
-      
-      final TypedArray attributesArray =
-        resources.obtainAttributes(
-          Xml.asAttributeSet(xmlResourceParser),
-          R.styleable.Keyboard
-        );
-  
-      offsetX =
-        getDimensionOrFraction(
-          attributesArray,
-          R.styleable.Keyboard_offsetX,
-          parentKeyboard.screenWidth,
-          DEFAULT_OFFSET_X
-        );
-      
-      keysAreShiftable =
-        attributesArray.getBoolean(
-          R.styleable.Keyboard_isShiftable,
-          parentKeyboard.keysAreShiftable
-        );
-      
-      keyWidth =
-        getDimensionOrFraction(
-          attributesArray,
-          R.styleable.Keyboard_keyWidth,
-          parentKeyboard.screenWidth,
-          parentKeyboard.keyWidth
-        );
-      keyHeight =
-        getDimensionOrFraction(
-          attributesArray,
-          R.styleable.Keyboard_keyHeight,
-          parentKeyboard.screenHeight,
-          parentKeyboard.keyHeight
-        );
-      
-      keyFillColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyFillColour,
-          parentKeyboard.keyFillColour
-        );
-      keyBorderColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyBorderColour,
-          parentKeyboard.keyBorderColour
-        );
-      keyBorderThickness =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyBorderThickness,
-          parentKeyboard.keyBorderThickness
-        );
-      
-      keyTextColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyTextColour,
-          parentKeyboard.keyTextColour
-        );
-      keyTextSwipeColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyTextSwipeColour,
-          parentKeyboard.keyTextSwipeColour
-        );
-      keyTextSize =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextSize,
-          parentKeyboard.keyTextSize
-        );
-      
-      keyTextOffsetX =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextOffsetX,
-          parentKeyboard.keyTextOffsetX
-        );
-      keyTextOffsetY =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextOffsetY,
-          parentKeyboard.keyTextOffsetY
-        );
-      
-      attributesArray.recycle();
-    }
-    
   }
   
   public int getWidth() {

@@ -62,14 +62,14 @@ public class Key {
   // Key meta-properties
   private final Keyboard grandparentKeyboard;
   
-  public Key(final Keyboard.Row parentRow) {
+  public Key(final Row parentRow) {
     grandparentKeyboard = parentRow.parentKeyboard;
     width = parentRow.keyWidth;
     height = parentRow.keyHeight;
   }
   
   public Key(
-    final Keyboard.Row parentRow,
+    final Row parentRow,
     final int x,
     final int y,
     final Resources resources,
