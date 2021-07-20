@@ -27,11 +27,12 @@ import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.util.Xml;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static io.github.yawnoc.Utilities.getDimensionOrFraction;
 
 /*
   A container that holds rows of keys, to be declared in a layout XML.
@@ -258,29 +259,6 @@ public class Keyboard {
       );
     
     attributesArray.recycle();
-  }
-  
-  public static int getDimensionOrFraction(
-    final TypedArray array,
-    final int attributeIndex,
-    final int baseValue,
-    final int defaultValue
-  )
-  {
-    final TypedValue value = array.peekValue(attributeIndex);
-    if (value == null) {
-      return defaultValue;
-    }
-    switch (value.type) {
-      case TypedValue.TYPE_DIMENSION:
-        return array.getDimensionPixelOffset(attributeIndex, defaultValue);
-      case TypedValue.TYPE_FRACTION:
-        return Math.round(
-          array.getFraction(attributeIndex, baseValue, baseValue, defaultValue)
-        );
-      default:
-        return defaultValue;
-    }
   }
   
 }

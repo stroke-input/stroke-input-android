@@ -25,6 +25,8 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.util.Xml;
 
+import static io.github.yawnoc.Utilities.getDimensionOrFraction;
+
 /*
   An individual key.
 */
@@ -161,14 +163,14 @@ public class Key {
       );
     
     width =
-      Keyboard.getDimensionOrFraction(
+      getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyWidth,
         grandparentKeyboard.screenWidth,
         parentRow.keyWidth
       );
     height =
-      Keyboard.getDimensionOrFraction(
+      getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         grandparentKeyboard.screenHeight,

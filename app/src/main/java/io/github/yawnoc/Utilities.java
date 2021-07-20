@@ -10,8 +10,10 @@ package io.github.yawnoc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.provider.Settings;
+import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
 
 import java.util.HashMap;
@@ -39,6 +41,29 @@ public final class Utilities {
     }
     
     return inverseMap;
+  }
+  
+  public static int getDimensionOrFraction(
+    final TypedArray array,
+    final int attributeIndex,
+    final int baseValue,
+    final int defaultValue
+  )
+  {
+    final TypedValue value = array.peekValue(attributeIndex);
+    if (value == null) {
+      return defaultValue;
+    }
+    switch (value.type) {
+      case TypedValue.TYPE_DIMENSION:
+        return array.getDimensionPixelOffset(attributeIndex, defaultValue);
+      case TypedValue.TYPE_FRACTION:
+        return Math.round(
+          array.getFraction(attributeIndex, baseValue, baseValue, defaultValue)
+        );
+      default:
+        return defaultValue;
+    }
   }
   
   public static String loadPreferenceString(
