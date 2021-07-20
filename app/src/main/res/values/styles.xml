@@ -4,6 +4,12 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:textSize">@dimen/activity_main_font_size</item>
+    <item name="android:paddingTop">
+      @dimen/activity_main_text_padding_top
+    </item>
+    <item name="android:paddingBottom">
+      @dimen/activity_main_text_padding_bottom
+    </item>
   </style>
   <style name="MainActivityButton">
     <item name="android:layout_height">wrap_content</item>
