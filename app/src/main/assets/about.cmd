@@ -28,12 +28,6 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ## Build dependencies ##
 
-### [Android ConstraintLayout] (\constraintlayout-version) ###
-----{.notice}
-©~2021 The Android Open Source Project \+
-Licensed under Apache-2.0, see \Apache-2.0. \+
-----
-
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
 ©~2021 The Android Open Source Project \+

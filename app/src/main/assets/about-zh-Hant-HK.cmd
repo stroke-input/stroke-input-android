@@ -28,12 +28,6 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
 
 ## 建件所靠者 ##
 
-### [Android ConstraintLayout] (\constraintlayout-version) ###
-----{.notice}
-©~2021 {Android} 開源項目 \+
-以 {Apache-2.0} 授權，見\Apache-2.0。 \+
-----
-
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
 ©~2021 {Android} 開源項目 \+
