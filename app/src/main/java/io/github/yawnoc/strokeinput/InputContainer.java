@@ -362,6 +362,7 @@ public class InputContainer
     final int eventPointerCount = event.getPointerCount();
     
     if (eventPointerCount > 2) {
+      shiftPointerId = NONEXISTENT_POINTER_ID;
       activeKey = null;
       activePointerId = NONEXISTENT_POINTER_ID;
       invalidate();
