@@ -74,10 +74,10 @@ public class InputContainer
   // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
-  private Keyboard.Key[] keyArray;
+  private Key[] keyArray;
   
   // Active key
-  private Keyboard.Key activeKey;
+  private Key activeKey;
   private int activePointerId = NONEXISTENT_POINTER_ID;
   private int activePointerX;
   private int activePointerY;
@@ -180,7 +180,7 @@ public class InputContainer
   
   public void setKeyboard(final Keyboard keyboard) {
     this.keyboard = keyboard;
-    keyArray = keyboard.getKeyList().toArray(new Keyboard.Key[0]);
+    keyArray = keyboard.getKeyList().toArray(new Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
@@ -241,7 +241,7 @@ public class InputContainer
     
     canvas.drawRect(keyboardRectangle, keyboardFillPaint);
     
-    for (final Keyboard.Key key : keyArray) {
+    for (final Key key : keyArray) {
       
       keyRectangle.set(0, 0, key.width, key.height);
       
@@ -379,7 +379,7 @@ public class InputContainer
         final int downPointerId = event.getPointerId(downPointerIndex);
         final int downPointerX = (int) event.getX(downPointerIndex);
         final int downPointerY = (int) event.getY(downPointerIndex);
-        final Keyboard.Key downKey = getKeyAtPoint(downPointerX, downPointerY);
+        final Key downKey = getKeyAtPoint(downPointerX, downPointerY);
         
         if (isShiftKey(downKey)) {
           sendShiftDownEvent(downPointerId);
@@ -399,7 +399,7 @@ public class InputContainer
           final int movePointerId = event.getPointerId(index);
           final int movePointerX = (int) event.getX(index);
           final int movePointerY = (int) event.getY(index);
-          final Keyboard.Key moveKey =
+          final Key moveKey =
             getKeyAtPoint(movePointerX, movePointerY);
           
           if (movePointerId == activePointerId) {
@@ -445,7 +445,7 @@ public class InputContainer
         final int upPointerId = event.getPointerId(upPointerIndex);
         final int upPointerX = (int) event.getX(upPointerIndex);
         final int upPointerY = (int) event.getY(upPointerIndex);
-        final Keyboard.Key upKey = getKeyAtPoint(upPointerX, upPointerY);
+        final Key upKey = getKeyAtPoint(upPointerX, upPointerY);
         
         if (
           (upPointerId == shiftPointerId || isShiftKey(upKey))
@@ -469,7 +469,7 @@ public class InputContainer
   }
   
   private void sendDownEvent(
-    final Keyboard.Key key,
+    final Key key,
     final int pointerId,
     final int x,
     final int y
@@ -494,7 +494,7 @@ public class InputContainer
   }
   
   private void sendMoveEvent(
-    final Keyboard.Key key,
+    final Key key,
     final int pointerId,
     final int x,
     final int y
@@ -533,7 +533,7 @@ public class InputContainer
   }
   
   private void sendUpEvent(
-    final Keyboard.Key key,
+    final Key key,
     final boolean shouldRedrawKeyboard
   )
   {
@@ -591,7 +591,7 @@ public class InputContainer
   }
   
   private void sendShiftMoveFromEvent(
-    final Keyboard.Key key,
+    final Key key,
     final int pointerId,
     final int x,
     final int y
@@ -631,9 +631,9 @@ public class InputContainer
     }
   }
   
-  private Keyboard.Key getKeyAtPoint(final int x, final int y) {
+  private Key getKeyAtPoint(final int x, final int y) {
     
-    for (final Keyboard.Key key : keyArray) {
+    for (final Key key : keyArray) {
       if (key.containsPoint(x, y)) {
         return key;
       }
@@ -642,16 +642,16 @@ public class InputContainer
     return null;
   }
   
-  private boolean isShiftKey(final Keyboard.Key key) {
+  private boolean isShiftKey(final Key key) {
     return key != null && key.valueText.equals("SHIFT");
   }
   
-  private boolean isSwipeableKey(final Keyboard.Key key) {
+  private boolean isSwipeableKey(final Key key) {
     return key != null && key.isSwipeable;
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
-    final Keyboard.Key key
+    final Key key
   )
   {
     if (key == null) {

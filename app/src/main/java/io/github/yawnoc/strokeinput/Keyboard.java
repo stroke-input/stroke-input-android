@@ -75,8 +75,8 @@ public class Keyboard {
   public int fillColour;
   
   // Screen properties
-  private final int screenWidth;
-  private final int screenHeight;
+  public final int screenWidth;
+  public final int screenHeight;
   
   public Keyboard(final Context context, final int layoutResourceId) {
     
@@ -108,20 +108,20 @@ public class Keyboard {
   public static class Row {
     
     // Key properties
-    private final boolean keysAreShiftable;
-    private final int keyWidth;
-    private final int keyHeight;
-    private final int keyFillColour;
-    private final int keyBorderColour;
-    private final int keyBorderThickness;
-    private final int keyTextColour;
-    private final int keyTextSwipeColour;
-    private final int keyTextSize;
-    private final int keyTextOffsetX;
-    private final int keyTextOffsetY;
+    public final boolean keysAreShiftable;
+    public final int keyWidth;
+    public final int keyHeight;
+    public final int keyFillColour;
+    public final int keyBorderColour;
+    public final int keyBorderThickness;
+    public final int keyTextColour;
+    public final int keyTextSwipeColour;
+    public final int keyTextSize;
+    public final int keyTextOffsetX;
+    public final int keyTextOffsetY;
     
     // Row properties
-    private final Keyboard parentKeyboard;
+    public final Keyboard parentKeyboard;
     private final int offsetX;
     
     public Row(
@@ -213,178 +213,6 @@ public class Keyboard {
       attributesArray.recycle();
     }
     
-  }
-  
-  /*
-    An individual key.
-  */
-  public static class Key {
-    
-    // Key behaviour
-    public String valueText;
-    public String displayText; // overrides valueText drawn
-    public String valueTextShifted; // overrides displayText drawn when shifted
-    public boolean isLongPressable;
-    public boolean isRepeatable; // overrides isLongPressable
-    public boolean isSwipeable;
-    public boolean isShiftable;
-    public boolean isExtendedLeft;
-    public boolean isExtendedRight;
-    
-    // Key styles
-    public int keyFillColour;
-    public int keyBorderColour;
-    public int keyBorderThickness;
-    public int keyTextColour;
-    public int keyTextSwipeColour;
-    public int keyTextSize;
-    public int keyTextOffsetX;
-    public int keyTextOffsetY;
-    
-    // Key dimensions
-    public int width;
-    public int height;
-    
-    // Key position
-    public int x;
-    public int y;
-    
-    // Key meta-properties
-    private final Keyboard grandparentKeyboard;
-    
-    public Key(final Row parentRow) {
-      grandparentKeyboard = parentRow.parentKeyboard;
-      width = parentRow.keyWidth;
-      height = parentRow.keyHeight;
-    }
-    
-    public Key(
-      final Row parentRow,
-      final int x,
-      final int y,
-      final Resources resources,
-      final XmlResourceParser xmlResourceParser
-    )
-    {
-      this(parentRow);
-      
-      this.x = x;
-      this.y = y;
-      
-      final TypedArray attributesArray =
-        resources.obtainAttributes(
-          Xml.asAttributeSet(xmlResourceParser),
-          R.styleable.Keyboard
-        );
-      
-      valueText =
-        attributesArray.getString(R.styleable.Keyboard_valueText);
-      displayText =
-        attributesArray.getString(R.styleable.Keyboard_displayText);
-      if (displayText == null) {
-        displayText = valueText;
-      }
-      
-      isLongPressable =
-        attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
-      isRepeatable =
-        attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
-      isSwipeable =
-        attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
-      isShiftable =
-        attributesArray.getBoolean(
-          R.styleable.Keyboard_isShiftable,
-          parentRow.keysAreShiftable
-        );
-      isExtendedLeft =
-        attributesArray.getBoolean(
-          R.styleable.Keyboard_isExtendedLeft,
-          false
-        );
-      isExtendedRight =
-        attributesArray.getBoolean(
-          R.styleable.Keyboard_isExtendedRight,
-          false
-        );
-      
-      valueTextShifted =
-        attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
-      if (isShiftable && valueTextShifted == null) {
-        valueTextShifted = displayText.toUpperCase();
-      }
-      else if (valueTextShifted == null) {
-        valueTextShifted = displayText;
-      }
-      
-      keyFillColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyFillColour,
-          parentRow.keyFillColour
-        );
-      keyBorderColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyBorderColour,
-          parentRow.keyBorderColour
-        );
-      keyBorderThickness =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyBorderThickness,
-          parentRow.keyBorderThickness
-        );
-      
-      keyTextColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyTextColour,
-          parentRow.keyTextColour
-        );
-      keyTextSwipeColour =
-        attributesArray.getColor(
-          R.styleable.Keyboard_keyTextSwipeColour,
-          parentRow.keyTextSwipeColour
-        );
-      keyTextSize =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextSize,
-          parentRow.keyTextSize
-        );
-      keyTextOffsetX =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextOffsetX,
-          parentRow.keyTextOffsetX
-        );
-      keyTextOffsetY =
-        attributesArray.getDimensionPixelSize(
-          R.styleable.Keyboard_keyTextOffsetY,
-          parentRow.keyTextOffsetY
-        );
-      
-      width =
-        getDimensionOrFraction(
-          attributesArray,
-          R.styleable.Keyboard_keyWidth,
-          grandparentKeyboard.screenWidth,
-          parentRow.keyWidth
-        );
-      height =
-        getDimensionOrFraction(
-          attributesArray,
-          R.styleable.Keyboard_keyHeight,
-          grandparentKeyboard.screenHeight,
-          parentRow.keyHeight
-        );
-      
-      attributesArray.recycle();
-    }
-    
-    public boolean containsPoint(final int x, final int y) {
-      return (
-        (this.isExtendedLeft || this.x <= x)
-          &&
-        (this.isExtendedRight || x <= this.x + this.width)
-          &&
-        this.y <= y && y <= this.y + this.height
-      );
-    }
   }
   
   public int getWidth() {
@@ -546,7 +374,7 @@ public class Keyboard {
     attributesArray.recycle();
   }
   
-  private static int getDimensionOrFraction(
+  public static int getDimensionOrFraction(
     final TypedArray array,
     final int attributeIndex,
     final int baseValue,
