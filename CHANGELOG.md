@@ -6,6 +6,7 @@
 - Simplified structure of Main Activity layout XML
 - Removed unused dependencies (AppCompat, ConstraintLayout)
 - Fixed shift pointer not unset on 3 or more pointers
+- Moved Keyboard.Row and Keyboard.Key to their own classes
 
 
 ## [v0.6.1] User interface improvements (2021-07-20)
