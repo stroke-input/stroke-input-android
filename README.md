@@ -17,8 +17,8 @@ For detailed copyright information, see [app/src/main/assets/about.html].
 
 ## Assets
 
-Asset HTML files are compiled from
-[Conway-Markdown (CMD)] files in the same directory.
+Asset HTML files are compiled by running
+[Conway-Markdown (CMD)] whilst in the root directory of this repository.
 
 
 [LICENSE]: LICENSE
