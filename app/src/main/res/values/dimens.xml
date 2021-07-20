@@ -3,6 +3,7 @@
   <!-- Main activity -->
   <dimen name="activity_main_font_size">16sp</dimen>
   <dimen name="activity_main_font_size_button">13sp</dimen>
+  <dimen name="activity_main_padding">12dp</dimen>
   <!-- Key height -->
   <dimen name="key_height_strokes">60dp</dimen>
   <dimen name="key_height_strokes_digit">56dp</dimen>
