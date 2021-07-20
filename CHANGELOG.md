@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Simplified structure of Main Activity layout XML
+
 
 ## [v0.6.1] User interface improvements (2021-07-20)
 
