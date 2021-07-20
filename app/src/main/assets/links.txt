@@ -19,11 +19,6 @@
     core/java/android/inputmethodservice/KeyboardView.java
 @@
 
-{: \appcompat-version : v1.3.0 :}
-@@[Android AppCompat Library]
-  https://mvnrepository.com/artifact/androidx.appcompat/appcompat
-@@
-
 {: \constraintlayout-version : v2.0.4 :}
 @@[Android ConstraintLayout]
   https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout

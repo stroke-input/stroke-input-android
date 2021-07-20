@@ -28,12 +28,6 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 ## 建體所靠者 ##
 
-### [Android AppCompat Library] (\appcompat-version) ###
-----{.notice}
-©~2021 {Android} 開源項目 \+
-以 {Apache-2.0} 授權，見\Apache-2.0。 \+
-----
-
 ### [Android ConstraintLayout] (\constraintlayout-version) ###
 ----{.notice}
 ©~2021 {Android} 開源項目 \+
