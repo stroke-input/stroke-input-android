@@ -14,6 +14,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="@dimen/activity_main_padding"
   >
       <TextView
