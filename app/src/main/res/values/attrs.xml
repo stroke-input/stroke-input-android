@@ -15,7 +15,7 @@
     <attr name="keyTextOffsetY" format="dimension" />
   </declare-styleable>
   <declare-styleable name="Row">
-    <attr name="offsetX" format="dimension|fraction" />
+    <attr name="rowOffsetX" format="dimension|fraction" />
     <attr name="keysAreShiftable" />
     <attr name="keyWidth" />
     <attr name="keyHeight" />

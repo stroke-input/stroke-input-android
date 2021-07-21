@@ -68,7 +68,7 @@ public class Row {
     offsetX =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Row_offsetX,
+        R.styleable.Row_rowOffsetX,
         parentKeyboard.screenWidth,
         DEFAULT_OFFSET_X
       );

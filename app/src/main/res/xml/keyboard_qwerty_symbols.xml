@@ -45,7 +45,7 @@
     <Key app:valueText="'" />
   </Row>
   <Row
-    app:offsetX="@dimen/horizontal_offset__qwerty_row_2"
+    app:rowOffsetX="@dimen/horizontal_offset__qwerty_row_2"
   >
     <Key
       app:valueText="¢"
