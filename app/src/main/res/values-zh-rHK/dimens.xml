@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- Main activity -->
-  <dimen name="activity_main_font_size">17sp</dimen>
-  <dimen name="activity_main_font_size_button">15sp</dimen>
+  <dimen name="font_size__main_activity">17sp</dimen>
+  <dimen name="font_size__main_activity__button">15sp</dimen>
 </resources>

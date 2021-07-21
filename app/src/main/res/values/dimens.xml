@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- Main activity -->
-  <dimen name="activity_main_font_size">16sp</dimen>
-  <dimen name="activity_main_font_size_button">13sp</dimen>
-  <dimen name="activity_main_padding">12dp</dimen>
-  <dimen name="activity_main_text_padding_top">16dp</dimen>
-  <dimen name="activity_main_text_padding_bottom">8dp</dimen>
+  <dimen name="font_size__main_activity">16sp</dimen>
+  <dimen name="font_size__main_activity__button">13sp</dimen>
+  <dimen name="padding__activity_main">12dp</dimen>
+  <dimen name="padding_top__main_activity__text">16dp</dimen>
+  <dimen name="padding_bottom__main_activity__text">8dp</dimen>
   <!-- Key height -->
   <dimen name="key_height_strokes">60dp</dimen>
   <dimen name="key_height_strokes_digit">56dp</dimen>

@@ -15,7 +15,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:padding="@dimen/activity_main_padding"
+    android:padding="@dimen/padding__activity_main"
   >
     <TextView
       style="@style/MainActivityText"
@@ -61,7 +61,7 @@
       android:hint="@string/activity_main_test_input_hint"
       android:importantForAutofill="no"
       android:inputType="text"
-      android:textSize="@dimen/activity_main_font_size"
+      android:textSize="@dimen/font_size__main_activity"
     />
   </LinearLayout>
 </ScrollView>

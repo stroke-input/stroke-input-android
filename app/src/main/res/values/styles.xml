@@ -3,18 +3,20 @@
   <style name="MainActivityText">
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
-    <item name="android:textSize">@dimen/activity_main_font_size</item>
+    <item name="android:textSize">@dimen/font_size__main_activity</item>
     <item name="android:paddingTop">
-      @dimen/activity_main_text_padding_top
+      @dimen/padding_top__main_activity__text
     </item>
     <item name="android:paddingBottom">
-      @dimen/activity_main_text_padding_bottom
+      @dimen/padding_bottom__main_activity__text
     </item>
   </style>
   <style name="MainActivityButton">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">wrap_content</item>
-    <item name="android:textSize">@dimen/activity_main_font_size_button</item>
+    <item name="android:textSize">
+      @dimen/font_size__main_activity__button
+    </item>
   </style>
   <style name="StrokeInputAlert" parent="Theme.StrokeInput">
     <item name="android:windowBackground">@color/very_dark_grey</item>
