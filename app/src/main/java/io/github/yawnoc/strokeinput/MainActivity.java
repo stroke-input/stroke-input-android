@@ -86,7 +86,7 @@ public class MainActivity
       htmlWebView.getSettings().setBuiltInZoomControls(true);
       htmlWebView.getSettings().setDisplayZoomControls(false);
     }
-  
+    
     htmlWebView.loadUrl(uri);
     htmlWebViewContainer
       .setView(htmlWebView)
