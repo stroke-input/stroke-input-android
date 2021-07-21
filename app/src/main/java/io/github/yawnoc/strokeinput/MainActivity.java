@@ -57,7 +57,7 @@ public class MainActivity
       openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.help_button) {
-      showHtmlWebView(R.string.about_help_file_name);
+      showHtmlWebView(R.string.help_html_file_name);
     }
     else if (viewId == R.id.about_button) {
       showHtmlWebView(R.string.about_html_file_name);

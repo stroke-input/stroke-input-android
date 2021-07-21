@@ -25,7 +25,7 @@
     Return
   </string>
   <!-- Asset file names for localisation -->
-  <string name="about_help_file_name">help.html</string>
+  <string name="help_html_file_name">help.html</string>
   <string name="about_html_file_name">about.html</string>
   <!-- Space bar display text -->
   <string name="keyboard_qwerty_space_bar_display_text">◀ English ▶</string>
