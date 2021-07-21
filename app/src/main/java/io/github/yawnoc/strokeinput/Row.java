@@ -34,6 +34,10 @@ public class Row {
   
   private static final int DEFAULT_OFFSET_X = 0;
   
+  // Row properties
+  public final Keyboard parentKeyboard;
+  public final int offsetX;
+  
   // Key properties
   public final boolean keysAreShiftable;
   public final int keyWidth;
@@ -46,10 +50,6 @@ public class Row {
   public final int keyTextSize;
   public final int keyTextOffsetX;
   public final int keyTextOffsetY;
-  
-  // Row properties
-  public final Keyboard parentKeyboard;
-  public final int offsetX;
   
   public Row(
     final Keyboard parentKeyboard,
