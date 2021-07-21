@@ -17,16 +17,16 @@
   <dimen name="key_width__strokes_stroke">20%</dimen>
   <dimen name="key_width__qwerty_shift">15%</dimen>
   <!-- Key text font size -->
-  <dimen name="key_text_font_size_switch_key">20dp</dimen>
-  <dimen name="key_text_font_size_space_bar">18dp</dimen>
-  <dimen name="key_text_font_size_enter_key">36dp</dimen>
-  <dimen name="key_text_font_size_strokes">24dp</dimen>
-  <dimen name="key_text_font_size_strokes_digit">22dp</dimen>
-  <dimen name="key_text_font_size_strokes_stroke">30dp</dimen>
-  <dimen name="key_text_font_size_strokes_ditto_key">24dp</dimen>
-  <dimen name="key_text_font_size_strokes_backspace">32dp</dimen>
-  <dimen name="key_text_font_size_qwerty">22dp</dimen>
-  <dimen name="key_text_font_size_qwerty_backspace">30dp</dimen>
+  <dimen name="font_size__switch_key">20dp</dimen>
+  <dimen name="font_size__space_bar">18dp</dimen>
+  <dimen name="font_size__enter_key">36dp</dimen>
+  <dimen name="font_size__strokes">24dp</dimen>
+  <dimen name="font_size__strokes_digit">22dp</dimen>
+  <dimen name="font_size__strokes_stroke">30dp</dimen>
+  <dimen name="font_size__strokes_ditto_key">24dp</dimen>
+  <dimen name="font_size__strokes_backspace">32dp</dimen>
+  <dimen name="font_size__qwerty">22dp</dimen>
+  <dimen name="font_size__qwerty_backspace">30dp</dimen>
   <!-- Key text baseline correction -->
   <dimen name="key_text_baseline_correction_switch_key">0.75dp</dimen>
   <dimen name="key_text_baseline_correction_space_bar">0.5dp</dimen>

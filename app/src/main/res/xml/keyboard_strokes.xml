@@ -3,13 +3,13 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height__strokes"
   app:keyWidth="@dimen/key_width__digit"
-  app:keyTextSize="@dimen/key_text_font_size_strokes"
+  app:keyTextSize="@dimen/font_size__strokes"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
   app:keyFillColour="@color/key_fill"
 >
   <Row
     app:keyHeight="@dimen/key_height__strokes_digit"
-    app:keyTextSize="@dimen/key_text_font_size_strokes_digit"
+    app:keyTextSize="@dimen/font_size__strokes_digit"
     app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes_digit"
   >
     <!-- Digits -->
@@ -39,21 +39,21 @@
     <Key
       app:valueText="STROKE_1"
       app:displayText="㇐"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_stroke"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D1 CJK STROKE S -->
     <Key
       app:valueText="STROKE_2"
       app:displayText="㇑"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_stroke"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D2 CJK STROKE P -->
     <Key
       app:valueText="STROKE_3"
       app:displayText="㇒"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_stroke"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- About: U+1F6C8 CIRCLED INFORMATION SOURCE -->
@@ -78,28 +78,28 @@
     <Key
       app:valueText="STROKE_4"
       app:displayText="㇔"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_stroke"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D6 CJK STROKE HG -->
     <Key
       app:valueText="STROKE_5"
       app:displayText="㇖"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_stroke"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
     <Key
       app:valueText="DITTO"
       app:displayText="々"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_ditto_key"
+      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
     />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
       app:valueText="BACKSPACE"
       app:displayText="⌫"
       app:isRepeatable="true"
-      app:keyTextSize="@dimen/key_text_font_size_strokes_backspace"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
     />
   </Row>
   <Row
@@ -110,7 +110,7 @@
     <Key
       app:valueText="SWITCH_TO_STROKES_SYMBOLS"
       app:displayText="（）："
-      app:keyTextSize="@dimen/key_text_font_size_switch_key"
+      app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
@@ -124,7 +124,7 @@
       app:displayText="@string/keyboard_strokes_space_bar_display_text"
       app:isLongPressable="true"
       app:isSwipeable="true"
-      app:keyTextSize="@dimen/key_text_font_size_space_bar"
+      app:keyTextSize="@dimen/font_size__space_bar"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width__space_bar"
@@ -138,7 +138,7 @@
     <Key
       app:valueText="ENTER"
       app:displayText="⏎"
-      app:keyTextSize="@dimen/key_text_font_size_enter_key"
+      app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
     />
   </Row>
