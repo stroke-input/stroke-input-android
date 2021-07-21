@@ -193,7 +193,7 @@ public class Keyboard {
     
     fillColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_fillColour,
+        R.styleable.Keyboard_keyboardFillColour,
         DEFAULT_KEYBOARD_FILL_COLOUR
       );
     
