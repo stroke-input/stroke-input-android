@@ -29,7 +29,7 @@
     <attr name="keyTextOffsetY" />
   </declare-styleable>
   <declare-styleable name="Key">
-    <attr name="isLongPressable" format="boolean" />
+    <attr name="keyIsLongPressable" format="boolean" />
     <attr name="isRepeatable" format="boolean" />
     <attr name="isSwipeable" format="boolean" />
     <attr name="isShiftable" format="boolean" />
