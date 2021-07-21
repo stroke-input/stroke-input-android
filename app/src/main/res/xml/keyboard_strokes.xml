@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  app:keyHeight="@dimen/key_height_strokes"
+  app:keyHeight="@dimen/key_height__strokes"
   app:keyWidth="@dimen/key_width_digit"
   app:keyTextSize="@dimen/key_text_font_size_strokes"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
   app:keyFillColour="@color/key_fill"
 >
   <Row
-    app:keyHeight="@dimen/key_height_strokes_digit"
+    app:keyHeight="@dimen/key_height__strokes_digit"
     app:keyTextSize="@dimen/key_text_font_size_strokes_digit"
     app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes_digit"
   >
@@ -103,7 +103,7 @@
     />
   </Row>
   <Row
-    app:keyHeight="@dimen/key_height_strokes_space_bar"
+    app:keyHeight="@dimen/key_height__strokes_space_bar"
     app:keyWidth="@dimen/key_width_strokes_stroke"
   >
     <!-- Switch to strokes symbols keyboard: U+FF08, U+FF09, U+FF1A -->

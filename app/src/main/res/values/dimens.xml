@@ -7,10 +7,10 @@
   <dimen name="padding_top__main_activity__text">16dp</dimen>
   <dimen name="padding_bottom__main_activity__text">8dp</dimen>
   <!-- Key height -->
-  <dimen name="key_height_strokes">60dp</dimen>
-  <dimen name="key_height_strokes_digit">56dp</dimen>
-  <dimen name="key_height_strokes_space_bar">54dp</dimen>
-  <dimen name="key_height_qwerty">46dp</dimen>
+  <dimen name="key_height__strokes">60dp</dimen>
+  <dimen name="key_height__strokes_digit">56dp</dimen>
+  <dimen name="key_height__strokes_space_bar">54dp</dimen>
+  <dimen name="key_height__qwerty">46dp</dimen>
   <!-- Key width -->
   <dimen name="key_width_digit">10%</dimen>
   <dimen name="key_width_space_bar">40%</dimen>

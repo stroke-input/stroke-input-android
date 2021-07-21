@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  app:keyHeight="@dimen/key_height_qwerty"
+  app:keyHeight="@dimen/key_height__qwerty"
   app:keyWidth="@dimen/key_width_digit"
   app:keyTextSize="@dimen/key_text_font_size_qwerty"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty"
