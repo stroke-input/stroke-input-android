@@ -77,7 +77,7 @@ public class MainActivity
       htmlWebViewContainer =
         new AlertDialog.Builder(this, R.style.StrokeInputAlert);
       htmlWebViewContainer
-        .setPositiveButton(R.string.activity_main_return_label, null);
+        .setPositiveButton(R.string.main_activity__return_label, null);
     }
     
     if (htmlWebView == null) {
