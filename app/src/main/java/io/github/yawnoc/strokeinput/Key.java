@@ -86,32 +86,32 @@ public class Key {
     final TypedArray attributesArray =
       resources.obtainAttributes(
         Xml.asAttributeSet(xmlResourceParser),
-        R.styleable.Keyboard
+        R.styleable.Key
       );
     
     isLongPressable =
-      attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
+      attributesArray.getBoolean(R.styleable.Key_isLongPressable, false);
     isRepeatable =
-      attributesArray.getBoolean(R.styleable.Keyboard_isRepeatable, false);
+      attributesArray.getBoolean(R.styleable.Key_isRepeatable, false);
     isSwipeable =
-      attributesArray.getBoolean(R.styleable.Keyboard_isSwipeable, false);
+      attributesArray.getBoolean(R.styleable.Key_isSwipeable, false);
     isShiftable =
       attributesArray.getBoolean(
-        R.styleable.Keyboard_isShiftable,
+        R.styleable.Key_isShiftable,
         parentRow.keysAreShiftable
       );
     isExtendedLeft =
-      attributesArray.getBoolean(R.styleable.Keyboard_isExtendedLeft, false);
+      attributesArray.getBoolean(R.styleable.Key_isExtendedLeft, false);
     isExtendedRight =
-      attributesArray.getBoolean(R.styleable.Keyboard_isExtendedRight, false);
+      attributesArray.getBoolean(R.styleable.Key_isExtendedRight, false);
     
-    valueText = attributesArray.getString(R.styleable.Keyboard_valueText);
-    displayText = attributesArray.getString(R.styleable.Keyboard_displayText);
+    valueText = attributesArray.getString(R.styleable.Key_valueText);
+    displayText = attributesArray.getString(R.styleable.Key_displayText);
     if (displayText == null) {
       displayText = valueText;
     }
     valueTextShifted =
-      attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
+      attributesArray.getString(R.styleable.Key_valueTextShifted);
     if (isShiftable && valueTextShifted == null) {
       valueTextShifted = displayText.toUpperCase();
     }
@@ -122,57 +122,57 @@ public class Key {
     width =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyWidth,
+        R.styleable.Key_keyWidth,
         grandparentKeyboard.screenWidth,
         parentRow.keyWidth
       );
     height =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyHeight,
+        R.styleable.Key_keyHeight,
         grandparentKeyboard.screenHeight,
         parentRow.keyHeight
       );
     
     keyFillColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyFillColour,
+        R.styleable.Key_keyFillColour,
         parentRow.keyFillColour
       );
     keyBorderColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyBorderColour,
+        R.styleable.Key_keyBorderColour,
         parentRow.keyBorderColour
       );
     keyBorderThickness =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyBorderThickness,
+        R.styleable.Key_keyBorderThickness,
         parentRow.keyBorderThickness
       );
     
     keyTextColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyTextColour,
+        R.styleable.Key_keyTextColour,
         parentRow.keyTextColour
       );
     keyTextSwipeColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyTextSwipeColour,
+        R.styleable.Key_keyTextSwipeColour,
         parentRow.keyTextSwipeColour
       );
     keyTextSize =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextSize,
+        R.styleable.Key_keyTextSize,
         parentRow.keyTextSize
       );
     keyTextOffsetX =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextOffsetX,
+        R.styleable.Key_keyTextOffsetX,
         parentRow.keyTextOffsetX
       );
     keyTextOffsetY =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextOffsetY,
+        R.styleable.Key_keyTextOffsetY,
         parentRow.keyTextOffsetY
       );
     
