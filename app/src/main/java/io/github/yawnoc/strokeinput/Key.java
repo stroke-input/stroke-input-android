@@ -106,7 +106,7 @@ public class Key {
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
     
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
-    displayText = attributesArray.getString(R.styleable.Key_displayText);
+    displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);
     if (displayText == null) {
       displayText = valueText;
     }

@@ -63,7 +63,7 @@
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
       app:keyValueText="BACKSPACE"
-      app:displayText="⌫"
+      app:keyDisplayText="⌫"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
     />
@@ -75,7 +75,7 @@
     <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES"
-      app:displayText="㇐㇑㇒"
+      app:keyDisplayText="㇐㇑㇒"
       app:keyTextColour="@color/stroke_key_text"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
@@ -88,7 +88,7 @@
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
       app:keyValueText="SPACE"
-      app:displayText="@string/keyboard_strokes_space_bar_display_text"
+      app:keyDisplayText="@string/keyboard_strokes_space_bar_display_text"
       app:keyIsLongPressable="true"
       app:keyIsSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"
@@ -104,7 +104,7 @@
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key
       app:keyValueText="ENTER"
-      app:displayText="⏎"
+      app:keyDisplayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
     />

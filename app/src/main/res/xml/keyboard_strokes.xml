@@ -38,28 +38,28 @@
     <!-- U+31D0 CJK STROKE H -->
     <Key
       app:keyValueText="STROKE_1"
-      app:displayText="㇐"
+      app:keyDisplayText="㇐"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D1 CJK STROKE S -->
     <Key
       app:keyValueText="STROKE_2"
-      app:displayText="㇑"
+      app:keyDisplayText="㇑"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D2 CJK STROKE P -->
     <Key
       app:keyValueText="STROKE_3"
-      app:displayText="㇒"
+      app:keyDisplayText="㇒"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- About: U+1F6C8 CIRCLED INFORMATION SOURCE -->
     <Key
       app:keyValueText="ABOUT"
-      app:displayText="🛈"
+      app:keyDisplayText="🛈"
       app:keyIsLongPressable="true"
     />
   </Row>
@@ -77,27 +77,27 @@
     <!-- U+31D4 CJK STROKE D -->
     <Key
       app:keyValueText="STROKE_4"
-      app:displayText="㇔"
+      app:keyDisplayText="㇔"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+31D6 CJK STROKE HG -->
     <Key
       app:keyValueText="STROKE_5"
-      app:displayText="㇖"
+      app:keyDisplayText="㇖"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
     <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
     <Key
       app:keyValueText="DITTO"
-      app:displayText="々"
+      app:keyDisplayText="々"
       app:keyTextSize="@dimen/font_size__strokes_ditto_key"
     />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
       app:keyValueText="BACKSPACE"
-      app:displayText="⌫"
+      app:keyDisplayText="⌫"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
     />
@@ -109,7 +109,7 @@
     <!-- Switch to strokes symbols keyboard: U+FF08, U+FF09, U+FF1A -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES_SYMBOLS"
-      app:displayText="（）："
+      app:keyDisplayText="（）："
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
     />
@@ -121,7 +121,7 @@
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
       app:keyValueText="SPACE"
-      app:displayText="@string/keyboard_strokes_space_bar_display_text"
+      app:keyDisplayText="@string/keyboard_strokes_space_bar_display_text"
       app:keyIsLongPressable="true"
       app:keyIsSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"
@@ -137,7 +137,7 @@
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key
       app:keyValueText="ENTER"
-      app:displayText="⏎"
+      app:keyDisplayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
     />

@@ -36,7 +36,7 @@
     <attr name="keyIsExtendedLeft" format="boolean" />
     <attr name="keyIsExtendedRight" format="boolean" />
     <attr name="keyValueText" format="string" />
-    <attr name="displayText" format="string" />
+    <attr name="keyDisplayText" format="string" />
     <attr name="keyValueTextShifted" format="string" />
     <attr name="keyWidth" />
     <attr name="keyHeight" />
