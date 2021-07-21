@@ -33,15 +33,19 @@ import static io.github.yawnoc.Utilities.getDimensionOrFraction;
 public class Key {
   
   // Key behaviour
-  public String valueText;
-  public String displayText; // overrides valueText drawn
-  public String valueTextShifted; // overrides displayText drawn when shifted
   public boolean isLongPressable;
   public boolean isRepeatable; // overrides isLongPressable
   public boolean isSwipeable;
   public boolean isShiftable;
   public boolean isExtendedLeft;
   public boolean isExtendedRight;
+  public String valueText;
+  public String displayText; // overrides valueText drawn
+  public String valueTextShifted; // overrides displayText drawn when shifted
+  
+  // Key dimensions
+  public int width;
+  public int height;
   
   // Key styles
   public int keyFillColour;
@@ -52,10 +56,6 @@ public class Key {
   public int keyTextSize;
   public int keyTextOffsetX;
   public int keyTextOffsetY;
-  
-  // Key dimensions
-  public int width;
-  public int height;
   
   // Key position
   public int x;
@@ -89,12 +89,6 @@ public class Key {
         R.styleable.Keyboard
       );
     
-    valueText = attributesArray.getString(R.styleable.Keyboard_valueText);
-    displayText = attributesArray.getString(R.styleable.Keyboard_displayText);
-    if (displayText == null) {
-      displayText = valueText;
-    }
-    
     isLongPressable =
       attributesArray.getBoolean(R.styleable.Keyboard_isLongPressable, false);
     isRepeatable =
@@ -111,6 +105,11 @@ public class Key {
     isExtendedRight =
       attributesArray.getBoolean(R.styleable.Keyboard_isExtendedRight, false);
     
+    valueText = attributesArray.getString(R.styleable.Keyboard_valueText);
+    displayText = attributesArray.getString(R.styleable.Keyboard_displayText);
+    if (displayText == null) {
+      displayText = valueText;
+    }
     valueTextShifted =
       attributesArray.getString(R.styleable.Keyboard_valueTextShifted);
     if (isShiftable && valueTextShifted == null) {
@@ -119,6 +118,21 @@ public class Key {
     else if (valueTextShifted == null) {
       valueTextShifted = displayText;
     }
+    
+    width =
+      getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyWidth,
+        grandparentKeyboard.screenWidth,
+        parentRow.keyWidth
+      );
+    height =
+      getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyHeight,
+        grandparentKeyboard.screenHeight,
+        parentRow.keyHeight
+      );
     
     keyFillColour =
       attributesArray.getColor(
@@ -160,21 +174,6 @@ public class Key {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextOffsetY,
         parentRow.keyTextOffsetY
-      );
-    
-    width =
-      getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Keyboard_keyWidth,
-        grandparentKeyboard.screenWidth,
-        parentRow.keyWidth
-      );
-    height =
-      getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Keyboard_keyHeight,
-        grandparentKeyboard.screenHeight,
-        parentRow.keyHeight
       );
     
     attributesArray.recycle();
