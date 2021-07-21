@@ -32,7 +32,7 @@
     <attr name="keyIsLongPressable" format="boolean" />
     <attr name="keyIsRepeatable" format="boolean" />
     <attr name="keyIsSwipeable" format="boolean" />
-    <attr name="isShiftable" format="boolean" />
+    <attr name="keyIsShiftable" format="boolean" />
     <attr name="isExtendedLeft" format="boolean" />
     <attr name="isExtendedRight" format="boolean" />
     <attr name="valueText" format="string" />

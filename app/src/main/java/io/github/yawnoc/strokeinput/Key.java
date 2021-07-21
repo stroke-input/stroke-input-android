@@ -97,7 +97,7 @@ public class Key {
       attributesArray.getBoolean(R.styleable.Key_keyIsSwipeable, false);
     isShiftable =
       attributesArray.getBoolean(
-        R.styleable.Key_isShiftable,
+        R.styleable.Key_keyIsShiftable,
         parentRow.keysAreShiftable
       );
     isExtendedLeft =
