@@ -23,7 +23,7 @@
     <Key app:valueText="0" />
   </Row>
   <Row
-    app:isShiftable="true"
+    app:keysAreShiftable="true"
   >
     <!-- Letters row 1 -->
     <Key app:valueText="q" />
@@ -39,7 +39,7 @@
   </Row>
   <Row
     app:offsetX="@dimen/horizontal_offset__qwerty_row_2"
-    app:isShiftable="true"
+    app:keysAreShiftable="true"
   >
     <!-- Letters row 2 -->
     <Key
@@ -59,7 +59,7 @@
     />
   </Row>
   <Row
-    app:isShiftable="true"
+    app:keysAreShiftable="true"
   >
     <!-- Shift key: U+21E7, U+2B06 -->
     <Key

@@ -62,78 +62,78 @@ public class Row {
     final TypedArray attributesArray =
       resources.obtainAttributes(
         Xml.asAttributeSet(xmlResourceParser),
-        R.styleable.Keyboard
+        R.styleable.Row
       );
     
     offsetX =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_offsetX,
+        R.styleable.Row_offsetX,
         parentKeyboard.screenWidth,
         DEFAULT_OFFSET_X
       );
     
     keysAreShiftable =
       attributesArray.getBoolean(
-        R.styleable.Keyboard_isShiftable,
+        R.styleable.Row_keysAreShiftable,
         parentKeyboard.keysAreShiftable
       );
     
     keyWidth =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyWidth,
+        R.styleable.Row_keyWidth,
         parentKeyboard.screenWidth,
         parentKeyboard.keyWidth
       );
     keyHeight =
       getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyHeight,
+        R.styleable.Row_keyHeight,
         parentKeyboard.screenHeight,
         parentKeyboard.keyHeight
       );
     
     keyFillColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyFillColour,
+        R.styleable.Row_keyFillColour,
         parentKeyboard.keyFillColour
       );
     keyBorderColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyBorderColour,
+        R.styleable.Row_keyBorderColour,
         parentKeyboard.keyBorderColour
       );
     keyBorderThickness =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyBorderThickness,
+        R.styleable.Row_keyBorderThickness,
         parentKeyboard.keyBorderThickness
       );
     
     keyTextColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyTextColour,
+        R.styleable.Row_keyTextColour,
         parentKeyboard.keyTextColour
       );
     keyTextSwipeColour =
       attributesArray.getColor(
-        R.styleable.Keyboard_keyTextSwipeColour,
+        R.styleable.Row_keyTextSwipeColour,
         parentKeyboard.keyTextSwipeColour
       );
     keyTextSize =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextSize,
+        R.styleable.Row_keyTextSize,
         parentKeyboard.keyTextSize
       );
     
     keyTextOffsetX =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextOffsetX,
+        R.styleable.Row_keyTextOffsetX,
         parentKeyboard.keyTextOffsetX
       );
     keyTextOffsetY =
       attributesArray.getDimensionPixelSize(
-        R.styleable.Keyboard_keyTextOffsetY,
+        R.styleable.Row_keyTextOffsetY,
         parentKeyboard.keyTextOffsetY
       );
     

@@ -23,6 +23,19 @@
     <attr name="isShiftable" format="boolean" />
     <attr name="isExtendedLeft" format="boolean" />
     <attr name="isExtendedRight" format="boolean" />
+  </declare-styleable>
+  <declare-styleable name="Row">
     <attr name="offsetX" format="dimension|fraction" />
+    <attr name="keysAreShiftable" />
+    <attr name="keyWidth" />
+    <attr name="keyHeight" />
+    <attr name="keyFillColour" />
+    <attr name="keyBorderColour" />
+    <attr name="keyBorderThickness" />
+    <attr name="keyTextColour" />
+    <attr name="keyTextSwipeColour" />
+    <attr name="keyTextSize" />
+    <attr name="keyTextOffsetX" />
+    <attr name="keyTextOffsetY" />
   </declare-styleable>
 </resources>
