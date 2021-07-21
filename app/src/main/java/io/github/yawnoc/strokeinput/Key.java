@@ -92,7 +92,7 @@ public class Key {
     isLongPressable =
       attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
     isRepeatable =
-      attributesArray.getBoolean(R.styleable.Key_isRepeatable, false);
+      attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
     isSwipeable =
       attributesArray.getBoolean(R.styleable.Key_isSwipeable, false);
     isShiftable =

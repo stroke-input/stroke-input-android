@@ -30,7 +30,7 @@
   </declare-styleable>
   <declare-styleable name="Key">
     <attr name="keyIsLongPressable" format="boolean" />
-    <attr name="isRepeatable" format="boolean" />
+    <attr name="keyIsRepeatable" format="boolean" />
     <attr name="isSwipeable" format="boolean" />
     <attr name="isShiftable" format="boolean" />
     <attr name="isExtendedLeft" format="boolean" />

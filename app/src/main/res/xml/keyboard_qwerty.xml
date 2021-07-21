@@ -80,7 +80,7 @@
     <Key
       app:valueText="BACKSPACE"
       app:displayText="⌫"
-      app:isRepeatable="true"
+      app:keyIsRepeatable="true"
       app:isShiftable="false"
       app:keyTextSize="@dimen/font_size__qwerty_backspace"
       app:keyTextOffsetY="@dimen/baseline_correction__qwerty_backspace"
