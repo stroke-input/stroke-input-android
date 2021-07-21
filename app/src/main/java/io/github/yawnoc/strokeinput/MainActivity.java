@@ -83,6 +83,8 @@ public class MainActivity
     if (htmlWebView == null) {
       htmlWebView = new WebView(this);
       htmlWebView.setBackgroundColor(Color.TRANSPARENT);
+      htmlWebView.getSettings().setBuiltInZoomControls(true);
+      htmlWebView.getSettings().setDisplayZoomControls(false);
     }
   
     htmlWebView.loadUrl(uri);

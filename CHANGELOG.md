@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Made Help and About HTML web views zoomable
+
 
 ## [v0.6.2] Code cleanup (2021-07-21)
 
