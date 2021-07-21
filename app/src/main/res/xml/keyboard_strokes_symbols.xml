@@ -2,7 +2,7 @@
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height__strokes"
-  app:keyWidth="@dimen/key_width_digit"
+  app:keyWidth="@dimen/key_width__digit"
   app:keyTextSize="@dimen/key_text_font_size_strokes"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
   app:keyFillColour="@color/key_fill"
@@ -14,7 +14,7 @@
   >
     <!-- U+FF1A FULLWIDTH COLON -->
     <Key
-      app:keyWidth="@dimen/key_width_strokes_stroke"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
       app:valueText="："
     />
     <!-- Corner brackets: U+300C to U+300F -->
@@ -32,17 +32,17 @@
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
     <Key
       app:valueText="？"
-      app:keyWidth="@dimen/key_width_strokes_stroke"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
     <Key
       app:valueText="！"
-      app:keyWidth="@dimen/key_width_strokes_stroke"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+301C WAVE DASH -->
     <Key
       app:valueText="〜"
-      app:keyWidth="@dimen/key_width_strokes_stroke"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- Round brackets: U+FF08, U+FF09 -->
     <Key app:valueText="（" />
@@ -51,7 +51,7 @@
     <Key app:valueText="【" />
     <Key app:valueText="】" />
   </Row>
-  <Row app:keyWidth="@dimen/key_width_strokes_stroke">
+  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
     <Key app:valueText="、" />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
@@ -70,7 +70,7 @@
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
-    app:keyWidth="@dimen/key_width_strokes_stroke"
+    app:keyWidth="@dimen/key_width__strokes_stroke"
   >
     <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
     <Key
@@ -83,7 +83,7 @@
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
       app:valueText="，"
-      app:keyWidth="@dimen/key_width_digit"
+      app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
@@ -94,12 +94,12 @@
       app:keyTextSize="@dimen/key_text_font_size_space_bar"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
-      app:keyWidth="@dimen/key_width_space_bar"
+      app:keyWidth="@dimen/key_width__space_bar"
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key
       app:valueText="。"
-      app:keyWidth="@dimen/key_width_digit"
+      app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key

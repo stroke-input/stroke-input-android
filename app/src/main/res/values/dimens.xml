@@ -12,10 +12,10 @@
   <dimen name="key_height__strokes_space_bar">54dp</dimen>
   <dimen name="key_height__qwerty">46dp</dimen>
   <!-- Key width -->
-  <dimen name="key_width_digit">10%</dimen>
-  <dimen name="key_width_space_bar">40%</dimen>
-  <dimen name="key_width_strokes_stroke">20%</dimen>
-  <dimen name="key_width_qwerty_shift">15%</dimen>
+  <dimen name="key_width__digit">10%</dimen>
+  <dimen name="key_width__space_bar">40%</dimen>
+  <dimen name="key_width__strokes_stroke">20%</dimen>
+  <dimen name="key_width__qwerty_shift">15%</dimen>
   <!-- Key text font size -->
   <dimen name="key_text_font_size_switch_key">20dp</dimen>
   <dimen name="key_text_font_size_space_bar">18dp</dimen>

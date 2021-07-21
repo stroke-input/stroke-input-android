@@ -2,7 +2,7 @@
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height__qwerty"
-  app:keyWidth="@dimen/key_width_digit"
+  app:keyWidth="@dimen/key_width__digit"
   app:keyTextSize="@dimen/key_text_font_size_qwerty"
   app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty"
   app:keyFillColour="@color/key_fill"
@@ -65,11 +65,11 @@
       app:isRepeatable="true"
       app:keyTextSize="@dimen/key_text_font_size_qwerty_backspace"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_backspace"
-      app:keyWidth="@dimen/key_width_qwerty_shift"
+      app:keyWidth="@dimen/key_width__qwerty_shift"
     />
   </Row>
   <Row
-    app:keyWidth="@dimen/key_width_strokes_stroke"
+    app:keyWidth="@dimen/key_width__strokes_stroke"
   >
     <!-- Switch to qwerty keyboard -->
     <Key
@@ -81,7 +81,7 @@
     <!-- Comma -->
     <Key
       app:valueText=","
-      app:keyWidth="@dimen/key_width_digit"
+      app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
@@ -92,12 +92,12 @@
       app:keyTextSize="@dimen/key_text_font_size_space_bar"
       app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
       app:keyTextColour="@color/space_bar_text"
-      app:keyWidth="@dimen/key_width_space_bar"
+      app:keyWidth="@dimen/key_width__space_bar"
     />
     <!-- Full stop -->
     <Key
       app:valueText="."
-      app:keyWidth="@dimen/key_width_digit"
+      app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key
