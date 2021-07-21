@@ -3,6 +3,7 @@
   <string name="app_name">筆畫輸入法</string>
   <string name="activity_main_welcome">歡迎使用筆畫輸入法！</string>
   <string name="activity_main_source_code_button_label">原始程式碼</string>
+  <string name="activity_main_help_button_label">說明</string>
   <string name="activity_main_about_button_label">關於</string>
   <string name="activity_main_input_settings_information">
     若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
@@ -17,10 +18,9 @@
   <string name="activity_main_test_input_hint">在此測試輸入</string>
   <string name="activity_main_return_label">回</string>
   <!-- Asset file names for localisation -->
+  <string name="about_help_file_name">help-zh-Hant-TW.html</string>
   <string name="about_html_file_name">about-zh-Hant-TW.html</string>
   <!-- Space bar display text -->
   <string name="keyboard_qwerty_space_bar_display_text">◀ 英文 ▶</string>
   <string name="keyboard_strokes_space_bar_display_text">◀ 中文 ▶</string>
-  <string name="activity_main_help_button_label">說明</string>
-  <string name="about_help_file_name">help-zh-Hant-TW.html</string>
 </resources>
