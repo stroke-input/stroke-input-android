@@ -123,7 +123,7 @@
       app:valueText="SPACE"
       app:displayText="@string/keyboard_strokes_space_bar_display_text"
       app:keyIsLongPressable="true"
-      app:isSwipeable="true"
+      app:keyIsSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"
       app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
       app:keyTextColour="@color/space_bar_text"

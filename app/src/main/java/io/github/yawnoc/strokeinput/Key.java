@@ -94,7 +94,7 @@ public class Key {
     isRepeatable =
       attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
     isSwipeable =
-      attributesArray.getBoolean(R.styleable.Key_isSwipeable, false);
+      attributesArray.getBoolean(R.styleable.Key_keyIsSwipeable, false);
     isShiftable =
       attributesArray.getBoolean(
         R.styleable.Key_isShiftable,
