@@ -7,7 +7,7 @@
   <string name="main_activity__source_code_button_label">Source code</string>
   <string name="main_activity__help_button_label">Help</string>
   <string name="main_activity__about_button_label">About</string>
-  <string name="main_activity__input_settings_information">
+  <string name="main_activity__input_method_settings_information">
     If you have installed Stroke Input Method for the first time,
     you must manually enable it in the system settings before it can be used:
   </string>

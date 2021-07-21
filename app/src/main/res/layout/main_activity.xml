@@ -39,7 +39,7 @@
     />
     <TextView
       style="@style/MainActivityText"
-      android:text="@string/main_activity__input_settings_information"
+      android:text="@string/main_activity__input_method_settings_information"
     />
     <Button
       style="@style/MainActivityButton"

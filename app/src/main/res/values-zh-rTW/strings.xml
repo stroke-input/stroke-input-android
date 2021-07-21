@@ -5,7 +5,7 @@
   <string name="main_activity__source_code_button_label">原始程式碼</string>
   <string name="main_activity__help_button_label">說明</string>
   <string name="main_activity__about_button_label">關於</string>
-  <string name="main_activity__input_settings_information">
+  <string name="main_activity__input_method_settings_information">
     若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
   </string>
   <string name="main_activity__input_method_settings_button_label">
