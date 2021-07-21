@@ -4,11 +4,11 @@
   app:keyHeight="@dimen/key_height__qwerty"
   app:keyWidth="@dimen/key_width__digit"
   app:keyTextSize="@dimen/font_size__qwerty"
-  app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty"
+  app:keyTextOffsetY="@dimen/baseline_correction__qwerty"
   app:keyFillColour="@color/key_fill"
 >
   <Row
-    app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_digit"
+    app:keyTextOffsetY="@dimen/baseline_correction__qwerty_digit"
   >
     <!-- Digits -->
     <Key app:valueText="1" />
@@ -83,7 +83,7 @@
       app:isRepeatable="true"
       app:isShiftable="false"
       app:keyTextSize="@dimen/font_size__qwerty_backspace"
-      app:keyTextOffsetY="@dimen/key_text_baseline_correction_qwerty_backspace"
+      app:keyTextOffsetY="@dimen/baseline_correction__qwerty_backspace"
       app:keyWidth="@dimen/key_width__qwerty_shift"
     />
   </Row>
@@ -95,7 +95,7 @@
       app:valueText="SWITCH_TO_QWERTY_SYMBOLS"
       app:displayText="!@#"
       app:keyTextSize="@dimen/font_size__switch_key"
-      app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
     />
     <!-- Comma -->
     <Key
@@ -109,7 +109,7 @@
       app:isLongPressable="true"
       app:isSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"
-      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
+      app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width__space_bar"
     />

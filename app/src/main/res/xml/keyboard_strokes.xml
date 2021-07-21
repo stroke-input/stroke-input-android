@@ -4,13 +4,13 @@
   app:keyHeight="@dimen/key_height__strokes"
   app:keyWidth="@dimen/key_width__digit"
   app:keyTextSize="@dimen/font_size__strokes"
-  app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes"
+  app:keyTextOffsetY="@dimen/baseline_correction__strokes"
   app:keyFillColour="@color/key_fill"
 >
   <Row
     app:keyHeight="@dimen/key_height__strokes_digit"
     app:keyTextSize="@dimen/font_size__strokes_digit"
-    app:keyTextOffsetY="@dimen/key_text_baseline_correction_strokes_digit"
+    app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
   >
     <!-- Digits -->
     <Key app:valueText="1" />
@@ -111,7 +111,7 @@
       app:valueText="SWITCH_TO_STROKES_SYMBOLS"
       app:displayText="（）："
       app:keyTextSize="@dimen/font_size__switch_key"
-      app:keyTextOffsetY="@dimen/key_text_baseline_correction_switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
@@ -125,7 +125,7 @@
       app:isLongPressable="true"
       app:isSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"
-      app:keyTextOffsetY="@dimen/key_text_baseline_correction_space_bar"
+      app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width__space_bar"
     />
