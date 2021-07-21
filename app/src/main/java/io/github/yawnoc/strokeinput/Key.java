@@ -105,13 +105,13 @@ public class Key {
     isExtendedRight =
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
     
-    valueText = attributesArray.getString(R.styleable.Key_valueText);
+    valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_displayText);
     if (displayText == null) {
       displayText = valueText;
     }
     valueTextShifted =
-      attributesArray.getString(R.styleable.Key_valueTextShifted);
+      attributesArray.getString(R.styleable.Key_keyValueTextShifted);
     if (isShiftable && valueTextShifted == null) {
       valueTextShifted = displayText.toUpperCase();
     }

@@ -9,58 +9,58 @@
 >
   <Row>
     <!-- Digits row -->
-    <Key app:valueText="!" />
-    <Key app:valueText="\@" />
-    <Key app:valueText="#" />
-    <Key app:valueText="$" />
-    <Key app:valueText="%" />
-    <Key app:valueText="^" />
-    <Key app:valueText="&amp;" />
-    <Key app:valueText="*" />
-    <Key app:valueText="(" />
-    <Key app:valueText=")" />
+    <Key app:keyValueText="!" />
+    <Key app:keyValueText="\@" />
+    <Key app:keyValueText="#" />
+    <Key app:keyValueText="$" />
+    <Key app:keyValueText="%" />
+    <Key app:keyValueText="^" />
+    <Key app:keyValueText="&amp;" />
+    <Key app:keyValueText="*" />
+    <Key app:keyValueText="(" />
+    <Key app:keyValueText=")" />
   </Row>
   <Row>
-    <Key app:valueText="_" />
-    <Key app:valueText="-" />
-    <Key app:valueText="+" />
-    <Key app:valueText="=" />
-    <Key app:valueText="{" />
-    <Key app:valueText="}" />
-    <Key app:valueText="[" />
-    <Key app:valueText="]" />
-    <Key app:valueText="|" />
-    <Key app:valueText="\\" />
+    <Key app:keyValueText="_" />
+    <Key app:keyValueText="-" />
+    <Key app:keyValueText="+" />
+    <Key app:keyValueText="=" />
+    <Key app:keyValueText="{" />
+    <Key app:keyValueText="}" />
+    <Key app:keyValueText="[" />
+    <Key app:keyValueText="]" />
+    <Key app:keyValueText="|" />
+    <Key app:keyValueText="\\" />
   </Row>
   <Row>
-    <Key app:valueText="~" />
-    <Key app:valueText="`" />
-    <Key app:valueText="−" /> <!-- U+2212 MINUS SIGN -->
-    <Key app:valueText="×" /> <!-- U+00D7 MULTIPLICATION SIGN -->
-    <Key app:valueText="÷" /> <!-- U+00F7 DIVISION SIGN -->
-    <Key app:valueText="°" /> <!-- U+00B0 DEGREE SIGN -->
-    <Key app:valueText=":" />
-    <Key app:valueText=";" />
-    <Key app:valueText="&quot;" />
-    <Key app:valueText="'" />
+    <Key app:keyValueText="~" />
+    <Key app:keyValueText="`" />
+    <Key app:keyValueText="−" /> <!-- U+2212 MINUS SIGN -->
+    <Key app:keyValueText="×" /> <!-- U+00D7 MULTIPLICATION SIGN -->
+    <Key app:keyValueText="÷" /> <!-- U+00F7 DIVISION SIGN -->
+    <Key app:keyValueText="°" /> <!-- U+00B0 DEGREE SIGN -->
+    <Key app:keyValueText=":" />
+    <Key app:keyValueText=";" />
+    <Key app:keyValueText="&quot;" />
+    <Key app:keyValueText="'" />
   </Row>
   <Row
     app:rowOffsetX="@dimen/horizontal_offset__qwerty_row_2"
   >
     <Key
-      app:valueText="¢"
+      app:keyValueText="¢"
       app:keyIsExtendedLeft="true"
     /> <!-- U+00A2 CENT SIGN -->
-    <Key app:valueText="¥"/> <!-- U+00A5 YEN SIGN -->
-    <Key app:valueText="€" /> <!-- U+20AC EURO SIGN -->
-    <Key app:valueText="£" /> <!-- U+00A3 POUND SIGN -->
-    <Key app:valueText="&lt;" />
-    <Key app:valueText="&gt;" />
-    <Key app:valueText="\?" />
-    <Key app:valueText="/" />
+    <Key app:keyValueText="¥"/> <!-- U+00A5 YEN SIGN -->
+    <Key app:keyValueText="€" /> <!-- U+20AC EURO SIGN -->
+    <Key app:keyValueText="£" /> <!-- U+00A3 POUND SIGN -->
+    <Key app:keyValueText="&lt;" />
+    <Key app:keyValueText="&gt;" />
+    <Key app:keyValueText="\?" />
+    <Key app:keyValueText="/" />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
-      app:valueText="BACKSPACE"
+      app:keyValueText="BACKSPACE"
       app:displayText="⌫"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__qwerty_backspace"
@@ -73,19 +73,19 @@
   >
     <!-- Switch to qwerty keyboard -->
     <Key
-      app:valueText="SWITCH_TO_QWERTY"
+      app:keyValueText="SWITCH_TO_QWERTY"
       app:displayText="ABC"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
     />
     <!-- Comma -->
     <Key
-      app:valueText=","
+      app:keyValueText=","
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
-      app:valueText="SPACE"
+      app:keyValueText="SPACE"
       app:displayText="@string/keyboard_qwerty_space_bar_display_text"
       app:keyIsLongPressable="true"
       app:keyIsSwipeable="true"
@@ -96,12 +96,12 @@
     />
     <!-- Full stop -->
     <Key
-      app:valueText="."
+      app:keyValueText="."
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key
-      app:valueText="ENTER"
+      app:keyValueText="ENTER"
       app:displayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"

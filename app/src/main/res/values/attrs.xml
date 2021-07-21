@@ -35,9 +35,9 @@
     <attr name="keyIsShiftable" format="boolean" />
     <attr name="keyIsExtendedLeft" format="boolean" />
     <attr name="keyIsExtendedRight" format="boolean" />
-    <attr name="valueText" format="string" />
+    <attr name="keyValueText" format="string" />
     <attr name="displayText" format="string" />
-    <attr name="valueTextShifted" format="string" />
+    <attr name="keyValueTextShifted" format="string" />
     <attr name="keyWidth" />
     <attr name="keyHeight" />
     <attr name="keyFillColour" />

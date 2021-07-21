@@ -15,54 +15,54 @@
     <!-- U+FF1A FULLWIDTH COLON -->
     <Key
       app:keyWidth="@dimen/key_width__strokes_stroke"
-      app:valueText="："
+      app:keyValueText="："
     />
     <!-- Corner brackets: U+300C to U+300F -->
-    <Key app:valueText="「" />
-    <Key app:valueText="」" />
-    <Key app:valueText="『" />
-    <Key app:valueText="』" />
+    <Key app:keyValueText="「" />
+    <Key app:keyValueText="」" />
+    <Key app:keyValueText="『" />
+    <Key app:keyValueText="』" />
     <!-- Angle brackets: U+3008 to U+300B -->
-    <Key app:valueText="〈" />
-    <Key app:valueText="〉" />
-    <Key app:valueText="《" />
-    <Key app:valueText="》" />
+    <Key app:keyValueText="〈" />
+    <Key app:keyValueText="〉" />
+    <Key app:keyValueText="《" />
+    <Key app:keyValueText="》" />
   </Row>
   <Row>
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
     <Key
-      app:valueText="？"
+      app:keyValueText="？"
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
     <Key
-      app:valueText="！"
+      app:keyValueText="！"
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+301C WAVE DASH -->
     <Key
-      app:valueText="〜"
+      app:keyValueText="〜"
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- Round brackets: U+FF08, U+FF09 -->
-    <Key app:valueText="（" />
-    <Key app:valueText="）" />
+    <Key app:keyValueText="（" />
+    <Key app:keyValueText="）" />
     <!-- Lenticular brackets: U+3010, U+3011 -->
-    <Key app:valueText="【" />
-    <Key app:valueText="】" />
+    <Key app:keyValueText="【" />
+    <Key app:keyValueText="】" />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key app:valueText="、" />
+    <Key app:keyValueText="、" />
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
-    <Key app:valueText="；" />
+    <Key app:keyValueText="；" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
-    <Key app:valueText="　" />
+    <Key app:keyValueText="　" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key app:valueText="・" />
+    <Key app:keyValueText="・" />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
-      app:valueText="BACKSPACE"
+      app:keyValueText="BACKSPACE"
       app:displayText="⌫"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
@@ -74,7 +74,7 @@
   >
     <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
     <Key
-      app:valueText="SWITCH_TO_STROKES"
+      app:keyValueText="SWITCH_TO_STROKES"
       app:displayText="㇐㇑㇒"
       app:keyTextColour="@color/stroke_key_text"
       app:keyTextSize="@dimen/font_size__switch_key"
@@ -82,12 +82,12 @@
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
-      app:valueText="，"
+      app:keyValueText="，"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
-      app:valueText="SPACE"
+      app:keyValueText="SPACE"
       app:displayText="@string/keyboard_strokes_space_bar_display_text"
       app:keyIsLongPressable="true"
       app:keyIsSwipeable="true"
@@ -98,12 +98,12 @@
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key
-      app:valueText="。"
+      app:keyValueText="。"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key: U+23CE RETURN SYMBOL -->
     <Key
-      app:valueText="ENTER"
+      app:keyValueText="ENTER"
       app:displayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
