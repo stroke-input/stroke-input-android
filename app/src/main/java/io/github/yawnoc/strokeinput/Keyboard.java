@@ -198,7 +198,7 @@ public class Keyboard {
       );
     
     keysAreShiftable =
-      attributesArray.getBoolean(R.styleable.Keyboard_isShiftable, false);
+      attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
     
     keyWidth =
       getDimensionOrFraction(

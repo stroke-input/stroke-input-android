@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="Keyboard">
+    <attr name="fillColour" format="color" />
+    <attr name="keysAreShiftable" format="boolean" />
+    <attr name="keyWidth" format="dimension|fraction" />
+    <attr name="keyHeight" format="dimension|fraction" />
+    <attr name="keyFillColour" format="color" />
+    <attr name="keyBorderColour" format="color" />
+    <attr name="keyBorderThickness" format="dimension" />
+    <attr name="keyTextColour" format="color" />
+    <attr name="keyTextSwipeColour" format="color" />
+    <attr name="keyTextSize" format="dimension" />
+    <attr name="keyTextOffsetX" format="dimension" />
+    <attr name="keyTextOffsetY" format="dimension" />
+    <!-- TODO: separate balance to 'Row' and 'Key' -->
     <attr name="valueText" format="string" />
     <attr name="displayText" format="string" />
     <attr name="valueTextShifted" format="string" />
@@ -10,17 +23,6 @@
     <attr name="isShiftable" format="boolean" />
     <attr name="isExtendedLeft" format="boolean" />
     <attr name="isExtendedRight" format="boolean" />
-    <attr name="keyFillColour" format="color" />
-    <attr name="keyBorderColour" format="color" />
-    <attr name="keyBorderThickness" format="dimension" />
-    <attr name="keyTextColour" format="color" />
-    <attr name="keyTextSwipeColour" format="color" />
-    <attr name="keyTextSize" format="dimension" />
-    <attr name="keyTextOffsetX" format="dimension" />
-    <attr name="keyTextOffsetY" format="dimension" />
-    <attr name="keyWidth" format="dimension|fraction" />
-    <attr name="keyHeight" format="dimension|fraction" />
     <attr name="offsetX" format="dimension|fraction" />
-    <attr name="fillColour" format="color" />
   </declare-styleable>
 </resources>
