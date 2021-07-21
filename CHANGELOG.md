@@ -6,6 +6,7 @@
 - Made Help and About HTML web views zoomable
 - Updated keyboard font to [Stroke Input Keyboard v1.5.0]
   (adds private use glyph for 5-strokes logo)
+- Changed launcher icon to 5-strokes logo
 
 
 ## [v0.6.2] Code cleanup (2021-07-21)
