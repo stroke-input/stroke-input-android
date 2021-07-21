@@ -105,7 +105,7 @@
     <!-- Space bar: U+25C0, U+25B6 (triangles) -->
     <Key
       app:keyValueText="SPACE"
-      app:keyDisplayText="@string/keyboard_qwerty_space_bar_display_text"
+      app:keyDisplayText="@string/display_text__qwerty_space_bar"
       app:keyIsLongPressable="true"
       app:keyIsSwipeable="true"
       app:keyTextSize="@dimen/font_size__space_bar"

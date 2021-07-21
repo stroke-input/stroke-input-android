@@ -57,10 +57,10 @@ public class MainActivity
       openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.help_button) {
-      showHtmlWebView(R.string.help_html_file_name);
+      showHtmlWebView(R.string.file_name__help_html);
     }
     else if (viewId == R.id.about_button) {
-      showHtmlWebView(R.string.about_html_file_name);
+      showHtmlWebView(R.string.file_name__about_html);
     }
     else if (viewId == R.id.input_method_settings_button) {
       showSystemInputMethodSettings(this);
@@ -77,7 +77,7 @@ public class MainActivity
       htmlWebViewContainer =
         new AlertDialog.Builder(this, R.style.StrokeInputAlert);
       htmlWebViewContainer
-        .setPositiveButton(R.string.main_activity__return_label, null);
+        .setPositiveButton(R.string.label__main_activity__return, null);
     }
     
     if (htmlWebView == null) {

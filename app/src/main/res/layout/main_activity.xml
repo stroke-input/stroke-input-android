@@ -19,46 +19,46 @@
   >
     <TextView
       style="@style/MainActivityText"
-      android:text="@string/main_activity__welcome"
+      android:text="@string/text__main_activity__welcome"
       android:paddingTop="0dp"
     />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/source_code_button"
-      android:text="@string/main_activity__source_code_button_label"
+      android:text="@string/label__main_activity__source_code_button"
     />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/help_button"
-      android:text="@string/main_activity__help_button_label"
+      android:text="@string/label__main_activity__help_button"
     />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/about_button"
-      android:text="@string/main_activity__about_button_label"
+      android:text="@string/label__main_activity__about_button"
     />
     <TextView
       style="@style/MainActivityText"
-      android:text="@string/main_activity__input_method_settings_information"
+      android:text="@string/text__main_activity__input_method_settings"
     />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/input_method_settings_button"
-      android:text="@string/main_activity__input_method_settings_button_label"
+      android:text="@string/label__main_activity__input_method_settings_button"
     />
     <TextView
       style="@style/MainActivityText"
-      android:text="@string/main_activity__switch_keyboard_information"
+      android:text="@string/text__main_activity__switch_keyboard"
     />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/switch_keyboard_button"
-      android:text="@string/main_activity__switch_keyboard_button_label"
+      android:text="@string/label__main_activity__switch_keyboard_button"
     />
     <EditText
       android:layout_height="match_parent"
       android:layout_width="match_parent"
-      android:hint="@string/main_activity__test_input_hint"
+      android:hint="@string/hint__main_activity__test_input"
       android:importantForAutofill="no"
       android:inputType="text"
       android:textSize="@dimen/font_size__main_activity"
