@@ -55,6 +55,12 @@ public class Keyboard {
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
+  // Keyboard properties
+  private int width;
+  private int height;
+  private final List<Key> keyList;
+  public int fillColour;
+  
   // Key properties
   public boolean keysAreShiftable;
   public int keyWidth;
@@ -67,12 +73,6 @@ public class Keyboard {
   public int keyTextSize;
   public int keyTextOffsetX;
   public int keyTextOffsetY;
-  
-  // Keyboard properties
-  private int width;
-  private int height;
-  private final List<Key> keyList;
-  public int fillColour;
   
   // Screen properties
   public final int screenWidth;
@@ -191,6 +191,15 @@ public class Keyboard {
         R.styleable.Keyboard
       );
     
+    fillColour =
+      attributesArray.getColor(
+        R.styleable.Keyboard_fillColour,
+        DEFAULT_KEYBOARD_FILL_COLOUR
+      );
+    
+    keysAreShiftable =
+      attributesArray.getBoolean(R.styleable.Keyboard_isShiftable, false);
+    
     keyWidth =
       getDimensionOrFraction(
         attributesArray,
@@ -205,9 +214,6 @@ public class Keyboard {
         screenHeight,
         defaultKeyHeightPx
       );
-    
-    keysAreShiftable =
-      attributesArray.getBoolean(R.styleable.Keyboard_isShiftable, false);
     
     keyFillColour =
       attributesArray.getColor(
@@ -250,12 +256,6 @@ public class Keyboard {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextOffsetY,
         0
-      );
-    
-    fillColour =
-      attributesArray.getColor(
-        R.styleable.Keyboard_fillColour,
-        DEFAULT_KEYBOARD_FILL_COLOUR
       );
     
     attributesArray.recycle();
