@@ -49,7 +49,7 @@
   >
     <Key
       app:valueText="¢"
-      app:isExtendedLeft="true"
+      app:keyIsExtendedLeft="true"
     /> <!-- U+00A2 CENT SIGN -->
     <Key app:valueText="¥"/> <!-- U+00A5 YEN SIGN -->
     <Key app:valueText="€" /> <!-- U+20AC EURO SIGN -->

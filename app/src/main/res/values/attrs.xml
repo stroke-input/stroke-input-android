@@ -33,8 +33,8 @@
     <attr name="keyIsRepeatable" format="boolean" />
     <attr name="keyIsSwipeable" format="boolean" />
     <attr name="keyIsShiftable" format="boolean" />
-    <attr name="isExtendedLeft" format="boolean" />
-    <attr name="isExtendedRight" format="boolean" />
+    <attr name="keyIsExtendedLeft" format="boolean" />
+    <attr name="keyIsExtendedRight" format="boolean" />
     <attr name="valueText" format="string" />
     <attr name="displayText" format="string" />
     <attr name="valueTextShifted" format="string" />

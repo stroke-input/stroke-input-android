@@ -101,9 +101,9 @@ public class Key {
         parentRow.keysAreShiftable
       );
     isExtendedLeft =
-      attributesArray.getBoolean(R.styleable.Key_isExtendedLeft, false);
+      attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
     isExtendedRight =
-      attributesArray.getBoolean(R.styleable.Key_isExtendedRight, false);
+      attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
     
     valueText = attributesArray.getString(R.styleable.Key_valueText);
     displayText = attributesArray.getString(R.styleable.Key_displayText);

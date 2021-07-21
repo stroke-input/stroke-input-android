@@ -44,7 +44,7 @@
     <!-- Letters row 2 -->
     <Key
       app:valueText="a"
-      app:isExtendedLeft="true"
+      app:keyIsExtendedLeft="true"
     />
     <Key app:valueText="s" />
     <Key app:valueText="d" />
@@ -55,7 +55,7 @@
     <Key app:valueText="k" />
     <Key
       app:valueText="l"
-      app:isExtendedRight="true"
+      app:keyIsExtendedRight="true"
     />
   </Row>
   <Row
