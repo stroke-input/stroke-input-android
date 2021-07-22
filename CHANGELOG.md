@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 - Made Help and About HTML web views zoomable
-- Updated keyboard font to [Stroke Input Keyboard v1.5.0]
+- Updated keyboard font to [Stroke Input Keyboard v1.5.1]
   (adds private use glyph for 5-strokes logo)
 - Changed launcher icon to 5-strokes logo
 
@@ -148,8 +148,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
-[Stroke Input Keyboard v1.5.0]:
-  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.5.0
+[Stroke Input Keyboard v1.5.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.5.1
 [Stroke Input Keyboard v1.4.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.4.0
 [Stroke Input Keyboard v1.3.1]:
