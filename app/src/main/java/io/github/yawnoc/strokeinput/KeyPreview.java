@@ -14,6 +14,9 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.view.View;
 
+/*
+  A key preview, to be displayed in a PopupWindow.
+*/
 public class KeyPreview extends View {
   
   // Properties
