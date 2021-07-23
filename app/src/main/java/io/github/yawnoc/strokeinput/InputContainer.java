@@ -669,8 +669,22 @@ public class InputContainer
   }
   
   private void showKeyPreview(final Key key) {
+    
     keyPreview.update(key, shiftMode);
-    keyPreviewPopup.showAtLocation(this, Gravity.NO_GRAVITY, key.x, key.y);
+    
+    if (keyPreviewPopup.isShowing()) {
+      keyPreviewPopup.update(
+        key.x,
+        key.y,
+        keyPreview.getWidth(),
+        keyPreview.getHeight()
+      );
+    }
+    else {
+      keyPreviewPopup.setWidth(keyPreview.getWidth());
+      keyPreviewPopup.setHeight(keyPreview.getHeight());
+      keyPreviewPopup.showAtLocation(this, Gravity.NO_GRAVITY, key.x, key.y);
+    }
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
