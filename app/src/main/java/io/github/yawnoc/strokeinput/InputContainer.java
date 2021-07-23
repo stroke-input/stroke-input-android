@@ -58,7 +58,7 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
-  private static final int SHIFT_DISABLED = 0;
+  public static final int SHIFT_DISABLED = 0;
   private static final int SHIFT_SINGLE = 1;
   private static final int SHIFT_PERSISTENT = 2;
   private static final int SHIFT_INITIATED = 3;
@@ -287,11 +287,8 @@ public class InputContainer
             : activeKey.valueText
         );
       }
-      else if (shiftMode == SHIFT_DISABLED) {
-        keyDisplayText = key.displayText;
-      }
       else {
-        keyDisplayText = key.valueTextShifted;
+        keyDisplayText = key.shiftAwareDisplayText(shiftMode);
       }
       
       final float keyTextX = (

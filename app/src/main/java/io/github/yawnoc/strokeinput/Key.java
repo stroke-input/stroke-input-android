@@ -189,4 +189,12 @@ public class Key {
     );
   }
   
+  public String shiftAwareDisplayText(final int shiftMode) {
+    return (
+      (shiftMode == InputContainer.SHIFT_DISABLED)
+        ? this.displayText
+        : this.valueTextShifted
+    );
+  }
+  
 }
