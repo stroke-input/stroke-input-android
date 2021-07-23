@@ -16,20 +16,7 @@ import android.provider.Settings;
 import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public final class Utilities {
-  
-  public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap) {
-    
-    Map<V, K> inverseMap = new HashMap<>();
-    for (Map.Entry<K, V> entry : forwardMap.entrySet()) {
-      inverseMap.put(entry.getValue(), entry.getKey());
-    }
-    
-    return inverseMap;
-  }
   
   public static int getDimensionOrFraction(
     final TypedArray array,

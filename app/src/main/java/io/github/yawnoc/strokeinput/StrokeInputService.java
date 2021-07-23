@@ -17,9 +17,9 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.yawnoc.utilities.Mappy;
 import io.github.yawnoc.utilities.Stringy;
 
-import static io.github.yawnoc.utilities.Utilities.invertMap;
 import static io.github.yawnoc.utilities.Utilities.launchApplication;
 import static io.github.yawnoc.utilities.Utilities.loadPreferenceString;
 import static io.github.yawnoc.utilities.Utilities.savePreferenceString;
@@ -71,7 +71,7 @@ public class StrokeInputService
     nameFromKeyboard.put(strokesSymbolsKeyboard, "STROKES_SYMBOLS");
     nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
-    keyboardFromName = invertMap(nameFromKeyboard);
+    keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     
     final String savedKeyboardName = getSavedKeyboardName();
     switchKeyboardAndSaveName(savedKeyboardName);
