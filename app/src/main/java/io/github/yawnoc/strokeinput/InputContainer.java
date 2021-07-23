@@ -668,20 +668,17 @@ public class InputContainer
     
     keyPreview.update(key, shiftMode);
     
+    final int previewWidth = keyPreview.getWidth();
+    final int previewHeight = keyPreview.getHeight();
     final int previewX = key.x;
-    final int previewY = key.y - keyPreview.getHeight();
+    final int previewY = key.y - previewHeight;
     
     if (keyPreviewPopup.isShowing()) {
-      keyPreviewPopup.update(
-        previewX,
-        previewY,
-        keyPreview.getWidth(),
-        keyPreview.getHeight()
-      );
+      keyPreviewPopup.update(previewX, previewY, previewWidth, previewHeight);
     }
     else {
-      keyPreviewPopup.setWidth(keyPreview.getWidth());
-      keyPreviewPopup.setHeight(keyPreview.getHeight());
+      keyPreviewPopup.setWidth(previewWidth);
+      keyPreviewPopup.setHeight(previewHeight);
       keyPreviewPopup.showAtLocation(
         this,
         Gravity.NO_GRAVITY,
