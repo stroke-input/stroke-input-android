@@ -16,6 +16,9 @@ import android.view.View;
 
 public class KeyPreview extends View {
   
+  // Properties
+  private Key activeKey;
+  
   // Drawing
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
@@ -41,6 +44,23 @@ public class KeyPreview extends View {
         InputContainer.KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+  }
+  
+  @Override
+  public void onDraw(final Canvas canvas) {
+    
+    if (activeKey == null) {
+      return;
+    }
+  
+    keyRectangle.set(0, 0, activeKey.width, activeKey.height);
+    
+    keyFillPaint.setColor(activeKey.keyFillColour);
+    keyBorderPaint.setColor(activeKey.keyBorderColour);
+    keyBorderPaint.setStrokeWidth(activeKey.keyBorderThickness);
+  
+    keyTextPaint.setColor(activeKey.keyTextColour);
+    keyTextPaint.setTextSize(activeKey.keyTextSize);
   }
   
 }
