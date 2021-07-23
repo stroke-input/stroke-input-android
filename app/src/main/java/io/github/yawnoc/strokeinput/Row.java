@@ -25,7 +25,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.util.Xml;
 
-import static io.github.yawnoc.Utilities.getDimensionOrFraction;
+import static io.github.yawnoc.utilities.Utilities.getDimensionOrFraction;
 
 /*
  A container that holds keys.

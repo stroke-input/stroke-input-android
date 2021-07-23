@@ -32,7 +32,7 @@ import android.util.Xml;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.yawnoc.Utilities.getDimensionOrFraction;
+import static io.github.yawnoc.utilities.Utilities.getDimensionOrFraction;
 
 /*
   A container that holds rows of keys, to be declared in a layout XML.
