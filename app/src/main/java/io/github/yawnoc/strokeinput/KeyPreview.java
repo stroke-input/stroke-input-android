@@ -70,7 +70,7 @@ public class KeyPreview extends View {
     
     rectangle.set(0, 0, key.width, key.height);
     
-    fillPaint.setColor(InputContainer.getContrastingColour(key.fillColour));
+    fillPaint.setColor(InputContainer.toPressedColour(key.fillColour));
     borderPaint.setColor(key.borderColour);
     borderPaint.setStrokeWidth(key.borderThickness);
     
