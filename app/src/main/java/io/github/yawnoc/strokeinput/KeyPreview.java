@@ -41,7 +41,8 @@ public class KeyPreview extends View {
     textPaint.setTypeface(
       Typeface.createFromAsset(
         context.getAssets(),
-        InputContainer.KEYBOARD_FONT)
+        InputContainer.KEYBOARD_FONT
+      )
     );
     textPaint.setTextAlign(Paint.Align.CENTER);
   }
