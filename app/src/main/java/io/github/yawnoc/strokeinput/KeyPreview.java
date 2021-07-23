@@ -24,6 +24,8 @@ public class KeyPreview extends View {
   private int width;
   private int height;
   private String displayText;
+  private int textOffsetX;
+  private int textOffsetY;
   
   // Key preview drawing
   private final Rect rectangle;
@@ -63,6 +65,8 @@ public class KeyPreview extends View {
     width = key.width;
     height = key.height;
     displayText = key.shiftAwareDisplayText(shiftMode);
+    textOffsetX = key.textOffsetX;
+    textOffsetY = key.textOffsetY;
     
     rectangle.set(0, 0, key.width, key.height);
     
@@ -92,14 +96,18 @@ public class KeyPreview extends View {
       return;
     }
     
+    final float keyTextX = (
+      width / 2f
+        + textOffsetX
+    );
+    final float keyTextY = (
+      (height - textPaint.ascent() - textPaint.descent()) / 2f
+        + textOffsetY
+    );
+    
     canvas.drawRect(rectangle, fillPaint);
     canvas.drawRect(rectangle, borderPaint);
-    canvas.drawText(
-      displayText,
-      width / 2f,
-      height / 2f,
-      textPaint
-    );
+    canvas.drawText(displayText, keyTextX, keyTextY, textPaint);
   }
   
 }
