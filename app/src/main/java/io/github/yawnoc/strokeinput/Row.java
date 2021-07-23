@@ -25,7 +25,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.util.Xml;
 
-import static io.github.yawnoc.utilities.Utilities.getDimensionOrFraction;
+import io.github.yawnoc.utilities.Valuey;
 
 /*
  A container that holds keys.
@@ -66,7 +66,7 @@ public class Row {
       );
     
     offsetX =
-      getDimensionOrFraction(
+      Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_rowOffsetX,
         parentKeyboard.screenWidth,
@@ -80,14 +80,14 @@ public class Row {
       );
     
     keyWidth =
-      getDimensionOrFraction(
+      Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_keyWidth,
         parentKeyboard.screenWidth,
         parentKeyboard.keyWidth
       );
     keyHeight =
-      getDimensionOrFraction(
+      Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_keyHeight,
         parentKeyboard.screenHeight,

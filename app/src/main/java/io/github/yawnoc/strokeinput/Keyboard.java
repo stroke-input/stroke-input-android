@@ -32,7 +32,7 @@ import android.util.Xml;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.yawnoc.utilities.Utilities.getDimensionOrFraction;
+import io.github.yawnoc.utilities.Valuey;
 
 /*
   A container that holds rows of keys, to be declared in a layout XML.
@@ -201,14 +201,14 @@ public class Keyboard {
       attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
     
     keyWidth =
-      getDimensionOrFraction(
+      Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyWidth,
         screenWidth,
         (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth)
       );
     keyHeight =
-      getDimensionOrFraction(
+      Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Keyboard_keyHeight,
         screenHeight,
