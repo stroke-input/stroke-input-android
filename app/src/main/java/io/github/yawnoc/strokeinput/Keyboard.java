@@ -47,6 +47,7 @@ public class Keyboard {
   private static final int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
   private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
   private final int defaultKeyBorderThicknessPx;
+  
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
