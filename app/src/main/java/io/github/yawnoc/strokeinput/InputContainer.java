@@ -500,7 +500,7 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    updateKeyPreview(key);
+    updateKeyPreview();
     sendAppropriateExtendedPressHandlerMessage(key);
     invalidate();
   }
@@ -529,7 +529,7 @@ public class InputContainer
     }
     else { // move is a key change
       activeKey = key;
-      updateKeyPreview(key);
+      updateKeyPreview();
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
@@ -617,7 +617,7 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    updateKeyPreview(key);
+    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
@@ -664,21 +664,21 @@ public class InputContainer
     return key != null && key.isSwipeable;
   }
   
-  private void updateKeyPreview(final Key key) {
+  private void updateKeyPreview() {
     
-    if (key == null) {
+    if (activeKey == null) {
       if (keyPreviewPopup.isShowing()) {
         keyPreviewPopup.dismiss();
       }
       return;
     }
     
-    keyPreview.update(key, shiftMode);
+    keyPreview.update(activeKey, shiftMode);
     
     final int previewWidth = keyPreview.width;
     final int previewHeight = keyPreview.height;
-    final int previewX = key.x;
-    final int previewY = key.y - previewHeight;
+    final int previewX = activeKey.x;
+    final int previewY = activeKey.y - previewHeight;
     
     if (keyPreviewPopup.isShowing()) {
       keyPreviewPopup.update(previewX, previewY, previewWidth, previewHeight);
