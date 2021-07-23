@@ -34,6 +34,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -120,8 +121,13 @@ public class InputContainer
     super(context, attributes);
     
     keyPreview = new KeyPreview(context);
-    keyPreviewPopup = new PopupWindow(keyPreview);
-    keyPreviewPopup.setTouchable(false);
+    keyPreviewPopup =
+      new PopupWindow(
+        keyPreview,
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        false
+      );
     
     resetKeyRepeatIntervalMilliseconds();
     extendedPressHandler =
