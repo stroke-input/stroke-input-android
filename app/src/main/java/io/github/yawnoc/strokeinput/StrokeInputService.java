@@ -17,11 +17,11 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.yawnoc.utilities.Stringy;
+
 import static io.github.yawnoc.utilities.Utilities.invertMap;
-import static io.github.yawnoc.utilities.Utilities.isAscii;
 import static io.github.yawnoc.utilities.Utilities.launchApplication;
 import static io.github.yawnoc.utilities.Utilities.loadPreferenceString;
-import static io.github.yawnoc.utilities.Utilities.removePrefix;
 import static io.github.yawnoc.utilities.Utilities.savePreferenceString;
 import static io.github.yawnoc.utilities.Utilities.showSystemKeyboardSwitcher;
 
@@ -104,7 +104,7 @@ public class StrokeInputService
         final String characterBeforeCursor =
           (String) inputConnection.getTextBeforeCursor(1, 0);
         final int nextBackspaceIntervalMilliseconds = (
-          isAscii(characterBeforeCursor)
+          Stringy.isAscii(characterBeforeCursor)
             ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
             : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
         );
@@ -117,7 +117,8 @@ public class StrokeInputService
       case "SWITCH_TO_STROKES_SYMBOLS":
       case "SWITCH_TO_QWERTY":
       case "SWITCH_TO_QWERTY_SYMBOLS":
-        final String keyboardName = removePrefix("SWITCH_TO_", valueText);
+        final String keyboardName =
+          Stringy.removePrefix("SWITCH_TO_", valueText);
         switchKeyboardAndSaveName(keyboardName);
         break;
       
