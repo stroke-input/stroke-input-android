@@ -75,6 +75,15 @@ public class KeyPreview extends View {
   }
   
   @Override
+  public void onMeasure(
+    final int widthMeasureSpec,
+    final int heightMeasureSpec
+  )
+  {
+    setMeasuredDimension(width, height);
+  }
+  
+  @Override
   public void onDraw(final Canvas canvas) {
     
     if (activeKey == null) {
