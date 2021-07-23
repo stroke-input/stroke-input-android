@@ -666,6 +666,13 @@ public class InputContainer
   
   private void updateKeyPreview(final Key key) {
     
+    if (key == null) {
+      if (keyPreviewPopup.isShowing()) {
+        keyPreviewPopup.dismiss();
+      }
+      return;
+    }
+    
     keyPreview.update(key, shiftMode);
     
     final int previewWidth = keyPreview.width;
