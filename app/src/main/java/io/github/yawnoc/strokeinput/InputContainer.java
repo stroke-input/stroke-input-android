@@ -320,12 +320,7 @@ public class InputContainer
       
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
-      canvas.drawText(
-        keyDisplayText,
-        keyTextX,
-        keyTextY,
-        keyTextPaint
-      );
+      canvas.drawText(keyDisplayText, keyTextX, keyTextY, keyTextPaint);
       
       canvas.translate(-key.x, -key.y);
     }
