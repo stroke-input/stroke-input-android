@@ -668,8 +668,8 @@ public class InputContainer
     
     keyPreview.update(key, shiftMode);
     
-    final int previewWidth = keyPreview.getWidth();
-    final int previewHeight = keyPreview.getHeight();
+    final int previewWidth = keyPreview.width;
+    final int previewHeight = keyPreview.height;
     final int previewX = key.x;
     final int previewY = key.y - previewHeight;
     

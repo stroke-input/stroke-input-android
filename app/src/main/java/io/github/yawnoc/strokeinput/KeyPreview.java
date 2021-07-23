@@ -21,8 +21,8 @@ public class KeyPreview extends View {
   
   // Properties
   private Key activeKey;
-  private int width;
-  private int height;
+  public int width;
+  public int height;
   private String displayText;
   private int textOffsetX;
   private int textOffsetY;
