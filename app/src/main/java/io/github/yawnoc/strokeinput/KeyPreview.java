@@ -55,12 +55,12 @@ public class KeyPreview extends View {
   
     keyRectangle.set(0, 0, activeKey.width, activeKey.height);
     
-    keyFillPaint.setColor(activeKey.keyFillColour);
-    keyBorderPaint.setColor(activeKey.keyBorderColour);
-    keyBorderPaint.setStrokeWidth(activeKey.keyBorderThickness);
+    keyFillPaint.setColor(activeKey.fillColour);
+    keyBorderPaint.setColor(activeKey.borderColour);
+    keyBorderPaint.setStrokeWidth(activeKey.borderThickness);
   
-    keyTextPaint.setColor(activeKey.keyTextColour);
-    keyTextPaint.setTextSize(activeKey.keyTextSize);
+    keyTextPaint.setColor(activeKey.textColour);
+    keyTextPaint.setTextSize(activeKey.textSize);
   }
   
 }

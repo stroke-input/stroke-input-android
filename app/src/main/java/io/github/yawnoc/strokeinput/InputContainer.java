@@ -245,7 +245,7 @@ public class InputContainer
       
       keyRectangle.set(0, 0, key.width, key.height);
       
-      int keyFillColour = key.keyFillColour;
+      int keyFillColour = key.fillColour;
       if (
         key == activeKey
           ||
@@ -264,18 +264,18 @@ public class InputContainer
       }
       
       keyFillPaint.setColor(keyFillColour);
-      keyBorderPaint.setColor(key.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
+      keyBorderPaint.setColor(key.borderColour);
+      keyBorderPaint.setStrokeWidth(key.borderThickness);
       
       final int keyTextColour;
       if (key == activeKey && swipeModeIsActivated) {
-        keyTextColour = key.keyTextSwipeColour;
+        keyTextColour = key.textSwipeColour;
       }
       else {
-        keyTextColour = key.keyTextColour;
+        keyTextColour = key.textColour;
       }
       keyTextPaint.setColor(keyTextColour);
-      keyTextPaint.setTextSize(key.keyTextSize);
+      keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText;
       if (debugModeIsActivated && key.valueText.equals("SPACE")) {
@@ -294,11 +294,11 @@ public class InputContainer
       
       final float keyTextX = (
         key.width / 2f
-          + key.keyTextOffsetX
+          + key.textOffsetX
       );
       final float keyTextY = (
         (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
-          + key.keyTextOffsetY
+          + key.textOffsetY
       );
       
       canvas.translate(key.x, key.y);

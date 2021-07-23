@@ -48,14 +48,14 @@ public class Key {
   public int height;
   
   // Key styles
-  public int keyFillColour;
-  public int keyBorderColour;
-  public int keyBorderThickness;
-  public int keyTextColour;
-  public int keyTextSwipeColour;
-  public int keyTextSize;
-  public int keyTextOffsetX;
-  public int keyTextOffsetY;
+  public int fillColour;
+  public int borderColour;
+  public int borderThickness;
+  public int textColour;
+  public int textSwipeColour;
+  public int textSize;
+  public int textOffsetX;
+  public int textOffsetY;
   
   // Key position
   public int x;
@@ -134,43 +134,43 @@ public class Key {
         parentRow.keyHeight
       );
     
-    keyFillColour =
+    fillColour =
       attributesArray.getColor(
         R.styleable.Key_keyFillColour,
         parentRow.keyFillColour
       );
-    keyBorderColour =
+    borderColour =
       attributesArray.getColor(
         R.styleable.Key_keyBorderColour,
         parentRow.keyBorderColour
       );
-    keyBorderThickness =
+    borderThickness =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyBorderThickness,
         parentRow.keyBorderThickness
       );
     
-    keyTextColour =
+    textColour =
       attributesArray.getColor(
         R.styleable.Key_keyTextColour,
         parentRow.keyTextColour
       );
-    keyTextSwipeColour =
+    textSwipeColour =
       attributesArray.getColor(
         R.styleable.Key_keyTextSwipeColour,
         parentRow.keyTextSwipeColour
       );
-    keyTextSize =
+    textSize =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextSize,
         parentRow.keyTextSize
       );
-    keyTextOffsetX =
+    textOffsetX =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextOffsetX,
         parentRow.keyTextOffsetX
       );
-    keyTextOffsetY =
+    textOffsetY =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextOffsetY,
         parentRow.keyTextOffsetY
