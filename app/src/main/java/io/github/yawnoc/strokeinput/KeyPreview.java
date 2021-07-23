@@ -72,6 +72,8 @@ public class KeyPreview extends View {
     
     textPaint.setColor(key.textColour);
     textPaint.setTextSize(key.textSize);
+    
+    invalidate();
   }
   
   @Override

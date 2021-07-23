@@ -533,6 +533,7 @@ public class InputContainer
     }
     else { // move is a key change
       activeKey = key;
+      showKeyPreview(key);
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
@@ -619,6 +620,7 @@ public class InputContainer
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
+    showKeyPreview(key);
     
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
