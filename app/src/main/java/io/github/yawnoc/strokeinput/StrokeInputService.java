@@ -17,13 +17,9 @@ import android.view.inputmethod.InputConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
 import io.github.yawnoc.utilities.Stringy;
-
-import static io.github.yawnoc.utilities.Utilities.launchApplication;
-import static io.github.yawnoc.utilities.Utilities.loadPreferenceString;
-import static io.github.yawnoc.utilities.Utilities.savePreferenceString;
-import static io.github.yawnoc.utilities.Utilities.showSystemKeyboardSwitcher;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
@@ -91,7 +87,7 @@ public class StrokeInputService
     switch (valueText) {
       
       case "ABOUT":
-        launchApplication(this, BuildConfig.APPLICATION_ID);
+        Contexty.launchApplication(this, BuildConfig.APPLICATION_ID);
         break;
       
       case "BACKSPACE":
@@ -148,7 +144,7 @@ public class StrokeInputService
   public void onLongPress(final String valueText) {
     
     if (valueText.equals("SPACE")) {
-      showSystemKeyboardSwitcher(this);
+      Contexty.showSystemKeyboardSwitcher(this);
     }
     else if (valueText.equals("ABOUT")) {
       inputContainer.toggleDebugMode();
@@ -182,7 +178,7 @@ public class StrokeInputService
   private String getSavedKeyboardName() {
     
     return
-      loadPreferenceString(
+      Contexty.loadPreferenceString(
         getApplicationContext(),
         PREFERENCES_FILE_NAME,
         "keyboardName"
@@ -199,11 +195,12 @@ public class StrokeInputService
       inputContainer.setKeyboard(keyboard);
     }
     
-    savePreferenceString(
+    Contexty.savePreferenceString(
       getApplicationContext(),
       PREFERENCES_FILE_NAME,
       "keyboardName",
       keyboardName
     );
   }
+  
 }

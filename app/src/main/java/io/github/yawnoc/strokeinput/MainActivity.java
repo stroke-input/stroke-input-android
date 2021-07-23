@@ -16,9 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import static io.github.yawnoc.utilities.Utilities.openInBrowser;
-import static io.github.yawnoc.utilities.Utilities.showSystemInputMethodSettings;
-import static io.github.yawnoc.utilities.Utilities.showSystemKeyboardSwitcher;
+import io.github.yawnoc.utilities.Contexty;
 
 /*
   The main activity of the application.
@@ -54,7 +52,7 @@ public class MainActivity
     final int viewId = view.getId();
     
     if (viewId == R.id.source_code_button) {
-      openInBrowser(this, SOURCE_CODE_URI);
+      Contexty.openInBrowser(this, SOURCE_CODE_URI);
     }
     else if (viewId == R.id.help_button) {
       showHtmlWebView(R.string.file_name__help_html);
@@ -63,10 +61,10 @@ public class MainActivity
       showHtmlWebView(R.string.file_name__about_html);
     }
     else if (viewId == R.id.input_method_settings_button) {
-      showSystemInputMethodSettings(this);
+      Contexty.showSystemInputMethodSettings(this);
     }
     else if (viewId == R.id.switch_keyboard_button) {
-      showSystemKeyboardSwitcher(this);
+      Contexty.showSystemKeyboardSwitcher(this);
     }
     
   }

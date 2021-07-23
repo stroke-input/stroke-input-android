@@ -14,7 +14,7 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
 
-public final class Utilities {
+public final class Contexty {
   
   public static String loadPreferenceString(
     final Context context,
@@ -80,4 +80,5 @@ public final class Utilities {
       context.startActivity(launchIntent);
     }
   }
+  
 }
