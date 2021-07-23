@@ -672,10 +672,11 @@ public class InputContainer
   
   private void updateKeyPreview() {
     
+    if (keyPreviewPopup.isShowing()) {
+      keyPreviewPopup.dismiss();
+    }
+    
     if (activeKey == null) {
-      if (keyPreviewPopup.isShowing()) {
-        keyPreviewPopup.dismiss();
-      }
       return;
     }
     
@@ -686,19 +687,14 @@ public class InputContainer
     final int previewX = activeKey.x;
     final int previewY = activeKey.y - previewHeight;
     
-    if (keyPreviewPopup.isShowing()) {
-      keyPreviewPopup.update(previewX, previewY, previewWidth, previewHeight);
-    }
-    else {
-      keyPreviewPopup.setWidth(previewWidth);
-      keyPreviewPopup.setHeight(previewHeight);
-      keyPreviewPopup.showAtLocation(
-        this,
-        Gravity.NO_GRAVITY,
-        previewX,
-        previewY
-      );
-    }
+    keyPreviewPopup.setWidth(previewWidth);
+    keyPreviewPopup.setHeight(previewHeight);
+    keyPreviewPopup.showAtLocation(
+      this,
+      Gravity.NO_GRAVITY,
+      previewX,
+      previewY
+    );
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
