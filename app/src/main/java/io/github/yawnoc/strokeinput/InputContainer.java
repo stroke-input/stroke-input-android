@@ -574,8 +574,8 @@ public class InputContainer
     
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
-    updateKeyPreview();
     if (shouldRedrawKeyboard) {
+      updateKeyPreview();
       invalidate();
     }
   }
