@@ -148,6 +148,7 @@ public class InputContainer
                 inputListener.onLongPress(activeKey.valueText);
                 activeKey = null;
                 activePointerId = NONEXISTENT_POINTER_ID;
+                updateKeyPreview();
                 invalidate();
                 break;
             }
@@ -376,6 +377,7 @@ public class InputContainer
       shiftPointerId = NONEXISTENT_POINTER_ID;
       activeKey = null;
       activePointerId = NONEXISTENT_POINTER_ID;
+      updateKeyPreview();
       invalidate();
       return true;
     }
@@ -570,6 +572,7 @@ public class InputContainer
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     
+    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
     if (shouldRedrawKeyboard) {
@@ -588,6 +591,7 @@ public class InputContainer
     }
     shiftPointerId = pointerId;
     
+    updateKeyPreview();
     invalidate();
   }
   
@@ -599,6 +603,7 @@ public class InputContainer
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     
+    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
     invalidate();
   }
@@ -641,6 +646,7 @@ public class InputContainer
     shiftPointerId = NONEXISTENT_POINTER_ID;
     
     if (shouldRedrawKeyboard) {
+      updateKeyPreview();
       invalidate();
     }
   }
