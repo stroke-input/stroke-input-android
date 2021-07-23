@@ -85,10 +85,6 @@ public class InputContainer
   private int activePointerX;
   private int activePointerY;
   
-  // Key preview
-  private final KeyPreview keyPreview;
-  private final PopupWindow keyPreviewPopup;
-  
   // Long presses and key repeats
   private final Handler extendedPressHandler;
   private int keyRepeatIntervalMilliseconds;
@@ -111,6 +107,10 @@ public class InputContainer
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
   
+  // Key preview
+  private final KeyPreview keyPreview;
+  private final PopupWindow keyPreviewPopup;
+  
   // Debugging
   private final Paint debugPaint;
   private final Toast debugToast;
@@ -119,17 +119,6 @@ public class InputContainer
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
-    
-    keyPreview = new KeyPreview(context);
-    keyPreviewPopup =
-      new PopupWindow(
-        keyPreview,
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        false
-      );
-    keyPreviewPopup.setTouchable(false);
-    keyPreviewPopup.setClippingEnabled(false);
     
     resetKeyRepeatIntervalMilliseconds();
     extendedPressHandler =
@@ -175,6 +164,17 @@ public class InputContainer
       Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
+    keyPreview = new KeyPreview(context);
+    keyPreviewPopup =
+      new PopupWindow(
+        keyPreview,
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams.WRAP_CONTENT,
+        false
+      );
+    keyPreviewPopup.setTouchable(false);
+    keyPreviewPopup.setClippingEnabled(false);
     
     debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     debugPaint.setStyle(Paint.Style.STROKE);
