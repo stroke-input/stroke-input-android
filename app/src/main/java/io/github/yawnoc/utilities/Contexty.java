@@ -16,6 +16,10 @@ import android.view.inputmethod.InputMethodManager;
 
 public final class Contexty {
   
+  private Contexty() {
+    // Do not instantiate
+  }
+  
   public static String loadPreferenceString(
     final Context context,
     final String preferenceFileName,

@@ -25,6 +25,10 @@ import android.util.TypedValue;
 
 public class Valuey {
   
+  private Valuey() {
+    // Do not instantiate
+  }
+  
   public static int getDimensionOrFraction(
     final TypedArray array,
     final int attributeIndex,

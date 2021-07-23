@@ -12,6 +12,10 @@ import java.util.Map;
 
 public class Mappy {
   
+  private Mappy() {
+    // Do not instantiate
+  }
+  
   public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap) {
     
     Map<V, K> inverseMap = new HashMap<>();

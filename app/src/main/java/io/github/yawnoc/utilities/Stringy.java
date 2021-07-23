@@ -9,6 +9,10 @@ package io.github.yawnoc.utilities;
 
 public class Stringy {
   
+  private Stringy() {
+    // Do not instantiate
+  }
+  
   public static boolean isAscii(final String string) {
     return string.matches("\\p{ASCII}*");
   }
