@@ -31,6 +31,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.PopupWindow;
@@ -496,6 +497,7 @@ public class InputContainer
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
+    showKeyPreview(key);
     
     sendAppropriateExtendedPressHandlerMessage(key);
     invalidate();
@@ -656,6 +658,11 @@ public class InputContainer
   
   private boolean isSwipeableKey(final Key key) {
     return key != null && key.isSwipeable;
+  }
+  
+  private void showKeyPreview(final Key key) {
+    keyPreview.update(key, shiftMode);
+    keyPreviewPopup.showAtLocation(this, Gravity.NO_GRAVITY, key.x, key.y);
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
