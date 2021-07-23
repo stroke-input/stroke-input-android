@@ -342,7 +342,7 @@ public class InputContainer
     Lighten a dark colour and darken a light colour.
     Used for key press colour changes.
   */
-  private static int getContrastingColour(final int colour) {
+  public static int getContrastingColour(final int colour) {
     
     final float[] colourHSL = new float[3];
     ColorUtils.colorToHSL(colour, colourHSL);
