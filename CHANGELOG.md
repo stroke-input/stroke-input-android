@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Improved organisation of utility classes
+
 
 ## [v0.6.3] App icon (2021-07-23)
 
