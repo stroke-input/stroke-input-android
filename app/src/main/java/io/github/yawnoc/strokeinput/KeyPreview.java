@@ -18,6 +18,7 @@ public class KeyPreview extends View {
   
   // Properties
   private Key activeKey;
+  private String displayText;
   
   // Key preview drawing
   private final Rect rectangle;
@@ -47,7 +48,14 @@ public class KeyPreview extends View {
     textPaint.setTextAlign(Paint.Align.CENTER);
   }
   
-  public void updatePaints(final Key key) {
+  public void update(final Key key, final int shiftMode) {
+    
+    activeKey = key;
+    if (activeKey == null) {
+      return;
+    }
+    
+    displayText = key.shiftAwareDisplayText(shiftMode);
     
     rectangle.set(0, 0, key.width, key.height);
     
