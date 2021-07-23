@@ -18,6 +18,8 @@ public class KeyPreview extends View {
   
   // Properties
   private Key activeKey;
+  private int width;
+  private int height;
   private String displayText;
   
   // Key preview drawing
@@ -55,6 +57,8 @@ public class KeyPreview extends View {
       return;
     }
     
+    width = key.width;
+    height = key.height;
     displayText = key.shiftAwareDisplayText(shiftMode);
     
     rectangle.set(0, 0, key.width, key.height);
@@ -69,6 +73,19 @@ public class KeyPreview extends View {
   
   @Override
   public void onDraw(final Canvas canvas) {
+    
+    if (activeKey == null) {
+      return;
+    }
+    
+    canvas.drawRect(rectangle, fillPaint);
+    canvas.drawRect(rectangle, borderPaint);
+    canvas.drawText(
+      displayText,
+      width / 2f,
+      height / 2f,
+      textPaint
+    );
   }
   
 }
