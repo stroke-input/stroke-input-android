@@ -499,8 +499,8 @@ public class InputContainer
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
-    showKeyPreview(key);
     
+    showKeyPreview(key);
     sendAppropriateExtendedPressHandlerMessage(key);
     invalidate();
   }
@@ -616,8 +616,8 @@ public class InputContainer
     activePointerId = pointerId;
     activePointerX = x;
     activePointerY = y;
-    showKeyPreview(key);
     
+    showKeyPreview(key);
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
