@@ -33,6 +33,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
@@ -82,6 +83,10 @@ public class InputContainer
   private int activePointerX;
   private int activePointerY;
   
+  // Key preview
+  private final KeyPreview keyPreview;
+  private final PopupWindow keyPreviewPopup;
+  
   // Long presses and key repeats
   private final Handler extendedPressHandler;
   private int keyRepeatIntervalMilliseconds;
@@ -112,6 +117,10 @@ public class InputContainer
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
+    
+    keyPreview = new KeyPreview(context);
+    keyPreviewPopup = new PopupWindow(keyPreview);
+    keyPreviewPopup.setTouchable(false);
     
     resetKeyRepeatIntervalMilliseconds();
     extendedPressHandler =
