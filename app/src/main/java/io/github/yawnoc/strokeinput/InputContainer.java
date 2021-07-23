@@ -128,6 +128,7 @@ public class InputContainer
         LinearLayout.LayoutParams.WRAP_CONTENT,
         false
       );
+    keyPreviewPopup.setTouchable(false);
     keyPreviewPopup.setClippingEnabled(false);
     
     resetKeyRepeatIntervalMilliseconds();
