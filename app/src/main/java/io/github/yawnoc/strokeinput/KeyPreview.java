@@ -20,30 +20,30 @@ public class KeyPreview extends View {
   private Key activeKey;
   
   // Key preview drawing
-  private final Rect keyRectangle;
-  private final Paint keyFillPaint;
-  private final Paint keyBorderPaint;
-  private final Paint keyTextPaint;
+  private final Rect rectangle;
+  private final Paint fillPaint;
+  private final Paint borderPaint;
+  private final Paint textPaint;
   
   public KeyPreview(final Context context) {
     
     super(context);
     
-    keyRectangle = new Rect();
+    rectangle = new Rect();
     
-    keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyFillPaint.setStyle(Paint.Style.FILL);
+    fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    fillPaint.setStyle(Paint.Style.FILL);
     
-    keyBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyBorderPaint.setStyle(Paint.Style.STROKE);
+    borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    borderPaint.setStyle(Paint.Style.STROKE);
     
-    keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyTextPaint.setTypeface(
+    textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    textPaint.setTypeface(
       Typeface.createFromAsset(
         context.getAssets(),
         InputContainer.KEYBOARD_FONT)
     );
-    keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    textPaint.setTextAlign(Paint.Align.CENTER);
   }
   
   @Override
@@ -53,14 +53,14 @@ public class KeyPreview extends View {
       return;
     }
   
-    keyRectangle.set(0, 0, activeKey.width, activeKey.height);
+    rectangle.set(0, 0, activeKey.width, activeKey.height);
     
-    keyFillPaint.setColor(activeKey.fillColour);
-    keyBorderPaint.setColor(activeKey.borderColour);
-    keyBorderPaint.setStrokeWidth(activeKey.borderThickness);
+    fillPaint.setColor(activeKey.fillColour);
+    borderPaint.setColor(activeKey.borderColour);
+    borderPaint.setStrokeWidth(activeKey.borderThickness);
   
-    keyTextPaint.setColor(activeKey.textColour);
-    keyTextPaint.setTextSize(activeKey.textSize);
+    textPaint.setColor(activeKey.textColour);
+    textPaint.setTextSize(activeKey.textSize);
   }
   
 }
