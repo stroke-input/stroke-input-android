@@ -47,21 +47,20 @@ public class KeyPreview extends View {
     textPaint.setTextAlign(Paint.Align.CENTER);
   }
   
+  public void updatePaints(final Key key) {
+    
+    rectangle.set(0, 0, key.width, key.height);
+    
+    fillPaint.setColor(key.fillColour);
+    borderPaint.setColor(key.borderColour);
+    borderPaint.setStrokeWidth(key.borderThickness);
+    
+    textPaint.setColor(key.textColour);
+    textPaint.setTextSize(key.textSize);
+  }
+  
   @Override
   public void onDraw(final Canvas canvas) {
-    
-    if (activeKey == null) {
-      return;
-    }
-  
-    rectangle.set(0, 0, activeKey.width, activeKey.height);
-    
-    fillPaint.setColor(activeKey.fillColour);
-    borderPaint.setColor(activeKey.borderColour);
-    borderPaint.setStrokeWidth(activeKey.borderThickness);
-  
-    textPaint.setColor(activeKey.textColour);
-    textPaint.setTextSize(activeKey.textSize);
   }
   
 }
