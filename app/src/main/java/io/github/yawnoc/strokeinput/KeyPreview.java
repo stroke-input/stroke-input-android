@@ -19,7 +19,7 @@ public class KeyPreview extends View {
   // Properties
   private Key activeKey;
   
-  // Drawing
+  // Key preview drawing
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;

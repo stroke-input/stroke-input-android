@@ -97,6 +97,8 @@ public class InputContainer
   // Keyboard drawing
   private final Rect keyboardRectangle;
   private final Paint keyboardFillPaint;
+  
+  // Key drawing
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;
