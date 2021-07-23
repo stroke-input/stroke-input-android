@@ -502,8 +502,8 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    updateKeyPreview();
     sendAppropriateExtendedPressHandlerMessage(key);
+    updateKeyPreview();
     invalidate();
   }
   
@@ -531,10 +531,10 @@ public class InputContainer
     }
     else { // move is a key change
       activeKey = key;
-      updateKeyPreview();
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
+      updateKeyPreview();
       shouldRedrawKeyboard = true;
     }
     
@@ -572,9 +572,9 @@ public class InputContainer
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     
-    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
+    updateKeyPreview();
     if (shouldRedrawKeyboard) {
       invalidate();
     }
@@ -603,8 +603,8 @@ public class InputContainer
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     
-    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
+    updateKeyPreview();
     invalidate();
   }
   
@@ -622,10 +622,10 @@ public class InputContainer
     activePointerX = x;
     activePointerY = y;
     
-    updateKeyPreview();
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
+    updateKeyPreview();
     invalidate();
   }
   
