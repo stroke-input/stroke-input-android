@@ -67,6 +67,7 @@
       app:keyDisplayText="⇧"
       app:keyValueTextShifted="⬆"
       app:keyWidth="@dimen/key_width__qwerty_shift"
+      app:keyIsPreviewable="false"
     />
     <!-- Letters row 3 -->
     <Key app:keyValueText="z" />
@@ -85,6 +86,7 @@
       app:keyTextSize="@dimen/font_size__qwerty_backspace"
       app:keyTextOffsetY="@dimen/baseline_correction__qwerty_backspace"
       app:keyWidth="@dimen/key_width__qwerty_shift"
+      app:keyIsPreviewable="false"
     />
   </Row>
   <Row
@@ -96,6 +98,7 @@
       app:keyDisplayText="!@#"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
     />
     <!-- Comma -->
     <Key
@@ -112,6 +115,7 @@
       app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width__space_bar"
+      app:keyIsPreviewable="false"
     />
     <!-- Full stop -->
     <Key
@@ -124,6 +128,7 @@
       app:keyDisplayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
+      app:keyIsPreviewable="false"
     />
   </Row>
 </Keyboard>
