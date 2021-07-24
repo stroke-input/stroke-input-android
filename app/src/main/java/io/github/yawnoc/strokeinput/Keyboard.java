@@ -39,6 +39,9 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Keyboard {
   
+  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
+  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  
   private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
@@ -52,9 +55,6 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
-  
-  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
-  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   // Keyboard properties
   private int width;
