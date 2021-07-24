@@ -3,6 +3,7 @@
   <declare-styleable name="Keyboard">
     <attr name="keyboardFillColour" format="color" />
     <attr name="keysAreShiftable" format="boolean" />
+    <attr name="keysArePreviewable" format="boolean" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
     <attr name="keyFillColour" format="color" />
@@ -19,6 +20,7 @@
   <declare-styleable name="Row">
     <attr name="rowOffsetX" format="dimension|fraction" />
     <attr name="keysAreShiftable" />
+    <attr name="keysArePreviewable" />
     <attr name="keyWidth" />
     <attr name="keyHeight" />
     <attr name="keyFillColour" />
@@ -39,6 +41,7 @@
     <attr name="keyIsShiftable" format="boolean" />
     <attr name="keyIsExtendedLeft" format="boolean" />
     <attr name="keyIsExtendedRight" format="boolean" />
+    <attr name="keyIsPreviewable" format="boolean" />
     <attr name="keyValueText" format="string" />
     <attr name="keyDisplayText" format="string" />
     <attr name="keyValueTextShifted" format="string" />

@@ -39,6 +39,7 @@ public class Key {
   public boolean isShiftable;
   public boolean isExtendedLeft;
   public boolean isExtendedRight;
+  public boolean isPreviewable;
   public String valueText;
   public String displayText; // overrides valueText drawn
   public String valueTextShifted; // overrides displayText drawn when shifted
@@ -106,6 +107,11 @@ public class Key {
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
     isExtendedRight =
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
+    isPreviewable =
+      attributesArray.getBoolean(
+        R.styleable.Row_keysArePreviewable,
+        parentRow.keysArePreviewable
+      );
     
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);

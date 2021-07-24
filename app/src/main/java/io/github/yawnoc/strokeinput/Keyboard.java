@@ -68,6 +68,7 @@ public class Keyboard {
   
   // Key properties
   public boolean keysAreShiftable;
+  public boolean keysArePreviewable;
   public int keyWidth;
   public int keyHeight;
   public int keyFillColour;
@@ -208,6 +209,11 @@ public class Keyboard {
     
     keysAreShiftable =
       attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
+    keysArePreviewable =
+      attributesArray.getBoolean(
+        R.styleable.Keyboard_keysArePreviewable,
+        true
+      );
     
     keyWidth =
       Valuey.getDimensionOrFraction(

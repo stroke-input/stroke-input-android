@@ -40,6 +40,7 @@ public class Row {
   
   // Key properties
   public final boolean keysAreShiftable;
+  public final boolean keysArePreviewable;
   public final int keyWidth;
   public final int keyHeight;
   public final int keyFillColour;
@@ -79,6 +80,11 @@ public class Row {
       attributesArray.getBoolean(
         R.styleable.Row_keysAreShiftable,
         parentKeyboard.keysAreShiftable
+      );
+    keysArePreviewable =
+      attributesArray.getBoolean(
+        R.styleable.Row_keysArePreviewable,
+        parentKeyboard.keysArePreviewable
       );
     
     keyWidth =
