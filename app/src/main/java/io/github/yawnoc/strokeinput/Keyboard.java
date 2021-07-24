@@ -208,7 +208,10 @@ public class Keyboard {
       );
     
     keysAreShiftable =
-      attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
+      attributesArray.getBoolean(
+        R.styleable.Keyboard_keysAreShiftable,
+        false
+      );
     keysArePreviewable =
       attributesArray.getBoolean(
         R.styleable.Keyboard_keysArePreviewable,
