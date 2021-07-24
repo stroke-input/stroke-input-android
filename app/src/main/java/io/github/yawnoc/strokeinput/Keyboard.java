@@ -56,6 +56,7 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
+  private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
   private static final int DEFAULT_KEY_PREVIEW_MARGIN_DP = 12;
   private final int defaultKeyPreviewMarginPx;
   
@@ -77,6 +78,7 @@ public class Keyboard {
   public int keyTextSize;
   public int keyTextOffsetX;
   public int keyTextOffsetY;
+  public float keyPreviewMagnification;
   public int keyPreviewMargin;
   
   // Screen properties
@@ -265,6 +267,11 @@ public class Keyboard {
         0
       );
     
+    keyPreviewMagnification =
+      attributesArray.getFloat(
+        R.styleable.Keyboard_keyPreviewMagnification,
+        DEFAULT_KEY_PREVIEW_MAGNIFICATION
+      );
     keyPreviewMargin =
       Valuey.getDimensionOrFraction(
         attributesArray,

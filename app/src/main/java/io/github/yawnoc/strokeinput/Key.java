@@ -56,6 +56,7 @@ public class Key {
   public int textSize;
   public int textOffsetX;
   public int textOffsetY;
+  public float previewMagnification;
   public int previewMargin;
   
   // Key position
@@ -176,7 +177,12 @@ public class Key {
         R.styleable.Key_keyTextOffsetY,
         parentRow.keyTextOffsetY
       );
-  
+    
+    previewMagnification =
+      attributesArray.getFloat(
+        R.styleable.Key_keyPreviewMagnification,
+        parentRow.keyPreviewMagnification
+      );
     previewMargin =
       Valuey.getDimensionOrFraction(
         attributesArray,

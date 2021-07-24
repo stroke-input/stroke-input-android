@@ -13,6 +13,7 @@
     <attr name="keyTextSize" format="dimension" />
     <attr name="keyTextOffsetX" format="dimension" />
     <attr name="keyTextOffsetY" format="dimension" />
+    <attr name="keyPreviewMagnification" format="float" />
     <attr name="keyPreviewMargin" format="dimension" />
   </declare-styleable>
   <declare-styleable name="Row">
@@ -28,6 +29,7 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMagnification" />
     <attr name="keyPreviewMargin" />
   </declare-styleable>
   <declare-styleable name="Key">
@@ -50,6 +52,7 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMagnification" />
     <attr name="keyPreviewMargin" />
   </declare-styleable>
 </resources>
