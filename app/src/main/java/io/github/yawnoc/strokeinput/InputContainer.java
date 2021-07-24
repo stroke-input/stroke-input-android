@@ -682,7 +682,6 @@ public class InputContainer
     
     final int previewWidth = keyPreview.width;
     final int previewHeight = keyPreview.height;
-    
     final int previewMargin = activeKey.previewMargin;
     
     final int keyboardLeftX = 0;
