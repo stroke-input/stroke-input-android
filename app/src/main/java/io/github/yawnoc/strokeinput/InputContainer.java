@@ -40,6 +40,8 @@ import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
 
+import io.github.yawnoc.utilities.Valuey;
+
 /*
   A container that holds:
     - Candidates bar
@@ -682,7 +684,15 @@ public class InputContainer
     final int previewHeight = keyPreview.height;
     
     final int previewMargin = activeKey.previewMargin;
-    final int previewX = activeKey.x - (previewWidth - activeKey.width) / 2;
+    
+    final int keyboardLeftX = 0;
+    final int keyboardRightX = keyboard.getWidth() - previewWidth;
+    final int previewX =
+      (int) Valuey.clipValueToRange(
+        activeKey.x - (previewWidth - activeKey.width) / 2f,
+        keyboardLeftX,
+        keyboardRightX
+      );
     final int previewY = activeKey.y - previewHeight - previewMargin;
     
     if (keyPreviewPopup.isShowing()) {

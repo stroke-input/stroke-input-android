@@ -29,6 +29,15 @@ public class Valuey {
     // Do not instantiate
   }
   
+  public static float clipValueToRange(
+    final float value,
+    final float rangeMin,
+    final float rangeMax
+  )
+  {
+    return Math.max(rangeMin, Math.min(rangeMax, value));
+  }
+  
   public static int getDimensionOrFraction(
     final TypedArray array,
     final int attributeIndex,
