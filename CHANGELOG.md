@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.6.4] Key previews (2021-07-24)
+
 - Implemented key preview popups
 - Improved organisation of utility classes
 
@@ -130,7 +133,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.6.3...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.4...HEAD
+[v0.6.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.3...v0.6.4
 [v0.6.3]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.6.2...v0.6.3
 [v0.6.2]:
