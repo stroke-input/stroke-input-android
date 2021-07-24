@@ -165,14 +165,11 @@ public class InputContainer
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
     
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+    
     keyPreview = new KeyPreview(context);
     keyPreviewPopup =
-      new PopupWindow(
-        keyPreview,
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        LinearLayout.LayoutParams.WRAP_CONTENT,
-        false
-      );
+      new PopupWindow(keyPreview, popup_size, popup_size, false);
     keyPreviewPopup.setTouchable(false);
     keyPreviewPopup.setClippingEnabled(false);
     
