@@ -682,7 +682,7 @@ public class InputContainer
     final int previewHeight = keyPreview.height;
     
     final int previewMargin = activeKey.previewMargin;
-    final int previewX = activeKey.x;
+    final int previewX = activeKey.x - (previewWidth - activeKey.width) / 2;
     final int previewY = activeKey.y - previewHeight - previewMargin;
     
     if (keyPreviewPopup.isShowing()) {
