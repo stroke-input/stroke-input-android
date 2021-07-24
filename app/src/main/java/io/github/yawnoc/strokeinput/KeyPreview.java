@@ -75,7 +75,7 @@ public class KeyPreview extends View {
     borderPaint.setStrokeWidth(key.borderThickness);
     
     textPaint.setColor(key.textColour);
-    textPaint.setTextSize(key.textSize);
+    textPaint.setTextSize(key.previewMagnification * key.textSize);
     
     invalidate();
   }
