@@ -56,6 +56,9 @@ public class Keyboard {
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
+  private static final int DEFAULT_KEY_PREVIEW_MARGIN_DP = 12;
+  private final int defaultKeyPreviewMarginPx;
+  
   // Keyboard properties
   private int width;
   private int height;
@@ -74,6 +77,7 @@ public class Keyboard {
   public int keyTextSize;
   public int keyTextOffsetX;
   public int keyTextOffsetY;
+  public int keyPreviewMargin;
   
   // Screen properties
   public final int screenWidth;
@@ -93,6 +97,8 @@ public class Keyboard {
       (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
     defaultKeyTextSizePx =
       (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
+    defaultKeyPreviewMarginPx =
+      (int) (DEFAULT_KEY_PREVIEW_MARGIN_DP * displayMetrics.density);
     
     keyList = new ArrayList<>();
     
@@ -257,6 +263,14 @@ public class Keyboard {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextOffsetY,
         0
+      );
+    
+    keyPreviewMargin =
+      Valuey.getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyPreviewMargin,
+        screenHeight,
+        defaultKeyPreviewMarginPx
       );
     
     attributesArray.recycle();

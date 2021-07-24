@@ -13,6 +13,7 @@
     <attr name="keyTextSize" format="dimension" />
     <attr name="keyTextOffsetX" format="dimension" />
     <attr name="keyTextOffsetY" format="dimension" />
+    <attr name="keyPreviewMargin" format="dimension" />
   </declare-styleable>
   <declare-styleable name="Row">
     <attr name="rowOffsetX" format="dimension|fraction" />
@@ -27,6 +28,7 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMargin" />
   </declare-styleable>
   <declare-styleable name="Key">
     <attr name="keyIsLongPressable" format="boolean" />
@@ -48,5 +50,6 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMargin" />
   </declare-styleable>
 </resources>

@@ -50,6 +50,7 @@ public class Row {
   public final int keyTextSize;
   public final int keyTextOffsetX;
   public final int keyTextOffsetY;
+  public final int keyPreviewMargin;
   
   public Row(
     final Keyboard parentKeyboard,
@@ -135,6 +136,14 @@ public class Row {
       attributesArray.getDimensionPixelSize(
         R.styleable.Row_keyTextOffsetY,
         parentKeyboard.keyTextOffsetY
+      );
+    
+    keyPreviewMargin =
+      Valuey.getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Row_keyPreviewMargin,
+        parentKeyboard.screenHeight,
+        parentKeyboard.keyPreviewMargin
       );
     
     attributesArray.recycle();

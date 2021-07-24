@@ -56,6 +56,7 @@ public class Key {
   public int textSize;
   public int textOffsetX;
   public int textOffsetY;
+  public int previewMargin;
   
   // Key position
   public int x;
@@ -174,6 +175,14 @@ public class Key {
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextOffsetY,
         parentRow.keyTextOffsetY
+      );
+  
+    previewMargin =
+      Valuey.getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Key_keyPreviewMargin,
+        grandparentKeyboard.screenHeight,
+        parentRow.keyPreviewMargin
       );
     
     attributesArray.recycle();
