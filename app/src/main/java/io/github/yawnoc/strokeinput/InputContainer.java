@@ -168,8 +168,7 @@ public class InputContainer
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     
     keyPreview = new KeyPreview(context);
-    keyPreviewPopup =
-      new PopupWindow(keyPreview, popup_size, popup_size, false);
+    keyPreviewPopup = new PopupWindow(keyPreview, popup_size, popup_size);
     keyPreviewPopup.setTouchable(false);
     keyPreviewPopup.setClippingEnabled(false);
     
