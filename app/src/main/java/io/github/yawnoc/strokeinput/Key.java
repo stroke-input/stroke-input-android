@@ -39,6 +39,7 @@ public class Key {
   public boolean isShiftable;
   public boolean isExtendedLeft;
   public boolean isExtendedRight;
+  public boolean isPreviewable;
   public String valueText;
   public String displayText; // overrides valueText drawn
   public String valueTextShifted; // overrides displayText drawn when shifted
@@ -48,14 +49,16 @@ public class Key {
   public int height;
   
   // Key styles
-  public int keyFillColour;
-  public int keyBorderColour;
-  public int keyBorderThickness;
-  public int keyTextColour;
-  public int keyTextSwipeColour;
-  public int keyTextSize;
-  public int keyTextOffsetX;
-  public int keyTextOffsetY;
+  public int fillColour;
+  public int borderColour;
+  public int borderThickness;
+  public int textColour;
+  public int textSwipeColour;
+  public int textSize;
+  public int textOffsetX;
+  public int textOffsetY;
+  public float previewMagnification;
+  public int previewMargin;
   
   // Key position
   public int x;
@@ -104,6 +107,11 @@ public class Key {
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
     isExtendedRight =
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
+    isPreviewable =
+      attributesArray.getBoolean(
+        R.styleable.Key_keyIsPreviewable,
+        parentRow.keysArePreviewable
+      );
     
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);
@@ -134,46 +142,59 @@ public class Key {
         parentRow.keyHeight
       );
     
-    keyFillColour =
+    fillColour =
       attributesArray.getColor(
         R.styleable.Key_keyFillColour,
         parentRow.keyFillColour
       );
-    keyBorderColour =
+    borderColour =
       attributesArray.getColor(
         R.styleable.Key_keyBorderColour,
         parentRow.keyBorderColour
       );
-    keyBorderThickness =
+    borderThickness =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyBorderThickness,
         parentRow.keyBorderThickness
       );
     
-    keyTextColour =
+    textColour =
       attributesArray.getColor(
         R.styleable.Key_keyTextColour,
         parentRow.keyTextColour
       );
-    keyTextSwipeColour =
+    textSwipeColour =
       attributesArray.getColor(
         R.styleable.Key_keyTextSwipeColour,
         parentRow.keyTextSwipeColour
       );
-    keyTextSize =
+    textSize =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextSize,
         parentRow.keyTextSize
       );
-    keyTextOffsetX =
+    textOffsetX =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextOffsetX,
         parentRow.keyTextOffsetX
       );
-    keyTextOffsetY =
+    textOffsetY =
       attributesArray.getDimensionPixelSize(
         R.styleable.Key_keyTextOffsetY,
         parentRow.keyTextOffsetY
+      );
+    
+    previewMagnification =
+      attributesArray.getFloat(
+        R.styleable.Key_keyPreviewMagnification,
+        parentRow.keyPreviewMagnification
+      );
+    previewMargin =
+      Valuey.getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Key_keyPreviewMargin,
+        grandparentKeyboard.screenHeight,
+        parentRow.keyPreviewMargin
       );
     
     attributesArray.recycle();
@@ -186,6 +207,14 @@ public class Key {
         (this.isExtendedRight || x <= this.x + this.width)
         &&
         this.y <= y && y <= this.y + this.height
+    );
+  }
+  
+  public String shiftAwareDisplayText(final int shiftMode) {
+    return (
+      (shiftMode == InputContainer.SHIFT_DISABLED)
+        ? this.displayText
+        : this.valueTextShifted
     );
   }
   

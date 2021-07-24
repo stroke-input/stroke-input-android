@@ -31,11 +31,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
+
+import io.github.yawnoc.utilities.Valuey;
 
 /*
   A container that holds:
@@ -58,13 +63,13 @@ public class InputContainer
   
   private static final int SWIPE_ACTIVATION_DISTANCE = 40;
   
-  private static final int SHIFT_DISABLED = 0;
+  public static final int SHIFT_DISABLED = 0;
   private static final int SHIFT_SINGLE = 1;
   private static final int SHIFT_PERSISTENT = 2;
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  private static final String KEYBOARD_FONT = "stroke_input_keyboard.ttf";
+  public static final String KEYBOARD_FONT = "stroke_input_keyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -97,10 +102,16 @@ public class InputContainer
   // Keyboard drawing
   private final Rect keyboardRectangle;
   private final Paint keyboardFillPaint;
+  
+  // Key drawing
   private final Rect keyRectangle;
   private final Paint keyFillPaint;
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
+  
+  // Key preview
+  private final KeyPreview keyPreview;
+  private final PopupWindow keyPreviewPopup;
   
   // Debugging
   private final Paint debugPaint;
@@ -129,6 +140,7 @@ public class InputContainer
                 inputListener.onLongPress(activeKey.valueText);
                 activeKey = null;
                 activePointerId = NONEXISTENT_POINTER_ID;
+                updateKeyPreview();
                 invalidate();
                 break;
             }
@@ -154,6 +166,13 @@ public class InputContainer
       Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+    
+    keyPreview = new KeyPreview(context);
+    keyPreviewPopup = new PopupWindow(keyPreview, popup_size, popup_size);
+    keyPreviewPopup.setTouchable(false);
+    keyPreviewPopup.setClippingEnabled(false);
     
     debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     debugPaint.setStyle(Paint.Style.STROKE);
@@ -245,7 +264,7 @@ public class InputContainer
       
       keyRectangle.set(0, 0, key.width, key.height);
       
-      int keyFillColour = key.keyFillColour;
+      int keyFillColour = key.fillColour;
       if (
         key == activeKey
           ||
@@ -260,22 +279,22 @@ public class InputContainer
         )
       )
       {
-        keyFillColour = getContrastingColour(keyFillColour);
+        keyFillColour = toPressedColour(keyFillColour);
       }
       
       keyFillPaint.setColor(keyFillColour);
-      keyBorderPaint.setColor(key.keyBorderColour);
-      keyBorderPaint.setStrokeWidth(key.keyBorderThickness);
+      keyBorderPaint.setColor(key.borderColour);
+      keyBorderPaint.setStrokeWidth(key.borderThickness);
       
       final int keyTextColour;
       if (key == activeKey && swipeModeIsActivated) {
-        keyTextColour = key.keyTextSwipeColour;
+        keyTextColour = key.textSwipeColour;
       }
       else {
-        keyTextColour = key.keyTextColour;
+        keyTextColour = key.textColour;
       }
       keyTextPaint.setColor(keyTextColour);
-      keyTextPaint.setTextSize(key.keyTextSize);
+      keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText;
       if (debugModeIsActivated && key.valueText.equals("SPACE")) {
@@ -285,32 +304,24 @@ public class InputContainer
             : activeKey.valueText
         );
       }
-      else if (shiftMode == SHIFT_DISABLED) {
-        keyDisplayText = key.displayText;
-      }
       else {
-        keyDisplayText = key.valueTextShifted;
+        keyDisplayText = key.shiftAwareDisplayText(shiftMode);
       }
       
       final float keyTextX = (
         key.width / 2f
-          + key.keyTextOffsetX
+          + key.textOffsetX
       );
       final float keyTextY = (
         (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
-          + key.keyTextOffsetY
+          + key.textOffsetY
       );
       
       canvas.translate(key.x, key.y);
       
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
-      canvas.drawText(
-        keyDisplayText,
-        keyTextX,
-        keyTextY,
-        keyTextPaint
-      );
+      canvas.drawText(keyDisplayText, keyTextX, keyTextY, keyTextPaint);
       
       canvas.translate(-key.x, -key.y);
     }
@@ -330,7 +341,7 @@ public class InputContainer
     Lighten a dark colour and darken a light colour.
     Used for key press colour changes.
   */
-  private static int getContrastingColour(final int colour) {
+  public static int toPressedColour(final int colour) {
     
     final float[] colourHSL = new float[3];
     ColorUtils.colorToHSL(colour, colourHSL);
@@ -365,6 +376,7 @@ public class InputContainer
       shiftPointerId = NONEXISTENT_POINTER_ID;
       activeKey = null;
       activePointerId = NONEXISTENT_POINTER_ID;
+      updateKeyPreview();
       invalidate();
       return true;
     }
@@ -490,6 +502,7 @@ public class InputContainer
     activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
+    updateKeyPreview();
     invalidate();
   }
   
@@ -520,6 +533,7 @@ public class InputContainer
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
+      updateKeyPreview();
       shouldRedrawKeyboard = true;
     }
     
@@ -560,6 +574,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
     if (shouldRedrawKeyboard) {
+      updateKeyPreview();
       invalidate();
     }
   }
@@ -575,6 +590,7 @@ public class InputContainer
     }
     shiftPointerId = pointerId;
     
+    updateKeyPreview();
     invalidate();
   }
   
@@ -587,6 +603,7 @@ public class InputContainer
     activePointerId = NONEXISTENT_POINTER_ID;
     
     removeAllExtendedPressHandlerMessages();
+    updateKeyPreview();
     invalidate();
   }
   
@@ -607,6 +624,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
+    updateKeyPreview();
     invalidate();
   }
   
@@ -627,6 +645,7 @@ public class InputContainer
     shiftPointerId = NONEXISTENT_POINTER_ID;
     
     if (shouldRedrawKeyboard) {
+      updateKeyPreview();
       invalidate();
     }
   }
@@ -648,6 +667,46 @@ public class InputContainer
   
   private boolean isSwipeableKey(final Key key) {
     return key != null && key.isSwipeable;
+  }
+  
+  private void updateKeyPreview() {
+    
+    if (activeKey == null || !activeKey.isPreviewable) {
+      if (keyPreviewPopup.isShowing()) {
+        keyPreviewPopup.dismiss();
+      }
+      return;
+    }
+    
+    keyPreview.update(activeKey, shiftMode);
+    
+    final int previewWidth = keyPreview.width;
+    final int previewHeight = keyPreview.height;
+    final int previewMargin = activeKey.previewMargin;
+    
+    final int keyboardLeftX = 0;
+    final int keyboardRightX = keyboard.getWidth() - previewWidth;
+    final int previewX =
+      (int) Valuey.clipValueToRange(
+        activeKey.x - (previewWidth - activeKey.width) / 2f,
+        keyboardLeftX,
+        keyboardRightX
+      );
+    final int previewY = activeKey.y - previewHeight - previewMargin;
+    
+    if (keyPreviewPopup.isShowing()) {
+      keyPreviewPopup.update(previewX, previewY, previewWidth, previewHeight);
+    }
+    else {
+      keyPreviewPopup.setWidth(previewWidth);
+      keyPreviewPopup.setHeight(previewHeight);
+      keyPreviewPopup.showAtLocation(
+        this,
+        Gravity.NO_GRAVITY,
+        previewX,
+        previewY
+      );
+    }
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(

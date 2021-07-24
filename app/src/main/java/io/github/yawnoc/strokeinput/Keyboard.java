@@ -39,6 +39,9 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Keyboard {
   
+  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
+  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  
   private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
@@ -47,13 +50,15 @@ public class Keyboard {
   private static final int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
   private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
   private final int defaultKeyBorderThicknessPx;
+  
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
   
-  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
-  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
+  private static final int DEFAULT_KEY_PREVIEW_MARGIN_DP = 12;
+  private final int defaultKeyPreviewMarginPx;
   
   // Keyboard properties
   private int width;
@@ -63,6 +68,7 @@ public class Keyboard {
   
   // Key properties
   public boolean keysAreShiftable;
+  public boolean keysArePreviewable;
   public int keyWidth;
   public int keyHeight;
   public int keyFillColour;
@@ -73,6 +79,8 @@ public class Keyboard {
   public int keyTextSize;
   public int keyTextOffsetX;
   public int keyTextOffsetY;
+  public float keyPreviewMagnification;
+  public int keyPreviewMargin;
   
   // Screen properties
   public final int screenWidth;
@@ -92,6 +100,8 @@ public class Keyboard {
       (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
     defaultKeyTextSizePx =
       (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
+    defaultKeyPreviewMarginPx =
+      (int) (DEFAULT_KEY_PREVIEW_MARGIN_DP * displayMetrics.density);
     
     keyList = new ArrayList<>();
     
@@ -198,7 +208,15 @@ public class Keyboard {
       );
     
     keysAreShiftable =
-      attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
+      attributesArray.getBoolean(
+        R.styleable.Keyboard_keysAreShiftable,
+        false
+      );
+    keysArePreviewable =
+      attributesArray.getBoolean(
+        R.styleable.Keyboard_keysArePreviewable,
+        true
+      );
     
     keyWidth =
       Valuey.getDimensionOrFraction(
@@ -256,6 +274,19 @@ public class Keyboard {
       attributesArray.getDimensionPixelSize(
         R.styleable.Keyboard_keyTextOffsetY,
         0
+      );
+    
+    keyPreviewMagnification =
+      attributesArray.getFloat(
+        R.styleable.Keyboard_keyPreviewMagnification,
+        DEFAULT_KEY_PREVIEW_MAGNIFICATION
+      );
+    keyPreviewMargin =
+      Valuey.getDimensionOrFraction(
+        attributesArray,
+        R.styleable.Keyboard_keyPreviewMargin,
+        screenHeight,
+        defaultKeyPreviewMarginPx
       );
     
     attributesArray.recycle();

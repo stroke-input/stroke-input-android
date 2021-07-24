@@ -61,6 +61,7 @@
       app:keyValueText="ABOUT"
       app:keyDisplayText="🛈"
       app:keyIsLongPressable="true"
+      app:keyIsPreviewable="false"
     />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
@@ -100,6 +101,7 @@
       app:keyDisplayText="⌫"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
     />
   </Row>
   <Row
@@ -112,6 +114,7 @@
       app:keyDisplayText="（）："
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
     />
     <!-- U+FF0C FULLWIDTH COMMA -->
     <Key
@@ -128,6 +131,7 @@
       app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
       app:keyTextColour="@color/space_bar_text"
       app:keyWidth="@dimen/key_width__space_bar"
+      app:keyIsPreviewable="false"
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key
@@ -140,6 +144,7 @@
       app:keyDisplayText="⏎"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
+      app:keyIsPreviewable="false"
     />
   </Row>
 </Keyboard>

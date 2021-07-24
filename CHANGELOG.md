@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Implemented key preview popups
 - Improved organisation of utility classes
 
 

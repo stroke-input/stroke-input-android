@@ -3,6 +3,7 @@
   <declare-styleable name="Keyboard">
     <attr name="keyboardFillColour" format="color" />
     <attr name="keysAreShiftable" format="boolean" />
+    <attr name="keysArePreviewable" format="boolean" />
     <attr name="keyWidth" format="dimension|fraction" />
     <attr name="keyHeight" format="dimension|fraction" />
     <attr name="keyFillColour" format="color" />
@@ -13,10 +14,13 @@
     <attr name="keyTextSize" format="dimension" />
     <attr name="keyTextOffsetX" format="dimension" />
     <attr name="keyTextOffsetY" format="dimension" />
+    <attr name="keyPreviewMagnification" format="float" />
+    <attr name="keyPreviewMargin" format="dimension" />
   </declare-styleable>
   <declare-styleable name="Row">
     <attr name="rowOffsetX" format="dimension|fraction" />
     <attr name="keysAreShiftable" />
+    <attr name="keysArePreviewable" />
     <attr name="keyWidth" />
     <attr name="keyHeight" />
     <attr name="keyFillColour" />
@@ -27,6 +31,8 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMagnification" />
+    <attr name="keyPreviewMargin" />
   </declare-styleable>
   <declare-styleable name="Key">
     <attr name="keyIsLongPressable" format="boolean" />
@@ -35,6 +41,7 @@
     <attr name="keyIsShiftable" format="boolean" />
     <attr name="keyIsExtendedLeft" format="boolean" />
     <attr name="keyIsExtendedRight" format="boolean" />
+    <attr name="keyIsPreviewable" format="boolean" />
     <attr name="keyValueText" format="string" />
     <attr name="keyDisplayText" format="string" />
     <attr name="keyValueTextShifted" format="string" />
@@ -48,5 +55,7 @@
     <attr name="keyTextSize" />
     <attr name="keyTextOffsetX" />
     <attr name="keyTextOffsetY" />
+    <attr name="keyPreviewMagnification" />
+    <attr name="keyPreviewMargin" />
   </declare-styleable>
 </resources>
