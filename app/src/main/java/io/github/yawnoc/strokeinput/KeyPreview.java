@@ -62,13 +62,13 @@ public class KeyPreview extends View {
       return;
     }
     
-    width = key.width;
-    height = key.height;
+    width = (int) (key.previewMagnification * key.width);
+    height = (int) (key.previewMagnification * key.height);
     displayText = key.shiftAwareDisplayText(shiftMode);
-    textOffsetX = key.textOffsetX;
-    textOffsetY = key.textOffsetY;
+    textOffsetX = (int) (key.previewMagnification * key.textOffsetX);
+    textOffsetY = (int) (key.previewMagnification * key.textOffsetY);
     
-    rectangle.set(0, 0, key.width, key.height);
+    rectangle.set(0, 0, width, height);
     
     fillPaint.setColor(InputContainer.toPressedColour(key.fillColour));
     borderPaint.setColor(key.borderColour);
