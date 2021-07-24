@@ -109,7 +109,7 @@ public class Key {
       attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
     isPreviewable =
       attributesArray.getBoolean(
-        R.styleable.Row_keysArePreviewable,
+        R.styleable.Key_keyIsPreviewable,
         parentRow.keysArePreviewable
       );
     
