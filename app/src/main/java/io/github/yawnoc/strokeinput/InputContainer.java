@@ -671,7 +671,7 @@ public class InputContainer
   
   private void updateKeyPreview() {
     
-    if (activeKey == null) {
+    if (activeKey == null || !activeKey.isPreviewable) {
       if (keyPreviewPopup.isShowing()) {
         keyPreviewPopup.dismiss();
       }
