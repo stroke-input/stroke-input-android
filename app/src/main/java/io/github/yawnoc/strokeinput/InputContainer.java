@@ -217,6 +217,7 @@ public class InputContainer
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
     }
+    keyPreviewPlane.showingKeyList.addAll(keyboard.getKeyList());
     requestLayout();
   }
   
