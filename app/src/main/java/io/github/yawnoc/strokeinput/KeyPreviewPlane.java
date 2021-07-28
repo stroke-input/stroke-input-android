@@ -115,6 +115,11 @@ public class KeyPreviewPlane extends View {
     );
   }
   
+  public void dismissLatest() {
+    dismiss(latestKey);
+    latestKey = null;
+  }
+  
   public void dismissAll() {
     keyList.clear();
     latestKey = null;

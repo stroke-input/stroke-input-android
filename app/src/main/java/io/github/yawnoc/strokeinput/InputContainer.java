@@ -419,6 +419,7 @@ public class InputContainer
         
         if (activePointerId != NONEXISTENT_POINTER_ID) {
           sendUpEvent(activeKey, false);
+          keyPreviewPlane.dismissLatest();
         }
         sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
         break;
