@@ -593,7 +593,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
     if (shouldRedrawKeyboard) {
-      //updateKeyPreview();
+      keyPreviewPlane.dismissKey(key);
       invalidate();
     }
   }

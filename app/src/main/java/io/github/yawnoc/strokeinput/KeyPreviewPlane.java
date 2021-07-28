@@ -12,6 +12,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -24,11 +27,16 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class KeyPreviewPlane extends View {
   
+  private static final int DISMISSAL_DELAY_MILLISECONDS = 20;
+  
   // Properties
   private int width;
   private int height;
   private int keyboardHeight;
   private final List<Key> showingKeyList;
+  
+  // Delayed dismissal
+  private final Handler dismissalHandler;
   
   // Key preview drawing
   private final Rect keyPreviewRectangle;
@@ -39,6 +47,16 @@ public class KeyPreviewPlane extends View {
   public KeyPreviewPlane(final Context context) {
     
     super(context);
+    
+    dismissalHandler =
+      new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message message) {
+          Key key = (Key) message.obj;
+          showingKeyList.remove(key);
+          invalidate();
+        }
+      };
     
     showingKeyList = new ArrayList<>();
     
@@ -74,6 +92,16 @@ public class KeyPreviewPlane extends View {
   public void showKey(final Key key) {
     showingKeyList.add(key);
     invalidate();
+  }
+  
+  public void dismissKey(final Key key) {
+    Message dismissalMessage = new Message();
+    dismissalMessage.obj = key;
+    dismissalHandler.removeCallbacksAndMessages(null);
+    dismissalHandler.sendMessageDelayed(
+      dismissalMessage,
+      DISMISSAL_DELAY_MILLISECONDS
+    );
   }
   
   @Override
