@@ -284,7 +284,7 @@ public class Keyboard {
     keyPreviewMargin =
       Valuey.getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyPreviewMargin,
+        R.styleable.Keyboard_keyPreviewMarginY,
         screenHeight,
         defaultKeyPreviewMarginPx
       );

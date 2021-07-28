@@ -153,7 +153,7 @@ public class Row {
     keyPreviewMargin =
       Valuey.getDimensionOrFraction(
         attributesArray,
-        R.styleable.Row_keyPreviewMargin,
+        R.styleable.Row_keyPreviewMarginY,
         parentKeyboard.screenHeight,
         parentKeyboard.keyPreviewMargin
       );
