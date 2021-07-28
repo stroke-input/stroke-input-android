@@ -552,7 +552,7 @@ public class InputContainer
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
-      //updateKeyPreview();
+      keyPreviewPlane.move(key);
       shouldRedrawKeyboard = true;
     }
     
@@ -643,7 +643,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
-    //updateKeyPreview();
+    keyPreviewPlane.move(key);
     invalidate();
   }
   

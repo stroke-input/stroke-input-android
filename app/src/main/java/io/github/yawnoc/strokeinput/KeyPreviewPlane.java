@@ -34,6 +34,7 @@ public class KeyPreviewPlane extends View {
   private int height;
   private int keyboardHeight;
   private final List<Key> keyList;
+  private Key latestKey;
   
   // Delayed dismissal
   private final Handler dismissalHandler;
@@ -54,6 +55,9 @@ public class KeyPreviewPlane extends View {
         public void handleMessage(Message message) {
           Key key = (Key) message.obj;
           keyList.remove(key);
+          if (latestKey == key) {
+            latestKey = null;
+          }
           invalidate();
         }
       };
@@ -93,7 +97,13 @@ public class KeyPreviewPlane extends View {
     if (!keyList.contains(key)) {
       keyList.add(key);
     }
+    latestKey = key;
     invalidate();
+  }
+  
+  public void move(final Key key) {
+    keyList.remove(latestKey);
+    show(key);
   }
   
   public void dismiss(final Key key) {
@@ -107,6 +117,7 @@ public class KeyPreviewPlane extends View {
   
   public void dismissAll() {
     keyList.clear();
+    latestKey = null;
     invalidate();
   }
   
