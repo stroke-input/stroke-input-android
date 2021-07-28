@@ -103,20 +103,14 @@ public class KeyPreviewPlane extends View {
     show(key);
   }
   
-  public void dismiss(final Key key) {
-    if (latestKey == key) {
-      latestKey = null;
-    }
+  public void dismissLatest() {
     Message dismissalMessage = new Message();
-    dismissalMessage.obj = key;
+    dismissalMessage.obj = latestKey;
     dismissalHandler.sendMessageDelayed(
       dismissalMessage,
       DISMISSAL_DELAY_MILLISECONDS
     );
-  }
-  
-  public void dismissLatest() {
-    dismiss(latestKey);
+    latestKey = null;
   }
   
   public void dismissAll() {
