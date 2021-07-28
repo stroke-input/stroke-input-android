@@ -41,8 +41,6 @@ import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
 
-import io.github.yawnoc.utilities.Valuey;
-
 /*
   A container that holds:
     - Candidates bar
@@ -114,11 +112,6 @@ public class InputContainer
   private final KeyPreviewPlane keyPreviewPlane;
   private final PopupWindow keyPreviewPlanePopup;
   
-  // Key preview
-  // TODO: remove
-  private final KeyPreview keyPreview;
-  private final PopupWindow keyPreviewPopup;
-  
   // Debugging
   private final Paint debugPaint;
   private final Toast debugToast;
@@ -146,7 +139,7 @@ public class InputContainer
                 inputListener.onLongPress(activeKey.valueText);
                 activeKey = null;
                 activePointerId = NONEXISTENT_POINTER_ID;
-                updateKeyPreview();
+                //updateKeyPreview();
                 invalidate();
                 break;
             }
@@ -180,12 +173,6 @@ public class InputContainer
       new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
-    
-    // TODO: remove
-    keyPreview = new KeyPreview(context);
-    keyPreviewPopup = new PopupWindow(keyPreview, popup_size, popup_size);
-    keyPreviewPopup.setTouchable(false);
-    keyPreviewPopup.setClippingEnabled(false);
     
     debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     debugPaint.setStyle(Paint.Style.STROKE);
@@ -409,7 +396,7 @@ public class InputContainer
       shiftPointerId = NONEXISTENT_POINTER_ID;
       activeKey = null;
       activePointerId = NONEXISTENT_POINTER_ID;
-      updateKeyPreview();
+      //updateKeyPreview();
       invalidate();
       return true;
     }
@@ -535,7 +522,7 @@ public class InputContainer
     activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    updateKeyPreview();
+    //updateKeyPreview();
     invalidate();
   }
   
@@ -566,7 +553,7 @@ public class InputContainer
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
-      updateKeyPreview();
+      //updateKeyPreview();
       shouldRedrawKeyboard = true;
     }
     
@@ -607,7 +594,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
     if (shouldRedrawKeyboard) {
-      updateKeyPreview();
+      //updateKeyPreview();
       invalidate();
     }
   }
@@ -623,7 +610,7 @@ public class InputContainer
     }
     shiftPointerId = pointerId;
     
-    updateKeyPreview();
+    //updateKeyPreview();
     invalidate();
   }
   
@@ -636,7 +623,7 @@ public class InputContainer
     activePointerId = NONEXISTENT_POINTER_ID;
     
     removeAllExtendedPressHandlerMessages();
-    updateKeyPreview();
+    //updateKeyPreview();
     invalidate();
   }
   
@@ -657,7 +644,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
-    updateKeyPreview();
+    //updateKeyPreview();
     invalidate();
   }
   
@@ -678,7 +665,7 @@ public class InputContainer
     shiftPointerId = NONEXISTENT_POINTER_ID;
     
     if (shouldRedrawKeyboard) {
-      updateKeyPreview();
+      //updateKeyPreview();
       invalidate();
     }
   }
@@ -700,46 +687,6 @@ public class InputContainer
   
   private boolean isSwipeableKey(final Key key) {
     return key != null && key.isSwipeable;
-  }
-  
-  private void updateKeyPreview() {
-    
-    if (activeKey == null || !activeKey.isPreviewable) {
-      if (keyPreviewPopup.isShowing()) {
-        keyPreviewPopup.dismiss();
-      }
-      return;
-    }
-    
-    keyPreview.update(activeKey, shiftMode);
-    
-    final int previewWidth = keyPreview.width;
-    final int previewHeight = keyPreview.height;
-    final int previewMargin = activeKey.previewMargin;
-    
-    final int keyboardLeftX = 0;
-    final int keyboardRightX = keyboard.getWidth() - previewWidth;
-    final int previewX =
-      (int) Valuey.clipValueToRange(
-        activeKey.x - (previewWidth - activeKey.width) / 2f,
-        keyboardLeftX,
-        keyboardRightX
-      );
-    final int previewY = activeKey.y - previewHeight - previewMargin;
-    
-    if (keyPreviewPopup.isShowing()) {
-      keyPreviewPopup.update(previewX, previewY, previewWidth, previewHeight);
-    }
-    else {
-      keyPreviewPopup.setWidth(previewWidth);
-      keyPreviewPopup.setHeight(previewHeight);
-      keyPreviewPopup.showAtLocation(
-        this,
-        Gravity.NO_GRAVITY,
-        previewX,
-        previewY
-      );
-    }
   }
   
   private void sendAppropriateExtendedPressHandlerMessage(
