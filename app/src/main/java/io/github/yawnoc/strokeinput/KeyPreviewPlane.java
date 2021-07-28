@@ -33,7 +33,7 @@ public class KeyPreviewPlane extends View {
   private int width;
   private int height;
   private int keyboardHeight;
-  private final List<Key> showingKeyList;
+  private final List<Key> keyList;
   
   // Delayed dismissal
   private final Handler dismissalHandler;
@@ -53,12 +53,12 @@ public class KeyPreviewPlane extends View {
         @Override
         public void handleMessage(Message message) {
           Key key = (Key) message.obj;
-          showingKeyList.remove(key);
+          keyList.remove(key);
           invalidate();
         }
       };
     
-    showingKeyList = new ArrayList<>();
+    keyList = new ArrayList<>();
     
     keyPreviewRectangle = new Rect();
     
@@ -90,8 +90,8 @@ public class KeyPreviewPlane extends View {
   }
   
   public void show(final Key key) {
-    if (!showingKeyList.contains(key)) {
-      showingKeyList.add(key);
+    if (!keyList.contains(key)) {
+      keyList.add(key);
     }
     invalidate();
   }
@@ -108,7 +108,7 @@ public class KeyPreviewPlane extends View {
   @Override
   public void onDraw(final Canvas canvas) {
     
-    for (final Key key : showingKeyList) {
+    for (final Key key : keyList) {
       
       final int keyPreviewWidth =
         (int) (key.previewMagnification * key.width);
