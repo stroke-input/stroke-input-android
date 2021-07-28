@@ -90,7 +90,9 @@ public class KeyPreviewPlane extends View {
   }
   
   public void show(final Key key) {
-    showingKeyList.add(key);
+    if (!showingKeyList.contains(key)) {
+      showingKeyList.add(key);
+    }
     invalidate();
   }
   
