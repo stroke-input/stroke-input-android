@@ -31,6 +31,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -210,13 +211,28 @@ public class InputContainer
   }
   
   public void setKeyboard(final Keyboard keyboard) {
+    
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
     }
+    
     requestLayout();
+    
+    final DisplayMetrics displayMetrics =
+      getContext().getResources().getDisplayMetrics();
+    final int screenWidth = displayMetrics.widthPixels;
+    final int screenHeight = displayMetrics.heightPixels;
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    keyPreviewPlanePopup.showAtLocation(
+      this,
+      Gravity.NO_GRAVITY,
+      0,
+      keyboard.getHeight() - screenHeight
+    );
   }
   
   public void resetKeyRepeatIntervalMilliseconds() {
