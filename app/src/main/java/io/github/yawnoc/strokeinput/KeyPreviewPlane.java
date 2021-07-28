@@ -113,7 +113,7 @@ public class KeyPreviewPlane extends View {
     latestKey = null;
   }
   
-  public void dismissAll() {
+  public void dismissAllImmediately() {
     keyList.clear();
     latestKey = null;
     invalidate();
