@@ -8,6 +8,8 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -44,6 +46,14 @@ public class KeyPreviewPlane extends View {
       )
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
+  }
+  
+  @Override
+  public void onDraw(final Canvas canvas) {
+    
+    // TODO: implement properly
+    canvas.drawColor(Color.GREEN);
+    
   }
   
 }

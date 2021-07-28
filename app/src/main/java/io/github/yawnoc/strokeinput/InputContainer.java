@@ -31,6 +31,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -258,6 +259,20 @@ public class InputContainer
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX,
       keyboardWidth,
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
+    );
+    
+    final DisplayMetrics displayMetrics =
+      getContext().getResources().getDisplayMetrics();
+    final int screenWidth = displayMetrics.widthPixels;
+    final int screenHeight = displayMetrics.heightPixels;
+    
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    keyPreviewPlanePopup.showAtLocation(
+      this,
+      Gravity.NO_GRAVITY,
+      0,
+      keyboardHeight - screenHeight
     );
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
