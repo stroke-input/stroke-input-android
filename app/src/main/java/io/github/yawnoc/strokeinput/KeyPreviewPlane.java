@@ -97,7 +97,6 @@ public class KeyPreviewPlane extends View {
   public void dismiss(final Key key) {
     Message dismissalMessage = new Message();
     dismissalMessage.obj = key;
-    dismissalHandler.removeCallbacksAndMessages(null);
     dismissalHandler.sendMessageDelayed(
       dismissalMessage,
       DISMISSAL_DELAY_MILLISECONDS
