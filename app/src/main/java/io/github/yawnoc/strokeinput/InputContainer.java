@@ -721,12 +721,7 @@ public class InputContainer
   }
   
   private void removeAllExtendedPressHandlerMessages() {
-    removeExtendedPressHandlerMessages(MESSAGE_KEY_REPEAT);
-    removeExtendedPressHandlerMessages(MESSAGE_LONG_PRESS);
-  }
-  
-  private void removeExtendedPressHandlerMessages(final int messageWhat) {
-    extendedPressHandler.removeMessages(messageWhat);
+    extendedPressHandler.removeCallbacksAndMessages(null);
   }
   
   private void showDebugToast(final String message) {
