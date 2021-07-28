@@ -204,7 +204,6 @@ public class InputContainer
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
     }
-    keyPreviewPlane.showingKeyList.addAll(keyboard.getKeyList());
     requestLayout();
   }
   
@@ -522,7 +521,7 @@ public class InputContainer
     activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    //updateKeyPreview();
+    keyPreviewPlane.showKey(key);
     invalidate();
   }
   

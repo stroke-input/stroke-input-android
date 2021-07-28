@@ -28,7 +28,7 @@ public class KeyPreviewPlane extends View {
   private int width;
   private int height;
   private int keyboardHeight;
-  public final List<Key> showingKeyList;
+  private final List<Key> showingKeyList;
   
   // Key preview drawing
   private final Rect keyPreviewRectangle;
@@ -69,6 +69,11 @@ public class KeyPreviewPlane extends View {
     this.width = width;
     this.height = height;
     this.keyboardHeight = keyboardHeight;
+  }
+  
+  public void showKey(final Key key) {
+    showingKeyList.add(key);
+    invalidate();
   }
   
   @Override
