@@ -55,9 +55,6 @@ public class KeyPreviewPlane extends View {
         public void handleMessage(Message message) {
           Key key = (Key) message.obj;
           keyList.remove(key);
-          if (latestKey == key) {
-            latestKey = null;
-          }
           invalidate();
         }
       };
@@ -107,6 +104,9 @@ public class KeyPreviewPlane extends View {
   }
   
   public void dismiss(final Key key) {
+    if (latestKey == key) {
+      latestKey = null;
+    }
     Message dismissalMessage = new Message();
     dismissalMessage.obj = key;
     dismissalHandler.sendMessageDelayed(
@@ -117,7 +117,6 @@ public class KeyPreviewPlane extends View {
   
   public void dismissLatest() {
     dismiss(latestKey);
-    latestKey = null;
   }
   
   public void dismissAll() {
