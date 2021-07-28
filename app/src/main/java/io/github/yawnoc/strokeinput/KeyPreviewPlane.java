@@ -25,6 +25,9 @@ import io.github.yawnoc.utilities.Valuey;
 public class KeyPreviewPlane extends View {
   
   // Properties
+  private int width;
+  private int height;
+  private int keyboardHeight;
   public final List<Key> showingKeyList;
   
   // Key preview drawing
@@ -55,6 +58,17 @@ public class KeyPreviewPlane extends View {
       )
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
+  }
+  
+  public void updateDimensions(
+    final int width,
+    final int height,
+    final int keyboardHeight
+  )
+  {
+    this.width = width;
+    this.height = height;
+    this.keyboardHeight = keyboardHeight;
   }
   
   @Override
@@ -107,9 +121,13 @@ public class KeyPreviewPlane extends View {
         (int) Valuey.clipValueToRange(
           key.x - (keyPreviewWidth - key.width) / 2f,
           0,
-          getWidth()
+          this.width
         );
-      final int previewY = key.y - keyPreviewHeight - keyPreviewMargin;
+      final int previewY = (
+        key.y
+          - keyPreviewHeight - keyPreviewMargin
+          + this.height - keyboardHeight
+      );
       
       canvas.translate(previewX, previewY);
       
