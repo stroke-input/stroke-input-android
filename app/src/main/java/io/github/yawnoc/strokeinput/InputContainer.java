@@ -109,7 +109,12 @@ public class InputContainer
   private final Paint keyBorderPaint;
   private final Paint keyTextPaint;
   
+  // Key preview plane
+  private final KeyPreviewPlane keyPreviewPlane;
+  private final PopupWindow keyPreviewPlanePopup;
+  
   // Key preview
+  // TODO: remove
   private final KeyPreview keyPreview;
   private final PopupWindow keyPreviewPopup;
   
@@ -169,6 +174,13 @@ public class InputContainer
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     
+    keyPreviewPlane = new KeyPreviewPlane(context);
+    keyPreviewPlanePopup =
+      new PopupWindow(keyPreviewPlane, popup_size, popup_size);
+    keyPreviewPlanePopup.setTouchable(false);
+    keyPreviewPlanePopup.setClippingEnabled(false);
+    
+    // TODO: remove
     keyPreview = new KeyPreview(context);
     keyPreviewPopup = new PopupWindow(keyPreview, popup_size, popup_size);
     keyPreviewPopup.setTouchable(false);
