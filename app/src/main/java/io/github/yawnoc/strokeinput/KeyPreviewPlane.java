@@ -105,6 +105,11 @@ public class KeyPreviewPlane extends View {
     );
   }
   
+  public void dismissAll() {
+    keyList.clear();
+    invalidate();
+  }
+  
   @Override
   public void onDraw(final Canvas canvas) {
     

@@ -139,7 +139,7 @@ public class InputContainer
                 inputListener.onLongPress(activeKey.valueText);
                 activeKey = null;
                 activePointerId = NONEXISTENT_POINTER_ID;
-                //updateKeyPreview();
+                keyPreviewPlane.dismissAll();
                 invalidate();
                 break;
             }
@@ -395,7 +395,7 @@ public class InputContainer
       shiftPointerId = NONEXISTENT_POINTER_ID;
       activeKey = null;
       activePointerId = NONEXISTENT_POINTER_ID;
-      //updateKeyPreview();
+      keyPreviewPlane.dismissAll();
       invalidate();
       return true;
     }
