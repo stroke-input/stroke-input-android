@@ -94,7 +94,7 @@ public class KeyPreviewPlane extends View {
   }
   
   public void show(final Key key) {
-    if (key != null && !keyList.contains(key)) {
+    if (key != null && !keyList.contains(key) && key.isPreviewable) {
       keyList.add(key);
     }
     latestKey = key;
