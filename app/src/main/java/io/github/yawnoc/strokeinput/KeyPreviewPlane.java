@@ -89,12 +89,12 @@ public class KeyPreviewPlane extends View {
     this.keyboardHeight = keyboardHeight;
   }
   
-  public void showKey(final Key key) {
+  public void show(final Key key) {
     showingKeyList.add(key);
     invalidate();
   }
   
-  public void dismissKey(final Key key) {
+  public void dismiss(final Key key) {
     Message dismissalMessage = new Message();
     dismissalMessage.obj = key;
     dismissalHandler.removeCallbacksAndMessages(null);

@@ -521,7 +521,7 @@ public class InputContainer
     activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    keyPreviewPlane.showKey(key);
+    keyPreviewPlane.show(key);
     invalidate();
   }
   
@@ -593,7 +593,7 @@ public class InputContainer
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
     if (shouldRedrawKeyboard) {
-      keyPreviewPlane.dismissKey(key);
+      keyPreviewPlane.dismiss(key);
       invalidate();
     }
   }
