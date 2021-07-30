@@ -515,9 +515,21 @@ public class InputContainer
         }
         
         break;
+      
+      case MotionEvent.ACTION_CANCEL:
+        sendCancelEvent();
+        break;
     }
     
     return true;
+  }
+  
+  private void sendCancelEvent() {
+    shiftPointerId = NONEXISTENT_POINTER_ID;
+    activeKey = null;
+    activePointerId = NONEXISTENT_POINTER_ID;
+    keyPreviewPlane.dismissAllImmediately();
+    invalidate();
   }
   
   private void sendDownEvent(
