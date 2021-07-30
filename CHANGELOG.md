@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.0] Key previews II (2021-07-30)
+
 - Re-implemented key preview popups
   - Fixed popup lag (noticeable delay before appearing)
   - Fixed popups not appearing when rapidly alternating between keys
@@ -140,7 +143,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.6.4...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.0...HEAD
+[v0.7.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.6.4...v0.7.0
 [v0.6.4]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.6.3...v0.6.4
 [v0.6.3]:
