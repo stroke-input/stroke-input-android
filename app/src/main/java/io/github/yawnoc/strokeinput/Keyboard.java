@@ -57,8 +57,8 @@ public class Keyboard {
   private final int defaultKeyTextSizePx;
   
   private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
-  private static final int DEFAULT_KEY_PREVIEW_MARGIN_DP = 12;
-  private final int defaultKeyPreviewMarginPx;
+  private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 16;
+  private final int defaultKeyPreviewMarginYPx;
   
   // Keyboard properties
   private int width;
@@ -80,11 +80,11 @@ public class Keyboard {
   public int keyTextOffsetX;
   public int keyTextOffsetY;
   public float keyPreviewMagnification;
-  public int keyPreviewMargin;
+  public int keyPreviewMarginY;
   
   // Screen properties
-  public final int screenWidth;
-  public final int screenHeight;
+  private final int screenWidth;
+  private final int screenHeight;
   
   public Keyboard(final Context context, final int layoutResourceId) {
     
@@ -100,8 +100,8 @@ public class Keyboard {
       (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
     defaultKeyTextSizePx =
       (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
-    defaultKeyPreviewMarginPx =
-      (int) (DEFAULT_KEY_PREVIEW_MARGIN_DP * displayMetrics.density);
+    defaultKeyPreviewMarginYPx =
+      (int) (DEFAULT_KEY_PREVIEW_MARGIN_Y_DP * displayMetrics.density);
     
     keyList = new ArrayList<>();
     
@@ -118,6 +118,14 @@ public class Keyboard {
   
   public int getHeight() {
     return height;
+  }
+  
+  public int getScreenWidth() {
+    return screenWidth;
+  }
+  
+  public int getScreenHeight() {
+    return screenHeight;
   }
   
   private void loadKeyboard(
@@ -281,12 +289,12 @@ public class Keyboard {
         R.styleable.Keyboard_keyPreviewMagnification,
         DEFAULT_KEY_PREVIEW_MAGNIFICATION
       );
-    keyPreviewMargin =
+    keyPreviewMarginY =
       Valuey.getDimensionOrFraction(
         attributesArray,
-        R.styleable.Keyboard_keyPreviewMargin,
+        R.styleable.Keyboard_keyPreviewMarginY,
         screenHeight,
-        defaultKeyPreviewMarginPx
+        defaultKeyPreviewMarginYPx
       );
     
     attributesArray.recycle();

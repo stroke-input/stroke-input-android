@@ -58,7 +58,7 @@ public class Key {
   public int textOffsetX;
   public int textOffsetY;
   public float previewMagnification;
-  public int previewMargin;
+  public int previewMarginY;
   
   // Key position
   public int x;
@@ -131,14 +131,14 @@ public class Key {
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Key_keyWidth,
-        grandparentKeyboard.screenWidth,
+        grandparentKeyboard.getScreenWidth(),
         parentRow.keyWidth
       );
     height =
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Key_keyHeight,
-        grandparentKeyboard.screenHeight,
+        grandparentKeyboard.getScreenHeight(),
         parentRow.keyHeight
       );
     
@@ -189,12 +189,12 @@ public class Key {
         R.styleable.Key_keyPreviewMagnification,
         parentRow.keyPreviewMagnification
       );
-    previewMargin =
+    previewMarginY =
       Valuey.getDimensionOrFraction(
         attributesArray,
-        R.styleable.Key_keyPreviewMargin,
-        grandparentKeyboard.screenHeight,
-        parentRow.keyPreviewMargin
+        R.styleable.Key_keyPreviewMarginY,
+        grandparentKeyboard.getScreenHeight(),
+        parentRow.keyPreviewMarginY
       );
     
     attributesArray.recycle();

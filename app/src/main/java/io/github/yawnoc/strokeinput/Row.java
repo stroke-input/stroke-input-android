@@ -52,7 +52,7 @@ public class Row {
   public final int keyTextOffsetX;
   public final int keyTextOffsetY;
   public final float keyPreviewMagnification;
-  public final int keyPreviewMargin;
+  public final int keyPreviewMarginY;
   
   public Row(
     final Keyboard parentKeyboard,
@@ -72,7 +72,7 @@ public class Row {
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_rowOffsetX,
-        parentKeyboard.screenWidth,
+        parentKeyboard.getScreenWidth(),
         DEFAULT_OFFSET_X
       );
     
@@ -91,14 +91,14 @@ public class Row {
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_keyWidth,
-        parentKeyboard.screenWidth,
+        parentKeyboard.getScreenWidth(),
         parentKeyboard.keyWidth
       );
     keyHeight =
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Row_keyHeight,
-        parentKeyboard.screenHeight,
+        parentKeyboard.getScreenHeight(),
         parentKeyboard.keyHeight
       );
     
@@ -150,12 +150,12 @@ public class Row {
         R.styleable.Row_keyPreviewMagnification,
         parentKeyboard.keyPreviewMagnification
       );
-    keyPreviewMargin =
+    keyPreviewMarginY =
       Valuey.getDimensionOrFraction(
         attributesArray,
-        R.styleable.Row_keyPreviewMargin,
-        parentKeyboard.screenHeight,
-        parentKeyboard.keyPreviewMargin
+        R.styleable.Row_keyPreviewMarginY,
+        parentKeyboard.getScreenHeight(),
+        parentKeyboard.keyPreviewMarginY
       );
     
     attributesArray.recycle();

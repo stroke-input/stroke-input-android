@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+- Re-implemented key preview popups
+  - Fixed popup lag (noticeable delay before appearing)
+  - Fixed popups not appearing when rapidly alternating between keys
+  - Eliminated transition animation when moving between different-sized keys
+  - Implemented time delay for dismissal of key previews
+
 
 ## [v0.6.4] Key previews (2021-07-24)
 
