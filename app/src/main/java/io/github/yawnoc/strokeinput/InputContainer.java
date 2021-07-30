@@ -228,6 +228,7 @@ public class InputContainer
     keyboardFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
+      keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
   }
@@ -540,6 +541,7 @@ public class InputContainer
     
     if (shiftPointerId != NONEXISTENT_POINTER_ID) {
       shiftMode = SHIFT_HELD;
+      keyPreviewPlane.updateShiftMode(shiftMode);
     }
     
     activeKey = key;
@@ -611,6 +613,7 @@ public class InputContainer
       
       if (shiftMode == SHIFT_SINGLE) {
         shiftMode = SHIFT_DISABLED;
+        keyPreviewPlane.updateShiftMode(shiftMode);
       }
     }
     
@@ -633,10 +636,10 @@ public class InputContainer
           ? SHIFT_INITIATED
           : SHIFT_HELD
       );
+      keyPreviewPlane.updateShiftMode(shiftMode);
     }
     shiftPointerId = pointerId;
     
-    keyPreviewPlane.updateShiftMode(shiftMode);
     invalidate();
   }
   
@@ -644,13 +647,13 @@ public class InputContainer
     
     shiftMode = SHIFT_HELD;
     shiftPointerId = pointerId;
+    keyPreviewPlane.updateShiftMode(shiftMode);
     
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
     
     removeAllExtendedPressHandlerMessages();
     keyPreviewPlane.dismissLatest();
-    keyPreviewPlane.updateShiftMode(shiftMode);
     invalidate();
   }
   
@@ -690,8 +693,8 @@ public class InputContainer
         break;
     }
     shiftPointerId = NONEXISTENT_POINTER_ID;
-    
     keyPreviewPlane.updateShiftMode(shiftMode);
+    
     if (shouldRedrawKeyboard) {
       invalidate();
     }

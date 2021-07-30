@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed key previews not updating on certain shift mode changes
+
 
 ## [v0.7.0] Key previews II (2021-07-30)
 
