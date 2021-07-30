@@ -171,7 +171,6 @@ public class KeyPreviewPlane extends View {
           + keyPreviewTextOffsetY
       );
       
-      final int keyPreviewMarginY = key.previewMarginY;
       final int previewX =
         (int) Valuey.clipValueToRange(
           key.x - (keyPreviewWidth - key.width) / 2f,
@@ -180,7 +179,7 @@ public class KeyPreviewPlane extends View {
         );
       final int previewY = (
         key.y
-          - keyPreviewHeight - keyPreviewMarginY
+          - keyPreviewHeight - key.previewMarginY
           + this.height - keyboardHeight
       );
       
