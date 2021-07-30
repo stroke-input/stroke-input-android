@@ -630,7 +630,7 @@ public class InputContainer
     }
     shiftPointerId = pointerId;
     
-    //updateKeyPreview();
+    keyPreviewPlane.updateShiftMode(shiftMode);
     invalidate();
   }
   
@@ -643,7 +643,8 @@ public class InputContainer
     activePointerId = NONEXISTENT_POINTER_ID;
     
     removeAllExtendedPressHandlerMessages();
-    //updateKeyPreview();
+    keyPreviewPlane.dismissLatest();
+    keyPreviewPlane.updateShiftMode(shiftMode);
     invalidate();
   }
   
@@ -684,8 +685,8 @@ public class InputContainer
     }
     shiftPointerId = NONEXISTENT_POINTER_ID;
     
+    keyPreviewPlane.updateShiftMode(shiftMode);
     if (shouldRedrawKeyboard) {
-      //updateKeyPreview();
       invalidate();
     }
   }

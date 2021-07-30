@@ -35,6 +35,7 @@ public class KeyPreviewPlane extends View {
   private int keyboardHeight;
   private final List<Key> keyList = new ArrayList<>();
   private Key latestKey;
+  private int shiftMode = InputContainer.SHIFT_DISABLED;
   
   // Delayed dismissal
   private Handler dismissalHandler;
@@ -97,6 +98,11 @@ public class KeyPreviewPlane extends View {
     this.keyboardHeight = keyboardHeight;
   }
   
+  public void updateShiftMode(final int shiftMode) {
+    this.shiftMode = shiftMode;
+    invalidate();
+  }
+  
   public void show(final Key key) {
     if (key != null && !keyList.contains(key) && key.isPreviewable) {
       keyList.add(key);
@@ -151,7 +157,7 @@ public class KeyPreviewPlane extends View {
       keyPreviewTextPaint.setTextSize(keyPreviewTextSize);
       
       final String keyPreviewDisplayText =
-        key.displayText; // TODO: make shift-aware
+        key.shiftAwareDisplayText(shiftMode);
       
       final int keyPreviewTextOffsetX =
         (int) (key.previewMagnification * key.textOffsetX);
