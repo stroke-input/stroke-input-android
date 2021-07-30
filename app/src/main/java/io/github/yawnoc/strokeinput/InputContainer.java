@@ -247,8 +247,8 @@ public class InputContainer
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
     );
     
-    final int screenWidth = keyboard.screenWidth;
-    final int screenHeight = keyboard.screenHeight;
+    final int screenWidth = keyboard.getScreenWidth();
+    final int screenHeight = keyboard.getScreenHeight();
     
     keyPreviewPlane.updateDimensions(
       screenWidth,

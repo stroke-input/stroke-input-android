@@ -131,14 +131,14 @@ public class Key {
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Key_keyWidth,
-        grandparentKeyboard.screenWidth,
+        grandparentKeyboard.getScreenWidth(),
         parentRow.keyWidth
       );
     height =
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Key_keyHeight,
-        grandparentKeyboard.screenHeight,
+        grandparentKeyboard.getScreenHeight(),
         parentRow.keyHeight
       );
     
@@ -193,7 +193,7 @@ public class Key {
       Valuey.getDimensionOrFraction(
         attributesArray,
         R.styleable.Key_keyPreviewMarginY,
-        grandparentKeyboard.screenHeight,
+        grandparentKeyboard.getScreenHeight(),
         parentRow.keyPreviewMargin
       );
     

@@ -83,8 +83,8 @@ public class Keyboard {
   public int keyPreviewMargin;
   
   // Screen properties
-  public final int screenWidth;
-  public final int screenHeight;
+  private final int screenWidth;
+  private final int screenHeight;
   
   public Keyboard(final Context context, final int layoutResourceId) {
     
@@ -118,6 +118,14 @@ public class Keyboard {
   
   public int getHeight() {
     return height;
+  }
+  
+  public int getScreenWidth() {
+    return screenWidth;
+  }
+  
+  public int getScreenHeight() {
+    return screenHeight;
   }
   
   private void loadKeyboard(
