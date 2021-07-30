@@ -33,21 +33,27 @@ public class KeyPreviewPlane extends View {
   private int width;
   private int height;
   private int keyboardHeight;
-  private final List<Key> keyList;
+  private final List<Key> keyList = new ArrayList<>();
   private Key latestKey;
   
   // Delayed dismissal
-  private final Handler dismissalHandler;
+  private Handler dismissalHandler;
   
   // Key preview drawing
-  private final Rect keyPreviewRectangle;
-  private final Paint keyPreviewFillPaint;
-  private final Paint keyPreviewBorderPaint;
-  private final Paint keyPreviewTextPaint;
+  private Rect keyPreviewRectangle;
+  private Paint keyPreviewFillPaint;
+  private Paint keyPreviewBorderPaint;
+  private Paint keyPreviewTextPaint;
   
   public KeyPreviewPlane(final Context context) {
     
     super(context);
+    
+    initialiseDismissing();
+    initialiseDrawing(context);
+  }
+  
+  private void initialiseDismissing() {
     
     dismissalHandler =
       new Handler(Looper.getMainLooper()) {
@@ -58,8 +64,9 @@ public class KeyPreviewPlane extends View {
           invalidate();
         }
       };
-    
-    keyList = new ArrayList<>();
+  }
+  
+  private void initialiseDrawing(final Context context) {
     
     keyPreviewRectangle = new Rect();
     
