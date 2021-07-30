@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.1] Key previews shift fix (2021-07-30)
+
 - Fixed key previews not updating on certain shift mode changes
 
 
@@ -145,7 +148,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.1...HEAD
+[v0.7.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.0...v0.7.1
 [v0.7.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.6.4...v0.7.0
 [v0.6.4]:

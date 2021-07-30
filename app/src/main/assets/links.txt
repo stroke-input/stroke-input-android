@@ -1,7 +1,7 @@
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
 {: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
 
-{: \stroke-input-version: v0.7.0 :}
+{: \stroke-input-version: v0.7.1 :}
 {: \stroke-input-url :
   https://github.com/stroke-input/stroke-input-android
 :}
