@@ -86,7 +86,7 @@ public class InputContainer
   private int activePointerY;
   
   // Long presses and key repeats
-  private final Handler extendedPressHandler;
+  private Handler extendedPressHandler;
   private int keyRepeatIntervalMilliseconds;
   
   // Horizontal swipes
@@ -98,27 +98,35 @@ public class InputContainer
   private int shiftMode;
   
   // Keyboard drawing
-  private final Rect keyboardRectangle;
-  private final Paint keyboardFillPaint;
+  private Rect keyboardRectangle;
+  private Paint keyboardFillPaint;
   
   // Key drawing
-  private final Rect keyRectangle;
-  private final Paint keyFillPaint;
-  private final Paint keyBorderPaint;
-  private final Paint keyTextPaint;
+  private Rect keyRectangle;
+  private Paint keyFillPaint;
+  private Paint keyBorderPaint;
+  private Paint keyTextPaint;
   
   // Key preview plane
-  private final KeyPreviewPlane keyPreviewPlane;
-  private final PopupWindow keyPreviewPlanePopup;
+  private KeyPreviewPlane keyPreviewPlane;
+  private PopupWindow keyPreviewPlanePopup;
   
   // Debugging
-  private final Paint debugPaint;
-  private final Toast debugToast;
+  private Paint debugPaint;
+  private Toast debugToast;
   private boolean debugModeIsActivated = false;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
+    
+    initialiseExtendedPressing();
+    initialiseDrawing(context);
+    initialiseKeyPreviewing(context);
+    initialiseDebugging();
+  }
+  
+  private void initialiseExtendedPressing() {
     
     resetKeyRepeatIntervalMilliseconds();
     extendedPressHandler =
@@ -145,6 +153,9 @@ public class InputContainer
           }
         }
       };
+  }
+  
+  private void initialiseDrawing(final Context context) {
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
@@ -164,14 +175,20 @@ public class InputContainer
       Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
-    
-    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+  }
+  
+  private void initialiseKeyPreviewing(final Context context) {
     
     keyPreviewPlane = new KeyPreviewPlane(context);
+    
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     keyPreviewPlanePopup =
       new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
+  }
+  
+  private void initialiseDebugging() {
     
     debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     debugPaint.setStyle(Paint.Style.STROKE);
