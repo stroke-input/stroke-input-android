@@ -176,7 +176,7 @@ public class KeyPreviewPlane extends View {
         (int) Valuey.clipValueToRange(
           key.x - (keyPreviewWidth - key.width) / 2f,
           0,
-          this.width
+          this.width - keyPreviewWidth
         );
       final int previewY = (
         key.y
