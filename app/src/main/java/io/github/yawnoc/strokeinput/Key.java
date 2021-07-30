@@ -194,7 +194,7 @@ public class Key {
         attributesArray,
         R.styleable.Key_keyPreviewMarginY,
         grandparentKeyboard.getScreenHeight(),
-        parentRow.keyPreviewMargin
+        parentRow.keyPreviewMarginY
       );
     
     attributesArray.recycle();
