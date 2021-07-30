@@ -8,6 +8,7 @@
   - Fixed popups not appearing when rapidly alternating between keys
   - Eliminated transition animation when moving between different-sized keys
   - Implemented time delay for dismissal of key previews
+- Fixed missing logic for touch event cancel action
 
 
 ## [v0.6.4] Key previews (2021-07-24)
