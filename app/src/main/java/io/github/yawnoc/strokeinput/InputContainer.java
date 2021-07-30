@@ -487,7 +487,6 @@ public class InputContainer
             }
           }
         }
-        
         break;
       
       case MotionEvent.ACTION_UP:
@@ -513,7 +512,6 @@ public class InputContainer
           sendUpEvent(upKey, true);
           break;
         }
-        
         break;
       
       case MotionEvent.ACTION_CANCEL:
