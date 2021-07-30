@@ -259,19 +259,21 @@ public class InputContainer
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     
-    keyPreviewPlane.updateDimensions(
-      screenWidth,
-      screenHeight,
-      keyboardHeight
-    );
-    keyPreviewPlanePopup.setWidth(screenWidth);
-    keyPreviewPlanePopup.setHeight(screenHeight);
-    keyPreviewPlanePopup.showAtLocation(
-      this,
-      Gravity.NO_GRAVITY,
-      0,
-      keyboardHeight - screenHeight
-    );
+    if (!keyPreviewPlanePopup.isShowing()) {
+      keyPreviewPlane.updateDimensions(
+        screenWidth,
+        screenHeight,
+        keyboardHeight
+      );
+      keyPreviewPlanePopup.setWidth(screenWidth);
+      keyPreviewPlanePopup.setHeight(screenHeight);
+      keyPreviewPlanePopup.showAtLocation(
+        this,
+        Gravity.NO_GRAVITY,
+        0,
+        keyboardHeight - screenHeight
+      );
+    }
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
   }
