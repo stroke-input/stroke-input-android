@@ -267,12 +267,7 @@ public class InputContainer
       );
       keyPreviewPlanePopup.setWidth(screenWidth);
       keyPreviewPlanePopup.setHeight(screenHeight);
-      keyPreviewPlanePopup.showAtLocation(
-        this,
-        Gravity.NO_GRAVITY,
-        0,
-        keyboardHeight - screenHeight
-      );
+      keyPreviewPlanePopup.showAtLocation(this, Gravity.BOTTOM, 0, 0);
     }
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
