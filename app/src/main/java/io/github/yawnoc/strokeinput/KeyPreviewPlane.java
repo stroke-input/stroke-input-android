@@ -135,6 +135,9 @@ public class KeyPreviewPlane extends View {
   @Override
   public void onDraw(final Canvas canvas) {
     
+    // DEBUGGING, remove when done
+    canvas.drawColor(0x80ff0000);
+    
     for (final Key key : keyList) {
       
       final int keyPreviewWidth =
