@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed key preview vertical position on devices with soft buttons
+
 
 ## [v0.7.1] Key previews shift fix (2021-07-30)
 

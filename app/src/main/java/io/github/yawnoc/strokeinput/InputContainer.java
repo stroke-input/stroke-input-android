@@ -27,6 +27,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -34,6 +35,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -277,16 +279,37 @@ public class InputContainer
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     
-    if (!keyPreviewPlanePopup.isShowing()) {
-      keyPreviewPlane.updateDimensions(
-        screenWidth,
-        screenHeight,
-        keyboardHeight
-      );
-      keyPreviewPlanePopup.setWidth(screenWidth);
-      keyPreviewPlanePopup.setHeight(screenHeight);
-      keyPreviewPlanePopup.showAtLocation(this, Gravity.BOTTOM, 0, 0);
+    keyPreviewPlane.updateDimensions(
+      screenWidth,
+      screenHeight,
+      keyboardHeight
+    );
+    keyPreviewPlanePopup.dismiss();
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    
+    final int softButtonsHeight;
+    if (Build.VERSION.SDK_INT < 23) {
+      softButtonsHeight = 0;
     }
+    else if (Build.VERSION.SDK_INT < 30) {
+      softButtonsHeight =
+        this.getRootWindowInsets()
+          .getSystemWindowInsetBottom(); // deprecated
+    }
+    else {
+      softButtonsHeight =
+        this.getRootWindowInsets()
+          .getInsets(WindowInsets.Type.navigationBars())
+          .bottom;
+    }
+    
+    keyPreviewPlanePopup.showAtLocation(
+      this,
+      Gravity.BOTTOM,
+      0,
+      softButtonsHeight
+    );
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
   }
