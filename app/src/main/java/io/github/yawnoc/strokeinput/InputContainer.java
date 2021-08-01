@@ -198,15 +198,6 @@ public class InputContainer
     debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
   }
   
-  @Override
-  protected void onDetachedFromWindow() {
-    
-    // Prevent key preview plane persisting on screen rotate
-    keyPreviewPlanePopup.dismiss();
-    
-    super.onDetachedFromWindow();
-  }
-  
   /*
     A listener for input events.
   */
@@ -312,6 +303,15 @@ public class InputContainer
     );
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
+  }
+  
+  @Override
+  protected void onDetachedFromWindow() {
+    
+    // Prevent key preview plane persisting on screen rotate
+    keyPreviewPlanePopup.dismiss();
+    
+    super.onDetachedFromWindow();
   }
   
   @Override
