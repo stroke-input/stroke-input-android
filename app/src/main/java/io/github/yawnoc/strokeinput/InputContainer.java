@@ -266,7 +266,7 @@ public class InputContainer
       }
     }
     
-    if (getWindowToken() != null) {
+    if (getWindowToken() != null) { // needed in API level 29
       keyPreviewPlanePopup.showAtLocation(
         this,
         Gravity.BOTTOM | Gravity.LEFT,
