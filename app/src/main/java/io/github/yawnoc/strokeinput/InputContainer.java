@@ -198,15 +198,6 @@ public class InputContainer
     debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
   }
   
-  @Override
-  protected void onDetachedFromWindow() {
-    
-    // Prevent key preview plane persisting on screen rotate
-    keyPreviewPlanePopup.dismiss();
-    
-    super.onDetachedFromWindow();
-  }
-  
   /*
     A listener for input events.
   */
@@ -233,6 +224,53 @@ public class InputContainer
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
+  }
+  
+  public void showKeyPreviewPlane() {
+    
+    final int screenWidth = keyboard.getScreenWidth();
+    final int screenHeight = keyboard.getScreenHeight();
+    final int keyboardHeight = keyboard.getHeight();
+    
+    keyPreviewPlane.updateDimensions(
+      screenWidth,
+      screenHeight,
+      keyboardHeight
+    );
+    keyPreviewPlanePopup.dismiss();
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    
+    final int softButtonsHeight;
+    if (Build.VERSION.SDK_INT < 23) {
+      softButtonsHeight = 0;
+    }
+    else {
+      final WindowInsets rootWindowInsets = this.getRootWindowInsets();
+      if (rootWindowInsets == null) {
+        softButtonsHeight = 0;
+      }
+      else {
+        if (Build.VERSION.SDK_INT < 30) {
+          softButtonsHeight =
+            rootWindowInsets
+              .getSystemWindowInsetBottom(); // deprecated in API level 30
+        }
+        else {
+          softButtonsHeight =
+            rootWindowInsets
+              .getInsets(WindowInsets.Type.navigationBars())
+              .bottom;
+        }
+      }
+    }
+    
+    keyPreviewPlanePopup.showAtLocation(
+      this,
+      Gravity.BOTTOM,
+      0,
+      softButtonsHeight
+    );
   }
   
   public void resetKeyRepeatIntervalMilliseconds() {
@@ -276,42 +314,19 @@ public class InputContainer
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
     );
     
-    final int screenWidth = keyboard.getScreenWidth();
-    final int screenHeight = keyboard.getScreenHeight();
-    
-    keyPreviewPlane.updateDimensions(
-      screenWidth,
-      screenHeight,
-      keyboardHeight
-    );
-    keyPreviewPlanePopup.dismiss();
-    keyPreviewPlanePopup.setWidth(screenWidth);
-    keyPreviewPlanePopup.setHeight(screenHeight);
-    
-    final int softButtonsHeight;
-    if (Build.VERSION.SDK_INT < 23) {
-      softButtonsHeight = 0;
-    }
-    else if (Build.VERSION.SDK_INT < 30) {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getSystemWindowInsetBottom(); // deprecated
-    }
-    else {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getInsets(WindowInsets.Type.navigationBars())
-          .bottom;
-    }
-    
-    keyPreviewPlanePopup.showAtLocation(
-      this,
-      Gravity.BOTTOM,
-      0,
-      softButtonsHeight
-    );
-    
     setMeasuredDimension(keyboardWidth, keyboardHeight);
+  }
+  
+  @Override
+  public void onSizeChanged(
+    final int width,
+    final int height,
+    final int oldWidth,
+    final int oldHeight
+  )
+  {
+    super.onSizeChanged(width, height, oldWidth, oldHeight);
+    showKeyPreviewPlane();
   }
   
   @Override
@@ -420,6 +435,12 @@ public class InputContainer
     colourHSL[2] = colourLightness;
     
     return ColorUtils.HSLToColor(colourHSL);
+  }
+  
+  @Override
+  protected void onDetachedFromWindow() {
+    keyPreviewPlanePopup.dismiss(); // prevent persist on screen rotate
+    super.onDetachedFromWindow();
   }
   
   /*

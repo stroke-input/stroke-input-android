@@ -77,6 +77,12 @@ public class StrokeInputService
   }
   
   @Override
+  public void onStartInputView(EditorInfo editorInfo, boolean isRestarting) {
+    super.onStartInputView(editorInfo, isRestarting);
+    inputContainer.showKeyPreviewPlane();
+  }
+  
+  @Override
   public void onKey(final String valueText) {
     
     final InputConnection inputConnection = getCurrentInputConnection();

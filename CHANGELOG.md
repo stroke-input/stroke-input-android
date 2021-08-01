@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Fixed key previews disappearing on change app
 - Fixed key preview vertical position on devices with soft buttons
 
 
