@@ -318,15 +318,6 @@ public class InputContainer
   }
   
   @Override
-  protected void onDetachedFromWindow() {
-    
-    // Prevent key preview plane persisting on screen rotate
-    keyPreviewPlanePopup.dismiss();
-    
-    super.onDetachedFromWindow();
-  }
-  
-  @Override
   public void onDraw(final Canvas canvas) {
     
     if (keyboard == null) {
@@ -432,6 +423,15 @@ public class InputContainer
     colourHSL[2] = colourLightness;
     
     return ColorUtils.HSLToColor(colourHSL);
+  }
+  
+  @Override
+  protected void onDetachedFromWindow() {
+    
+    // Prevent key preview plane persisting on screen rotate
+    keyPreviewPlanePopup.dismiss();
+    
+    super.onDetachedFromWindow();
   }
   
   /*
