@@ -226,6 +226,45 @@ public class InputContainer
     requestLayout();
   }
   
+  public void showKeyPreviewPlane() {
+    
+    final int screenWidth = keyboard.getScreenWidth();
+    final int screenHeight = keyboard.getScreenHeight();
+    final int keyboardHeight = keyboard.getHeight();
+    
+    keyPreviewPlane.updateDimensions(
+      screenWidth,
+      screenHeight,
+      keyboardHeight
+    );
+    keyPreviewPlanePopup.dismiss();
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    
+    final int softButtonsHeight;
+    if (Build.VERSION.SDK_INT < 23) {
+      softButtonsHeight = 0;
+    }
+    else if (Build.VERSION.SDK_INT < 30) {
+      softButtonsHeight =
+        this.getRootWindowInsets()
+          .getSystemWindowInsetBottom(); // deprecated
+    }
+    else {
+      softButtonsHeight =
+        this.getRootWindowInsets()
+          .getInsets(WindowInsets.Type.navigationBars())
+          .bottom;
+    }
+    
+    keyPreviewPlanePopup.showAtLocation(
+      this,
+      Gravity.BOTTOM,
+      0,
+      softButtonsHeight
+    );
+  }
+  
   public void resetKeyRepeatIntervalMilliseconds() {
     keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
   }
@@ -271,50 +310,15 @@ public class InputContainer
   }
   
   @Override
-  protected void onSizeChanged(
+  public void onSizeChanged(
     final int width,
     final int height,
     final int oldWidth,
     final int oldHeight
   )
   {
-    final int screenWidth = keyboard.getScreenWidth();
-    final int screenHeight = keyboard.getScreenHeight();
-    final int keyboardHeight = keyboard.getHeight();
-    
-    keyPreviewPlane.updateDimensions(
-      screenWidth,
-      screenHeight,
-      keyboardHeight
-    );
-    keyPreviewPlanePopup.dismiss();
-    keyPreviewPlanePopup.setWidth(screenWidth);
-    keyPreviewPlanePopup.setHeight(screenHeight);
-    
-    final int softButtonsHeight;
-    if (Build.VERSION.SDK_INT < 23) {
-      softButtonsHeight = 0;
-    }
-    else if (Build.VERSION.SDK_INT < 30) {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getSystemWindowInsetBottom(); // deprecated
-    }
-    else {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getInsets(WindowInsets.Type.navigationBars())
-          .bottom;
-    }
-    
-    keyPreviewPlanePopup.showAtLocation(
-      this,
-      Gravity.BOTTOM,
-      0,
-      softButtonsHeight
-    );
-    
     super.onSizeChanged(width, height, oldWidth, oldHeight);
+    showKeyPreviewPlane();
   }
   
   @Override
