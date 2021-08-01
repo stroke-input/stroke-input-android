@@ -267,8 +267,20 @@ public class InputContainer
       Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
     );
     
+    setMeasuredDimension(keyboardWidth, keyboardHeight);
+  }
+  
+  @Override
+  protected void onSizeChanged(
+    final int width,
+    final int height,
+    final int oldWidth,
+    final int oldHeight
+  )
+  {
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
+    final int keyboardHeight = keyboard.getHeight();
     
     keyPreviewPlane.updateDimensions(
       screenWidth,
@@ -302,7 +314,7 @@ public class InputContainer
       softButtonsHeight
     );
     
-    setMeasuredDimension(keyboardWidth, keyboardHeight);
+    super.onSizeChanged(width, height, oldWidth, oldHeight);
   }
   
   @Override
