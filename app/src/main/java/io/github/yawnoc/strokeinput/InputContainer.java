@@ -245,16 +245,24 @@ public class InputContainer
     if (Build.VERSION.SDK_INT < 23) {
       softButtonsHeight = 0;
     }
-    else if (Build.VERSION.SDK_INT < 30) {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getSystemWindowInsetBottom(); // deprecated
-    }
     else {
-      softButtonsHeight =
-        this.getRootWindowInsets()
-          .getInsets(WindowInsets.Type.navigationBars())
-          .bottom;
+      final WindowInsets rootWindowInsets = this.getRootWindowInsets();
+      if (rootWindowInsets == null) {
+        softButtonsHeight = 0;
+      }
+      else {
+        if (Build.VERSION.SDK_INT < 30) {
+          softButtonsHeight =
+            rootWindowInsets
+              .getSystemWindowInsetBottom(); // deprecated in API level 30
+        }
+        else {
+          softButtonsHeight =
+            rootWindowInsets
+              .getInsets(WindowInsets.Type.navigationBars())
+              .bottom;
+        }
+      }
     }
     
     keyPreviewPlanePopup.showAtLocation(
