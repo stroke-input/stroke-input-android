@@ -226,6 +226,7 @@ public class InputContainer
     requestLayout();
   }
   
+  @SuppressLint("RtlHardcoded")
   public void showKeyPreviewPlane() {
     
     final int screenWidth = keyboard.getScreenWidth();
@@ -268,7 +269,7 @@ public class InputContainer
     if (getWindowToken() != null) {
       keyPreviewPlanePopup.showAtLocation(
         this,
-        Gravity.BOTTOM,
+        Gravity.BOTTOM | Gravity.LEFT,
         0,
         softButtonsHeight
       );
