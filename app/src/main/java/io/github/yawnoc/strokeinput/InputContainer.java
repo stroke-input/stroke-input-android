@@ -439,10 +439,7 @@ public class InputContainer
   
   @Override
   protected void onDetachedFromWindow() {
-    
-    // Prevent key preview plane persisting on screen rotate
-    keyPreviewPlanePopup.dismiss();
-    
+    keyPreviewPlanePopup.dismiss(); // prevent persist on screen rotate
     super.onDetachedFromWindow();
   }
   
