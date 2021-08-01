@@ -265,12 +265,14 @@ public class InputContainer
       }
     }
     
-    keyPreviewPlanePopup.showAtLocation(
-      this,
-      Gravity.BOTTOM,
-      0,
-      softButtonsHeight
-    );
+    if (getWindowToken() != null) {
+      keyPreviewPlanePopup.showAtLocation(
+        this,
+        Gravity.BOTTOM,
+        0,
+        softButtonsHeight
+      );
+    }
   }
   
   public void resetKeyRepeatIntervalMilliseconds() {
