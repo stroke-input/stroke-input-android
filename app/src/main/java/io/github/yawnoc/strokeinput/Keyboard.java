@@ -42,6 +42,8 @@ public class Keyboard {
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
+  private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
+  
   private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
@@ -106,6 +108,7 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
+    adjustKeyboardVertically();
   }
   
   public List<Key> getKeyList() {
@@ -139,7 +142,7 @@ public class Keyboard {
       boolean inRow = false;
       
       int x = 0;
-      int y = KEYBOARD_GUTTER_HEIGHT_PX;
+      int y = 0;
       Key key = null;
       Row row = null;
       
@@ -190,12 +193,27 @@ public class Keyboard {
       
       width = maximumX;
       height = maximumY;
-      
     }
     catch (Exception exception) {
       Log.e("Keyboard.loadKeyboard", "Exception: " + exception);
       exception.printStackTrace();
     }
+  }
+  
+  private void adjustKeyboardVertically() {
+    
+    final float keyboardHeightCorrectionFactor =
+      Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
+    
+    for (Key key : keyList) {
+      key.y *= keyboardHeightCorrectionFactor;
+      key.y += KEYBOARD_GUTTER_HEIGHT_PX;
+      key.height *= keyboardHeightCorrectionFactor;
+      key.textOffsetY *= keyboardHeightCorrectionFactor;
+      key.previewMarginY *= keyboardHeightCorrectionFactor;
+    }
+    
+    height *= keyboardHeightCorrectionFactor;
   }
   
   private void parseKeyboardAttributes(
