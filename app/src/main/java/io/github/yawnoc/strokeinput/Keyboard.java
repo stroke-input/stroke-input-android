@@ -44,7 +44,7 @@ public class Keyboard {
   
   private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
   
-  private static final float DEFAULT_KEY_WIDTH_PROPORTION = 0.1f;
+  private static final float DEFAULT_KEY_WIDTH_FRACTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
   
@@ -249,7 +249,7 @@ public class Keyboard {
         attributesArray,
         R.styleable.Keyboard_keyWidth,
         screenWidth,
-        (int) (DEFAULT_KEY_WIDTH_PROPORTION * screenWidth)
+        (int) (DEFAULT_KEY_WIDTH_FRACTION * screenWidth)
       );
     keyHeight =
       Valuey.getDimensionOrFraction(
