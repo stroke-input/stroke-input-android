@@ -21,6 +21,7 @@
 package io.github.yawnoc.utilities;
 
 import android.content.res.TypedArray;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 public class Valuey {
@@ -36,6 +37,22 @@ public class Valuey {
   )
   {
     return Math.max(rangeMin, Math.min(rangeMax, value));
+  }
+  
+  public static float pxFromDp(
+    final float dp,
+    final DisplayMetrics displayMetrics
+  )
+  {
+    return dp * displayMetrics.density;
+  }
+  
+  public static float pxFromSp(
+    final float sp,
+    final DisplayMetrics displayMetrics
+  )
+  {
+    return sp * displayMetrics.scaledDensity;
   }
   
   public static int getDimensionOrFraction(

@@ -97,13 +97,13 @@ public class Keyboard {
     screenHeight = displayMetrics.heightPixels;
     
     defaultKeyHeightPx =
-      (int) (DEFAULT_KEY_HEIGHT_DP * displayMetrics.density);
+      (int) Valuey.pxFromDp(DEFAULT_KEY_HEIGHT_DP, displayMetrics);
     defaultKeyBorderThicknessPx =
-      (int) (DEFAULT_KEY_BORDER_THICKNESS_DP * displayMetrics.density);
+      (int) Valuey.pxFromDp(DEFAULT_KEY_BORDER_THICKNESS_DP, displayMetrics);
     defaultKeyTextSizePx =
-      (int) (DEFAULT_KEY_TEXT_SIZE_SP * displayMetrics.scaledDensity);
+      (int) Valuey.pxFromSp(DEFAULT_KEY_TEXT_SIZE_SP, displayMetrics);
     defaultKeyPreviewMarginYPx =
-      (int) (DEFAULT_KEY_PREVIEW_MARGIN_Y_DP * displayMetrics.density);
+      (int) Valuey.pxFromDp(DEFAULT_KEY_PREVIEW_MARGIN_Y_DP, displayMetrics);
     
     keyList = new ArrayList<>();
     
