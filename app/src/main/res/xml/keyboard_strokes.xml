@@ -25,16 +25,8 @@
     <Key app:keyValueText="0" />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
-    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
-    <Key
-      app:keyValueText="？"
-      app:keyWidth="@dimen/key_width__digit"
-    />
-    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key
-      app:keyValueText="！"
-      app:keyWidth="@dimen/key_width__digit"
-    />
+    <!-- U+FF1B FULLWIDTH SEMICOLON -->
+    <Key app:keyValueText="；" />
     <!-- U+31D0 CJK STROKE H -->
     <Key
       app:keyValueText="STROKE_1"
@@ -56,25 +48,12 @@
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- About: U+1F6C8 CIRCLED INFORMATION SOURCE -->
-    <Key
-      app:keyValueText="ABOUT"
-      app:keyDisplayText="🛈"
-      app:keyIsLongPressable="true"
-      app:keyIsPreviewable="false"
-    />
+    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
+    <Key app:keyValueText="！" />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key
-      app:keyValueText="、"
-      app:keyWidth="@dimen/key_width__digit"
-    />
-    <!-- U+FF1B FULLWIDTH SEMICOLON -->
-    <Key
-      app:keyValueText="；"
-      app:keyWidth="@dimen/key_width__digit"
-    />
+    <Key app:keyValueText="、" />
     <!-- U+31D4 CJK STROKE D -->
     <Key
       app:keyValueText="STROKE_4"
@@ -89,11 +68,8 @@
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key
-      app:keyValueText="々"
-      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
-    />
+    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
+    <Key app:keyValueText="？" />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
     <Key
       app:keyValueText="BACKSPACE"

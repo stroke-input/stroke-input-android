@@ -107,10 +107,6 @@ public class StrokeInputService
     
     switch (valueText) {
       
-      case "ABOUT":
-        Contexty.launchApplication(this, BuildConfig.APPLICATION_ID);
-        break;
-      
       case "BACKSPACE":
         inputConnection.sendKeyEvent(
           new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
@@ -167,9 +163,6 @@ public class StrokeInputService
     
     if (valueText.equals("SPACE")) {
       Contexty.showSystemKeyboardSwitcher(this);
-    }
-    else if (valueText.equals("ABOUT")) {
-      inputContainer.toggleDebugMode();
     }
   }
   
