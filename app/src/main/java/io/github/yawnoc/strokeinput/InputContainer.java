@@ -239,11 +239,13 @@ public class InputContainer
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     final int keyboardHeight = keyboard.getHeight();
+    final int popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
     
     keyPreviewPlane.updateDimensions(
       screenWidth,
       screenHeight,
-      keyboardHeight
+      keyboardHeight,
+      popupBufferZoneHeight
     );
     keyPreviewPlanePopup.dismiss();
     keyPreviewPlanePopup.setWidth(screenWidth);
