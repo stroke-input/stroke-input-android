@@ -5,6 +5,7 @@
 
 - Reshuffled and changed existing symbols keys
 - Added second symbols keyboard for ideographic description characters
+- Changed debug mode toggle to long press enter key
 
 
 ## [v0.7.2] Clipped previews fix (2021-08-08)

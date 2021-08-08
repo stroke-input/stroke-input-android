@@ -106,6 +106,7 @@
     <Key
       app:keyValueText="ENTER"
       app:keyDisplayText="⏎"
+      app:keyIsLongPressable="true"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
       app:keyIsPreviewable="false"

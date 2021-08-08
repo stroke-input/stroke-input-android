@@ -33,7 +33,7 @@
 ## Miscellaneous ##
 
 {: \space-bar: <kbd class="space-bar">◀ English ▶</kbd> :}
-{: \about-key: <kbd>🛈</kbd> :}
+{: \enter-key: <kbd>⏎</kbd> :}
 
 ''''
 ==
@@ -43,7 +43,7 @@
   , Long press \space-bar
   , Change to other keyboard
 ==
-  , Long press \about-key
+  , Long press \enter-key
   , Testing use only
 ''''
 

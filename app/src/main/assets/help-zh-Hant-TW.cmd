@@ -35,7 +35,7 @@
 ## 雜項 ##
 
 {: \space-bar: <kbd class="space-bar">◀ 中文 ▶</kbd> :}
-{: \about-key: <kbd>🛈</kbd> :}
+{: \enter-key: <kbd>⏎</kbd> :}
 
 ''''
 ==
@@ -45,7 +45,7 @@
   , 長按 \space-bar
   , 轉其他鍵盤
 ==
-  , 長按 \about-key
+  , 長按 \enter-key
   , 測試專用
 ''''
 
