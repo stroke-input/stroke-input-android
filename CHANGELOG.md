@@ -6,6 +6,10 @@
 - Reshuffled and changed existing symbols keys
 - Added second symbols keyboard for ideographic description characters
 - Changed debug mode toggle to long press enter key
+- Updated keyboard font to [Stroke Input Keyboard v1.6.1]
+  (adds ideographic description characters, horizontal ellipsis,
+  and white lenticular brackets, and changes fullwidth space to
+  a wide version of the open box glyph)
 
 
 ## [v0.7.2] Clipped previews fix (2021-08-08)
@@ -195,6 +199,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.6.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.6.1
 [Stroke Input Keyboard v1.5.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.5.1
 [Stroke Input Keyboard v1.4.0]:

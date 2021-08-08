@@ -16,7 +16,6 @@
     <Key app:keyValueText="（" />
     <Key app:keyValueText="）" />
     <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
-    <!-- TODO: keyboard font glyphs for U+3016, U+3017 -->
     <Key app:keyValueText="【" />
     <Key app:keyValueText="】" />
     <Key app:keyValueText="〖" />
@@ -60,10 +59,8 @@
       app:keyIsPreviewable="false"
     />
     <!-- U+2026 HORIZONTAL ELLIPSIS -->
-    <!-- TODO: keyboard font glyph -->
     <Key app:keyValueText="…" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
-    <!-- TODO: keyboard font glyph change -->
     <Key app:keyValueText="　" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
     <Key app:keyValueText="・" />
