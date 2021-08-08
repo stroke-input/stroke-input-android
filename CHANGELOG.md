@@ -4,6 +4,8 @@
 ## [Unreleased]
 
 - Limited keyboard height to 50% of screen
+- Allocated space above keyboard for candidates bar
+- Fixed key previews clipped in Android 9 (API level 28)
 - Fixed key previews disappearing on change app
 - Fixed key preview vertical position on devices with soft buttons
 
