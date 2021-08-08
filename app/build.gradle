@@ -9,8 +9,8 @@ android {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 17
     targetSdkVersion 30
-    versionCode 16
-    versionName "0.7.1"
+    versionCode 17
+    versionName "0.7.2"
   }
   buildTypes {
     release {

@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.2] Clipped previews fix (2021-08-08)
+
 - Limited keyboard height to 50% of screen
 - Allocated space above keyboard for candidates bar
 - Fixed key previews clipped in Android 9 (API level 28)
@@ -154,7 +157,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.2...HEAD
+[v0.7.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.1...v0.7.2
 [v0.7.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.0...v0.7.1
 [v0.7.0]:
