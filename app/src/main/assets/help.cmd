@@ -33,7 +33,7 @@
 ## Miscellaneous ##
 
 {: \space-bar: <kbd class="space-bar">◀ English ▶</kbd> :}
-{: \enter-key: <kbd>⏎</kbd> :}
+{: \enter-key: <kbd class="enter-key">⏎</kbd> :}
 
 ''''
 ==

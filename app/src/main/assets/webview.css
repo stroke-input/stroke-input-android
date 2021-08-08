@@ -2,6 +2,7 @@
   --umbrella-orange: #FFCE73;
   --umbrella-yellow: #FFFF80;
   --key-fill: #181818;
+  --enter-key-fill: #00CE00;
 }
 
 @font-face {
@@ -84,4 +85,10 @@ td {
 }
 .space-bar {
   font-size: 0.8em;
+}
+.enter-key {
+  background: var(--enter-key-fill);
+  font-size: 1.25em;
+  min-width: 2em;
+  padding: 0;
 }

@@ -35,7 +35,7 @@
 ## 雜項 ##
 
 {: \space-bar: <kbd class="space-bar">◀ 中文 ▶</kbd> :}
-{: \enter-key: <kbd>⏎</kbd> :}
+{: \enter-key: <kbd class="enter-key">⏎</kbd> :}
 
 ''''
 ==
