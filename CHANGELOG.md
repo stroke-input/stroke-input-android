@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Reshuffled and changed existing symbols keys
+
 
 ## [v0.7.2] Clipped previews fix (2021-08-08)
 

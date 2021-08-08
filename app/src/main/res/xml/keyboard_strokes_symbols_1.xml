@@ -12,31 +12,25 @@
     app:keyTextSize="@dimen/font_size__strokes_digit"
     app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
   >
-    <!-- U+FF1A FULLWIDTH COLON -->
-    <Key
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-      app:keyValueText="："
-    />
+    <!-- Round brackets: U+FF08, U+FF09 -->
+    <Key app:keyValueText="（" />
+    <Key app:keyValueText="）" />
+    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
+    <!-- TODO: keyboard font glyphs for U+3016, U+3017 -->
+    <Key app:keyValueText="【" />
+    <Key app:keyValueText="】" />
+    <Key app:keyValueText="〖" />
+    <Key app:keyValueText="〗" />
     <!-- Corner brackets: U+300C to U+300F -->
     <Key app:keyValueText="「" />
     <Key app:keyValueText="」" />
     <Key app:keyValueText="『" />
     <Key app:keyValueText="』" />
-    <!-- Angle brackets: U+3008 to U+300B -->
-    <Key app:keyValueText="〈" />
-    <Key app:keyValueText="〉" />
-    <Key app:keyValueText="《" />
-    <Key app:keyValueText="》" />
   </Row>
   <Row>
-    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
+    <!-- U+FF1A FULLWIDTH COLON -->
     <Key
-      app:keyValueText="？"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key
-      app:keyValueText="！"
+      app:keyValueText="："
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+301C WAVE DASH -->
@@ -44,19 +38,32 @@
       app:keyValueText="〜"
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
-    <!-- Round brackets: U+FF08, U+FF09 -->
-    <Key app:keyValueText="（" />
-    <Key app:keyValueText="）" />
-    <!-- Lenticular brackets: U+3010, U+3011 -->
-    <Key app:keyValueText="【" />
-    <Key app:keyValueText="】" />
+    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
+    <Key
+      app:keyValueText="々"
+      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
+    <!-- Angle brackets: U+3008 to U+300B -->
+    <Key app:keyValueText="〈" />
+    <Key app:keyValueText="〉" />
+    <Key app:keyValueText="《" />
+    <Key app:keyValueText="》" />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
-    <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key app:keyValueText="、" />
-    <!-- U+FF1B FULLWIDTH SEMICOLON -->
-    <Key app:keyValueText="；" />
+    <!-- Switch to strokes symbols 2 keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_2"
+      app:keyDisplayText="1/2"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- U+2026 HORIZONTAL ELLIPSIS -->
+    <!-- TODO: keyboard font glyph -->
+    <Key app:keyValueText="…" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
+    <!-- TODO: keyboard font glyph change -->
     <Key app:keyValueText="　" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
     <Key app:keyValueText="・" />
