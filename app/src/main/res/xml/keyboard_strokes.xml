@@ -91,8 +91,7 @@
     />
     <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
     <Key
-      app:keyValueText="DITTO"
-      app:keyDisplayText="々"
+      app:keyValueText="々"
       app:keyTextSize="@dimen/font_size__strokes_ditto_key"
     />
     <!-- Backspace: U+232B ERASE TO THE LEFT -->
