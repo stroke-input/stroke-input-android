@@ -256,7 +256,7 @@ public class Keyboard {
         final int keyPreviewHeight =
           (int) (key.previewMagnification * key.height);
         popupBufferZoneTopY = Math.min(
-          key.y - keyPreviewHeight - key.previewMarginY,
+          key.y - keyPreviewHeight - key.previewMarginY - key.borderThickness,
           popupBufferZoneTopY
         );
       }
