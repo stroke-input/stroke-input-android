@@ -25,6 +25,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Xml;
@@ -36,11 +37,19 @@ import io.github.yawnoc.utilities.Valuey;
 
 /*
   A container that holds rows of keys, to be declared in a layout XML.
+  It also determines the vertical placement of the stroke sequence bar
+  and the candidates bar, which are separate entities to be placed
+  above the keyboard (in the parent input container).
 */
 public class Keyboard {
   
-  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
+  private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 24;
+  private final int strokeSequenceBarHeightPx;
+  private static final int CANDIDATES_BAR_HEIGHT_DP = 36;
+  private final int candidatesBarHeightPx;
   public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  
+  private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   
   private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
   
@@ -61,6 +70,11 @@ public class Keyboard {
   private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
   private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 16;
   private final int defaultKeyPreviewMarginYPx;
+  
+  // Parent input container properties
+  private int popupBufferZoneHeight;
+  private int parentInputContainerHeight;
+  private int parentInputContainerTouchableTopY;
   
   // Keyboard properties
   private int width;
@@ -88,13 +102,22 @@ public class Keyboard {
   private final int screenWidth;
   private final int screenHeight;
   
-  public Keyboard(final Context context, final int layoutResourceId) {
-    
+  public Keyboard(
+    final Context context,
+    final int layoutResourceId,
+    final boolean isFullscreenMode
+  )
+  {
     final DisplayMetrics displayMetrics =
       context.getResources().getDisplayMetrics();
     
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
+    
+    strokeSequenceBarHeightPx =
+      (int) Valuey.pxFromDp(STROKE_SEQUENCE_BAR_HEIGHT_DP, displayMetrics);
+    candidatesBarHeightPx =
+      (int) Valuey.pxFromDp(CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
     
     defaultKeyHeightPx =
       (int) Valuey.pxFromDp(DEFAULT_KEY_HEIGHT_DP, displayMetrics);
@@ -108,11 +131,23 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     loadKeyboard(context, context.getResources().getXml(layoutResourceId));
-    adjustKeyboardVertically();
+    adjustKeyboardVertically(isFullscreenMode);
   }
   
   public List<Key> getKeyList() {
     return keyList;
+  }
+  
+  public int getPopupBufferZoneHeight() {
+    return popupBufferZoneHeight;
+  }
+  
+  public int getParentInputContainerHeight() {
+    return parentInputContainerHeight;
+  }
+  
+  public int getParentInputContainerTouchableTopY() {
+    return parentInputContainerTouchableTopY;
   }
   
   public int getWidth() {
@@ -142,7 +177,7 @@ public class Keyboard {
       boolean inRow = false;
       
       int x = 0;
-      int y = 0;
+      int y = KEYBOARD_GUTTER_HEIGHT_PX;
       Key key = null;
       Row row = null;
       
@@ -200,20 +235,42 @@ public class Keyboard {
     }
   }
   
-  private void adjustKeyboardVertically() {
+  private void adjustKeyboardVertically(final boolean isFullscreenMode) {
     
     final float keyboardHeightCorrectionFactor =
       Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
     for (Key key : keyList) {
       key.y *= keyboardHeightCorrectionFactor;
-      key.y += KEYBOARD_GUTTER_HEIGHT_PX;
       key.height *= keyboardHeightCorrectionFactor;
       key.textOffsetY *= keyboardHeightCorrectionFactor;
       key.previewMarginY *= keyboardHeightCorrectionFactor;
     }
-    
     height *= keyboardHeightCorrectionFactor;
+    
+    if (Build.VERSION.SDK_INT == 28 && !isFullscreenMode) {
+      // API level 28 is dumb, see <https://stackoverflow.com/q/52929466>
+      int popupBufferZoneTopY =
+        -(strokeSequenceBarHeightPx + candidatesBarHeightPx);
+      for (Key key : keyList) {
+        final int keyPreviewHeight =
+          (int) (key.previewMagnification * key.height);
+        popupBufferZoneTopY = Math.min(
+          key.y - keyPreviewHeight - key.previewMarginY,
+          popupBufferZoneTopY
+        );
+      }
+      popupBufferZoneHeight = -popupBufferZoneTopY;
+    }
+    else {
+      popupBufferZoneHeight = candidatesBarHeightPx;
+    }
+    for (Key key : keyList) {
+      key.y += popupBufferZoneHeight;
+    }
+    parentInputContainerHeight = height + popupBufferZoneHeight;
+    parentInputContainerTouchableTopY =
+      Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
   }
   
   private void parseKeyboardAttributes(

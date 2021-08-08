@@ -54,13 +54,13 @@ public class StrokeInputService
         getLayoutInflater().inflate(R.layout.input_container, null);
     
     strokesKeyboard =
-      new Keyboard(this, R.xml.keyboard_strokes);
+      new Keyboard(this, R.xml.keyboard_strokes, isFullscreenMode());
     strokesSymbolsKeyboard =
-      new Keyboard(this, R.xml.keyboard_strokes_symbols);
+      new Keyboard(this, R.xml.keyboard_strokes_symbols, isFullscreenMode());
     qwertyKeyboard =
-      new Keyboard(this, R.xml.keyboard_qwerty);
+      new Keyboard(this, R.xml.keyboard_qwerty, isFullscreenMode());
     qwertySymbolsKeyboard =
-      new Keyboard(this, R.xml.keyboard_qwerty_symbols);
+      new Keyboard(this, R.xml.keyboard_qwerty_symbols, isFullscreenMode());
     
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, "STROKES");
@@ -80,6 +80,17 @@ public class StrokeInputService
   public void onStartInputView(EditorInfo editorInfo, boolean isRestarting) {
     super.onStartInputView(editorInfo, isRestarting);
     inputContainer.showKeyPreviewPlane();
+  }
+  
+  @Override
+  public void onComputeInsets(InputMethodService.Insets insets) {
+    super.onComputeInsets(insets);
+    // API level 28 is dumb, see <https://stackoverflow.com/a/53326786>
+    final int touchableTopY = inputContainer.getTouchableTopY();
+    if (touchableTopY > 0) {
+      insets.visibleTopInsets = touchableTopY;
+      insets.contentTopInsets = touchableTopY;
+    }
   }
   
   @Override

@@ -44,10 +44,12 @@ import androidx.core.graphics.ColorUtils;
 
 /*
   A container that holds:
+    - Stroke sequence bar
     - Candidates bar
     - Keyboard
   TODO:
-    - Candidates
+    - Stroke sequence bar
+    - Candidates bar
 */
 public class InputContainer
   extends View
@@ -80,6 +82,7 @@ public class InputContainer
   private OnInputListener inputListener;
   private Keyboard keyboard;
   private Key[] keyArray;
+  private int touchableTopY;
   
   // Active key
   private Key activeKey;
@@ -226,6 +229,10 @@ public class InputContainer
     requestLayout();
   }
   
+  public int getTouchableTopY() {
+    return touchableTopY;
+  }
+  
   @SuppressLint("RtlHardcoded")
   public void showKeyPreviewPlane() {
     
@@ -300,24 +307,32 @@ public class InputContainer
   {
     final int keyboardWidth;
     final int keyboardHeight;
+    final int height;
+    final int popupBufferZoneHeight;
     
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
+      height = 0;
+      popupBufferZoneHeight = 0;
+      touchableTopY = 0;
     }
     else {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
+      height = keyboard.getParentInputContainerHeight();
+      popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
+      touchableTopY = keyboard.getParentInputContainerTouchableTopY();
     }
     
     keyboardRectangle.set(
       0,
-      Keyboard.KEYBOARD_GUTTER_HEIGHT_PX,
+      popupBufferZoneHeight,
       keyboardWidth,
-      Keyboard.KEYBOARD_GUTTER_HEIGHT_PX + keyboardHeight
+      popupBufferZoneHeight + keyboardHeight
     );
     
-    setMeasuredDimension(keyboardWidth, keyboardHeight);
+    setMeasuredDimension(keyboardWidth, height);
   }
   
   @Override
