@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.3] Symbols reshuffle (2021-08-09)
+
 - Reshuffled and changed existing symbols keys
 - Added second symbols keyboard for ideographic description characters
 - Changed debug mode toggle to long press enter key
@@ -165,7 +168,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.2...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.3...HEAD
+[v0.7.3]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.2...v0.7.3
 [v0.7.2]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.1...v0.7.2
 [v0.7.1]:
