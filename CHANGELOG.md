@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android Gradle Plugin to 7.0.0
+
 
 ## [v0.7.3] Symbols reshuffle (2021-08-09)
 
