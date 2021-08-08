@@ -39,6 +39,7 @@ public class StrokeInputService
   InputContainer inputContainer;
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
+  Keyboard strokesSymbols2Keyboard;
   Keyboard qwertyKeyboard;
   Keyboard qwertySymbolsKeyboard;
   
@@ -57,6 +58,8 @@ public class StrokeInputService
       new Keyboard(this, R.xml.keyboard_strokes, isFullscreenMode());
     strokesSymbols1Keyboard =
       new Keyboard(this, R.xml.keyboard_strokes_symbols_1, isFullscreenMode());
+    strokesSymbols2Keyboard =
+      new Keyboard(this, R.xml.keyboard_strokes_symbols_2, isFullscreenMode());
     qwertyKeyboard =
       new Keyboard(this, R.xml.keyboard_qwerty, isFullscreenMode());
     qwertySymbolsKeyboard =
@@ -65,6 +68,7 @@ public class StrokeInputService
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, "STROKES");
     nameFromKeyboard.put(strokesSymbols1Keyboard, "STROKES_SYMBOLS_1");
+    nameFromKeyboard.put(strokesSymbols2Keyboard, "STROKES_SYMBOLS_2");
     nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
@@ -128,6 +132,7 @@ public class StrokeInputService
       
       case "SWITCH_TO_STROKES":
       case "SWITCH_TO_STROKES_SYMBOLS_1":
+      case "SWITCH_TO_STROKES_SYMBOLS_2":
       case "SWITCH_TO_QWERTY":
       case "SWITCH_TO_QWERTY_SYMBOLS":
         final String keyboardName =
@@ -182,6 +187,7 @@ public class StrokeInputService
       switch (keyboardName) {
         case "STROKES":
         case "STROKES_SYMBOLS_1":
+        case "STROKES_SYMBOLS_2":
           switchKeyboardAndSaveName("QWERTY");
           break;
         case "QWERTY":

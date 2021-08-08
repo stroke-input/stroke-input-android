@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height__strokes"
+  app:keyWidth="@dimen/key_width__strokes_stroke"
+  app:keyTextSize="@dimen/font_size__strokes"
+  app:keyTextOffsetY="@dimen/baseline_correction__strokes"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row
+    app:keyHeight="@dimen/key_height__strokes_digit"
+    app:keyTextSize="@dimen/font_size__strokes_digit"
+    app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
+  >
+    <!-- Ideographic description characters: U+2FF0 to U+2FF4 -->
+    <!-- TODO: keyboard font glyphs -->
+    <Key app:keyValueText="⿰" />
+    <Key app:keyValueText="⿱" />
+    <Key app:keyValueText="⿲" />
+    <Key app:keyValueText="⿳" />
+    <Key app:keyValueText="⿴" />
+  </Row>
+  <Row>
+    <!-- Ideographic description characters: U+2FF5 to U+2FF9 -->
+    <!-- TODO: keyboard font glyphs -->
+    <Key app:keyValueText="⿵" />
+    <Key app:keyValueText="⿶" />
+    <Key app:keyValueText="⿷" />
+    <Key app:keyValueText="⿸" />
+    <Key app:keyValueText="⿹" />
+  </Row>
+  <Row>
+    <!-- Switch to strokes symbols 1 keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_1"
+      app:keyDisplayText="2/2"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Ideographic description characters: U+2FFA, U+2FFB -->
+    <!-- TODO: keyboard font glyphs -->
+    <Key app:keyValueText="⿺" />
+    <Key app:keyValueText="⿻" />
+    <!-- Code point prefix -->
+    <Key app:keyValueText="U+" />
+    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="⌫"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+  <Row
+    app:keyHeight="@dimen/key_height__strokes_space_bar"
+    app:keyWidth="@dimen/key_width__strokes_stroke"
+  >
+    <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES"
+      app:keyDisplayText="㇐㇑㇒"
+      app:keyTextColour="@color/stroke_key_text"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- U+FF0C FULLWIDTH COMMA -->
+    <Key
+      app:keyValueText="，"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Space bar: U+25C0, U+25B6 (triangles) -->
+    <Key
+      app:keyValueText="SPACE"
+      app:keyDisplayText="@string/display_text__strokes_space_bar"
+      app:keyIsLongPressable="true"
+      app:keyIsSwipeable="true"
+      app:keyTextSize="@dimen/font_size__space_bar"
+      app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width__space_bar"
+      app:keyIsPreviewable="false"
+    />
+    <!-- U+3002 IDEOGRAPHIC FULL STOP -->
+    <Key
+      app:keyValueText="。"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Enter key: U+23CE RETURN SYMBOL -->
+    <Key
+      app:keyValueText="ENTER"
+      app:keyDisplayText="⏎"
+      app:keyTextSize="@dimen/font_size__enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+</Keyboard>
