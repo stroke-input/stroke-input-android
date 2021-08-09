@@ -208,6 +208,8 @@ public class InputContainer
     void onKey(String valueText);
     void onLongPress(String valueText);
     void onSwipe(String valueText);
+    Keyboard loadSavedKeyboard();
+    void saveKeyboard(Keyboard keyboard);
   }
   
   public void setOnInputListener(final OnInputListener listener) {
@@ -218,7 +220,13 @@ public class InputContainer
     return keyboard;
   }
   
-  public void setKeyboard(final Keyboard keyboard) {
+  public void setKeyboard(Keyboard keyboard) {
+    
+    if (keyboard == null) {
+      keyboard = inputListener.loadSavedKeyboard();
+    }
+    inputListener.saveKeyboard(keyboard);
+    
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Key[0]);
     keyboardFillPaint.setColor(keyboard.fillColour);

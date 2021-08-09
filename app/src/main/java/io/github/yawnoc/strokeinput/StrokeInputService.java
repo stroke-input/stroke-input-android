@@ -56,8 +56,8 @@ public class StrokeInputService
     inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
-    switchKeyboardAndSaveName(getSavedKeyboardName());
     inputContainer.setOnInputListener(this);
+    inputContainer.setKeyboard(loadSavedKeyboard());
     
     return inputContainer;
   }
@@ -138,7 +138,8 @@ public class StrokeInputService
       case "SWITCH_TO_QWERTY_SYMBOLS":
         final String keyboardName =
           Stringy.removePrefix("SWITCH_TO_", valueText);
-        switchKeyboardAndSaveName(keyboardName);
+        final Keyboard keyboard = keyboardFromName.get(keyboardName);
+        inputContainer.setKeyboard(keyboard);
         break;
       
       case "SPACE":
@@ -189,36 +190,36 @@ public class StrokeInputService
         case "STROKES":
         case "STROKES_SYMBOLS_1":
         case "STROKES_SYMBOLS_2":
-          switchKeyboardAndSaveName("QWERTY");
+          inputContainer.setKeyboard(qwertyKeyboard);
           break;
         case "QWERTY":
         case "QWERTY_SYMBOLS":
-          switchKeyboardAndSaveName("STROKES");
+          inputContainer.setKeyboard(strokesKeyboard);
           break;
       }
     }
   }
   
-  private String getSavedKeyboardName() {
-    
-    return
+  @Override
+  public Keyboard loadSavedKeyboard() {
+    final String savedKeyboardName =
       Contexty.loadPreferenceString(
         getApplicationContext(),
         PREFERENCES_FILE_NAME,
         "keyboardName"
       );
-  }
-  
-  private void switchKeyboardAndSaveName(final String keyboardName) {
-    
-    final Keyboard keyboard = keyboardFromName.get(keyboardName);
-    if (keyboard == null) {
-      inputContainer.setKeyboard(strokesKeyboard);
+    final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
+    if (savedKeyboard == null) {
+      return strokesKeyboard;
     }
     else {
-      inputContainer.setKeyboard(keyboard);
+      return savedKeyboard;
     }
-    
+  }
+  
+  @Override
+  public void saveKeyboard(final Keyboard keyboard) {
+    final String keyboardName = nameFromKeyboard.get(keyboard);
     Contexty.savePreferenceString(
       getApplicationContext(),
       PREFERENCES_FILE_NAME,
