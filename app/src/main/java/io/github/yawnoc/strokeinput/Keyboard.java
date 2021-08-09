@@ -130,7 +130,7 @@ public class Keyboard {
     
     keyList = new ArrayList<>();
     
-    loadKeyboard(context, context.getResources().getXml(layoutResourceId));
+    makeKeyboard(context, context.getResources().getXml(layoutResourceId));
     adjustKeyboardVertically(isFullscreenMode);
   }
   
@@ -166,7 +166,7 @@ public class Keyboard {
     return screenHeight;
   }
   
-  private void loadKeyboard(
+  private void makeKeyboard(
     final Context context,
     final XmlResourceParser xmlResourceParser
   )
@@ -230,7 +230,7 @@ public class Keyboard {
       height = maximumY;
     }
     catch (Exception exception) {
-      Log.e("Keyboard.loadKeyboard", "Exception: " + exception);
+      Log.e("Keyboard.makeKeyboard", "Exception: " + exception);
       exception.printStackTrace();
     }
   }
