@@ -112,11 +112,14 @@ public class StrokeInputService
   )
   {
     super.onStartInputView(editorInfo, isRestarting);
-    
+    setEnterKeyDisplayText();
     inputContainer.showKeyPreviewPlane();
+  }
+  
+  private void setEnterKeyDisplayText() {
     
     // TODO: keyboard font glyphs
-    String enterKeyDisplayText;
+    String enterKeyDisplayText = null;
     switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
       case EditorInfo.IME_ACTION_DONE:
         // U+2713 CHECK MARK
@@ -142,10 +145,12 @@ public class StrokeInputService
         // U+27A4 BLACK RIGHTWARDS ARROWHEAD
         enterKeyDisplayText = "➤";
         break;
-      default:
-        // U+23CE RETURN SYMBOL
-        enterKeyDisplayText = "⏎";
     }
+    if (!enterKeyHasAction || enterKeyDisplayText == null) {
+      // U+23CE RETURN SYMBOL
+      enterKeyDisplayText = "⏎";
+    }
+    
     for (final Keyboard keyboard : keyboardSet) {
       for (final Key key : keyboard.getKeyList()) {
         if (key.valueText.equals("ENTER")) {
