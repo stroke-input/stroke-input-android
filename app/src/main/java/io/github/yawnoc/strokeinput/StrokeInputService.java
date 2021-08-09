@@ -36,8 +36,6 @@ public class StrokeInputService
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   
-  private InputContainer inputContainer;
-  
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
   Keyboard strokesSymbols2Keyboard;
@@ -46,6 +44,8 @@ public class StrokeInputService
   
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
+  
+  private InputContainer inputContainer;
   
   @Override
   public View onCreateInputView() {
