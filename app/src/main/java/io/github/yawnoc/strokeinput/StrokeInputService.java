@@ -56,9 +56,7 @@ public class StrokeInputService
     inputContainer =
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
-    
-    final String savedKeyboardName = getSavedKeyboardName();
-    switchKeyboardAndSaveName(savedKeyboardName);
+    switchKeyboardAndSaveName(getSavedKeyboardName());
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
