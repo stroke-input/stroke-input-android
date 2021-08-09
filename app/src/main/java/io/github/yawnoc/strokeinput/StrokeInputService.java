@@ -89,13 +89,17 @@ public class StrokeInputService
   }
   
   @Override
-  public void onStartInputView(EditorInfo editorInfo, boolean isRestarting) {
+  public void onStartInputView(
+    final EditorInfo editorInfo,
+    final boolean isRestarting
+  )
+  {
     super.onStartInputView(editorInfo, isRestarting);
     inputContainer.showKeyPreviewPlane();
   }
   
   @Override
-  public void onComputeInsets(InputMethodService.Insets insets) {
+  public void onComputeInsets(final InputMethodService.Insets insets) {
     super.onComputeInsets(insets);
     // API level 28 is dumb, see <https://stackoverflow.com/a/53326786>
     final int touchableTopY = inputContainer.getTouchableTopY();
