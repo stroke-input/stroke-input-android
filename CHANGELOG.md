@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Upgraded Android Gradle Plugin to 7.0.0
+- Implemented action-dependent enter-key display
 
 
 ## [v0.7.3] Symbols reshuffle (2021-08-09)

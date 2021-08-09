@@ -16,6 +16,7 @@ import android.view.inputmethod.InputConnection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -44,6 +45,7 @@ public class StrokeInputService
   
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
+  private Set<Keyboard> keyboardSet;
   
   private InputContainer inputContainer;
   
@@ -68,14 +70,13 @@ public class StrokeInputService
     qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
     
     nameFromKeyboard = new HashMap<>();
-    
     nameFromKeyboard.put(strokesKeyboard, "STROKES");
     nameFromKeyboard.put(strokesSymbols1Keyboard, "STROKES_SYMBOLS_1");
     nameFromKeyboard.put(strokesSymbols2Keyboard, "STROKES_SYMBOLS_2");
     nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
-    
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
+    keyboardSet = nameFromKeyboard.keySet();
   }
   
   private Keyboard newKeyboard(final int layoutResourceId) {
@@ -98,6 +99,7 @@ public class StrokeInputService
   )
   {
     super.onStartInput(editorInfo, isRestarting);
+    
     inputOptionsBits = editorInfo.imeOptions;
     enterKeyHasAction =
       (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
@@ -110,7 +112,47 @@ public class StrokeInputService
   )
   {
     super.onStartInputView(editorInfo, isRestarting);
+    
     inputContainer.showKeyPreviewPlane();
+    
+    // TODO: keyboard font glyphs
+    String enterKeyDisplayText;
+    switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
+      case EditorInfo.IME_ACTION_DONE:
+        // U+2713 CHECK MARK
+        enterKeyDisplayText = "✓";
+        break;
+      case EditorInfo.IME_ACTION_GO:
+        // U+2B95 RIGHTWARDS BLACK ARROW
+        enterKeyDisplayText = "⮕";
+        break;
+      case EditorInfo.IME_ACTION_NEXT:
+        // U+2398 NEXT PAGE
+        enterKeyDisplayText = "⎘";
+        break;
+      case EditorInfo.IME_ACTION_PREVIOUS:
+        // U+2397 PREVIOUS PAGE
+        enterKeyDisplayText = "⎗";
+        break;
+      case EditorInfo.IME_ACTION_SEARCH:
+        // U+1F50E RIGHT-POINTING MAGNIFYING GLASS
+        enterKeyDisplayText = "\uD83D\uDD0E";
+        break;
+      case EditorInfo.IME_ACTION_SEND:
+        // U+27A4 BLACK RIGHTWARDS ARROWHEAD
+        enterKeyDisplayText = "➤";
+        break;
+      default:
+        // U+23CE RETURN SYMBOL
+        enterKeyDisplayText = "⏎";
+    }
+    for (final Keyboard keyboard : keyboardSet) {
+      for (final Key key : keyboard.getKeyList()) {
+        if (key.valueText.equals("ENTER")) {
+          key.displayText = enterKeyDisplayText;
+        }
+      }
+    }
   }
   
   @Override
