@@ -36,15 +36,16 @@ public class StrokeInputService
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   
-  InputContainer inputContainer;
+  private InputContainer inputContainer;
+  
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
   Keyboard strokesSymbols2Keyboard;
   Keyboard qwertyKeyboard;
   Keyboard qwertySymbolsKeyboard;
   
-  Map<Keyboard, String> nameFromKeyboard;
-  Map<String, Keyboard> keyboardFromName;
+  private Map<Keyboard, String> nameFromKeyboard;
+  private Map<String, Keyboard> keyboardFromName;
   
   @SuppressLint("InflateParams")
   @Override
