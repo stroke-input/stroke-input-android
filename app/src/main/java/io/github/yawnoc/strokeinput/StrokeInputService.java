@@ -55,16 +55,11 @@ public class StrokeInputService
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
     
-    strokesKeyboard =
-      new Keyboard(this, R.xml.keyboard_strokes, isFullscreenMode());
-    strokesSymbols1Keyboard =
-      new Keyboard(this, R.xml.keyboard_strokes_symbols_1, isFullscreenMode());
-    strokesSymbols2Keyboard =
-      new Keyboard(this, R.xml.keyboard_strokes_symbols_2, isFullscreenMode());
-    qwertyKeyboard =
-      new Keyboard(this, R.xml.keyboard_qwerty, isFullscreenMode());
-    qwertySymbolsKeyboard =
-      new Keyboard(this, R.xml.keyboard_qwerty_symbols, isFullscreenMode());
+    strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
+    strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
+    strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
+    qwertyKeyboard = newKeyboard(R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
     
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, "STROKES");
@@ -79,6 +74,10 @@ public class StrokeInputService
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
+  }
+  
+  private Keyboard newKeyboard(final int layoutResourceId) {
+    return new Keyboard(this, layoutResourceId, isFullscreenMode());
   }
   
   @Override
