@@ -47,17 +47,11 @@ public class StrokeInputService
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
   
-  @SuppressLint("InflateParams")
   @Override
   public View onCreateInputView() {
     
     initialiseKeyboards();
-    
-    inputContainer =
-      (InputContainer)
-        getLayoutInflater().inflate(R.layout.input_container, null);
-    inputContainer.setOnInputListener(this);
-    inputContainer.setKeyboard(loadSavedKeyboard());
+    initialiseInputContainer();
     
     return inputContainer;
   }
@@ -83,6 +77,15 @@ public class StrokeInputService
   
   private Keyboard newKeyboard(final int layoutResourceId) {
     return new Keyboard(this, layoutResourceId, isFullscreenMode());
+  }
+  
+  @SuppressLint("InflateParams")
+  private void initialiseInputContainer() {
+    inputContainer =
+      (InputContainer)
+        getLayoutInflater().inflate(R.layout.input_container, null);
+    inputContainer.setOnInputListener(this);
+    inputContainer.setKeyboard(loadSavedKeyboard());
   }
   
   @Override
