@@ -51,19 +51,7 @@ public class StrokeInputService
   @Override
   public View onCreateInputView() {
     
-    strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
-    strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
-    strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
-    qwertyKeyboard = newKeyboard(R.xml.keyboard_qwerty);
-    qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
-    
-    nameFromKeyboard = new HashMap<>();
-    nameFromKeyboard.put(strokesKeyboard, "STROKES");
-    nameFromKeyboard.put(strokesSymbols1Keyboard, "STROKES_SYMBOLS_1");
-    nameFromKeyboard.put(strokesSymbols2Keyboard, "STROKES_SYMBOLS_2");
-    nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
-    nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
-    keyboardFromName = Mappy.invertMap(nameFromKeyboard);
+    initialiseKeyboards();
     
     inputContainer =
       (InputContainer)
@@ -74,6 +62,25 @@ public class StrokeInputService
     inputContainer.setOnInputListener(this);
     
     return inputContainer;
+  }
+  
+  private void initialiseKeyboards() {
+    
+    strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
+    strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
+    strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
+    qwertyKeyboard = newKeyboard(R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
+    
+    nameFromKeyboard = new HashMap<>();
+    
+    nameFromKeyboard.put(strokesKeyboard, "STROKES");
+    nameFromKeyboard.put(strokesSymbols1Keyboard, "STROKES_SYMBOLS_1");
+    nameFromKeyboard.put(strokesSymbols2Keyboard, "STROKES_SYMBOLS_2");
+    nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
+    nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
+    
+    keyboardFromName = Mappy.invertMap(nameFromKeyboard);
   }
   
   private Keyboard newKeyboard(final int layoutResourceId) {
