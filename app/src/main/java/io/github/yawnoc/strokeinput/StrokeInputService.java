@@ -51,10 +51,6 @@ public class StrokeInputService
   @Override
   public View onCreateInputView() {
     
-    inputContainer =
-      (InputContainer)
-        getLayoutInflater().inflate(R.layout.input_container, null);
-    
     strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
     strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
     strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
@@ -68,6 +64,10 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
+    
+    inputContainer =
+      (InputContainer)
+        getLayoutInflater().inflate(R.layout.input_container, null);
     
     final String savedKeyboardName = getSavedKeyboardName();
     switchKeyboardAndSaveName(savedKeyboardName);
