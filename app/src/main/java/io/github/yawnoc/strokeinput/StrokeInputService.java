@@ -47,6 +47,9 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
+  private int inputOptionsBits;
+  private boolean enterKeyHasAction;
+  
   @Override
   public View onCreateInputView() {
     
@@ -86,6 +89,18 @@ public class StrokeInputService
         getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.setOnInputListener(this);
     inputContainer.setKeyboard(loadSavedKeyboard());
+  }
+  
+  @Override
+  public void onStartInput(
+    final EditorInfo editorInfo,
+    final boolean isRestarting
+  )
+  {
+    super.onStartInput(editorInfo, isRestarting);
+    inputOptionsBits = editorInfo.imeOptions;
+    enterKeyHasAction =
+      (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
   }
   
   @Override
@@ -154,12 +169,8 @@ public class StrokeInputService
         break;
       
       case "ENTER":
-        final EditorInfo editorInfo = getCurrentInputEditorInfo();
-        final int editorActionBits = editorInfo.imeOptions;
-        final boolean enterKeyHasAction =
-          (editorActionBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
         if (enterKeyHasAction) {
-          inputConnection.performEditorAction(editorActionBits);
+          inputConnection.performEditorAction(inputOptionsBits);
         }
         else {
           inputConnection.commitText(NEWLINE, 1);
