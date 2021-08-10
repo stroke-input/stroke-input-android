@@ -57,7 +57,7 @@
     <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES"
-      app:keyDisplayText="㇐㇑㇒"
+      app:keyDisplayText="@string/display_text__switch_to_strokes"
       app:keyTextColour="@color/stroke_key_text"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
