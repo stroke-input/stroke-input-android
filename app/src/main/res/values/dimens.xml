@@ -32,6 +32,7 @@
   <dimen name="baseline_correction__space_bar">0.5dp</dimen>
   <dimen name="baseline_correction__strokes">2dp</dimen>
   <dimen name="baseline_correction__strokes_digit">0.75dp</dimen>
+  <dimen name="baseline_correction__strokes_enter_key">0.25dp</dimen>
   <dimen name="baseline_correction__qwerty">0.75dp</dimen>
   <dimen name="baseline_correction__qwerty_digit">1dp</dimen>
   <dimen name="baseline_correction__qwerty_backspace">1.75dp</dimen>
