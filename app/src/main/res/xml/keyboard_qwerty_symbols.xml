@@ -85,7 +85,7 @@
       app:keyValueText=","
       app:keyWidth="@dimen/key_width__digit"
     />
-    <!-- Space bar: U+25C0, U+25B6 (triangles) -->
+    <!-- Space bar -->
     <Key
       app:keyValueText="SPACE"
       app:keyDisplayText="@string/display_text__qwerty_space_bar"

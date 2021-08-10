@@ -20,7 +20,7 @@
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help-zh-Hant-TW.html</string>
   <string name="file_name__about_html">about-zh-Hant-TW.html</string>
-  <!-- Space bar display text -->
+  <!-- Space bar display text (triangles: U+25C0, U+25B6) -->
   <string name="display_text__qwerty_space_bar">◀ 英文 ▶</string>
   <string name="display_text__strokes_space_bar">◀ 中文 ▶</string>
 </resources>
