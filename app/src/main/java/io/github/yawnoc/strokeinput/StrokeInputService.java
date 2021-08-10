@@ -118,7 +118,6 @@ public class StrokeInputService
   
   private void setEnterKeyDisplayText() {
     
-    // TODO: keyboard font glyphs
     String enterKeyDisplayText = null;
     switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
       case EditorInfo.IME_ACTION_DONE:

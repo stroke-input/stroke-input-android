@@ -5,6 +5,8 @@
 
 - Upgraded Android Gradle Plugin to 7.0.0
 - Implemented action-dependent enter-key display
+- Updated keyboard font to [Stroke Input Keyboard v1.7.0]
+  (adds enter-key action glyphs)
 
 
 ## [v0.7.3] Symbols reshuffle (2021-08-09)
@@ -207,6 +209,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.7.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.7.0
 [Stroke Input Keyboard v1.6.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.6.1
 [Stroke Input Keyboard v1.5.1]:
