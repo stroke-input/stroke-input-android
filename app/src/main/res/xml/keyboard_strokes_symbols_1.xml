@@ -77,7 +77,7 @@
     app:keyHeight="@dimen/key_height__strokes_space_bar"
     app:keyWidth="@dimen/key_width__strokes_stroke"
   >
-    <!-- Switch to strokes keyboard: U+31D0, U+31D1, U+31D2 -->
+    <!-- Switch to strokes keyboard -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES"
       app:keyDisplayText="@string/display_text__switch_to_strokes"
@@ -103,7 +103,7 @@
       app:keyWidth="@dimen/key_width__space_bar"
       app:keyIsPreviewable="false"
     />
-    <!-- U+3002 IDEOGRAPHIC FULL STOP -->
+    <!-- Full stop -->
     <Key
       app:keyValueText="@string/value_text__strokes_full_stop"
       app:keyWidth="@dimen/key_width__digit"

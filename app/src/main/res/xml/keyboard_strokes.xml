@@ -108,7 +108,7 @@
       app:keyWidth="@dimen/key_width__space_bar"
       app:keyIsPreviewable="false"
     />
-    <!-- U+3002 IDEOGRAPHIC FULL STOP -->
+    <!-- Full stop -->
     <Key
       app:keyValueText="@string/value_text__strokes_full_stop"
       app:keyWidth="@dimen/key_width__digit"
