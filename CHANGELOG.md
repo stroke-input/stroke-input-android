@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.4] Enter key display (2021-08-11)
+
 - Upgraded Android Gradle Plugin to 7.0.0
 - Implemented action-dependent enter-key display
 - Updated keyboard font to [Stroke Input Keyboard v1.7.0]
@@ -173,7 +176,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.3...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.4...HEAD
+[v0.7.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.3...v0.7.4
 [v0.7.3]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.2...v0.7.3
 [v0.7.2]:
