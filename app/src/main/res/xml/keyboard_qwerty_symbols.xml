@@ -102,10 +102,9 @@
       app:keyValueText="."
       app:keyWidth="@dimen/key_width__digit"
     />
-    <!-- Enter key: U+23CE RETURN SYMBOL -->
+    <!-- Enter key -->
     <Key
       app:keyValueText="ENTER"
-      app:keyDisplayText="⏎"
       app:keyIsLongPressable="true"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyFillColour="@color/enter_key_fill"
