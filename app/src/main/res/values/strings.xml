@@ -31,6 +31,9 @@
   <string name="file_name__about_html">about.html</string>
   <!-- Backspace: U+232B ERASE TO THE LEFT -->
   <string name="display_text__backspace" translatable="false">⌫</string>
+  <!-- Comma: U+002C COMMA, U+FF0C FULLWIDTH COMMA -->
+  <string name="value_text__qwerty_comma" translatable="false">,</string>
+  <string name="value_text__strokes_comma" translatable="false">，</string>
   <!-- Space bar: U+25C0, U+25B6 (triangles) -->
   <string name="display_text__qwerty_space_bar">◀ English ▶</string>
   <string name="display_text__strokes_space_bar">◀ Chinese ▶</string>

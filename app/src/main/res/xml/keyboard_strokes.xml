@@ -91,9 +91,9 @@
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
-    <!-- U+FF0C FULLWIDTH COMMA -->
+    <!-- Comma -->
     <Key
-      app:keyValueText="，"
+      app:keyValueText="@string/value_text__strokes_comma"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar -->

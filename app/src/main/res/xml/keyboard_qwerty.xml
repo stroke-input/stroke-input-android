@@ -102,7 +102,7 @@
     />
     <!-- Comma -->
     <Key
-      app:keyValueText=","
+      app:keyValueText="@string/value_text__qwerty_comma"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Space bar -->
