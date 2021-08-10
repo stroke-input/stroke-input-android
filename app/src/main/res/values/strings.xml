@@ -29,7 +29,9 @@
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>
   <string name="file_name__about_html">about.html</string>
-  <!-- Space bar display text (triangles: U+25C0, U+25B6) -->
+  <!-- Backspace: U+232B ERASE TO THE LEFT -->
+  <string name="display_text__backspace" translatable="false">⌫</string>
+  <!-- Space bar: U+25C0, U+25B6 (triangles) -->
   <string name="display_text__qwerty_space_bar">◀ English ▶</string>
   <string name="display_text__strokes_space_bar">◀ Chinese ▶</string>
 </resources>

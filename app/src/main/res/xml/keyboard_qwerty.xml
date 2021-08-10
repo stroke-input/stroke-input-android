@@ -77,10 +77,10 @@
     <Key app:keyValueText="b" />
     <Key app:keyValueText="n" />
     <Key app:keyValueText="m" />
-    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
-      app:keyDisplayText="⌫"
+      app:keyDisplayText="@string/display_text__backspace"
       app:keyIsRepeatable="true"
       app:keyIsShiftable="false"
       app:keyTextSize="@dimen/font_size__qwerty_backspace"

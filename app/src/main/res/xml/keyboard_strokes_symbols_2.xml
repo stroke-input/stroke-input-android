@@ -41,10 +41,10 @@
     <Key app:keyValueText="⿻" />
     <!-- Code point prefix -->
     <Key app:keyValueText="U+" />
-    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
-      app:keyDisplayText="⌫"
+      app:keyDisplayText="@string/display_text__backspace"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
       app:keyIsPreviewable="false"

@@ -58,10 +58,10 @@
     <Key app:keyValueText="&gt;" />
     <Key app:keyValueText="\?" />
     <Key app:keyValueText="/" />
-    <!-- Backspace: U+232B ERASE TO THE LEFT -->
+    <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
-      app:keyDisplayText="⌫"
+      app:keyDisplayText="@string/display_text__backspace"
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__qwerty_backspace"
       app:keyTextOffsetY="@dimen/baseline_correction__qwerty_backspace"
