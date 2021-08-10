@@ -411,7 +411,11 @@ public class InputContainer
         );
       }
       else {
-        keyDisplayText = key.shiftAwareDisplayText(shiftMode);
+        keyDisplayText = (
+          key.valueText.equals("ENTER")
+            ? key.displayText
+            : key.shiftAwareDisplayText(shiftMode)
+        );
       }
       
       final float keyTextX = (
