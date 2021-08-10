@@ -99,7 +99,7 @@
     />
     <!-- Full stop -->
     <Key
-      app:keyValueText="."
+      app:keyValueText="@string/value_text__qwerty_full_stop"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key -->

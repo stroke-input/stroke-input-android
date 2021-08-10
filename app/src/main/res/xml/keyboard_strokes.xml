@@ -110,7 +110,7 @@
     />
     <!-- U+3002 IDEOGRAPHIC FULL STOP -->
     <Key
-      app:keyValueText="。"
+      app:keyValueText="@string/value_text__strokes_full_stop"
       app:keyWidth="@dimen/key_width__digit"
     />
     <!-- Enter key -->
