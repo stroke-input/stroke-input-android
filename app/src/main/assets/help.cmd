@@ -1,4 +1,5 @@
 {+ links.txt +}
+{+ keys.txt +}
 
 %%
   %title Help
@@ -13,34 +14,31 @@
 
 ''''
 ==
-  , <kbd class="stroke-key" lang="zh-Hant">㇐</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">\stroke-1</kbd>
   , horizontal; raise
 ==
-  , <kbd class="stroke-key" lang="zh-Hant">㇑</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">\stroke-2</kbd>
   , vertical; vertical-with-hook
 ==
-  , <kbd class="stroke-key" lang="zh-Hant">㇒</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">\stroke-3</kbd>
   , left-slash
 ==
-  , <kbd class="stroke-key" lang="zh-Hant">㇔</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">\stroke-4</kbd>
   , right-press; dot
 ==
-  , <kbd class="stroke-key" lang="zh-Hant">㇖</kbd>
+  , <kbd class="stroke-key" lang="zh-Hant">\stroke-5</kbd>
   , turn; bend
 ''''
 
 
 ## Miscellaneous ##
 
-{: \space-bar: <kbd class="space-bar">◀ English ▶</kbd> :}
-{: \enter-key: <kbd class="enter-key">⏎</kbd> :}
-
 ''''
 ==
-  , Horizontally swipe \space-bar
+  , Horizontally swipe \space-bar-en
   , Change language
 ==
-  , Long press \space-bar
+  , Long press \space-bar-en
   , Change to other keyboard
 ==
   , Long press \enter-key
