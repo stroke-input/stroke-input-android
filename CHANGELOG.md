@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed crash on Android 11 (API level 30)
+
 
 ## [v0.7.4] Enter key display (2021-08-11)
 

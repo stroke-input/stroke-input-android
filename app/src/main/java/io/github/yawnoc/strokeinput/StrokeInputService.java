@@ -162,11 +162,13 @@ public class StrokeInputService
   @Override
   public void onComputeInsets(final InputMethodService.Insets insets) {
     super.onComputeInsets(insets);
-    // API level 28 is dumb, see <https://stackoverflow.com/a/53326786>
-    final int touchableTopY = inputContainer.getTouchableTopY();
-    if (touchableTopY > 0) {
-      insets.visibleTopInsets = touchableTopY;
-      insets.contentTopInsets = touchableTopY;
+    if (inputContainer != null) { // check needed in API level 30
+      final int touchableTopY = inputContainer.getTouchableTopY();
+      // API level 28 is dumb, see <https://stackoverflow.com/a/53326786>
+      if (touchableTopY > 0) {
+        insets.visibleTopInsets = touchableTopY;
+        insets.contentTopInsets = touchableTopY;
+      }
     }
   }
   
