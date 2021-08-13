@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.7.5] Android 11 fix (2021-08-13)
+
 - Fixed crash on Android 11 (API level 30)
 
 
@@ -178,7 +181,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.4...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.5...HEAD
+[v0.7.5]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.4...v0.7.5
 [v0.7.4]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.3...v0.7.4
 [v0.7.3]:
