@@ -259,6 +259,18 @@ public class InputContainer
     keyPreviewPlanePopup.setWidth(screenWidth);
     keyPreviewPlanePopup.setHeight(screenHeight);
     
+    if (getWindowToken() != null) { // check needed in API level 29
+      keyPreviewPlanePopup.showAtLocation(
+        this,
+        Gravity.BOTTOM | Gravity.LEFT,
+        0,
+        getSoftButtonsHeight()
+      );
+    }
+  }
+  
+  private int getSoftButtonsHeight() {
+    
     final int softButtonsHeight;
     if (Build.VERSION.SDK_INT < 23) {
       softButtonsHeight = 0;
@@ -283,14 +295,7 @@ public class InputContainer
       }
     }
     
-    if (getWindowToken() != null) { // check needed in API level 29
-      keyPreviewPlanePopup.showAtLocation(
-        this,
-        Gravity.BOTTOM | Gravity.LEFT,
-        0,
-        softButtonsHeight
-      );
-    }
+    return softButtonsHeight;
   }
   
   public void resetKeyRepeatIntervalMilliseconds() {
