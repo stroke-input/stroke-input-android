@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated keyboard font to [Stroke Input Keyboard v1.8.1]
+  (adds right-handed magnifying glass)
+
 
 ## [v0.7.5] Android 11 fix (2021-08-13)
 
@@ -221,6 +224,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.8.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.8.1
 [Stroke Input Keyboard v1.7.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.7.0
 [Stroke Input Keyboard v1.6.1]:
