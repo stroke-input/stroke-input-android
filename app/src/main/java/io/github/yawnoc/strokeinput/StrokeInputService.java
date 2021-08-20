@@ -137,8 +137,8 @@ public class StrokeInputService
         enterKeyDisplayText = "⎗";
         break;
       case EditorInfo.IME_ACTION_SEARCH:
-        // U+1F50E RIGHT-POINTING MAGNIFYING GLASS
-        enterKeyDisplayText = "\uD83D\uDD0E";
+        // U+1F50D LEFT-POINTING MAGNIFYING GLASS
+        enterKeyDisplayText = "\uD83D\uDD0D";
         break;
       case EditorInfo.IME_ACTION_SEND:
         // U+27A4 BLACK RIGHTWARDS ARROWHEAD

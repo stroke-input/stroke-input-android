@@ -5,6 +5,7 @@
 
 - Updated keyboard font to [Stroke Input Keyboard v1.8.1]
   (adds right-handed magnifying glass)
+- Changed search magnifying glass to right-handed
 
 
 ## [v0.7.5] Android 11 fix (2021-08-13)
