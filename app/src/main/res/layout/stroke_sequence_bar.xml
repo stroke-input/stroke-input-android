@@ -10,7 +10,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:text="This be the stroke sequence bar"
+  android:text="㇐㇐㇑㇐㇒㇐㇔㇐㇖㇑㇑㇒㇑㇔㇑㇖㇒㇒㇔㇒㇖㇔㇔㇖㇖㇐"
   android:textColor="@color/umbrella_yellow"
   android:background="@color/stroke_sequence_bar_fill"
   android:paddingVertical="@dimen/padding_vertical__stroke_sequence_bar"

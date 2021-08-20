@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
@@ -197,6 +198,7 @@ public class InputContainer
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     strokeSequenceBar =
       layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
+    ((TextView) strokeSequenceBar).setTypeface(keyboardFont);
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     strokeSequenceBarPopup =
