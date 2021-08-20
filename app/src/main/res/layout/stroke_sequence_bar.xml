@@ -7,9 +7,15 @@
 -->
 <TextView
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:textColor="@android:color/white"
   android:text="This be the stroke sequence bar"
+  android:textColor="@color/umbrella_yellow"
+  android:background="@color/stroke_sequence_bar_fill"
+  android:paddingVertical="@dimen/padding_vertical__stroke_sequence_bar"
+  android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
+  android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
+  tools:ignore="RtlHardcoded"
 >
 </TextView>

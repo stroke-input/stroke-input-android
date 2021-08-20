@@ -12,4 +12,6 @@
   <color name="space_bar_text">#FFA3A3A3</color>
   <color name="key_fill">#FF181818</color>
   <color name="enter_key_fill">#FF00CE00</color>
+  <!-- Stroke sequence bar -->
+  <color name="stroke_sequence_bar_fill">#8D000000</color>
 </resources>
