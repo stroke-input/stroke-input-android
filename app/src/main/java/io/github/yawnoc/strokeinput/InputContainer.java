@@ -116,7 +116,7 @@ public class InputContainer
   private Paint keyTextPaint;
   
   // Stroke sequence bar
-  private View strokeSequenceBar;
+  private TextView strokeSequenceBar;
   private PopupWindow strokeSequenceBarPopup;
   
   // Key preview plane
@@ -197,8 +197,8 @@ public class InputContainer
       (LayoutInflater)
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     strokeSequenceBar =
-      layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
-    ((TextView) strokeSequenceBar).setTypeface(keyboardFont);
+      (TextView) layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
+    strokeSequenceBar.setTypeface(keyboardFont);
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     strokeSequenceBarPopup =
