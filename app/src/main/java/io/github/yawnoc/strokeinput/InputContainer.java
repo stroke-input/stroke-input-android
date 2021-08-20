@@ -521,7 +521,9 @@ public class InputContainer
   
   @Override
   protected void onDetachedFromWindow() {
-    keyPreviewPlanePopup.dismiss(); // prevent persist on screen rotate
+    // Prevent persistence of popups on screen rotate
+    strokeSequenceBarPopup.dismiss();
+    keyPreviewPlanePopup.dismiss();
     super.onDetachedFromWindow();
   }
   
