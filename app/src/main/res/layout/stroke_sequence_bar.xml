@@ -5,6 +5,12 @@
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
 -->
+<!--
+  We use the deprecated `singleLine="true"` instead of maxLines="1" because:
+  > Combining ellipsize=start and maxLines=1 can lead to crashes.
+  > Use singleLine=true instead.
+  See also <https://stackoverflow.com/q/30028697>.
+-->
 <TextView
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
@@ -12,6 +18,8 @@
   android:layout_height="match_parent"
   android:text="㇐㇐㇑㇐㇒㇐㇔㇐㇖㇑㇑㇒㇑㇔㇑㇖㇒㇒㇔㇒㇖㇔㇔㇖㇖㇐"
   android:textColor="@color/umbrella_yellow"
+  android:ellipsize="start"
+  android:singleLine="true"
   android:background="@color/stroke_sequence_bar_fill"
   android:paddingVertical="@dimen/padding_vertical__stroke_sequence_bar"
   android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
