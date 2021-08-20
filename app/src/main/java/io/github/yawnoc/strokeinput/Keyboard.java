@@ -142,6 +142,10 @@ public class Keyboard {
     return popupBufferZoneHeight;
   }
   
+  public int getCandidatesBarHeight() {
+    return candidatesBarHeightPx;
+  }
+  
   public int getParentInputContainerHeight() {
     return parentInputContainerHeight;
   }

@@ -33,6 +33,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
@@ -112,6 +113,10 @@ public class InputContainer
   private Paint keyBorderPaint;
   private Paint keyTextPaint;
   
+  // Stroke sequence bar
+  private View strokeSequenceBar;
+  private PopupWindow strokeSequenceBarPopup;
+  
   // Key preview plane
   private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
@@ -127,6 +132,7 @@ public class InputContainer
     
     initialiseExtendedPressing();
     initialiseDrawing(context);
+    initialiseStrokeSequenceBarring(context);
     initialiseKeyPreviewing(context);
     initialiseDebugging();
   }
@@ -180,6 +186,22 @@ public class InputContainer
       Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
     );
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+  }
+  
+  @SuppressLint("InflateParams")
+  private void initialiseStrokeSequenceBarring(final Context context) {
+    
+    LayoutInflater layoutInflater =
+      (LayoutInflater)
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    strokeSequenceBar =
+      layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
+    
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+    strokeSequenceBarPopup =
+      new PopupWindow(strokeSequenceBar, popup_size, popup_size);
+    strokeSequenceBarPopup.setTouchable(false);
+    strokeSequenceBarPopup.setClippingEnabled(false);
   }
   
   private void initialiseKeyPreviewing(final Context context) {
@@ -239,6 +261,25 @@ public class InputContainer
   
   public int getTouchableTopY() {
     return touchableTopY;
+  }
+  
+  @SuppressLint("RtlHardcoded")
+  public void showStrokeSequenceBar() {
+    
+    final int softButtonsHeight = getSoftButtonsHeight();
+    final int keyboardHeight = keyboard.getHeight();
+    final int candidatesBarHeight = keyboard.getCandidatesBarHeight();
+    
+    strokeSequenceBarPopup.dismiss();
+    
+    if (getWindowToken() != null) { // check needed in API level 29
+      strokeSequenceBarPopup.showAtLocation(
+        this,
+        Gravity.BOTTOM | Gravity.LEFT,
+        0,
+        softButtonsHeight + keyboardHeight + candidatesBarHeight
+      );
+    }
   }
   
   @SuppressLint("RtlHardcoded")
@@ -359,6 +400,7 @@ public class InputContainer
   )
   {
     super.onSizeChanged(width, height, oldWidth, oldHeight);
+    showStrokeSequenceBar();
     showKeyPreviewPlane();
   }
   
