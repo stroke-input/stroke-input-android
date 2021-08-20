@@ -40,7 +40,8 @@
   <dimen name="horizontal_offset__qwerty_row_2">5%</dimen>
   <!-- Stroke sequence bar -->
   <dimen name="font_size__stroke_sequence_bar">15sp</dimen>
-  <dimen name="padding_vertical__stroke_sequence_bar">2dp</dimen>
+  <dimen name="padding_top__stroke_sequence_bar">3dp</dimen>
   <dimen name="padding_left__stroke_sequence_bar">5dp</dimen>
   <dimen name="padding_right__stroke_sequence_bar">7dp</dimen>
+  <dimen name="padding_bottom__stroke_sequence_bar">2dp</dimen>
 </resources>

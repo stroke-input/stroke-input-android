@@ -22,9 +22,10 @@
   android:ellipsize="start"
   android:singleLine="true"
   android:background="@color/stroke_sequence_bar_fill"
-  android:paddingVertical="@dimen/padding_vertical__stroke_sequence_bar"
+  android:paddingTop="@dimen/padding_top__stroke_sequence_bar"
   android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
   android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
+  android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
   tools:ignore="RtlHardcoded"
 >
 </TextView>
