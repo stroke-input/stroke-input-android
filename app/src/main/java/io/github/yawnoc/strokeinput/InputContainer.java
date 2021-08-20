@@ -72,7 +72,7 @@ public class InputContainer
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  public static final String KEYBOARD_FONT = "stroke_input_keyboard.ttf";
+  public static final String KEYBOARD_FONT_FILE = "stroke_input_keyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -104,6 +104,7 @@ public class InputContainer
   private int shiftMode;
   
   // Keyboard drawing
+  private Typeface keyboardFont;
   private Rect keyboardRectangle;
   private Paint keyboardFillPaint;
   
@@ -170,6 +171,8 @@ public class InputContainer
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
+    keyboardFont =
+      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE);
     keyboardRectangle = new Rect();
     keyboardFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
@@ -182,9 +185,7 @@ public class InputContainer
     keyBorderPaint.setStyle(Paint.Style.STROKE);
     
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyTextPaint.setTypeface(
-      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT)
-    );
+    keyTextPaint.setTypeface(keyboardFont);
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
