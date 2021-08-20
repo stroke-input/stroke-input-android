@@ -121,33 +121,26 @@ public class StrokeInputService
     String enterKeyDisplayText = null;
     switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
       case EditorInfo.IME_ACTION_DONE:
-        // U+2713 CHECK MARK
-        enterKeyDisplayText = "✓";
+        enterKeyDisplayText = getString(R.string.display_text__done);
         break;
       case EditorInfo.IME_ACTION_GO:
-        // U+2B95 RIGHTWARDS BLACK ARROW
-        enterKeyDisplayText = "⮕";
+        enterKeyDisplayText = getString(R.string.display_text__go);
         break;
       case EditorInfo.IME_ACTION_NEXT:
-        // U+2398 NEXT PAGE
-        enterKeyDisplayText = "⎘";
+        enterKeyDisplayText = getString(R.string.display_text__next);
         break;
       case EditorInfo.IME_ACTION_PREVIOUS:
-        // U+2397 PREVIOUS PAGE
-        enterKeyDisplayText = "⎗";
+        enterKeyDisplayText = getString(R.string.display_text__previous);
         break;
       case EditorInfo.IME_ACTION_SEARCH:
-        // U+1F50D LEFT-POINTING MAGNIFYING GLASS
-        enterKeyDisplayText = "\uD83D\uDD0D";
+        enterKeyDisplayText = getString(R.string.display_text__search);
         break;
       case EditorInfo.IME_ACTION_SEND:
-        // U+27A4 BLACK RIGHTWARDS ARROWHEAD
-        enterKeyDisplayText = "➤";
+        enterKeyDisplayText = getString(R.string.display_text__send);
         break;
     }
     if (!enterKeyHasAction || enterKeyDisplayText == null) {
-      // U+23CE RETURN SYMBOL
-      enterKeyDisplayText = "⏎";
+      enterKeyDisplayText = getString(R.string.display_text__return);
     }
     
     for (final Keyboard keyboard : keyboardSet) {
