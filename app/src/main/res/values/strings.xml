@@ -29,6 +29,12 @@
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>
   <string name="file_name__about_html">about.html</string>
+  <!-- Five strokes: U+31D0, U+31D1, U+31D2, U+31D4, U+31D6 -->
+  <string name="stroke_1" translatable="false">㇐</string>
+  <string name="stroke_2" translatable="false">㇑</string>
+  <string name="stroke_3" translatable="false">㇒</string>
+  <string name="stroke_4" translatable="false">㇔</string>
+  <string name="stroke_5" translatable="false">㇖</string>
   <!-- Backspace: U+232B ERASE TO THE LEFT -->
   <string name="display_text__backspace" translatable="false">⌫</string>
   <!-- Switch to strokes: U+31D0, U+31D1, U+31D2 -->

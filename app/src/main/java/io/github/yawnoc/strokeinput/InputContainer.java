@@ -269,7 +269,15 @@ public class InputContainer
   public void setStrokeDigitsSequence(String strokeDigitsSequence) {
     
     if (strokeDigitsSequence.length() > 0) {
-      strokeSequenceBar.setText(strokeDigitsSequence);
+      final String strokeSequence = (
+        strokeDigitsSequence
+          .replace("1", getResources().getString(R.string.stroke_1))
+          .replace("2", getResources().getString(R.string.stroke_2))
+          .replace("3", getResources().getString(R.string.stroke_3))
+          .replace("4", getResources().getString(R.string.stroke_4))
+          .replace("5", getResources().getString(R.string.stroke_5))
+      );
+      strokeSequenceBar.setText(strokeSequence);
       strokeSequenceBar.requestLayout();
       strokeSequenceBar.setVisibility(VISIBLE);
     }
