@@ -104,6 +104,9 @@ public class InputContainer
   private int shiftPointerId = NONEXISTENT_POINTER_ID;
   private int shiftMode;
   
+  // Stroke sequence
+  private String strokeDigitsSequence = "";
+  
   // Keyboard drawing
   private Typeface keyboardFont;
   private Rect keyboardRectangle;
@@ -264,6 +267,16 @@ public class InputContainer
   
   public int getTouchableTopY() {
     return touchableTopY;
+  }
+  
+  public void appendStrokeDigitToSequence(String strokeDigit) {
+    strokeDigitsSequence += strokeDigit;
+    updateStrokeSequenceBar();
+  }
+  
+  private void updateStrokeSequenceBar() {
+    strokeSequenceBar.setText(strokeDigitsSequence);
+    strokeSequenceBar.requestLayout();
   }
   
   @SuppressLint("RtlHardcoded")

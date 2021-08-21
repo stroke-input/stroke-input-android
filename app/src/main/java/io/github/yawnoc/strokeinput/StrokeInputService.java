@@ -176,6 +176,15 @@ public class StrokeInputService
     
     switch (valueText) {
       
+      case "STROKE_1":
+      case "STROKE_2":
+      case "STROKE_3":
+      case "STROKE_4":
+      case "STROKE_5":
+        final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
+        inputContainer.appendStrokeDigitToSequence(strokeDigit);
+        break;
+      
       case "BACKSPACE":
         inputConnection.sendKeyEvent(
           new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
