@@ -189,22 +189,32 @@ public class StrokeInputService
         break;
       
       case "BACKSPACE":
-        inputConnection.sendKeyEvent(
-          new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
-        );
-        inputConnection.sendKeyEvent(
-          new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
-        );
-        final String characterBeforeCursor =
-          (String) inputConnection.getTextBeforeCursor(1, 0);
-        final int nextBackspaceIntervalMilliseconds = (
-          Stringy.isAscii(characterBeforeCursor)
-            ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
-            : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-        );
-        inputContainer.setKeyRepeatIntervalMilliseconds(
-          nextBackspaceIntervalMilliseconds
-        );
+        if (strokeDigitsSequence.length() > 0) {
+          strokeDigitsSequence =
+            Stringy.removeSuffix(".", strokeDigitsSequence);
+          inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+          inputContainer.setKeyRepeatIntervalMilliseconds(
+            BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+          );
+        }
+        else {
+          inputConnection.sendKeyEvent(
+            new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
+          );
+          inputConnection.sendKeyEvent(
+            new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+          );
+          final String characterBeforeCursor =
+            (String) inputConnection.getTextBeforeCursor(1, 0);
+          final int nextBackspaceIntervalMilliseconds = (
+            Stringy.isAscii(characterBeforeCursor)
+              ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+              : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+          );
+          inputContainer.setKeyRepeatIntervalMilliseconds(
+            nextBackspaceIntervalMilliseconds
+          );
+        }
         break;
       
       case "SWITCH_TO_STROKES":

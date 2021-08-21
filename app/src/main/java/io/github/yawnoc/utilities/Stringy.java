@@ -25,4 +25,12 @@ public class Stringy {
     return string.replaceFirst("^" + prefixRegex, "");
   }
   
+  public static String removeSuffix(
+    final String suffixRegex,
+    final String string
+  )
+  {
+    return string.replaceFirst(suffixRegex + "$", "");
+  }
+  
 }
