@@ -275,8 +275,14 @@ public class InputContainer
   }
   
   private void updateStrokeSequenceBar() {
-    strokeSequenceBar.setText(strokeDigitsSequence);
-    strokeSequenceBar.requestLayout();
+    if (strokeDigitsSequence.length() > 0) {
+      strokeSequenceBar.setText(strokeDigitsSequence);
+      strokeSequenceBar.requestLayout();
+      strokeSequenceBar.setVisibility(VISIBLE);
+    }
+    else {
+      strokeSequenceBar.setVisibility(INVISIBLE);
+    }
   }
   
   @SuppressLint("RtlHardcoded")

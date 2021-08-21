@@ -16,6 +16,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:visibility="invisible"
   android:textColor="@color/umbrella_yellow"
   android:textSize="@dimen/font_size__stroke_sequence_bar"
   android:ellipsize="start"
