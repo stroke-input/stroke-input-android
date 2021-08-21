@@ -104,9 +104,6 @@ public class InputContainer
   private int shiftPointerId = NONEXISTENT_POINTER_ID;
   private int shiftMode;
   
-  // Stroke sequence
-  private String strokeDigitsSequence = "";
-  
   // Keyboard drawing
   private Typeface keyboardFont;
   private Rect keyboardRectangle;
@@ -270,8 +267,6 @@ public class InputContainer
   }
   
   public void setStrokeDigitsSequence(String strokeDigitsSequence) {
-    
-    this.strokeDigitsSequence = strokeDigitsSequence;
     
     if (strokeDigitsSequence.length() > 0) {
       strokeSequenceBar.setText(strokeDigitsSequence);
