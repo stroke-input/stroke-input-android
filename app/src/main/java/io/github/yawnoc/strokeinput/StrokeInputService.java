@@ -49,6 +49,8 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
+  private String strokeDigitsSequence = "";
+  
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
   
@@ -182,7 +184,8 @@ public class StrokeInputService
       case "STROKE_4":
       case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        inputContainer.appendStrokeDigitToSequence(strokeDigit);
+        strokeDigitsSequence = strokeDigitsSequence + strokeDigit;
+        inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
         break;
       
       case "BACKSPACE":

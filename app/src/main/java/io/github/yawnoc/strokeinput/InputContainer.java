@@ -269,12 +269,10 @@ public class InputContainer
     return touchableTopY;
   }
   
-  public void appendStrokeDigitToSequence(String strokeDigit) {
-    strokeDigitsSequence += strokeDigit;
-    updateStrokeSequenceBar();
-  }
-  
-  private void updateStrokeSequenceBar() {
+  public void setStrokeDigitsSequence(String strokeDigitsSequence) {
+    
+    this.strokeDigitsSequence = strokeDigitsSequence;
+    
     if (strokeDigitsSequence.length() > 0) {
       strokeSequenceBar.setText(strokeDigitsSequence);
       strokeSequenceBar.requestLayout();
