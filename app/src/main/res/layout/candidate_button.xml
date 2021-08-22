@@ -13,5 +13,6 @@
   android:textSize="@dimen/font_size__candidate_button"
   android:background="@android:color/black"
   android:minWidth="@dimen/min_width__candidate_button"
+  android:paddingHorizontal="@dimen/padding_horizontal__candidate_button"
 >
 </Button>
