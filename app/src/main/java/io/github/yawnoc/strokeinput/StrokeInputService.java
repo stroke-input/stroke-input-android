@@ -322,6 +322,8 @@ public class StrokeInputService
     }
     
     inputConnection.commitText(candidate, 1);
+    strokeDigitsSequence = "";
+    inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
   }
   
 }
