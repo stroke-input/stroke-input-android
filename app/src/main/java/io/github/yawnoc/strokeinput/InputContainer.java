@@ -110,8 +110,8 @@ public class InputContainer
   
   // Keyboard drawing
   private Typeface keyboardFont;
-  private Rect keyboardRectangle;
-  private Paint keyboardFillPaint;
+  private Rect inputRectangle;
+  private Paint inputFillPaint;
   
   // Key drawing
   private Rect keyRectangle;
@@ -183,8 +183,8 @@ public class InputContainer
     
     keyboardFont =
       Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE);
-    keyboardRectangle = new Rect();
-    keyboardFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    inputRectangle = new Rect();
+    inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
     keyRectangle = new Rect();
     
@@ -286,7 +286,7 @@ public class InputContainer
     
     this.keyboard = keyboard;
     keyArray = keyboard.getKeyList().toArray(new Key[0]);
-    keyboardFillPaint.setColor(keyboard.fillColour);
+    inputFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
       keyPreviewPlane.updateShiftMode(shiftMode);
@@ -437,12 +437,14 @@ public class InputContainer
     final int keyboardWidth;
     final int keyboardHeight;
     final int height;
+    final int candidatesBarHeight;
     final int popupBufferZoneHeight;
     
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
       height = 0;
+      candidatesBarHeight = 0;
       popupBufferZoneHeight = 0;
       touchableTopY = 0;
     }
@@ -450,15 +452,16 @@ public class InputContainer
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
       height = keyboard.getParentInputContainerHeight();
+      candidatesBarHeight = keyboard.getCandidatesBarHeight();
       popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
       touchableTopY = keyboard.getParentInputContainerTouchableTopY();
     }
     
-    keyboardRectangle.set(
+    inputRectangle.set(
       0,
-      popupBufferZoneHeight,
+      popupBufferZoneHeight - candidatesBarHeight,
       keyboardWidth,
-      popupBufferZoneHeight + keyboardHeight
+      popupBufferZoneHeight - candidatesBarHeight + keyboardHeight
     );
     
     setMeasuredDimension(keyboardWidth, height);
@@ -485,7 +488,7 @@ public class InputContainer
       return;
     }
     
-    canvas.drawRect(keyboardRectangle, keyboardFillPaint);
+    canvas.drawRect(inputRectangle, inputFillPaint);
     
     for (final Key key : keyArray) {
       
