@@ -235,7 +235,6 @@ public class InputContainer
     final int popup_height = LinearLayout.LayoutParams.WRAP_CONTENT;
     candidatesBarPopup =
       new PopupWindow(candidatesBar, popup_width, popup_height);
-    candidatesBarPopup.setTouchable(false);
     candidatesBarPopup.setClippingEnabled(false);
   }
   
