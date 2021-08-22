@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2021 Conway
+  Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
+  This is free software with NO WARRANTY etc. etc.,
+  see LICENSE or <https://www.gnu.org/licenses/>.
+-->
+<androidx.recyclerview.widget.RecyclerView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+>
+</androidx.recyclerview.widget.RecyclerView>
