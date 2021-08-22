@@ -8,7 +8,6 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ import java.util.List;
 public class CandidatesBarAdapter
   extends RecyclerView.Adapter<CandidatesBarAdapter.ButtonHolder>
 {
+  private OnCandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
   
@@ -35,6 +35,17 @@ public class CandidatesBarAdapter
   {
     this.layoutInflater = LayoutInflater.from(context);
     this.candidateList = candidateList;
+  }
+  
+  public interface OnCandidateListener {
+    void onCandidate(String candidate);
+  }
+  
+  public void setOnCandidateListener(
+    final OnCandidateListener candidateListener
+  )
+  {
+    this.candidateListener = candidateListener;
   }
   
   @NonNull
@@ -66,7 +77,7 @@ public class CandidatesBarAdapter
     return candidateList.size();
   }
   
-  public static class ButtonHolder
+  public class ButtonHolder
     extends RecyclerView.ViewHolder
     implements View.OnClickListener
   {
@@ -80,7 +91,10 @@ public class CandidatesBarAdapter
     
     @Override
     public void onClick(View view) {
-      Log.d("XXX", (String) candidateButton.getText());
+      if (candidateListener == null) {
+        return;
+      }
+      candidateListener.onCandidate((String) candidateButton.getText());
     }
   }
 }

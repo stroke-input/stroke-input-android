@@ -27,7 +27,8 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class StrokeInputService
   extends InputMethodService
-  implements InputContainer.OnInputListener
+  implements
+    InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
@@ -91,6 +92,7 @@ public class StrokeInputService
       (InputContainer)
         getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.setOnInputListener(this);
+    inputContainer.setCandidateListener(this);
     inputContainer.setKeyboard(loadSavedKeyboard());
   }
   
@@ -309,6 +311,17 @@ public class StrokeInputService
       "keyboardName",
       keyboardName
     );
+  }
+  
+  @Override
+  public void onCandidate(final String candidate) {
+    
+    final InputConnection inputConnection = getCurrentInputConnection();
+    if (inputConnection == null) {
+      return;
+    }
+    
+    inputConnection.commitText(candidate, 1);
   }
   
 }

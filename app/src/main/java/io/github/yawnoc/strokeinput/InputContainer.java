@@ -124,6 +124,7 @@ public class InputContainer
   private PopupWindow strokeSequenceBarPopup;
   
   // Candidates bar
+  private CandidatesBarAdapter candidatesBarAdapter;
   private RecyclerView candidatesBar;
   private PopupWindow candidatesBarPopup;
   
@@ -227,7 +228,8 @@ public class InputContainer
     candidatesBar.setLayoutManager(
       new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     );
-    candidatesBar.setAdapter(
+    
+    candidatesBarAdapter =
       new CandidatesBarAdapter(
         context,
         Arrays.asList(
@@ -236,8 +238,8 @@ public class InputContainer
           "日月", "盈", "昃",
           "辰宿列張"
         )
-      )
-    );
+      );
+    candidatesBar.setAdapter(candidatesBarAdapter);
     
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
     final int popup_height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -278,6 +280,13 @@ public class InputContainer
   
   public void setOnInputListener(final OnInputListener inputListener) {
     this.inputListener = inputListener;
+  }
+  
+  public void setCandidateListener(
+    final CandidatesBarAdapter.OnCandidateListener candidateListener
+  )
+  {
+    candidatesBarAdapter.setOnCandidateListener(candidateListener);
   }
   
   public Keyboard getKeyboard() {
