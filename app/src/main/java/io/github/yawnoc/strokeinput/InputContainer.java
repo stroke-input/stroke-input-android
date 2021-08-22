@@ -228,7 +228,15 @@ public class InputContainer
       new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     );
     candidatesBar.setAdapter(
-      new CandidatesBarAdapter(context, Arrays.asList("XXX", "YY", "Z"))
+      new CandidatesBarAdapter(
+        context,
+        Arrays.asList(
+          "天", "地", "玄", "黃",
+          "宇宙", "洪", "荒",
+          "日月", "盈", "昃",
+          "辰宿列張"
+        )
+      )
     );
     
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
