@@ -48,4 +48,5 @@
   <dimen name="padding__candidates_bar">1dp</dimen>
   <dimen name="font_size__candidate_button">18sp</dimen>
   <dimen name="height__candidate_button">34dp</dimen>
+  <dimen name="min_width__candidate_button">48dp</dimen>
 </resources>
