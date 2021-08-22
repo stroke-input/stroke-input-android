@@ -72,9 +72,5 @@ public class CandidatesBarAdapter
       super(candidateButton);
       this.candidateButton = candidateButton;
     }
-    
-    public Button getCandidateButton() {
-      return candidateButton;
-    }
   }
 }
