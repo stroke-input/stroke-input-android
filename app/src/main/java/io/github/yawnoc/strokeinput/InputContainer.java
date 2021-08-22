@@ -276,8 +276,8 @@ public class InputContainer
     void saveKeyboard(Keyboard keyboard);
   }
   
-  public void setOnInputListener(final OnInputListener listener) {
-    inputListener = listener;
+  public void setOnInputListener(final OnInputListener inputListener) {
+    this.inputListener = inputListener;
   }
   
   public Keyboard getKeyboard() {
