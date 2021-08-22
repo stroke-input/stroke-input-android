@@ -220,15 +220,6 @@ public class InputContainer
   @SuppressLint("InflateParams")
   private void initialiseCandidatesBarring(final Context context) {
     
-    LayoutInflater layoutInflater =
-      (LayoutInflater)
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    candidatesBar =
-      (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
-    candidatesBar.setLayoutManager(
-      new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-    );
-    
     candidatesBarAdapter =
       new CandidatesBarAdapter(
         context,
@@ -239,6 +230,15 @@ public class InputContainer
           "辰宿列張"
         )
       );
+    
+    LayoutInflater layoutInflater =
+      (LayoutInflater)
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    candidatesBar =
+      (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
+    candidatesBar.setLayoutManager(
+      new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    );
     candidatesBar.setAdapter(candidatesBarAdapter);
     
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
