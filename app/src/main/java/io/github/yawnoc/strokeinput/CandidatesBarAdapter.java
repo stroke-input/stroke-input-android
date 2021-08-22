@@ -8,7 +8,9 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
@@ -64,13 +66,21 @@ public class CandidatesBarAdapter
     return candidateList.size();
   }
   
-  public static class ButtonHolder extends RecyclerView.ViewHolder {
-    
+  public static class ButtonHolder
+    extends RecyclerView.ViewHolder
+    implements View.OnClickListener
+  {
     private final Button candidateButton;
     
     public ButtonHolder(final Button candidateButton) {
       super(candidateButton);
+      candidateButton.setOnClickListener(this);
       this.candidateButton = candidateButton;
+    }
+    
+    @Override
+    public void onClick(View view) {
+      Log.d("XXX", (String) candidateButton.getText());
     }
   }
 }
