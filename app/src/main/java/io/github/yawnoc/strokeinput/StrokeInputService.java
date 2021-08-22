@@ -187,15 +187,14 @@ public class StrokeInputService
       case "STROKE_4":
       case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        strokeDigitsSequence = strokeDigitsSequence + strokeDigit;
-        inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+        setStrokeDigitsSequence(strokeDigitsSequence + strokeDigit);
         break;
       
       case "BACKSPACE":
         if (strokeDigitsSequence.length() > 0) {
-          strokeDigitsSequence =
-            Stringy.removeSuffix(".", strokeDigitsSequence);
-          inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+          setStrokeDigitsSequence(
+            Stringy.removeSuffix(".", strokeDigitsSequence)
+          );
           inputContainer.setKeyRepeatIntervalMilliseconds(
             BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
           );
@@ -322,7 +321,11 @@ public class StrokeInputService
     }
     
     inputConnection.commitText(candidate, 1);
-    strokeDigitsSequence = "";
+    setStrokeDigitsSequence("");
+  }
+  
+  private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
+    this.strokeDigitsSequence = strokeDigitsSequence;
     inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
   }
   
