@@ -10,6 +10,7 @@
   android:layout_width="wrap_content"
   android:layout_height="@dimen/height__candidate_button"
   android:textColor="@color/umbrella_orange"
+  android:textSize="@dimen/font_size__candidate_button"
   android:background="@android:color/black"
 >
 </Button>
