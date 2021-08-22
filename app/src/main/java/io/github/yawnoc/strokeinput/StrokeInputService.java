@@ -116,6 +116,7 @@ public class StrokeInputService
     super.onStartInputView(editorInfo, isRestarting);
     setEnterKeyDisplayText();
     inputContainer.showStrokeSequenceBar();
+    inputContainer.showCandidatesBar();
     inputContainer.showKeyPreviewPlane();
   }
   

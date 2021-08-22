@@ -43,6 +43,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Arrays;
 
 /*
   A container that holds:
@@ -119,6 +123,10 @@ public class InputContainer
   private TextView strokeSequenceBar;
   private PopupWindow strokeSequenceBarPopup;
   
+  // Candidates bar
+  private RecyclerView candidatesBar;
+  private PopupWindow candidatesBarPopup;
+  
   // Key preview plane
   private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
@@ -135,6 +143,7 @@ public class InputContainer
     initialiseExtendedPressing();
     initialiseDrawing(context);
     initialiseStrokeSequenceBarring(context);
+    initialiseCandidatesBarring(context);
     initialiseKeyPreviewing(context);
     initialiseDebugging();
   }
@@ -205,6 +214,29 @@ public class InputContainer
       new PopupWindow(strokeSequenceBar, popup_size, popup_size);
     strokeSequenceBarPopup.setTouchable(false);
     strokeSequenceBarPopup.setClippingEnabled(false);
+  }
+  
+  @SuppressLint("InflateParams")
+  private void initialiseCandidatesBarring(final Context context) {
+    
+    LayoutInflater layoutInflater =
+      (LayoutInflater)
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    candidatesBar =
+      (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
+    candidatesBar.setLayoutManager(
+      new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    );
+    candidatesBar.setAdapter(
+      new CandidatesBarAdapter(context, Arrays.asList("XXX", "YY", "Z"))
+    );
+    
+    final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
+    final int popup_height = LinearLayout.LayoutParams.WRAP_CONTENT;
+    candidatesBarPopup =
+      new PopupWindow(candidatesBar, popup_width, popup_height);
+    candidatesBarPopup.setTouchable(false);
+    candidatesBarPopup.setClippingEnabled(false);
   }
   
   private void initialiseKeyPreviewing(final Context context) {
@@ -301,6 +333,24 @@ public class InputContainer
         Gravity.BOTTOM | Gravity.LEFT,
         0,
         softButtonsHeight + keyboardHeight + candidatesBarHeight
+      );
+    }
+  }
+  
+  @SuppressLint("RtlHardcoded")
+  public void showCandidatesBar() {
+    
+    final int softButtonsHeight = getSoftButtonsHeight();
+    final int keyboardHeight = keyboard.getHeight();
+    
+    candidatesBarPopup.dismiss();
+    
+    if (getWindowToken() != null) { // check needed in API level 29
+      candidatesBarPopup.showAtLocation(
+        this,
+        Gravity.BOTTOM | Gravity.LEFT,
+        0,
+        softButtonsHeight + keyboardHeight
       );
     }
   }
@@ -424,6 +474,7 @@ public class InputContainer
   {
     super.onSizeChanged(width, height, oldWidth, oldHeight);
     showStrokeSequenceBar();
+    showCandidatesBar();
     showKeyPreviewPlane();
   }
   
@@ -543,6 +594,7 @@ public class InputContainer
   protected void onDetachedFromWindow() {
     // Prevent persistence of popups on screen rotate
     strokeSequenceBarPopup.dismiss();
+    candidatesBarPopup.dismiss();
     keyPreviewPlanePopup.dismiss();
     super.onDetachedFromWindow();
   }
