@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,6 +54,7 @@ public class StrokeInputService
   private InputContainer inputContainer;
   
   private String strokeDigitsSequence = "";
+  private List<String> candidateList = new ArrayList<>();
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
@@ -260,11 +263,17 @@ public class StrokeInputService
         break;
       
       case "SPACE":
+        if (strokeDigitsSequence.length() > 0) {
+          onCandidate(getFirstCandidate());
+        }
         inputConnection.commitText(SPACE, 1);
         break;
       
       case "ENTER":
-        if (enterKeyHasAction) {
+        if (strokeDigitsSequence.length() > 0) {
+          onCandidate(getFirstCandidate());
+        }
+        else if (enterKeyHasAction) {
           inputConnection.performEditorAction(inputOptionsBits);
         }
         else {
@@ -273,6 +282,9 @@ public class StrokeInputService
         break;
       
       default:
+        if (strokeDigitsSequence.length() > 0) {
+          onCandidate(getFirstCandidate());
+        }
         inputConnection.commitText(valueText, 1);
     }
   }
@@ -356,6 +368,15 @@ public class StrokeInputService
   private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
     this.strokeDigitsSequence = strokeDigitsSequence;
     inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+  }
+  
+  private String getFirstCandidate() {
+    try {
+      return candidateList.get(0);
+    }
+    catch (IndexOutOfBoundsException exception) {
+      return "";
+    }
   }
   
   private String getTextBeforeCursor(
