@@ -54,7 +54,6 @@ import java.util.Arrays;
     - Candidates bar
     - Keyboard
   TODO:
-    - Stroke sequence bar
     - Candidates bar
 */
 public class InputContainer
