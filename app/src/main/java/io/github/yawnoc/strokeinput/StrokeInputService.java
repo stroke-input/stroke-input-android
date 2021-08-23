@@ -27,6 +27,11 @@ import io.github.yawnoc.utilities.Stringy;
 
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
+  TODO:
+    - Character candidates
+    - Candidate sorting (with preference for simplified)
+    - Phrase candidates
+    - Actually complete the stroke input data set
 */
 public class StrokeInputService
   extends InputMethodService
