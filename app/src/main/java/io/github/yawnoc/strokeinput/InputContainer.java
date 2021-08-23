@@ -46,7 +46,7 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 /*
   A container that holds:
@@ -220,15 +220,7 @@ public class InputContainer
   private void initialiseCandidatesBarring(final Context context) {
     
     candidatesBarAdapter =
-      new CandidatesBarAdapter(
-        context,
-        Arrays.asList(
-          "天", "地", "玄", "黃",
-          "宇宙", "洪", "荒",
-          "日月", "盈", "昃",
-          "辰宿列張"
-        )
-      );
+      new CandidatesBarAdapter(context, Collections.emptyList());
     
     LayoutInflater layoutInflater =
       (LayoutInflater)
