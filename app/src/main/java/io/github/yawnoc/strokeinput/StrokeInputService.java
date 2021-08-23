@@ -9,6 +9,7 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -54,6 +55,7 @@ public class StrokeInputService
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
+  private boolean inputIsPassword;
   
   @Override
   public View onCreateInputView() {
@@ -107,6 +109,35 @@ public class StrokeInputService
     inputOptionsBits = editorInfo.imeOptions;
     enterKeyHasAction =
       (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
+    
+    final int inputTypeBits = editorInfo.inputType;
+    final int inputClassBits =
+      inputTypeBits & InputType.TYPE_MASK_CLASS;
+    final int inputVariationBits =
+      inputTypeBits & InputType.TYPE_MASK_VARIATION;
+    
+    switch (inputClassBits) {
+      
+      case InputType.TYPE_CLASS_NUMBER:
+        inputIsPassword =
+          inputVariationBits == InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+        break;
+      
+      case InputType.TYPE_CLASS_TEXT:
+        switch (inputVariationBits) {
+          case InputType.TYPE_TEXT_VARIATION_PASSWORD:
+          case InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD:
+          case InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD:
+            inputIsPassword = true;
+            break;
+          default:
+            inputIsPassword = false;
+        }
+        break;
+      
+      default:
+        inputIsPassword = false;
+    }
   }
   
   @Override
@@ -206,10 +237,8 @@ public class StrokeInputService
           inputConnection.sendKeyEvent(
             new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
           );
-          final String characterBeforeCursor =
-            (String) inputConnection.getTextBeforeCursor(1, 0);
           final int nextBackspaceIntervalMilliseconds = (
-            Stringy.isAscii(characterBeforeCursor)
+            Stringy.isAscii(getTextBeforeCursor(inputConnection, 1))
               ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
               : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
           );
@@ -327,6 +356,18 @@ public class StrokeInputService
   private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
     this.strokeDigitsSequence = strokeDigitsSequence;
     inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+  }
+  
+  private String getTextBeforeCursor(
+    final InputConnection inputConnection,
+    final int characterCount
+  )
+  {
+    if (inputIsPassword) {
+      return ""; // don't read passwords
+    }
+    
+    return (String) inputConnection.getTextBeforeCursor(characterCount, 0);
   }
   
 }
