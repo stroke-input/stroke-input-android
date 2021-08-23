@@ -53,8 +53,6 @@ import java.util.Collections;
     - Stroke sequence bar
     - Candidates bar
     - Keyboard
-  TODO:
-    - Candidates bar
 */
 public class InputContainer
   extends View
