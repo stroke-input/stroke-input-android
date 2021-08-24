@@ -74,7 +74,8 @@ public class InputContainer
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  public static final String KEYBOARD_FONT_FILE = "StrokeInputKeyboard.ttf";
+  public static final String KEYBOARD_FONT_FILE_NAME =
+    "StrokeInputKeyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -180,7 +181,7 @@ public class InputContainer
     this.setBackgroundColor(Color.TRANSPARENT);
     
     keyboardFont =
-      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE);
+      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
     inputRectangle = new Rect();
     inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
