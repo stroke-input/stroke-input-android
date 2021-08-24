@@ -15,11 +15,18 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -45,6 +52,8 @@ public class StrokeInputService
   private static final String NEWLINE = "\n";
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  private static final String SEQUENCE_CHARACTERS_FILE_NAME =
+    "sequence-characters.txt";
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -58,6 +67,8 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
+  private Map<String, String> charactersFromStrokeDigitSequence;
+  
   private String strokeDigitsSequence = "";
   private List<String> candidateList = new ArrayList<>();
   
@@ -70,6 +81,7 @@ public class StrokeInputService
     
     initialiseKeyboards();
     initialiseInputContainer();
+    initialiseStrokeInput();
     
     return inputContainer;
   }
@@ -104,6 +116,36 @@ public class StrokeInputService
     inputContainer.setOnInputListener(this);
     inputContainer.setCandidateListener(this);
     inputContainer.setKeyboard(loadSavedKeyboard());
+  }
+  
+  private void initialiseStrokeInput() {
+    
+    charactersFromStrokeDigitSequence = new TreeMap<>();
+    
+    try {
+      
+      final InputStream inputStream =
+        getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      final Pattern sequenceCharactersPattern =
+        Pattern.compile("([1-5]+)\\t(.+)");
+      String line;
+      Matcher lineMatcher;
+      while ((line = bufferedReader.readLine()) != null) {
+        lineMatcher = sequenceCharactersPattern.matcher(line);
+        if (lineMatcher.matches()) {
+          charactersFromStrokeDigitSequence.put(
+            lineMatcher.group(1), // stroke digits sequence
+            lineMatcher.group(2)  // characters
+          );
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
   }
   
   @Override
