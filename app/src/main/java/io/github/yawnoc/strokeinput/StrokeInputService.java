@@ -462,7 +462,7 @@ public class StrokeInputService
     // TODO: limit number of prefix match candidates
     final String candidates = exactMatchCandidates + prefixMatchCandidates;
     
-    return Stringy.characterListFromString(candidates);
+    return Stringy.toCharacterList(candidates);
   }
   
   private String getFirstCandidate() {

@@ -36,7 +36,7 @@ public class Stringy {
     return string.replaceFirst(suffixRegex + "$", "");
   }
   
-  public static List<String> characterListFromString(final String string) {
+  public static List<String> toCharacterList(final String string) {
     
     final List<String> characterList = new ArrayList<>();
     
