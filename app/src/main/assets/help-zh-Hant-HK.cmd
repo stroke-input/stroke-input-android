@@ -1,6 +1,6 @@
-{+ links.txt +}
-{+ lang.txt +}
-{+ keys.txt +}
+{+ links.inc +}
+{+ lang.inc +}
+{+ keys.inc +}
 
 %%
   %lang zh-Hant-HK

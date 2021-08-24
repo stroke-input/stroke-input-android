@@ -1,4 +1,4 @@
-{+ links.txt +}
+{+ links.inc +}
 
 %%
   %title About

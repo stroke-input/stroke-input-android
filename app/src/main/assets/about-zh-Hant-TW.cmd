@@ -1,5 +1,5 @@
-{+ links.txt +}
-{+ lang.txt +}
+{+ links.inc +}
+{+ lang.inc +}
 
 %%
   %lang zh-Hant-TW

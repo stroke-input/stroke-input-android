@@ -1,5 +1,5 @@
-{+ links.txt +}
-{+ keys.txt +}
+{+ links.inc +}
+{+ keys.inc +}
 
 %%
   %title Help

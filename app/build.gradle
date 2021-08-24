@@ -24,7 +24,7 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
   }
   aaptOptions {
-    ignoreAssetsPattern '*.cmd:*.txt'
+    ignoreAssetsPattern '*.cmd:*.inc'
   }
 }
 
