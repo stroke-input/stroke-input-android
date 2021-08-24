@@ -305,7 +305,7 @@ public class InputContainer
     return touchableTopY;
   }
   
-  public void setStrokeDigitsSequence(String strokeDigitsSequence) {
+  public void setStrokeDigitsSequence(final String strokeDigitsSequence) {
     
     if (strokeDigitsSequence.length() > 0) {
       final String strokeSequence = (
