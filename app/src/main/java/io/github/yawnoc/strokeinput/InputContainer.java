@@ -74,7 +74,7 @@ public class InputContainer
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  public static final String KEYBOARD_FONT_FILE = "stroke_input_keyboard.ttf";
+  public static final String KEYBOARD_FONT_FILE = "StrokeInputKeyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
