@@ -275,7 +275,7 @@ public class StrokeInputService
         final String newStrokeDigitSequence =
           strokeDigitsSequence + strokeDigit;
         final List<String> newCandidateList =
-          getCandidateList(newStrokeDigitSequence);
+          toCandidateList(newStrokeDigitSequence);
         if (newCandidateList.size() > 0) {
           setStrokeDigitsSequence(newStrokeDigitSequence);
           setCandidateList(newCandidateList);
@@ -433,7 +433,7 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
-  private List<String> getCandidateList(final String strokeDigitsSequence) {
+  private List<String> toCandidateList(final String strokeDigitsSequence) {
     
     String exactMatchCandidates =
       charactersFromStrokeDigitSequence.get(strokeDigitsSequence);
