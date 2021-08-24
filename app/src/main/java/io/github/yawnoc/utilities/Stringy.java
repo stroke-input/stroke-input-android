@@ -7,6 +7,9 @@
 
 package io.github.yawnoc.utilities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Stringy {
   
   private Stringy() {
@@ -31,6 +34,28 @@ public class Stringy {
   )
   {
     return string.replaceFirst(suffixRegex + "$", "");
+  }
+  
+  public static List<String> characterListFromString(final String string) {
+    
+    final List<String> characterList = new ArrayList<>();
+    
+    final int codePointCount = string.codePointCount(0, string.length());
+    for (
+      int codePointIndex = 0;
+      codePointIndex < codePointCount;
+      codePointIndex++
+    )
+    {
+      characterList.add(
+        string.substring(
+          string.offsetByCodePoints(0, codePointIndex),
+          string.offsetByCodePoints(0, codePointIndex + 1)
+        )
+      );
+    }
+    
+    return characterList;
   }
   
 }

@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -20,9 +21,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -67,7 +71,7 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private Map<String, String> charactersFromStrokeDigitSequence;
+  private NavigableMap<String, String> charactersFromStrokeDigitSequence;
   
   private String strokeDigitsSequence = "";
   private List<String> candidateList = new ArrayList<>();
@@ -268,7 +272,14 @@ public class StrokeInputService
       case "STROKE_4":
       case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        setStrokeDigitsSequence(strokeDigitsSequence + strokeDigit);
+        final String newStrokeDigitSequence =
+          strokeDigitsSequence + strokeDigit;
+        final List<String> newCandidateList =
+          getCandidateList(newStrokeDigitSequence);
+        if (newCandidateList.size() > 0) {
+          setStrokeDigitsSequence(newStrokeDigitSequence);
+          setCandidateList(newCandidateList);
+        }
         break;
       
       case "BACKSPACE":
@@ -415,6 +426,43 @@ public class StrokeInputService
   private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
     this.strokeDigitsSequence = strokeDigitsSequence;
     inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+  }
+  
+  private void setCandidateList(final List<String> candidateList) {
+    this.candidateList = candidateList;
+    inputContainer.setCandidateList(candidateList);
+  }
+  
+  private List<String> getCandidateList(final String strokeDigitsSequence) {
+    
+    String exactMatchCandidates =
+      charactersFromStrokeDigitSequence.get(strokeDigitsSequence);
+    if (exactMatchCandidates == null) {
+      exactMatchCandidates = "";
+    }
+    
+    final Collection<String> prefixMatchCandidatesCollection = (
+      charactersFromStrokeDigitSequence
+        .subMap(
+          strokeDigitsSequence,
+          false,
+          strokeDigitsSequence + Character.MAX_VALUE,
+          false
+        )
+        .values()
+    );
+    String prefixMatchCandidates =
+      TextUtils.join("", prefixMatchCandidatesCollection);
+    
+    if (exactMatchCandidates.equals("") && prefixMatchCandidates.equals("")) {
+      return Collections.emptyList();
+    }
+    
+    // TODO: candidate sorting & delete duplicates
+    // TODO: limit number of prefix match candidates
+    final String candidates = exactMatchCandidates + prefixMatchCandidates;
+    
+    return Stringy.characterListFromString(candidates);
   }
   
   private String getFirstCandidate() {

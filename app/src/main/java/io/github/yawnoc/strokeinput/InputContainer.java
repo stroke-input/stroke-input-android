@@ -46,7 +46,8 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
   A container that holds:
@@ -219,7 +220,7 @@ public class InputContainer
   private void initialiseCandidatesBarring(final Context context) {
     
     candidatesBarAdapter =
-      new CandidatesBarAdapter(context, Collections.emptyList());
+      new CandidatesBarAdapter(context, new ArrayList<>());
     
     LayoutInflater layoutInflater =
       (LayoutInflater)
@@ -322,6 +323,10 @@ public class InputContainer
     else {
       strokeSequenceBar.setVisibility(INVISIBLE);
     }
+  }
+  
+  public void setCandidateList(final List<String> candidateList) {
+    candidatesBarAdapter.updateCandidateList(candidateList);
   }
   
   @SuppressLint("RtlHardcoded")
