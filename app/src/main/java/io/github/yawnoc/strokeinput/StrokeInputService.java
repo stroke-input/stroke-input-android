@@ -10,7 +10,6 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,8 +20,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,8 +38,6 @@ import io.github.yawnoc.utilities.Stringy;
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
   TODO:
-    - Character candidates
-    - Candidate sorting (with preference for simplified)
     - Phrase candidates
     - Actually complete the stroke input data set
 */
@@ -55,6 +52,11 @@ public class StrokeInputService
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_EXACT_CHARACTERS_FILE_NAME =
     "sequence-exact-characters.txt";
+  private static final String SEQUENCE_PREFIX_CHARACTERS_FILE_NAME =
+    "sequence-prefix-characters.txt";
+  private static final String RANKING_FILE_NAME = "ranking.txt";
+  
+  private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -68,7 +70,13 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private NavigableMap<String, String> charactersFromStrokeDigitSequence;
+  private NavigableMap<String, CharactersData>
+    exactCharactersDataFromStrokeDigitSequence;
+  private Map<String, CharactersData>
+    prefixCharactersDataFromStrokeDigitSequence;
+  
+  private Map<String, Integer> sortingRankFromCharacter;
+  private Comparator<String> candidateComparator;
   
   private String strokeDigitsSequence = "";
   private List<String> candidateList = new ArrayList<>();
@@ -121,7 +129,10 @@ public class StrokeInputService
   
   private void initialiseStrokeInput() {
     
-    charactersFromStrokeDigitSequence = new TreeMap<>();
+    final Pattern sequenceCharactersPattern =
+      Pattern.compile("([1-5]+)\\t(.+)");
+    
+    exactCharactersDataFromStrokeDigitSequence = new TreeMap<>();
     
     try {
       
@@ -130,16 +141,17 @@ public class StrokeInputService
       final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(inputStream));
       
-      final Pattern sequenceCharactersPattern =
-        Pattern.compile("([1-5]+)\\t(.+)");
       String line;
       Matcher lineMatcher;
+      
       while ((line = bufferedReader.readLine()) != null) {
         lineMatcher = sequenceCharactersPattern.matcher(line);
         if (lineMatcher.matches()) {
-          charactersFromStrokeDigitSequence.put(
-            lineMatcher.group(1), // stroke digits sequence
-            lineMatcher.group(2)  // characters
+          final String strokeDigitSequence = lineMatcher.group(1);
+          final String commaSeparatedCharacters = lineMatcher.group(2);
+          exactCharactersDataFromStrokeDigitSequence.put(
+            strokeDigitSequence,
+            new CharactersData(commaSeparatedCharacters)
           );
         }
       }
@@ -147,6 +159,70 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    
+    prefixCharactersDataFromStrokeDigitSequence = new HashMap<>();
+    
+    try {
+      
+      final InputStream inputStream =
+        getAssets().open(SEQUENCE_PREFIX_CHARACTERS_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      Matcher lineMatcher;
+      
+      while ((line = bufferedReader.readLine()) != null) {
+        lineMatcher = sequenceCharactersPattern.matcher(line);
+        if (lineMatcher.matches()) {
+          final String strokeDigitSequence = lineMatcher.group(1);
+          final String commaSeparatedCharacters = lineMatcher.group(2);
+          prefixCharactersDataFromStrokeDigitSequence.put(
+            strokeDigitSequence,
+            new CharactersData(commaSeparatedCharacters)
+          );
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    sortingRankFromCharacter = new HashMap<>();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      int lineNumber = 0;
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        lineNumber++;
+        if (!line.matches("[ \t]*[#].*")) {
+          for (final String character : Stringy.toCharacterList(line)) {
+            sortingRankFromCharacter.put(character, lineNumber);
+          }
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    candidateComparator =
+      (character1, character2) -> {
+        Integer rank1 = sortingRankFromCharacter.get(character1);
+        if (rank1 == null) {
+          rank1 = Integer.MAX_VALUE;
+        }
+        Integer rank2 = sortingRankFromCharacter.get(character2);
+        if (rank2 == null) {
+          rank2 = Integer.MAX_VALUE;
+        }
+        return rank1 - rank2;
+      };
   }
   
   @Override
@@ -432,34 +508,52 @@ public class StrokeInputService
   
   private List<String> toCandidateList(final String strokeDigitsSequence) {
     
-    String exactMatchCandidates =
-      charactersFromStrokeDigitSequence.get(strokeDigitsSequence);
-    if (exactMatchCandidates == null) {
-      exactMatchCandidates = "";
-    }
-    
-    final Collection<String> prefixMatchCandidatesCollection = (
-      charactersFromStrokeDigitSequence
-        .subMap(
-          strokeDigitsSequence,
-          false,
-          strokeDigitsSequence + Character.MAX_VALUE,
-          false
-        )
-        .values()
+    final CharactersData exactCharactersData =
+      exactCharactersDataFromStrokeDigitSequence.get(strokeDigitsSequence);
+    final List<String> exactMatchCandidatesList = (
+      exactCharactersData == null
+        ? Collections.emptyList()
+        : exactCharactersData.toCandidateList(candidateComparator)
     );
-    String prefixMatchCandidates =
-      TextUtils.join("", prefixMatchCandidatesCollection);
     
-    if (exactMatchCandidates.equals("") && prefixMatchCandidates.equals("")) {
-      return Collections.emptyList();
+    final CharactersData prefixCharactersData;
+    final List<String> prefixMatchCandidatesList;
+    
+    if (strokeDigitsSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
+      prefixCharactersData =
+        prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitsSequence);
+      prefixMatchCandidatesList = (
+        prefixCharactersData == null
+          ? Collections.emptyList()
+          : prefixCharactersData.toCandidateList(candidateComparator)
+      );
+    }
+    else {
+      prefixCharactersData = new CharactersData("");
+      for (
+        final CharactersData charactersData
+          :
+        exactCharactersDataFromStrokeDigitSequence
+          .subMap(
+            strokeDigitsSequence,
+            false,
+            strokeDigitsSequence + Character.MAX_VALUE,
+            false
+          )
+          .values()
+      )
+      {
+        prefixCharactersData.addData(charactersData);
+      }
+      prefixMatchCandidatesList =
+        prefixCharactersData.toCandidateList(candidateComparator);
     }
     
-    // TODO: candidate sorting & delete duplicates
-    // TODO: limit number of prefix match candidates
-    final String candidates = exactMatchCandidates + prefixMatchCandidates;
+    final List<String> candidateList = new ArrayList<>();
+    candidateList.addAll(exactMatchCandidatesList);
+    candidateList.addAll(prefixMatchCandidatesList);
     
-    return Stringy.toCharacterList(candidates);
+    return candidateList;
   }
   
   private String getFirstCandidate() {

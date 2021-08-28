@@ -65,7 +65,10 @@ public class CharactersData {
     candidateList.addAll(goodlyList);
     candidateList.addAll(abominableList);
     
-    return new ArrayList<>(candidateList.subList(0, maxCandidateCount));
+    final int candidateCount =
+      Math.min(candidateList.size(), maxCandidateCount);
+    
+    return new ArrayList<>(candidateList.subList(0, candidateCount));
   }
   
 }
