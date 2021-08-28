@@ -52,9 +52,6 @@ public class StrokeInputService
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
-  private static final String SPACE = " ";
-  private static final String NEWLINE = "\n";
-  
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME =
     "sequence-exact-characters.txt";
@@ -324,7 +321,7 @@ public class StrokeInputService
         if (strokeDigitsSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
-        inputConnection.commitText(SPACE, 1);
+        inputConnection.commitText(" ", 1);
         break;
       
       case "ENTER":
@@ -335,7 +332,7 @@ public class StrokeInputService
           inputConnection.performEditorAction(inputOptionsBits);
         }
         else {
-          inputConnection.commitText(NEWLINE, 1);
+          inputConnection.commitText("\n", 1);
         }
         break;
       
