@@ -244,7 +244,7 @@ public class Keyboard {
     final float keyboardHeightCorrectionFactor =
       Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
-    for (Key key : keyList) {
+    for (final Key key : keyList) {
       key.y *= keyboardHeightCorrectionFactor;
       key.height *= keyboardHeightCorrectionFactor;
       key.textOffsetY *= keyboardHeightCorrectionFactor;
@@ -256,7 +256,7 @@ public class Keyboard {
       // API level 28 is dumb, see <https://stackoverflow.com/q/52929466>
       int popupBufferZoneTopY =
         -(strokeSequenceBarHeightPx + candidatesBarHeightPx);
-      for (Key key : keyList) {
+      for (final Key key : keyList) {
         final int keyPreviewHeight =
           (int) (key.previewMagnification * key.height);
         popupBufferZoneTopY = Math.min(
@@ -269,7 +269,7 @@ public class Keyboard {
     else {
       popupBufferZoneHeight = candidatesBarHeightPx;
     }
-    for (Key key : keyList) {
+    for (final Key key : keyList) {
       key.y += popupBufferZoneHeight;
     }
     parentInputContainerHeight = height + popupBufferZoneHeight;
