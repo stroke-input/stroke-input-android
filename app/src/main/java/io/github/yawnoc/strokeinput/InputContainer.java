@@ -305,11 +305,11 @@ public class InputContainer
     return touchableTopY;
   }
   
-  public void setStrokeDigitsSequence(final String strokeDigitsSequence) {
+  public void setStrokeDigitSequence(final String strokeDigitSequence) {
     
-    if (strokeDigitsSequence.length() > 0) {
+    if (strokeDigitSequence.length() > 0) {
       final String strokeSequence = (
-        strokeDigitsSequence
+        strokeDigitSequence
           .replace("1", getResources().getString(R.string.stroke_1))
           .replace("2", getResources().getString(R.string.stroke_2))
           .replace("3", getResources().getString(R.string.stroke_3))

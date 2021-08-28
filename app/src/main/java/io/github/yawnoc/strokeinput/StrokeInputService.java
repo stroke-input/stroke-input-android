@@ -78,7 +78,7 @@ public class StrokeInputService
   private Map<String, Integer> sortingRankFromCharacter;
   private Comparator<String> candidateComparator;
   
-  private String strokeDigitsSequence = "";
+  private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
   
   private int inputOptionsBits;
@@ -346,19 +346,19 @@ public class StrokeInputService
       case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
         final String newStrokeDigitSequence =
-          strokeDigitsSequence + strokeDigit;
+          strokeDigitSequence + strokeDigit;
         final List<String> newCandidateList =
           toCandidateList(newStrokeDigitSequence);
         if (newCandidateList.size() > 0) {
-          setStrokeDigitsSequence(newStrokeDigitSequence);
+          setStrokeDigitSequence(newStrokeDigitSequence);
           setCandidateList(newCandidateList);
         }
         break;
       
       case "BACKSPACE":
-        if (strokeDigitsSequence.length() > 0) {
-          setStrokeDigitsSequence(
-            Stringy.removeSuffix(".", strokeDigitsSequence)
+        if (strokeDigitSequence.length() > 0) {
+          setStrokeDigitSequence(
+            Stringy.removeSuffix(".", strokeDigitSequence)
           );
           inputContainer.setKeyRepeatIntervalMilliseconds(
             BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
@@ -394,14 +394,14 @@ public class StrokeInputService
         break;
       
       case "SPACE":
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
         inputConnection.commitText(" ", 1);
         break;
       
       case "ENTER":
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
         else if (enterKeyHasAction) {
@@ -413,7 +413,7 @@ public class StrokeInputService
         break;
       
       default:
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
         inputConnection.commitText(valueText, 1);
@@ -493,12 +493,12 @@ public class StrokeInputService
     }
     
     inputConnection.commitText(candidate, 1);
-    setStrokeDigitsSequence("");
+    setStrokeDigitSequence("");
   }
   
-  private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
-    this.strokeDigitsSequence = strokeDigitsSequence;
-    inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+  private void setStrokeDigitSequence(final String strokeDigitSequence) {
+    this.strokeDigitSequence = strokeDigitSequence;
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
   
   private void setCandidateList(final List<String> candidateList) {
@@ -506,10 +506,10 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
-  private List<String> toCandidateList(final String strokeDigitsSequence) {
+  private List<String> toCandidateList(final String strokeDigitSequence) {
     
     final CharactersData exactCharactersData =
-      exactCharactersDataFromStrokeDigitSequence.get(strokeDigitsSequence);
+      exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidatesList = (
       exactCharactersData == null
         ? Collections.emptyList()
@@ -519,9 +519,9 @@ public class StrokeInputService
     final CharactersData prefixCharactersData;
     final List<String> prefixMatchCandidatesList;
     
-    if (strokeDigitsSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
+    if (strokeDigitSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
       prefixCharactersData =
-        prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitsSequence);
+        prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
       prefixMatchCandidatesList = (
         prefixCharactersData == null
           ? Collections.emptyList()
@@ -535,9 +535,9 @@ public class StrokeInputService
           :
         exactCharactersDataFromStrokeDigitSequence
           .subMap(
-            strokeDigitsSequence,
+            strokeDigitSequence,
             false,
-            strokeDigitsSequence + Character.MAX_VALUE,
+            strokeDigitSequence + Character.MAX_VALUE,
             false
           )
           .values()
