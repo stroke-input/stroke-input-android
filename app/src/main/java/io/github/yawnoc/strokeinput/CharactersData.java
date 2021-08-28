@@ -8,6 +8,8 @@
 package io.github.yawnoc.strokeinput;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,15 +46,20 @@ public class CharactersData {
     abominableSet.addAll(charactersData.abominableSet);
   }
   
-  public List<String> toCandidateList() {
-    return toCandidateList(Integer.MAX_VALUE);
+  public List<String> toCandidateList(final Comparator<String> comparator) {
+    return toCandidateList(comparator, Integer.MAX_VALUE);
   }
   
-  public List<String> toCandidateList(final int maxCandidateCount) {
-    
+  public List<String> toCandidateList(
+    final Comparator<String> comparator,
+    final int maxCandidateCount
+  )
+  {
     final List<String> goodlyList = new ArrayList<>(goodlySet);
     final List<String> abominableList = new ArrayList<>(abominableSet);
-    // TODO: implement sorting
+    
+    Collections.sort(goodlyList, comparator);
+    Collections.sort(abominableList, comparator);
     
     final List<String> candidateList = new ArrayList<>();
     candidateList.addAll(goodlyList);
