@@ -47,7 +47,7 @@ public class Keyboard {
   private final int strokeSequenceBarHeightPx;
   public static final int CANDIDATES_BAR_HEIGHT_DP = 36;
   private final int candidatesBarHeightPx;
-  public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
+  private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   
