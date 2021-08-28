@@ -53,7 +53,7 @@ public class StrokeInputService
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
-  private static final String SEQUENCE_CHARACTERS_FILE_NAME =
+  private static final String SEQUENCE_EXACT_CHARACTERS_FILE_NAME =
     "sequence-exact-characters.txt";
   
   Keyboard strokesKeyboard;
@@ -126,7 +126,7 @@ public class StrokeInputService
     try {
       
       final InputStream inputStream =
-        getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
+        getAssets().open(SEQUENCE_EXACT_CHARACTERS_FILE_NAME);
       final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(inputStream));
       
