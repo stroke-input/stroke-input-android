@@ -19,8 +19,8 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class CharactersData {
   
-  private Set<String> goodlySet;
-  private Set<String> abominableSet;
+  private final Set<String> goodlySet;
+  private final Set<String> abominableSet;
   
   CharactersData(final String commaSeparatedCharacters) {
     
