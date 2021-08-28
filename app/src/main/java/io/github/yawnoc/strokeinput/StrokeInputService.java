@@ -57,6 +57,7 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME = "ranking.txt";
   
   private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
+  private static final int MAX_PREFIX_MATCH_COUNT = 20;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -546,7 +547,8 @@ public class StrokeInputService
         prefixCharactersData.addData(charactersData);
       }
       prefixMatchCandidatesList =
-        prefixCharactersData.toCandidateList(candidateComparator);
+        prefixCharactersData
+          .toCandidateList(candidateComparator, MAX_PREFIX_MATCH_COUNT);
     }
     
     final List<String> candidateList = new ArrayList<>();
