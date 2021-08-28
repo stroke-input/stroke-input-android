@@ -7,7 +7,9 @@
 
 package io.github.yawnoc.strokeinput;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import io.github.yawnoc.utilities.Stringy;
@@ -35,6 +37,23 @@ public class CharactersData {
     
     goodlySet.addAll(Stringy.toCharacterList(goodlyCharacters));
     abominableSet.addAll(Stringy.toCharacterList(abominableCharacters));
+  }
+  
+  public List<String> toCandidateList() {
+    return toCandidateList(Integer.MAX_VALUE);
+  }
+  
+  public List<String> toCandidateList(final int maxCandidateCount) {
+    
+    final List<String> goodlyList = new ArrayList<>(goodlySet);
+    final List<String> abominableList = new ArrayList<>(abominableSet);
+    // TODO: implement sorting
+    
+    final List<String> candidateList = new ArrayList<>();
+    candidateList.addAll(goodlyList);
+    candidateList.addAll(abominableList);
+    
+    return new ArrayList<>(candidateList.subList(0, maxCandidateCount));
   }
   
 }
