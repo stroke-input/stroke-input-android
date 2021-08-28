@@ -509,28 +509,28 @@ public class StrokeInputService
   
   private List<String> toCandidateList(final String strokeDigitSequence) {
     
-    final CharactersData exactCharactersData =
+    final CharactersData exactMatchCharactersData =
       exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidatesList = (
-      exactCharactersData == null
+      exactMatchCharactersData == null
         ? Collections.emptyList()
-        : exactCharactersData.toCandidateList(candidateComparator)
+        : exactMatchCharactersData.toCandidateList(candidateComparator)
     );
     
-    final CharactersData prefixCharactersData;
+    final CharactersData prefixMatchCharactersData;
     final List<String> prefixMatchCandidatesList;
     
     if (strokeDigitSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
-      prefixCharactersData =
+      prefixMatchCharactersData =
         prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
       prefixMatchCandidatesList = (
-        prefixCharactersData == null
+        prefixMatchCharactersData == null
           ? Collections.emptyList()
-          : prefixCharactersData.toCandidateList(candidateComparator)
+          : prefixMatchCharactersData.toCandidateList(candidateComparator)
       );
     }
     else {
-      prefixCharactersData = new CharactersData("");
+      prefixMatchCharactersData = new CharactersData("");
       for (
         final CharactersData charactersData
           :
@@ -544,10 +544,10 @@ public class StrokeInputService
           .values()
       )
       {
-        prefixCharactersData.addData(charactersData);
+        prefixMatchCharactersData.addData(charactersData);
       }
       prefixMatchCandidatesList =
-        prefixCharactersData
+        prefixMatchCharactersData
           .toCandidateList(candidateComparator, MAX_PREFIX_MATCH_COUNT);
     }
     
