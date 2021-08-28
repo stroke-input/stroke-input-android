@@ -124,7 +124,6 @@ public class InputContainer
   
   // Candidates bar
   private CandidatesBarAdapter candidatesBarAdapter;
-  private RecyclerView candidatesBar;
   private PopupWindow candidatesBarPopup;
   
   // Key preview plane
@@ -225,7 +224,7 @@ public class InputContainer
     LayoutInflater layoutInflater =
       (LayoutInflater)
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    candidatesBar =
+    final RecyclerView candidatesBar =
       (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
     candidatesBar.setLayoutManager(
       new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
