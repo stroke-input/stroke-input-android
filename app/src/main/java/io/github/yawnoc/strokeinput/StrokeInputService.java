@@ -57,7 +57,7 @@ public class StrokeInputService
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME =
-    "sequence-characters.txt";
+    "sequence-exact-characters.txt";
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
