@@ -39,6 +39,11 @@ public class CharactersData {
     abominableSet.addAll(Stringy.toCharacterList(abominableCharacters));
   }
   
+  public void addData(final CharactersData charactersData) {
+    goodlySet.addAll(charactersData.goodlySet);
+    abominableSet.addAll(charactersData.abominableSet);
+  }
+  
   public List<String> toCandidateList() {
     return toCandidateList(Integer.MAX_VALUE);
   }
