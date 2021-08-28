@@ -26,13 +26,22 @@ public class CharactersData {
   
   CharactersData(final String commaSeparatedCharacters) {
     
-    final String[] splitCharactersList = commaSeparatedCharacters.split(",");
-    final String goodlyCharacters = splitCharactersList[0];
-    final String abominableCharacters = (
-      splitCharactersList.length > 1
-        ? splitCharactersList[1]
-        : ""
-    );
+    final String goodlyCharacters;
+    final String abominableCharacters;
+    
+    if (commaSeparatedCharacters == null) {
+      goodlyCharacters = "";
+      abominableCharacters = "";
+    }
+    else {
+      final String[] splitCharactersList = commaSeparatedCharacters.split(",");
+      goodlyCharacters = splitCharactersList[0];
+      abominableCharacters = (
+        splitCharactersList.length > 1
+          ? splitCharactersList[1]
+          : ""
+      );
+    }
     
     goodlySet = new HashSet<>();
     abominableSet = new HashSet<>();
