@@ -32,6 +32,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -48,6 +49,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.github.yawnoc.utilities.Valuey;
 
 /*
   A container that holds:
@@ -231,8 +234,11 @@ public class InputContainer
     );
     candidatesBar.setAdapter(candidatesBarAdapter);
     
+    final DisplayMetrics displayMetrics =
+      context.getResources().getDisplayMetrics();
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
-    final int popup_height = LinearLayout.LayoutParams.WRAP_CONTENT;
+    final int popup_height =
+      (int) Valuey.pxFromDp(Keyboard.CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
     candidatesBarPopup =
       new PopupWindow(candidatesBar, popup_width, popup_height);
     candidatesBarPopup.setClippingEnabled(false);

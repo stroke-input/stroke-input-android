@@ -45,7 +45,7 @@ public class Keyboard {
   
   private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 24;
   private final int strokeSequenceBarHeightPx;
-  private static final int CANDIDATES_BAR_HEIGHT_DP = 36;
+  public static final int CANDIDATES_BAR_HEIGHT_DP = 36;
   private final int candidatesBarHeightPx;
   public static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
