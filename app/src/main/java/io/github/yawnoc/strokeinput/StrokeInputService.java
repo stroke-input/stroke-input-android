@@ -15,11 +15,21 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -28,8 +38,6 @@ import io.github.yawnoc.utilities.Stringy;
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
   TODO:
-    - Character candidates
-    - Candidate sorting (with preference for simplified)
     - Phrase candidates
     - Actually complete the stroke input data set
 */
@@ -41,10 +49,15 @@ public class StrokeInputService
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
-  private static final String SPACE = " ";
-  private static final String NEWLINE = "\n";
-  
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  private static final String SEQUENCE_EXACT_CHARACTERS_FILE_NAME =
+    "sequence-exact-characters.txt";
+  private static final String SEQUENCE_PREFIX_CHARACTERS_FILE_NAME =
+    "sequence-prefix-characters.txt";
+  private static final String RANKING_FILE_NAME = "ranking.txt";
+  
+  private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
+  private static final int MAX_PREFIX_MATCH_COUNT = 20;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -58,7 +71,15 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private String strokeDigitsSequence = "";
+  private NavigableMap<String, CharactersData>
+    exactCharactersDataFromStrokeDigitSequence;
+  private Map<String, CharactersData>
+    prefixCharactersDataFromStrokeDigitSequence;
+  
+  private Map<String, Integer> sortingRankFromCharacter;
+  private Comparator<String> candidateComparator;
+  
+  private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
   
   private int inputOptionsBits;
@@ -70,6 +91,7 @@ public class StrokeInputService
     
     initialiseKeyboards();
     initialiseInputContainer();
+    initialiseStrokeInput();
     
     return inputContainer;
   }
@@ -104,6 +126,104 @@ public class StrokeInputService
     inputContainer.setOnInputListener(this);
     inputContainer.setCandidateListener(this);
     inputContainer.setKeyboard(loadSavedKeyboard());
+  }
+  
+  private void initialiseStrokeInput() {
+    
+    final Pattern sequenceCharactersPattern =
+      Pattern.compile("([1-5]+)\\t(.+)");
+    
+    exactCharactersDataFromStrokeDigitSequence = new TreeMap<>();
+    
+    try {
+      
+      final InputStream inputStream =
+        getAssets().open(SEQUENCE_EXACT_CHARACTERS_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      Matcher lineMatcher;
+      
+      while ((line = bufferedReader.readLine()) != null) {
+        lineMatcher = sequenceCharactersPattern.matcher(line);
+        if (lineMatcher.matches()) {
+          final String strokeDigitSequence = lineMatcher.group(1);
+          final String commaSeparatedCharacters = lineMatcher.group(2);
+          exactCharactersDataFromStrokeDigitSequence.put(
+            strokeDigitSequence,
+            new CharactersData(commaSeparatedCharacters)
+          );
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    prefixCharactersDataFromStrokeDigitSequence = new HashMap<>();
+    
+    try {
+      
+      final InputStream inputStream =
+        getAssets().open(SEQUENCE_PREFIX_CHARACTERS_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      Matcher lineMatcher;
+      
+      while ((line = bufferedReader.readLine()) != null) {
+        lineMatcher = sequenceCharactersPattern.matcher(line);
+        if (lineMatcher.matches()) {
+          final String strokeDigitSequence = lineMatcher.group(1);
+          final String commaSeparatedCharacters = lineMatcher.group(2);
+          prefixCharactersDataFromStrokeDigitSequence.put(
+            strokeDigitSequence,
+            new CharactersData(commaSeparatedCharacters)
+          );
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    sortingRankFromCharacter = new HashMap<>();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      int lineNumber = 0;
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        lineNumber++;
+        if (!line.matches("[ \t]*[#].*")) {
+          for (final String character : Stringy.toCharacterList(line)) {
+            sortingRankFromCharacter.put(character, lineNumber);
+          }
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    candidateComparator =
+      (character1, character2) -> {
+        Integer rank1 = sortingRankFromCharacter.get(character1);
+        if (rank1 == null) {
+          rank1 = Integer.MAX_VALUE;
+        }
+        Integer rank2 = sortingRankFromCharacter.get(character2);
+        if (rank2 == null) {
+          rank2 = Integer.MAX_VALUE;
+        }
+        return rank1 - rank2;
+      };
   }
   
   @Override
@@ -224,16 +344,27 @@ public class StrokeInputService
       case "STROKE_2":
       case "STROKE_3":
       case "STROKE_4":
-      case "STROKE_5":
+      case "STROKE_5": {
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        setStrokeDigitsSequence(strokeDigitsSequence + strokeDigit);
+        final String newStrokeDigitSequence =
+          strokeDigitSequence + strokeDigit;
+        final List<String> newCandidateList =
+          toCandidateList(newStrokeDigitSequence);
+        if (newCandidateList.size() > 0) {
+          setStrokeDigitSequence(newStrokeDigitSequence);
+          setCandidateList(newCandidateList);
+        }
         break;
+      }
       
-      case "BACKSPACE":
-        if (strokeDigitsSequence.length() > 0) {
-          setStrokeDigitsSequence(
-            Stringy.removeSuffix(".", strokeDigitsSequence)
-          );
+      case "BACKSPACE": {
+        if (strokeDigitSequence.length() > 0) {
+          final String newStrokeDigitSequence =
+            Stringy.removeSuffix(".", strokeDigitSequence);
+          final List<String> newCandidateList =
+            toCandidateList(newStrokeDigitSequence);
+          setStrokeDigitSequence(newStrokeDigitSequence);
+          setCandidateList(newCandidateList);
           inputContainer.setKeyRepeatIntervalMilliseconds(
             BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
           );
@@ -255,6 +386,7 @@ public class StrokeInputService
           );
         }
         break;
+      }
       
       case "SWITCH_TO_STROKES":
       case "SWITCH_TO_STROKES_SYMBOLS_1":
@@ -268,26 +400,26 @@ public class StrokeInputService
         break;
       
       case "SPACE":
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
-        inputConnection.commitText(SPACE, 1);
+        inputConnection.commitText(" ", 1);
         break;
       
       case "ENTER":
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
         else if (enterKeyHasAction) {
           inputConnection.performEditorAction(inputOptionsBits);
         }
         else {
-          inputConnection.commitText(NEWLINE, 1);
+          inputConnection.commitText("\n", 1);
         }
         break;
       
       default:
-        if (strokeDigitsSequence.length() > 0) {
+        if (strokeDigitSequence.length() > 0) {
           onCandidate(getFirstCandidate());
         }
         inputConnection.commitText(valueText, 1);
@@ -367,12 +499,68 @@ public class StrokeInputService
     }
     
     inputConnection.commitText(candidate, 1);
-    setStrokeDigitsSequence("");
+    setStrokeDigitSequence("");
   }
   
-  private void setStrokeDigitsSequence(final String strokeDigitsSequence) {
-    this.strokeDigitsSequence = strokeDigitsSequence;
-    inputContainer.setStrokeDigitsSequence(strokeDigitsSequence);
+  private void setStrokeDigitSequence(final String strokeDigitSequence) {
+    this.strokeDigitSequence = strokeDigitSequence;
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
+  }
+  
+  private void setCandidateList(final List<String> candidateList) {
+    this.candidateList = candidateList;
+    inputContainer.setCandidateList(candidateList);
+  }
+  
+  private List<String> toCandidateList(final String strokeDigitSequence) {
+    
+    final CharactersData exactMatchCharactersData =
+      exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
+    final List<String> exactMatchCandidatesList = (
+      exactMatchCharactersData == null
+        ? Collections.emptyList()
+        : exactMatchCharactersData.toCandidateList(candidateComparator)
+    );
+    
+    final CharactersData prefixMatchCharactersData;
+    final List<String> prefixMatchCandidatesList;
+    
+    if (strokeDigitSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
+      prefixMatchCharactersData =
+        prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
+      prefixMatchCandidatesList = (
+        prefixMatchCharactersData == null
+          ? Collections.emptyList()
+          : prefixMatchCharactersData.toCandidateList(candidateComparator)
+      );
+    }
+    else {
+      prefixMatchCharactersData = new CharactersData("");
+      for (
+        final CharactersData charactersData
+          :
+        exactCharactersDataFromStrokeDigitSequence
+          .subMap(
+            strokeDigitSequence,
+            false,
+            strokeDigitSequence + Character.MAX_VALUE,
+            false
+          )
+          .values()
+      )
+      {
+        prefixMatchCharactersData.addData(charactersData);
+      }
+      prefixMatchCandidatesList =
+        prefixMatchCharactersData
+          .toCandidateList(candidateComparator, MAX_PREFIX_MATCH_COUNT);
+    }
+    
+    final List<String> candidateList = new ArrayList<>();
+    candidateList.addAll(exactMatchCandidatesList);
+    candidateList.addAll(prefixMatchCandidatesList);
+    
+    return candidateList;
   }
   
   private String getFirstCandidate() {

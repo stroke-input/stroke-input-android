@@ -82,7 +82,7 @@ public class KeyPreviewPlane extends View {
     keyPreviewTextPaint.setTypeface(
       Typeface.createFromAsset(
         context.getAssets(),
-        InputContainer.KEYBOARD_FONT_FILE
+        InputContainer.KEYBOARD_FONT_FILE_NAME
       )
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);

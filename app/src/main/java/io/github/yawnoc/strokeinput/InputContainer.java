@@ -32,6 +32,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -46,7 +47,10 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.github.yawnoc.utilities.Valuey;
 
 /*
   A container that holds:
@@ -74,7 +78,8 @@ public class InputContainer
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  public static final String KEYBOARD_FONT_FILE = "stroke_input_keyboard.ttf";
+  public static final String KEYBOARD_FONT_FILE_NAME =
+    "StrokeInputKeyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -122,7 +127,6 @@ public class InputContainer
   
   // Candidates bar
   private CandidatesBarAdapter candidatesBarAdapter;
-  private RecyclerView candidatesBar;
   private PopupWindow candidatesBarPopup;
   
   // Key preview plane
@@ -180,7 +184,7 @@ public class InputContainer
     this.setBackgroundColor(Color.TRANSPARENT);
     
     keyboardFont =
-      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE);
+      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
     inputRectangle = new Rect();
     inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
@@ -218,20 +222,23 @@ public class InputContainer
   private void initialiseCandidatesBarring(final Context context) {
     
     candidatesBarAdapter =
-      new CandidatesBarAdapter(context, Collections.emptyList());
+      new CandidatesBarAdapter(context, new ArrayList<>());
     
     LayoutInflater layoutInflater =
       (LayoutInflater)
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    candidatesBar =
+    final RecyclerView candidatesBar =
       (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
     candidatesBar.setLayoutManager(
       new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     );
     candidatesBar.setAdapter(candidatesBarAdapter);
     
+    final DisplayMetrics displayMetrics =
+      context.getResources().getDisplayMetrics();
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
-    final int popup_height = LinearLayout.LayoutParams.WRAP_CONTENT;
+    final int popup_height =
+      (int) Valuey.pxFromDp(Keyboard.CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
     candidatesBarPopup =
       new PopupWindow(candidatesBar, popup_width, popup_height);
     candidatesBarPopup.setClippingEnabled(false);
@@ -303,11 +310,11 @@ public class InputContainer
     return touchableTopY;
   }
   
-  public void setStrokeDigitsSequence(String strokeDigitsSequence) {
+  public void setStrokeDigitSequence(final String strokeDigitSequence) {
     
-    if (strokeDigitsSequence.length() > 0) {
+    if (strokeDigitSequence.length() > 0) {
       final String strokeSequence = (
-        strokeDigitsSequence
+        strokeDigitSequence
           .replace("1", getResources().getString(R.string.stroke_1))
           .replace("2", getResources().getString(R.string.stroke_2))
           .replace("3", getResources().getString(R.string.stroke_3))
@@ -321,6 +328,10 @@ public class InputContainer
     else {
       strokeSequenceBar.setVisibility(INVISIBLE);
     }
+  }
+  
+  public void setCandidateList(final List<String> candidateList) {
+    candidatesBarAdapter.updateCandidateList(candidateList);
   }
   
   @SuppressLint("RtlHardcoded")

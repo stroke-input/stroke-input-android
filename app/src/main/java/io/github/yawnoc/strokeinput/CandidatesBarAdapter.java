@@ -7,6 +7,7 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,13 @@ public class CandidatesBarAdapter
   )
   {
     this.candidateListener = candidateListener;
+  }
+  
+  @SuppressLint("NotifyDataSetChanged")
+  public void updateCandidateList(final List<String> candidateList) {
+    this.candidateList.clear();
+    this.candidateList.addAll(candidateList);
+    notifyDataSetChanged();
   }
   
   @NonNull
