@@ -344,7 +344,7 @@ public class StrokeInputService
       case "STROKE_2":
       case "STROKE_3":
       case "STROKE_4":
-      case "STROKE_5":
+      case "STROKE_5": {
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
         final String newStrokeDigitSequence =
           strokeDigitSequence + strokeDigit;
@@ -355,12 +355,16 @@ public class StrokeInputService
           setCandidateList(newCandidateList);
         }
         break;
+      }
       
-      case "BACKSPACE":
+      case "BACKSPACE": {
         if (strokeDigitSequence.length() > 0) {
-          setStrokeDigitSequence(
-            Stringy.removeSuffix(".", strokeDigitSequence)
-          );
+          final String newStrokeDigitSequence =
+            Stringy.removeSuffix(".", strokeDigitSequence);
+          final List<String> newCandidateList =
+            toCandidateList(newStrokeDigitSequence);
+          setStrokeDigitSequence(newStrokeDigitSequence);
+          setCandidateList(newCandidateList);
           inputContainer.setKeyRepeatIntervalMilliseconds(
             BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
           );
@@ -382,6 +386,7 @@ public class StrokeInputService
           );
         }
         break;
+      }
       
       case "SWITCH_TO_STROKES":
       case "SWITCH_TO_STROKES_SYMBOLS_1":
