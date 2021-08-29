@@ -34,14 +34,10 @@ public class CharactersData {
       abominableCharacters = "";
     }
     else {
-      final String[] splitCharactersArray =
-        commaSeparatedCharacters.split(",");
-      goodlyCharacters = splitCharactersArray[0];
-      abominableCharacters = (
-        splitCharactersArray.length > 1
-          ? splitCharactersArray[1]
-          : ""
-      );
+      final String[] sunderedCharactersArray =
+        Stringy.sunder(commaSeparatedCharacters, ",");
+      goodlyCharacters = sunderedCharactersArray[0];
+      abominableCharacters = sunderedCharactersArray[1];
     }
     
     goodlySet = new HashSet<>();

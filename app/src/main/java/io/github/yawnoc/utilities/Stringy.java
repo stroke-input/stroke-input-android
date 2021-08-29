@@ -61,4 +61,25 @@ public class Stringy {
     return characterList;
   }
   
+  /*
+    Sunder a string into two at the first occurrence of a delimiter.
+  */
+  public static String[] sunder(final String string, final String delimiter) {
+    
+    final int delimiterIndex = string.indexOf(delimiter);
+    
+    final String substringBeforeDelimiter;
+    final String substringAfterDelimiter;
+    
+    if (delimiterIndex < 0) {
+      substringBeforeDelimiter = string;
+      substringAfterDelimiter = "";
+    }
+    else {
+      substringBeforeDelimiter = string.substring(0, delimiterIndex);
+      substringAfterDelimiter = string.substring(delimiterIndex + 1);
+    }
+    
+    return new String[]{substringBeforeDelimiter, substringAfterDelimiter};
+  }
 }
