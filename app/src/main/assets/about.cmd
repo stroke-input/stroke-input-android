@@ -35,6 +35,28 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
 
+## Stroke input data ##
+
+### [Conway Stroke Data] (\stroke-data-version) ###
+
+#### `ranking.txt` ####
+----{.notice}
+Released into the Public Domain, see \CC0.
+----
+
+#### `sequence-exact-characters.txt` ####
+----{.notice}
+©~2021 Conway \+
+Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
+----
+
+#### `sequence-prefix-characters.txt` ####
+----{.notice}
+©~2021 Conway \+
+Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
+----
+
+
 ## Keyboard font ##
 
 ### [Stroke Input Keyboard] (\keyboard-font-version) ###

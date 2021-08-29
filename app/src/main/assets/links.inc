@@ -1,5 +1,7 @@
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
 {: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
+{: \CC-BY-4.0 : b<https://creativecommons.org/licenses/by/4.0/> :}
+{: \CC0 : b<https://creativecommons.org/publicdomain/zero/1.0/> :}
 
 {: \stroke-input-version: v0.7.5 :}
 {: \stroke-input-url :
@@ -22,6 +24,11 @@
 {: \material-version : v1.4.0 :}
 @@[Material Components For Android]
   https://mvnrepository.com/artifact/com.google.android.material/material
+@@
+
+{: \stroke-data-version : v0.1.0 :}
+@@[Conway Stroke Data]
+  https://github.com/stroke-input/stroke-input-data
 @@
 
 {: \keyboard-font-version : v1.8.1 :}
