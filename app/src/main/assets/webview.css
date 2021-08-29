@@ -45,6 +45,9 @@ h2 {
 h3 {
   font-size: 1.1em;
 }
+h4 {
+  margin-bottom: 0;
+}
 
 html {
   background: grey;
@@ -76,6 +79,7 @@ td {
 
 .notice {
   border: 1px solid white;
+  margin-top: 0.5em;
   padding: 0.5em;
 }
 
