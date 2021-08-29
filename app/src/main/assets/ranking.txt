@@ -2,6 +2,9 @@
 
 # Compiled manually by Conway (@yawnoc).
 
+# Part of 'Conway Stroke Data',
+# see <https://github.com/stroke-input/stroke-input-data>.
+
 # Inspired by the frequency data found at
 # <https://humanum.arts.cuhk.edu.hk/Lexis/chifreq/>
 # for Hong Kong in the 80s and 90s.
