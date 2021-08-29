@@ -35,6 +35,28 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
 ----
 
 
+## 筆畫輸入資料 ##
+
+### [Conway Stroke Data] (\stroke-data-version) ###
+
+#### `ranking.txt` ####
+----{.notice}
+獻以為公，見\CC0。
+----
+
+#### `sequence-exact-characters.txt` ####
+----{.notice}
+©~2021 Conway \+
+以 {CC-BY-4.0} 授權，見\CC-BY-4.0。 \+
+----
+
+#### `sequence-prefix-characters.txt` ####
+----{.notice}
+©~2021 Conway \+
+以 {CC-BY-4.0} 授權，見\CC-BY-4.0。 \+
+----
+
+
 ## 鍵盤字體 ##
 
 ### [Stroke Input Keyboard] (\keyboard-font-version) ###
