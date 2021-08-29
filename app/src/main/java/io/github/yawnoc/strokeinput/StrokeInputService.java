@@ -203,7 +203,9 @@ public class StrokeInputService
         lineNumber++;
         if (!line.matches("[ \t]*[#].*")) {
           for (final String character : Stringy.toCharacterList(line)) {
-            sortingRankFromCharacter.put(character, lineNumber);
+            if (!sortingRankFromCharacter.containsKey(character)) {
+              sortingRankFromCharacter.put(character, lineNumber);
+            }
           }
         }
       }
