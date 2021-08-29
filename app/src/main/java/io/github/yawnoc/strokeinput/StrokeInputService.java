@@ -197,14 +197,14 @@ public class StrokeInputService
       final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(inputStream));
       
-      int lineNumber = 0;
+      int currentRank = 0;
       String line;
       while ((line = bufferedReader.readLine()) != null) {
-        lineNumber++;
         if (!line.matches("[ \t]*[#].*")) {
           for (final String character : Stringy.toCharacterList(line)) {
             if (!sortingRankFromCharacter.containsKey(character)) {
-              sortingRankFromCharacter.put(character, lineNumber);
+              currentRank++;
+              sortingRankFromCharacter.put(character, currentRank);
             }
           }
         }
