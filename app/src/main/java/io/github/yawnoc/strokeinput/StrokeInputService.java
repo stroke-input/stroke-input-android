@@ -225,7 +225,7 @@ public class StrokeInputService
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   private boolean isCommentLine(final String line) {
-    return line.startsWith("#");
+    return line.startsWith("#") || line.length() == 0;
   }
   
   private void putSequenceAndCharactersDataIntoMap(
