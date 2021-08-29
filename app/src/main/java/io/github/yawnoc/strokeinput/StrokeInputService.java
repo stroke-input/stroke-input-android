@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.InputType;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -91,7 +92,16 @@ public class StrokeInputService
     
     initialiseKeyboards();
     initialiseInputContainer();
+    
+    final long initialiseStrokeInputStartMillis = System.currentTimeMillis();
     initialiseStrokeInput();
+    final long initialiseStrokeInputEndMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "initialiseStrokeInput() took "
+        + (initialiseStrokeInputEndMillis - initialiseStrokeInputStartMillis)
+        + " milliseconds."
+    );
     
     return inputContainer;
   }
