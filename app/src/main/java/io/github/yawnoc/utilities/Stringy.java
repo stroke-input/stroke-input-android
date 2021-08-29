@@ -36,6 +36,9 @@ public class Stringy {
     return string.replaceFirst(suffixRegex + "$", "");
   }
   
+  /*
+    Convert a string to a list of (unicode) characters.
+  */
   public static List<String> toCharacterList(final String string) {
     
     final List<String> characterList = new ArrayList<>();
