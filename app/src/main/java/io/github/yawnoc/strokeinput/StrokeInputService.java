@@ -210,7 +210,7 @@ public class StrokeInputService
       int currentRank = 0;
       String line;
       while ((line = bufferedReader.readLine()) != null) {
-        if (!line.matches("[ \t]*[#].*")) {
+        if (!isCommentLine(line)) {
           for (final String character : Stringy.toCharacterList(line)) {
             if (!sortingRankFromCharacter.containsKey(character)) {
               currentRank++;
@@ -236,6 +236,10 @@ public class StrokeInputService
         }
         return rank1 - rank2;
       };
+  }
+  
+  private boolean isCommentLine(final String line) {
+    return line.startsWith("#");
   }
   
   @Override
