@@ -29,8 +29,6 @@ import java.util.Map;
 import java.util.NavigableMap;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -140,9 +138,6 @@ public class StrokeInputService
   
   private void initialiseStrokeInput() {
     
-    final Pattern sequenceCharactersPattern =
-      Pattern.compile("([1-5]+)\\t(.+)");
-    
     exactCharactersDataFromStrokeDigitSequence = new TreeMap<>();
     
     try {
@@ -153,16 +148,11 @@ public class StrokeInputService
         new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
-      Matcher lineMatcher;
-      
       while ((line = bufferedReader.readLine()) != null) {
-        lineMatcher = sequenceCharactersPattern.matcher(line);
-        if (lineMatcher.matches()) {
-          final String strokeDigitSequence = lineMatcher.group(1);
-          final String commaSeparatedCharacters = lineMatcher.group(2);
-          exactCharactersDataFromStrokeDigitSequence.put(
-            strokeDigitSequence,
-            new CharactersData(commaSeparatedCharacters)
+        if (!isCommentLine(line)) {
+          putSequenceAndCharactersDataIntoMap(
+            line,
+            exactCharactersDataFromStrokeDigitSequence
           );
         }
       }
@@ -181,16 +171,11 @@ public class StrokeInputService
         new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
-      Matcher lineMatcher;
-      
       while ((line = bufferedReader.readLine()) != null) {
-        lineMatcher = sequenceCharactersPattern.matcher(line);
-        if (lineMatcher.matches()) {
-          final String strokeDigitSequence = lineMatcher.group(1);
-          final String commaSeparatedCharacters = lineMatcher.group(2);
-          prefixCharactersDataFromStrokeDigitSequence.put(
-            strokeDigitSequence,
-            new CharactersData(commaSeparatedCharacters)
+        if (!isCommentLine(line)) {
+          putSequenceAndCharactersDataIntoMap(
+            line,
+            prefixCharactersDataFromStrokeDigitSequence
           );
         }
       }
@@ -238,8 +223,27 @@ public class StrokeInputService
       };
   }
   
+  @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   private boolean isCommentLine(final String line) {
     return line.startsWith("#");
+  }
+  
+  private void putSequenceAndCharactersDataIntoMap(
+    final String line,
+    final Map<String, CharactersData> charactersDataFromStrokeDigitSequence
+  )
+  {
+    final String[] splitLineList = line.split("\t");
+    final String strokeDigitSequence = splitLineList[0];
+    final String commaSeparatedCharacters = (
+      splitLineList.length > 1
+        ? splitLineList[1]
+        : ""
+    );
+    charactersDataFromStrokeDigitSequence.put(
+      strokeDigitSequence,
+      new CharactersData(commaSeparatedCharacters)
+    );
   }
   
   @Override
