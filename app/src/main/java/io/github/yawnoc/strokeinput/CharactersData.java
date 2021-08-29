@@ -34,11 +34,12 @@ public class CharactersData {
       abominableCharacters = "";
     }
     else {
-      final String[] splitCharactersList = commaSeparatedCharacters.split(",");
-      goodlyCharacters = splitCharactersList[0];
+      final String[] splitCharactersArray =
+        commaSeparatedCharacters.split(",");
+      goodlyCharacters = splitCharactersArray[0];
       abominableCharacters = (
-        splitCharactersList.length > 1
-          ? splitCharactersList[1]
+        splitCharactersArray.length > 1
+          ? splitCharactersArray[1]
           : ""
       );
     }

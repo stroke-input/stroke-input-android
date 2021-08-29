@@ -593,10 +593,10 @@ public class InputContainer
   */
   public static int toPressedColour(final int colour) {
     
-    final float[] colourHSL = new float[3];
-    ColorUtils.colorToHSL(colour, colourHSL);
+    final float[] colourHSLArray = new float[3];
+    ColorUtils.colorToHSL(colour, colourHSLArray);
     
-    float colourLightness = colourHSL[2];
+    float colourLightness = colourHSLArray[2];
     if (colourLightness < COLOUR_LIGHTNESS_CUTOFF) {
       colourLightness = (2 * colourLightness + 1) / 3;
     }
@@ -604,9 +604,9 @@ public class InputContainer
       colourLightness = (2 * colourLightness) / 3;
     }
     
-    colourHSL[2] = colourLightness;
+    colourHSLArray[2] = colourLightness;
     
-    return ColorUtils.HSLToColor(colourHSL);
+    return ColorUtils.HSLToColor(colourHSLArray);
   }
   
   @Override

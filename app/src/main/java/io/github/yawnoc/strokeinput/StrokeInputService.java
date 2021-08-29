@@ -233,11 +233,11 @@ public class StrokeInputService
     final Map<String, CharactersData> charactersDataFromStrokeDigitSequence
   )
   {
-    final String[] splitLineList = line.split("\t");
-    final String strokeDigitSequence = splitLineList[0];
+    final String[] splitLineArray = line.split("\t");
+    final String strokeDigitSequence = splitLineArray[0];
     final String commaSeparatedCharacters = (
-      splitLineList.length > 1
-        ? splitLineList[1]
+      splitLineArray.length > 1
+        ? splitLineArray[1]
         : ""
     );
     charactersDataFromStrokeDigitSequence.put(
