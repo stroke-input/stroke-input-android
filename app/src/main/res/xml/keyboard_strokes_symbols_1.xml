@@ -32,22 +32,25 @@
       app:keyValueText="："
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
-    <!-- U+301C WAVE DASH -->
-    <Key
-      app:keyValueText="〜"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key
-      app:keyValueText="々"
-      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
     <!-- Angle brackets: U+3008 to U+300B -->
     <Key app:keyValueText="〈" />
     <Key app:keyValueText="〉" />
     <Key app:keyValueText="《" />
     <Key app:keyValueText="》" />
+    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
+    <Key
+      app:keyValueText="・"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
+    <!-- Backspace -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="@string/display_text__backspace"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- Switch to strokes symbols 2 keyboard -->
@@ -58,19 +61,20 @@
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
+    <!-- U+301C WAVE DASH -->
+    <Key
+      app:keyValueText="〜"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
     <!-- U+2026 HORIZONTAL ELLIPSIS -->
     <Key app:keyValueText="…" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
     <Key app:keyValueText="　" />
-    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key app:keyValueText="・" />
-    <!-- Backspace -->
+    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
     <Key
-      app:keyValueText="BACKSPACE"
-      app:keyDisplayText="@string/display_text__backspace"
-      app:keyIsRepeatable="true"
-      app:keyTextSize="@dimen/font_size__strokes_backspace"
-      app:keyIsPreviewable="false"
+      app:keyValueText="々"
+      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
   </Row>
   <Row

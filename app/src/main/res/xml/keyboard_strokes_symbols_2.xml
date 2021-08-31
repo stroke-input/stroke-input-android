@@ -20,12 +20,19 @@
     <Key app:keyValueText="⿴" />
   </Row>
   <Row>
-    <!-- Ideographic description characters: U+2FF5 to U+2FF9 -->
+    <!-- Ideographic description characters: U+2FF5 to U+2FF8 -->
     <Key app:keyValueText="⿵" />
     <Key app:keyValueText="⿶" />
     <Key app:keyValueText="⿷" />
     <Key app:keyValueText="⿸" />
-    <Key app:keyValueText="⿹" />
+    <!-- Backspace -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="@string/display_text__backspace"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
+    />
   </Row>
   <Row>
     <!-- Switch to strokes symbols 1 keyboard -->
@@ -36,19 +43,12 @@
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
-    <!-- Ideographic description characters: U+2FFA, U+2FFB -->
+    <!-- Ideographic description characters: U+2FF9 to U+2FFB -->
+    <Key app:keyValueText="⿹" />
     <Key app:keyValueText="⿺" />
     <Key app:keyValueText="⿻" />
     <!-- Code point prefix -->
     <Key app:keyValueText="U+" />
-    <!-- Backspace -->
-    <Key
-      app:keyValueText="BACKSPACE"
-      app:keyDisplayText="@string/display_text__backspace"
-      app:keyIsRepeatable="true"
-      app:keyTextSize="@dimen/font_size__strokes_backspace"
-      app:keyIsPreviewable="false"
-    />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"

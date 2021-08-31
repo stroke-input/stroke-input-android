@@ -48,8 +48,14 @@
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key app:keyValueText="！" />
+    <!-- Backspace -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="@string/display_text__backspace"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
+    />
   </Row>
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- U+3001 IDEOGRAPHIC COMMA -->
@@ -70,14 +76,8 @@
     />
     <!-- U+FF1F FULLWIDTH QUESTION MARK -->
     <Key app:keyValueText="？" />
-    <!-- Backspace -->
-    <Key
-      app:keyValueText="BACKSPACE"
-      app:keyDisplayText="@string/display_text__backspace"
-      app:keyIsRepeatable="true"
-      app:keyTextSize="@dimen/font_size__strokes_backspace"
-      app:keyIsPreviewable="false"
-    />
+    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
+    <Key app:keyValueText="！" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
