@@ -27,8 +27,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
+import java.util.NavigableSet;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -54,6 +56,7 @@ public class StrokeInputService
   private static final String SEQUENCE_PREFIX_CHARACTERS_FILE_NAME =
     "sequence-prefix-characters.txt";
   private static final String RANKING_FILE_NAME = "ranking.txt";
+  private static final String PHRASES_FILE_NAME = "phrases.txt";
   
   private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
@@ -77,6 +80,8 @@ public class StrokeInputService
   
   private Map<String, Integer> sortingRankFromCharacter;
   private Comparator<String> candidateComparator;
+  
+  private NavigableSet<String> phraseSet;
   
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
@@ -221,6 +226,25 @@ public class StrokeInputService
         }
         return rank1 - rank2;
       };
+    
+    phraseSet = new TreeSet<>();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          phraseSet.add(line);
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
