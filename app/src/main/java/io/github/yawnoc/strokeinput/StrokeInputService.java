@@ -389,16 +389,14 @@ public class StrokeInputService
       case "STROKE_2":
       case "STROKE_3":
       case "STROKE_4":
-      case "STROKE_5": {
+      case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
         effectStrokeAppend(strokeDigit);
         break;
-      }
       
-      case "BACKSPACE": {
+      case "BACKSPACE":
         effectBackspace(inputConnection);
         break;
-      }
       
       case "SWITCH_TO_STROKES":
       case "SWITCH_TO_STROKES_SYMBOLS_1":
