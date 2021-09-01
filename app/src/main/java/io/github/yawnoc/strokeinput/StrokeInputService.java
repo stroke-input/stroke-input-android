@@ -220,16 +220,8 @@ public class StrokeInputService
     
     candidateComparator =
       (string1, string2) -> {
-        final String firstCharacter1 = Stringy.getFirstCharacter(string1);
-        Integer rank1 = sortingRankFromCharacter.get(firstCharacter1);
-        if (rank1 == null) {
-          rank1 = Integer.MAX_VALUE;
-        }
-        final String firstCharacter2 = Stringy.getFirstCharacter(string2);
-        Integer rank2 = sortingRankFromCharacter.get(firstCharacter2);
-        if (rank2 == null) {
-          rank2 = Integer.MAX_VALUE;
-        }
+        final int rank1 = computeSortingRank(string1);
+        final int rank2 = computeSortingRank(string2);
         return rank1 - rank2;
       };
     
@@ -622,6 +614,17 @@ public class StrokeInputService
   private void setCandidateList(final List<String> candidateList) {
     this.candidateList = candidateList;
     inputContainer.setCandidateList(candidateList);
+  }
+  
+  private int computeSortingRank(final String string) {
+    
+    final String firstCharacter = Stringy.getFirstCharacter(string);
+    
+    final Integer rank = sortingRankFromCharacter.get(firstCharacter);
+    if (rank == null) {
+      return Integer.MAX_VALUE;
+    }
+    return rank;
   }
   
   private List<String> computeCandidateList(final String strokeDigitSequence) {
