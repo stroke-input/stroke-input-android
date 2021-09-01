@@ -55,6 +55,17 @@ public class Stringy {
   }
   
   /*
+    Get the first (unicode) character.
+  */
+  public static String getFirstCharacter(final String string) {
+    return
+      string.substring(
+        string.offsetByCodePoints(0, 0),
+        string.offsetByCodePoints(0, 1)
+      );
+  }
+  
+  /*
     Convert a string to a list of (unicode) characters.
   */
   public static List<String> toCharacterList(final String string) {

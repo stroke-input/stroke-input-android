@@ -219,12 +219,14 @@ public class StrokeInputService
     }
     
     candidateComparator =
-      (character1, character2) -> {
-        Integer rank1 = sortingRankFromCharacter.get(character1);
+      (string1, string2) -> {
+        final String firstCharacter1 = Stringy.getFirstCharacter(string1);
+        Integer rank1 = sortingRankFromCharacter.get(firstCharacter1);
         if (rank1 == null) {
           rank1 = Integer.MAX_VALUE;
         }
-        Integer rank2 = sortingRankFromCharacter.get(character2);
+        final String firstCharacter2 = Stringy.getFirstCharacter(string2);
+        Integer rank2 = sortingRankFromCharacter.get(firstCharacter2);
         if (rank2 == null) {
           rank2 = Integer.MAX_VALUE;
         }
