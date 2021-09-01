@@ -9,7 +9,9 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -413,17 +415,35 @@ public class StrokeInputService
           );
         }
         else {
-          inputConnection.sendKeyEvent(
-            new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
-          );
-          inputConnection.sendKeyEvent(
-            new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
-          );
-          setCandidateList(
-            computePhraseCompletionCandidateList(inputConnection)
-          );
+          final String characterBeforeCursorOrEmptyString =
+            getTextBeforeCursor(inputConnection, 1);
+          if (characterBeforeCursorOrEmptyString.length() > 0) {
+            final CharSequence selection = inputConnection.getSelectedText(0);
+            if (TextUtils.isEmpty(selection)) {
+              if (Build.VERSION.SDK_INT >= 24) {
+                inputConnection.deleteSurroundingTextInCodePoints(1, 0);
+              }
+              else {
+                // TODO: handle surrogates manually
+              }
+            }
+            else {
+              inputConnection.commitText("", 1);
+            }
+            setCandidateList(
+              computePhraseCompletionCandidateList(inputConnection)
+            );
+          }
+          else { // for apps like Termux
+            inputConnection.sendKeyEvent(
+              new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
+            );
+            inputConnection.sendKeyEvent(
+              new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+            );
+          }
           final int nextBackspaceIntervalMilliseconds = (
-            Stringy.isAscii(getTextBeforeCursor(inputConnection, 1))
+            Stringy.isAscii(characterBeforeCursorOrEmptyString)
               ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
               : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
           );
