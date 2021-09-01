@@ -29,7 +29,7 @@ public class Stringy {
     if (string.length() == 0) {
       return true;
     }
-  
+    
     final char firstChar = string.charAt(0);
     return (
       firstChar < Character.MIN_SURROGATE
