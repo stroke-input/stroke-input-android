@@ -9,7 +9,9 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,8 +29,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
+import java.util.NavigableSet;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
@@ -37,8 +41,8 @@ import io.github.yawnoc.utilities.Stringy;
 /*
   An InputMethodService for the Stroke Input Method (筆畫輸入法).
   TODO:
-    - Phrase candidates
     - Actually complete the stroke input data set
+    - Actually complete the phrase data set
 */
 public class StrokeInputService
   extends InputMethodService
@@ -54,9 +58,11 @@ public class StrokeInputService
   private static final String SEQUENCE_PREFIX_CHARACTERS_FILE_NAME =
     "sequence-prefix-characters.txt";
   private static final String RANKING_FILE_NAME = "ranking.txt";
+  private static final String PHRASES_FILE_NAME = "phrases.txt";
   
   private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
+  private static final int MAX_PHRASE_LENGTH = 5;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -77,6 +83,8 @@ public class StrokeInputService
   
   private Map<String, Integer> sortingRankFromCharacter;
   private Comparator<String> candidateComparator;
+  
+  private NavigableSet<String> phraseSet;
   
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
@@ -221,6 +229,25 @@ public class StrokeInputService
         }
         return rank1 - rank2;
       };
+    
+    phraseSet = new TreeSet<>();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME);
+      final BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          phraseSet.add(line);
+        }
+      }
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
@@ -362,49 +389,14 @@ public class StrokeInputService
       case "STROKE_2":
       case "STROKE_3":
       case "STROKE_4":
-      case "STROKE_5": {
+      case "STROKE_5":
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        final String newStrokeDigitSequence =
-          strokeDigitSequence + strokeDigit;
-        final List<String> newCandidateList =
-          toCandidateList(newStrokeDigitSequence);
-        if (newCandidateList.size() > 0) {
-          setStrokeDigitSequence(newStrokeDigitSequence);
-          setCandidateList(newCandidateList);
-        }
+        effectStrokeAppend(strokeDigit);
         break;
-      }
       
-      case "BACKSPACE": {
-        if (strokeDigitSequence.length() > 0) {
-          final String newStrokeDigitSequence =
-            Stringy.removeSuffix(".", strokeDigitSequence);
-          final List<String> newCandidateList =
-            toCandidateList(newStrokeDigitSequence);
-          setStrokeDigitSequence(newStrokeDigitSequence);
-          setCandidateList(newCandidateList);
-          inputContainer.setKeyRepeatIntervalMilliseconds(
-            BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-          );
-        }
-        else {
-          inputConnection.sendKeyEvent(
-            new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
-          );
-          inputConnection.sendKeyEvent(
-            new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
-          );
-          final int nextBackspaceIntervalMilliseconds = (
-            Stringy.isAscii(getTextBeforeCursor(inputConnection, 1))
-              ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
-              : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-          );
-          inputContainer.setKeyRepeatIntervalMilliseconds(
-            nextBackspaceIntervalMilliseconds
-          );
-        }
+      case "BACKSPACE":
+        effectBackspace(inputConnection);
         break;
-      }
       
       case "SWITCH_TO_STROKES":
       case "SWITCH_TO_STROKES_SYMBOLS_1":
@@ -413,35 +405,133 @@ public class StrokeInputService
       case "SWITCH_TO_QWERTY_SYMBOLS":
         final String keyboardName =
           Stringy.removePrefix("SWITCH_TO_", valueText);
-        final Keyboard keyboard = keyboardFromName.get(keyboardName);
-        inputContainer.setKeyboard(keyboard);
+        effectKeyboardSwitch(keyboardName);
         break;
       
       case "SPACE":
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        inputConnection.commitText(" ", 1);
+        effectSpaceKey(inputConnection);
         break;
       
       case "ENTER":
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        else if (enterKeyHasAction) {
-          inputConnection.performEditorAction(inputOptionsBits);
-        }
-        else {
-          inputConnection.commitText("\n", 1);
-        }
+        effectEnterKey(inputConnection);
         break;
       
       default:
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        inputConnection.commitText(valueText, 1);
+        effectOrdinaryKey(inputConnection, valueText);
     }
+  }
+  
+  private void effectStrokeAppend(final String strokeDigit) {
+    
+    final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
+    final List<String> newCandidateList =
+      computeCandidateList(newStrokeDigitSequence);
+    if (newCandidateList.size() > 0) {
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
+    }
+  }
+  
+  private void effectBackspace(final InputConnection inputConnection) {
+    
+    if (strokeDigitSequence.length() > 0) {
+      
+      final String newStrokeDigitSequence =
+        Stringy.removeSuffix(".", strokeDigitSequence);
+      final List<String> newCandidateList =
+        computeCandidateList(newStrokeDigitSequence);
+      
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
+      
+      inputContainer.setKeyRepeatIntervalMilliseconds(
+        BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+      );
+    }
+    else {
+      
+      final String upToOneCharacterBeforeCursor =
+        getTextBeforeCursor(inputConnection, 1);
+      
+      if (upToOneCharacterBeforeCursor.length() > 0) {
+        
+        final CharSequence selection = inputConnection.getSelectedText(0);
+        
+        if (TextUtils.isEmpty(selection)) {
+          if (Build.VERSION.SDK_INT >= 24) {
+            inputConnection.deleteSurroundingTextInCodePoints(1, 0);
+          }
+          else {
+            final int charCount = ( // damn you Java for using UTF-16
+              Stringy.firstCharacterIsBasic(upToOneCharacterBeforeCursor)
+                ? 1 // Basic Multilingual Plane (single character)
+                : 2 // Supplementary Multilingual Plane (surrogate pair)
+            );
+            inputConnection.deleteSurroundingText(charCount, 0);
+          }
+        }
+        else {
+          inputConnection.commitText("", 1);
+        }
+        
+        setCandidateList(
+          computePhraseCompletionCandidateList(inputConnection)
+        );
+      }
+      else { // for apps like Termux
+        
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
+        );
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+        );
+      }
+      
+      final int nextBackspaceIntervalMilliseconds = (
+        Stringy.isAscii(upToOneCharacterBeforeCursor)
+          ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+          : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+      );
+      inputContainer.setKeyRepeatIntervalMilliseconds(
+        nextBackspaceIntervalMilliseconds
+      );
+    }
+  }
+  
+  private void effectKeyboardSwitch(final String keyboardName) {
+    final Keyboard keyboard = keyboardFromName.get(keyboardName);
+    inputContainer.setKeyboard(keyboard);
+  }
+  
+  private void effectSpaceKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(" ", 1);
+  }
+  
+  private void effectEnterKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    else if (enterKeyHasAction) {
+      inputConnection.performEditorAction(inputOptionsBits);
+    }
+    else {
+      inputConnection.commitText("\n", 1);
+    }
+  }
+  
+  private void effectOrdinaryKey(
+    final InputConnection inputConnection,
+    final String valueText
+  )
+  {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(valueText, 1);
   }
   
   @Override
@@ -518,6 +608,7 @@ public class StrokeInputService
     
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
+    setCandidateList(computePhraseCompletionCandidateList(inputConnection));
   }
   
   private void setStrokeDigitSequence(final String strokeDigitSequence) {
@@ -530,7 +621,7 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
-  private List<String> toCandidateList(final String strokeDigitSequence) {
+  private List<String> computeCandidateList(final String strokeDigitSequence) {
     
     final CharactersData exactMatchCharactersData =
       exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
@@ -588,6 +679,38 @@ public class StrokeInputService
     catch (IndexOutOfBoundsException exception) {
       return "";
     }
+  }
+  
+  private List<String> computePhraseCompletionCandidateList(
+    final InputConnection inputConnection
+  )
+  {
+    final List<String> phraseCompletionCandidateList = new ArrayList<>();
+    
+    String phrasePrefix =
+      getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
+    
+    while (phrasePrefix.length() > 0) {
+      
+      Log.d("XXX", phrasePrefix);
+      
+      final Set<String> prefixMatchPhraseCandidateSet =
+        phraseSet.subSet(
+          phrasePrefix,
+          false,
+          phrasePrefix + Character.MAX_VALUE,
+          false
+        );
+      
+      for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
+        phraseCompletionCandidateList
+          .add(Stringy.removePrefix(phrasePrefix, phraseCandidate));
+      }
+      
+      phrasePrefix = Stringy.removePrefix(".", phrasePrefix);
+    }
+    
+    return phraseCompletionCandidateList;
   }
   
   private String getTextBeforeCursor(
