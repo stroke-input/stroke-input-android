@@ -89,6 +89,7 @@ public class StrokeInputService
   
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
+  private List<String> phraseCompletionCandidateList = new ArrayList<>();
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
@@ -222,7 +223,7 @@ public class StrokeInputService
       (string1, string2) -> {
         final int rank1 = computeSortingRank(string1);
         final int rank2 = computeSortingRank(string2);
-        return rank1 - rank2;
+        return Integer.compare(rank1, rank2);
       };
     
     phraseSet = new TreeSet<>();
@@ -469,9 +470,7 @@ public class StrokeInputService
           inputConnection.commitText("", 1);
         }
         
-        setCandidateList(
-          computePhraseCompletionCandidateList(inputConnection)
-        );
+        setCandidateListForPhraseCompletion(inputConnection);
       }
       else { // for apps like Termux
         
@@ -603,7 +602,7 @@ public class StrokeInputService
     
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
-    setCandidateList(computePhraseCompletionCandidateList(inputConnection));
+    setCandidateListForPhraseCompletion(inputConnection);
   }
   
   private void setStrokeDigitSequence(final String strokeDigitSequence) {
@@ -616,9 +615,33 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
+  private void setCandidateListForPhraseCompletion(
+    final InputConnection inputConnection
+  )
+  {
+    phraseCompletionCandidateList =
+      computePhraseCompletionCandidateList(inputConnection);
+    setCandidateList(phraseCompletionCandidateList);
+  }
+  
   private int computeSortingRank(final String string) {
     
     final String firstCharacter = Stringy.getFirstCharacter(string);
+    
+    for (
+      int phraseCompletionIndex = 0;
+      phraseCompletionIndex < phraseCompletionCandidateList.size();
+      phraseCompletionIndex++
+    )
+    {
+      final String phraseCompletionFirstCharacter =
+        Stringy.getFirstCharacter(
+          phraseCompletionCandidateList.get(phraseCompletionIndex)
+        );
+      if (firstCharacter.equals(phraseCompletionFirstCharacter)) {
+        return Integer.MIN_VALUE + phraseCompletionIndex;
+      }
+    }
     
     final Integer rank = sortingRankFromCharacter.get(firstCharacter);
     if (rank == null) {
