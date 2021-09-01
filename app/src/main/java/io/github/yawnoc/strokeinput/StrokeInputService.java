@@ -450,10 +450,10 @@ public class StrokeInputService
     }
     else {
       
-      final String characterBeforeCursorOrEmptyString =
+      final String upToOneCharacterBeforeCursor =
         getTextBeforeCursor(inputConnection, 1);
       
-      if (characterBeforeCursorOrEmptyString.length() > 0) {
+      if (upToOneCharacterBeforeCursor.length() > 0) {
         
         final CharSequence selection = inputConnection.getSelectedText(0);
         
@@ -484,7 +484,7 @@ public class StrokeInputService
       }
       
       final int nextBackspaceIntervalMilliseconds = (
-        Stringy.isAscii(characterBeforeCursorOrEmptyString)
+        Stringy.isAscii(upToOneCharacterBeforeCursor)
           ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
           : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
       );
