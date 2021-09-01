@@ -456,6 +456,7 @@ public class StrokeInputService
       if (characterBeforeCursorOrEmptyString.length() > 0) {
         
         final CharSequence selection = inputConnection.getSelectedText(0);
+        
         if (TextUtils.isEmpty(selection)) {
           if (Build.VERSION.SDK_INT >= 24) {
             inputConnection.deleteSurroundingTextInCodePoints(1, 0);
@@ -467,6 +468,7 @@ public class StrokeInputService
         else {
           inputConnection.commitText("", 1);
         }
+        
         setCandidateList(
           computePhraseCompletionCandidateList(inputConnection)
         );
