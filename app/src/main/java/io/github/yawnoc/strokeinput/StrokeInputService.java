@@ -461,35 +461,35 @@ public class StrokeInputService
       case "SWITCH_TO_QWERTY_SYMBOLS":
         final String keyboardName =
           Stringy.removePrefix("SWITCH_TO_", valueText);
-        switchToKeyboard(keyboardName);
+        effectKeyboardSwitch(keyboardName);
         break;
       
       case "SPACE":
-        onSpaceKey(inputConnection);
+        effectSpaceKey(inputConnection);
         break;
       
       case "ENTER":
-        onEnterKey(inputConnection);
+        effectEnterKey(inputConnection);
         break;
       
       default:
-        onOrdinaryKey(inputConnection, valueText);
+        effectOrdinaryKey(inputConnection, valueText);
     }
   }
   
-  private void switchToKeyboard(final String keyboardName) {
+  private void effectKeyboardSwitch(final String keyboardName) {
     final Keyboard keyboard = keyboardFromName.get(keyboardName);
     inputContainer.setKeyboard(keyboard);
   }
   
-  private void onSpaceKey(final InputConnection inputConnection) {
+  private void effectSpaceKey(final InputConnection inputConnection) {
     if (strokeDigitSequence.length() > 0) {
       onCandidate(getFirstCandidate());
     }
     inputConnection.commitText(" ", 1);
   }
   
-  private void onEnterKey(final InputConnection inputConnection) {
+  private void effectEnterKey(final InputConnection inputConnection) {
     if (strokeDigitSequence.length() > 0) {
       onCandidate(getFirstCandidate());
     }
@@ -501,7 +501,7 @@ public class StrokeInputService
     }
   }
   
-  private void onOrdinaryKey(
+  private void effectOrdinaryKey(
     final InputConnection inputConnection,
     final String valueText
   )
