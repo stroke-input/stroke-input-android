@@ -391,14 +391,7 @@ public class StrokeInputService
       case "STROKE_4":
       case "STROKE_5": {
         final String strokeDigit = Stringy.removePrefix("STROKE_", valueText);
-        final String newStrokeDigitSequence =
-          strokeDigitSequence + strokeDigit;
-        final List<String> newCandidateList =
-          computeCandidateList(newStrokeDigitSequence);
-        if (newCandidateList.size() > 0) {
-          setStrokeDigitSequence(newStrokeDigitSequence);
-          setCandidateList(newCandidateList);
-        }
+        effectStrokeAppend(strokeDigit);
         break;
       }
       
@@ -427,6 +420,17 @@ public class StrokeInputService
       
       default:
         effectOrdinaryKey(inputConnection, valueText);
+    }
+  }
+  
+  private void effectStrokeAppend(final String strokeDigit) {
+    
+    final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
+    final List<String> newCandidateList =
+      computeCandidateList(newStrokeDigitSequence);
+    if (newCandidateList.size() > 0) {
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
     }
   }
   
