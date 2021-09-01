@@ -462,7 +462,12 @@ public class StrokeInputService
             inputConnection.deleteSurroundingTextInCodePoints(1, 0);
           }
           else {
-            // TODO: handle surrogates manually
+            final int charCount = ( // damn you Java for using UTF-16
+              Stringy.firstCharacterIsBasic(upToOneCharacterBeforeCursor)
+                ? 1 // Basic Multilingual Plane (single character)
+                : 2 // Supplementary Multilingual Plane (surrogate pair)
+            );
+            inputConnection.deleteSurroundingText(charCount, 0);
           }
         }
         else {
