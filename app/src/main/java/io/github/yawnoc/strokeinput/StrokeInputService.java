@@ -714,7 +714,7 @@ public class StrokeInputService
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
         prefixMatchPhraseCompletionList
           .add(Stringy.removePrefix(phrasePrefix, phraseCandidate));
-      };
+      }
       Collections.sort(prefixMatchPhraseCompletionList, candidateComparator);
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
       
