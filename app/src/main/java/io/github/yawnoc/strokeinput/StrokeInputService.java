@@ -485,11 +485,19 @@ public class StrokeInputService
         break;
       
       default:
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        inputConnection.commitText(valueText, 1);
+        onOrdinaryKey(inputConnection, valueText);
     }
+  }
+  
+  private void onOrdinaryKey(
+    final InputConnection inputConnection,
+    final String valueText
+  )
+  {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(valueText, 1);
   }
   
   @Override
