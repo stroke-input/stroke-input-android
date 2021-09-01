@@ -466,10 +466,7 @@ public class StrokeInputService
         break;
       
       case "SPACE":
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        inputConnection.commitText(" ", 1);
+        onSpaceKey(inputConnection);
         break;
       
       case "ENTER":
@@ -479,6 +476,13 @@ public class StrokeInputService
       default:
         onOrdinaryKey(inputConnection, valueText);
     }
+  }
+  
+  private void onSpaceKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(" ", 1);
   }
   
   private void onEnterKey(final InputConnection inputConnection) {
