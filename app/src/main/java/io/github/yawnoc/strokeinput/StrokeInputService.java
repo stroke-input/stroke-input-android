@@ -60,6 +60,7 @@ public class StrokeInputService
   
   private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
+  private static final int MAX_PHRASE_LENGTH = 5;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -418,6 +419,9 @@ public class StrokeInputService
           inputConnection.sendKeyEvent(
             new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
           );
+          setCandidateList(
+            computePhraseCompletionCandidateList(inputConnection)
+          );
           final int nextBackspaceIntervalMilliseconds = (
             Stringy.isAscii(getTextBeforeCursor(inputConnection, 1))
               ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
@@ -542,6 +546,7 @@ public class StrokeInputService
     
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
+    setCandidateList(computePhraseCompletionCandidateList(inputConnection));
   }
   
   private void setStrokeDigitSequence(final String strokeDigitSequence) {
@@ -612,6 +617,38 @@ public class StrokeInputService
     catch (IndexOutOfBoundsException exception) {
       return "";
     }
+  }
+  
+  private List<String> computePhraseCompletionCandidateList(
+    final InputConnection inputConnection
+  )
+  {
+    final List<String> phraseCompletionCandidateList = new ArrayList<>();
+    
+    String phrasePrefix =
+      getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
+    
+    while (phrasePrefix.length() > 0) {
+      
+      Log.d("XXX", phrasePrefix);
+      
+      final Set<String> prefixMatchPhraseCandidateSet =
+        phraseSet.subSet(
+          phrasePrefix,
+          false,
+          phrasePrefix + Character.MAX_VALUE,
+          false
+        );
+      
+      for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
+        phraseCompletionCandidateList
+          .add(Stringy.removePrefix(phrasePrefix, phraseCandidate));
+      }
+      
+      phrasePrefix = Stringy.removePrefix(".", phrasePrefix);
+    }
+    
+    return phraseCompletionCandidateList;
   }
   
   private String getTextBeforeCursor(
