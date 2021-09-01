@@ -473,19 +473,23 @@ public class StrokeInputService
         break;
       
       case "ENTER":
-        if (strokeDigitSequence.length() > 0) {
-          onCandidate(getFirstCandidate());
-        }
-        else if (enterKeyHasAction) {
-          inputConnection.performEditorAction(inputOptionsBits);
-        }
-        else {
-          inputConnection.commitText("\n", 1);
-        }
+        onEnterKey(inputConnection);
         break;
       
       default:
         onOrdinaryKey(inputConnection, valueText);
+    }
+  }
+  
+  private void onEnterKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    else if (enterKeyHasAction) {
+      inputConnection.performEditorAction(inputOptionsBits);
+    }
+    else {
+      inputConnection.commitText("\n", 1);
     }
   }
   
