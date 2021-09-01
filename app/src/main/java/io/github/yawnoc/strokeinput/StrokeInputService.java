@@ -391,7 +391,7 @@ public class StrokeInputService
         final String newStrokeDigitSequence =
           strokeDigitSequence + strokeDigit;
         final List<String> newCandidateList =
-          toCandidateList(newStrokeDigitSequence);
+          computeCandidateList(newStrokeDigitSequence);
         if (newCandidateList.size() > 0) {
           setStrokeDigitSequence(newStrokeDigitSequence);
           setCandidateList(newCandidateList);
@@ -404,7 +404,7 @@ public class StrokeInputService
           final String newStrokeDigitSequence =
             Stringy.removeSuffix(".", strokeDigitSequence);
           final List<String> newCandidateList =
-            toCandidateList(newStrokeDigitSequence);
+            computeCandidateList(newStrokeDigitSequence);
           setStrokeDigitSequence(newStrokeDigitSequence);
           setCandidateList(newCandidateList);
           inputContainer.setKeyRepeatIntervalMilliseconds(
@@ -554,7 +554,7 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
-  private List<String> toCandidateList(final String strokeDigitSequence) {
+  private List<String> computeCandidateList(final String strokeDigitSequence) {
     
     final CharactersData exactMatchCharactersData =
       exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
