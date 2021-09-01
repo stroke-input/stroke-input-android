@@ -626,19 +626,19 @@ public class StrokeInputService
     
     final CharactersData exactMatchCharactersData =
       exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
-    final List<String> exactMatchCandidatesList = (
+    final List<String> exactMatchCandidateList = (
       exactMatchCharactersData == null
         ? Collections.emptyList()
         : exactMatchCharactersData.toCandidateList(candidateComparator)
     );
     
     final CharactersData prefixMatchCharactersData;
-    final List<String> prefixMatchCandidatesList;
+    final List<String> prefixMatchCandidateList;
     
     if (strokeDigitSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
       prefixMatchCharactersData =
         prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
-      prefixMatchCandidatesList = (
+      prefixMatchCandidateList = (
         prefixMatchCharactersData == null
           ? Collections.emptyList()
           : prefixMatchCharactersData.toCandidateList(candidateComparator)
@@ -664,14 +664,14 @@ public class StrokeInputService
       {
         prefixMatchCharactersData.addData(charactersData);
       }
-      prefixMatchCandidatesList =
+      prefixMatchCandidateList =
         prefixMatchCharactersData
           .toCandidateList(candidateComparator, MAX_PREFIX_MATCH_COUNT);
     }
     
     final List<String> candidateList = new ArrayList<>();
-    candidateList.addAll(exactMatchCandidatesList);
-    candidateList.addAll(prefixMatchCandidatesList);
+    candidateList.addAll(exactMatchCandidateList);
+    candidateList.addAll(prefixMatchCandidateList);
     
     return candidateList;
   }
