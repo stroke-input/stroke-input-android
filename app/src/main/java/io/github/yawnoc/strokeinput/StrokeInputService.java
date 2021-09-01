@@ -403,54 +403,7 @@ public class StrokeInputService
       }
       
       case "BACKSPACE": {
-        if (strokeDigitSequence.length() > 0) {
-          final String newStrokeDigitSequence =
-            Stringy.removeSuffix(".", strokeDigitSequence);
-          final List<String> newCandidateList =
-            computeCandidateList(newStrokeDigitSequence);
-          setStrokeDigitSequence(newStrokeDigitSequence);
-          setCandidateList(newCandidateList);
-          inputContainer.setKeyRepeatIntervalMilliseconds(
-            BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-          );
-        }
-        else {
-          final String characterBeforeCursorOrEmptyString =
-            getTextBeforeCursor(inputConnection, 1);
-          if (characterBeforeCursorOrEmptyString.length() > 0) {
-            final CharSequence selection = inputConnection.getSelectedText(0);
-            if (TextUtils.isEmpty(selection)) {
-              if (Build.VERSION.SDK_INT >= 24) {
-                inputConnection.deleteSurroundingTextInCodePoints(1, 0);
-              }
-              else {
-                // TODO: handle surrogates manually
-              }
-            }
-            else {
-              inputConnection.commitText("", 1);
-            }
-            setCandidateList(
-              computePhraseCompletionCandidateList(inputConnection)
-            );
-          }
-          else { // for apps like Termux
-            inputConnection.sendKeyEvent(
-              new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
-            );
-            inputConnection.sendKeyEvent(
-              new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
-            );
-          }
-          final int nextBackspaceIntervalMilliseconds = (
-            Stringy.isAscii(characterBeforeCursorOrEmptyString)
-              ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
-              : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-          );
-          inputContainer.setKeyRepeatIntervalMilliseconds(
-            nextBackspaceIntervalMilliseconds
-          );
-        }
+        effectBackspace(inputConnection);
         break;
       }
       
@@ -474,6 +427,66 @@ public class StrokeInputService
       
       default:
         effectOrdinaryKey(inputConnection, valueText);
+    }
+  }
+  
+  private void effectBackspace(final InputConnection inputConnection) {
+    
+    if (strokeDigitSequence.length() > 0) {
+      
+      final String newStrokeDigitSequence =
+        Stringy.removeSuffix(".", strokeDigitSequence);
+      final List<String> newCandidateList =
+        computeCandidateList(newStrokeDigitSequence);
+      
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
+      
+      inputContainer.setKeyRepeatIntervalMilliseconds(
+        BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+      );
+    }
+    else {
+      
+      final String characterBeforeCursorOrEmptyString =
+        getTextBeforeCursor(inputConnection, 1);
+      
+      if (characterBeforeCursorOrEmptyString.length() > 0) {
+        
+        final CharSequence selection = inputConnection.getSelectedText(0);
+        if (TextUtils.isEmpty(selection)) {
+          if (Build.VERSION.SDK_INT >= 24) {
+            inputConnection.deleteSurroundingTextInCodePoints(1, 0);
+          }
+          else {
+            // TODO: handle surrogates manually
+          }
+        }
+        else {
+          inputConnection.commitText("", 1);
+        }
+        setCandidateList(
+          computePhraseCompletionCandidateList(inputConnection)
+        );
+      }
+      else { // for apps like Termux
+        
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
+        );
+        inputConnection.sendKeyEvent(
+          new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL)
+        );
+      }
+      
+      final int nextBackspaceIntervalMilliseconds = (
+        Stringy.isAscii(characterBeforeCursorOrEmptyString)
+          ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+          : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+      );
+      inputContainer.setKeyRepeatIntervalMilliseconds(
+        nextBackspaceIntervalMilliseconds
+      );
     }
   }
   
