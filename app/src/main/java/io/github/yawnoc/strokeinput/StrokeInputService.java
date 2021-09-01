@@ -692,8 +692,6 @@ public class StrokeInputService
     
     while (phrasePrefix.length() > 0) {
       
-      Log.d("XXX", phrasePrefix);
-      
       final Set<String> prefixMatchPhraseCandidateSet =
         phraseSet.subSet(
           phrasePrefix,
