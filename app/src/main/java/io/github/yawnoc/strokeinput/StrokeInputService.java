@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -645,9 +646,7 @@ public class StrokeInputService
     }
     else {
       prefixMatchCharactersData = new CharactersData("");
-      for (
-        final CharactersData charactersData
-          :
+      final Collection<CharactersData> prefixMatchCharactersDataCollection = (
         exactCharactersDataFromStrokeDigitSequence
           .subMap(
             strokeDigitSequence,
@@ -656,6 +655,11 @@ public class StrokeInputService
             false
           )
           .values()
+      );
+      for (
+        final CharactersData charactersData
+          :
+        prefixMatchCharactersDataCollection
       )
       {
         prefixMatchCharactersData.addData(charactersData);
