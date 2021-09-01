@@ -461,8 +461,7 @@ public class StrokeInputService
       case "SWITCH_TO_QWERTY_SYMBOLS":
         final String keyboardName =
           Stringy.removePrefix("SWITCH_TO_", valueText);
-        final Keyboard keyboard = keyboardFromName.get(keyboardName);
-        inputContainer.setKeyboard(keyboard);
+        switchToKeyboard(keyboardName);
         break;
       
       case "SPACE":
@@ -476,6 +475,11 @@ public class StrokeInputService
       default:
         onOrdinaryKey(inputConnection, valueText);
     }
+  }
+  
+  private void switchToKeyboard(final String keyboardName) {
+    final Keyboard keyboard = keyboardFromName.get(keyboardName);
+    inputContainer.setKeyboard(keyboard);
   }
   
   private void onSpaceKey(final InputConnection inputConnection) {
