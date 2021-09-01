@@ -703,11 +703,15 @@ public class StrokeInputService
           phrasePrefix + Character.MAX_VALUE,
           false
         );
+      final List<String> prefixMatchPhraseCompletionList =
+        new ArrayList<>();
       
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
-        phraseCompletionCandidateList
+        prefixMatchPhraseCompletionList
           .add(Stringy.removePrefix(phrasePrefix, phraseCandidate));
-      }
+      };
+      Collections.sort(prefixMatchPhraseCompletionList, candidateComparator);
+      phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
       
       phrasePrefix = Stringy.removePrefix(".", phrasePrefix);
     }
