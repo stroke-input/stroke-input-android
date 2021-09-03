@@ -715,36 +715,29 @@ public class StrokeInputService
           )
     );
     
-    final CharactersData prefixMatchCharactersData;
-    final List<String> prefixMatchCandidateList;
-    
+    final CharactersData prefixMatchCharactersData = new CharactersData("");
+    final Collection<CharactersData> prefixMatchCharactersDataCollection = (
+      exactCharactersDataFromStrokeDigitSequence
+        .subMap(
+          strokeDigitSequence,
+          false,
+          strokeDigitSequence + Character.MAX_VALUE,
+          false
+        )
+        .values()
+    );
+    for (
+      final CharactersData charactersData : prefixMatchCharactersDataCollection
+    )
     {
-      prefixMatchCharactersData = new CharactersData("");
-      final Collection<CharactersData> prefixMatchCharactersDataCollection = (
-        exactCharactersDataFromStrokeDigitSequence
-          .subMap(
-            strokeDigitSequence,
-            false,
-            strokeDigitSequence + Character.MAX_VALUE,
-            false
-          )
-          .values()
-      );
-      for (
-        final CharactersData charactersData
-          :
-        prefixMatchCharactersDataCollection
-      )
-      {
-        prefixMatchCharactersData.addData(charactersData);
-      }
-      prefixMatchCandidateList =
-        prefixMatchCharactersData
-          .toCandidateList(
-            candidateComparator(phraseCompletionFirstCharacterList),
-            MAX_PREFIX_MATCH_COUNT
-          );
+      prefixMatchCharactersData.addData(charactersData);
     }
+    final List<String> prefixMatchCandidateList =
+      prefixMatchCharactersData
+        .toCandidateList(
+          candidateComparator(phraseCompletionFirstCharacterList),
+          MAX_PREFIX_MATCH_COUNT
+        );
     
     final List<String> candidateList = new ArrayList<>();
     candidateList.addAll(exactMatchCandidateList);
