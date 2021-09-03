@@ -719,7 +719,7 @@ public class StrokeInputService
     final CharactersData prefixMatchCharactersData;
     final List<String> prefixMatchCandidateList;
     
-    if (strokeDigitSequence.length() <= USE_PREFIX_DATA_MAX_STROKE_COUNT) {
+    if (false) {
       prefixMatchCharactersData =
         prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
       prefixMatchCandidateList = (
