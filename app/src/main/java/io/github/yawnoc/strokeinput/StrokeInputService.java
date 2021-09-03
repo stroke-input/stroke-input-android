@@ -624,6 +624,15 @@ public class StrokeInputService
     setCandidateList(phraseCompletionCandidateList);
   }
   
+  /*
+    Compute the sorting rank for a string, based on its first character.
+    If the first character matches that of a phrase completion candidate:
+      {negative infinity} + {phrase completion index};
+    If the first character is a common character (in "ranking.txt"):
+      {ranking in "ranking.txt"};
+    Otherwise:
+      {positive infinity},
+  */
   private int computeSortingRank(final String string) {
     
     final String firstCharacter = Stringy.getFirstCharacter(string);
