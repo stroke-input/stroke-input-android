@@ -66,6 +66,28 @@ public class Stringy {
   }
   
   /*
+    Convert a string to a list of (unicode) code points
+  */
+  public static List<Integer> toCodepointList(final String string) {
+    
+    final List<Integer> codePointList = new ArrayList<>();
+    
+    final int charCount = string.length();
+    for (int charIndex = 0; charIndex < charCount; charIndex++) {
+      codePointList.add(string.codePointAt(charIndex));
+    }
+    
+    return codePointList;
+  }
+  
+  /*
+    Convert a code point to a string
+  */
+  public static String toString(final int codePoint) {
+    return String.valueOf(Character.toChars(codePoint));
+  }
+  
+  /*
     Convert a string to a list of (unicode) characters.
   */
   public static List<String> toCharacterList(final String string) {

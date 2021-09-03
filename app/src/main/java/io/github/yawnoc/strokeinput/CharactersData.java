@@ -21,8 +21,8 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class CharactersData {
   
-  private final Set<String> goodlySet;
-  private final Set<String> abominableSet;
+  private final Set<Integer> goodlyCodepointSet;
+  private final Set<Integer> abominableCodepointSet;
   
   CharactersData(final String commaSeparatedCharacters) {
     
@@ -40,15 +40,15 @@ public class CharactersData {
       abominableCharacters = sunderedCharactersArray[1];
     }
     
-    goodlySet =
-      new HashSet<>(Stringy.toCharacterList(goodlyCharacters));
-    abominableSet =
-      new HashSet<>(Stringy.toCharacterList(abominableCharacters));
+    goodlyCodepointSet =
+      new HashSet<>(Stringy.toCodepointList(goodlyCharacters));
+    abominableCodepointSet =
+      new HashSet<>(Stringy.toCodepointList(abominableCharacters));
   }
   
   public void addData(final CharactersData charactersData) {
-    goodlySet.addAll(charactersData.goodlySet);
-    abominableSet.addAll(charactersData.abominableSet);
+    goodlyCodepointSet.addAll(charactersData.goodlyCodepointSet);
+    abominableCodepointSet.addAll(charactersData.abominableCodepointSet);
   }
   
   public List<String> toCandidateList(final Comparator<String> comparator) {
@@ -60,8 +60,15 @@ public class CharactersData {
     final int maxCandidateCount
   )
   {
-    final List<String> goodlyList = new ArrayList<>(goodlySet);
-    final List<String> abominableList = new ArrayList<>(abominableSet);
+    final List<String> goodlyList = new ArrayList<>();
+    final List<String> abominableList = new ArrayList<>();
+    
+    for (final int goodlyCodepoint : goodlyCodepointSet) {
+      goodlyList.add(Stringy.toString(goodlyCodepoint));
+    }
+    for (final int abominableCodepoint : abominableCodepointSet) {
+      abominableList.add(Stringy.toString(abominableCodepoint));
+    }
     
     Collections.sort(goodlyList, comparator);
     Collections.sort(abominableList, comparator);
