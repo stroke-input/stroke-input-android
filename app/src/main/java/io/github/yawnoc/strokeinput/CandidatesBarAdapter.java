@@ -52,8 +52,7 @@ public class CandidatesBarAdapter
   @NonNull
   @Override
   public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
-    final Button candidateButton =
-      (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
+    final Button candidateButton = (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
     return new ButtonHolder(candidateButton);
   }
   
