@@ -653,10 +653,11 @@ public class StrokeInputService
     }
     
     final Integer rank = sortingRankFromCharacter.get(firstCharacter);
-    if (rank == null) {
-      return Integer.MAX_VALUE;
+    if (rank != null) {
+      return rank;
     }
-    return rank;
+    
+    return Integer.MAX_VALUE;
   }
   
   private List<String> computeCandidateList(final String strokeDigitSequence) {
