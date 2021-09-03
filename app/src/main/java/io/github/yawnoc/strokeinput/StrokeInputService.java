@@ -663,13 +663,11 @@ public class StrokeInputService
   )
   {
     return
-      (string1, string2) -> {
-        return
-          Integer.compare(
-            computeSortingRank(string1, phraseCompletionFirstCharacterList),
-            computeSortingRank(string2, phraseCompletionFirstCharacterList)
-          );
-      };
+      (string1, string2) ->
+        Integer.compare(
+          computeSortingRank(string1, phraseCompletionFirstCharacterList),
+          computeSortingRank(string2, phraseCompletionFirstCharacterList)
+        );
   }
   
   /*
