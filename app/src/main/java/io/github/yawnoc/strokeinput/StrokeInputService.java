@@ -90,7 +90,8 @@ public class StrokeInputService
   
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
-  private List<String> phraseCompletionCandidateList = new ArrayList<>();
+  private final List<String> phraseCompletionFirstCharacterList =
+    new ArrayList<>();
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
@@ -643,8 +644,21 @@ public class StrokeInputService
     final InputConnection inputConnection
   )
   {
-    phraseCompletionCandidateList =
+    List<String> phraseCompletionCandidateList =
       computePhraseCompletionCandidateList(inputConnection);
+    
+    phraseCompletionFirstCharacterList.clear();
+    for (
+      final String phraseCompletionCandidate
+        :
+      phraseCompletionCandidateList
+    )
+    {
+      phraseCompletionFirstCharacterList.add(
+        Stringy.getFirstCharacter(phraseCompletionCandidate)
+      );
+    }
+    
     setCandidateList(phraseCompletionCandidateList);
   }
   
@@ -664,19 +678,10 @@ public class StrokeInputService
     final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
     final String firstCharacter = Stringy.getFirstCharacter(string);
     
-    for (
-      int phraseCompletionIndex = 0;
-      phraseCompletionIndex < phraseCompletionCandidateList.size();
-      phraseCompletionIndex++
-    )
-    {
-      final String phraseCompletionFirstCharacter =
-        Stringy.getFirstCharacter(
-          phraseCompletionCandidateList.get(phraseCompletionIndex)
-        );
-      if (firstCharacter.equals(phraseCompletionFirstCharacter)) {
-        return Integer.MIN_VALUE + phraseCompletionIndex + lengthPenalty;
-      }
+    final int phraseCompletionIndex =
+      phraseCompletionFirstCharacterList.indexOf(firstCharacter);
+    if (phraseCompletionIndex > 0) {
+      return Integer.MIN_VALUE + phraseCompletionIndex + lengthPenalty;
     }
     
     final Integer baseRank = sortingRankFromCharacter.get(firstCharacter);
@@ -758,8 +763,7 @@ public class StrokeInputService
     final InputConnection inputConnection
   )
   {
-    // Prevent influence of previous phrase completion candidates
-    this.phraseCompletionCandidateList = Collections.emptyList();
+    this.phraseCompletionFirstCharacterList.clear();
     
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
