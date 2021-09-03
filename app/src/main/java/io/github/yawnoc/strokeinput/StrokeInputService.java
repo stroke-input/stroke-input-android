@@ -658,6 +658,7 @@ public class StrokeInputService
     return candidateComparator(Collections.emptyList());
   }
   
+  @SuppressWarnings("ComparatorCombinators")
   private Comparator<String> candidateComparator(
     final List<String> phraseCompletionFirstCharacterList
   )
