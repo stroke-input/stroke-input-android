@@ -56,8 +56,6 @@ public class StrokeInputService
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_EXACT_CHARACTERS_FILE_NAME =
     "sequence-exact-characters.txt";
-  private static final String SEQUENCE_PREFIX_CHARACTERS_FILE_NAME =
-    "sequence-prefix-characters.txt";
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
@@ -79,8 +77,6 @@ public class StrokeInputService
   
   private NavigableMap<String, CharactersData>
     exactCharactersDataFromStrokeDigitSequence;
-  private Map<String, CharactersData>
-    prefixCharactersDataFromStrokeDigitSequence;
   
   private Map<String, Integer> sortingRankFromCharacter;
   
@@ -167,37 +163,6 @@ public class StrokeInputService
       "StrokeInputService",
       "Loading of exact characters data: "
         + (exactCharactersDataEndMillis - exactCharactersDataStartMillis)
-        + " milliseconds"
-    );
-    
-    prefixCharactersDataFromStrokeDigitSequence = new HashMap<>();
-    
-    final long prefixCharactersDataStartMillis = System.currentTimeMillis();
-    try {
-      
-      final InputStream inputStream =
-        getAssets().open(SEQUENCE_PREFIX_CHARACTERS_FILE_NAME);
-      final BufferedReader bufferedReader =
-        new BufferedReader(new InputStreamReader(inputStream));
-      
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          putSequenceAndCharactersDataIntoMap(
-            line,
-            prefixCharactersDataFromStrokeDigitSequence
-          );
-        }
-      }
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    final long prefixCharactersDataEndMillis = System.currentTimeMillis();
-    Log.i(
-      "StrokeInputService",
-      "Loading of prefix characters data: "
-        + (prefixCharactersDataEndMillis - prefixCharactersDataStartMillis)
         + " milliseconds"
     );
     
