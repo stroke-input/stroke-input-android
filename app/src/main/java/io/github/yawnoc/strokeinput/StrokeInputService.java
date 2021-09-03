@@ -101,16 +101,7 @@ public class StrokeInputService
     
     initialiseKeyboards();
     initialiseInputContainer();
-    
-    final long initialiseStrokeInputStartMillis = System.currentTimeMillis();
     initialiseStrokeInput();
-    final long initialiseStrokeInputEndMillis = System.currentTimeMillis();
-    Log.i(
-      "StrokeInputService",
-      "initialiseStrokeInput() took "
-        + (initialiseStrokeInputEndMillis - initialiseStrokeInputStartMillis)
-        + " milliseconds."
-    );
     
     return inputContainer;
   }
@@ -151,6 +142,7 @@ public class StrokeInputService
     
     exactCharactersDataFromStrokeDigitSequence = new TreeMap<>();
     
+    final long exactCharactersDataStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream =
@@ -171,9 +163,17 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    final long exactCharactersDataEndMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "Loading of exact characters data: "
+        + (exactCharactersDataEndMillis - exactCharactersDataStartMillis)
+        + " milliseconds"
+    );
     
     prefixCharactersDataFromStrokeDigitSequence = new HashMap<>();
     
+    final long prefixCharactersDataStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream =
@@ -194,9 +194,17 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    final long prefixCharactersDataEndMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "Loading of prefix characters data: "
+        + (prefixCharactersDataEndMillis - prefixCharactersDataStartMillis)
+        + " milliseconds"
+    );
     
     sortingRankFromCharacter = new HashMap<>();
     
+    final long sortingRankStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream = getAssets().open(RANKING_FILE_NAME);
@@ -219,6 +227,13 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    final long sortingRankEndMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "Loading of sorting rank: "
+        + (sortingRankEndMillis - sortingRankStartMillis)
+        + " milliseconds"
+    );
     
     candidateComparator =
       (string1, string2) -> {
@@ -229,6 +244,7 @@ public class StrokeInputService
     
     phraseSet = new TreeSet<>();
     
+    final long phraseSetStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME);
@@ -245,6 +261,13 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    final long phraseSetEndMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "Loading of phrase set: "
+        + (phraseSetEndMillis - phraseSetStartMillis)
+        + " milliseconds"
+    );
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
