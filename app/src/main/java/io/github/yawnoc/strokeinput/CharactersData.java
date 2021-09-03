@@ -52,11 +52,8 @@ public class CharactersData {
     return toCandidateList(comparator, Integer.MAX_VALUE);
   }
   
-  public List<String> toCandidateList(
-    final Comparator<String> comparator,
-    final int maxCandidateCount
-  )
-  {
+  public List<String> toCandidateList(final Comparator<String> comparator, final int maxCandidateCount) {
+    
     final List<String> goodlyList = new ArrayList<>();
     final List<String> abominableList = new ArrayList<>();
     
