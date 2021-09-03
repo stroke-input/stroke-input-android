@@ -62,7 +62,6 @@ public class StrokeInputService
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
   private static final int RANKING_PENALTY_PER_CHAR = 3000;
-  private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 2;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_LENGTH = 5;
   
@@ -719,18 +718,7 @@ public class StrokeInputService
     final CharactersData prefixMatchCharactersData;
     final List<String> prefixMatchCandidateList;
     
-    if (false) {
-      prefixMatchCharactersData =
-        prefixCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
-      prefixMatchCandidateList = (
-        prefixMatchCharactersData == null
-          ? Collections.emptyList()
-          : prefixMatchCharactersData.toCandidateList(
-              candidateComparator(phraseCompletionFirstCharacterList)
-            )
-      );
-    }
-    else {
+    {
       prefixMatchCharactersData = new CharactersData("");
       final Collection<CharactersData> prefixMatchCharactersDataCollection = (
         exactCharactersDataFromStrokeDigitSequence
