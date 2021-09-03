@@ -61,6 +61,7 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
+  private static final int RANKING_PENALTY_PER_CHAR = 3000;
   private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 2;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_LENGTH = 5;
@@ -626,15 +627,18 @@ public class StrokeInputService
   
   /*
     Compute the sorting rank for a string, based on its first character.
-    If the first character matches that of a phrase completion candidate:
-      {negative infinity} + {phrase completion index};
-    If the first character is a common character (in "ranking.txt"):
-      {ranking in "ranking.txt"};
-    Otherwise:
-      {positive infinity},
+    The overall rank consists of a base rank plus a length penalty.
+    The base rank is thus:
+      If the first character matches that of a phrase completion candidate:
+        {negative infinity} + {phrase completion index};
+      Else, if the first character is a common character (in "ranking.txt"):
+        {ranking in "ranking.txt"};
+      Else:
+        {positive infinity}.
   */
   private int computeSortingRank(final String string) {
     
+    final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
     final String firstCharacter = Stringy.getFirstCharacter(string);
     
     for (
@@ -648,13 +652,13 @@ public class StrokeInputService
           phraseCompletionCandidateList.get(phraseCompletionIndex)
         );
       if (firstCharacter.equals(phraseCompletionFirstCharacter)) {
-        return Integer.MIN_VALUE + phraseCompletionIndex;
+        return Integer.MIN_VALUE + phraseCompletionIndex + lengthPenalty;
       }
     }
     
-    final Integer rank = sortingRankFromCharacter.get(firstCharacter);
-    if (rank != null) {
-      return rank;
+    final Integer baseRank = sortingRankFromCharacter.get(firstCharacter);
+    if (baseRank != null) {
+      return baseRank + lengthPenalty;
     }
     
     return Integer.MAX_VALUE;
