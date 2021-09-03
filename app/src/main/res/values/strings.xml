@@ -1,9 +1,7 @@
 <resources>
   <!-- Main activity -->
   <string name="app_name">Stroke Input Method</string>
-  <string name="text__main_activity__welcome">
-    Welcome to Stroke Input Method!
-  </string>
+  <string name="text__main_activity__welcome">Welcome to Stroke Input Method!</string>
   <string name="label__main_activity__source_code_button">Source code</string>
   <string name="label__main_activity__help_button">Help</string>
   <string name="label__main_activity__about_button">About</string>
@@ -11,21 +9,13 @@
     If you have installed Stroke Input Method for the first time,
     you must manually enable it in the system settings before it can be used:
   </string>
-  <string name="label__main_activity__input_method_settings_button">
-    Input method settings
-  </string>
+  <string name="label__main_activity__input_method_settings_button">Input method settings</string>
   <string name="text__main_activity__switch_keyboard">
     If your existing input method provides no means of switching keyboards:
   </string>
-  <string name="label__main_activity__switch_keyboard_button">
-    Switch keyboard
-  </string>
-  <string name="hint__main_activity__test_input">
-    Test input here
-  </string>
-  <string name="label__main_activity__return">
-    Return
-  </string>
+  <string name="label__main_activity__switch_keyboard_button">Switch keyboard</string>
+  <string name="hint__main_activity__test_input">Test input here</string>
+  <string name="label__main_activity__return">Return</string>
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>
   <string name="file_name__about_html">about.html</string>

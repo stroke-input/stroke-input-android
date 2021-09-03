@@ -5,15 +5,9 @@
   <string name="label__main_activity__source_code_button">源碼</string>
   <string name="label__main_activity__help_button">説明</string>
   <string name="label__main_activity__about_button">關於</string>
-  <string name="text__main_activity__input_method_settings">
-    若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：
-  </string>
-  <string name="label__main_activity__input_method_settings_button">
-    輸入法設定
-  </string>
-  <string name="text__main_activity__switch_keyboard">
-    若現有之輸入法無以轉鍵盤：
-  </string>
+  <string name="text__main_activity__input_method_settings">若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：</string>
+  <string name="label__main_activity__input_method_settings_button">輸入法設定</string>
+  <string name="text__main_activity__switch_keyboard">若現有之輸入法無以轉鍵盤：</string>
   <string name="label__main_activity__switch_keyboard_button">轉鍵盤</string>
   <string name="hint__main_activity__test_input">在此測試輸入</string>
   <string name="label__main_activity__return">回</string>
