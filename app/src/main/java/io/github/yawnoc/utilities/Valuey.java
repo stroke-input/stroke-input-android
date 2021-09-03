@@ -30,28 +30,15 @@ public class Valuey {
     // Do not instantiate
   }
   
-  public static float clipValueToRange(
-    final float value,
-    final float rangeMin,
-    final float rangeMax
-  )
-  {
+  public static float clipValueToRange(final float value, final float rangeMin, final float rangeMax) {
     return Math.max(rangeMin, Math.min(rangeMax, value));
   }
   
-  public static float pxFromDp(
-    final float dp,
-    final DisplayMetrics displayMetrics
-  )
-  {
+  public static float pxFromDp(final float dp, final DisplayMetrics displayMetrics) {
     return dp * displayMetrics.density;
   }
   
-  public static float pxFromSp(
-    final float sp,
-    final DisplayMetrics displayMetrics
-  )
-  {
+  public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics) {
     return sp * displayMetrics.scaledDensity;
   }
   
@@ -70,9 +57,7 @@ public class Valuey {
       case TypedValue.TYPE_DIMENSION:
         return array.getDimensionPixelOffset(attributeIndex, defaultValue);
       case TypedValue.TYPE_FRACTION:
-        return Math.round(
-          array.getFraction(attributeIndex, baseValue, baseValue, defaultValue)
-        );
+        return Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
       default:
         return defaultValue;
     }
