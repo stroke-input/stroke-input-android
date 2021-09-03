@@ -705,6 +705,10 @@ public class StrokeInputService
   
   private List<String> computeCandidateList(final String strokeDigitSequence) {
     
+    if (strokeDigitSequence.length() == 0) {
+      return Collections.emptyList();
+    }
+    
     final CharactersData exactMatchCharactersData =
       exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidateList = (
