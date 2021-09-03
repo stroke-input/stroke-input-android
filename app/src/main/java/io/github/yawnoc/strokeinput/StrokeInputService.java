@@ -47,8 +47,7 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class StrokeInputService
   extends InputMethodService
-  implements
-    InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
+  implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
