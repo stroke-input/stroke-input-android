@@ -55,7 +55,7 @@ public class StrokeInputService
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME =
-    "sequence-exact-characters.txt";
+    "sequence-characters.txt";
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   

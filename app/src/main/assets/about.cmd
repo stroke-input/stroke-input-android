@@ -44,7 +44,7 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 Released into the Public Domain, see \CC0.
 ----
 
-#### `sequence-exact-characters.txt` ####
+#### `sequence-characters.txt` ####
 ----{.notice}
 ©~2021 Conway \+
 Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
