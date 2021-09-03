@@ -84,7 +84,6 @@ public class StrokeInputService
     prefixCharactersDataFromStrokeDigitSequence;
   
   private Map<String, Integer> sortingRankFromCharacter;
-  private Comparator<String> candidateComparator;
   
   private NavigableSet<String> phraseSet;
   
@@ -235,13 +234,6 @@ public class StrokeInputService
         + (sortingRankEndMillis - sortingRankStartMillis)
         + " milliseconds"
     );
-    
-    candidateComparator =
-      (string1, string2) -> {
-        final int rank1 = computeSortingRank(string1);
-        final int rank2 = computeSortingRank(string2);
-        return Integer.compare(rank1, rank2);
-      };
     
     phraseSet = new TreeSet<>();
     
@@ -662,6 +654,24 @@ public class StrokeInputService
     setCandidateList(phraseCompletionCandidateList);
   }
   
+  private Comparator<String> candidateComparator() {
+    return candidateComparator(Collections.emptyList());
+  }
+  
+  private Comparator<String> candidateComparator(
+    final List<String> phraseCompletionFirstCharacterList
+  )
+  {
+    return
+      (string1, string2) -> {
+        return
+          Integer.compare(
+            computeSortingRank(string1, phraseCompletionFirstCharacterList),
+            computeSortingRank(string2, phraseCompletionFirstCharacterList)
+          );
+      };
+  }
+  
   /*
     Compute the sorting rank for a string, based on its first character.
     The overall rank consists of a base rank plus a length penalty.
@@ -673,8 +683,11 @@ public class StrokeInputService
       Else:
         {positive infinity}.
   */
-  private int computeSortingRank(final String string) {
-    
+  private int computeSortingRank(
+    final String string,
+    final List<String> phraseCompletionFirstCharacterList
+  )
+  {
     final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
     final String firstCharacter = Stringy.getFirstCharacter(string);
     
@@ -699,7 +712,9 @@ public class StrokeInputService
     final List<String> exactMatchCandidateList = (
       exactMatchCharactersData == null
         ? Collections.emptyList()
-        : exactMatchCharactersData.toCandidateList(candidateComparator)
+        : exactMatchCharactersData.toCandidateList(
+            candidateComparator(phraseCompletionFirstCharacterList)
+          )
     );
     
     final CharactersData prefixMatchCharactersData;
@@ -711,7 +726,9 @@ public class StrokeInputService
       prefixMatchCandidateList = (
         prefixMatchCharactersData == null
           ? Collections.emptyList()
-          : prefixMatchCharactersData.toCandidateList(candidateComparator)
+          : prefixMatchCharactersData.toCandidateList(
+              candidateComparator(phraseCompletionFirstCharacterList)
+            )
       );
     }
     else {
@@ -736,7 +753,10 @@ public class StrokeInputService
       }
       prefixMatchCandidateList =
         prefixMatchCharactersData
-          .toCandidateList(candidateComparator, MAX_PREFIX_MATCH_COUNT);
+          .toCandidateList(
+            candidateComparator(phraseCompletionFirstCharacterList),
+            MAX_PREFIX_MATCH_COUNT
+          );
     }
     
     final List<String> candidateList = new ArrayList<>();
@@ -763,8 +783,6 @@ public class StrokeInputService
     final InputConnection inputConnection
   )
   {
-    this.phraseCompletionFirstCharacterList.clear();
-    
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
     for (
@@ -791,7 +809,7 @@ public class StrokeInputService
           prefixMatchPhraseCompletionList.add(phraseCompletion);
         }
       }
-      Collections.sort(prefixMatchPhraseCompletionList, candidateComparator);
+      Collections.sort(prefixMatchPhraseCompletionList, candidateComparator());
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
