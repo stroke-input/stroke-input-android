@@ -725,8 +725,7 @@ public class StrokeInputService
   
   /*
     Compute the phrase completion candidate list.
-    Longer phrases (based on the text before the cursor) are ranked earlier.
-    Phrases of the same length are ranked according the candidate comparator.
+    Longer matches with the text before the cursor are ranked earlier.
   */
   private List<String> computePhraseCompletionCandidateList(
     final InputConnection inputConnection
