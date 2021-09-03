@@ -727,6 +727,9 @@ public class StrokeInputService
     final InputConnection inputConnection
   )
   {
+    // Prevent influence of previous phrase completion candidates
+    this.phraseCompletionCandidateList = Collections.emptyList();
+    
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
     String phrasePrefix =
