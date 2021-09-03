@@ -34,16 +34,13 @@ public class CharactersData {
       abominableCharacters = "";
     }
     else {
-      final String[] sunderedCharactersArray =
-        Stringy.sunder(commaSeparatedCharacters, ",");
+      final String[] sunderedCharactersArray = Stringy.sunder(commaSeparatedCharacters, ",");
       goodlyCharacters = sunderedCharactersArray[0];
       abominableCharacters = sunderedCharactersArray[1];
     }
     
-    goodlyCodepointSet =
-      new HashSet<>(Stringy.toCodepointList(goodlyCharacters));
-    abominableCodepointSet =
-      new HashSet<>(Stringy.toCodepointList(abominableCharacters));
+    goodlyCodepointSet = new HashSet<>(Stringy.toCodepointList(goodlyCharacters));
+    abominableCodepointSet = new HashSet<>(Stringy.toCodepointList(abominableCharacters));
   }
   
   public void addData(final CharactersData charactersData) {
@@ -55,11 +52,8 @@ public class CharactersData {
     return toCandidateList(comparator, Integer.MAX_VALUE);
   }
   
-  public List<String> toCandidateList(
-    final Comparator<String> comparator,
-    final int maxCandidateCount
-  )
-  {
+  public List<String> toCandidateList(final Comparator<String> comparator, final int maxCandidateCount) {
+    
     final List<String> goodlyList = new ArrayList<>();
     final List<String> abominableList = new ArrayList<>();
     
@@ -77,8 +71,7 @@ public class CharactersData {
     candidateList.addAll(goodlyList);
     candidateList.addAll(abominableList);
     
-    final int candidateCount =
-      Math.min(candidateList.size(), maxCandidateCount);
+    final int candidateCount = Math.min(candidateList.size(), maxCandidateCount);
     
     return new ArrayList<>(candidateList.subList(0, candidateCount));
   }

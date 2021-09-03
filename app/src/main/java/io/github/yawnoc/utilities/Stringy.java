@@ -31,26 +31,14 @@ public class Stringy {
     }
     
     final char firstChar = string.charAt(0);
-    return (
-      firstChar < Character.MIN_SURROGATE
-        ||
-      firstChar > Character.MAX_SURROGATE
-    );
+    return firstChar < Character.MIN_SURROGATE || firstChar > Character.MAX_SURROGATE;
   }
   
-  public static String removePrefix(
-    final String prefixRegex,
-    final String string
-  )
-  {
+  public static String removePrefix(final String prefixRegex, final String string) {
     return string.replaceFirst("^" + prefixRegex, "");
   }
   
-  public static String removeSuffix(
-    final String suffixRegex,
-    final String string
-  )
-  {
+  public static String removeSuffix(final String suffixRegex, final String string) {
     return string.replaceFirst(suffixRegex + "$", "");
   }
   
@@ -95,12 +83,7 @@ public class Stringy {
     final List<String> characterList = new ArrayList<>();
     
     final int codePointCount = string.codePointCount(0, string.length());
-    for (
-      int codePointIndex = 0;
-      codePointIndex < codePointCount;
-      codePointIndex++
-    )
-    {
+    for (int codePointIndex = 0; codePointIndex < codePointCount; codePointIndex++) {
       characterList.add(
         string.substring(
           string.offsetByCodePoints(0, codePointIndex),

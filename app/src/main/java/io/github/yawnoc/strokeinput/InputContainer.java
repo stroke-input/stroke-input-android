@@ -78,8 +78,7 @@ public class InputContainer
   private static final int SHIFT_INITIATED = 3;
   private static final int SHIFT_HELD = 4;
   
-  public static final String KEYBOARD_FONT_FILE_NAME =
-    "StrokeInputKeyboard.ttf";
+  public static final String KEYBOARD_FONT_FILE_NAME = "StrokeInputKeyboard.ttf";
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -161,10 +160,7 @@ public class InputContainer
             switch (message.what) {
               case MESSAGE_KEY_REPEAT:
                 inputListener.onKey(activeKey.valueText);
-                sendExtendedPressHandlerMessage(
-                  MESSAGE_KEY_REPEAT,
-                  keyRepeatIntervalMilliseconds
-                );
+                sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, keyRepeatIntervalMilliseconds);
                 break;
               case MESSAGE_LONG_PRESS:
                 inputListener.onLongPress(activeKey.valueText);
@@ -183,8 +179,7 @@ public class InputContainer
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
-    keyboardFont =
-      Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
+    keyboardFont = Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
     inputRectangle = new Rect();
     inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
@@ -204,16 +199,12 @@ public class InputContainer
   @SuppressLint("InflateParams")
   private void initialiseStrokeSequenceBarring(final Context context) {
     
-    LayoutInflater layoutInflater =
-      (LayoutInflater)
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    strokeSequenceBar =
-      (TextView) layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
+    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    strokeSequenceBar = (TextView) layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
     strokeSequenceBar.setTypeface(keyboardFont);
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
-    strokeSequenceBarPopup =
-      new PopupWindow(strokeSequenceBar, popup_size, popup_size);
+    strokeSequenceBarPopup = new PopupWindow(strokeSequenceBar, popup_size, popup_size);
     strokeSequenceBarPopup.setTouchable(false);
     strokeSequenceBarPopup.setClippingEnabled(false);
   }
@@ -221,26 +212,17 @@ public class InputContainer
   @SuppressLint("InflateParams")
   private void initialiseCandidatesBarring(final Context context) {
     
-    candidatesBarAdapter =
-      new CandidatesBarAdapter(context, new ArrayList<>());
+    candidatesBarAdapter = new CandidatesBarAdapter(context, new ArrayList<>());
     
-    LayoutInflater layoutInflater =
-      (LayoutInflater)
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    final RecyclerView candidatesBar =
-      (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
-    candidatesBar.setLayoutManager(
-      new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-    );
+    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    final RecyclerView candidatesBar = (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
+    candidatesBar.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     candidatesBar.setAdapter(candidatesBarAdapter);
     
-    final DisplayMetrics displayMetrics =
-      context.getResources().getDisplayMetrics();
+    final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
     final int popup_width = LinearLayout.LayoutParams.MATCH_PARENT;
-    final int popup_height =
-      (int) Valuey.pxFromDp(Keyboard.CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
-    candidatesBarPopup =
-      new PopupWindow(candidatesBar, popup_width, popup_height);
+    final int popup_height = (int) Valuey.pxFromDp(Keyboard.CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
+    candidatesBarPopup = new PopupWindow(candidatesBar, popup_width, popup_height);
     candidatesBarPopup.setClippingEnabled(false);
   }
   
@@ -249,8 +231,7 @@ public class InputContainer
     keyPreviewPlane = new KeyPreviewPlane(context);
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
-    keyPreviewPlanePopup =
-      new PopupWindow(keyPreviewPlane, popup_size, popup_size);
+    keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
   }
@@ -278,10 +259,7 @@ public class InputContainer
     this.inputListener = inputListener;
   }
   
-  public void setCandidateListener(
-    final CandidatesBarAdapter.OnCandidateListener candidateListener
-  )
-  {
+  public void setCandidateListener(final CandidatesBarAdapter.OnCandidateListener candidateListener) {
     candidatesBarAdapter.setOnCandidateListener(candidateListener);
   }
   
@@ -379,12 +357,7 @@ public class InputContainer
     final int keyboardHeight = keyboard.getHeight();
     final int popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
     
-    keyPreviewPlane.updateDimensions(
-      screenWidth,
-      screenHeight,
-      keyboardHeight,
-      popupBufferZoneHeight
-    );
+    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight, popupBufferZoneHeight);
     keyPreviewPlanePopup.dismiss();
     keyPreviewPlanePopup.setWidth(screenWidth);
     keyPreviewPlanePopup.setHeight(screenHeight);
@@ -412,15 +385,10 @@ public class InputContainer
       }
       else {
         if (Build.VERSION.SDK_INT < 30) {
-          softButtonsHeight =
-            rootWindowInsets
-              .getSystemWindowInsetBottom(); // deprecated in API level 30
+          softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
         }
         else {
-          softButtonsHeight =
-            rootWindowInsets
-              .getInsets(WindowInsets.Type.navigationBars())
-              .bottom;
+          softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
         }
       }
     }
@@ -445,11 +413,8 @@ public class InputContainer
   }
   
   @Override
-  public void onMeasure(
-    final int widthMeasureSpec,
-    final int heightMeasureSpec
-  )
-  {
+  public void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
+    
     final int keyboardWidth;
     final int keyboardHeight;
     final int height;
@@ -484,13 +449,7 @@ public class InputContainer
   }
   
   @Override
-  public void onSizeChanged(
-    final int width,
-    final int height,
-    final int oldWidth,
-    final int oldHeight
-  )
-  {
+  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight) {
     super.onSizeChanged(width, height, oldWidth, oldHeight);
     showStrokeSequenceBar();
     showCandidatesBar();
@@ -558,14 +517,8 @@ public class InputContainer
         );
       }
       
-      final float keyTextX = (
-        key.width / 2f
-          + key.textOffsetX
-      );
-      final float keyTextY = (
-        (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f
-          + key.textOffsetY
-      );
+      final float keyTextX = key.width / 2f + key.textOffsetX;
+      final float keyTextY = (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f + key.textOffsetY;
       
       canvas.translate(key.x, key.y);
       
@@ -578,12 +531,7 @@ public class InputContainer
     
     if (debugModeIsActivated && activePointerId != NONEXISTENT_POINTER_ID) {
       debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
-      canvas.drawCircle(
-        activePointerX,
-        activePointerY,
-        DEBUG_ACTIVE_POINTER_RADIUS,
-        debugPaint
-      );
+      canvas.drawCircle(activePointerX, activePointerY, DEBUG_ACTIVE_POINTER_RADIUS, debugPaint);
     }
   }
   
@@ -667,8 +615,7 @@ public class InputContainer
           final int movePointerId = event.getPointerId(index);
           final int movePointerX = (int) event.getX(index);
           final int movePointerY = (int) event.getY(index);
-          final Key moveKey =
-            getKeyAtPoint(movePointerX, movePointerY);
+          final Key moveKey = getKeyAtPoint(movePointerX, movePointerY);
           
           if (movePointerId == activePointerId) {
             
@@ -678,12 +625,7 @@ public class InputContainer
             }
             
             if (moveKey != activeKey || isSwipeableKey(activeKey)) {
-              sendMoveEvent(
-                moveKey,
-                movePointerId,
-                movePointerX,
-                movePointerY
-              );
+              sendMoveEvent(moveKey, movePointerId, movePointerX, movePointerY);
               break touchLogic;
             }
             
@@ -693,12 +635,7 @@ public class InputContainer
           if (movePointerId == shiftPointerId) {
             
             if (!isShiftKey(moveKey)) {
-              sendShiftMoveFromEvent(
-                moveKey,
-                movePointerId,
-                movePointerX,
-                movePointerY
-              );
+              sendShiftMoveFromEvent(moveKey, movePointerId, movePointerX, movePointerY);
               break touchLogic;
             }
           }
@@ -714,12 +651,7 @@ public class InputContainer
         final int upPointerY = (int) event.getY(upPointerIndex);
         final Key upKey = getKeyAtPoint(upPointerX, upPointerY);
         
-        if (
-          (upPointerId == shiftPointerId || isShiftKey(upKey))
-            &&
-          !isSwipeableKey(activeKey)
-        )
-        {
+        if ((upPointerId == shiftPointerId || isShiftKey(upKey)) && !isSwipeableKey(activeKey)) {
           sendShiftUpEvent(true);
           break;
         }
@@ -746,13 +678,8 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendDownEvent(
-    final Key key,
-    final int pointerId,
-    final int x,
-    final int y
-  )
-  {
+  private void sendDownEvent(final Key key, final int pointerId, final int x, final int y) {
+    
     if (isSwipeableKey(key)) {
       pointerDownX = x;
     }
@@ -773,13 +700,8 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendMoveEvent(
-    final Key key,
-    final int pointerId,
-    final int x,
-    final int y
-  )
-  {
+  private void sendMoveEvent(final Key key, final int pointerId, final int x, final int y) {
+    
     boolean shouldRedrawKeyboard = false;
     
     if (swipeModeIsActivated) {
@@ -813,11 +735,7 @@ public class InputContainer
     }
   }
   
-  private void sendUpEvent(
-    final Key key,
-    final boolean shouldRedrawKeyboard
-  )
-  {
+  private void sendUpEvent(final Key key, final boolean shouldRedrawKeyboard) {
     if (swipeModeIsActivated) {
       inputListener.onSwipe(activeKey.valueText);
     }
@@ -876,13 +794,8 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendShiftMoveFromEvent(
-    final Key key,
-    final int pointerId,
-    final int x,
-    final int y
-  )
-  {
+  private void sendShiftMoveFromEvent(final Key key, final int pointerId, final int x, final int y) {
+    
     sendShiftUpEvent(false);
     
     activeKey = key;
@@ -938,36 +851,21 @@ public class InputContainer
     return key != null && key.isSwipeable;
   }
   
-  private void sendAppropriateExtendedPressHandlerMessage(
-    final Key key
-  )
-  {
+  private void sendAppropriateExtendedPressHandlerMessage(final Key key) {
     if (key == null) {
       return;
     }
     if (key.isRepeatable) {
-      sendExtendedPressHandlerMessage(
-        MESSAGE_KEY_REPEAT,
-        KEY_REPEAT_START_MILLISECONDS
-      );
+      sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, KEY_REPEAT_START_MILLISECONDS);
     }
     else if (key.isLongPressable) {
-      sendExtendedPressHandlerMessage(
-        MESSAGE_LONG_PRESS,
-        KEY_LONG_PRESS_MILLISECONDS
-      );
+      sendExtendedPressHandlerMessage(MESSAGE_LONG_PRESS, KEY_LONG_PRESS_MILLISECONDS);
     }
   }
   
-  private void sendExtendedPressHandlerMessage(
-    final int messageWhat,
-    final long delayMilliseconds
-  )
-  {
-    extendedPressHandler.sendMessageDelayed(
-      extendedPressHandler.obtainMessage(messageWhat),
-      delayMilliseconds
-    );
+  private void sendExtendedPressHandlerMessage(final int messageWhat, final long delayMilliseconds) {
+    final Message message = extendedPressHandler.obtainMessage(messageWhat);
+    extendedPressHandler.sendMessageDelayed(message, delayMilliseconds);
   }
   
   private void removeAllExtendedPressHandlerMessages() {

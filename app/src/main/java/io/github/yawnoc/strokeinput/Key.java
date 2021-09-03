@@ -73,8 +73,7 @@ public class Key {
     height = parentRow.keyHeight;
   }
   
-  public Key(
-    final Row parentRow,
+  public Key(final Row parentRow,
     final int x,
     final int y,
     final Resources resources,
@@ -87,39 +86,22 @@ public class Key {
     this.y = y;
     
     final TypedArray attributesArray =
-      resources.obtainAttributes(
-        Xml.asAttributeSet(xmlResourceParser),
-        R.styleable.Key
-      );
+      resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
     
-    isLongPressable =
-      attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
-    isRepeatable =
-      attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
-    isSwipeable =
-      attributesArray.getBoolean(R.styleable.Key_keyIsSwipeable, false);
-    isShiftable =
-      attributesArray.getBoolean(
-        R.styleable.Key_keyIsShiftable,
-        parentRow.keysAreShiftable
-      );
-    isExtendedLeft =
-      attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
-    isExtendedRight =
-      attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
-    isPreviewable =
-      attributesArray.getBoolean(
-        R.styleable.Key_keyIsPreviewable,
-        parentRow.keysArePreviewable
-      );
+    isLongPressable = attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
+    isRepeatable = attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
+    isSwipeable = attributesArray.getBoolean(R.styleable.Key_keyIsSwipeable, false);
+    isShiftable = attributesArray.getBoolean(R.styleable.Key_keyIsShiftable, parentRow.keysAreShiftable);
+    isExtendedLeft = attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
+    isExtendedRight = attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
+    isPreviewable = attributesArray.getBoolean(R.styleable.Key_keyIsPreviewable, parentRow.keysArePreviewable);
     
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);
     if (displayText == null) {
       displayText = valueText;
     }
-    valueTextShifted =
-      attributesArray.getString(R.styleable.Key_keyValueTextShifted);
+    valueTextShifted = attributesArray.getString(R.styleable.Key_keyValueTextShifted);
     if (isShiftable && valueTextShifted == null) {
       valueTextShifted = displayText.toUpperCase();
     }
@@ -142,47 +124,15 @@ public class Key {
         parentRow.keyHeight
       );
     
-    fillColour =
-      attributesArray.getColor(
-        R.styleable.Key_keyFillColour,
-        parentRow.keyFillColour
-      );
-    borderColour =
-      attributesArray.getColor(
-        R.styleable.Key_keyBorderColour,
-        parentRow.keyBorderColour
-      );
-    borderThickness =
-      attributesArray.getDimensionPixelSize(
-        R.styleable.Key_keyBorderThickness,
-        parentRow.keyBorderThickness
-      );
+    fillColour = attributesArray.getColor(R.styleable.Key_keyFillColour, parentRow.keyFillColour);
+    borderColour = attributesArray.getColor(R.styleable.Key_keyBorderColour, parentRow.keyBorderColour);
+    borderThickness = attributesArray.getDimensionPixelSize(R.styleable.Key_keyBorderThickness, parentRow.keyBorderThickness);
     
-    textColour =
-      attributesArray.getColor(
-        R.styleable.Key_keyTextColour,
-        parentRow.keyTextColour
-      );
-    textSwipeColour =
-      attributesArray.getColor(
-        R.styleable.Key_keyTextSwipeColour,
-        parentRow.keyTextSwipeColour
-      );
-    textSize =
-      attributesArray.getDimensionPixelSize(
-        R.styleable.Key_keyTextSize,
-        parentRow.keyTextSize
-      );
-    textOffsetX =
-      attributesArray.getDimensionPixelSize(
-        R.styleable.Key_keyTextOffsetX,
-        parentRow.keyTextOffsetX
-      );
-    textOffsetY =
-      attributesArray.getDimensionPixelSize(
-        R.styleable.Key_keyTextOffsetY,
-        parentRow.keyTextOffsetY
-      );
+    textColour = attributesArray.getColor(R.styleable.Key_keyTextColour, parentRow.keyTextColour);
+    textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
+    textSize = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextSize, parentRow.keyTextSize);
+    textOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
+    textOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
     
     previewMagnification =
       attributesArray.getFloat(

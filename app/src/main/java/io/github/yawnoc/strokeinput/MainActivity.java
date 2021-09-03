@@ -26,8 +26,7 @@ public class MainActivity
   implements View.OnClickListener
 {
   public static final String ASSETS_DIRECTORY = "file:///android_asset/";
-  public static final String SOURCE_CODE_URI =
-    "https://github.com/stroke-input/stroke-input-android";
+  public static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   
   AlertDialog.Builder htmlWebViewContainer;
   WebView htmlWebView;
@@ -72,10 +71,8 @@ public class MainActivity
   private void showHtmlWebView(final String uri) {
     
     if (htmlWebViewContainer == null) {
-      htmlWebViewContainer =
-        new AlertDialog.Builder(this, R.style.StrokeInputAlert);
-      htmlWebViewContainer
-        .setPositiveButton(R.string.label__main_activity__return, null);
+      htmlWebViewContainer = new AlertDialog.Builder(this, R.style.StrokeInputAlert);
+      htmlWebViewContainer.setPositiveButton(R.string.label__main_activity__return, null);
     }
     
     if (htmlWebView == null) {
@@ -88,9 +85,7 @@ public class MainActivity
     htmlWebView.loadUrl(uri);
     htmlWebViewContainer
       .setView(htmlWebView)
-      .setOnDismissListener(
-        dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView)
-      )
+      .setOnDismissListener(dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView))
       .show();
   }
   

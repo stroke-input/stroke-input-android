@@ -26,9 +26,7 @@ public final class Contexty {
     final String preferenceKey
   )
   {
-    SharedPreferences preferences =
-      context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
-    
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
     return preferences.getString(preferenceKey, null);
   }
   
@@ -39,36 +37,25 @@ public final class Contexty {
     final String preferenceValue
   )
   {
-    SharedPreferences preferences =
-      context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
-    
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
     SharedPreferences.Editor preferencesEditor = preferences.edit();
     preferencesEditor.putString(preferenceKey, preferenceValue);
     preferencesEditor.apply();
   }
   
   public static void showSystemInputMethodSettings(final Context context) {
-    
-    final Intent inputMethodSettingsIntent =
-      new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-    
+    final Intent inputMethodSettingsIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
     context.startActivity(inputMethodSettingsIntent);
   }
   
   public static void showSystemKeyboardSwitcher(final Context context) {
-    
     final InputMethodManager inputMethodManager =
-      (InputMethodManager)
-        context.getSystemService(Context.INPUT_METHOD_SERVICE);
-    
+      (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.showInputMethodPicker();
   }
   
   public static void openInBrowser(final Context context, final String uri) {
-    
-    final Intent browserIntent =
-      new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-    
+    final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     context.startActivity(browserIntent);
   }
   

@@ -29,11 +29,7 @@ public class CandidatesBarAdapter
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
   
-  CandidatesBarAdapter(
-    final Context context,
-    final List<String> candidateList
-  )
-  {
+  CandidatesBarAdapter(final Context context, final List<String> candidateList) {
     this.layoutInflater = LayoutInflater.from(context);
     this.candidateList = candidateList;
   }
@@ -42,10 +38,7 @@ public class CandidatesBarAdapter
     void onCandidate(String candidate);
   }
   
-  public void setOnCandidateListener(
-    final OnCandidateListener candidateListener
-  )
-  {
+  public void setOnCandidateListener(final OnCandidateListener candidateListener) {
     this.candidateListener = candidateListener;
   }
   
@@ -58,25 +51,14 @@ public class CandidatesBarAdapter
   
   @NonNull
   @Override
-  public ButtonHolder onCreateViewHolder(
-    @NonNull final ViewGroup viewGroup,
-    final int viewType
-  )
-  {
-    Button candidateButton =
-      (Button)
-        layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
-    
+  public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
+    final Button candidateButton = (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
     return new ButtonHolder(candidateButton);
   }
   
   @Override
-  public void onBindViewHolder(
-    @NonNull final ButtonHolder buttonHolder,
-    final int candidateIndex
-  )
-  {
-    String candidate = candidateList.get(candidateIndex);
+  public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex) {
+    final String candidate = candidateList.get(candidateIndex);
     buttonHolder.candidateButton.setText(candidate);
   }
   
