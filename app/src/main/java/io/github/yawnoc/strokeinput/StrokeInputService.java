@@ -133,7 +133,7 @@ public class StrokeInputService
     
     charactersDataFromStrokeDigitSequence = new TreeMap<>();
     
-    final long exactCharactersDataStartMillis = System.currentTimeMillis();
+    final long charactersDataStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream = getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
@@ -149,11 +149,11 @@ public class StrokeInputService
     catch (IOException exception) {
       exception.printStackTrace();
     }
-    final long exactCharactersDataEndMillis = System.currentTimeMillis();
+    final long charactersDataEndMillis = System.currentTimeMillis();
     Log.i(
       "StrokeInputService",
-      "Loading of exact characters data: "
-        + (exactCharactersDataEndMillis - exactCharactersDataStartMillis)
+      "Loading of characters data: "
+        + (charactersDataEndMillis - charactersDataStartMillis)
         + " milliseconds"
     );
     
