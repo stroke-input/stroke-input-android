@@ -657,7 +657,7 @@ public class StrokeInputService
     for (
       String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
       phrasePrefix.length() > 0;
-      phrasePrefix = Stringy.removePrefix(".", phrasePrefix)
+      phrasePrefix = Stringy.removePrefix("(?s).", phrasePrefix)
     )
     {
       final Set<String> prefixMatchPhraseCandidateSet =
