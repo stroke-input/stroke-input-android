@@ -737,11 +737,13 @@ public class StrokeInputService
     
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
-    String phrasePrefix =
-      getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
-    
-    while (phrasePrefix.length() > 0) {
-      
+    for (
+      String phrasePrefix =
+        getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
+      phrasePrefix.length() > 0;
+      phrasePrefix = Stringy.removePrefix(".", phrasePrefix)
+    )
+    {
       final Set<String> prefixMatchPhraseCandidateSet =
         phraseSet.subSet(
           phrasePrefix,
@@ -758,8 +760,6 @@ public class StrokeInputService
       }
       Collections.sort(prefixMatchPhraseCompletionList, candidateComparator);
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
-      
-      phrasePrefix = Stringy.removePrefix(".", phrasePrefix);
     }
     
     return phraseCompletionCandidateList;
