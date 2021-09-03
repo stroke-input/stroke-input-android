@@ -52,14 +52,14 @@ public class CandidatesBarAdapter
   @NonNull
   @Override
   public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
-    Button candidateButton =
+    final Button candidateButton =
       (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
     return new ButtonHolder(candidateButton);
   }
   
   @Override
   public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex) {
-    String candidate = candidateList.get(candidateIndex);
+    final String candidate = candidateList.get(candidateIndex);
     buttonHolder.candidateButton.setText(candidate);
   }
   
