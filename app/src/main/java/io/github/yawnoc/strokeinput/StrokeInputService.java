@@ -755,8 +755,11 @@ public class StrokeInputService
         new ArrayList<>();
       
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
-        prefixMatchPhraseCompletionList
-          .add(Stringy.removePrefix(phrasePrefix, phraseCandidate));
+        final String phraseCompletion =
+          Stringy.removePrefix(phrasePrefix, phraseCandidate);
+        if (!phraseCompletionCandidateList.contains(phraseCompletion)) {
+          prefixMatchPhraseCompletionList.add(phraseCompletion);
+        }
       }
       Collections.sort(prefixMatchPhraseCompletionList, candidateComparator);
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
