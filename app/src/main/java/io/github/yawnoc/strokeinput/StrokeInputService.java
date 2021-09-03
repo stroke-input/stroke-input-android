@@ -61,7 +61,7 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
-  private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 3;
+  private static final int USE_PREFIX_DATA_MAX_STROKE_COUNT = 2;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_LENGTH = 5;
   
