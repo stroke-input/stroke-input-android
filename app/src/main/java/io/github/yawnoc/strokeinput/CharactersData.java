@@ -40,11 +40,10 @@ public class CharactersData {
       abominableCharacters = sunderedCharactersArray[1];
     }
     
-    goodlySet = new HashSet<>();
-    abominableSet = new HashSet<>();
-    
-    goodlySet.addAll(Stringy.toCharacterList(goodlyCharacters));
-    abominableSet.addAll(Stringy.toCharacterList(abominableCharacters));
+    goodlySet =
+      new HashSet<>(Stringy.toCharacterList(goodlyCharacters));
+    abominableSet =
+      new HashSet<>(Stringy.toCharacterList(abominableCharacters));
   }
   
   public void addData(final CharactersData charactersData) {
