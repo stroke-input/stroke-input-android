@@ -54,7 +54,7 @@ public class StrokeInputService
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
   private static final String PREFERENCES_FILE_NAME = "preferences.txt";
-  private static final String SEQUENCE_EXACT_CHARACTERS_FILE_NAME =
+  private static final String SEQUENCE_CHARACTERS_FILE_NAME =
     "sequence-exact-characters.txt";
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
@@ -76,7 +76,7 @@ public class StrokeInputService
   private InputContainer inputContainer;
   
   private NavigableMap<String, CharactersData>
-    exactCharactersDataFromStrokeDigitSequence;
+    charactersDataFromStrokeDigitSequence;
   
   private Map<String, Integer> sortingRankFromCharacter;
   
@@ -135,13 +135,13 @@ public class StrokeInputService
   
   private void initialiseStrokeInput() {
     
-    exactCharactersDataFromStrokeDigitSequence = new TreeMap<>();
+    charactersDataFromStrokeDigitSequence = new TreeMap<>();
     
     final long exactCharactersDataStartMillis = System.currentTimeMillis();
     try {
       
       final InputStream inputStream =
-        getAssets().open(SEQUENCE_EXACT_CHARACTERS_FILE_NAME);
+        getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
       final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(inputStream));
       
@@ -150,7 +150,7 @@ public class StrokeInputService
         if (!isCommentLine(line)) {
           putSequenceAndCharactersDataIntoMap(
             line,
-            exactCharactersDataFromStrokeDigitSequence
+            charactersDataFromStrokeDigitSequence
           );
         }
       }
@@ -675,7 +675,7 @@ public class StrokeInputService
     }
     
     final CharactersData exactMatchCharactersData =
-      exactCharactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
+      charactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidateList = (
       exactMatchCharactersData == null
         ? Collections.emptyList()
@@ -686,7 +686,7 @@ public class StrokeInputService
     
     final CharactersData prefixMatchCharactersData = new CharactersData("");
     final Collection<CharactersData> prefixMatchCharactersDataCollection = (
-      exactCharactersDataFromStrokeDigitSequence
+      charactersDataFromStrokeDigitSequence
         .subMap(
           strokeDigitSequence,
           false,
