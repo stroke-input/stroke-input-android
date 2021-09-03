@@ -226,7 +226,6 @@ public class StrokeInputService
   )
   {
     final String[] sunderedLineArray = Stringy.sunder(line, "\t");
-    
     final String strokeDigitSequence = sunderedLineArray[0];
     final String commaSeparatedCharacters = sunderedLineArray[1];
     
