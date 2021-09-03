@@ -39,6 +39,11 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `phrases.txt` ####
+----{.notice}
+Released into the Public Domain, see \CC0.
+----
+
 #### `ranking.txt` ####
 ----{.notice}
 Released into the Public Domain, see \CC0.
