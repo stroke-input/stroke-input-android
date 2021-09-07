@@ -59,6 +59,7 @@ public class StrokeInputService
   
   private static final int RANKING_PENALTY_PER_CHAR = 3000;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
+  private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
   private static final int MAX_PHRASE_LENGTH = 6;
   
   Keyboard strokesKeyboard;
@@ -548,7 +549,8 @@ public class StrokeInputService
   
   private void setCandidateListForPhraseCompletion(final InputConnection inputConnection) {
     
-    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
+    List<String> phraseCompletionCandidateList =
+      computePhraseCompletionCandidateList(inputConnection, MAX_PHRASE_COMPLETION_COUNT);
     
     phraseCompletionFirstCharacterList.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList) {
@@ -650,8 +652,12 @@ public class StrokeInputService
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
   */
-  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection) {
-    
+  @SuppressWarnings("SameParameterValue")
+  private List<String> computePhraseCompletionCandidateList(
+    final InputConnection inputConnection,
+    final int maxCandidateCount
+  )
+  {
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
     for (
@@ -677,7 +683,7 @@ public class StrokeInputService
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
-    return phraseCompletionCandidateList;
+    return new ArrayList<>(phraseCompletionCandidateList.subList(0, maxCandidateCount));
   }
   
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount) {
