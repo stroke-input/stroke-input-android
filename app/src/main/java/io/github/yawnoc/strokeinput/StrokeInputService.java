@@ -59,7 +59,7 @@ public class StrokeInputService
   
   private static final int RANKING_PENALTY_PER_CHAR = 3000;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
-  private static final int MAX_PHRASE_LENGTH = 5;
+  private static final int MAX_PHRASE_LENGTH = 6;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
