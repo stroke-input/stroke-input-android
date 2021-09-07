@@ -683,7 +683,9 @@ public class StrokeInputService
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
-    return new ArrayList<>(phraseCompletionCandidateList.subList(0, maxCandidateCount));
+    final int candidateCount = Math.min(phraseCompletionCandidateList.size(), maxCandidateCount);
+    
+    return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
   }
   
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount) {
