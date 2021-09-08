@@ -61,8 +61,10 @@ public class Stringy {
     final List<Integer> codePointList = new ArrayList<>();
     
     final int charCount = string.length();
-    for (int charIndex = 0; charIndex < charCount; charIndex++) {
-      codePointList.add(string.codePointAt(charIndex));
+    for (int charIndex = 0; charIndex < charCount;) {
+      final int codePoint = string.codePointAt(charIndex);
+      codePointList.add(codePoint);
+      charIndex += Character.charCount(codePoint);
     }
     
     return codePointList;
