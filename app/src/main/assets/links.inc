@@ -26,7 +26,7 @@
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
-{: \stroke-data-version : v0.2.4 :}
+{: \stroke-data-version : v0.2.5 :}
 @@[Conway Stroke Data]
   https://github.com/stroke-input/stroke-input-data
 @@
