@@ -21,26 +21,25 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class CharactersData {
   
+  private static final int CODE_POINT_COMMA = ",".codePointAt(0);
+  
   private final Set<Integer> goodlyCodePointSet;
   private final Set<Integer> abominableCodePointSet;
   
   CharactersData(final String commaSeparatedCharacters) {
     
-    final String goodlyCharacters;
-    final String abominableCharacters;
+    goodlyCodePointSet = new HashSet<>();
+    abominableCodePointSet = new HashSet<>();
     
-    if (commaSeparatedCharacters == null) {
-      goodlyCharacters = "";
-      abominableCharacters = "";
+    Set<Integer> currentCodePointSet = goodlyCodePointSet;
+    for (final int codePoint : Stringy.toCodePointList(commaSeparatedCharacters)) {
+      if (codePoint == CODE_POINT_COMMA) {
+        currentCodePointSet = abominableCodePointSet;
+      }
+      else {
+        currentCodePointSet.add(codePoint);
+      }
     }
-    else {
-      final String[] sunderedCharactersArray = Stringy.sunder(commaSeparatedCharacters, ",");
-      goodlyCharacters = sunderedCharactersArray[0];
-      abominableCharacters = sunderedCharactersArray[1];
-    }
-    
-    goodlyCodePointSet = new HashSet<>(Stringy.toCodePointList(goodlyCharacters));
-    abominableCodePointSet = new HashSet<>(Stringy.toCodePointList(abominableCharacters));
   }
   
   public void addData(final CharactersData charactersData) {
