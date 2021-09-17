@@ -10,6 +10,7 @@ package io.github.yawnoc.strokeinput;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,8 @@ public class MainActivity
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   
+  AlertDialog.Builder candidateOrderDialogBuilder;
+  Dialog candidateOrderDialog;
   AlertDialog.Builder htmlWebViewContainer;
   WebView htmlWebView;
   
@@ -96,7 +99,22 @@ public class MainActivity
     else if (viewId == R.id.switch_keyboard_button) {
       Contexty.showSystemKeyboardSwitcher(this);
     }
+    else if (viewId == R.id.candidate_order_button) {
+      showCandidateOrderDialog();
+    }
     
+  }
+  
+  private void showCandidateOrderDialog() {
+    
+    candidateOrderDialogBuilder = new AlertDialog.Builder(this);
+    candidateOrderDialogBuilder
+      .setTitle(R.string.text__main_activity__candidate_order)
+      .setView(R.layout.candidate_order_dialog)
+      .setCancelable(true);
+    
+    candidateOrderDialog = candidateOrderDialogBuilder.create();
+    candidateOrderDialog.show();
   }
   
   private void showHtmlWebView(final String uri) {
