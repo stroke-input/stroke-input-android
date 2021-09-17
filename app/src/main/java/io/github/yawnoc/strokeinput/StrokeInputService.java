@@ -74,11 +74,8 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private NavigableMap<String, CharactersData>
-    charactersDataFromStrokeDigitSequence;
-  
+  private NavigableMap<String, CharactersData> charactersDataFromStrokeDigitSequence;
   private Map<String, Integer> sortingRankFromCharacter;
-  
   private NavigableSet<String> phraseSet;
   
   private String strokeDigitSequence = "";
