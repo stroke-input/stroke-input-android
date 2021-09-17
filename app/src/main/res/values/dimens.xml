@@ -10,6 +10,7 @@
   <dimen name="min_height__main_activity__button">48dp</dimen>
   <dimen name="min_height__main_activity__input">48dp</dimen>
   <!-- Candidate order dialog -->
+  <dimen name="min_width__candidate_order_dialog">80%</dimen>
   <dimen name="padding__candidate_order_dialog">12dp</dimen>
   <dimen name="font_size__candidate_order_dialog__button">18sp</dimen>
   <dimen name="padding__candidate_order_dialog__button">4dp</dimen>
