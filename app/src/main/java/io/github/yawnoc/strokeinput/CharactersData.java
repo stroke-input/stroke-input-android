@@ -17,7 +17,7 @@ import java.util.Set;
 import io.github.yawnoc.utilities.Stringy;
 
 /*
-  A tuple that holds sets of goodly and abominable characters.
+  A tuple that holds sets of dual, traditional, and simplified characters.
 */
 public class CharactersData {
   
