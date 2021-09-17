@@ -17,7 +17,7 @@
   </style>
   <style name="CandidateOrderDialogButton">
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
     <item name="android:textSize">@dimen/font_size__candidate_order_dialog__button</item>
     <item name="android:padding">@dimen/padding__candidate_order_dialog__button</item>
   </style>
