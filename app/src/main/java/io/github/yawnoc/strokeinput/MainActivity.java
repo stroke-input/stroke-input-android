@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import io.github.yawnoc.utilities.Contexty;
 
@@ -42,7 +43,37 @@ public class MainActivity
     findViewById(R.id.about_button).setOnClickListener(this);
     findViewById(R.id.input_method_settings_button).setOnClickListener(this);
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
+    findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
+    setCandidateOrderButtonText(loadSavedTraditionalIsPreferred());
+  }
+  
+  private boolean loadSavedTraditionalIsPreferred() {
+    
+    final String savedCandidateOrderPreference =
+      Contexty.loadPreferenceString(
+        getApplicationContext(),
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        "candidateOrderPreference"
+      );
+    
+    if (savedCandidateOrderPreference == null) {
+      return true;
+    }
+    
+    return !savedCandidateOrderPreference.equals("PREFER_SIMPLIFIED");
+  }
+  
+  private void setCandidateOrderButtonText(final boolean traditionalIsPreferred) {
+    
+    final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
+    final String candidateOrderButtonText = (
+      traditionalIsPreferred
+        ? getString(R.string.label__main_activity__traditional_characters_first)
+        : getString(R.string.label__main_activity__simplified_characters_first)
+    );
+    
+    candidateOrderButton.setText(candidateOrderButtonText);
   }
   
   @Override

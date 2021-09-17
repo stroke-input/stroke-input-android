@@ -14,6 +14,11 @@
     If your existing input method provides no means of switching keyboards:
   </string>
   <string name="label__main_activity__switch_keyboard_button">Switch keyboard</string>
+  <string name="text__main_activity__candidate_order">
+    Candidate order:
+  </string>
+  <string name="label__main_activity__traditional_characters_first">Traditional first</string>
+  <string name="label__main_activity__simplified_characters_first">Simplified first</string>
   <string name="hint__main_activity__test_input">Test input here</string>
   <string name="label__main_activity__return">Return</string>
   <!-- Asset file names for localisation -->
