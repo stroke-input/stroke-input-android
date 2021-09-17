@@ -62,6 +62,7 @@
       android:importantForAutofill="no"
       android:inputType="text"
       android:textSize="@dimen/font_size__main_activity"
+      android:minHeight="@dimen/min_height__main_activity__input"
     />
   </LinearLayout>
 </ScrollView>
