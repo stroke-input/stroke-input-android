@@ -107,7 +107,7 @@ public class MainActivity
   
   private void showCandidateOrderDialog() {
     
-    candidateOrderDialogBuilder = new AlertDialog.Builder(this);
+    candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputDialog);
     candidateOrderDialogBuilder
       .setTitle(R.string.text__main_activity__candidate_order)
       .setView(R.layout.candidate_order_dialog)

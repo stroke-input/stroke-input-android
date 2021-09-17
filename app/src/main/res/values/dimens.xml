@@ -9,6 +9,10 @@
   <dimen name="inset_vertical__main_activity__button">4dp</dimen>
   <dimen name="min_height__main_activity__button">48dp</dimen>
   <dimen name="min_height__main_activity__input">48dp</dimen>
+  <!-- Candidate order dialog -->
+  <dimen name="padding__candidate_order_dialog">12dp</dimen>
+  <dimen name="font_size__candidate_order_dialog__button">18sp</dimen>
+  <dimen name="padding__candidate_order_dialog__button">4dp</dimen>
   <!-- Key height -->
   <dimen name="key_height__strokes">60dp</dimen>
   <dimen name="key_height__strokes_digit">56dp</dimen>
