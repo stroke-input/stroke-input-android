@@ -23,18 +23,25 @@ public class CharactersData {
   
   private static final int CODE_POINT_COMMA = ",".codePointAt(0);
   
-  private final Set<Integer> goodlyCodePointSet;
-  private final Set<Integer> abominableCodePointSet;
+  private final Set<Integer> dualCodePointSet;
+  private final Set<Integer> traditionalCodePointSet;
+  private final Set<Integer> simplifiedCodePointSet;
   
   CharactersData(final String commaSeparatedCharacters) {
     
-    goodlyCodePointSet = new HashSet<>();
-    abominableCodePointSet = new HashSet<>();
+    dualCodePointSet = new HashSet<>();
+    traditionalCodePointSet = new HashSet<>();
+    simplifiedCodePointSet = new HashSet<>();
     
-    Set<Integer> currentCodePointSet = goodlyCodePointSet;
+    Set<Integer> currentCodePointSet = dualCodePointSet;
     for (final int codePoint : Stringy.toCodePointList(commaSeparatedCharacters)) {
       if (codePoint == CODE_POINT_COMMA) {
-        currentCodePointSet = abominableCodePointSet;
+        if (currentCodePointSet == dualCodePointSet) {
+          currentCodePointSet = traditionalCodePointSet;
+        }
+        else if (currentCodePointSet == traditionalCodePointSet) {
+          currentCodePointSet = simplifiedCodePointSet;
+        }
       }
       else {
         currentCodePointSet.add(codePoint);
@@ -43,8 +50,9 @@ public class CharactersData {
   }
   
   public void addData(final CharactersData charactersData) {
-    goodlyCodePointSet.addAll(charactersData.goodlyCodePointSet);
-    abominableCodePointSet.addAll(charactersData.abominableCodePointSet);
+    dualCodePointSet.addAll(charactersData.dualCodePointSet);
+    traditionalCodePointSet.addAll(charactersData.traditionalCodePointSet);
+    simplifiedCodePointSet.addAll(charactersData.simplifiedCodePointSet);
   }
   
   public List<String> toCandidateList(final Comparator<String> comparator) {
@@ -52,23 +60,45 @@ public class CharactersData {
   }
   
   public List<String> toCandidateList(final Comparator<String> comparator, final int maxCandidateCount) {
+    return toCandidateList(comparator, maxCandidateCount, true);
+  }
+  
+  public List<String> toCandidateList(
+    final Comparator<String> comparator,
+    final int maxCandidateCount,
+    final boolean traditionalIsPreferred
+  )
+  {
+    final List<String> preferredList = new ArrayList<>();
+    final List<String> dislikedList = new ArrayList<>();
     
-    final List<String> goodlyList = new ArrayList<>();
-    final List<String> abominableList = new ArrayList<>();
-    
-    for (final int goodlyCodePoint : goodlyCodePointSet) {
-      goodlyList.add(Stringy.toString(goodlyCodePoint));
+    final List<String> traditionalList;
+    final List<String> simplifiedList;
+    if (traditionalIsPreferred) {
+      traditionalList = preferredList;
+      simplifiedList = dislikedList;
     }
-    for (final int abominableCodePoint : abominableCodePointSet) {
-      abominableList.add(Stringy.toString(abominableCodePoint));
+    else {
+      traditionalList = dislikedList;
+      simplifiedList = preferredList;
     }
     
-    Collections.sort(goodlyList, comparator);
-    Collections.sort(abominableList, comparator);
+    for (final int dualCodePoint : dualCodePointSet) {
+      preferredList.add(Stringy.toString(dualCodePoint));
+    }
+    for (final int traditionalCodePoint : traditionalCodePointSet) {
+      traditionalList.add(Stringy.toString(traditionalCodePoint));
+    }
+    for (final int simplifiedCodePoint : simplifiedCodePointSet) {
+      simplifiedList.add(Stringy.toString(simplifiedCodePoint));
+    }
+    
+    Collections.sort(preferredList, comparator);
+    Collections.sort(dislikedList, comparator);
     
     final List<String> candidateList = new ArrayList<>();
-    candidateList.addAll(goodlyList);
-    candidateList.addAll(abominableList);
+    candidateList.addAll(preferredList);
+    candidateList.addAll(dislikedList);
     
     final int candidateCount = Math.min(candidateList.size(), maxCandidateCount);
     
