@@ -4,8 +4,10 @@
   <dimen name="font_size__main_activity">16sp</dimen>
   <dimen name="font_size__main_activity__button">13sp</dimen>
   <dimen name="padding__main_activity">12dp</dimen>
-  <dimen name="padding_top__main_activity__text">16dp</dimen>
-  <dimen name="padding_bottom__main_activity__text">8dp</dimen>
+  <dimen name="padding_top__main_activity__text">8dp</dimen>
+  <dimen name="padding_bottom__main_activity__text">4dp</dimen>
+  <dimen name="inset_vertical__main_activity__button">4dp</dimen>
+  <dimen name="min_height__main_activity__button">42dp</dimen>
   <!-- Key height -->
   <dimen name="key_height__strokes">60dp</dimen>
   <dimen name="key_height__strokes_digit">56dp</dimen>
