@@ -25,8 +25,8 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
-  public static final String ASSETS_DIRECTORY = "file:///android_asset/";
-  public static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
+  private static final String ASSETS_DIRECTORY = "file:///android_asset/";
+  private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   
   AlertDialog.Builder htmlWebViewContainer;
   WebView htmlWebView;
