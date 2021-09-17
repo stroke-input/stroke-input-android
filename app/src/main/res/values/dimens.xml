@@ -3,7 +3,7 @@
   <!-- Main activity -->
   <dimen name="font_size__main_activity">16sp</dimen>
   <dimen name="font_size__main_activity__button">13sp</dimen>
-  <dimen name="padding__activity_main">12dp</dimen>
+  <dimen name="padding__main_activity">12dp</dimen>
   <dimen name="padding_top__main_activity__text">16dp</dimen>
   <dimen name="padding_bottom__main_activity__text">8dp</dimen>
   <!-- Key height -->
