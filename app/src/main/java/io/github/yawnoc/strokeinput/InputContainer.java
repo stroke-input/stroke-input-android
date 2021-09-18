@@ -607,7 +607,7 @@ public class InputContainer
             }
             
             if (moveKey != activeKey || isSwipeableKey(activeKey)) {
-              sendMoveEvent(moveKey, movePointerId, movePointerX, movePointerY);
+              sendMoveEvent(moveKey, movePointerId, movePointerX);
               break touchLogic;
             }
             
@@ -689,7 +689,7 @@ public class InputContainer
     
   }
   
-  private void sendMoveEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendMoveEvent(final Key key, final int pointerId, final int x) {
     
     boolean shouldRedrawKeyboard = false;
     
