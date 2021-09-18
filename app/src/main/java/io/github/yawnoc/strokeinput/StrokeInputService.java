@@ -91,8 +91,10 @@ public class StrokeInputService
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME = "sequence-characters.txt";
-  private static final String RANKING_FILE_NAME = "ranking.txt";
-  private static final String PHRASES_FILE_NAME = "phrases.txt";
+  private static final String RANKING_FILE_NAME_TRADITIONAL = "ranking.txt";
+  private static final String RANKING_FILE_NAME_SIMPLIFIED = "ranking-simplified.txt";
+  private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases.txt";
+  private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
   
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
@@ -114,6 +116,12 @@ public class StrokeInputService
   private InputContainer inputContainer;
   
   private NavigableMap<String, CharactersData> charactersDataFromStrokeDigitSequence;
+  private Map<String, Integer> sortingRankFromCharacterTraditional;
+  private Map<String, Integer> sortingRankFromCharacterSimplified;
+  private NavigableSet<String> phraseSetTraditional;
+  private NavigableSet<String> phraseSetSimplified;
+  
+  private boolean traditionalIsPreferred;
   private Map<String, Integer> sortingRankFromCharacter;
   private NavigableSet<String> phraseSet;
   
@@ -198,13 +206,14 @@ public class StrokeInputService
         + " milliseconds"
     );
     
-    sortingRankFromCharacter = new HashMap<>();
+    sortingRankFromCharacterTraditional = new HashMap<>();
+    sortingRankFromCharacterSimplified = new HashMap<>();
     
     final long sortingRankStartMillis = System.currentTimeMillis();
     
     try {
       
-      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME);
+      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME_TRADITIONAL);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       int currentRank = 0;
@@ -212,9 +221,32 @@ public class StrokeInputService
       while ((line = bufferedReader.readLine()) != null) {
         if (!isCommentLine(line)) {
           for (final String character : Stringy.toCharacterList(line)) {
-            if (!sortingRankFromCharacter.containsKey(character)) {
+            if (!sortingRankFromCharacterTraditional.containsKey(character)) {
               currentRank++;
-              sortingRankFromCharacter.put(character, currentRank);
+              sortingRankFromCharacterTraditional.put(character, currentRank);
+            }
+          }
+        }
+      }
+      
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME_SIMPLIFIED);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      int currentRank = 0;
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          for (final String character : Stringy.toCharacterList(line)) {
+            if (!sortingRankFromCharacterSimplified.containsKey(character)) {
+              currentRank++;
+              sortingRankFromCharacterSimplified.put(character, currentRank);
             }
           }
         }
@@ -233,19 +265,37 @@ public class StrokeInputService
         + " milliseconds"
     );
     
-    phraseSet = new TreeSet<>();
+    phraseSetTraditional = new TreeSet<>();
+    phraseSetSimplified = new TreeSet<>();
     
     final long phraseSetStartMillis = System.currentTimeMillis();
     
     try {
       
-      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME);
+      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME_TRADITIONAL);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         if (!isCommentLine(line)) {
-          phraseSet.add(line);
+          phraseSetTraditional.add(line);
+        }
+      }
+      
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME_SIMPLIFIED);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          phraseSetSimplified.add(line);
         }
       }
       
@@ -261,6 +311,8 @@ public class StrokeInputService
         + (phraseSetEndMillis - phraseSetStartMillis)
         + " milliseconds"
     );
+    
+    updateCandidateOrderPreference();
     
   }
   
@@ -675,7 +727,7 @@ public class StrokeInputService
       return Collections.emptyList();
     }
     
-    final boolean traditionalIsPreferred = shouldPreferTraditional();
+    updateCandidateOrderPreference();
     
     final CharactersData exactMatchCharactersData = charactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidateList;
@@ -739,6 +791,8 @@ public class StrokeInputService
   )
   {
     
+    updateCandidateOrderPreference();
+    
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
     for (
@@ -777,6 +831,21 @@ public class StrokeInputService
     }
     
     return (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    
+  }
+  
+  private void updateCandidateOrderPreference() {
+    
+    traditionalIsPreferred = shouldPreferTraditional();
+    
+    if (traditionalIsPreferred) {
+      sortingRankFromCharacter = sortingRankFromCharacterTraditional;
+      phraseSet = phraseSetTraditional;
+    }
+    else {
+      sortingRankFromCharacter = sortingRankFromCharacterSimplified;
+      phraseSet = phraseSetSimplified;
+    }
     
   }
   
