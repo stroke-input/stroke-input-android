@@ -94,6 +94,8 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
+  private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
+  
   private static final int RANKING_PENALTY_PER_CHAR = 3000;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
@@ -564,7 +566,7 @@ public class StrokeInputService
   @Override
   public Keyboard loadSavedKeyboard() {
     final String savedKeyboardName =
-      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, "keyboardName");
+      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
     final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
     if (savedKeyboard == null) {
       return strokesKeyboard;
@@ -577,7 +579,12 @@ public class StrokeInputService
   @Override
   public void saveKeyboard(final Keyboard keyboard) {
     final String keyboardName = nameFromKeyboard.get(keyboard);
-    Contexty.savePreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, "keyboardName", keyboardName);
+    Contexty.savePreferenceString(
+      getApplicationContext(),
+      PREFERENCES_FILE_NAME,
+      KEYBOARD_NAME_PREFERENCE_KEY,
+      keyboardName
+    );
   }
   
   @Override
