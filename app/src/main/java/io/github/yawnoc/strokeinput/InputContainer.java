@@ -136,7 +136,6 @@ public class InputContainer
   // Debugging
   private Paint debugPaint;
   private Toast debugToast;
-  private boolean debugModeIsActivated = false;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     
@@ -513,7 +512,7 @@ public class InputContainer
       keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText;
-      if (debugModeIsActivated && key.valueText.equals("SPACE")) {
+      if (false && key.valueText.equals("SPACE")) {
         keyDisplayText = (
           activeKey == null
             ? "null"
@@ -540,7 +539,7 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
-    if (debugModeIsActivated && activePointerId != NONEXISTENT_POINTER_ID) {
+    if (false && activePointerId != NONEXISTENT_POINTER_ID) {
       debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
       canvas.drawCircle(activePointerX, activePointerY, DEBUG_ACTIVE_POINTER_RADIUS, debugPaint);
     }
