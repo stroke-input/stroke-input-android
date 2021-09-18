@@ -94,6 +94,7 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME = "ranking.txt";
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
+  public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
   private static final int RANKING_PENALTY_PER_CHAR = 3000;

@@ -70,7 +70,7 @@ public class MainActivity
       Contexty.loadPreferenceString(
         getApplicationContext(),
         StrokeInputService.PREFERENCES_FILE_NAME,
-        "candidateOrderPreference"
+        StrokeInputService.CANDIDATE_ORDER_PREFERENCE_KEY
       );
   }
   
@@ -78,7 +78,7 @@ public class MainActivity
     Contexty.savePreferenceString(
       getApplicationContext(),
       StrokeInputService.PREFERENCES_FILE_NAME,
-      "candidateOrderPreference",
+      StrokeInputService.CANDIDATE_ORDER_PREFERENCE_KEY,
       candidateOrderPreference
     );
   }
