@@ -178,7 +178,7 @@ public class StrokeInputService
   private void initialiseStrokeInput() {
     
     charactersDataFromStrokeDigitSequence = new TreeMap<>();
-    loadSequenceCharactersData();
+    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersDataFromStrokeDigitSequence);
     
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
@@ -295,13 +295,18 @@ public class StrokeInputService
     return line.startsWith("#") || line.length() == 0;
   }
   
-  private void loadSequenceCharactersData() {
+  @SuppressWarnings("SameParameterValue")
+  private void loadSequenceCharactersDataIntoMap(
+    final String sequenceCharactersFileName,
+    final Map<String, CharactersData> charactersDataFromStrokeDigitSequence
+  )
+  {
     
     final long startMillis = System.currentTimeMillis();
     
     try {
       
-      final InputStream inputStream = getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
+      final InputStream inputStream = getAssets().open(sequenceCharactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
