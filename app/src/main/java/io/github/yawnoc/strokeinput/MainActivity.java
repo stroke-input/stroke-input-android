@@ -121,9 +121,11 @@ public class MainActivity
     }
     else if (viewId == R.id.prefer_traditional_button) {
       saveCandidateOrderPreference("PREFER_TRADITIONAL");
+      setCandidateOrderButtonText("PREFER_TRADITIONAL");
     }
     else if (viewId == R.id.prefer_simplified_button) {
       saveCandidateOrderPreference("PREFER_SIMPLIFIED");
+      setCandidateOrderButtonText("PREFER_SIMPLIFIED");
     }
     
   }
