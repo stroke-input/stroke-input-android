@@ -3,7 +3,7 @@
 {+ keys.inc +}
 
 %%
-  %lang zh-Hant-HK
+  %lang zh-Hant-TW
   %title 說明
   %resources <link rel="stylesheet" href="webview.css">
 %%
