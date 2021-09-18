@@ -15,12 +15,12 @@
 >
   <RadioButton
     style="@style/CandidateOrderDialogButton"
-    android:id="@+id/prefer_traditional_button"
+    android:id="@+id/traditional_first_button"
     android:text="@string/label__main_activity__traditional_first"
   />
   <RadioButton
     style="@style/CandidateOrderDialogButton"
-    android:id="@+id/prefer_simplified_button"
+    android:id="@+id/simplified_first_button"
     android:text="@string/label__main_activity__simplified_first"
   />
 </RadioGroup>
