@@ -282,11 +282,11 @@ public class InputContainer
     if (strokeDigitSequence.length() > 0) {
       final String strokeSequence = (
         strokeDigitSequence
-          .replace("1", getResources().getString(R.string.stroke_1))
-          .replace("2", getResources().getString(R.string.stroke_2))
-          .replace("3", getResources().getString(R.string.stroke_3))
-          .replace("4", getResources().getString(R.string.stroke_4))
-          .replace("5", getResources().getString(R.string.stroke_5))
+          .replace(StrokeInputService.STROKE_DIGIT_1, getResources().getString(R.string.stroke_1))
+          .replace(StrokeInputService.STROKE_DIGIT_2, getResources().getString(R.string.stroke_2))
+          .replace(StrokeInputService.STROKE_DIGIT_3, getResources().getString(R.string.stroke_3))
+          .replace(StrokeInputService.STROKE_DIGIT_4, getResources().getString(R.string.stroke_4))
+          .replace(StrokeInputService.STROKE_DIGIT_5, getResources().getString(R.string.stroke_5))
       );
       strokeSequenceBar.setText(strokeSequence);
       strokeSequenceBar.requestLayout();

@@ -55,12 +55,17 @@ public class StrokeInputService
   private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
   private static final String SPACE_BAR_VALUE_TEXT = "SPACE";
   
+  public static final String STROKE_DIGIT_1 = "1";
+  public static final String STROKE_DIGIT_2 = "2";
+  public static final String STROKE_DIGIT_3 = "3";
+  public static final String STROKE_DIGIT_4 = "4";
+  public static final String STROKE_DIGIT_5 = "5";
   private static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
-  private static final String STROKE_1_VALUE_TEXT = "STROKE_1";
-  private static final String STROKE_2_VALUE_TEXT = "STROKE_2";
-  private static final String STROKE_3_VALUE_TEXT = "STROKE_3";
-  private static final String STROKE_4_VALUE_TEXT = "STROKE_4";
-  private static final String STROKE_5_VALUE_TEXT = "STROKE_5";
+  private static final String STROKE_1_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_1;
+  private static final String STROKE_2_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_2;
+  private static final String STROKE_3_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_3;
+  private static final String STROKE_4_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_4;
+  private static final String STROKE_5_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_5;
   
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
