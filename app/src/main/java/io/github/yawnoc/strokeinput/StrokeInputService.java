@@ -50,6 +50,7 @@ public class StrokeInputService
   implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
   
+  public static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String SPACE_BAR_VALUE_TEXT = "SPACE";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
@@ -365,7 +366,7 @@ public class StrokeInputService
         effectStrokeAppend(strokeDigit);
         break;
       
-      case "BACKSPACE":
+      case BACKSPACE_VALUE_TEXT:
         effectBackspace(inputConnection);
         break;
       
