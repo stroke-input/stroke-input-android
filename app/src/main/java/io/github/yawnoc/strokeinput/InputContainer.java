@@ -905,9 +905,4 @@ public class InputContainer
     extendedPressHandler.removeCallbacksAndMessages(null);
   }
   
-  private void showDebugToast(final String message) {
-    debugToast.setText(message);
-    debugToast.show();
-  }
-  
 }
