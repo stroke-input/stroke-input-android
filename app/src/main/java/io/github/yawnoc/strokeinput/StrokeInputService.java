@@ -67,6 +67,12 @@ public class StrokeInputService
   private static final String STROKE_4_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_4;
   private static final String STROKE_5_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_5;
   
+  private static final String STROKES_KEYBOARD_NAME = "STROKES";
+  private static final String STROKES_SYMBOLS_1_KEYBOARD_NAME = "STROKES_SYMBOLS_1";
+  private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";
+  private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
+  private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
+  
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
@@ -124,11 +130,11 @@ public class StrokeInputService
     qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
     
     nameFromKeyboard = new HashMap<>();
-    nameFromKeyboard.put(strokesKeyboard, "STROKES");
-    nameFromKeyboard.put(strokesSymbols1Keyboard, "STROKES_SYMBOLS_1");
-    nameFromKeyboard.put(strokesSymbols2Keyboard, "STROKES_SYMBOLS_2");
-    nameFromKeyboard.put(qwertyKeyboard, "QWERTY");
-    nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
+    nameFromKeyboard.put(strokesKeyboard, STROKES_KEYBOARD_NAME);
+    nameFromKeyboard.put(strokesSymbols1Keyboard, STROKES_SYMBOLS_1_KEYBOARD_NAME);
+    nameFromKeyboard.put(strokesSymbols2Keyboard, STROKES_SYMBOLS_2_KEYBOARD_NAME);
+    nameFromKeyboard.put(qwertyKeyboard, QWERTY_KEYBOARD_NAME);
+    nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
     
@@ -527,13 +533,13 @@ public class StrokeInputService
         return;
       }
       switch (keyboardName) {
-        case "STROKES":
-        case "STROKES_SYMBOLS_1":
-        case "STROKES_SYMBOLS_2":
+        case STROKES_KEYBOARD_NAME:
+        case STROKES_SYMBOLS_1_KEYBOARD_NAME:
+        case STROKES_SYMBOLS_2_KEYBOARD_NAME:
           inputContainer.setKeyboard(qwertyKeyboard);
           break;
-        case "QWERTY":
-        case "QWERTY_SYMBOLS":
+        case QWERTY_KEYBOARD_NAME:
+        case QWERTY_SYMBOLS_KEYBOARD_NAME:
           inputContainer.setKeyboard(strokesKeyboard);
           break;
       }
