@@ -41,7 +41,6 @@ import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -83,9 +82,6 @@ public class InputContainer
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  private static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
-  private static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
-  
   // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
@@ -95,8 +91,6 @@ public class InputContainer
   // Active key
   private Key activeKey;
   private int activePointerId = NONEXISTENT_POINTER_ID;
-  private int activePointerX;
-  private int activePointerY;
   
   // Long presses and key repeats
   private Handler extendedPressHandler;
@@ -133,11 +127,6 @@ public class InputContainer
   private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
   
-  // Debugging
-  private Paint debugPaint;
-  private Toast debugToast;
-  private boolean debugModeIsActivated = false;
-  
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
@@ -147,7 +136,6 @@ public class InputContainer
     initialiseStrokeSequenceBarring(context);
     initialiseCandidatesBarring(context);
     initialiseKeyPreviewing(context);
-    initialiseDebugging();
     
   }
   
@@ -241,15 +229,6 @@ public class InputContainer
     keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
-    
-  }
-  
-  private void initialiseDebugging() {
-    
-    debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    debugPaint.setStyle(Paint.Style.STROKE);
-    
-    debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
     
   }
   
@@ -419,11 +398,6 @@ public class InputContainer
     keyRepeatIntervalMilliseconds = milliseconds;
   }
   
-  public void toggleDebugMode() {
-    debugModeIsActivated = !debugModeIsActivated;
-    showDebugToast("debug mode " + (debugModeIsActivated ? "ON" : "OFF"));
-  }
-  
   public void onClick(final View view) {
   }
   
@@ -517,21 +491,11 @@ public class InputContainer
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.textSize);
       
-      final String keyDisplayText;
-      if (debugModeIsActivated && key.valueText.equals("SPACE")) {
-        keyDisplayText = (
-          activeKey == null
-            ? "null"
-            : activeKey.valueText
-        );
-      }
-      else {
-        keyDisplayText = (
-          key.valueText.equals("ENTER")
-            ? key.displayText
-            : key.shiftAwareDisplayText(shiftMode)
-        );
-      }
+      final String keyDisplayText = (
+        key.valueText.equals("ENTER")
+          ? key.displayText
+          : key.shiftAwareDisplayText(shiftMode)
+      );
       
       final float keyTextX = key.width / 2f + key.textOffsetX;
       final float keyTextY = (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f + key.textOffsetY;
@@ -543,11 +507,6 @@ public class InputContainer
       canvas.drawText(keyDisplayText, keyTextX, keyTextY, keyTextPaint);
       
       canvas.translate(-key.x, -key.y);
-    }
-    
-    if (debugModeIsActivated && activePointerId != NONEXISTENT_POINTER_ID) {
-      debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
-      canvas.drawCircle(activePointerX, activePointerY, DEBUG_ACTIVE_POINTER_RADIUS, debugPaint);
     }
     
   }
@@ -624,7 +583,7 @@ public class InputContainer
           keyPreviewPlane.dismissLatest();
         }
         
-        sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
+        sendDownEvent(downKey, downPointerId, downPointerX);
         
         break;
       
@@ -645,7 +604,7 @@ public class InputContainer
             }
             
             if (moveKey != activeKey || isSwipeableKey(activeKey)) {
-              sendMoveEvent(moveKey, movePointerId, movePointerX, movePointerY);
+              sendMoveEvent(moveKey, movePointerId, movePointerX);
               break touchLogic;
             }
             
@@ -655,7 +614,7 @@ public class InputContainer
           if (movePointerId == shiftPointerId) {
             
             if (!isShiftKey(moveKey)) {
-              sendShiftMoveFromEvent(moveKey, movePointerId, movePointerX, movePointerY);
+              sendShiftMoveFromEvent(moveKey, movePointerId);
               break touchLogic;
             }
             
@@ -706,7 +665,7 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendDownEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendDownEvent(final Key key, final int pointerId, final int x) {
     
     if (isSwipeableKey(key)) {
       pointerDownX = x;
@@ -720,8 +679,6 @@ public class InputContainer
     
     activeKey = key;
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
     keyPreviewPlane.show(key);
@@ -729,7 +686,7 @@ public class InputContainer
     
   }
   
-  private void sendMoveEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendMoveEvent(final Key key, final int pointerId, final int x) {
     
     boolean shouldRedrawKeyboard = false;
     
@@ -756,8 +713,6 @@ public class InputContainer
     }
     
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     if (shouldRedrawKeyboard) {
       invalidate();
@@ -829,14 +784,12 @@ public class InputContainer
     
   }
   
-  private void sendShiftMoveFromEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendShiftMoveFromEvent(final Key key, final int pointerId) {
     
     sendShiftUpEvent(false);
     
     activeKey = key;
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
@@ -908,11 +861,6 @@ public class InputContainer
   
   private void removeAllExtendedPressHandlerMessages() {
     extendedPressHandler.removeCallbacksAndMessages(null);
-  }
-  
-  private void showDebugToast(final String message) {
-    debugToast.setText(message);
-    debugToast.show();
   }
   
 }
