@@ -617,7 +617,7 @@ public class InputContainer
           if (movePointerId == shiftPointerId) {
             
             if (!isShiftKey(moveKey)) {
-              sendShiftMoveFromEvent(moveKey, movePointerId, movePointerX, movePointerY);
+              sendShiftMoveFromEvent(moveKey, movePointerId);
               break touchLogic;
             }
             
@@ -787,7 +787,7 @@ public class InputContainer
     
   }
   
-  private void sendShiftMoveFromEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendShiftMoveFromEvent(final Key key, final int pointerId) {
     
     sendShiftUpEvent(false);
     
