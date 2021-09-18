@@ -51,8 +51,7 @@ public class MainActivity
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
-    final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
-    setCandidateOrderButtonText(traditionalIsPreferred);
+    setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
     
   }
   
@@ -84,11 +83,11 @@ public class MainActivity
     );
   }
   
-  private void setCandidateOrderButtonText(final boolean traditionalIsPreferred) {
+  private void setCandidateOrderButtonText(final String candidateOrderPreference) {
     
     final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
     final String candidateOrderButtonText = (
-      traditionalIsPreferred
+      isTraditionalPreferred(candidateOrderPreference)
         ? getString(R.string.label__main_activity__traditional_characters_first)
         : getString(R.string.label__main_activity__simplified_characters_first)
     );
