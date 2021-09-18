@@ -74,6 +74,18 @@ public class StrokeInputService
   private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
   private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
   
+  private static final String SWITCH_KEYBOARD_VALUE_TEXT_PREFIX = "SWITCH_TO_";
+  private static final String
+    SWITCH_TO_STROKES_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_1_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_2_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_QWERTY_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
+  
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
@@ -389,12 +401,12 @@ public class StrokeInputService
         effectBackspace(inputConnection);
         break;
       
-      case "SWITCH_TO_STROKES":
-      case "SWITCH_TO_STROKES_SYMBOLS_1":
-      case "SWITCH_TO_STROKES_SYMBOLS_2":
-      case "SWITCH_TO_QWERTY":
-      case "SWITCH_TO_QWERTY_SYMBOLS":
-        final String keyboardName = Stringy.removePrefix("SWITCH_TO_", valueText);
+      case SWITCH_TO_STROKES_VALUE_TEXT:
+      case SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT:
+      case SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT:
+      case SWITCH_TO_QWERTY_VALUE_TEXT:
+      case SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT:
+        final String keyboardName = Stringy.removePrefix(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
         effectKeyboardSwitch(keyboardName);
         break;
       
