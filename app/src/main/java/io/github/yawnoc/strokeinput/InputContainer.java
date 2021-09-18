@@ -94,8 +94,6 @@ public class InputContainer
   // Active key
   private Key activeKey;
   private int activePointerId = NONEXISTENT_POINTER_ID;
-  private int activePointerX;
-  private int activePointerY;
   
   // Long presses and key repeats
   private Handler extendedPressHandler;
@@ -684,8 +682,6 @@ public class InputContainer
     
     activeKey = key;
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     sendAppropriateExtendedPressHandlerMessage(key);
     keyPreviewPlane.show(key);
@@ -720,8 +716,6 @@ public class InputContainer
     }
     
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     if (shouldRedrawKeyboard) {
       invalidate();
@@ -799,8 +793,6 @@ public class InputContainer
     
     activeKey = key;
     activePointerId = pointerId;
-    activePointerX = x;
-    activePointerY = y;
     
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
