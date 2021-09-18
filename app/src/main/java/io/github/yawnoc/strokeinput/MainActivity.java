@@ -31,8 +31,8 @@ public class MainActivity
 {
   
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
-  public static final String CANDIDATE_ORDER_PREFERENCE_TRADITIONAL = "TRADITIONAL_FIRST";
-  public static final String CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED = "SIMPLIFIED_FIRST";
+  public static final String CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST = "TRADITIONAL_FIRST";
+  public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
   
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
@@ -65,7 +65,7 @@ public class MainActivity
       return true;
     }
     
-    return !candidateOrderPreference.equals(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+    return !candidateOrderPreference.equals(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
     
   }
   
@@ -124,13 +124,13 @@ public class MainActivity
       showCandidateOrderDialog();
     }
     else if (viewId == R.id.prefer_traditional_button) {
-      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
-      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
+      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST);
+      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST);
       candidateOrderDialog.dismiss();
     }
     else if (viewId == R.id.prefer_simplified_button) {
-      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
-      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
+      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
       candidateOrderDialog.dismiss();
     }
     
