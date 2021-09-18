@@ -91,9 +91,9 @@ public class StrokeInputService
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME = "sequence-characters.txt";
-  private static final String RANKING_FILE_NAME_TRADITIONAL = "ranking.txt";
+  private static final String RANKING_FILE_NAME_TRADITIONAL = "ranking-traditional.txt";
   private static final String RANKING_FILE_NAME_SIMPLIFIED = "ranking-simplified.txt";
-  private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases.txt";
+  private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases-traditional.txt";
   private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
   
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
