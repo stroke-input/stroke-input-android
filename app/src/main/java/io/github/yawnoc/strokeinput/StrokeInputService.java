@@ -178,33 +178,7 @@ public class StrokeInputService
   private void initialiseStrokeInput() {
     
     charactersDataFromStrokeDigitSequence = new TreeMap<>();
-    
-    final long charactersDataStartMillis = System.currentTimeMillis();
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          putSequenceAndCharactersDataIntoMap(line, charactersDataFromStrokeDigitSequence);
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    final long charactersDataEndMillis = System.currentTimeMillis();
-    Log.i(
-      "StrokeInputService",
-      "Loading of characters data: "
-        + (charactersDataEndMillis - charactersDataStartMillis)
-        + " milliseconds"
-    );
+    loadSequenceCharactersData();
     
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
@@ -321,19 +295,45 @@ public class StrokeInputService
     return line.startsWith("#") || line.length() == 0;
   }
   
-  private void putSequenceAndCharactersDataIntoMap(
-    final String line,
-    final Map<String, CharactersData> charactersDataFromStrokeDigitSequence
-  )
-  {
-    final String[] sunderedLineArray = Stringy.sunder(line, "\t");
-    final String strokeDigitSequence = sunderedLineArray[0];
-    final String commaSeparatedCharacters = sunderedLineArray[1];
+  private void loadSequenceCharactersData() {
     
-    charactersDataFromStrokeDigitSequence.put(
-      strokeDigitSequence,
-      new CharactersData(commaSeparatedCharacters)
+    final long startMillis = System.currentTimeMillis();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        
+        if (!isCommentLine(line)) {
+          
+          final String[] sunderedLineArray = Stringy.sunder(line, "\t");
+          final String strokeDigitSequence = sunderedLineArray[0];
+          final String commaSeparatedCharacters = sunderedLineArray[1];
+          
+          charactersDataFromStrokeDigitSequence.put(
+            strokeDigitSequence,
+            new CharactersData(commaSeparatedCharacters)
+          );
+          
+        }
+        
+      }
+      
+    }
+    
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    final long endMillis = System.currentTimeMillis();
+    Log.i(
+      "StrokeInputService",
+      "Loading of characters data: " + (endMillis - startMillis) + " milliseconds"
     );
+    
   }
   
   @Override
