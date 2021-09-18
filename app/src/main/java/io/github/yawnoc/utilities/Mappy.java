@@ -24,6 +24,7 @@ public class Mappy {
     }
     
     return inverseMap;
+    
   }
   
 }

@@ -47,6 +47,7 @@ public class CharactersData {
         currentCodePointSet.add(codePoint);
       }
     }
+    
   }
   
   public void addData(final CharactersData charactersData) {
@@ -69,6 +70,7 @@ public class CharactersData {
     final boolean traditionalIsPreferred
   )
   {
+    
     final List<String> preferredList = new ArrayList<>();
     final List<String> dislikedList = new ArrayList<>();
     
@@ -103,6 +105,7 @@ public class CharactersData {
     final int candidateCount = Math.min(candidateList.size(), maxCandidateCount);
     
     return new ArrayList<>(candidateList.subList(0, candidateCount));
+    
   }
   
 }

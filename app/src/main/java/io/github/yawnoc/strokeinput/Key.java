@@ -80,6 +80,7 @@ public class Key {
     final XmlResourceParser xmlResourceParser
   )
   {
+    
     this(parentRow);
     
     this.x = x;
@@ -148,6 +149,7 @@ public class Key {
       );
     
     attributesArray.recycle();
+    
   }
   
   public boolean containsPoint(final int x, final int y) {

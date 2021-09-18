@@ -121,6 +121,7 @@ public class Keyboard {
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
     adjustKeyboardVertically(isFullscreenMode);
+    
   }
   
   public List<Key> getKeyList() {
@@ -179,7 +180,9 @@ public class Keyboard {
       int event;
       
       while ((event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT) {
+        
         switch (event) {
+          
           case XmlResourceParser.START_TAG:
             final String xmlTag = xmlResourceParser.getName();
             switch (xmlTag) {
@@ -198,6 +201,7 @@ public class Keyboard {
                 break;
             }
             break;
+          
           case XmlResourceParser.END_TAG:
             if (inKey) {
               inKey = false;
@@ -210,16 +214,23 @@ public class Keyboard {
               maximumY = Math.max(y, maximumY);
             }
             break;
+          
         }
+        
       }
       
       width = maximumX;
       height = maximumY;
+      
     }
+    
     catch (Exception exception) {
+      
       Log.e("Keyboard.makeKeyboard", "Exception: " + exception);
       exception.printStackTrace();
+      
     }
+    
   }
   
   private void adjustKeyboardVertically(final boolean isFullscreenMode) {
@@ -249,11 +260,14 @@ public class Keyboard {
     else {
       popupBufferZoneHeight = candidatesBarHeightPx;
     }
+    
     for (final Key key : keyList) {
       key.y += popupBufferZoneHeight;
     }
+    
     parentInputContainerHeight = height + popupBufferZoneHeight;
     parentInputContainerTouchableTopY = Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
+    
   }
   
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser) {
@@ -309,6 +323,7 @@ public class Keyboard {
       );
     
     attributesArray.recycle();
+    
   }
   
 }

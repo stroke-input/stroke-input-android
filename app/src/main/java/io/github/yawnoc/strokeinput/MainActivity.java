@@ -28,6 +28,7 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
+  
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   
@@ -51,6 +52,7 @@ public class MainActivity
     
     final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
     setCandidateOrderButtonText(traditionalIsPreferred);
+    
   }
   
   private boolean isTraditionalPreferred(final String candidateOrderPreference) {
@@ -60,6 +62,7 @@ public class MainActivity
     }
     
     return !candidateOrderPreference.equals("PREFER_SIMPLIFIED");
+    
   }
   
   private String loadSavedCandidateOrderPreference() {
@@ -81,6 +84,7 @@ public class MainActivity
     );
     
     candidateOrderButton.setText(candidateOrderButtonText);
+    
   }
   
   @Override
@@ -128,6 +132,7 @@ public class MainActivity
       .setView(htmlWebView)
       .setOnDismissListener(dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView))
       .show();
+    
   }
   
   private void showHtmlWebView(final int fileNameResourceId) {
@@ -153,6 +158,7 @@ public class MainActivity
         : R.id.prefer_simplified_button
     );
     candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
+    
   }
   
 }

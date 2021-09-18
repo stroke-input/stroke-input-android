@@ -53,6 +53,7 @@ public class KeyPreviewPlane extends View {
     
     initialiseDismissing();
     initialiseDrawing(context);
+    
   }
   
   private void initialiseDismissing() {
@@ -66,6 +67,7 @@ public class KeyPreviewPlane extends View {
           invalidate();
         }
       };
+    
   }
   
   private void initialiseDrawing(final Context context) {
@@ -83,6 +85,7 @@ public class KeyPreviewPlane extends View {
       Typeface.createFromAsset(context.getAssets(), InputContainer.KEYBOARD_FONT_FILE_NAME)
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
+    
   }
   
   public void updateDimensions(

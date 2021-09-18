@@ -49,6 +49,7 @@ public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
+  
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
@@ -94,6 +95,7 @@ public class StrokeInputService
     initialiseStrokeInput();
     
     return inputContainer;
+    
   }
   
   private void initialiseKeyboards() {
@@ -112,6 +114,7 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertySymbolsKeyboard, "QWERTY_SYMBOLS");
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
+    
   }
   
   private Keyboard newKeyboard(final int layoutResourceId) {
@@ -131,6 +134,7 @@ public class StrokeInputService
     charactersDataFromStrokeDigitSequence = new TreeMap<>();
     
     final long charactersDataStartMillis = System.currentTimeMillis();
+    
     try {
       
       final InputStream inputStream = getAssets().open(SEQUENCE_CHARACTERS_FILE_NAME);
@@ -142,10 +146,12 @@ public class StrokeInputService
           putSequenceAndCharactersDataIntoMap(line, charactersDataFromStrokeDigitSequence);
         }
       }
+      
     }
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    
     final long charactersDataEndMillis = System.currentTimeMillis();
     Log.i(
       "StrokeInputService",
@@ -157,6 +163,7 @@ public class StrokeInputService
     sortingRankFromCharacter = new HashMap<>();
     
     final long sortingRankStartMillis = System.currentTimeMillis();
+    
     try {
       
       final InputStream inputStream = getAssets().open(RANKING_FILE_NAME);
@@ -174,10 +181,12 @@ public class StrokeInputService
           }
         }
       }
+      
     }
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    
     final long sortingRankEndMillis = System.currentTimeMillis();
     Log.i(
       "StrokeInputService",
@@ -189,6 +198,7 @@ public class StrokeInputService
     phraseSet = new TreeSet<>();
     
     final long phraseSetStartMillis = System.currentTimeMillis();
+    
     try {
       
       final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME);
@@ -200,10 +210,12 @@ public class StrokeInputService
           phraseSet.add(line);
         }
       }
+      
     }
     catch (IOException exception) {
       exception.printStackTrace();
     }
+    
     final long phraseSetEndMillis = System.currentTimeMillis();
     Log.i(
       "StrokeInputService",
@@ -211,6 +223,7 @@ public class StrokeInputService
         + (phraseSetEndMillis - phraseSetStartMillis)
         + " milliseconds"
     );
+    
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
@@ -265,7 +278,9 @@ public class StrokeInputService
       
       default:
         inputIsPassword = false;
+      
     }
+    
   }
   
   @Override
@@ -311,6 +326,7 @@ public class StrokeInputService
         }
       }
     }
+    
   }
   
   @Override
@@ -368,7 +384,9 @@ public class StrokeInputService
       
       default:
         effectOrdinaryKey(inputConnection, valueText);
+      
     }
+    
   }
   
   private void effectStrokeAppend(final String strokeDigit) {
@@ -379,6 +397,7 @@ public class StrokeInputService
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidateList(newCandidateList);
     }
+    
   }
   
   private void effectBackspace(final InputConnection inputConnection) {
@@ -392,7 +411,9 @@ public class StrokeInputService
       setCandidateList(newCandidateList);
       
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
+      
     }
+    
     else {
       
       final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
@@ -432,7 +453,9 @@ public class StrokeInputService
           : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
       );
       inputContainer.setKeyRepeatIntervalMilliseconds(nextBackspaceIntervalMilliseconds);
+      
     }
+    
   }
   
   private void effectKeyboardSwitch(final String keyboardName) {
@@ -475,6 +498,7 @@ public class StrokeInputService
     else if (valueText.equals("ENTER")) {
       inputContainer.toggleDebugMode();
     }
+    
   }
   
   @Override
@@ -499,7 +523,9 @@ public class StrokeInputService
           inputContainer.setKeyboard(strokesKeyboard);
           break;
       }
+      
     }
+    
   }
   
   @Override
@@ -532,6 +558,7 @@ public class StrokeInputService
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
     setCandidateListForPhraseCompletion(inputConnection);
+    
   }
   
   private void setStrokeDigitSequence(final String strokeDigitSequence) {
@@ -555,6 +582,7 @@ public class StrokeInputService
     }
     
     setCandidateList(phraseCompletionCandidateList);
+    
   }
   
   private Comparator<String> candidateComparator() {
@@ -598,6 +626,7 @@ public class StrokeInputService
     }
     
     return Integer.MAX_VALUE;
+    
   }
   
   private List<String> computeCandidateList(final String strokeDigitSequence) {
@@ -634,6 +663,7 @@ public class StrokeInputService
     candidateList.addAll(prefixMatchCandidateList);
     
     return candidateList;
+    
   }
   
   private String getFirstCandidate() {
@@ -655,6 +685,7 @@ public class StrokeInputService
     final int maxCandidateCount
   )
   {
+    
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
     
     for (
@@ -683,6 +714,7 @@ public class StrokeInputService
     final int candidateCount = Math.min(phraseCompletionCandidateList.size(), maxCandidateCount);
     
     return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
+    
   }
   
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount) {
@@ -692,6 +724,7 @@ public class StrokeInputService
     }
     
     return (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    
   }
   
 }
