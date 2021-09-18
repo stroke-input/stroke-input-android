@@ -511,14 +511,11 @@ public class InputContainer
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.textSize);
       
-      final String keyDisplayText;
-      {
-        keyDisplayText = (
-          key.valueText.equals("ENTER")
-            ? key.displayText
-            : key.shiftAwareDisplayText(shiftMode)
-        );
-      }
+      final String keyDisplayText = (
+        key.valueText.equals("ENTER")
+          ? key.displayText
+          : key.shiftAwareDisplayText(shiftMode)
+      );
       
       final float keyTextX = key.width / 2f + key.textOffsetX;
       final float keyTextY = (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f + key.textOffsetY;
