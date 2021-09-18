@@ -39,12 +39,12 @@ __[筆畫輸入法]__為自由軟件，恕無擔保。
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
-#### `phrases.txt` ####
+#### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
 ----{.notice}
 獻以為公，見\CC0。
 ----
 
-#### `ranking.txt` ####
+#### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
 ----{.notice}
 獻以為公，見\CC0。
 ----
