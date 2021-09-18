@@ -711,12 +711,14 @@ public class StrokeInputService
   }
   
   private String getFirstCandidate() {
+    
     try {
       return candidateList.get(0);
     }
     catch (IndexOutOfBoundsException exception) {
       return "";
     }
+    
   }
   
   /*
