@@ -506,11 +506,14 @@ public class StrokeInputService
         }
         
         setCandidateListForPhraseCompletion(inputConnection);
+        
       }
+      
       else { // for apps like Termux
         
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
+        
       }
       
       final int nextBackspaceIntervalMilliseconds = (
