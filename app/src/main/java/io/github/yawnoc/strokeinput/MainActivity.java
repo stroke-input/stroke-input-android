@@ -174,8 +174,8 @@ public class MainActivity
     candidateOrderDialog.show();
     
     final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
-    final Button preferTraditionalButton = candidateOrderDialog.findViewById(R.id.traditional_first_button);
-    final Button preferSimplifiedButton = candidateOrderDialog.findViewById(R.id.simplified_first_button);
+    final Button traditionalFirstButton = candidateOrderDialog.findViewById(R.id.traditional_first_button);
+    final Button simplifiedFirstButton = candidateOrderDialog.findViewById(R.id.simplified_first_button);
     
     final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
     final int savedCandidateOrderButtonId = (
@@ -185,8 +185,8 @@ public class MainActivity
     );
     candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
     
-    preferTraditionalButton.setOnClickListener(this);
-    preferSimplifiedButton.setOnClickListener(this);
+    traditionalFirstButton.setOnClickListener(this);
+    simplifiedFirstButton.setOnClickListener(this);
     
   }
   
