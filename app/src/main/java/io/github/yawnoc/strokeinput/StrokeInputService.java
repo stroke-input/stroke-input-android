@@ -60,6 +60,7 @@ public class StrokeInputService
   public static final String STROKE_DIGIT_3 = "3";
   public static final String STROKE_DIGIT_4 = "4";
   public static final String STROKE_DIGIT_5 = "5";
+  
   private static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
   private static final String STROKE_1_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_1;
   private static final String STROKE_2_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_2;
