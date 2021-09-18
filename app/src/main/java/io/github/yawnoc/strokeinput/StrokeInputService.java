@@ -50,17 +50,17 @@ public class StrokeInputService
   implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
   
-  public static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
-  public static final String SPACE_BAR_VALUE_TEXT = "SPACE";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
+  private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
+  private static final String SPACE_BAR_VALUE_TEXT = "SPACE";
   
-  public static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
-  public static final String STROKE_1_VALUE_TEXT = "STROKE_1";
-  public static final String STROKE_2_VALUE_TEXT = "STROKE_2";
-  public static final String STROKE_3_VALUE_TEXT = "STROKE_3";
-  public static final String STROKE_4_VALUE_TEXT = "STROKE_4";
-  public static final String STROKE_5_VALUE_TEXT = "STROKE_5";
+  private static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
+  private static final String STROKE_1_VALUE_TEXT = "STROKE_1";
+  private static final String STROKE_2_VALUE_TEXT = "STROKE_2";
+  private static final String STROKE_3_VALUE_TEXT = "STROKE_3";
+  private static final String STROKE_4_VALUE_TEXT = "STROKE_4";
+  private static final String STROKE_5_VALUE_TEXT = "STROKE_5";
   
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
