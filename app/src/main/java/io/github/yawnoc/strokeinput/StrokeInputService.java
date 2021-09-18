@@ -679,7 +679,10 @@ public class StrokeInputService
     final List<String> exactMatchCandidateList = (
       exactMatchCharactersData == null
         ? Collections.emptyList()
-        : exactMatchCharactersData.toCandidateList(candidateComparator(phraseCompletionFirstCharacterList))
+        : exactMatchCharactersData.toCandidateList(
+            shouldPreferTraditional(),
+            candidateComparator(phraseCompletionFirstCharacterList)
+          )
     );
     
     final CharactersData prefixMatchCharactersData = new CharactersData("");
@@ -766,6 +769,15 @@ public class StrokeInputService
     }
     
     return (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    
+  }
+  
+  private boolean shouldPreferTraditional() {
+    
+    final String savedCandidateOrderPreference =
+      MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
+    
+    return MainActivity.isTraditionalPreferred(savedCandidateOrderPreference);
     
   }
   

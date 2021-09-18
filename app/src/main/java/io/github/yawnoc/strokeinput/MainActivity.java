@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -59,7 +60,7 @@ public class MainActivity
     
   }
   
-  private boolean isTraditionalPreferred(final String candidateOrderPreference) {
+  public static boolean isTraditionalPreferred(final String candidateOrderPreference) {
     
     if (candidateOrderPreference == null) {
       return true;
@@ -76,6 +77,11 @@ public class MainActivity
         StrokeInputService.PREFERENCES_FILE_NAME,
         CANDIDATE_ORDER_PREFERENCE_KEY
       );
+  }
+  
+  public static String loadSavedCandidateOrderPreference(final Context context) {
+    return
+      Contexty.loadPreferenceString(context, StrokeInputService.PREFERENCES_FILE_NAME, CANDIDATE_ORDER_PREFERENCE_KEY);
   }
   
   private void saveCandidateOrderPreference(final String candidateOrderPreference) {

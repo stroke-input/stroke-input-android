@@ -56,8 +56,8 @@ public class CharactersData {
     simplifiedCodePointSet.addAll(charactersData.simplifiedCodePointSet);
   }
   
-  public List<String> toCandidateList(final Comparator<String> comparator) {
-    return toCandidateList(comparator, Integer.MAX_VALUE);
+  public List<String> toCandidateList(final boolean traditionalIsPreferred, final Comparator<String> comparator) {
+    return toCandidateList(comparator, Integer.MAX_VALUE, traditionalIsPreferred);
   }
   
   public List<String> toCandidateList(final Comparator<String> comparator, final int maxCandidateCount) {
