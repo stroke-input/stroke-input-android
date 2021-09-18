@@ -95,6 +95,9 @@ public class StrokeInputService
   private static final String PHRASES_FILE_NAME = "phrases.txt";
   
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
+  public static final String CANDIDATE_ORDER_PREFERENCE_TRADITIONAL = "PREFER_TRADITIONAL";
+  public static final String CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED = "PREFER_SIMPLIFIED";
+  
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
   private static final int RANKING_PENALTY_PER_CHAR = 3000;

@@ -61,7 +61,7 @@ public class MainActivity
       return true;
     }
     
-    return !candidateOrderPreference.equals("PREFER_SIMPLIFIED");
+    return !candidateOrderPreference.equals(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
     
   }
   
@@ -120,13 +120,13 @@ public class MainActivity
       showCandidateOrderDialog();
     }
     else if (viewId == R.id.prefer_traditional_button) {
-      saveCandidateOrderPreference("PREFER_TRADITIONAL");
-      setCandidateOrderButtonText("PREFER_TRADITIONAL");
+      saveCandidateOrderPreference(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
+      setCandidateOrderButtonText(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
       candidateOrderDialog.dismiss();
     }
     else if (viewId == R.id.prefer_simplified_button) {
-      saveCandidateOrderPreference("PREFER_SIMPLIFIED");
-      setCandidateOrderButtonText("PREFER_SIMPLIFIED");
+      saveCandidateOrderPreference(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+      setCandidateOrderButtonText(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
       candidateOrderDialog.dismiss();
     }
     
