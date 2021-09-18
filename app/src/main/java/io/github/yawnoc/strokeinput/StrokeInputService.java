@@ -404,7 +404,7 @@ public class StrokeInputService
     
     if (strokeDigitSequence.length() > 0) {
       
-      final String newStrokeDigitSequence = Stringy.removeSuffix(".", strokeDigitSequence);
+      final String newStrokeDigitSequence = Stringy.removeSuffix("(?s).", strokeDigitSequence);
       final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
       
       setStrokeDigitSequence(newStrokeDigitSequence);
