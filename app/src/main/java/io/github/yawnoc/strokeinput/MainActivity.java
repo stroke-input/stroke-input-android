@@ -106,27 +106,6 @@ public class MainActivity
     
   }
   
-  private void showCandidateOrderDialog() {
-    
-    candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputDialog);
-    candidateOrderDialogBuilder
-      .setTitle(R.string.text__main_activity__candidate_order)
-      .setView(R.layout.candidate_order_dialog)
-      .setCancelable(true);
-    
-    candidateOrderDialog = candidateOrderDialogBuilder.create();
-    candidateOrderDialog.show();
-    
-    final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
-    final boolean traditionalIsPreferred = loadSavedTraditionalIsPreferred();
-    final int savedCandidateOrderButtonId = (
-      traditionalIsPreferred
-        ? R.id.prefer_traditional_button
-        : R.id.prefer_simplified_button
-    );
-    candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
-  }
-  
   private void showHtmlWebView(final String uri) {
     
     if (htmlWebViewContainer == null) {
@@ -150,6 +129,27 @@ public class MainActivity
   
   private void showHtmlWebView(final int fileNameResourceId) {
     showHtmlWebView(ASSETS_DIRECTORY + getString(fileNameResourceId));
+  }
+  
+  private void showCandidateOrderDialog() {
+    
+    candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputDialog);
+    candidateOrderDialogBuilder
+      .setTitle(R.string.text__main_activity__candidate_order)
+      .setView(R.layout.candidate_order_dialog)
+      .setCancelable(true);
+    
+    candidateOrderDialog = candidateOrderDialogBuilder.create();
+    candidateOrderDialog.show();
+    
+    final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
+    final boolean traditionalIsPreferred = loadSavedTraditionalIsPreferred();
+    final int savedCandidateOrderButtonId = (
+      traditionalIsPreferred
+        ? R.id.prefer_traditional_button
+        : R.id.prefer_simplified_button
+    );
+    candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
   }
   
 }
