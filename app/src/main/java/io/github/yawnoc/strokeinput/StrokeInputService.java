@@ -51,6 +51,7 @@ public class StrokeInputService
 {
   
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
+  public static final String SPACE_BAR_VALUE_TEXT = "SPACE";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
   
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
@@ -377,7 +378,7 @@ public class StrokeInputService
         effectKeyboardSwitch(keyboardName);
         break;
       
-      case "SPACE":
+      case SPACE_BAR_VALUE_TEXT:
         effectSpaceKey(inputConnection);
         break;
       
@@ -495,7 +496,7 @@ public class StrokeInputService
   @Override
   public void onLongPress(final String valueText) {
     
-    if (valueText.equals("SPACE")) {
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
       Contexty.showSystemKeyboardSwitcher(this);
     }
     
@@ -504,7 +505,7 @@ public class StrokeInputService
   @Override
   public void onSwipe(final String valueText) {
     
-    if (valueText.equals("SPACE")) {
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
       
       final Keyboard keyboard = inputContainer.getKeyboard();
       final String keyboardName = nameFromKeyboard.get(keyboard);
