@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -74,6 +75,15 @@ public class MainActivity
       );
   }
   
+  private void saveCandidateOrderPreference(final String candidateOrderPreference) {
+    Contexty.savePreferenceString(
+      getApplicationContext(),
+      StrokeInputService.PREFERENCES_FILE_NAME,
+      "candidateOrderPreference",
+      candidateOrderPreference
+    );
+  }
+  
   private void setCandidateOrderButtonText(final boolean traditionalIsPreferred) {
     
     final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
@@ -109,6 +119,12 @@ public class MainActivity
     }
     else if (viewId == R.id.candidate_order_button) {
       showCandidateOrderDialog();
+    }
+    else if (viewId == R.id.prefer_traditional_button) {
+      saveCandidateOrderPreference("PREFER_TRADITIONAL");
+    }
+    else if (viewId == R.id.prefer_simplified_button) {
+      saveCandidateOrderPreference("PREFER_SIMPLIFIED");
     }
     
   }
@@ -151,6 +167,9 @@ public class MainActivity
     candidateOrderDialog.show();
     
     final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
+    final Button preferTraditionalButton = candidateOrderDialog.findViewById(R.id.prefer_traditional_button);
+    final Button preferSimplifiedButton = candidateOrderDialog.findViewById(R.id.prefer_simplified_button);
+    
     final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
     final int savedCandidateOrderButtonId = (
       traditionalIsPreferred
@@ -158,6 +177,9 @@ public class MainActivity
         : R.id.prefer_simplified_button
     );
     candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
+    
+    preferTraditionalButton.setOnClickListener(this);
+    preferSimplifiedButton.setOnClickListener(this);
     
   }
   
