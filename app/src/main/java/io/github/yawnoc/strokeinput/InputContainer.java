@@ -539,11 +539,6 @@ public class InputContainer
       canvas.translate(-key.x, -key.y);
     }
     
-    if (false && activePointerId != NONEXISTENT_POINTER_ID) {
-      debugPaint.setColor(DEBUG_ACTIVE_POINTER_COLOUR);
-      canvas.drawCircle(activePointerX, activePointerY, DEBUG_ACTIVE_POINTER_RADIUS, debugPaint);
-    }
-    
   }
   
   /*
