@@ -675,6 +675,8 @@ public class StrokeInputService
       return Collections.emptyList();
     }
     
+    final boolean traditionalIsPreferred = shouldPreferTraditional();
+    
     final CharactersData exactMatchCharactersData = charactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidateList;
     if (exactMatchCharactersData == null) {
@@ -683,7 +685,7 @@ public class StrokeInputService
     else {
       exactMatchCandidateList =
         exactMatchCharactersData.toCandidateList(
-          shouldPreferTraditional(),
+          traditionalIsPreferred,
           candidateComparator(phraseCompletionFirstCharacterList)
         );
     }
