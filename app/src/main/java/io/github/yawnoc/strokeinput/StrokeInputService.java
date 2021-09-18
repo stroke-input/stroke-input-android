@@ -334,11 +334,15 @@ public class StrokeInputService
     }
     
     final long endMillis = System.currentTimeMillis();
+    sendLoadingTimeLog(sequenceCharactersFileName, endMillis - startMillis);
+    
+  }
+  
+  private void sendLoadingTimeLog(final String fileName, final long millis) {
     Log.i(
       "StrokeInputService",
-      "Loading " + sequenceCharactersFileName + ": " + (endMillis - startMillis) + " milliseconds"
+      "Loaded '" + fileName + "' in " + millis + " milliseconds"
     );
-    
   }
   
   @Override
