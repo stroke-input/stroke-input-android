@@ -41,7 +41,6 @@ import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -133,10 +132,6 @@ public class InputContainer
   private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
   
-  // Debugging
-  private Paint debugPaint;
-  private Toast debugToast;
-  
   public InputContainer(final Context context, final AttributeSet attributes) {
     
     super(context, attributes);
@@ -146,7 +141,6 @@ public class InputContainer
     initialiseStrokeSequenceBarring(context);
     initialiseCandidatesBarring(context);
     initialiseKeyPreviewing(context);
-    initialiseDebugging();
     
   }
   
@@ -240,15 +234,6 @@ public class InputContainer
     keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
-    
-  }
-  
-  private void initialiseDebugging() {
-    
-    debugPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    debugPaint.setStyle(Paint.Style.STROKE);
-    
-    debugToast = Toast.makeText(getContext(), "", Toast.LENGTH_SHORT);
     
   }
   
