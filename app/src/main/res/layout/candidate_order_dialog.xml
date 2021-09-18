@@ -16,11 +16,11 @@
   <RadioButton
     style="@style/CandidateOrderDialogButton"
     android:id="@+id/prefer_traditional_button"
-    android:text="@string/label__main_activity__traditional_characters_first"
+    android:text="@string/label__main_activity__traditional_first"
   />
   <RadioButton
     style="@style/CandidateOrderDialogButton"
     android:id="@+id/prefer_simplified_button"
-    android:text="@string/label__main_activity__simplified_characters_first"
+    android:text="@string/label__main_activity__simplified_first"
   />
 </RadioGroup>

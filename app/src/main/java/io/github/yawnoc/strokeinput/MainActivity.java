@@ -88,8 +88,8 @@ public class MainActivity
     final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
     final String candidateOrderButtonText = (
       isTraditionalPreferred(candidateOrderPreference)
-        ? getString(R.string.label__main_activity__traditional_characters_first)
-        : getString(R.string.label__main_activity__simplified_characters_first)
+        ? getString(R.string.label__main_activity__traditional_first)
+        : getString(R.string.label__main_activity__simplified_first)
     );
     
     candidateOrderButton.setText(candidateOrderButtonText);
