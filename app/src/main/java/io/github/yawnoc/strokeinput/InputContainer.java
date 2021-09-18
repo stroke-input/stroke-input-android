@@ -419,11 +419,6 @@ public class InputContainer
     keyRepeatIntervalMilliseconds = milliseconds;
   }
   
-  public void toggleDebugMode() {
-    debugModeIsActivated = !debugModeIsActivated;
-    showDebugToast("debug mode " + (debugModeIsActivated ? "ON" : "OFF"));
-  }
-  
   public void onClick(final View view) {
   }
   
