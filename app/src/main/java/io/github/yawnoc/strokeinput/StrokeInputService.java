@@ -476,6 +476,10 @@ public class StrokeInputService
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidateList(newCandidateList);
       
+      if (newStrokeDigitSequence.length() == 0) {
+        setCandidateListForPhraseCompletion(inputConnection);
+      }
+      
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
       
     }
