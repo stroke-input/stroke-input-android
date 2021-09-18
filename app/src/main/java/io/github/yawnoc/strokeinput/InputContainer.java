@@ -586,7 +586,7 @@ public class InputContainer
           keyPreviewPlane.dismissLatest();
         }
         
-        sendDownEvent(downKey, downPointerId, downPointerX, downPointerY);
+        sendDownEvent(downKey, downPointerId, downPointerX);
         
         break;
       
@@ -668,7 +668,7 @@ public class InputContainer
     invalidate();
   }
   
-  private void sendDownEvent(final Key key, final int pointerId, final int x, final int y) {
+  private void sendDownEvent(final Key key, final int pointerId, final int x) {
     
     if (isSwipeableKey(key)) {
       pointerDownX = x;
