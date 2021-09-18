@@ -43,6 +43,10 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Keyboard {
   
+  private static final String KEYBOARD_TAG = "Keyboard";
+  private static final String ROW_TAG = "Row";
+  private static final String KEY_TAG = "Key";
+  
   private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 24;
   private final int strokeSequenceBarHeightPx;
   public static final int CANDIDATES_BAR_HEIGHT_DP = 36;
@@ -186,15 +190,15 @@ public class Keyboard {
           case XmlResourceParser.START_TAG:
             final String xmlTag = xmlResourceParser.getName();
             switch (xmlTag) {
-              case "Keyboard":
+              case KEYBOARD_TAG:
                 parseKeyboardAttributes(resources, xmlResourceParser);
                 break;
-              case "Row":
+              case ROW_TAG:
                 inRow = true;
                 row = new Row(this, resources, xmlResourceParser);
                 x = row.offsetX;
                 break;
-              case "Key":
+              case KEY_TAG:
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
                 keyList.add(key);
