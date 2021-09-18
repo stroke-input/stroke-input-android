@@ -336,7 +336,7 @@ public class StrokeInputService
     final long endMillis = System.currentTimeMillis();
     Log.i(
       "StrokeInputService",
-      "Loading of characters data: " + (endMillis - startMillis) + " milliseconds"
+      "Loading " + sequenceCharactersFileName + ": " + (endMillis - startMillis) + " milliseconds"
     );
     
   }
