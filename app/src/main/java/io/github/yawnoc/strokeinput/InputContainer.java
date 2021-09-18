@@ -463,7 +463,7 @@ public class InputContainer
       if (
         key == activeKey
           ||
-        key.valueText.equals("SHIFT") && (
+        key.valueText.equals(StrokeInputService.SHIFT_KEY_VALUE_TEXT) && (
           shiftPointerId != NONEXISTENT_POINTER_ID
             ||
           shiftMode == SHIFT_PERSISTENT
@@ -492,7 +492,7 @@ public class InputContainer
       keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText = (
-        key.valueText.equals("ENTER")
+        key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT)
           ? key.displayText
           : key.shiftAwareDisplayText(shiftMode)
       );
@@ -835,7 +835,7 @@ public class InputContainer
   }
   
   private boolean isShiftKey(final Key key) {
-    return key != null && key.valueText.equals("SHIFT");
+    return key != null && key.valueText.equals(StrokeInputService.SHIFT_KEY_VALUE_TEXT);
   }
   
   private boolean isSwipeableKey(final Key key) {

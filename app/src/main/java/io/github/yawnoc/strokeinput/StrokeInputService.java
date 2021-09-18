@@ -50,6 +50,9 @@ public class StrokeInputService
   implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
 {
   
+  public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
+  public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
+  
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
@@ -321,7 +324,7 @@ public class StrokeInputService
     
     for (final Keyboard keyboard : keyboardSet) {
       for (final Key key : keyboard.getKeyList()) {
-        if (key.valueText.equals("ENTER")) {
+        if (key.valueText.equals(ENTER_KEY_VALUE_TEXT)) {
           key.displayText = enterKeyDisplayText;
         }
       }
@@ -378,7 +381,7 @@ public class StrokeInputService
         effectSpaceKey(inputConnection);
         break;
       
-      case "ENTER":
+      case ENTER_KEY_VALUE_TEXT:
         effectEnterKey(inputConnection);
         break;
       
