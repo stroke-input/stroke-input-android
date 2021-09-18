@@ -495,9 +495,6 @@ public class StrokeInputService
     if (valueText.equals("SPACE")) {
       Contexty.showSystemKeyboardSwitcher(this);
     }
-    else if (valueText.equals("ENTER")) {
-      inputContainer.toggleDebugMode();
-    }
     
   }
   
