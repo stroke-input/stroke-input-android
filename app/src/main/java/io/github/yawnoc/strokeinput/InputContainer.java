@@ -82,9 +82,6 @@ public class InputContainer
   
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  private static final int DEBUG_ACTIVE_POINTER_COLOUR = Color.RED;
-  private static final int DEBUG_ACTIVE_POINTER_RADIUS = 60;
-  
   // Container properties
   private OnInputListener inputListener;
   private Keyboard keyboard;
