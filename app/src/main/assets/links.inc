@@ -9,6 +9,7 @@
 :}
 @@[Stroke Input Method] \stroke-input-url @@
 @@[筆畫輸入法] \stroke-input-url @@
+@@[笔画输入法] \stroke-input-url @@
 
 @@[`Keyboard.java`]
   https://android.googlesource.com/platform/frameworks/base/+/\
