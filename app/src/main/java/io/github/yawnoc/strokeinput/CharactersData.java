@@ -60,10 +60,6 @@ public class CharactersData {
     return toCandidateList(comparator, Integer.MAX_VALUE, traditionalIsPreferred);
   }
   
-  public List<String> toCandidateList(final Comparator<String> comparator, final int maxCandidateCount) {
-    return toCandidateList(comparator, maxCandidateCount, true);
-  }
-  
   public List<String> toCandidateList(
     final Comparator<String> comparator,
     final int maxCandidateCount,
