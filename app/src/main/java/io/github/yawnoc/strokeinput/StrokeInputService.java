@@ -676,14 +676,17 @@ public class StrokeInputService
     }
     
     final CharactersData exactMatchCharactersData = charactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
-    final List<String> exactMatchCandidateList = (
-      exactMatchCharactersData == null
-        ? Collections.emptyList()
-        : exactMatchCharactersData.toCandidateList(
-            shouldPreferTraditional(),
-            candidateComparator(phraseCompletionFirstCharacterList)
-          )
-    );
+    final List<String> exactMatchCandidateList;
+    if (exactMatchCharactersData == null) {
+      exactMatchCandidateList = Collections.emptyList();
+    }
+    else {
+      exactMatchCandidateList =
+        exactMatchCharactersData.toCandidateList(
+          shouldPreferTraditional(),
+          candidateComparator(phraseCompletionFirstCharacterList)
+        );
+    }
     
     final CharactersData prefixMatchCharactersData = new CharactersData("");
     final Collection<CharactersData> prefixMatchCharactersDataCollection = (
