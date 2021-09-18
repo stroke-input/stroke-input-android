@@ -30,6 +30,10 @@ public class MainActivity
   implements View.OnClickListener
 {
   
+  public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
+  public static final String CANDIDATE_ORDER_PREFERENCE_TRADITIONAL = "TRADITIONAL_FIRST";
+  public static final String CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED = "SIMPLIFIED_FIRST";
+  
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   
@@ -61,7 +65,7 @@ public class MainActivity
       return true;
     }
     
-    return !candidateOrderPreference.equals(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+    return !candidateOrderPreference.equals(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
     
   }
   
@@ -70,7 +74,7 @@ public class MainActivity
       Contexty.loadPreferenceString(
         getApplicationContext(),
         StrokeInputService.PREFERENCES_FILE_NAME,
-        StrokeInputService.CANDIDATE_ORDER_PREFERENCE_KEY
+        CANDIDATE_ORDER_PREFERENCE_KEY
       );
   }
   
@@ -78,7 +82,7 @@ public class MainActivity
     Contexty.savePreferenceString(
       getApplicationContext(),
       StrokeInputService.PREFERENCES_FILE_NAME,
-      StrokeInputService.CANDIDATE_ORDER_PREFERENCE_KEY,
+      CANDIDATE_ORDER_PREFERENCE_KEY,
       candidateOrderPreference
     );
   }
@@ -120,13 +124,13 @@ public class MainActivity
       showCandidateOrderDialog();
     }
     else if (viewId == R.id.prefer_traditional_button) {
-      saveCandidateOrderPreference(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
-      setCandidateOrderButtonText(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
+      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
+      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFERENCE_TRADITIONAL);
       candidateOrderDialog.dismiss();
     }
     else if (viewId == R.id.prefer_simplified_button) {
-      saveCandidateOrderPreference(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
-      setCandidateOrderButtonText(StrokeInputService.CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+      saveCandidateOrderPreference(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
+      setCandidateOrderButtonText(CANDIDATE_ORDER_PREFERENCE_SIMPLIFIED);
       candidateOrderDialog.dismiss();
     }
     
