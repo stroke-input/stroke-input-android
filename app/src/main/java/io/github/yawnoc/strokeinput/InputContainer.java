@@ -512,14 +512,7 @@ public class InputContainer
       keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText;
-      if (false && key.valueText.equals("SPACE")) {
-        keyDisplayText = (
-          activeKey == null
-            ? "null"
-            : activeKey.valueText
-        );
-      }
-      else {
+      {
         keyDisplayText = (
           key.valueText.equals("ENTER")
             ? key.displayText
