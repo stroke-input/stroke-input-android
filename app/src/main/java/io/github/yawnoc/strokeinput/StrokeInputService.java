@@ -182,8 +182,8 @@ public class StrokeInputService
     
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
-    loadSortingRankDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCharacterTraditional);
-    loadSortingRankDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCharacterSimplified);
+    loadRankingDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCharacterTraditional);
+    loadRankingDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCharacterSimplified);
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
@@ -242,7 +242,7 @@ public class StrokeInputService
     
   }
   
-  private void loadSortingRankDataIntoMap(
+  private void loadRankingDataIntoMap(
     final String rankingFileName,
     final Map<String, Integer> sortingRankFromCharacter
   )
