@@ -704,9 +704,9 @@ public class StrokeInputService
     }
     final List<String> prefixMatchCandidateList =
       prefixMatchCharactersData.toCandidateList(
+        traditionalIsPreferred,
         candidateComparator(phraseCompletionFirstCharacterList),
-        MAX_PREFIX_MATCH_COUNT,
-        traditionalIsPreferred
+        MAX_PREFIX_MATCH_COUNT
       );
     
     final List<String> candidateList = new ArrayList<>();

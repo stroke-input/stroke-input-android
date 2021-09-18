@@ -57,13 +57,13 @@ public class CharactersData {
   }
   
   public List<String> toCandidateList(final boolean traditionalIsPreferred, final Comparator<String> comparator) {
-    return toCandidateList(comparator, Integer.MAX_VALUE, traditionalIsPreferred);
+    return toCandidateList(traditionalIsPreferred, comparator, Integer.MAX_VALUE);
   }
   
   public List<String> toCandidateList(
+    final boolean traditionalIsPreferred,
     final Comparator<String> comparator,
-    final int maxCandidateCount,
-    final boolean traditionalIsPreferred
+    final int maxCandidateCount
   )
   {
     
