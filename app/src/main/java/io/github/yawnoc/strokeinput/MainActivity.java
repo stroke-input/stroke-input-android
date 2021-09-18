@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import io.github.yawnoc.utilities.Contexty;
@@ -115,6 +116,15 @@ public class MainActivity
     
     candidateOrderDialog = candidateOrderDialogBuilder.create();
     candidateOrderDialog.show();
+    
+    final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
+    final boolean traditionalIsPreferred = loadSavedTraditionalIsPreferred();
+    final int savedCandidateOrderButtonId = (
+      traditionalIsPreferred
+        ? R.id.prefer_traditional_button
+        : R.id.prefer_simplified_button
+    );
+    candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
   }
   
   private void showHtmlWebView(final String uri) {
