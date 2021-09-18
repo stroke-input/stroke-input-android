@@ -187,50 +187,8 @@ public class StrokeInputService
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
-    
-    final long phraseSetStartMillis = System.currentTimeMillis();
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME_TRADITIONAL);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          phraseSetTraditional.add(line);
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(PHRASES_FILE_NAME_SIMPLIFIED);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          phraseSetSimplified.add(line);
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    final long phraseSetEndMillis = System.currentTimeMillis();
-    Log.i(
-      "StrokeInputService",
-      "Loading of phrase set: "
-        + (phraseSetEndMillis - phraseSetStartMillis)
-        + " milliseconds"
-    );
+    loadPhrasesDataIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
+    loadPhrasesDataIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
     
     updateCandidateOrderPreference();
     
@@ -318,6 +276,32 @@ public class StrokeInputService
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
+    
+  }
+  
+  private void loadPhrasesDataIntoSet(final String phrasesFileName, final NavigableSet<String> phraseSet) {
+    
+    final long startMillis = System.currentTimeMillis();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(phrasesFileName);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          phraseSet.add(line);
+        }
+      }
+      
+    }
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    final long endMillis = System.currentTimeMillis();
+    sendLoadingTimeLog(phrasesFileName, endMillis - startMillis);
     
   }
   
