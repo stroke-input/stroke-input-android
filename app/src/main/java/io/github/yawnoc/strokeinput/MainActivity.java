@@ -49,23 +49,26 @@ public class MainActivity
     findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
-    setCandidateOrderButtonText(loadSavedTraditionalIsPreferred());
+    final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
+    setCandidateOrderButtonText(traditionalIsPreferred);
   }
   
-  private boolean loadSavedTraditionalIsPreferred() {
+  private boolean isTraditionalPreferred(final String candidateOrderPreference) {
     
-    final String savedCandidateOrderPreference =
+    if (candidateOrderPreference == null) {
+      return true;
+    }
+    
+    return !candidateOrderPreference.equals("PREFER_SIMPLIFIED");
+  }
+  
+  private String loadSavedCandidateOrderPreference() {
+    return
       Contexty.loadPreferenceString(
         getApplicationContext(),
         StrokeInputService.PREFERENCES_FILE_NAME,
         "candidateOrderPreference"
       );
-    
-    if (savedCandidateOrderPreference == null) {
-      return true;
-    }
-    
-    return !savedCandidateOrderPreference.equals("PREFER_SIMPLIFIED");
   }
   
   private void setCandidateOrderButtonText(final boolean traditionalIsPreferred) {
@@ -143,7 +146,7 @@ public class MainActivity
     candidateOrderDialog.show();
     
     final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
-    final boolean traditionalIsPreferred = loadSavedTraditionalIsPreferred();
+    final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
     final int savedCandidateOrderButtonId = (
       traditionalIsPreferred
         ? R.id.prefer_traditional_button
