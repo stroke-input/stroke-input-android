@@ -182,62 +182,8 @@ public class StrokeInputService
     
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
-    
-    final long sortingRankStartMillis = System.currentTimeMillis();
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME_TRADITIONAL);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      int currentRank = 0;
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          for (final String character : Stringy.toCharacterList(line)) {
-            if (!sortingRankFromCharacterTraditional.containsKey(character)) {
-              currentRank++;
-              sortingRankFromCharacterTraditional.put(character, currentRank);
-            }
-          }
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(RANKING_FILE_NAME_SIMPLIFIED);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      int currentRank = 0;
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          for (final String character : Stringy.toCharacterList(line)) {
-            if (!sortingRankFromCharacterSimplified.containsKey(character)) {
-              currentRank++;
-              sortingRankFromCharacterSimplified.put(character, currentRank);
-            }
-          }
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    final long sortingRankEndMillis = System.currentTimeMillis();
-    Log.i(
-      "StrokeInputService",
-      "Loading of sorting rank: "
-        + (sortingRankEndMillis - sortingRankStartMillis)
-        + " milliseconds"
-    );
+    loadSortingRankDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCharacterTraditional);
+    loadSortingRankDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCharacterSimplified);
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
@@ -335,6 +281,43 @@ public class StrokeInputService
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(sequenceCharactersFileName, endMillis - startMillis);
+    
+  }
+  
+  private void loadSortingRankDataIntoMap(
+    final String rankingFileName,
+    final Map<String, Integer> sortingRankFromCharacter
+  )
+  {
+    
+    final long startMillis = System.currentTimeMillis();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(rankingFileName);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      int currentRank = 0;
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          for (final String character : Stringy.toCharacterList(line)) {
+            if (!sortingRankFromCharacter.containsKey(character)) {
+              currentRank++;
+              sortingRankFromCharacter.put(character, currentRank);
+            }
+          }
+        }
+      }
+      
+    }
+    
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    final long endMillis = System.currentTimeMillis();
+    sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
     
   }
   
