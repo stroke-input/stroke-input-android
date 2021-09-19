@@ -195,7 +195,7 @@ public class StrokeInputService
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-  private boolean isCommentLine(final String line) {
+  private static boolean isCommentLine(final String line) {
     return line.startsWith("#") || line.length() == 0;
   }
   
