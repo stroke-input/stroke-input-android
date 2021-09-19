@@ -46,5 +46,5 @@
 
 
 <footer>
-  此頁之 [CMD] 源碼： \cmd-source
+  此頁之 [CMD] 原始程式： \cmd-source
 </footer>
