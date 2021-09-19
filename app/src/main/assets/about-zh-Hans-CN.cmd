@@ -26,7 +26,7 @@ __[笔画输入法]__是自由软件，恕无担保。
 ----
 
 
-## 建体所靠的东西 ##
+## 建体所倚靠的东西 ##
 
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
