@@ -10,10 +10,10 @@
     you must manually enable it in the system settings before it can be used:
   </string>
   <string name="label__main_activity__input_method_settings_button">Input method settings</string>
-  <string name="text__main_activity__switch_keyboard">
-    If your existing input method provides no means of switching keyboards:
+  <string name="text__main_activity__change_keyboard">
+    If your existing input method provides no means of changing keyboards:
   </string>
-  <string name="label__main_activity__switch_keyboard_button">Switch keyboard</string>
+  <string name="label__main_activity__change_keyboard_button">Change keyboard</string>
   <string name="text__main_activity__candidate_order">
     Candidate order:
   </string>

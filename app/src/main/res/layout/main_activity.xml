@@ -48,12 +48,12 @@
     />
     <TextView
       style="@style/MainActivityText"
-      android:text="@string/text__main_activity__switch_keyboard"
+      android:text="@string/text__main_activity__change_keyboard"
     />
     <Button
       style="@style/MainActivityButton"
-      android:id="@+id/switch_keyboard_button"
-      android:text="@string/label__main_activity__switch_keyboard_button"
+      android:id="@+id/change_keyboard_button"
+      android:text="@string/label__main_activity__change_keyboard_button"
     />
     <TextView
       style="@style/MainActivityText"

@@ -48,7 +48,7 @@ public final class Contexty {
     context.startActivity(inputMethodSettingsIntent);
   }
   
-  public static void showSystemKeyboardSwitcher(final Context context) {
+  public static void showSystemKeyboardChanger(final Context context) {
     final InputMethodManager inputMethodManager =
       (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.showInputMethodPicker();

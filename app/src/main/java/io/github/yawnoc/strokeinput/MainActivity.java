@@ -53,7 +53,7 @@ public class MainActivity
     findViewById(R.id.help_button).setOnClickListener(this);
     findViewById(R.id.about_button).setOnClickListener(this);
     findViewById(R.id.input_method_settings_button).setOnClickListener(this);
-    findViewById(R.id.switch_keyboard_button).setOnClickListener(this);
+    findViewById(R.id.change_keyboard_button).setOnClickListener(this);
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
@@ -123,8 +123,8 @@ public class MainActivity
     else if (viewId == R.id.input_method_settings_button) {
       Contexty.showSystemInputMethodSettings(this);
     }
-    else if (viewId == R.id.switch_keyboard_button) {
-      Contexty.showSystemKeyboardSwitcher(this);
+    else if (viewId == R.id.change_keyboard_button) {
+      Contexty.showSystemKeyboardChanger(this);
     }
     else if (viewId == R.id.candidate_order_button) {
       showCandidateOrderDialog();
