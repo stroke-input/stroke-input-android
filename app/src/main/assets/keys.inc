@@ -6,4 +6,3 @@
 
 {: \space-bar-en: <kbd class="space-bar">◀ English ▶</kbd> :}
 {: \space-bar-zh: <kbd class="space-bar">◀ 中文 ▶</kbd> :}
-{: \enter-key: <kbd class="enter-key">⏎</kbd> :}

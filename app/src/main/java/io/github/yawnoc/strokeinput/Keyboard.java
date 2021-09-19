@@ -43,6 +43,10 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Keyboard {
   
+  private static final String KEYBOARD_TAG = "Keyboard";
+  private static final String ROW_TAG = "Row";
+  private static final String KEY_TAG = "Key";
+  
   private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 24;
   private final int strokeSequenceBarHeightPx;
   public static final int CANDIDATES_BAR_HEIGHT_DP = 36;
@@ -121,6 +125,7 @@ public class Keyboard {
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
     adjustKeyboardVertically(isFullscreenMode);
+    
   }
   
   public List<Key> getKeyList() {
@@ -179,25 +184,28 @@ public class Keyboard {
       int event;
       
       while ((event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT) {
+        
         switch (event) {
+          
           case XmlResourceParser.START_TAG:
             final String xmlTag = xmlResourceParser.getName();
             switch (xmlTag) {
-              case "Keyboard":
+              case KEYBOARD_TAG:
                 parseKeyboardAttributes(resources, xmlResourceParser);
                 break;
-              case "Row":
+              case ROW_TAG:
                 inRow = true;
                 row = new Row(this, resources, xmlResourceParser);
                 x = row.offsetX;
                 break;
-              case "Key":
+              case KEY_TAG:
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
                 keyList.add(key);
                 break;
             }
             break;
+          
           case XmlResourceParser.END_TAG:
             if (inKey) {
               inKey = false;
@@ -210,16 +218,23 @@ public class Keyboard {
               maximumY = Math.max(y, maximumY);
             }
             break;
+          
         }
+        
       }
       
       width = maximumX;
       height = maximumY;
+      
     }
+    
     catch (Exception exception) {
+      
       Log.e("Keyboard.makeKeyboard", "Exception: " + exception);
       exception.printStackTrace();
+      
     }
+    
   }
   
   private void adjustKeyboardVertically(final boolean isFullscreenMode) {
@@ -249,11 +264,14 @@ public class Keyboard {
     else {
       popupBufferZoneHeight = candidatesBarHeightPx;
     }
+    
     for (final Key key : keyList) {
       key.y += popupBufferZoneHeight;
     }
+    
     parentInputContainerHeight = height + popupBufferZoneHeight;
     parentInputContainerTouchableTopY = Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
+    
   }
   
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser) {
@@ -309,6 +327,7 @@ public class Keyboard {
       );
     
     attributesArray.recycle();
+    
   }
   
 }

@@ -9,6 +9,7 @@
 :}
 @@[Stroke Input Method] \stroke-input-url @@
 @@[筆畫輸入法] \stroke-input-url @@
+@@[笔画输入法] \stroke-input-url @@
 
 @@[`Keyboard.java`]
   https://android.googlesource.com/platform/frameworks/base/+/\
@@ -26,7 +27,7 @@
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
-{: \stroke-data-version : v0.2.6 :}
+{: \stroke-data-version : v0.3.0 :}
 @@[Conway Stroke Data]
   https://github.com/stroke-input/stroke-input-data
 @@

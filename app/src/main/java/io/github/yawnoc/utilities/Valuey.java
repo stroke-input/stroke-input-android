@@ -49,10 +49,12 @@ public class Valuey {
     final int defaultValue
   )
   {
+    
     final TypedValue value = array.peekValue(attributeIndex);
     if (value == null) {
       return defaultValue;
     }
+    
     switch (value.type) {
       case TypedValue.TYPE_DIMENSION:
         return array.getDimensionPixelOffset(attributeIndex, defaultValue);
@@ -61,6 +63,7 @@ public class Valuey {
       default:
         return defaultValue;
     }
+    
   }
   
 }

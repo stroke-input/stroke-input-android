@@ -119,6 +119,7 @@ public class Row {
       );
     
     attributesArray.recycle();
+    
   }
   
 }

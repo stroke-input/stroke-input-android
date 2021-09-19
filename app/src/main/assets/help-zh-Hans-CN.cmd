@@ -3,8 +3,8 @@
 {+ keys.inc +}
 
 %%
-  %lang zh-Hant-TW
-  %title 說明
+  %lang zh-Hans-CN
+  %title 说明
   %resources <link rel="stylesheet" href="webview.css">
 %%
 
@@ -12,39 +12,39 @@
 # %title #
 
 
-## 筆畫 ##
+## 笔画 ##
 
 ''''
 ==
   , <kbd class="stroke-key">\stroke-1</kbd>
-  , 橫、提
+  , 横、提
 ==
   , <kbd class="stroke-key">\stroke-2</kbd>
-  , 豎、豎鉤
+  , 竖、竖钩
 ==
   , <kbd class="stroke-key">\stroke-3</kbd>
   , 撇
 ==
   , <kbd class="stroke-key">\stroke-4</kbd>
-  , 捺、點
+  , 捺、点
 ==
   , <kbd class="stroke-key">\stroke-5</kbd>
-  , 折、彎
+  , 折、弯
 ''''
 
 
-## 雜項 ##
+## 杂项 ##
 
 ''''
 ==
-  , 橫掃 \space-bar-zh
-  , 轉語言
+  , 横扫 \space-bar-zh
+  , 转语言
 ==
-  , 長按 \space-bar-zh
-  , 轉其他鍵盤
+  , 长按 \space-bar-zh
+  , 转其他键盘
 ''''
 
 
 <footer>
-  此頁之 [CMD] 源碼： \cmd-source
+  此页的 [CMD] 源码： \cmd-source
 </footer>

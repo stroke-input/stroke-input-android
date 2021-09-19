@@ -40,9 +40,6 @@
 ==
   , Long press \space-bar-en
   , Change to other keyboard
-==
-  , Long press \enter-key
-  , Testing use only
 ''''
 
 

@@ -25,6 +25,7 @@ import java.util.List;
 public class CandidatesBarAdapter
   extends RecyclerView.Adapter<CandidatesBarAdapter.ButtonHolder>
 {
+  
   private OnCandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
@@ -71,6 +72,7 @@ public class CandidatesBarAdapter
     extends RecyclerView.ViewHolder
     implements View.OnClickListener
   {
+    
     private final Button candidateButton;
     
     public ButtonHolder(final Button candidateButton) {
@@ -86,5 +88,7 @@ public class CandidatesBarAdapter
       }
       candidateListener.onCandidate((String) candidateButton.getText());
     }
+    
   }
+  
 }

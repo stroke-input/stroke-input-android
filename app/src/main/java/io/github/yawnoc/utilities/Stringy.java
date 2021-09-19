@@ -32,6 +32,7 @@ public class Stringy {
     
     final char firstChar = string.charAt(0);
     return firstChar < Character.MIN_SURROGATE || firstChar > Character.MAX_SURROGATE;
+    
   }
   
   public static String removePrefix(final String prefixRegex, final String string) {
@@ -56,7 +57,7 @@ public class Stringy {
   /*
     Convert a string to a list of (unicode) code points
   */
-  public static List<Integer> toCodepointList(final String string) {
+  public static List<Integer> toCodePointList(final String string) {
     
     final List<Integer> codePointList = new ArrayList<>();
     
@@ -68,6 +69,7 @@ public class Stringy {
     }
     
     return codePointList;
+    
   }
   
   /*
@@ -95,6 +97,7 @@ public class Stringy {
     }
     
     return characterList;
+    
   }
   
   /*
@@ -117,5 +120,7 @@ public class Stringy {
     }
     
     return new String[]{substringBeforeDelimiter, substringAfterDelimiter};
+    
   }
+  
 }
