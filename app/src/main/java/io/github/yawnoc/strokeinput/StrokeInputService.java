@@ -98,6 +98,7 @@ public class StrokeInputService
   
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
+  private static final int LAGGY_STROKE_SEQUENCE_LENGTH = 1;
   private static final int RANKING_PENALTY_PER_CHAR = 3000;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
@@ -737,10 +738,16 @@ public class StrokeInputService
     for (final CharactersData charactersData : prefixMatchCharactersDataCollection) {
       prefixMatchCharactersData.addData(charactersData);
     }
+    final Set<String> allowedCharacterSet = (
+      strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH
+        ? sortingRankFromCharacter.keySet() // restrict to prevent lag from large number of candidates
+        : null // allow everything
+    );
     final List<String> prefixMatchCandidateList =
       prefixMatchCharactersData.toCandidateList(
         traditionalIsPreferred,
         candidateComparator(phraseCompletionFirstCharacterList),
+        allowedCharacterSet,
         MAX_PREFIX_MATCH_COUNT
       );
     

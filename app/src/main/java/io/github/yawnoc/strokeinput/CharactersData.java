@@ -57,12 +57,13 @@ public class CharactersData {
   }
   
   public List<String> toCandidateList(final boolean traditionalIsPreferred, final Comparator<String> comparator) {
-    return toCandidateList(traditionalIsPreferred, comparator, Integer.MAX_VALUE);
+    return toCandidateList(traditionalIsPreferred, comparator, null, Integer.MAX_VALUE);
   }
   
   public List<String> toCandidateList(
     final boolean traditionalIsPreferred,
     final Comparator<String> comparator,
+    final Set<String> allowedCharacterSet,
     final int maxCandidateCount
   )
   {
@@ -82,13 +83,21 @@ public class CharactersData {
     }
     
     for (final int dualCodePoint : dualCodePointSet) {
-      preferredList.add(Stringy.toString(dualCodePoint));
+      final String dualCharacter = Stringy.toString(dualCodePoint);
+      if (allowedCharacterSet == null || allowedCharacterSet.contains(dualCharacter)) {
+        preferredList.add(dualCharacter);
+      }
     }
     for (final int traditionalCodePoint : traditionalCodePointSet) {
-      traditionalList.add(Stringy.toString(traditionalCodePoint));
+      final String traditionalCharacter = Stringy.toString(traditionalCodePoint);
+      if (allowedCharacterSet == null || allowedCharacterSet.contains(traditionalCharacter)) {
+        traditionalList.add(traditionalCharacter);
+      }
     }
     for (final int simplifiedCodePoint : simplifiedCodePointSet) {
-      simplifiedList.add(Stringy.toString(simplifiedCodePoint));
+      final String simplifiedCharacter = Stringy.toString(simplifiedCodePoint);
+      if (allowedCharacterSet == null || allowedCharacterSet.contains(simplifiedCharacter))
+      simplifiedList.add(simplifiedCharacter);
     }
     
     Collections.sort(preferredList, comparator);
