@@ -121,6 +121,7 @@ public class InputContainer
   
   // Candidates bar
   private CandidatesBarAdapter candidatesBarAdapter;
+  private RecyclerView candidatesBar;
   private PopupWindow candidatesBarPopup;
   
   // Key preview plane
@@ -209,7 +210,7 @@ public class InputContainer
     candidatesBarAdapter = new CandidatesBarAdapter(context, new ArrayList<>());
     
     LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    final RecyclerView candidatesBar = (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
+    candidatesBar = (RecyclerView) layoutInflater.inflate(R.layout.candidates_bar, null);
     candidatesBar.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     candidatesBar.setAdapter(candidatesBarAdapter);
     
@@ -300,6 +301,7 @@ public class InputContainer
   
   public void setCandidateList(final List<String> candidateList) {
     candidatesBarAdapter.updateCandidateList(candidateList);
+    candidatesBar.scrollToPosition(0);
   }
   
   @SuppressLint("RtlHardcoded")
