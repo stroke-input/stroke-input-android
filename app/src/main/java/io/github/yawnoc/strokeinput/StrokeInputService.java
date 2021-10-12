@@ -499,7 +499,7 @@ public class StrokeInputService
           }
           else {
             final int charCount = ( // damn you Java for using UTF-16
-              Stringy.firstCharacterIsBasic(upToOneCharacterBeforeCursor)
+              Stringy.isFirstCharacterBasic(upToOneCharacterBeforeCursor)
                 ? 1 // Basic Multilingual Plane (single character)
                 : 2 // Supplementary Multilingual Plane (surrogate pair)
             );
