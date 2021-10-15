@@ -102,7 +102,8 @@ public class StrokeInputService
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
   private static final int LAGGY_STROKE_SEQUENCE_LENGTH = 1;
-  private static final int RANKING_PENALTY_PER_CHAR = 3000;
+  private static final int LARGISH_SORTING_RANK = 3000;
+  private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
   private static final int MAX_PHRASE_LENGTH = 6;
@@ -711,6 +712,7 @@ public class StrokeInputService
     
     final String firstCharacter = Stringy.getFirstCharacter(string);
     
+    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCharacterList.size() == 0;
     final int phraseCompletionIndex = phraseCompletionFirstCharacterList.indexOf(firstCharacter);
     final boolean firstCharacterMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
@@ -721,7 +723,16 @@ public class StrokeInputService
     
     final boolean firstCharacterIsUnpreferred = unpreferredCharacterSet.contains(firstCharacter);
     
-    if (firstCharacterMatchesPhraseCompletionCandidate) {
+    if (phraseCompletionListIsEmpty) {
+      coarseRank = Integer.MIN_VALUE;
+      fineRank = (
+        sortingRankDataContainsFirstCharacter
+          ? sortingRank
+          : LARGISH_SORTING_RANK
+      );
+      penalty = lengthPenalty;
+    }
+    else if (firstCharacterMatchesPhraseCompletionCandidate) {
       coarseRank = Integer.MIN_VALUE;
       fineRank = phraseCompletionIndex;
       penalty = lengthPenalty;
