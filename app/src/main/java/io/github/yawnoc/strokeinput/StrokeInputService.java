@@ -119,7 +119,6 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private NavigableMap<String, CharactersData> charactersDataFromStrokeDigitSequence;
   private NavigableMap<String, String> charactersFromStrokeDigitSequence;
   private Set<String> characterSetTraditional;
   private Set<String> characterSetSimplified;
@@ -185,7 +184,6 @@ public class StrokeInputService
   
   private void initialiseStrokeInput() {
     
-    charactersDataFromStrokeDigitSequence = new TreeMap<>();
     charactersFromStrokeDigitSequence = new TreeMap<>();
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
