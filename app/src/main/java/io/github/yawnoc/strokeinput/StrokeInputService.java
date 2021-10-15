@@ -800,17 +800,17 @@ public class StrokeInputService
     
     updateCandidateOrderPreference();
     
-    final CharactersData exactMatchCharactersData = charactersDataFromStrokeDigitSequence.get(strokeDigitSequence);
     final List<String> exactMatchCandidateList;
-    if (exactMatchCharactersData == null) {
+    final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
+    if (exactMatchCharacters == null) {
       exactMatchCandidateList = Collections.emptyList();
     }
     else {
-      exactMatchCandidateList =
-        exactMatchCharactersData.toCandidateList(
-          traditionalIsPreferred,
-          candidateComparator(phraseCompletionFirstCharacterList)
-        );
+      exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
+      Collections.sort(
+        exactMatchCandidateList,
+        candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
+      );
     }
     
     final CharactersData prefixMatchCharactersData = new CharactersData("");
