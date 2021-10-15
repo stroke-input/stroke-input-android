@@ -50,12 +50,6 @@ public class CharactersData {
     
   }
   
-  public void addData(final CharactersData charactersData) {
-    dualCodePointSet.addAll(charactersData.dualCodePointSet);
-    traditionalCodePointSet.addAll(charactersData.traditionalCodePointSet);
-    simplifiedCodePointSet.addAll(charactersData.simplifiedCodePointSet);
-  }
-  
   public List<String> toCandidateList(final boolean traditionalIsPreferred, final Comparator<String> comparator) {
     return toCandidateList(traditionalIsPreferred, comparator, null, Integer.MAX_VALUE);
   }
