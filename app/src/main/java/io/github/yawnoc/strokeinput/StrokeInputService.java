@@ -117,6 +117,7 @@ public class StrokeInputService
   private InputContainer inputContainer;
   
   private NavigableMap<String, CharactersData> charactersDataFromStrokeDigitSequence;
+  private NavigableMap<String, String> charactersFromStrokeDigitSequence;
   private Map<String, Integer> sortingRankFromCharacterTraditional;
   private Map<String, Integer> sortingRankFromCharacterSimplified;
   private NavigableSet<String> phraseSetTraditional;
@@ -179,7 +180,8 @@ public class StrokeInputService
   private void initialiseStrokeInput() {
     
     charactersDataFromStrokeDigitSequence = new TreeMap<>();
-    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersDataFromStrokeDigitSequence);
+    charactersFromStrokeDigitSequence = new TreeMap<>();
+    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
@@ -203,7 +205,7 @@ public class StrokeInputService
   @SuppressWarnings("SameParameterValue")
   private void loadSequenceCharactersDataIntoMap(
     final String sequenceCharactersFileName,
-    final Map<String, CharactersData> charactersDataFromStrokeDigitSequence
+    final Map<String, String> charactersFromStrokeDigitSequence
   )
   {
     
@@ -221,12 +223,9 @@ public class StrokeInputService
           
           final String[] sunderedLineArray = Stringy.sunder(line, "\t");
           final String strokeDigitSequence = sunderedLineArray[0];
-          final String commaSeparatedCharacters = sunderedLineArray[1];
+          final String characters = sunderedLineArray[1];
           
-          charactersDataFromStrokeDigitSequence.put(
-            strokeDigitSequence,
-            new CharactersData(commaSeparatedCharacters)
-          );
+          charactersFromStrokeDigitSequence.put(strokeDigitSequence, characters);
           
         }
         
