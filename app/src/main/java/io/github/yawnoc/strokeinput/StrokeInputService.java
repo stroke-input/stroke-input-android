@@ -813,34 +813,27 @@ public class StrokeInputService
       );
     }
     
-    final CharactersData prefixMatchCharactersData = new CharactersData("");
-    final Collection<CharactersData> prefixMatchCharactersDataCollection = (
-      charactersDataFromStrokeDigitSequence
+    final List<String> prefixMatchCandidateList = new ArrayList<>();
+    final Collection<String> prefixMatchCharactersCollection = (
+      charactersFromStrokeDigitSequence
         .subMap(
           strokeDigitSequence, false,
           strokeDigitSequence + Character.MAX_VALUE, false
         )
         .values()
     );
-    for (final CharactersData charactersData : prefixMatchCharactersDataCollection) {
-      prefixMatchCharactersData.addData(charactersData);
+    for (final String characters : prefixMatchCharactersCollection) {
+      prefixMatchCandidateList.addAll(Stringy.toCharacterList(characters));
     }
-    final Set<String> allowedCharacterSet = (
-      strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH
-        ? sortingRankFromCharacter.keySet() // restrict to prevent lag from large number of candidates
-        : null // allow everything
+    Collections.sort(
+      prefixMatchCandidateList,
+      candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
     );
-    final List<String> prefixMatchCandidateList =
-      prefixMatchCharactersData.toCandidateList(
-        traditionalIsPreferred,
-        candidateComparator(phraseCompletionFirstCharacterList),
-        allowedCharacterSet,
-        MAX_PREFIX_MATCH_COUNT
-      );
     
     final List<String> candidateList = new ArrayList<>();
+    final int prefixMatchCount = Math.min(prefixMatchCandidateList.size(), MAX_PREFIX_MATCH_COUNT);
     candidateList.addAll(exactMatchCandidateList);
-    candidateList.addAll(prefixMatchCandidateList);
+    candidateList.addAll(prefixMatchCandidateList.subList(0, prefixMatchCount));
     
     return candidateList;
     
