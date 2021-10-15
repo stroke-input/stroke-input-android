@@ -127,7 +127,6 @@ public class StrokeInputService
   private NavigableSet<String> phraseSetTraditional;
   private NavigableSet<String> phraseSetSimplified;
   
-  private boolean traditionalIsPreferred;
   private Set<String> unpreferredCharacterSet;
   private Map<String, Integer> sortingRankFromCharacter;
   private NavigableSet<String> phraseSet;
@@ -910,9 +909,7 @@ public class StrokeInputService
   
   private void updateCandidateOrderPreference() {
     
-    traditionalIsPreferred = shouldPreferTraditional();
-    
-    if (traditionalIsPreferred) {
+    if (shouldPreferTraditional()) {
       unpreferredCharacterSet = characterSetSimplified;
       sortingRankFromCharacter = sortingRankFromCharacterTraditional;
       phraseSet = phraseSetTraditional;
