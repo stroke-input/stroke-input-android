@@ -680,13 +680,13 @@ public class StrokeInputService
     return
       (string1, string2) ->
         Integer.compare(
-          computeSortingRank(
+          computeCandidateRank(
             string1,
             unpreferredCharacterSet,
             sortingRankFromCharacter,
             phraseCompletionFirstCharacterList
           ),
-          computeSortingRank(
+          computeCandidateRank(
             string2,
             unpreferredCharacterSet,
             sortingRankFromCharacter,
@@ -696,9 +696,9 @@ public class StrokeInputService
   }
   
   /*
-    Compute the sorting rank for a string, based on its first character.
+    Compute the candidate rank for a string, based on its first character.
   */
-  private int computeSortingRank(
+  private int computeCandidateRank(
     final String string,
     final Set<String> unpreferredCharacterSet,
     final Map<String, Integer> sortingRankFromCharacter,
