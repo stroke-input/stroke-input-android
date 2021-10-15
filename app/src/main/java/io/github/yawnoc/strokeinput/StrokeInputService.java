@@ -825,6 +825,10 @@ public class StrokeInputService
     for (final String characters : prefixMatchCharactersCollection) {
       prefixMatchCharacterSet.addAll(Stringy.toCharacterList(characters));
     }
+    if (strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH) {
+      // Restrict to common (ranked) characters to prevent lag
+      prefixMatchCharacterSet.retainAll(sortingRankFromCharacter.keySet());
+    }
     
     final List<String> prefixMatchCandidateList = new ArrayList<>(prefixMatchCharacterSet);
     Collections.sort(
