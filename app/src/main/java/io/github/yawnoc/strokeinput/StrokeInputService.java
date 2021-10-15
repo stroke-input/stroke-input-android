@@ -669,10 +669,6 @@ public class StrokeInputService
     
   }
   
-  private Comparator<String> candidateComparator() {
-    return candidateComparator(Collections.emptyList());
-  }
-  
   @SuppressWarnings("ComparatorCombinators")
   private Comparator<String> candidateComparator(
     final Set<String> unpreferredCharacterSet,
@@ -695,16 +691,6 @@ public class StrokeInputService
             sortingRankFromCharacter,
             phraseCompletionFirstCharacterList
           )
-        );
-  }
-  
-  @SuppressWarnings("ComparatorCombinators")
-  private Comparator<String> candidateComparator(final List<String> phraseCompletionFirstCharacterList) {
-    return
-      (string1, string2) ->
-        Integer.compare(
-          computeSortingRank(string1, phraseCompletionFirstCharacterList),
-          computeSortingRank(string2, phraseCompletionFirstCharacterList)
         );
   }
   
@@ -756,36 +742,6 @@ public class StrokeInputService
     }
     
     return coarseRank + fineRank + penalty;
-    
-  }
-  
-  /*
-    Compute the sorting rank for a string, based on its first character.
-    The overall rank consists of a base rank plus a length penalty.
-    The base rank is thus:
-      If the first character matches that of a phrase completion candidate:
-        {negative infinity} + {phrase completion index};
-      Else, if the first character is a common character (in "ranking.txt"):
-        {ranking in "ranking.txt"};
-      Else:
-        {positive infinity}.
-  */
-  private int computeSortingRank(final String string, final List<String> phraseCompletionFirstCharacterList) {
-    
-    final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
-    final String firstCharacter = Stringy.getFirstCharacter(string);
-    
-    final int phraseCompletionIndex = phraseCompletionFirstCharacterList.indexOf(firstCharacter);
-    if (phraseCompletionIndex > 0) {
-      return Integer.MIN_VALUE + phraseCompletionIndex + lengthPenalty;
-    }
-    
-    final Integer baseRank = sortingRankFromCharacter.get(firstCharacter);
-    if (baseRank != null) {
-      return baseRank + lengthPenalty;
-    }
-    
-    return Integer.MAX_VALUE;
     
   }
   
