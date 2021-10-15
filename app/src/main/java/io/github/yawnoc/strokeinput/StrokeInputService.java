@@ -677,6 +677,31 @@ public class StrokeInputService
   }
   
   @SuppressWarnings("ComparatorCombinators")
+  private Comparator<String> candidateComparator(
+    final Set<String> unpreferredCharacterSet,
+    final Map<String, Integer> sortingRankFromCharacter,
+    final List<String> phraseCompletionFirstCharacterList
+  )
+  {
+    return
+      (string1, string2) ->
+        Integer.compare(
+          computeSortingRank(
+            string1,
+            unpreferredCharacterSet,
+            sortingRankFromCharacter,
+            phraseCompletionFirstCharacterList
+          ),
+          computeSortingRank(
+            string2,
+            unpreferredCharacterSet,
+            sortingRankFromCharacter,
+            phraseCompletionFirstCharacterList
+          )
+        );
+  }
+  
+  @SuppressWarnings("ComparatorCombinators")
   private Comparator<String> candidateComparator(final List<String> phraseCompletionFirstCharacterList) {
     return
       (string1, string2) ->
