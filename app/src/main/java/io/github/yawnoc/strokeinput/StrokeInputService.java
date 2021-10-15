@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
@@ -91,6 +92,8 @@ public class StrokeInputService
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String SEQUENCE_CHARACTERS_FILE_NAME = "sequence-characters.txt";
+  private static final String CHARACTERS_FILE_NAME_TRADITIONAL = "characters-traditional.txt";
+  private static final String CHARACTERS_FILE_NAME_SIMPLIFIED = "characters-simplified.txt";
   private static final String RANKING_FILE_NAME_TRADITIONAL = "ranking-traditional.txt";
   private static final String RANKING_FILE_NAME_SIMPLIFIED = "ranking-simplified.txt";
   private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases-traditional.txt";
@@ -118,12 +121,15 @@ public class StrokeInputService
   
   private NavigableMap<String, CharactersData> charactersDataFromStrokeDigitSequence;
   private NavigableMap<String, String> charactersFromStrokeDigitSequence;
+  private Set<String> characterSetTraditional;
+  private Set<String> characterSetSimplified;
   private Map<String, Integer> sortingRankFromCharacterTraditional;
   private Map<String, Integer> sortingRankFromCharacterSimplified;
   private NavigableSet<String> phraseSetTraditional;
   private NavigableSet<String> phraseSetSimplified;
   
   private boolean traditionalIsPreferred;
+  private Set<String> unpreferredCharacterSet;
   private Map<String, Integer> sortingRankFromCharacter;
   private NavigableSet<String> phraseSet;
   
@@ -183,6 +189,11 @@ public class StrokeInputService
     charactersFromStrokeDigitSequence = new TreeMap<>();
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
+    characterSetTraditional = new HashSet<>();
+    characterSetSimplified = new HashSet<>();
+    loadStringsIntoSet(CHARACTERS_FILE_NAME_TRADITIONAL, characterSetTraditional);
+    loadStringsIntoSet(CHARACTERS_FILE_NAME_SIMPLIFIED, characterSetSimplified);
+    
     sortingRankFromCharacterTraditional = new HashMap<>();
     sortingRankFromCharacterSimplified = new HashMap<>();
     loadRankingDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCharacterTraditional);
@@ -239,6 +250,33 @@ public class StrokeInputService
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(sequenceCharactersFileName, endMillis - startMillis);
+    
+  }
+  
+  private void loadStringsIntoSet(final String stringsFileName, final Set<String> stringSet) {
+    
+    final long startMillis = System.currentTimeMillis();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(stringsFileName);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          stringSet.add(line);
+        }
+      }
+      
+    }
+    
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    final long endMillis = System.currentTimeMillis();
+    sendLoadingTimeLog(stringsFileName, endMillis - startMillis);
     
   }
   
@@ -828,10 +866,12 @@ public class StrokeInputService
     traditionalIsPreferred = shouldPreferTraditional();
     
     if (traditionalIsPreferred) {
+      unpreferredCharacterSet = characterSetSimplified;
       sortingRankFromCharacter = sortingRankFromCharacterTraditional;
       phraseSet = phraseSetTraditional;
     }
     else {
+      unpreferredCharacterSet = characterSetTraditional;
       sortingRankFromCharacter = sortingRankFromCharacterSimplified;
       phraseSet = phraseSetSimplified;
     }
