@@ -688,6 +688,57 @@ public class StrokeInputService
   
   /*
     Compute the sorting rank for a string, based on its first character.
+  */
+  private int computeSortingRank(
+    final String string,
+    final Set<String> unpreferredCharacterSet,
+    final Map<String, Integer> sortingRankFromCharacter,
+    final List<String> phraseCompletionFirstCharacterList
+  )
+  {
+    
+    final int coarseRank;
+    final int fineRank;
+    final int penalty;
+    
+    final String firstCharacter = Stringy.getFirstCharacter(string);
+    
+    final int phraseCompletionIndex = phraseCompletionFirstCharacterList.indexOf(firstCharacter);
+    final boolean firstCharacterMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
+    
+    final Integer sortingRank = sortingRankFromCharacter.get(firstCharacter);
+    final boolean sortingRankDataContainsFirstCharacter = sortingRank != null;
+    
+    final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
+    
+    final boolean firstCharacterIsUnpreferred = unpreferredCharacterSet.contains(firstCharacter);
+    
+    if (firstCharacterMatchesPhraseCompletionCandidate) {
+      coarseRank = Integer.MIN_VALUE;
+      fineRank = phraseCompletionIndex;
+      penalty = lengthPenalty;
+    }
+    else if (sortingRankDataContainsFirstCharacter) {
+      coarseRank = 0;
+      fineRank = sortingRank;
+      penalty = lengthPenalty;
+    }
+    else {
+      coarseRank = Integer.MAX_VALUE / 2;
+      fineRank = 0;
+      penalty = (
+        firstCharacterIsUnpreferred
+          ? Integer.MAX_VALUE / 2
+          : 0
+      );
+    }
+    
+    return coarseRank + fineRank + penalty;
+    
+  }
+  
+  /*
+    Compute the sorting rank for a string, based on its first character.
     The overall rank consists of a base rank plus a length penalty.
     The base rank is thus:
       If the first character matches that of a phrase completion candidate:
