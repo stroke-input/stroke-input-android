@@ -201,8 +201,8 @@ public class StrokeInputService
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
-    loadPhrasesDataIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadPhrasesDataIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    loadStringsIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
+    loadStringsIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
     
     updateCandidateOrderPreference();
     
@@ -314,32 +314,6 @@ public class StrokeInputService
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
-    
-  }
-  
-  private void loadPhrasesDataIntoSet(final String phrasesFileName, final NavigableSet<String> phraseSet) {
-    
-    final long startMillis = System.currentTimeMillis();
-    
-    try {
-      
-      final InputStream inputStream = getAssets().open(phrasesFileName);
-      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
-      String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          phraseSet.add(line);
-        }
-      }
-      
-    }
-    catch (IOException exception) {
-      exception.printStackTrace();
-    }
-    
-    final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(phrasesFileName, endMillis - startMillis);
     
   }
   
