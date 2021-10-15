@@ -813,7 +813,7 @@ public class StrokeInputService
       );
     }
     
-    final List<String> prefixMatchCandidateList = new ArrayList<>();
+    final Set<String> prefixMatchCharacterSet = new HashSet<>();
     final Collection<String> prefixMatchCharactersCollection = (
       charactersFromStrokeDigitSequence
         .subMap(
@@ -823,8 +823,10 @@ public class StrokeInputService
         .values()
     );
     for (final String characters : prefixMatchCharactersCollection) {
-      prefixMatchCandidateList.addAll(Stringy.toCharacterList(characters));
+      prefixMatchCharacterSet.addAll(Stringy.toCharacterList(characters));
     }
+    
+    final List<String> prefixMatchCandidateList = new ArrayList<>(prefixMatchCharacterSet);
     Collections.sort(
       prefixMatchCandidateList,
       candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
