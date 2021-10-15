@@ -887,7 +887,10 @@ public class StrokeInputService
           prefixMatchPhraseCompletionList.add(phraseCompletion);
         }
       }
-      Collections.sort(prefixMatchPhraseCompletionList, candidateComparator());
+      Collections.sort(
+        prefixMatchPhraseCompletionList,
+        candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, Collections.emptyList())
+      );
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
