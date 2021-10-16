@@ -794,9 +794,8 @@ public class StrokeInputService
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
-    final boolean sortingRankDataContainsFirstCodePoint = sortingRank != null;
     final int sortingRankCapped = (
-      sortingRankDataContainsFirstCodePoint
+      sortingRank != null
         ? sortingRank
         : LARGISH_SORTING_RANK
     );
