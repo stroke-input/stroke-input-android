@@ -818,15 +818,10 @@ public class StrokeInputService
       fineRank = phraseCompletionIndex;
       penalty = lengthPenalty;
     }
-    else if (sortingRankDataContainsFirstCodePoint) {
+    else {
       coarseRank = 0;
       fineRank = sortingRankCapped;
-      penalty = lengthPenalty;
-    }
-    else {
-      coarseRank = Integer.MAX_VALUE / 2;
-      fineRank = 0;
-      penalty = unpreferredPenalty;
+      penalty = lengthPenalty + unpreferredPenalty;
     }
     
     return coarseRank + fineRank + penalty;
