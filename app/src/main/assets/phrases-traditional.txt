@@ -10,6 +10,9 @@
 
 # To be used for phrase candidates.
 
+# Lines are sorted according to the Sort plugin of Pluma text editor,
+# see <https://github.com/mate-desktop/pluma>.
+
 # Lines beginning with a hash (#) will be ignored.
 
 一下
@@ -1258,8 +1261,10 @@
 併發症
 佼佼
 佼佼者
+使乜
 使人
 使命
+使咩
 使得
 使用
 使用手冊
@@ -1833,6 +1838,7 @@
 光碟
 光碟機
 光禿禿
+光管
 光線
 光纖
 光臨
@@ -4000,6 +4006,8 @@
 單身
 單車
 單靠
+喺度
+喺邊
 嗅覺
 嗎啡
 嗓子
@@ -4638,6 +4646,7 @@
 多少
 多年
 多年前
+多情
 多愁善感
 多數
 多樣
@@ -4703,6 +4712,7 @@
 大可以
 大吉大利
 大同
+大命
 大哥
 大啲
 大器
@@ -8764,6 +8774,7 @@
 早上
 昆士蘭
 時薪
+時髦
 晚上
 暈浪丸
 暴政
@@ -8771,8 +8782,11 @@
 書卷
 月下老人
 月薪
+有冇
 有咗
 有喜
+有沒有
+有無
 有身己
 朝三暮四
 未嘗

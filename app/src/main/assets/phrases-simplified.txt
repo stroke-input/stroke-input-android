@@ -1,5 +1,7 @@
 # # phrases-simplified.txt
 
+# Compiled manually by Conway (@yawnoc).
+
 # Part of 'Conway Stroke Data',
 # see <https://github.com/stroke-input/stroke-input-data>.
 
@@ -7,6 +9,9 @@
 # see <https://creativecommons.org/publicdomain/zero/1.0/>.
 
 # To be used for phrase candidates.
+
+# Lines are sorted according to the Sort plugin of Pluma text editor,
+# see <https://github.com/mate-desktop/pluma>.
 
 # Lines beginning with a hash (#) will be ignored.
 
@@ -4540,6 +4545,7 @@
 多少
 多年
 多年前
+多情
 多愁善感
 多数
 多样
@@ -8456,6 +8462,7 @@
 无论
 早上
 时薪
+时髦
 昆仑
 昆士兰
 昆山
@@ -8468,6 +8475,8 @@
 月薪
 有咗
 有喜
+有无
+有没有
 有身己
 朝三暮四
 未尝
