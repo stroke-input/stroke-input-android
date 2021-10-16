@@ -795,6 +795,11 @@ public class StrokeInputService
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
     final boolean sortingRankDataContainsFirstCodePoint = sortingRank != null;
+    final int sortingRankCapped = (
+      sortingRankDataContainsFirstCodePoint
+        ? sortingRank
+        : LARGISH_SORTING_RANK
+    );
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty = (
@@ -805,11 +810,7 @@ public class StrokeInputService
     
     if (phraseCompletionListIsEmpty) {
       coarseRank = Integer.MIN_VALUE;
-      fineRank = (
-        sortingRankDataContainsFirstCodePoint
-          ? sortingRank
-          : LARGISH_SORTING_RANK
-      );
+      fineRank = sortingRankCapped;
       penalty = lengthPenalty + unpreferredPenalty;
     }
     else if (firstCodePointMatchesPhraseCompletionCandidate) {
@@ -819,7 +820,7 @@ public class StrokeInputService
     }
     else if (sortingRankDataContainsFirstCodePoint) {
       coarseRank = 0;
-      fineRank = sortingRank;
+      fineRank = sortingRankCapped;
       penalty = lengthPenalty;
     }
     else {
