@@ -101,7 +101,7 @@ public class StrokeInputService
   
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
-  private static final int LAGGY_STROKE_SEQUENCE_LENGTH = 3;
+  private static final int LAG_PREVENTION_STROKE_SEQUENCE_LENGTH = 3;
   private static final int LARGISH_SORTING_RANK = 3000;
   private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
   private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
@@ -865,9 +865,8 @@ public class StrokeInputService
       "computeCandidateList",
       (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
     );
-    if (strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH) {
-      // Restrict to common (ranked) characters to prevent lag
-      prefixMatchCodePointSet.retainAll(sortingRankFromCodePoint.keySet());
+    if (strokeDigitSequence.length() <= LAG_PREVENTION_STROKE_SEQUENCE_LENGTH) {
+      prefixMatchCodePointSet.retainAll(sortingRankFromCodePoint.keySet()); // restrict to common (ranked) characters
     }
     
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
