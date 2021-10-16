@@ -51,7 +51,7 @@ public class Stringy {
   }
   
   /*
-    Convert a string to a list of (unicode) code points
+    Convert a string to a list of (unicode) code points.
   */
   public static List<Integer> toCodePointList(final String string) {
     
