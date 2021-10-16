@@ -121,20 +121,20 @@ public class StrokeInputService
   private InputContainer inputContainer;
   
   private NavigableMap<String, String> charactersFromStrokeDigitSequence;
-  private Set<String> characterSetTraditional;
-  private Set<String> characterSetSimplified;
-  private Map<String, Integer> sortingRankFromCharacterTraditional;
-  private Map<String, Integer> sortingRankFromCharacterSimplified;
+  private Set<Integer> codePointSetTraditional;
+  private Set<Integer> codePointSetSimplified;
+  private Map<Integer, Integer> sortingRankFromCodePointTraditional;
+  private Map<Integer, Integer> sortingRankFromCodePointSimplified;
   private NavigableSet<String> phraseSetTraditional;
   private NavigableSet<String> phraseSetSimplified;
   
-  private Set<String> unpreferredCharacterSet;
-  private Map<String, Integer> sortingRankFromCharacter;
+  private Set<Integer> unpreferredCodePointSet;
+  private Map<Integer, Integer> sortingRankFromCodePoint;
   private NavigableSet<String> phraseSet;
   
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
-  private final List<String> phraseCompletionFirstCharacterList = new ArrayList<>();
+  private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
@@ -187,20 +187,20 @@ public class StrokeInputService
     charactersFromStrokeDigitSequence = new TreeMap<>();
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
-    characterSetTraditional = new HashSet<>();
-    characterSetSimplified = new HashSet<>();
-    loadStringsIntoSet(CHARACTERS_FILE_NAME_TRADITIONAL, characterSetTraditional);
-    loadStringsIntoSet(CHARACTERS_FILE_NAME_SIMPLIFIED, characterSetSimplified);
+    codePointSetTraditional = new HashSet<>();
+    codePointSetSimplified = new HashSet<>();
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
     
-    sortingRankFromCharacterTraditional = new HashMap<>();
-    sortingRankFromCharacterSimplified = new HashMap<>();
-    loadRankingDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCharacterTraditional);
-    loadRankingDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCharacterSimplified);
+    sortingRankFromCodePointTraditional = new HashMap<>();
+    sortingRankFromCodePointSimplified = new HashMap<>();
+    loadRankingDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional);
+    loadRankingDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified);
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
-    loadStringsIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadStringsIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
+    loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
     
     updateCandidateOrderPreference();
     
@@ -251,19 +251,19 @@ public class StrokeInputService
     
   }
   
-  private void loadStringsIntoSet(final String stringsFileName, final Set<String> stringSet) {
+  private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet) {
     
     final long startMillis = System.currentTimeMillis();
     
     try {
       
-      final InputStream inputStream = getAssets().open(stringsFileName);
+      final InputStream inputStream = getAssets().open(charactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         if (!isCommentLine(line)) {
-          stringSet.add(line);
+          codePointSet.add(Stringy.getFirstCodePoint(line));
         }
       }
       
@@ -274,13 +274,13 @@ public class StrokeInputService
     }
     
     final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(stringsFileName, endMillis - startMillis);
+    sendLoadingTimeLog(charactersFileName, endMillis - startMillis);
     
   }
   
   private void loadRankingDataIntoMap(
     final String rankingFileName,
-    final Map<String, Integer> sortingRankFromCharacter
+    final Map<Integer, Integer> sortingRankFromCodePoint
   )
   {
     
@@ -295,11 +295,9 @@ public class StrokeInputService
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         if (!isCommentLine(line)) {
-          for (final String character : Stringy.toCharacterList(line)) {
-            if (!sortingRankFromCharacter.containsKey(character)) {
-              currentRank++;
-              sortingRankFromCharacter.put(character, currentRank);
-            }
+          for (final int codePoint : Stringy.toCodePointList(line)) {
+            currentRank++;
+            sortingRankFromCodePoint.put(codePoint, currentRank);
           }
         }
       }
@@ -312,6 +310,33 @@ public class StrokeInputService
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
+    
+  }
+  
+  private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet) {
+    
+    final long startMillis = System.currentTimeMillis();
+    
+    try {
+      
+      final InputStream inputStream = getAssets().open(phrasesFileName);
+      final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+      
+      String line;
+      while ((line = bufferedReader.readLine()) != null) {
+        if (!isCommentLine(line)) {
+          phraseSet.add(line);
+        }
+      }
+      
+    }
+    
+    catch (IOException exception) {
+      exception.printStackTrace();
+    }
+    
+    final long endMillis = System.currentTimeMillis();
+    sendLoadingTimeLog(phrasesFileName, endMillis - startMillis);
     
   }
   
@@ -661,9 +686,9 @@ public class StrokeInputService
     List<String> phraseCompletionCandidateList =
       computePhraseCompletionCandidateList(inputConnection, MAX_PHRASE_COMPLETION_COUNT);
     
-    phraseCompletionFirstCharacterList.clear();
+    phraseCompletionFirstCodePointList.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList) {
-      phraseCompletionFirstCharacterList.add(Stringy.getFirstCharacter(phraseCompletionCandidate));
+      phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
     
     setCandidateList(phraseCompletionCandidateList);
@@ -672,9 +697,9 @@ public class StrokeInputService
   
   @SuppressWarnings("ComparatorCombinators")
   private Comparator<String> candidateComparator(
-    final Set<String> unpreferredCharacterSet,
-    final Map<String, Integer> sortingRankFromCharacter,
-    final List<String> phraseCompletionFirstCharacterList
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
   )
   {
     return
@@ -682,27 +707,80 @@ public class StrokeInputService
         Integer.compare(
           computeCandidateRank(
             string1,
-            unpreferredCharacterSet,
-            sortingRankFromCharacter,
-            phraseCompletionFirstCharacterList
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
           ),
           computeCandidateRank(
             string2,
-            unpreferredCharacterSet,
-            sortingRankFromCharacter,
-            phraseCompletionFirstCharacterList
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
+          )
+        );
+  }
+  
+  @SuppressWarnings("ComparatorCombinators")
+  private Comparator<Integer> candidateCodePointComparator(
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    return
+      (codePoint1, codePoint2) ->
+        Integer.compare(
+          computeCandidateRank(
+            codePoint1,
+            1,
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
+          ),
+          computeCandidateRank(
+            codePoint2,
+            1,
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
           )
         );
   }
   
   /*
-    Compute the candidate rank for a string, based on its first character.
+    Compute the candidate rank for a string.
   */
   private int computeCandidateRank(
     final String string,
-    final Set<String> unpreferredCharacterSet,
-    final Map<String, Integer> sortingRankFromCharacter,
-    final List<String> phraseCompletionFirstCharacterList
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    
+    final int firstCodePoint = Stringy.getFirstCodePoint(string);
+    final int stringLength = string.length();
+    
+    return
+      computeCandidateRank(
+        firstCodePoint,
+        stringLength,
+        unpreferredCodePointSet,
+        sortingRankFromCodePoint,
+        phraseCompletionFirstCodePointList
+      );
+    
+  }
+  
+  /*
+    Compute the candidate rank for a string with a given first code point and length.
+  */
+  private int computeCandidateRank(
+    final int firstCodePoint,
+    final int stringLength,
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
   )
   {
     
@@ -710,34 +788,32 @@ public class StrokeInputService
     final int fineRank;
     final int penalty;
     
-    final String firstCharacter = Stringy.getFirstCharacter(string);
+    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
+    final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
+    final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
-    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCharacterList.size() == 0;
-    final int phraseCompletionIndex = phraseCompletionFirstCharacterList.indexOf(firstCharacter);
-    final boolean firstCharacterMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
+    final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
+    final boolean sortingRankDataContainsFirstCodePoint = sortingRank != null;
     
-    final Integer sortingRank = sortingRankFromCharacter.get(firstCharacter);
-    final boolean sortingRankDataContainsFirstCharacter = sortingRank != null;
+    final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     
-    final int lengthPenalty = (string.length() - 1) * RANKING_PENALTY_PER_CHAR;
-    
-    final boolean firstCharacterIsUnpreferred = unpreferredCharacterSet.contains(firstCharacter);
+    final boolean firstCodePointIsUnpreferred = unpreferredCodePointSet.contains(firstCodePoint);
     
     if (phraseCompletionListIsEmpty) {
       coarseRank = Integer.MIN_VALUE;
       fineRank = (
-        sortingRankDataContainsFirstCharacter
+        sortingRankDataContainsFirstCodePoint
           ? sortingRank
           : LARGISH_SORTING_RANK
       );
       penalty = lengthPenalty;
     }
-    else if (firstCharacterMatchesPhraseCompletionCandidate) {
+    else if (firstCodePointMatchesPhraseCompletionCandidate) {
       coarseRank = Integer.MIN_VALUE;
       fineRank = phraseCompletionIndex;
       penalty = lengthPenalty;
     }
-    else if (sortingRankDataContainsFirstCharacter) {
+    else if (sortingRankDataContainsFirstCodePoint) {
       coarseRank = 0;
       fineRank = sortingRank;
       penalty = lengthPenalty;
@@ -746,7 +822,7 @@ public class StrokeInputService
       coarseRank = Integer.MAX_VALUE / 2;
       fineRank = 0;
       penalty = (
-        firstCharacterIsUnpreferred
+        firstCodePointIsUnpreferred
           ? Integer.MAX_VALUE / 2
           : 0
       );
@@ -773,11 +849,11 @@ public class StrokeInputService
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       Collections.sort(
         exactMatchCandidateList,
-        candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
+        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
     }
     
-    final Set<String> prefixMatchCharacterSet = new HashSet<>();
+    final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
     final Collection<String> prefixMatchCharactersCollection = (
       charactersFromStrokeDigitSequence
         .subMap(
@@ -788,23 +864,27 @@ public class StrokeInputService
     );
     final long addAllStartMillis = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection) {
-      prefixMatchCharacterSet.addAll(Stringy.toCharacterList(characters));
+      prefixMatchCodePointSet.addAll(Stringy.toCodePointList(characters));
     }
     final long addAllEndMillis = System.currentTimeMillis();
     Log.d(
       "computeCandidateList",
-      (addAllEndMillis - addAllStartMillis) + " milliseconds (prefixMatchCharacterSet.addAll)"
+      (addAllEndMillis - addAllStartMillis) + " milliseconds (prefixMatchCodePointSet.addAll)"
     );
     if (strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH) {
       // Restrict to common (ranked) characters to prevent lag
-      prefixMatchCharacterSet.retainAll(sortingRankFromCharacter.keySet());
+      prefixMatchCodePointSet.retainAll(sortingRankFromCodePoint.keySet());
     }
     
-    final List<String> prefixMatchCandidateList = new ArrayList<>(prefixMatchCharacterSet);
+    final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
     final long sortStartMillis = System.currentTimeMillis();
     Collections.sort(
-      prefixMatchCandidateList,
-      candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
+      prefixMatchCandidateCodePointList,
+      candidateCodePointComparator(
+        unpreferredCodePointSet,
+        sortingRankFromCodePoint,
+        phraseCompletionFirstCodePointList
+      )
     );
     final long sortEndMillis = System.currentTimeMillis();
     Log.d(
@@ -812,10 +892,15 @@ public class StrokeInputService
       (sortEndMillis - sortStartMillis) + " milliseconds (Collections.sort)"
     );
     
+    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
+    final List<String> prefixMatchCandidateList = new ArrayList<>();
+    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount)) {
+      prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
+    }
+    
     final List<String> candidateList = new ArrayList<>();
-    final int prefixMatchCount = Math.min(prefixMatchCandidateList.size(), MAX_PREFIX_MATCH_COUNT);
     candidateList.addAll(exactMatchCandidateList);
-    candidateList.addAll(prefixMatchCandidateList.subList(0, prefixMatchCount));
+    candidateList.addAll(prefixMatchCandidateList);
     
     return candidateList;
     
@@ -868,7 +953,7 @@ public class StrokeInputService
       }
       Collections.sort(
         prefixMatchPhraseCompletionList,
-        candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, Collections.emptyList())
+        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, Collections.emptyList())
       );
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
@@ -892,13 +977,13 @@ public class StrokeInputService
   private void updateCandidateOrderPreference() {
     
     if (shouldPreferTraditional()) {
-      unpreferredCharacterSet = characterSetSimplified;
-      sortingRankFromCharacter = sortingRankFromCharacterTraditional;
+      unpreferredCodePointSet = codePointSetSimplified;
+      sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
       phraseSet = phraseSetTraditional;
     }
     else {
-      unpreferredCharacterSet = characterSetTraditional;
-      sortingRankFromCharacter = sortingRankFromCharacterSimplified;
+      unpreferredCodePointSet = codePointSetTraditional;
+      sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
       phraseSet = phraseSetSimplified;
     }
     

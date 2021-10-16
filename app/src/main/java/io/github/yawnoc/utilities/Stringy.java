@@ -55,6 +55,13 @@ public class Stringy {
   }
   
   /*
+    Get the first (unicode) code point.
+  */
+  public static int getFirstCodePoint(final String string) {
+    return string.codePointAt(0);
+  }
+  
+  /*
     Convert a string to a list of (unicode) code points
   */
   public static List<Integer> toCodePointList(final String string) {
