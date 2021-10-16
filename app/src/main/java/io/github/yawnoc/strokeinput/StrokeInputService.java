@@ -684,8 +684,7 @@ public class StrokeInputService
   
   private void setCandidateListForPhraseCompletion(final InputConnection inputConnection) {
     
-    List<String> phraseCompletionCandidateList =
-      computePhraseCompletionCandidateList(inputConnection, MAX_PHRASE_COMPLETION_COUNT);
+    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
     
     phraseCompletionFirstCodePointList.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList) {
@@ -916,12 +915,7 @@ public class StrokeInputService
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
   */
-  @SuppressWarnings("SameParameterValue")
-  private List<String> computePhraseCompletionCandidateList(
-    final InputConnection inputConnection,
-    final int maxCandidateCount
-  )
-  {
+  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection) {
     
     updateCandidateOrderPreference();
     
@@ -953,7 +947,7 @@ public class StrokeInputService
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
-    final int candidateCount = Math.min(phraseCompletionCandidateList.size(), maxCandidateCount);
+    final int candidateCount = Math.min(phraseCompletionCandidateList.size(), MAX_PHRASE_COMPLETION_COUNT);
     
     return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
     
