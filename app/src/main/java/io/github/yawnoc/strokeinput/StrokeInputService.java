@@ -786,18 +786,30 @@ public class StrokeInputService
         )
         .values()
     );
+    final long addAllStartMillis = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection) {
       prefixMatchCharacterSet.addAll(Stringy.toCharacterList(characters));
     }
+    final long addAllEndMillis = System.currentTimeMillis();
+    Log.d(
+      "computeCandidateList",
+      (addAllEndMillis - addAllStartMillis) + " milliseconds (prefixMatchCharacterSet.addAll)"
+    );
     if (strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH) {
       // Restrict to common (ranked) characters to prevent lag
       prefixMatchCharacterSet.retainAll(sortingRankFromCharacter.keySet());
     }
     
     final List<String> prefixMatchCandidateList = new ArrayList<>(prefixMatchCharacterSet);
+    final long sortStartMillis = System.currentTimeMillis();
     Collections.sort(
       prefixMatchCandidateList,
       candidateComparator(unpreferredCharacterSet, sortingRankFromCharacter, phraseCompletionFirstCharacterList)
+    );
+    final long sortEndMillis = System.currentTimeMillis();
+    Log.d(
+      "computeCandidateList",
+      (sortEndMillis - sortStartMillis) + " milliseconds (Collections.sort)"
     );
     
     final List<String> candidateList = new ArrayList<>();
