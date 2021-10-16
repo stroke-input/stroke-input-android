@@ -44,17 +44,6 @@ public class Stringy {
   }
   
   /*
-    Get the first (unicode) character.
-  */
-  public static String getFirstCharacter(final String string) {
-    return
-      string.substring(
-        string.offsetByCodePoints(0, 0),
-        string.offsetByCodePoints(0, 1)
-      );
-  }
-  
-  /*
     Get the first (unicode) code point.
   */
   public static int getFirstCodePoint(final String string) {
