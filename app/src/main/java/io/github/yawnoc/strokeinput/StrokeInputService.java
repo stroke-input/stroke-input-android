@@ -104,6 +104,7 @@ public class StrokeInputService
   private static final int LAGGY_STROKE_SEQUENCE_LENGTH = 2;
   private static final int LARGISH_SORTING_RANK = 3000;
   private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
+  private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
   private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
   private static final int MAX_PHRASE_LENGTH = 6;
@@ -796,8 +797,11 @@ public class StrokeInputService
     final boolean sortingRankDataContainsFirstCodePoint = sortingRank != null;
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
-    
-    final boolean firstCodePointIsUnpreferred = unpreferredCodePointSet.contains(firstCodePoint);
+    final int unpreferredPenalty = (
+      unpreferredCodePointSet.contains(firstCodePoint)
+        ? RANKING_PENALTY_UNPREFERRED
+        : 0
+    );
     
     if (phraseCompletionListIsEmpty) {
       coarseRank = Integer.MIN_VALUE;
@@ -806,7 +810,7 @@ public class StrokeInputService
           ? sortingRank
           : LARGISH_SORTING_RANK
       );
-      penalty = lengthPenalty;
+      penalty = lengthPenalty + unpreferredPenalty;
     }
     else if (firstCodePointMatchesPhraseCompletionCandidate) {
       coarseRank = Integer.MIN_VALUE;
@@ -821,11 +825,7 @@ public class StrokeInputService
     else {
       coarseRank = Integer.MAX_VALUE / 2;
       fineRank = 0;
-      penalty = (
-        firstCodePointIsUnpreferred
-          ? Integer.MAX_VALUE / 2
-          : 0
-      );
+      penalty = unpreferredPenalty;
     }
     
     return coarseRank + fineRank + penalty;
