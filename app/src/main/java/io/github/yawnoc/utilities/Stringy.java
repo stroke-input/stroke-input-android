@@ -9,6 +9,7 @@ package io.github.yawnoc.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Stringy {
   
@@ -65,6 +66,20 @@ public class Stringy {
     }
     
     return codePointList;
+    
+  }
+  
+  /*
+    Add the (unicode) code points of a string to a set
+  */
+  public static void addCodePointsToSet(final String string, final Set<Integer> set) {
+    
+    final int charCount = string.length();
+    for (int charIndex = 0; charIndex < charCount;) {
+      final int codePoint = string.codePointAt(charIndex);
+      set.add(codePoint);
+      charIndex += Character.charCount(codePoint);
+    }
     
   }
   

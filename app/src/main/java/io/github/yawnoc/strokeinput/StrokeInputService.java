@@ -864,12 +864,12 @@ public class StrokeInputService
     );
     final long addAllStartMillis = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection) {
-      prefixMatchCodePointSet.addAll(Stringy.toCodePointList(characters));
+      Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
     final long addAllEndMillis = System.currentTimeMillis();
     Log.d(
       "computeCandidateList",
-      (addAllEndMillis - addAllStartMillis) + " milliseconds (prefixMatchCodePointSet.addAll)"
+      (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
     );
     if (strokeDigitSequence.length() <= LAGGY_STROKE_SEQUENCE_LENGTH) {
       // Restrict to common (ranked) characters to prevent lag
