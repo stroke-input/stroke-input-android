@@ -101,7 +101,7 @@ public class StrokeInputService
   
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
-  private static final int LAG_PREVENTION_STROKE_SEQUENCE_LENGTH = 3;
+  private static final int LAG_PREVENTION_CODE_POINT_COUNT = 1400; // on Conway's crappy phone: 28/ms * 50ms
   private static final int LARGISH_SORTING_RANK = 3000;
   private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
   private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
@@ -865,7 +865,7 @@ public class StrokeInputService
       "computeCandidateList",
       (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
     );
-    if (strokeDigitSequence.length() <= LAG_PREVENTION_STROKE_SEQUENCE_LENGTH) {
+    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT) {
       prefixMatchCodePointSet.retainAll(sortingRankFromCodePoint.keySet()); // restrict to common (ranked) characters
     }
     
