@@ -126,11 +126,14 @@ public class StrokeInputService
   private Set<Integer> codePointSetSimplified;
   private Map<Integer, Integer> sortingRankFromCodePointTraditional;
   private Map<Integer, Integer> sortingRankFromCodePointSimplified;
+  private Set<Integer> commonCodePointSetTraditional;
+  private Set<Integer> commonCodePointSetSimplified;
   private NavigableSet<String> phraseSetTraditional;
   private NavigableSet<String> phraseSetSimplified;
   
   private Set<Integer> unpreferredCodePointSet;
   private Map<Integer, Integer> sortingRankFromCodePoint;
+  private Set<Integer> commonCodePointSet;
   private NavigableSet<String> phraseSet;
   
   private String strokeDigitSequence = "";
@@ -195,8 +198,10 @@ public class StrokeInputService
     
     sortingRankFromCodePointTraditional = new HashMap<>();
     sortingRankFromCodePointSimplified = new HashMap<>();
-    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional);
-    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified);
+    commonCodePointSetTraditional = new HashSet<>();
+    commonCodePointSetSimplified = new HashSet<>();
+    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
+    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
@@ -281,7 +286,8 @@ public class StrokeInputService
   
   private void loadRankingData(
     final String rankingFileName,
-    final Map<Integer, Integer> sortingRankFromCodePoint
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final Set<Integer> commonCodePointSet
   )
   {
     
@@ -299,6 +305,9 @@ public class StrokeInputService
           for (final int codePoint : Stringy.toCodePointList(line)) {
             currentRank++;
             sortingRankFromCodePoint.put(codePoint, currentRank);
+            if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT) {
+              commonCodePointSet.add(codePoint);
+            }
           }
         }
       }
@@ -866,7 +875,7 @@ public class StrokeInputService
       (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
     );
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT) {
-      prefixMatchCodePointSet.retainAll(sortingRankFromCodePoint.keySet()); // restrict to common (ranked) characters
+      prefixMatchCodePointSet.retainAll(commonCodePointSet);
     }
     
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
@@ -967,11 +976,13 @@ public class StrokeInputService
     if (shouldPreferTraditional()) {
       unpreferredCodePointSet = codePointSetSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
+      commonCodePointSet = commonCodePointSetTraditional;
       phraseSet = phraseSetTraditional;
     }
     else {
       unpreferredCodePointSet = codePointSetTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
+      commonCodePointSet = commonCodePointSetSimplified;
       phraseSet = phraseSetSimplified;
     }
     
