@@ -195,8 +195,8 @@ public class StrokeInputService
     
     sortingRankFromCodePointTraditional = new HashMap<>();
     sortingRankFromCodePointSimplified = new HashMap<>();
-    loadRankingDataIntoMap(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional);
-    loadRankingDataIntoMap(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified);
+    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional);
+    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified);
     
     phraseSetTraditional = new TreeSet<>();
     phraseSetSimplified = new TreeSet<>();
@@ -279,7 +279,7 @@ public class StrokeInputService
     
   }
   
-  private void loadRankingDataIntoMap(
+  private void loadRankingData(
     final String rankingFileName,
     final Map<Integer, Integer> sortingRankFromCodePoint
   )
