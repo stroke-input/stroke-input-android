@@ -39,6 +39,11 @@ __[笔画输入法]__是自由软件，恕无担保。
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
+----{.notice}
+献以为公，见\CC0。
+----
+
 #### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
 ----{.notice}
 献以为公，见\CC0。

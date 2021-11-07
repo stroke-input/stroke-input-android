@@ -39,6 +39,11 @@ __[筆畫輸入法]__為自由軟體，恕無擔保。
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
+----{.notice}
+獻以為公，見\CC0。
+----
+
 #### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
 ----{.notice}
 獻以為公，見\CC0。

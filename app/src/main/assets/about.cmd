@@ -39,6 +39,11 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
+----{.notice}
+Released into the Public Domain, see \CC0.
+----
+
 #### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
 ----{.notice}
 Released into the Public Domain, see \CC0.
