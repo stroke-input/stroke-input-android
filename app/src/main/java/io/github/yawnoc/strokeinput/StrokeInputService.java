@@ -538,17 +538,7 @@ public class StrokeInputService
         final CharSequence selection = inputConnection.getSelectedText(0);
         
         if (TextUtils.isEmpty(selection)) {
-          if (Build.VERSION.SDK_INT >= 24) {
-            inputConnection.deleteSurroundingTextInCodePoints(1, 0);
-          }
-          else {
-            final int charCount = ( // damn you Java for using UTF-16
-              Stringy.isFirstCharacterBasic(upToOneCharacterBeforeCursor)
-                ? 1 // Basic Multilingual Plane (single character)
-                : 2 // Supplementary Multilingual Plane (surrogate pair)
-            );
-            inputConnection.deleteSurroundingText(charCount, 0);
-          }
+          inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
         else {
           inputConnection.commitText("", 1);
