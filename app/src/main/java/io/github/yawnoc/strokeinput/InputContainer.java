@@ -370,18 +370,18 @@ public class InputContainer
   private int getSoftButtonsHeight() {
     
     final int softButtonsHeight;
-      final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-      if (rootWindowInsets == null) {
-        softButtonsHeight = 0;
+    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
+    if (rootWindowInsets == null) {
+      softButtonsHeight = 0;
+    }
+    else {
+      if (Build.VERSION.SDK_INT < 30) {
+        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
       }
       else {
-        if (Build.VERSION.SDK_INT < 30) {
-          softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
-        }
-        else {
-          softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
-        }
+        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
       }
+    }
     
     return softButtonsHeight;
     
