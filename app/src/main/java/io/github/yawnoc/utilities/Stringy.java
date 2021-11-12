@@ -102,6 +102,7 @@ public class Stringy {
   public static String[] sunder(final String string, final String delimiter) {
     
     final int delimiterIndex = string.indexOf(delimiter);
+    final int delimiterLength = delimiter.length();
     
     final String substringBeforeDelimiter;
     final String substringAfterDelimiter;
@@ -112,7 +113,7 @@ public class Stringy {
     }
     else {
       substringBeforeDelimiter = string.substring(0, delimiterIndex);
-      substringAfterDelimiter = string.substring(delimiterIndex + 1);
+      substringAfterDelimiter = string.substring(delimiterIndex + delimiterLength);
     }
     
     return new String[]{substringBeforeDelimiter, substringAfterDelimiter};
