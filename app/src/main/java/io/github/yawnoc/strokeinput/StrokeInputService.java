@@ -832,8 +832,7 @@ public class StrokeInputService
     }
     else {
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
-      Collections.sort(
-        exactMatchCandidateList,
+      exactMatchCandidateList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
     }
@@ -862,8 +861,7 @@ public class StrokeInputService
     
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
     final long sortStartMillis = System.currentTimeMillis();
-    Collections.sort(
-      prefixMatchCandidateCodePointList,
+    prefixMatchCandidateCodePointList.sort(
       candidateCodePointComparator(
         unpreferredCodePointSet,
         sortingRankFromCodePoint,
@@ -930,8 +928,7 @@ public class StrokeInputService
           prefixMatchPhraseCompletionList.add(phraseCompletion);
         }
       }
-      Collections.sort(
-        prefixMatchPhraseCompletionList,
+      prefixMatchPhraseCompletionList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, Collections.emptyList())
       );
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
