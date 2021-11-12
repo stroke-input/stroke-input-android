@@ -701,21 +701,15 @@ public class StrokeInputService
   )
   {
     return
-      (string1, string2) ->
-        Integer.compare(
+      Comparator.comparingInt(
+        string ->
           computeCandidateRank(
-            string1,
-            unpreferredCodePointSet,
-            sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
-          ),
-          computeCandidateRank(
-            string2,
+            string,
             unpreferredCodePointSet,
             sortingRankFromCodePoint,
             phraseCompletionFirstCodePointList
           )
-        );
+      );
   }
   
   @SuppressWarnings("ComparatorCombinators")
