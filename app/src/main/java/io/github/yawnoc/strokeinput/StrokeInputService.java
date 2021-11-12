@@ -9,7 +9,6 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
