@@ -7,7 +7,7 @@ android {
   buildToolsVersion "30.0.3"
   defaultConfig {
     applicationId "io.github.yawnoc.strokeinput"
-    minSdkVersion 21
+    minSdkVersion 24
     targetSdkVersion 30
     versionCode 20
     versionName "0.7.5"
