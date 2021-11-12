@@ -694,7 +694,6 @@ public class StrokeInputService
     
   }
   
-  @SuppressWarnings("ComparatorCombinators")
   private Comparator<String> candidateComparator(
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
