@@ -21,21 +21,6 @@ public class Stringy {
     return string.matches("\\p{ASCII}*");
   }
   
-  /*
-    Whether the first (unicode) character of a string
-    lies in the Basic Multilingual Plane (U+0000 to U+FFFF).
-  */
-  public static boolean isFirstCharacterBasic(final String string) {
-    
-    if (string.length() == 0) {
-      return true;
-    }
-    
-    final char firstChar = string.charAt(0);
-    return firstChar < Character.MIN_SURROGATE || firstChar > Character.MAX_SURROGATE;
-    
-  }
-  
   public static String removePrefix(final String prefixRegex, final String string) {
     return string.replaceFirst("^" + prefixRegex, "");
   }
