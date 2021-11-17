@@ -11,19 +11,65 @@ import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.view.View;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import io.github.yawnoc.utilities.Mappy;
+
 public class StrokeInputService
   extends InputMethodService
   implements InputContainer.OnInputListener
 {
   
+  private static final String STROKES_KEYBOARD_NAME = "STROKES";
+  private static final String STROKES_SYMBOLS_1_KEYBOARD_NAME = "STROKES_SYMBOLS_1";
+  private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";
+  private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
+  private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
+  
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  
+  Keyboard strokesKeyboard;
+  Keyboard strokesSymbols1Keyboard;
+  Keyboard strokesSymbols2Keyboard;
+  Keyboard qwertyKeyboard;
+  Keyboard qwertySymbolsKeyboard;
+  
+  private Map<Keyboard, String> nameFromKeyboard;
+  private Map<String, Keyboard> keyboardFromName;
+  private Set<Keyboard> keyboardSet;
   
   private InputContainer inputContainer;
   
   @Override
   public View onCreateInputView() {
+    initialiseKeyboards();
     initialiseInputContainer();
     return inputContainer;
+  }
+  
+  private void initialiseKeyboards() {
+    
+    strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
+    strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
+    strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
+    qwertyKeyboard = newKeyboard(R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
+    
+    nameFromKeyboard = new HashMap<>();
+    nameFromKeyboard.put(strokesKeyboard, STROKES_KEYBOARD_NAME);
+    nameFromKeyboard.put(strokesSymbols1Keyboard, STROKES_SYMBOLS_1_KEYBOARD_NAME);
+    nameFromKeyboard.put(strokesSymbols2Keyboard, STROKES_SYMBOLS_2_KEYBOARD_NAME);
+    nameFromKeyboard.put(qwertyKeyboard, QWERTY_KEYBOARD_NAME);
+    nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
+    keyboardFromName = Mappy.invertMap(nameFromKeyboard);
+    keyboardSet = nameFromKeyboard.keySet();
+    
+  }
+  
+  private Keyboard newKeyboard(final int layoutResourceId) {
+    return new Keyboard(this, layoutResourceId, isFullscreenMode());
   }
   
   @SuppressLint("InflateParams")
