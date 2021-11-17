@@ -106,7 +106,7 @@ public class KeyPreviewPlane extends View {
     invalidate();
   }
   
-  public void show(final Key key) {
+  public void showPreview(final Key key) {
     if (key != null && !keyList.contains(key) && key.isPreviewable) {
       keyList.add(key);
     }
@@ -114,9 +114,9 @@ public class KeyPreviewPlane extends View {
     invalidate();
   }
   
-  public void move(final Key key) {
+  public void movePreviewTo(final Key key) {
     keyList.remove(latestKey);
-    show(key);
+    showPreview(key);
   }
   
   public void dismissLatest() {

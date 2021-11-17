@@ -530,7 +530,7 @@ public class KeyboardView
     activePointerId = pointerId;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    keyPreviewPlane.show(key);
+    keyPreviewPlane.showPreview(key);
     invalidate();
     
   }
@@ -557,7 +557,7 @@ public class KeyboardView
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
       resetKeyRepeatIntervalMilliseconds();
-      keyPreviewPlane.move(key);
+      keyPreviewPlane.movePreviewTo(key);
       shouldRedrawKeyboard = true;
     }
     
@@ -643,7 +643,7 @@ public class KeyboardView
     removeAllExtendedPressHandlerMessages();
     sendAppropriateExtendedPressHandlerMessage(key);
     resetKeyRepeatIntervalMilliseconds();
-    keyPreviewPlane.move(key);
+    keyPreviewPlane.movePreviewTo(key);
     invalidate();
     
   }
