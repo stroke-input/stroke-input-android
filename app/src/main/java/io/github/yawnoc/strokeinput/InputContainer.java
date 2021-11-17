@@ -19,39 +19,14 @@ import android.widget.LinearLayout;
 */
 public class InputContainer
   extends LinearLayout
-  implements KeyboardView.KeyboardListener
 {
   
   // Container properties
-  private CandidateListener candidateListener;
-  private KeyboardListener keyboardListener;
   private CandidatesView candidatesView;
   private KeyboardView keyboardView;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
-  }
-  
-  /*
-    A listener for candidate events.
-  */
-  public interface CandidateListener {
-  }
-  
-  /*
-    A listener for keyboard events.
-  */
-  public interface KeyboardListener {
-    Keyboard loadSavedKeyboard();
-    void saveKeyboard(Keyboard keyboard);
-  }
-  
-  public void setCandidateListener(final CandidateListener candidateListener) {
-    this.candidateListener = candidateListener;
-  }
-  
-  public void setKeyboardListener(final KeyboardListener keyboardListener) {
-    this.keyboardListener = keyboardListener;
   }
   
   public void initialiseCandidatesView() {
@@ -60,7 +35,6 @@ public class InputContainer
   
   public void initialiseKeyboardView() {
     keyboardView = findViewById(R.id.keyboard_view);
-    keyboardView.setKeyboardListener(this);
   }
   
 }

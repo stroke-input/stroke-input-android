@@ -34,21 +34,8 @@ public class KeyboardView
   
   public static final int SHIFT_DISABLED = 0;
   
-  // Container properties
-  private KeyboardListener keyboardListener;
-  
   public KeyboardView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
-  }
-  
-  public void setKeyboardListener(final KeyboardListener keyboardListener) {
-    this.keyboardListener = keyboardListener;
-  }
-  
-  /*
-    A listener for keyboard events.
-  */
-  public interface KeyboardListener {
   }
   
   @Override

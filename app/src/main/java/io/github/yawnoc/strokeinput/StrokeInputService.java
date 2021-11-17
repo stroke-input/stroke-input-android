@@ -26,7 +26,6 @@ import io.github.yawnoc.utilities.Mappy;
 */
 public class StrokeInputService
   extends InputMethodService
-  implements InputContainer.CandidateListener, InputContainer.KeyboardListener
 {
   
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
@@ -83,34 +82,8 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
-    inputContainer.setCandidateListener(this);
-    inputContainer.setKeyboardListener(this);
     inputContainer.initialiseCandidatesView();
     inputContainer.initialiseKeyboardView();
-  }
-  
-  @Override
-  public Keyboard loadSavedKeyboard() {
-    final String savedKeyboardName =
-      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
-    final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
-    if (savedKeyboard != null) {
-      return savedKeyboard;
-    }
-    else {
-      return strokesKeyboard;
-    }
-  }
-  
-  @Override
-  public void saveKeyboard(final Keyboard keyboard) {
-    final String keyboardName = nameFromKeyboard.get(keyboard);
-    Contexty.savePreferenceString(
-      getApplicationContext(),
-      PREFERENCES_FILE_NAME,
-      KEYBOARD_NAME_PREFERENCE_KEY,
-      keyboardName
-    );
   }
   
 }
