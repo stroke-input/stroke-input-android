@@ -20,7 +20,7 @@ import io.github.yawnoc.utilities.Mappy;
 
 public class StrokeInputService
   extends InputMethodService
-  implements InputContainer.InputListener
+  implements InputContainer.KeyboardListener
 {
   
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
@@ -77,7 +77,7 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
-    inputContainer.setInputListener(this);
+    inputContainer.setKeyboardListener(this);
   }
   
   @Override
