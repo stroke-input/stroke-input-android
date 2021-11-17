@@ -20,16 +20,20 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -195,6 +199,50 @@ public class KeyboardView
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
+  }
+  
+  @SuppressLint("RtlHardcoded")
+  public void showKeyPreviewPlane() {
+    
+    final int screenWidth = keyboard.getScreenWidth();
+    final int screenHeight = keyboard.getScreenHeight();
+    final int keyboardHeight = keyboard.getHeight();
+    final int popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
+    
+    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight, popupBufferZoneHeight);
+    keyPreviewPlanePopup.dismiss();
+    keyPreviewPlanePopup.setWidth(screenWidth);
+    keyPreviewPlanePopup.setHeight(screenHeight);
+    
+    if (getWindowToken() != null) { // check needed in API level 29
+      keyPreviewPlanePopup.showAtLocation(
+        this,
+        Gravity.BOTTOM | Gravity.LEFT,
+        0,
+        getSoftButtonsHeight()
+      );
+    }
+    
+  }
+  
+  private int getSoftButtonsHeight() {
+    
+    final int softButtonsHeight;
+    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
+    if (rootWindowInsets == null) {
+      softButtonsHeight = 0;
+    }
+    else {
+      if (Build.VERSION.SDK_INT < 30) {
+        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
+      }
+      else {
+        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
+      }
+    }
+    
+    return softButtonsHeight;
+    
   }
   
   public void resetKeyRepeatIntervalMilliseconds() {
