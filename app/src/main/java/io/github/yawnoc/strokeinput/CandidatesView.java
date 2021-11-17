@@ -10,7 +10,10 @@ package io.github.yawnoc.strokeinput;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 /*
   A view that holds candidates.
@@ -19,8 +22,18 @@ public class CandidatesView
   extends RecyclerView
 {
   
+  // View properties
+  private CandidatesViewAdapter candidatesViewAdapter;
+  
   public CandidatesView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+    initialiseCandidatesAdapting(context);
+  }
+  
+  private void initialiseCandidatesAdapting(final Context context) {
+    candidatesViewAdapter = new CandidatesViewAdapter(context, new ArrayList<>());
+    setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+    setAdapter(candidatesViewAdapter);
   }
   
 }
