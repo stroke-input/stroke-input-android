@@ -33,9 +33,14 @@ public class InputContainer
     candidatesView = findViewById(R.id.candidates_view);
   }
   
-  public void initialiseKeyboardView(final KeyboardView.KeyboardListener keyboardListener) {
+  public void initialiseKeyboardView(
+    final KeyboardView.KeyboardListener keyboardListener,
+    final Keyboard keyboard
+  )
+  {
     keyboardView = findViewById(R.id.keyboard_view);
     keyboardView.setKeyboardListener(keyboardListener);
+    keyboardView.setKeyboard(keyboard);
   }
   
 }
