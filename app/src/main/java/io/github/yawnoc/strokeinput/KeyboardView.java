@@ -290,6 +290,12 @@ public class KeyboardView
     
   }
   
+  @Override
+  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight) {
+    super.onSizeChanged(width, height, oldWidth, oldHeight);
+    showKeyPreviewPlane();
+  }
+  
   /*
     Lighten a dark colour and darken a light colour.
     Used for key press colour changes.
