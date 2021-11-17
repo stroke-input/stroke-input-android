@@ -29,6 +29,9 @@ public class StrokeInputService
   implements KeyboardView.KeyboardListener
 {
   
+  public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
+  public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
+  
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
   private static final String STROKES_SYMBOLS_1_KEYBOARD_NAME = "STROKES_SYMBOLS_1";
   private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";

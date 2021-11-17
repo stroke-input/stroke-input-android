@@ -22,6 +22,7 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -294,6 +295,71 @@ public class KeyboardView
   public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight) {
     super.onSizeChanged(width, height, oldWidth, oldHeight);
     showKeyPreviewPlane();
+  }
+  
+  @Override
+  public void onDraw(final Canvas canvas) {
+    
+    if (keyboard == null) {
+      return;
+    }
+    
+    canvas.drawRect(inputRectangle, inputFillPaint);
+    
+    for (final Key key : keyList) {
+      
+      keyRectangle.set(0, 0, key.width, key.height);
+      
+      int keyFillColour = key.fillColour;
+      if (
+        key == activeKey
+          ||
+        key.valueText.equals(StrokeInputService.SHIFT_KEY_VALUE_TEXT) && (
+          shiftPointerId != NONEXISTENT_POINTER_ID
+            ||
+          shiftMode == SHIFT_PERSISTENT
+            ||
+          shiftMode == SHIFT_INITIATED
+            ||
+          shiftMode == SHIFT_HELD
+        )
+      )
+      {
+        keyFillColour = toPressedColour(keyFillColour);
+      }
+      
+      keyFillPaint.setColor(keyFillColour);
+      keyBorderPaint.setColor(key.borderColour);
+      keyBorderPaint.setStrokeWidth(key.borderThickness);
+      
+      final int keyTextColour;
+      if (key == activeKey && swipeModeIsActivated) {
+        keyTextColour = key.textSwipeColour;
+      }
+      else {
+        keyTextColour = key.textColour;
+      }
+      keyTextPaint.setColor(keyTextColour);
+      keyTextPaint.setTextSize(key.textSize);
+      
+      final String keyDisplayText = (
+        key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT)
+          ? key.displayText
+          : key.shiftAwareDisplayText(shiftMode)
+      );
+      
+      final float keyTextX = key.width / 2f + key.textOffsetX;
+      final float keyTextY = (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f + key.textOffsetY;
+      
+      canvas.translate(key.x, key.y);
+      
+      canvas.drawRect(keyRectangle, keyFillPaint);
+      canvas.drawRect(keyRectangle, keyBorderPaint);
+      canvas.drawText(keyDisplayText, keyTextX, keyTextY, keyTextPaint);
+      
+      canvas.translate(-key.x, -key.y);
+    }
+    
   }
   
   /*
