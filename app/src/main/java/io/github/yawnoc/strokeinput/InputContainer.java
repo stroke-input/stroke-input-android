@@ -16,7 +16,7 @@ public class InputContainer
 {
   
   // Container properties
-  private OnInputListener inputListener;
+  private InputListener inputListener;
   private Keyboard keyboard;
   private Key[] keyArray;
   private int touchableTopY;
@@ -28,7 +28,7 @@ public class InputContainer
   /*
     A listener for input events.
   */
-  public interface OnInputListener {
+  public interface InputListener {
     Keyboard loadSavedKeyboard();
     void saveKeyboard(Keyboard keyboard);
   }
