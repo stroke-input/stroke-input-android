@@ -8,14 +8,15 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 public class InputContainer
   extends LinearLayout
 {
   
-  public InputContainer(final Context context) {
-    super(context);
+  public InputContainer(final Context context, final AttributeSet attributes) {
+    super(context, attributes);
   }
   
 }

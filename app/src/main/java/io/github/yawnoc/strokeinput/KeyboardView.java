@@ -21,6 +21,7 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.View;
 
 public class KeyboardView
@@ -28,8 +29,8 @@ public class KeyboardView
   implements View.OnClickListener
 {
   
-  public KeyboardView(final Context context) {
-    super(context);
+  public KeyboardView(final Context context, final AttributeSet attributes) {
+    super(context, attributes);
   }
   
   @Override
