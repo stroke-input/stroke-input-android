@@ -171,6 +171,9 @@ public class KeyboardView
     
   }
   
+  /*
+    A listener for keyboard events.
+  */
   public interface KeyboardListener {
     void onKey(String valueText);
     void onLongPress(String valueText);
