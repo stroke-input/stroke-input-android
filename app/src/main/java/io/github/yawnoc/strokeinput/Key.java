@@ -156,9 +156,9 @@ public class Key {
     return (
       (this.isExtendedLeft || this.x <= x)
         &&
-        (this.isExtendedRight || x <= this.x + this.width)
+      (this.isExtendedRight || x <= this.x + this.width)
         &&
-        this.y <= y && y <= this.y + this.height
+      this.y <= y && y <= this.y + this.height
     );
   }
   
