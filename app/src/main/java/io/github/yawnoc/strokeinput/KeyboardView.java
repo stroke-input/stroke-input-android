@@ -70,7 +70,7 @@ public class KeyboardView
   public static final String KEYBOARD_FONT_FILE_NAME = "StrokeInputKeyboard.ttf";
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
-  // Container properties
+  // View properties
   private KeyboardListener keyboardListener;
   private Keyboard keyboard;
   private List<Key> keyList;
