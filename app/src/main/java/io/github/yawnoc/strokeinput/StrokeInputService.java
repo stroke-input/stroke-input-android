@@ -7,12 +7,27 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
+import android.view.View;
 
 public class StrokeInputService
   extends InputMethodService
 {
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  
+  private InputContainer inputContainer;
+  
+  @Override
+  public View onCreateInputView() {
+    initialiseInputContainer();
+    return inputContainer;
+  }
+  
+  @SuppressLint("InflateParams")
+  private void initialiseInputContainer() {
+    inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
+  }
   
 }
