@@ -21,6 +21,7 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -98,6 +99,31 @@ public class KeyboardView
   
   public KeyboardView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+    // TODO: extended pressing
+    initialiseDrawing(context);
+    // TODO: key previewing
+  }
+  
+  private void initialiseDrawing(final Context context) {
+    
+    this.setBackgroundColor(Color.TRANSPARENT);
+    
+    keyboardFont = Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
+    inputRectangle = new Rect();
+    inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    
+    keyRectangle = new Rect();
+    
+    keyFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyFillPaint.setStyle(Paint.Style.FILL);
+    
+    keyBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyBorderPaint.setStyle(Paint.Style.STROKE);
+    
+    keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyTextPaint.setTypeface(keyboardFont);
+    keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
   }
   
   public interface KeyboardListener {
