@@ -16,12 +16,19 @@ public class InputContainer
 {
   
   // Container properties
+  private CandidateListener candidateListener;
   private KeyboardListener keyboardListener;
   private CandidatesView candidatesView;
   private KeyboardView keyboardView;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+  }
+  
+  /*
+    A listener for candidate events.
+  */
+  public interface CandidateListener {
   }
   
   /*

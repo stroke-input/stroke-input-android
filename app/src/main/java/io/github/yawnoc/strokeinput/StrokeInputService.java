@@ -20,7 +20,7 @@ import io.github.yawnoc.utilities.Mappy;
 
 public class StrokeInputService
   extends InputMethodService
-  implements InputContainer.KeyboardListener
+  implements InputContainer.CandidateListener, InputContainer.KeyboardListener
 {
   
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
