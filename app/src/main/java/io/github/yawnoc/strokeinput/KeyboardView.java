@@ -93,7 +93,6 @@ public class KeyboardView
   private int shiftMode;
   
   // Keyboard drawing
-  private Typeface keyboardFont;
   private Rect inputRectangle;
   private Paint inputFillPaint;
   
@@ -149,7 +148,6 @@ public class KeyboardView
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
-    keyboardFont = Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME);
     inputRectangle = new Rect();
     inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
@@ -162,7 +160,7 @@ public class KeyboardView
     keyBorderPaint.setStyle(Paint.Style.STROKE);
     
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    keyTextPaint.setTypeface(keyboardFont);
+    keyTextPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME));
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
     
   }
