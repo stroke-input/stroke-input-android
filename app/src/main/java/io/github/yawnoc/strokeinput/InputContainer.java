@@ -33,4 +33,8 @@ public class InputContainer
     void saveKeyboard(Keyboard keyboard);
   }
   
+  public void setInputListener(final InputListener inputListener) {
+    this.inputListener = inputListener;
+  }
+  
 }
