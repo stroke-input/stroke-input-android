@@ -15,8 +15,22 @@ public class InputContainer
   extends LinearLayout
 {
   
+  // Container properties
+  private OnInputListener inputListener;
+  private Keyboard keyboard;
+  private Key[] keyArray;
+  private int touchableTopY;
+  
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+  }
+  
+  /*
+    A listener for input events.
+  */
+  public interface OnInputListener {
+    Keyboard loadSavedKeyboard();
+    void saveKeyboard(Keyboard keyboard);
   }
   
 }

@@ -13,6 +13,7 @@ import android.view.View;
 
 public class StrokeInputService
   extends InputMethodService
+  implements InputContainer.OnInputListener
 {
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
@@ -28,6 +29,15 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
+  }
+  
+  @Override
+  public Keyboard loadSavedKeyboard() {
+    return null;
+  }
+  
+  @Override
+  public void saveKeyboard(final Keyboard keyboard) {
   }
   
 }
