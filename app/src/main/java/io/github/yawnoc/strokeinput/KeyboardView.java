@@ -186,7 +186,10 @@ public class KeyboardView
     this.keyboard = keyboard;
     keyList = keyboard.getKeyList();
     inputFillPaint.setColor(keyboard.fillColour);
-    // TODO: shift mode
+    if (shiftMode != SHIFT_PERSISTENT) {
+      shiftMode = SHIFT_DISABLED;
+      keyPreviewPlane.updateShiftMode(shiftMode);
+    }
     requestLayout();
   }
   
