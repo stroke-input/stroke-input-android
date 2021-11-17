@@ -100,6 +100,14 @@ public class StrokeInputService
   }
   
   @Override
+  public void onKey(final String valueText) {
+  }
+  
+  @Override
+  public void onLongPress(final String valueText) {
+  }
+  
+  @Override
   public void saveKeyboard(final Keyboard keyboard) {
     final String keyboardName = nameFromKeyboard.get(keyboard);
     Contexty.savePreferenceString(

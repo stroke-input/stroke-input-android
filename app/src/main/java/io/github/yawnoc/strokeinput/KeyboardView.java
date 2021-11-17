@@ -26,6 +26,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -99,10 +101,41 @@ public class KeyboardView
   private PopupWindow keyPreviewPlanePopup;
   
   public KeyboardView(final Context context, final AttributeSet attributes) {
+    
     super(context, attributes);
-    // TODO: extended pressing
+    
+    initialiseExtendedPressing();
     initialiseDrawing(context);
     initialiseKeyPreviewing(context);
+    
+  }
+  
+  private void initialiseExtendedPressing() {
+    
+    resetKeyRepeatIntervalMilliseconds();
+    
+    extendedPressHandler =
+      new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message message) {
+          if (activeKey != null) {
+            switch (message.what) {
+              case MESSAGE_KEY_REPEAT:
+                keyboardListener.onKey(activeKey.valueText);
+                sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, keyRepeatIntervalMilliseconds);
+                break;
+              case MESSAGE_LONG_PRESS:
+                keyboardListener.onLongPress(activeKey.valueText);
+                activeKey = null;
+                activePointerId = NONEXISTENT_POINTER_ID;
+                keyPreviewPlane.dismissAllImmediately();
+                invalidate();
+                break;
+            }
+          }
+        }
+      };
+    
   }
   
   private void initialiseDrawing(final Context context) {
@@ -139,6 +172,8 @@ public class KeyboardView
   }
   
   public interface KeyboardListener {
+    void onKey(String valueText);
+    void onLongPress(String valueText);
     void saveKeyboard(Keyboard keyboard);
   }
   
@@ -153,6 +188,10 @@ public class KeyboardView
     // TODO: paints
     // TODO: shift mode
     requestLayout();
+  }
+  
+  public void resetKeyRepeatIntervalMilliseconds() {
+    keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
   }
   
   @Override
@@ -180,6 +219,11 @@ public class KeyboardView
     
     return ColorUtils.HSLToColor(colourHSLArray);
     
+  }
+  
+  private void sendExtendedPressHandlerMessage(final int messageWhat, final long delayMilliseconds) {
+    final Message message = extendedPressHandler.obtainMessage(messageWhat);
+    extendedPressHandler.sendMessageDelayed(message, delayMilliseconds);
   }
   
 }
