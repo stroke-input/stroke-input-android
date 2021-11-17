@@ -36,7 +36,7 @@ import java.util.List;
 import io.github.yawnoc.utilities.Valuey;
 
 /*
-  A container that holds rows of keys, to be declared in a layout XML.
+  A keyboard that holds rows of keys, to be declared in a layout XML.
   It also determines the vertical placement of the stroke sequence bar
   and the candidates bar, which are separate entities to be placed
   above the keyboard (in the parent input container).

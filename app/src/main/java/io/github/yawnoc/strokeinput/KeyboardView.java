@@ -44,7 +44,7 @@ import androidx.core.graphics.ColorUtils;
 import java.util.List;
 
 /*
-  A container that holds a keyboard.
+  A view that holds a keyboard.
 */
 public class KeyboardView
   extends View

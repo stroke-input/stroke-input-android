@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 /*
-  A candidates bar.
+  A view that holds candidates.
 */
 public class CandidatesView
   extends RecyclerView
