@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 */
 public class InputContainer
   extends LinearLayout
+  implements KeyboardView.KeyboardListener
 {
   
   // Container properties
@@ -59,6 +60,7 @@ public class InputContainer
   
   public void initialiseKeyboardView() {
     keyboardView = findViewById(R.id.keyboard_view);
+    keyboardView.setKeyboardListener(this);
   }
   
 }
