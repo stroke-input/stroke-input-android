@@ -10,4 +10,12 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
 >
+  <io.github.yawnoc.strokeinput.CandidatesView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+  />
+  <io.github.yawnoc.strokeinput.KeyboardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+  />
 </io.github.yawnoc.strokeinput.InputContainer>
