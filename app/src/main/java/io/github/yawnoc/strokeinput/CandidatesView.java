@@ -35,12 +35,6 @@ public class CandidatesView
     candidatesViewAdapter = new CandidatesViewAdapter(context, new ArrayList<>());
     setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     setAdapter(candidatesViewAdapter);
-    final List<String> debugCandidateList = new ArrayList<>();
-    debugCandidateList.add("This");
-    debugCandidateList.add("be");
-    debugCandidateList.add("a");
-    debugCandidateList.add("test");
-    candidatesViewAdapter.updateCandidateList(debugCandidateList);
   }
   
 }
