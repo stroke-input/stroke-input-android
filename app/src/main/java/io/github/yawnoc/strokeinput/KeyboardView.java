@@ -29,6 +29,8 @@ public class KeyboardView
   implements View.OnClickListener
 {
   
+  public static final int SHIFT_DISABLED = 0;
+  
   public KeyboardView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
   }
