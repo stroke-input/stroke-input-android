@@ -17,9 +17,8 @@ public class InputContainer
   
   // Container properties
   private KeyboardListener keyboardListener;
-  private Keyboard keyboard;
-  private Key[] keyArray;
-  private int touchableTopY;
+  private CandidatesView candidatesView;
+  private KeyboardView keyboardView;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
@@ -35,6 +34,14 @@ public class InputContainer
   
   public void setKeyboardListener(final KeyboardListener keyboardListener) {
     this.keyboardListener = keyboardListener;
+  }
+  
+  public void initialiseCandidatesView() {
+    candidatesView = findViewById(R.id.candidates_view);
+  }
+  
+  public void initialiseKeyboardView() {
+    keyboardView = findViewById(R.id.keyboard_view);
   }
   
 }

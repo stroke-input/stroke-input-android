@@ -78,6 +78,8 @@ public class StrokeInputService
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.setKeyboardListener(this);
+    inputContainer.initialiseCandidatesView();
+    inputContainer.initialiseKeyboardView();
   }
   
   @Override
