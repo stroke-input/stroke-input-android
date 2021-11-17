@@ -385,6 +385,13 @@ public class KeyboardView
     
   }
   
+  @Override
+  protected void onDetachedFromWindow() {
+    // Prevent persistence of popups on screen rotate
+    keyPreviewPlanePopup.dismiss();
+    super.onDetachedFromWindow();
+  }
+  
   private void sendExtendedPressHandlerMessage(final int messageWhat, final long delayMilliseconds) {
     final Message message = extendedPressHandler.obtainMessage(messageWhat);
     extendedPressHandler.sendMessageDelayed(message, delayMilliseconds);
