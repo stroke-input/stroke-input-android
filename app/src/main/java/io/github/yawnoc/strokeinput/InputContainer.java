@@ -11,6 +11,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
+/*
+  A container that holds:
+    - Stroke sequence bar (popup)
+    - Candidates view
+    - Keyboard view
+*/
 public class InputContainer
   extends LinearLayout
 {

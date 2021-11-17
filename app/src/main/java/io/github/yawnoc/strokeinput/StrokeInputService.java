@@ -18,6 +18,12 @@ import java.util.Set;
 import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
 
+/*
+  An InputMethodService for the Stroke Input Method (筆畫輸入法).
+  TODO:
+    - Make the current rewrite (branch 'layout-rewrite') actually work
+    - Actually complete the phrase data set
+*/
 public class StrokeInputService
   extends InputMethodService
   implements InputContainer.CandidateListener, InputContainer.KeyboardListener

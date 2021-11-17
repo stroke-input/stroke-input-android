@@ -40,6 +40,10 @@ import io.github.yawnoc.utilities.Valuey;
   It also determines the vertical placement of the stroke sequence bar
   and the candidates bar, which are separate entities to be placed
   above the keyboard (in the parent input container).
+  TODO:
+    - Move the stroke sequence bar to InputContainer
+    - Move the candidates bar to CandidatesView
+    (which is the point of branch 'layout-rewrite')
 */
 public class Keyboard {
   

@@ -12,6 +12,9 @@ import android.util.AttributeSet;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/*
+  A candidates bar.
+*/
 public class CandidatesView
   extends RecyclerView
 {

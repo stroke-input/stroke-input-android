@@ -24,6 +24,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+/*
+  A container that holds a keyboard.
+*/
 public class KeyboardView
   extends View
   implements View.OnClickListener
