@@ -68,6 +68,7 @@ public class KeyboardView
   private KeyboardListener keyboardListener;
   private Keyboard keyboard;
   private List<Key> keyList;
+  private int touchableTopY;
   
   // Active key
   private Key activeKey;
@@ -202,6 +203,43 @@ public class KeyboardView
   
   @Override
   public void onClick(final View view) {
+  }
+  
+  @Override
+  public void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
+    
+    final int keyboardWidth;
+    final int keyboardHeight;
+    final int height;
+    final int candidatesBarHeight;
+    final int popupBufferZoneHeight;
+    
+    if (keyboard == null) {
+      keyboardWidth = 0;
+      keyboardHeight = 0;
+      height = 0;
+      candidatesBarHeight = 0;
+      popupBufferZoneHeight = 0;
+      touchableTopY = 0;
+    }
+    else {
+      keyboardWidth = keyboard.getWidth();
+      keyboardHeight = keyboard.getHeight();
+      height = keyboard.getParentInputContainerHeight();
+      candidatesBarHeight = keyboard.getCandidatesBarHeight();
+      popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
+      touchableTopY = keyboard.getParentInputContainerTouchableTopY();
+    }
+    
+    inputRectangle.set(
+      0,
+      popupBufferZoneHeight - candidatesBarHeight,
+      keyboardWidth,
+      popupBufferZoneHeight - candidatesBarHeight + keyboardHeight
+    );
+    
+    setMeasuredDimension(keyboardWidth, height);
+    
   }
   
   /*
