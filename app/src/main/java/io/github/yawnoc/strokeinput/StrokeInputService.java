@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import io.github.yawnoc.utilities.Contexty;
 import io.github.yawnoc.utilities.Mappy;
 
 public class StrokeInputService
@@ -29,6 +30,7 @@ public class StrokeInputService
   private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -79,11 +81,26 @@ public class StrokeInputService
   
   @Override
   public Keyboard loadSavedKeyboard() {
-    return null;
+    final String savedKeyboardName =
+      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
+    final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
+    if (savedKeyboard != null) {
+      return savedKeyboard;
+    }
+    else {
+      return strokesKeyboard;
+    }
   }
   
   @Override
   public void saveKeyboard(final Keyboard keyboard) {
+    final String keyboardName = nameFromKeyboard.get(keyboard);
+    Contexty.savePreferenceString(
+      getApplicationContext(),
+      PREFERENCES_FILE_NAME,
+      KEYBOARD_NAME_PREFERENCE_KEY,
+      keyboardName
+    );
   }
   
 }
