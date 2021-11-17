@@ -40,7 +40,7 @@ public class CandidatesView
     debugCandidateList.add("be");
     debugCandidateList.add("a");
     debugCandidateList.add("test");
-    candidatesViewAdapter.updateCandidateList(debugCandidateList);
+    //candidatesViewAdapter.updateCandidateList(debugCandidateList);
   }
   
 }
