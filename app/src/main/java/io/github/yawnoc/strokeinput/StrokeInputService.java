@@ -111,6 +111,10 @@ public class StrokeInputService
   }
   
   @Override
+  public void onSwipe(final String valueText) {
+  }
+  
+  @Override
   public void saveKeyboard(final Keyboard keyboard) {
     final String keyboardName = nameFromKeyboard.get(keyboard);
     Contexty.savePreferenceString(
