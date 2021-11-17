@@ -12,4 +12,7 @@ import android.inputmethodservice.InputMethodService;
 public class StrokeInputService
   extends InputMethodService
 {
+  
+  public static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  
 }
