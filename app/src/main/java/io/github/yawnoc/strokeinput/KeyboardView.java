@@ -32,10 +32,20 @@ public class KeyboardView
   implements View.OnClickListener
 {
   
+  // Container properties
+  private KeyboardListener keyboardListener;
+  
   public static final int SHIFT_DISABLED = 0;
   
   public KeyboardView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+  }
+  
+  public interface KeyboardListener {
+  }
+  
+  public void setKeyboardListener(final KeyboardListener keyboardListener) {
+    this.keyboardListener = keyboardListener;
   }
   
   @Override
