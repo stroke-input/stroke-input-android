@@ -77,6 +77,7 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
+    inputContainer.setCandidateListener(this);
     inputContainer.setKeyboardListener(this);
     inputContainer.initialiseCandidatesView();
     inputContainer.initialiseKeyboardView();
