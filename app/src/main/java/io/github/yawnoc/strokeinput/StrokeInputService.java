@@ -87,4 +87,15 @@ public class StrokeInputService
     inputContainer.initialiseKeyboardView(this);
   }
   
+  @Override
+  public void saveKeyboard(final Keyboard keyboard) {
+    final String keyboardName = nameFromKeyboard.get(keyboard);
+    Contexty.savePreferenceString(
+      getApplicationContext(),
+      PREFERENCES_FILE_NAME,
+      KEYBOARD_NAME_PREFERENCE_KEY,
+      keyboardName
+    );
+  }
+  
 }

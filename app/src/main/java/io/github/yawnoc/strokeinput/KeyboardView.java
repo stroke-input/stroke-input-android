@@ -24,6 +24,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.List;
+
 /*
   A container that holds a keyboard.
 */
@@ -34,6 +36,8 @@ public class KeyboardView
   
   // Container properties
   private KeyboardListener keyboardListener;
+  private Keyboard keyboard;
+  private List<Key> keyList;
   
   public static final int SHIFT_DISABLED = 0;
   
@@ -42,10 +46,20 @@ public class KeyboardView
   }
   
   public interface KeyboardListener {
+    void saveKeyboard(Keyboard keyboard);
   }
   
   public void setKeyboardListener(final KeyboardListener keyboardListener) {
     this.keyboardListener = keyboardListener;
+  }
+  
+  public void setKeyboard(final Keyboard keyboard) {
+    keyboardListener.saveKeyboard(keyboard);
+    this.keyboard = keyboard;
+    keyList = keyboard.getKeyList();
+    // TODO: paints
+    // TODO: shift mode
+    requestLayout();
   }
   
   @Override
