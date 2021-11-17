@@ -945,7 +945,14 @@ public class StrokeInputService
       return ""; // don't read passwords
     }
     
-    return (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    final String textBeforeCursorUnsafe = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    
+    if (textBeforeCursorUnsafe != null) {
+      return textBeforeCursorUnsafe;
+    }
+    else {
+      return "";
+    }
     
   }
   
