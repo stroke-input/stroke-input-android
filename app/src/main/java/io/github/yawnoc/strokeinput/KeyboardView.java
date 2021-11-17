@@ -24,6 +24,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.core.graphics.ColorUtils;
+
 import java.util.List;
 
 /*
@@ -33,6 +35,9 @@ public class KeyboardView
   extends View
   implements View.OnClickListener
 {
+  
+  public static final String KEYBOARD_FONT_FILE_NAME = "StrokeInputKeyboard.ttf";
+  private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // Container properties
   private KeyboardListener keyboardListener;
@@ -64,6 +69,29 @@ public class KeyboardView
   
   @Override
   public void onClick(final View view) {
+  }
+  
+  /*
+    Lighten a dark colour and darken a light colour.
+    Used for key press colour changes.
+  */
+  public static int toPressedColour(final int colour) {
+    
+    final float[] colourHSLArray = new float[3];
+    ColorUtils.colorToHSL(colour, colourHSLArray);
+    
+    float colourLightness = colourHSLArray[2];
+    if (colourLightness < COLOUR_LIGHTNESS_CUTOFF) {
+      colourLightness = (2 * colourLightness + 1) / 3;
+    }
+    else {
+      colourLightness = (2 * colourLightness) / 3;
+    }
+    
+    colourHSLArray[2] = colourLightness;
+    
+    return ColorUtils.HSLToColor(colourHSLArray);
+    
   }
   
 }
