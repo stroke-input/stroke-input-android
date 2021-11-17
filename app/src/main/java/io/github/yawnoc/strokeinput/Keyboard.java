@@ -51,9 +51,9 @@ public class Keyboard {
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
   
-  private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 24;
+  private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 0;
   private final int strokeSequenceBarHeightPx;
-  public static final int CANDIDATES_BAR_HEIGHT_DP = 36;
+  public static final int CANDIDATES_BAR_HEIGHT_DP = 0;
   private final int candidatesBarHeightPx;
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   
