@@ -185,7 +185,7 @@ public class KeyboardView
     keyboardListener.saveKeyboard(keyboard);
     this.keyboard = keyboard;
     keyList = keyboard.getKeyList();
-    // TODO: paints
+    inputFillPaint.setColor(keyboard.fillColour);
     // TODO: shift mode
     requestLayout();
   }
