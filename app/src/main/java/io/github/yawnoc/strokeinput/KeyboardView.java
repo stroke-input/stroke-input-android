@@ -21,8 +21,13 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -36,6 +41,22 @@ public class KeyboardView
   implements View.OnClickListener
 {
   
+  private static final int NONEXISTENT_POINTER_ID = -1;
+  
+  private static final int MESSAGE_KEY_REPEAT = 1;
+  private static final int MESSAGE_LONG_PRESS = 2;
+  private static final int DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS = 75;
+  private static final int KEY_REPEAT_START_MILLISECONDS = 500;
+  private static final int KEY_LONG_PRESS_MILLISECONDS = 750;
+  
+  private static final int SWIPE_ACTIVATION_DISTANCE = 40;
+  
+  public static final int SHIFT_DISABLED = 0;
+  private static final int SHIFT_SINGLE = 1;
+  private static final int SHIFT_PERSISTENT = 2;
+  private static final int SHIFT_INITIATED = 3;
+  private static final int SHIFT_HELD = 4;
+  
   public static final String KEYBOARD_FONT_FILE_NAME = "StrokeInputKeyboard.ttf";
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
@@ -44,7 +65,36 @@ public class KeyboardView
   private Keyboard keyboard;
   private List<Key> keyList;
   
-  public static final int SHIFT_DISABLED = 0;
+  // Active key
+  private Key activeKey;
+  private int activePointerId = NONEXISTENT_POINTER_ID;
+  
+  // Long presses and key repeats
+  private Handler extendedPressHandler;
+  private int keyRepeatIntervalMilliseconds;
+  
+  // Horizontal swipes
+  private int pointerDownX;
+  private boolean swipeModeIsActivated = false;
+  
+  // Shift key
+  private int shiftPointerId = NONEXISTENT_POINTER_ID;
+  private int shiftMode;
+  
+  // Keyboard drawing
+  private Typeface keyboardFont;
+  private Rect inputRectangle;
+  private Paint inputFillPaint;
+  
+  // Key drawing
+  private Rect keyRectangle;
+  private Paint keyFillPaint;
+  private Paint keyBorderPaint;
+  private Paint keyTextPaint;
+  
+  // Key preview plane
+  private KeyPreviewPlane keyPreviewPlane;
+  private PopupWindow keyPreviewPlanePopup;
   
   public KeyboardView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
