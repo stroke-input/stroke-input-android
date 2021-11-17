@@ -79,10 +79,10 @@ public class Keyboard {
   private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 16;
   private final int defaultKeyPreviewMarginYPx;
   
-  // Parent input container properties
+  // Parent keyboard view properties
   private int popupBufferZoneHeight;
-  private int parentInputContainerHeight;
-  private int parentInputContainerTouchableTopY;
+  private int parentKeyboardViewHeight;
+  private int parentKeyboardViewTouchableTopY;
   
   // Keyboard properties
   private int width;
@@ -144,12 +144,12 @@ public class Keyboard {
     return candidatesBarHeightPx;
   }
   
-  public int getParentInputContainerHeight() {
-    return parentInputContainerHeight;
+  public int getParentKeyboardViewHeight() {
+    return parentKeyboardViewHeight;
   }
   
-  public int getParentInputContainerTouchableTopY() {
-    return parentInputContainerTouchableTopY;
+  public int getParentKeyboardViewTouchableTopY() {
+    return parentKeyboardViewTouchableTopY;
   }
   
   public int getWidth() {
@@ -273,8 +273,8 @@ public class Keyboard {
       key.y += popupBufferZoneHeight;
     }
     
-    parentInputContainerHeight = height + popupBufferZoneHeight;
-    parentInputContainerTouchableTopY = Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
+    parentKeyboardViewHeight = height + popupBufferZoneHeight;
+    parentKeyboardViewTouchableTopY = Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
     
   }
   

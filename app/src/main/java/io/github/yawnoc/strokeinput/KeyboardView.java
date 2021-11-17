@@ -225,10 +225,10 @@ public class KeyboardView
     else {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
-      height = keyboard.getParentInputContainerHeight();
+      height = keyboard.getParentKeyboardViewHeight();
       candidatesBarHeight = keyboard.getCandidatesBarHeight();
       popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
-      touchableTopY = keyboard.getParentInputContainerTouchableTopY();
+      touchableTopY = keyboard.getParentKeyboardViewTouchableTopY();
     }
     
     inputRectangle.set(
