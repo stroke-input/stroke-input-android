@@ -28,6 +28,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import androidx.core.graphics.ColorUtils;
@@ -101,7 +102,7 @@ public class KeyboardView
     super(context, attributes);
     // TODO: extended pressing
     initialiseDrawing(context);
-    // TODO: key previewing
+    initialiseKeyPreviewing(context);
   }
   
   private void initialiseDrawing(final Context context) {
@@ -123,6 +124,17 @@ public class KeyboardView
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyTextPaint.setTypeface(keyboardFont);
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
+    
+  }
+  
+  private void initialiseKeyPreviewing(final Context context) {
+    
+    keyPreviewPlane = new KeyPreviewPlane(context);
+    
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+    keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
+    keyPreviewPlanePopup.setTouchable(false);
+    keyPreviewPlanePopup.setClippingEnabled(false);
     
   }
   
