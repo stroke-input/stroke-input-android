@@ -265,22 +265,18 @@ public class KeyboardView
     
     final int keyboardWidth;
     final int keyboardHeight;
-    final int height;
     
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
-      height = 0;
     }
     else {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
-      height = keyboardHeight;
     }
     
     inputRectangle.set(0, 0, keyboardWidth, keyboardHeight);
-    
-    setMeasuredDimension(keyboardWidth, height);
+    setMeasuredDimension(keyboardWidth, keyboardHeight);
     
   }
   
