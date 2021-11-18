@@ -74,7 +74,6 @@ public class KeyboardView
   private KeyboardListener keyboardListener;
   private Keyboard keyboard;
   private List<Key> keyList;
-  private int touchableTopY;
   
   // Active key
   private Key activeKey;
@@ -186,10 +185,6 @@ public class KeyboardView
     void saveKeyboard(Keyboard keyboard);
   }
   
-  public int getTouchableTopY() {
-    return touchableTopY;
-  }
-  
   public void setKeyboardListener(final KeyboardListener keyboardListener) {
     this.keyboardListener = keyboardListener;
   }
@@ -216,9 +211,8 @@ public class KeyboardView
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     final int keyboardHeight = keyboard.getHeight();
-    final int popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
     
-    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight, popupBufferZoneHeight);
+    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight, 0);
     keyPreviewPlanePopup.dismiss();
     keyPreviewPlanePopup.setWidth(screenWidth);
     keyPreviewPlanePopup.setHeight(screenHeight);
@@ -272,32 +266,19 @@ public class KeyboardView
     final int keyboardWidth;
     final int keyboardHeight;
     final int height;
-    final int candidatesBarHeight;
-    final int popupBufferZoneHeight;
     
     if (keyboard == null) {
       keyboardWidth = 0;
       keyboardHeight = 0;
       height = 0;
-      candidatesBarHeight = 0;
-      popupBufferZoneHeight = 0;
-      touchableTopY = 0;
     }
     else {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
-      height = keyboard.getParentKeyboardViewHeight();
-      candidatesBarHeight = 0;
-      popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
-      touchableTopY = keyboard.getParentKeyboardViewTouchableTopY();
+      height = keyboardHeight;
     }
     
-    inputRectangle.set(
-      0,
-      popupBufferZoneHeight - candidatesBarHeight,
-      keyboardWidth,
-      popupBufferZoneHeight - candidatesBarHeight + keyboardHeight
-    );
+    inputRectangle.set(0, 0, keyboardWidth, keyboardHeight);
     
     setMeasuredDimension(keyboardWidth, height);
     

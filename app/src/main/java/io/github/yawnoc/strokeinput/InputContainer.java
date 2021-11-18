@@ -55,10 +55,6 @@ public class InputContainer
     keyboardView.setKeyboard(keyboard);
   }
   
-  public int getTouchableTopY() {
-    return keyboardView.getTouchableTopY();
-  }
-  
   public Keyboard getKeyboard() {
     return keyboardView.getKeyboard();
   }

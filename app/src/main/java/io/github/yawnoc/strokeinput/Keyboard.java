@@ -25,7 +25,6 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
-import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Xml;
@@ -66,11 +65,6 @@ public class Keyboard {
   private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 16;
   private final int defaultKeyPreviewMarginYPx;
   
-  // Parent keyboard view properties
-  private int popupBufferZoneHeight;
-  private int parentKeyboardViewHeight;
-  private int parentKeyboardViewTouchableTopY;
-  
   // Keyboard properties
   private int width;
   private int height;
@@ -97,7 +91,7 @@ public class Keyboard {
   private final int screenWidth;
   private final int screenHeight;
   
-  public Keyboard(final Context context, final int layoutResourceId, final boolean isFullscreen) {
+  public Keyboard(final Context context, final int layoutResourceId) {
     
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
     
@@ -112,24 +106,12 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
-    correctKeyboardVerticalPosition(isFullscreen);
+    correctKeyboardVerticalPosition();
     
   }
   
   public List<Key> getKeyList() {
     return keyList;
-  }
-  
-  public int getPopupBufferZoneHeight() {
-    return popupBufferZoneHeight;
-  }
-  
-  public int getParentKeyboardViewHeight() {
-    return parentKeyboardViewHeight;
-  }
-  
-  public int getParentKeyboardViewTouchableTopY() {
-    return parentKeyboardViewTouchableTopY;
   }
   
   public int getWidth() {
@@ -221,7 +203,7 @@ public class Keyboard {
     
   }
   
-  private void correctKeyboardVerticalPosition(final boolean isFullscreen) {
+  private void correctKeyboardVerticalPosition() {
     
     final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
@@ -232,29 +214,6 @@ public class Keyboard {
       key.previewMarginY *= keyboardHeightCorrectionFactor;
     }
     height *= keyboardHeightCorrectionFactor;
-    
-    if (Build.VERSION.SDK_INT == 28 && !isFullscreen) {
-      // API level 28 is dumb, see <https://stackoverflow.com/q/52929466>
-      int popupBufferZoneTopY = 0;
-      for (final Key key : keyList) {
-        final int keyPreviewHeight = (int) (key.previewMagnification * key.height);
-        popupBufferZoneTopY = Math.min(
-          key.y - keyPreviewHeight - key.previewMarginY - key.borderThickness,
-          popupBufferZoneTopY
-        );
-      }
-      popupBufferZoneHeight = -popupBufferZoneTopY;
-    }
-    else {
-      popupBufferZoneHeight = 0;
-    }
-    
-    for (final Key key : keyList) {
-      key.y += popupBufferZoneHeight;
-    }
-    
-    parentKeyboardViewHeight = height + popupBufferZoneHeight;
-    parentKeyboardViewTouchableTopY = Math.max(0, popupBufferZoneHeight);
     
   }
   
