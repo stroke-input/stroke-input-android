@@ -64,6 +64,10 @@ public class InputContainer
     candidatesView.scrollToPosition(0);
   }
   
+  public int getCandidatesViewTop() {
+    return candidatesView.getTop();
+  }
+  
   public Keyboard getKeyboard() {
     return keyboardView.getKeyboard();
   }
