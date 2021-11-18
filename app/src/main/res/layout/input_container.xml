@@ -32,6 +32,7 @@
     android:id="@+id/candidates_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height__candidate_button"
+    android:background="@color/candidate_button_fill"
   />
   <io.github.yawnoc.strokeinput.KeyboardView
     android:id="@+id/keyboard_view"

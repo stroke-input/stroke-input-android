@@ -11,7 +11,7 @@
   android:layout_height="@dimen/height__candidate_button"
   android:textColor="@color/umbrella_orange"
   android:textSize="@dimen/font_size__candidate_button"
-  android:background="@android:color/black"
+  android:background="@color/candidate_button_fill"
   android:minWidth="@dimen/min_width__candidate_button"
   android:paddingHorizontal="@dimen/padding_horizontal__candidate_button"
 >

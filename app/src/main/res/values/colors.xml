@@ -14,4 +14,6 @@
   <color name="enter_key_fill">#FF00CE00</color>
   <!-- Stroke sequence bar -->
   <color name="stroke_sequence_bar_fill">#8D000000</color>
+  <!-- Candidate button -->
+  <color name="candidate_button_fill">@android:color/black</color>
 </resources>
