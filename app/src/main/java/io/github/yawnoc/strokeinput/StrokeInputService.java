@@ -358,6 +358,50 @@ public class StrokeInputService
   }
   
   @Override
+  public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
+    super.onStartInputView(editorInfo, isRestarting);
+    setEnterKeyDisplayText();
+    inputContainer.showStrokeSequenceBar();
+  }
+  
+  private void setEnterKeyDisplayText() {
+    
+    String enterKeyDisplayText = null;
+    switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
+      case EditorInfo.IME_ACTION_DONE:
+        enterKeyDisplayText = getString(R.string.display_text__done);
+        break;
+      case EditorInfo.IME_ACTION_GO:
+        enterKeyDisplayText = getString(R.string.display_text__go);
+        break;
+      case EditorInfo.IME_ACTION_NEXT:
+        enterKeyDisplayText = getString(R.string.display_text__next);
+        break;
+      case EditorInfo.IME_ACTION_PREVIOUS:
+        enterKeyDisplayText = getString(R.string.display_text__previous);
+        break;
+      case EditorInfo.IME_ACTION_SEARCH:
+        enterKeyDisplayText = getString(R.string.display_text__search);
+        break;
+      case EditorInfo.IME_ACTION_SEND:
+        enterKeyDisplayText = getString(R.string.display_text__send);
+        break;
+    }
+    if (!enterKeyHasAction || enterKeyDisplayText == null) {
+      enterKeyDisplayText = getString(R.string.display_text__return);
+    }
+    
+    for (final Keyboard keyboard : keyboardSet) {
+      for (final Key key : keyboard.getKeyList()) {
+        if (key.valueText.equals(ENTER_KEY_VALUE_TEXT)) {
+          key.displayText = enterKeyDisplayText;
+        }
+      }
+    }
+    
+  }
+  
+  @Override
   public void onCandidate(final String candidate) {
   }
   
