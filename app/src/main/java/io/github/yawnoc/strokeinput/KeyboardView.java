@@ -186,6 +186,10 @@ public class KeyboardView
     void saveKeyboard(Keyboard keyboard);
   }
   
+  public int getTouchableTopY() {
+    return touchableTopY;
+  }
+  
   public void setKeyboardListener(final KeyboardListener keyboardListener) {
     this.keyboardListener = keyboardListener;
   }
