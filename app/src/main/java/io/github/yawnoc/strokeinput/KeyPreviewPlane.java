@@ -35,7 +35,6 @@ public class KeyPreviewPlane
   private int width;
   private int height;
   private int keyboardHeight;
-  private int popupBufferZoneHeight;
   private final List<Key> keyList = new ArrayList<>();
   private Key latestKey;
   private int shiftMode = KeyboardView.SHIFT_DISABLED;
@@ -93,14 +92,12 @@ public class KeyPreviewPlane
   public void updateDimensions(
     final int width,
     final int height,
-    final int keyboardHeight,
-    final int popupBufferZoneHeight
+    final int keyboardHeight
   )
   {
     this.width = width;
     this.height = height;
     this.keyboardHeight = keyboardHeight;
-    this.popupBufferZoneHeight = popupBufferZoneHeight;
   }
   
   public void updateShiftMode(final int shiftMode) {
@@ -174,7 +171,7 @@ public class KeyPreviewPlane
       final int previewY = (
         key.y
           - keyPreviewHeight - key.previewMarginY
-          + this.height - keyboardHeight - popupBufferZoneHeight
+          + this.height - keyboardHeight
       );
       
       canvas.translate(previewX, previewY);

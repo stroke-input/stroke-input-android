@@ -212,7 +212,7 @@ public class KeyboardView
     final int screenHeight = keyboard.getScreenHeight();
     final int keyboardHeight = keyboard.getHeight();
     
-    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight, 0);
+    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight);
     keyPreviewPlanePopup.dismiss();
     keyPreviewPlanePopup.setWidth(screenWidth);
     keyPreviewPlanePopup.setHeight(screenHeight);
