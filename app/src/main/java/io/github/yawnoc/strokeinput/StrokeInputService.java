@@ -10,9 +10,12 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -451,6 +454,139 @@ public class StrokeInputService
   
   @Override
   public void onKey(final String valueText) {
+    
+    final InputConnection inputConnection = getCurrentInputConnection();
+    if (inputConnection == null) {
+      return;
+    }
+    
+    switch (valueText) {
+      
+      case STROKE_1_VALUE_TEXT:
+      case STROKE_2_VALUE_TEXT:
+      case STROKE_3_VALUE_TEXT:
+      case STROKE_4_VALUE_TEXT:
+      case STROKE_5_VALUE_TEXT:
+        final String strokeDigit = Stringy.removePrefix(STROKE_KEY_VALUE_TEXT_PREFIX, valueText);
+        effectStrokeAppend(strokeDigit);
+        break;
+      
+      case BACKSPACE_VALUE_TEXT:
+        effectBackspace(inputConnection);
+        break;
+      
+      case SWITCH_TO_STROKES_VALUE_TEXT:
+      case SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT:
+      case SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT:
+      case SWITCH_TO_QWERTY_VALUE_TEXT:
+      case SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT:
+        final String keyboardName = Stringy.removePrefix(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
+        effectKeyboardSwitch(keyboardName);
+        break;
+      
+      case SPACE_BAR_VALUE_TEXT:
+        effectSpaceKey(inputConnection);
+        break;
+      
+      case ENTER_KEY_VALUE_TEXT:
+        effectEnterKey(inputConnection);
+        break;
+      
+      default:
+        effectOrdinaryKey(inputConnection, valueText);
+      
+    }
+    
+  }
+  
+  private void effectStrokeAppend(final String strokeDigit) {
+    
+    final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
+    final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
+    if (newCandidateList.size() > 0) {
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
+    }
+    
+  }
+  
+  private void effectBackspace(final InputConnection inputConnection) {
+    
+    if (strokeDigitSequence.length() > 0) {
+      
+      final String newStrokeDigitSequence = Stringy.removeSuffix("(?s).", strokeDigitSequence);
+      final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
+      
+      setStrokeDigitSequence(newStrokeDigitSequence);
+      setCandidateList(newCandidateList);
+      
+      if (newStrokeDigitSequence.length() == 0) {
+        setCandidateListForPhraseCompletion(inputConnection);
+      }
+      
+      inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
+      
+    }
+    
+    else {
+      
+      final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
+      
+      if (upToOneCharacterBeforeCursor.length() > 0) {
+        final CharSequence selection = inputConnection.getSelectedText(0);
+        if (TextUtils.isEmpty(selection)) {
+          inputConnection.deleteSurroundingTextInCodePoints(1, 0);
+        }
+        else {
+          inputConnection.commitText("", 1);
+        }
+        setCandidateListForPhraseCompletion(inputConnection);
+      }
+      else { // for apps like Termux
+        inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+        inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
+      }
+      
+      final int nextBackspaceIntervalMilliseconds = (
+        Stringy.isAscii(upToOneCharacterBeforeCursor)
+          ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+          : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
+      );
+      inputContainer.setKeyRepeatIntervalMilliseconds(nextBackspaceIntervalMilliseconds);
+      
+    }
+    
+  }
+  
+  private void effectKeyboardSwitch(final String keyboardName) {
+    final Keyboard keyboard = keyboardFromName.get(keyboardName);
+    inputContainer.setKeyboard(keyboard);
+  }
+  
+  private void effectSpaceKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(" ", 1);
+  }
+  
+  private void effectEnterKey(final InputConnection inputConnection) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    else if (enterKeyHasAction) {
+      inputConnection.performEditorAction(inputOptionsBits);
+    }
+    else {
+      inputConnection.commitText("\n", 1);
+    }
+  }
+  
+  private void effectOrdinaryKey(final InputConnection inputConnection, final String valueText) {
+    if (strokeDigitSequence.length() > 0) {
+      onCandidate(getFirstCandidate());
+    }
+    inputConnection.commitText(valueText, 1);
   }
   
   @Override
@@ -487,6 +623,11 @@ public class StrokeInputService
       phraseSet = phraseSetSimplified;
     }
     
+  }
+  
+  private void setStrokeDigitSequence(final String strokeDigitSequence) {
+    this.strokeDigitSequence = strokeDigitSequence;
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
   
   private boolean shouldPreferTraditional() {
