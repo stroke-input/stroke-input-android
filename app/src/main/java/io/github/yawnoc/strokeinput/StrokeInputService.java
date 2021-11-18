@@ -804,14 +804,14 @@ public class StrokeInputService
     
     final List<String> exactMatchCandidateList;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
-    if (exactMatchCharacters == null) {
-      exactMatchCandidateList = Collections.emptyList();
-    }
-    else {
+    if (exactMatchCharacters != null) {
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
+    }
+    else {
+      exactMatchCandidateList = Collections.emptyList();
     }
     
     final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
