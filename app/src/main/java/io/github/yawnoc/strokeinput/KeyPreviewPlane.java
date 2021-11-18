@@ -51,12 +51,12 @@ public class KeyPreviewPlane extends View {
     
     super(context);
     
-    initialiseDismissing();
+    initialiseDismissalHandler();
     initialiseDrawing(context);
     
   }
   
-  private void initialiseDismissing() {
+  private void initialiseDismissalHandler() {
     
     dismissalHandler =
       new Handler(Looper.getMainLooper()) {
