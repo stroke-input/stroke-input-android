@@ -147,4 +147,11 @@ public class InputContainer
     
   }
   
+  @Override
+  protected void onDetachedFromWindow() {
+    // Prevent persistence of stroke sequence bar on screen rotate
+    strokeSequenceBarPopup.dismiss();
+    super.onDetachedFromWindow();
+  }
+  
 }
