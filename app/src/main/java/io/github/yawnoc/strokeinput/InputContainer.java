@@ -10,8 +10,11 @@ package io.github.yawnoc.strokeinput;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.WindowInsets;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -64,6 +67,45 @@ public class InputContainer
     strokeSequenceBarPopup = new PopupWindow(strokeSequenceBar, popup_size, popup_size);
     strokeSequenceBarPopup.setTouchable(false);
     strokeSequenceBarPopup.setClippingEnabled(false);
+    
+  }
+  
+  @SuppressLint("RtlHardcoded")
+  public void showStrokeSequenceBar() {
+    
+    final int softButtonsHeight = getSoftButtonsHeight();
+    final int keyboardViewHeight = keyboardView.getHeight();
+    
+    strokeSequenceBarPopup.dismiss();
+    
+    if (getWindowToken() != null) { // check needed in API level 29
+      strokeSequenceBarPopup.showAtLocation(
+        this,
+        Gravity.BOTTOM | Gravity.LEFT,
+        0,
+        softButtonsHeight + keyboardViewHeight
+      );
+    }
+    
+  }
+  
+  private int getSoftButtonsHeight() {
+    
+    final int softButtonsHeight;
+    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
+    if (rootWindowInsets == null) {
+      softButtonsHeight = 0;
+    }
+    else {
+      if (Build.VERSION.SDK_INT < 30) {
+        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
+      }
+      else {
+        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
+      }
+    }
+    
+    return softButtonsHeight;
     
   }
   
