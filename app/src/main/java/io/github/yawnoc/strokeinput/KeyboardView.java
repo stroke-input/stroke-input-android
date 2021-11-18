@@ -530,7 +530,7 @@ public class KeyboardView
     activePointerId = pointerId;
     
     sendAppropriateExtendedPressHandlerMessage(key);
-    keyPreviewPlane.showPreview(key);
+    keyPreviewPlane.showPreviewAt(key);
     invalidate();
     
   }
