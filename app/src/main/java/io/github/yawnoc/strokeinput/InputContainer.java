@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.util.List;
+
 /*
   A container that holds:
     - Stroke sequence bar (popup)
@@ -117,6 +119,11 @@ public class InputContainer
   
   public void setKeyRepeatIntervalMilliseconds(final int millis) {
     keyboardView.setKeyRepeatIntervalMilliseconds(millis);
+  }
+  
+  public void setCandidateList(final List<String> candidateList) {
+    candidatesViewAdapter.updateCandidateList(candidateList);
+    candidatesView.scrollToPosition(0);
   }
   
   public void setStrokeDigitSequence(final String strokeDigitSequence) {
