@@ -97,7 +97,7 @@ public class Keyboard {
   private final int screenWidth;
   private final int screenHeight;
   
-  public Keyboard(final Context context, final int layoutResourceId, final boolean isFullscreenMode) {
+  public Keyboard(final Context context, final int layoutResourceId, final boolean isFullscreen) {
     
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
     
@@ -112,7 +112,7 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
-    adjustKeyboardVertically(isFullscreenMode);
+    adjustKeyboardVertically(isFullscreen);
     
   }
   
@@ -221,7 +221,7 @@ public class Keyboard {
     
   }
   
-  private void adjustKeyboardVertically(final boolean isFullscreenMode) {
+  private void adjustKeyboardVertically(final boolean isFullscreen) {
     
     final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
@@ -233,7 +233,7 @@ public class Keyboard {
     }
     height *= keyboardHeightCorrectionFactor;
     
-    if (Build.VERSION.SDK_INT == 28 && !isFullscreenMode) {
+    if (Build.VERSION.SDK_INT == 28 && !isFullscreen) {
       // API level 28 is dumb, see <https://stackoverflow.com/q/52929466>
       int popupBufferZoneTopY = 0;
       for (final Key key : keyList) {
