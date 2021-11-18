@@ -408,6 +408,7 @@ public class StrokeInputService
   @Override
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
     super.onStartInputView(editorInfo, isRestarting);
+    inputContainer.setBackground(isFullscreenMode());
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
     inputContainer.setCandidateList(candidateList);
     inputContainer.showKeyPreviewPlane(); // for phones that dismiss PopupWindow on switch app

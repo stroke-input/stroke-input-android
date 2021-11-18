@@ -55,6 +55,14 @@ public class InputContainer
     keyboardView.setKeyboard(keyboard);
   }
   
+  public void setBackground(final boolean isFullscreen) {
+    setBackgroundResource(
+      isFullscreen
+        ? R.color.stroke_sequence_bar_fill_fullscreen
+        : 0
+    );
+  }
+  
   public void setStrokeDigitSequence(final String strokeDigitSequence) {
     strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
   }
