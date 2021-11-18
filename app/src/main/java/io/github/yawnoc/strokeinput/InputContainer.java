@@ -77,9 +77,6 @@ public class InputContainer
   @SuppressLint("RtlHardcoded")
   public void showStrokeSequenceBar() {
     
-    final int softButtonsHeight = getSoftButtonsHeight();
-    final int keyboardViewHeight = keyboardView.getHeight();
-    
     strokeSequenceBarPopup.dismiss();
     
     if (getWindowToken() != null) { // check needed in API level 29
@@ -87,7 +84,7 @@ public class InputContainer
         this,
         Gravity.BOTTOM | Gravity.LEFT,
         0,
-        softButtonsHeight + keyboardViewHeight
+        getHeight()
       );
     }
     
