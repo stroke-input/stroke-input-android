@@ -18,8 +18,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.NavigableSet;
@@ -44,12 +46,42 @@ public class StrokeInputService
   
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
+  private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
+  private static final String SPACE_BAR_VALUE_TEXT = "SPACE";
+  
+  public static final String STROKE_DIGIT_1 = "1";
+  public static final String STROKE_DIGIT_2 = "2";
+  public static final String STROKE_DIGIT_3 = "3";
+  public static final String STROKE_DIGIT_4 = "4";
+  public static final String STROKE_DIGIT_5 = "5";
+  
+  private static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
+  private static final String STROKE_1_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_1;
+  private static final String STROKE_2_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_2;
+  private static final String STROKE_3_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_3;
+  private static final String STROKE_4_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_4;
+  private static final String STROKE_5_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_5;
   
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
   private static final String STROKES_SYMBOLS_1_KEYBOARD_NAME = "STROKES_SYMBOLS_1";
   private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";
   private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
   private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
+  
+  private static final String SWITCH_KEYBOARD_VALUE_TEXT_PREFIX = "SWITCH_TO_";
+  private static final String
+    SWITCH_TO_STROKES_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_1_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_2_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_QWERTY_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
+  private static final String
+    SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
+  
+  private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
+  private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
@@ -63,6 +95,12 @@ public class StrokeInputService
   private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
   
   private static final int LAG_PREVENTION_CODE_POINT_COUNT = 1400;
+  private static final int LARGISH_SORTING_RANK = 3000;
+  private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
+  private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
+  private static final int MAX_PREFIX_MATCH_COUNT = 20;
+  private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
+  private static final int MAX_PHRASE_LENGTH = 6;
   
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
@@ -90,6 +128,10 @@ public class StrokeInputService
   private Map<Integer, Integer> sortingRankFromCodePoint;
   private Set<Integer> commonCodePointSet;
   private NavigableSet<String> phraseSet;
+  
+  private String strokeDigitSequence = "";
+  private List<String> candidateList = new ArrayList<>();
+  private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
   
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
