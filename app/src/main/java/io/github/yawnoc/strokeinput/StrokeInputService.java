@@ -408,6 +408,8 @@ public class StrokeInputService
   @Override
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
     super.onStartInputView(editorInfo, isRestarting);
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
+    inputContainer.setCandidateList(candidateList);
     setEnterKeyDisplayText();
   }
   
