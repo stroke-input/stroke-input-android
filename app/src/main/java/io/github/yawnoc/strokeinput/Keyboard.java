@@ -112,7 +112,7 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
-    adjustKeyboardVertically(isFullscreen);
+    correctKeyboardVerticalPosition(isFullscreen);
     
   }
   
@@ -221,7 +221,7 @@ public class Keyboard {
     
   }
   
-  private void adjustKeyboardVertically(final boolean isFullscreen) {
+  private void correctKeyboardVerticalPosition(final boolean isFullscreen) {
     
     final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
