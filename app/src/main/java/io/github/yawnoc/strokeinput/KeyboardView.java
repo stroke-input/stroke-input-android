@@ -112,7 +112,7 @@ public class KeyboardView
     
     initialiseExtendedPressHandler();
     initialiseDrawing(context);
-    initialiseKeyPreviewing(context);
+    initialiseKeyPreviewPlane(context);
     
   }
   
@@ -165,7 +165,7 @@ public class KeyboardView
     
   }
   
-  private void initialiseKeyPreviewing(final Context context) {
+  private void initialiseKeyPreviewPlane(final Context context) {
     
     keyPreviewPlane = new KeyPreviewPlane(context);
     
