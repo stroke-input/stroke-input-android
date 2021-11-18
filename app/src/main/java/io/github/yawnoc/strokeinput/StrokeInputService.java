@@ -659,6 +659,11 @@ public class StrokeInputService
     );
   }
   
+  private void setStrokeDigitSequence(final String strokeDigitSequence) {
+    this.strokeDigitSequence = strokeDigitSequence;
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
+  }
+  
   private void setCandidateList(final List<String> candidateList) {
     this.candidateList = candidateList;
     inputContainer.setCandidateList(candidateList);
@@ -954,11 +959,6 @@ public class StrokeInputService
       phraseSet = phraseSetSimplified;
     }
     
-  }
-  
-  private void setStrokeDigitSequence(final String strokeDigitSequence) {
-    this.strokeDigitSequence = strokeDigitSequence;
-    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
   
   private boolean shouldPreferTraditional() {
