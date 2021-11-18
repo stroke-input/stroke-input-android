@@ -53,10 +53,9 @@
   <dimen name="padding_right__stroke_sequence_bar">7dp</dimen>
   <dimen name="padding_bottom__stroke_sequence_bar">2dp</dimen>
   <!-- Candidates -->
-  <dimen name="height__candidates_view">36dp</dimen>
   <dimen name="padding__candidates_view">1dp</dimen>
   <dimen name="font_size__candidate_button">18sp</dimen>
-  <dimen name="height__candidate_button">34dp</dimen>
+  <dimen name="height__candidate_button">36dp</dimen>
   <dimen name="min_width__candidate_button">0dp</dimen>
   <dimen name="padding_horizontal__candidate_button">16dp</dimen>
 </resources>

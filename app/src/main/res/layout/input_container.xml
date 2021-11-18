@@ -31,7 +31,7 @@
   <io.github.yawnoc.strokeinput.CandidatesView
     android:id="@+id/candidates_view"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/height__candidates_view"
+    android:layout_height="@dimen/height__candidate_button"
   />
   <io.github.yawnoc.strokeinput.KeyboardView
     android:id="@+id/keyboard_view"
