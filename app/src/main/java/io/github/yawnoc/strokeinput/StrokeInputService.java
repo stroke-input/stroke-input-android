@@ -134,6 +134,7 @@ public class StrokeInputService
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
+    inputContainer.initialiseStrokeSequenceBar(this);
   }
   
   private Keyboard loadSavedKeyboard() {

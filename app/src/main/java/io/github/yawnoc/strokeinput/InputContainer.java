@@ -7,9 +7,14 @@
 
 package io.github.yawnoc.strokeinput;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 /*
   A container that holds:
@@ -24,6 +29,10 @@ public class InputContainer
   // Container properties
   private CandidatesView candidatesView;
   private KeyboardView keyboardView;
+  
+  // Stroke sequence bar
+  private TextView strokeSequenceBar;
+  private PopupWindow strokeSequenceBarPopup;
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
@@ -42,6 +51,20 @@ public class InputContainer
     keyboardView = findViewById(R.id.keyboard_view);
     keyboardView.setKeyboardListener(keyboardListener);
     keyboardView.setKeyboard(keyboard);
+  }
+  
+  @SuppressLint("InflateParams")
+  public void initialiseStrokeSequenceBar(final Context context) {
+    
+    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    strokeSequenceBar = (TextView) layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
+    strokeSequenceBar.setTypeface(Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME));
+    
+    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
+    strokeSequenceBarPopup = new PopupWindow(strokeSequenceBar, popup_size, popup_size);
+    strokeSequenceBarPopup.setTouchable(false);
+    strokeSequenceBarPopup.setClippingEnabled(false);
+    
   }
   
 }
