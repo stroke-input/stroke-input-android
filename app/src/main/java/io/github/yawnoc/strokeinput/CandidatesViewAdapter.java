@@ -26,7 +26,7 @@ public class CandidatesViewAdapter
   extends RecyclerView.Adapter<CandidatesViewAdapter.ButtonHolder>
 {
   
-  private OnCandidateListener candidateListener;
+  private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
   
@@ -35,11 +35,11 @@ public class CandidatesViewAdapter
     this.candidateList = candidateList;
   }
   
-  public interface OnCandidateListener {
+  public interface CandidateListener {
     void onCandidate(String candidate);
   }
   
-  public void setOnCandidateListener(final OnCandidateListener candidateListener) {
+  public void setCandidateListener(final CandidateListener candidateListener) {
     this.candidateListener = candidateListener;
   }
   
