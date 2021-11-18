@@ -9,8 +9,10 @@ package io.github.yawnoc.strokeinput;
 
 import android.annotation.SuppressLint;
 import android.inputmethodservice.InputMethodService;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -88,6 +90,10 @@ public class StrokeInputService
   private Map<Integer, Integer> sortingRankFromCodePoint;
   private Set<Integer> commonCodePointSet;
   private NavigableSet<String> phraseSet;
+  
+  private int inputOptionsBits;
+  private boolean enterKeyHasAction;
+  private boolean inputIsPassword;
   
   @Override
   public View onCreateInputView() {
@@ -311,6 +317,43 @@ public class StrokeInputService
       "StrokeInputService",
       "Loaded '" + fileName + "' in " + millis + " milliseconds"
     );
+  }
+  
+  @Override
+  public void onStartInput(final EditorInfo editorInfo, final boolean isRestarting) {
+    
+    super.onStartInput(editorInfo, isRestarting);
+    
+    inputOptionsBits = editorInfo.imeOptions;
+    enterKeyHasAction = (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
+    
+    final int inputTypeBits = editorInfo.inputType;
+    final int inputClassBits = inputTypeBits & InputType.TYPE_MASK_CLASS;
+    final int inputVariationBits = inputTypeBits & InputType.TYPE_MASK_VARIATION;
+    
+    switch (inputClassBits) {
+      
+      case InputType.TYPE_CLASS_NUMBER:
+        inputIsPassword = inputVariationBits == InputType.TYPE_NUMBER_VARIATION_PASSWORD;
+        break;
+      
+      case InputType.TYPE_CLASS_TEXT:
+        switch (inputVariationBits) {
+          case InputType.TYPE_TEXT_VARIATION_PASSWORD:
+          case InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD:
+          case InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD:
+            inputIsPassword = true;
+            break;
+          default:
+            inputIsPassword = false;
+        }
+        break;
+      
+      default:
+        inputIsPassword = false;
+      
+    }
+    
   }
   
   @Override
