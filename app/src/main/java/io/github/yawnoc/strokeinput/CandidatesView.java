@@ -30,6 +30,10 @@ public class CandidatesView
     initialiseCandidatesViewAdapter(context);
   }
   
+  public CandidatesViewAdapter getCandidatesViewAdapter() {
+    return candidatesViewAdapter;
+  }
+  
   private void initialiseCandidatesViewAdapter(final Context context) {
     candidatesViewAdapter = new CandidatesViewAdapter(context, new ArrayList<>());
     setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));

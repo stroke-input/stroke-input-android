@@ -31,6 +31,7 @@ public class InputContainer
   
   // Container properties
   private CandidatesView candidatesView;
+  private CandidatesViewAdapter candidatesViewAdapter;
   private KeyboardView keyboardView;
   
   // Stroke sequence bar
@@ -44,6 +45,7 @@ public class InputContainer
   public void initialiseCandidatesView(final CandidatesViewAdapter.CandidateListener candidateListener) {
     candidatesView = findViewById(R.id.candidates_view);
     candidatesView.setCandidateListener(candidateListener);
+    candidatesViewAdapter = candidatesView.getCandidatesViewAdapter();
   }
   
   public void initialiseKeyboardView(
