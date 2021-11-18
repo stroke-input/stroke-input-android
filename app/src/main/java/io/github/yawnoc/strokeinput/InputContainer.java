@@ -11,7 +11,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class InputContainer
 {
   
   // Container properties
-  private TextView strokeSequenceBar;
+  private StrokeSequenceBar strokeSequenceBar;
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
   private KeyboardView keyboardView;
@@ -78,24 +77,7 @@ public class InputContainer
   }
   
   public void setStrokeDigitSequence(final String strokeDigitSequence) {
-    
-    if (strokeDigitSequence.length() > 0) {
-      final String strokeSequence = (
-        strokeDigitSequence
-          .replace(StrokeInputService.STROKE_DIGIT_1, getResources().getString(R.string.stroke_1))
-          .replace(StrokeInputService.STROKE_DIGIT_2, getResources().getString(R.string.stroke_2))
-          .replace(StrokeInputService.STROKE_DIGIT_3, getResources().getString(R.string.stroke_3))
-          .replace(StrokeInputService.STROKE_DIGIT_4, getResources().getString(R.string.stroke_4))
-          .replace(StrokeInputService.STROKE_DIGIT_5, getResources().getString(R.string.stroke_5))
-      );
-      strokeSequenceBar.setText(strokeSequence);
-      strokeSequenceBar.requestLayout();
-      strokeSequenceBar.setVisibility(VISIBLE);
-    }
-    else {
-      strokeSequenceBar.setVisibility(INVISIBLE);
-    }
-    
+    strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
   }
   
 }
