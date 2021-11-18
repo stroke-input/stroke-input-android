@@ -452,16 +452,6 @@ public class StrokeInputService
   }
   
   @Override
-  public void onComputeInsets(final Insets insets) {
-    super.onComputeInsets(insets);
-    if (inputContainer != null) { // check needed in API level 30
-      final int candidatesViewTop = inputContainer.getCandidatesViewTop();
-      insets.visibleTopInsets = candidatesViewTop;
-      insets.contentTopInsets = candidatesViewTop;
-    }
-  }
-  
-  @Override
   public void onCandidate(final String candidate) {
     
     final InputConnection inputConnection = getCurrentInputConnection();
