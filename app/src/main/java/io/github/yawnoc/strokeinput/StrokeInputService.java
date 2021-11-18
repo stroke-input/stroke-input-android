@@ -410,6 +410,7 @@ public class StrokeInputService
     super.onStartInputView(editorInfo, isRestarting);
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
     inputContainer.setCandidateList(candidateList);
+    inputContainer.showKeyPreviewPlane(); // for phones that dismiss PopupWindow on switch app
     setEnterKeyDisplayText();
   }
   

@@ -76,4 +76,8 @@ public class InputContainer
     keyboardView.setKeyRepeatIntervalMilliseconds(millis);
   }
   
+  public void showKeyPreviewPlane() {
+    keyboardView.showKeyPreviewPlane();
+  }
+  
 }
