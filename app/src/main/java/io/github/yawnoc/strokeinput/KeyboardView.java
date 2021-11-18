@@ -92,8 +92,8 @@ public class KeyboardView
   private int shiftMode;
   
   // Keyboard drawing
-  private Rect inputRectangle;
-  private Paint inputFillPaint;
+  private Rect keyboardRectangle;
+  private Paint keyboardFillPaint;
   
   // Key drawing
   private Rect keyRectangle;
@@ -147,8 +147,8 @@ public class KeyboardView
     
     this.setBackgroundColor(Color.TRANSPARENT);
     
-    inputRectangle = new Rect();
-    inputFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    keyboardRectangle = new Rect();
+    keyboardFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     
     keyRectangle = new Rect();
     
@@ -197,7 +197,7 @@ public class KeyboardView
     keyboardListener.saveKeyboard(keyboard);
     this.keyboard = keyboard;
     keyList = keyboard.getKeyList();
-    inputFillPaint.setColor(keyboard.fillColour);
+    keyboardFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT) {
       shiftMode = SHIFT_DISABLED;
       keyPreviewPlane.updateShiftMode(shiftMode);
@@ -275,7 +275,7 @@ public class KeyboardView
       keyboardHeight = keyboard.getHeight();
     }
     
-    inputRectangle.set(0, 0, keyboardWidth, keyboardHeight);
+    keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
     setMeasuredDimension(keyboardWidth, keyboardHeight);
     
   }
@@ -293,7 +293,7 @@ public class KeyboardView
       return;
     }
     
-    canvas.drawRect(inputRectangle, inputFillPaint);
+    canvas.drawRect(keyboardRectangle, keyboardFillPaint);
     
     for (final Key key : keyList) {
       
