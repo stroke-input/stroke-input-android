@@ -180,6 +180,7 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
+    inputContainer.initialisePopupRecess();
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
@@ -407,12 +408,19 @@ public class StrokeInputService
   
   @Override
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
+    
     super.onStartInputView(editorInfo, isRestarting);
-    inputContainer.setBackground(isFullscreenMode());
+    
+    final boolean isFullscreen = isFullscreenMode();
+    inputContainer.setPopupRecessLayout(isFullscreen);
+    inputContainer.setBackground(isFullscreen);
+    
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
     inputContainer.setCandidateList(candidateList);
     inputContainer.showKeyPreviewPlane(); // for phones that dismiss PopupWindow on switch app
+    
     setEnterKeyDisplayText();
+    
   }
   
   private void setEnterKeyDisplayText() {

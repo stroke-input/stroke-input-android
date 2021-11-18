@@ -10,12 +10,14 @@ package io.github.yawnoc.strokeinput;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import java.util.List;
 
 /*
   A container that holds:
+    - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
     - Stroke sequence bar
     - Candidates view
     - Keyboard view
@@ -25,6 +27,7 @@ public class InputContainer
 {
   
   // Container properties
+  private View popupRecess;
   private StrokeSequenceBar strokeSequenceBar;
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
@@ -32,6 +35,10 @@ public class InputContainer
   
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+  }
+  
+  public void initialisePopupRecess() {
+    popupRecess = findViewById(R.id.popup_recess);
   }
   
   public void initialiseStrokeSequenceBar(final Context context) {
@@ -53,6 +60,14 @@ public class InputContainer
     keyboardView = findViewById(R.id.keyboard_view);
     keyboardView.setKeyboardListener(keyboardListener);
     keyboardView.setKeyboard(keyboard);
+  }
+  
+  public void setPopupRecessLayout(final boolean isFullscreen) {
+    popupRecess.setVisibility(
+      isFullscreen
+        ? GONE
+        : INVISIBLE
+    );
   }
   
   public void setBackground(final boolean isFullscreen) {
