@@ -232,16 +232,16 @@ public class KeyboardView
     
     final int softButtonsHeight;
     final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-    if (rootWindowInsets == null) {
-      softButtonsHeight = 0;
-    }
-    else {
+    if (rootWindowInsets != null) {
       if (Build.VERSION.SDK_INT < 30) {
         softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
       }
       else {
         softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
       }
+    }
+    else {
+      softButtonsHeight = 0;
     }
     
     return softButtonsHeight;
