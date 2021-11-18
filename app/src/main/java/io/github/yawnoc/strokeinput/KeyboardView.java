@@ -110,13 +110,13 @@ public class KeyboardView
     
     super(context, attributes);
     
-    initialiseExtendedPressing();
+    initialiseExtendedPressHandler();
     initialiseDrawing(context);
     initialiseKeyPreviewing(context);
     
   }
   
-  private void initialiseExtendedPressing() {
+  private void initialiseExtendedPressHandler() {
     
     resetKeyRepeatIntervalMilliseconds();
     
