@@ -29,8 +29,9 @@ public class InputContainer
     super(context, attributes);
   }
   
-  public void initialiseCandidatesView() {
+  public void initialiseCandidatesView(final CandidatesViewAdapter.CandidateListener candidateListener) {
     candidatesView = findViewById(R.id.candidates_view);
+    candidatesView.setCandidateListener(candidateListener);
   }
   
   public void initialiseKeyboardView(

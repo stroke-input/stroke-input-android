@@ -36,4 +36,8 @@ public class CandidatesView
     setAdapter(candidatesViewAdapter);
   }
   
+  public void setCandidateListener(final CandidatesViewAdapter.CandidateListener candidateListener) {
+    candidatesViewAdapter.setCandidateListener(candidateListener);
+  }
+  
 }
