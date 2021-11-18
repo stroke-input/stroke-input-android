@@ -194,6 +194,10 @@ public class KeyboardView
     this.keyboardListener = keyboardListener;
   }
   
+  public Keyboard getKeyboard() {
+    return keyboard;
+  }
+  
   public void setKeyboard(final Keyboard keyboard) {
     keyboardListener.saveKeyboard(keyboard);
     this.keyboard = keyboard;

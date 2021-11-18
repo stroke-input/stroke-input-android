@@ -623,6 +623,29 @@ public class StrokeInputService
   
   @Override
   public void onSwipe(final String valueText) {
+    
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
+      
+      final Keyboard keyboard = inputContainer.getKeyboard();
+      final String keyboardName = nameFromKeyboard.get(keyboard);
+      
+      if (keyboardName == null) {
+        return;
+      }
+      switch (keyboardName) {
+        case STROKES_KEYBOARD_NAME:
+        case STROKES_SYMBOLS_1_KEYBOARD_NAME:
+        case STROKES_SYMBOLS_2_KEYBOARD_NAME:
+          inputContainer.setKeyboard(qwertyKeyboard);
+          break;
+        case QWERTY_KEYBOARD_NAME:
+        case QWERTY_SYMBOLS_KEYBOARD_NAME:
+          inputContainer.setKeyboard(strokesKeyboard);
+          break;
+      }
+      
+    }
+    
   }
   
   @Override
