@@ -15,5 +15,6 @@
   <!-- Stroke sequence bar -->
   <color name="stroke_sequence_bar_fill">#8D000000</color>
   <!-- Candidate button -->
+  <color name="candidate_button_text">@color/umbrella_orange</color>
   <color name="candidate_button_fill">@android:color/black</color>
 </resources>

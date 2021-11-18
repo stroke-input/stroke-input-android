@@ -9,7 +9,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="wrap_content"
   android:layout_height="@dimen/height__candidate_button"
-  android:textColor="@color/umbrella_orange"
+  android:textColor="@color/candidate_button_text"
   android:textSize="@dimen/font_size__candidate_button"
   android:background="@color/candidate_button_fill"
   android:minWidth="@dimen/min_width__candidate_button"
