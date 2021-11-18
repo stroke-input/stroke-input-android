@@ -266,13 +266,13 @@ public class KeyboardView
     final int keyboardWidth;
     final int keyboardHeight;
     
-    if (keyboard == null) {
-      keyboardWidth = 0;
-      keyboardHeight = 0;
-    }
-    else {
+    if (keyboard != null) {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
+    }
+    else {
+      keyboardWidth = 0;
+      keyboardHeight = 0;
     }
     
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
