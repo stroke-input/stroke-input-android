@@ -27,10 +27,10 @@ public class CandidatesView
   
   public CandidatesView(final Context context, final AttributeSet attributes) {
     super(context, attributes);
-    initialiseCandidatesAdapting(context);
+    initialiseCandidatesViewAdapter(context);
   }
   
-  private void initialiseCandidatesAdapting(final Context context) {
+  private void initialiseCandidatesViewAdapter(final Context context) {
     candidatesViewAdapter = new CandidatesViewAdapter(context, new ArrayList<>());
     setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     setAdapter(candidatesViewAdapter);
