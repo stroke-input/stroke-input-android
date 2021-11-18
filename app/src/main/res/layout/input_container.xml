@@ -27,8 +27,7 @@
     android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
     android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
     tools:ignore="RtlHardcoded"
-  >
-  </TextView>
+  />
   <io.github.yawnoc.strokeinput.CandidatesView
     android:id="@+id/candidates_view"
     android:layout_width="match_parent"
