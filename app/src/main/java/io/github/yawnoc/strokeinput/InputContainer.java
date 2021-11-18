@@ -109,6 +109,10 @@ public class InputContainer
     
   }
   
+  public void setKeyboard(final Keyboard keyboard) {
+    keyboardView.setKeyboard(keyboard);
+  }
+  
   public void setStrokeDigitSequence(final String strokeDigitSequence) {
     
     if (strokeDigitSequence.length() > 0) {
