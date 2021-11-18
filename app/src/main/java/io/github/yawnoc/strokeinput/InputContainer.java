@@ -55,6 +55,15 @@ public class InputContainer
     keyboardView.setKeyboard(keyboard);
   }
   
+  public void setStrokeDigitSequence(final String strokeDigitSequence) {
+    strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
+  }
+  
+  public void setCandidateList(final List<String> candidateList) {
+    candidatesViewAdapter.updateCandidateList(candidateList);
+    candidatesView.scrollToPosition(0);
+  }
+  
   public Keyboard getKeyboard() {
     return keyboardView.getKeyboard();
   }
@@ -65,15 +74,6 @@ public class InputContainer
   
   public void setKeyRepeatIntervalMilliseconds(final int millis) {
     keyboardView.setKeyRepeatIntervalMilliseconds(millis);
-  }
-  
-  public void setCandidateList(final List<String> candidateList) {
-    candidatesViewAdapter.updateCandidateList(candidateList);
-    candidatesView.scrollToPosition(0);
-  }
-  
-  public void setStrokeDigitSequence(final String strokeDigitSequence) {
-    strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
   }
   
 }
