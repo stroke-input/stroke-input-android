@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -606,6 +609,286 @@ public class StrokeInputService
       KEYBOARD_NAME_PREFERENCE_KEY,
       keyboardName
     );
+  }
+  
+  private void setCandidateList(final List<String> candidateList) {
+    this.candidateList = candidateList;
+    inputContainer.setCandidateList(candidateList);
+  }
+  
+  private void setCandidateListForPhraseCompletion(final InputConnection inputConnection) {
+    
+    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
+    
+    phraseCompletionFirstCodePointList.clear();
+    for (final String phraseCompletionCandidate : phraseCompletionCandidateList) {
+      phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
+    }
+    
+    setCandidateList(phraseCompletionCandidateList);
+    
+  }
+  
+  /*
+    Candidate comparator for a string.
+  */
+  private Comparator<String> candidateComparator(
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    return
+      Comparator.comparingInt(
+        string ->
+          computeCandidateRank(
+            string,
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
+          )
+      );
+  }
+  
+  /*
+    Candidate comparator for a code point.
+  */
+  private Comparator<Integer> candidateCodePointComparator(
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    return
+      Comparator.comparingInt(
+        codePoint ->
+          computeCandidateRank(
+            codePoint,
+            1,
+            unpreferredCodePointSet,
+            sortingRankFromCodePoint,
+            phraseCompletionFirstCodePointList
+          )
+      );
+  }
+  
+  /*
+    Compute the candidate rank for a string.
+  */
+  private int computeCandidateRank(
+    final String string,
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    
+    final int firstCodePoint = Stringy.getFirstCodePoint(string);
+    final int stringLength = string.length();
+    
+    return
+      computeCandidateRank(
+        firstCodePoint,
+        stringLength,
+        unpreferredCodePointSet,
+        sortingRankFromCodePoint,
+        phraseCompletionFirstCodePointList
+      );
+    
+  }
+  
+  /*
+    Compute the candidate rank for a string with a given first code point and length.
+  */
+  private int computeCandidateRank(
+    final int firstCodePoint,
+    final int stringLength,
+    final Set<Integer> unpreferredCodePointSet,
+    final Map<Integer, Integer> sortingRankFromCodePoint,
+    final List<Integer> phraseCompletionFirstCodePointList
+  )
+  {
+    
+    final int coarseRank;
+    final int fineRank;
+    final int penalty;
+    
+    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
+    final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
+    final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
+    
+    final Integer sortingRankUnsafe = sortingRankFromCodePoint.get(firstCodePoint);
+    final int sortingRank = (
+      sortingRankUnsafe != null
+        ? sortingRankUnsafe
+        : LARGISH_SORTING_RANK
+    );
+    
+    final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
+    final int unpreferredPenalty = (
+      unpreferredCodePointSet.contains(firstCodePoint)
+        ? RANKING_PENALTY_UNPREFERRED
+        : 0
+    );
+    
+    if (phraseCompletionListIsEmpty) {
+      coarseRank = Integer.MIN_VALUE;
+      fineRank = sortingRank;
+      penalty = lengthPenalty + unpreferredPenalty;
+    }
+    else if (firstCodePointMatchesPhraseCompletionCandidate) {
+      coarseRank = Integer.MIN_VALUE;
+      fineRank = phraseCompletionIndex;
+      penalty = lengthPenalty;
+    }
+    else {
+      coarseRank = 0;
+      fineRank = sortingRank;
+      penalty = lengthPenalty + unpreferredPenalty;
+    }
+    
+    return coarseRank + fineRank + penalty;
+    
+  }
+  
+  private List<String> computeCandidateList(final String strokeDigitSequence) {
+    
+    if (strokeDigitSequence.length() == 0) {
+      return Collections.emptyList();
+    }
+    
+    updateCandidateOrderPreference();
+    
+    final List<String> exactMatchCandidateList;
+    final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
+    if (exactMatchCharacters == null) {
+      exactMatchCandidateList = Collections.emptyList();
+    }
+    else {
+      exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
+      exactMatchCandidateList.sort(
+        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
+      );
+    }
+    
+    final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
+    final Collection<String> prefixMatchCharactersCollection = (
+      charactersFromStrokeDigitSequence
+        .subMap(
+          strokeDigitSequence, false,
+          strokeDigitSequence + Character.MAX_VALUE, false
+        )
+        .values()
+    );
+    final long addAllStartMillis = System.currentTimeMillis();
+    for (final String characters : prefixMatchCharactersCollection) {
+      Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
+    }
+    final long addAllEndMillis = System.currentTimeMillis();
+    Log.d(
+      "computeCandidateList",
+      (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
+    );
+    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT) {
+      prefixMatchCodePointSet.retainAll(commonCodePointSet);
+    }
+    
+    final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
+    final long sortStartMillis = System.currentTimeMillis();
+    prefixMatchCandidateCodePointList.sort(
+      candidateCodePointComparator(
+        unpreferredCodePointSet,
+        sortingRankFromCodePoint,
+        phraseCompletionFirstCodePointList
+      )
+    );
+    final long sortEndMillis = System.currentTimeMillis();
+    Log.d(
+      "computeCandidateList",
+      (sortEndMillis - sortStartMillis) + " milliseconds (Collections.sort)"
+    );
+    
+    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
+    final List<String> prefixMatchCandidateList = new ArrayList<>();
+    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount)) {
+      prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
+    }
+    
+    final List<String> candidateList = new ArrayList<>();
+    candidateList.addAll(exactMatchCandidateList);
+    candidateList.addAll(prefixMatchCandidateList);
+    
+    return candidateList;
+    
+  }
+  
+  private String getFirstCandidate() {
+    
+    try {
+      return candidateList.get(0);
+    }
+    catch (IndexOutOfBoundsException exception) {
+      return "";
+    }
+    
+  }
+  
+  /*
+    Compute the phrase completion candidate list.
+    Longer matches with the text before the cursor are ranked earlier.
+  */
+  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection) {
+    
+    updateCandidateOrderPreference();
+    
+    final List<String> phraseCompletionCandidateList = new ArrayList<>();
+    
+    for (
+      String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
+      phrasePrefix.length() > 0;
+      phrasePrefix = Stringy.removePrefix("(?s).", phrasePrefix)
+    )
+    {
+      final Set<String> prefixMatchPhraseCandidateSet =
+        phraseSet.subSet(
+          phrasePrefix, false,
+          phrasePrefix + Character.MAX_VALUE, false
+        );
+      final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
+      
+      for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
+        final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
+        if (!phraseCompletionCandidateList.contains(phraseCompletion)) {
+          prefixMatchPhraseCompletionList.add(phraseCompletion);
+        }
+      }
+      prefixMatchPhraseCompletionList.sort(
+        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, Collections.emptyList())
+      );
+      phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
+    }
+    
+    final int candidateCount = Math.min(phraseCompletionCandidateList.size(), MAX_PHRASE_COMPLETION_COUNT);
+    
+    return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
+    
+  }
+  
+  private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount) {
+    
+    if (inputIsPassword) {
+      return ""; // don't read passwords
+    }
+    
+    final String textBeforeCursorUnsafe = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    
+    if (textBeforeCursorUnsafe != null) {
+      return textBeforeCursorUnsafe;
+    }
+    else {
+      return "";
+    }
+    
   }
   
   private void updateCandidateOrderPreference() {
