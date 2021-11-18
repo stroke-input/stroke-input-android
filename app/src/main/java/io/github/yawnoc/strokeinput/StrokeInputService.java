@@ -180,9 +180,9 @@ public class StrokeInputService
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
+    inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
-    inputContainer.initialiseStrokeSequenceBar(this);
   }
   
   private Keyboard loadSavedKeyboard() {
@@ -409,7 +409,6 @@ public class StrokeInputService
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
     super.onStartInputView(editorInfo, isRestarting);
     setEnterKeyDisplayText();
-    inputContainer.showStrokeSequenceBar();
   }
   
   private void setEnterKeyDisplayText() {

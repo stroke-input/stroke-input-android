@@ -7,23 +7,17 @@
 
 package io.github.yawnoc.strokeinput;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.WindowInsets;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.List;
 
 /*
   A container that holds:
-    - Stroke sequence bar (popup)
+    - Stroke sequence bar
     - Candidates view
     - Keyboard view
 */
@@ -32,16 +26,18 @@ public class InputContainer
 {
   
   // Container properties
+  private TextView strokeSequenceBar;
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
   private KeyboardView keyboardView;
   
-  // Stroke sequence bar
-  private TextView strokeSequenceBar;
-  private PopupWindow strokeSequenceBarPopup;
-  
   public InputContainer(final Context context, final AttributeSet attributes) {
     super(context, attributes);
+  }
+  
+  public void initialiseStrokeSequenceBar(final Context context) {
+    strokeSequenceBar = findViewById(R.id.stroke_sequence_bar);
+    strokeSequenceBar.setTypeface(Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME));
   }
   
   public void initialiseCandidatesView(final CandidatesViewAdapter.CandidateListener candidateListener) {
@@ -58,56 +54,6 @@ public class InputContainer
     keyboardView = findViewById(R.id.keyboard_view);
     keyboardView.setKeyboardListener(keyboardListener);
     keyboardView.setKeyboard(keyboard);
-  }
-  
-  @SuppressLint("InflateParams")
-  public void initialiseStrokeSequenceBar(final Context context) {
-    
-    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    strokeSequenceBar = (TextView) layoutInflater.inflate(R.layout.stroke_sequence_bar, null);
-    strokeSequenceBar.setTypeface(Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME));
-    
-    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
-    strokeSequenceBarPopup = new PopupWindow(strokeSequenceBar, popup_size, popup_size);
-    strokeSequenceBarPopup.setTouchable(false);
-    strokeSequenceBarPopup.setClippingEnabled(false);
-    
-  }
-  
-  @SuppressLint("RtlHardcoded")
-  public void showStrokeSequenceBar() {
-    
-    strokeSequenceBarPopup.dismiss();
-    
-    if (getWindowToken() != null) { // check needed in API level 29
-      strokeSequenceBarPopup.showAtLocation(
-        this,
-        Gravity.BOTTOM | Gravity.LEFT,
-        0,
-        getHeight()
-      );
-    }
-    
-  }
-  
-  private int getSoftButtonsHeight() {
-    
-    final int softButtonsHeight;
-    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-    if (rootWindowInsets == null) {
-      softButtonsHeight = 0;
-    }
-    else {
-      if (Build.VERSION.SDK_INT < 30) {
-        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
-      }
-      else {
-        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
-      }
-    }
-    
-    return softButtonsHeight;
-    
   }
   
   public void setKeyboard(final Keyboard keyboard) {
@@ -142,13 +88,6 @@ public class InputContainer
       strokeSequenceBar.setVisibility(INVISIBLE);
     }
     
-  }
-  
-  @Override
-  protected void onDetachedFromWindow() {
-    // Prevent persistence of stroke sequence bar on screen rotate
-    strokeSequenceBarPopup.dismiss();
-    super.onDetachedFromWindow();
   }
   
 }
