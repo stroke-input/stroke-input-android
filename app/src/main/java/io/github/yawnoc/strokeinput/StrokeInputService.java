@@ -463,6 +463,16 @@ public class StrokeInputService
   
   @Override
   public void onCandidate(final String candidate) {
+    
+    final InputConnection inputConnection = getCurrentInputConnection();
+    if (inputConnection == null) {
+      return;
+    }
+    
+    inputConnection.commitText(candidate, 1);
+    setStrokeDigitSequence("");
+    setCandidateListForPhraseCompletion(inputConnection);
+    
   }
   
   @Override
