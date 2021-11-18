@@ -614,6 +614,11 @@ public class StrokeInputService
   
   @Override
   public void onLongPress(final String valueText) {
+    
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
+      Contexty.showSystemKeyboardChanger(this);
+    }
+    
   }
   
   @Override
