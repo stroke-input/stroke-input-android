@@ -380,8 +380,7 @@ public class KeyboardView
   
   @Override
   protected void onDetachedFromWindow() {
-    // Prevent persistence of popups on screen rotate
-    keyPreviewPlanePopup.dismiss();
+    keyPreviewPlanePopup.dismiss(); // prevent persistence of popups on screen rotate
     super.onDetachedFromWindow();
   }
   
