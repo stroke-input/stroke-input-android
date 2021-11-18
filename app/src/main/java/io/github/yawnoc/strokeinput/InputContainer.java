@@ -113,6 +113,10 @@ public class InputContainer
     keyboardView.setKeyboard(keyboard);
   }
   
+  public void setKeyRepeatIntervalMilliseconds(final int millis) {
+    keyboardView.setKeyRepeatIntervalMilliseconds(millis);
+  }
+  
   public void setStrokeDigitSequence(final String strokeDigitSequence) {
     
     if (strokeDigitSequence.length() > 0) {

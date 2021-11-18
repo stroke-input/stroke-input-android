@@ -250,6 +250,10 @@ public class KeyboardView
     keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
   }
   
+  public void setKeyRepeatIntervalMilliseconds(final int milliseconds) {
+    keyRepeatIntervalMilliseconds = milliseconds;
+  }
+  
   @Override
   public void onClick(final View view) {
   }
