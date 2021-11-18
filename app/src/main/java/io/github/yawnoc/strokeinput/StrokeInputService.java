@@ -26,7 +26,7 @@ import io.github.yawnoc.utilities.Mappy;
 */
 public class StrokeInputService
   extends InputMethodService
-  implements KeyboardView.KeyboardListener
+  implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
   
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
@@ -100,6 +100,10 @@ public class StrokeInputService
     else {
       return strokesKeyboard;
     }
+  }
+  
+  @Override
+  public void onCandidate(final String candidate) {
   }
   
   @Override
