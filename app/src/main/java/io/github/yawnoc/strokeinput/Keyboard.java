@@ -106,7 +106,7 @@ public class Keyboard {
     keyList = new ArrayList<>();
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
-    correctKeyboardVerticalPosition();
+    capKeyboardHeight();
     
   }
   
@@ -203,7 +203,7 @@ public class Keyboard {
     
   }
   
-  private void correctKeyboardVerticalPosition() {
+  private void capKeyboardHeight() {
     
     final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     
