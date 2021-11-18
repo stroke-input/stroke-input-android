@@ -401,6 +401,8 @@ public class StrokeInputService
     
   }
   
+  // TODO: onComputeInsets
+  
   @Override
   public void onCandidate(final String candidate) {
   }
