@@ -46,7 +46,7 @@ import io.github.yawnoc.utilities.Stringy;
 */
 public class StrokeInputService
   extends InputMethodService
-  implements InputContainer.OnInputListener, CandidatesBarAdapter.OnCandidateListener
+  implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
   
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
@@ -89,6 +89,8 @@ public class StrokeInputService
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
   
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
+  private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
+  
   private static final String SEQUENCE_CHARACTERS_FILE_NAME = "sequence-characters.txt";
   private static final String CHARACTERS_FILE_NAME_TRADITIONAL = "characters-traditional.txt";
   private static final String CHARACTERS_FILE_NAME_SIMPLIFIED = "characters-simplified.txt";
@@ -96,8 +98,6 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME_SIMPLIFIED = "ranking-simplified.txt";
   private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases-traditional.txt";
   private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
-  
-  private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
   
   private static final int LAG_PREVENTION_CODE_POINT_COUNT = 1400;
   private static final int LARGISH_SORTING_RANK = 3000;
@@ -173,15 +173,28 @@ public class StrokeInputService
   }
   
   private Keyboard newKeyboard(final int layoutResourceId) {
-    return new Keyboard(this, layoutResourceId, isFullscreenMode());
+    return new Keyboard(this, layoutResourceId);
   }
   
   @SuppressLint("InflateParams")
   private void initialiseInputContainer() {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
-    inputContainer.setOnInputListener(this);
-    inputContainer.setCandidateListener(this);
-    inputContainer.setKeyboard(loadSavedKeyboard());
+    inputContainer.initialisePopupRecess();
+    inputContainer.initialiseStrokeSequenceBar(this);
+    inputContainer.initialiseCandidatesView(this);
+    inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
+  }
+  
+  private Keyboard loadSavedKeyboard() {
+    final String savedKeyboardName =
+      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
+    final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
+    if (savedKeyboard != null) {
+      return savedKeyboard;
+    }
+    else {
+      return strokesKeyboard;
+    }
   }
   
   private void initialiseStrokeInput() {
@@ -394,11 +407,19 @@ public class StrokeInputService
   
   @Override
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
+    
     super.onStartInputView(editorInfo, isRestarting);
+    
+    final boolean isFullscreen = isFullscreenMode();
+    inputContainer.setPopupRecessLayout(isFullscreen);
+    inputContainer.setBackground(isFullscreen);
+    
+    inputContainer.setStrokeDigitSequence(strokeDigitSequence);
+    inputContainer.setCandidateList(candidateList);
+    inputContainer.showKeyPreviewPlane(); // for phones that dismiss PopupWindow on switch app
+    
     setEnterKeyDisplayText();
-    inputContainer.showStrokeSequenceBar();
-    inputContainer.showCandidatesBar();
-    inputContainer.showKeyPreviewPlane();
+    
   }
   
   private void setEnterKeyDisplayText() {
@@ -439,16 +460,27 @@ public class StrokeInputService
   }
   
   @Override
-  public void onComputeInsets(final InputMethodService.Insets insets) {
+  public void onComputeInsets(final Insets insets) {
     super.onComputeInsets(insets);
     if (inputContainer != null) { // check needed in API level 30
-      final int touchableTopY = inputContainer.getTouchableTopY();
-      // API level 28 is dumb, see <https://stackoverflow.com/a/53326786>
-      if (touchableTopY > 0) {
-        insets.visibleTopInsets = touchableTopY;
-        insets.contentTopInsets = touchableTopY;
-      }
+      final int candidatesViewTop = inputContainer.getCandidatesViewTop();
+      insets.visibleTopInsets = candidatesViewTop;
+      insets.contentTopInsets = candidatesViewTop;
     }
+  }
+  
+  @Override
+  public void onCandidate(final String candidate) {
+    
+    final InputConnection inputConnection = getCurrentInputConnection();
+    if (inputConnection == null) {
+      return;
+    }
+    
+    inputConnection.commitText(candidate, 1);
+    setStrokeDigitSequence("");
+    setCandidateListForPhraseCompletion(inputConnection);
+    
   }
   
   @Override
@@ -532,25 +564,18 @@ public class StrokeInputService
       final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
       
       if (upToOneCharacterBeforeCursor.length() > 0) {
-        
         final CharSequence selection = inputConnection.getSelectedText(0);
-        
         if (TextUtils.isEmpty(selection)) {
           inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
         else {
           inputConnection.commitText("", 1);
         }
-        
         setCandidateListForPhraseCompletion(inputConnection);
-        
       }
-      
       else { // for apps like Termux
-        
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
-        
       }
       
       final int nextBackspaceIntervalMilliseconds = (
@@ -632,19 +657,6 @@ public class StrokeInputService
   }
   
   @Override
-  public Keyboard loadSavedKeyboard() {
-    final String savedKeyboardName =
-      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
-    final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
-    if (savedKeyboard == null) {
-      return strokesKeyboard;
-    }
-    else {
-      return savedKeyboard;
-    }
-  }
-  
-  @Override
   public void saveKeyboard(final Keyboard keyboard) {
     final String keyboardName = nameFromKeyboard.get(keyboard);
     Contexty.savePreferenceString(
@@ -653,20 +665,6 @@ public class StrokeInputService
       KEYBOARD_NAME_PREFERENCE_KEY,
       keyboardName
     );
-  }
-  
-  @Override
-  public void onCandidate(final String candidate) {
-    
-    final InputConnection inputConnection = getCurrentInputConnection();
-    if (inputConnection == null) {
-      return;
-    }
-    
-    inputConnection.commitText(candidate, 1);
-    setStrokeDigitSequence("");
-    setCandidateListForPhraseCompletion(inputConnection);
-    
   }
   
   private void setStrokeDigitSequence(final String strokeDigitSequence) {
@@ -692,6 +690,9 @@ public class StrokeInputService
     
   }
   
+  /*
+    Candidate comparator for a string.
+  */
   private Comparator<String> candidateComparator(
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
@@ -710,7 +711,9 @@ public class StrokeInputService
       );
   }
   
-  @SuppressWarnings("ComparatorCombinators")
+  /*
+    Candidate comparator for a code point.
+  */
   private Comparator<Integer> candidateCodePointComparator(
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
@@ -718,23 +721,16 @@ public class StrokeInputService
   )
   {
     return
-      (codePoint1, codePoint2) ->
-        Integer.compare(
+      Comparator.comparingInt(
+        codePoint ->
           computeCandidateRank(
-            codePoint1,
-            1,
-            unpreferredCodePointSet,
-            sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
-          ),
-          computeCandidateRank(
-            codePoint2,
+            codePoint,
             1,
             unpreferredCodePointSet,
             sortingRankFromCodePoint,
             phraseCompletionFirstCodePointList
           )
-        );
+      );
   }
   
   /*
@@ -826,14 +822,14 @@ public class StrokeInputService
     
     final List<String> exactMatchCandidateList;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
-    if (exactMatchCharacters == null) {
-      exactMatchCandidateList = Collections.emptyList();
-    }
-    else {
+    if (exactMatchCharacters != null) {
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
+    }
+    else {
+      exactMatchCandidateList = Collections.emptyList();
     }
     
     final Set<Integer> prefixMatchCodePointSet = new HashSet<>();

@@ -25,7 +25,9 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   A plane for key previews, to be displayed in a PopupWindow.
 */
-public class KeyPreviewPlane extends View {
+public class KeyPreviewPlane
+  extends View
+{
   
   private static final int DISMISSAL_DELAY_MILLISECONDS = 20;
   
@@ -33,10 +35,9 @@ public class KeyPreviewPlane extends View {
   private int width;
   private int height;
   private int keyboardHeight;
-  private int popupBufferZoneHeight;
   private final List<Key> keyList = new ArrayList<>();
   private Key latestKey;
-  private int shiftMode = InputContainer.SHIFT_DISABLED;
+  private int shiftMode = KeyboardView.SHIFT_DISABLED;
   
   // Delayed dismissal
   private Handler dismissalHandler;
@@ -51,12 +52,12 @@ public class KeyPreviewPlane extends View {
     
     super(context);
     
-    initialiseDismissing();
+    initialiseDismissalHandler();
     initialiseDrawing(context);
     
   }
   
-  private void initialiseDismissing() {
+  private void initialiseDismissalHandler() {
     
     dismissalHandler =
       new Handler(Looper.getMainLooper()) {
@@ -82,7 +83,7 @@ public class KeyPreviewPlane extends View {
     
     keyPreviewTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyPreviewTextPaint.setTypeface(
-      Typeface.createFromAsset(context.getAssets(), InputContainer.KEYBOARD_FONT_FILE_NAME)
+      Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME)
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
     
@@ -91,14 +92,12 @@ public class KeyPreviewPlane extends View {
   public void updateDimensions(
     final int width,
     final int height,
-    final int keyboardHeight,
-    final int popupBufferZoneHeight
+    final int keyboardHeight
   )
   {
     this.width = width;
     this.height = height;
     this.keyboardHeight = keyboardHeight;
-    this.popupBufferZoneHeight = popupBufferZoneHeight;
   }
   
   public void updateShiftMode(final int shiftMode) {
@@ -106,7 +105,7 @@ public class KeyPreviewPlane extends View {
     invalidate();
   }
   
-  public void show(final Key key) {
+  public void showPreviewAt(final Key key) {
     if (key != null && !keyList.contains(key) && key.isPreviewable) {
       keyList.add(key);
     }
@@ -114,9 +113,9 @@ public class KeyPreviewPlane extends View {
     invalidate();
   }
   
-  public void move(final Key key) {
+  public void movePreviewTo(final Key key) {
     keyList.remove(latestKey);
-    show(key);
+    showPreviewAt(key);
   }
   
   public void dismissLatest() {
@@ -142,7 +141,7 @@ public class KeyPreviewPlane extends View {
       
       keyPreviewRectangle.set(0, 0, keyPreviewWidth, keyPreviewHeight);
       
-      keyPreviewFillPaint.setColor(InputContainer.toPressedColour(key.fillColour));
+      keyPreviewFillPaint.setColor(KeyboardView.toPressedColour(key.fillColour));
       keyPreviewBorderPaint.setColor(key.borderColour);
       keyPreviewBorderPaint.setStrokeWidth(key.borderThickness);
       
@@ -169,7 +168,7 @@ public class KeyPreviewPlane extends View {
       final int previewY = (
         key.y
           - keyPreviewHeight - key.previewMarginY
-          + this.height - keyboardHeight - popupBufferZoneHeight
+          + this.height - keyboardHeight
       );
       
       canvas.translate(previewX, previewY);

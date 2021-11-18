@@ -156,15 +156,15 @@ public class Key {
     return (
       (this.isExtendedLeft || this.x <= x)
         &&
-        (this.isExtendedRight || x <= this.x + this.width)
+      (this.isExtendedRight || x <= this.x + this.width)
         &&
-        this.y <= y && y <= this.y + this.height
+      this.y <= y && y <= this.y + this.height
     );
   }
   
   public String shiftAwareDisplayText(final int shiftMode) {
     return (
-      (shiftMode == InputContainer.SHIFT_DISABLED)
+      (shiftMode == KeyboardView.SHIFT_DISABLED)
         ? this.displayText
         : this.valueTextShifted
     );

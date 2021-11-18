@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2021 Conway
+  Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
+  This is free software with NO WARRANTY etc. etc.,
+  see LICENSE or <https://www.gnu.org/licenses/>.
+-->
 <io.github.yawnoc.strokeinput.InputContainer
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
 >
+  
+  <!--
+    Needed because API level 28 is dumb:
+    it clips popups to the containing InputContainer,
+    even if `setClippingEnabled(false)` is used.
+    See <https://stackoverflow.com/a/53326786>.
+  -->
+  <View
+    android:id="@+id/popup_recess"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height__popup_recess"
+  />
+  
+  <io.github.yawnoc.strokeinput.StrokeSequenceBar
+    android:id="@+id/stroke_sequence_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:textColor="@color/stroke_sequence_bar_text"
+    android:textSize="@dimen/font_size__stroke_sequence_bar"
+    android:ellipsize="start"
+    android:singleLine="true"
+    android:background="@color/stroke_sequence_bar_fill"
+    android:paddingTop="@dimen/padding_top__stroke_sequence_bar"
+    android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
+    android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
+    android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
+    tools:ignore="RtlHardcoded"
+  />
+  
+  <io.github.yawnoc.strokeinput.CandidatesView
+    android:id="@+id/candidates_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height__candidate_button"
+    android:background="@color/candidate_button_fill"
+  />
+  
+  <io.github.yawnoc.strokeinput.KeyboardView
+    android:id="@+id/keyboard_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+  />
+  
 </io.github.yawnoc.strokeinput.InputContainer>

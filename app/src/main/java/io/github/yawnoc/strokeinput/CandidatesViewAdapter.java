@@ -20,26 +20,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 /*
-  An adapter for a candidates bar, which holds candidate buttons.
+  An adapter which holds candidate buttons.
 */
-public class CandidatesBarAdapter
-  extends RecyclerView.Adapter<CandidatesBarAdapter.ButtonHolder>
+public class CandidatesViewAdapter
+  extends RecyclerView.Adapter<CandidatesViewAdapter.ButtonHolder>
 {
   
-  private OnCandidateListener candidateListener;
+  private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
   
-  CandidatesBarAdapter(final Context context, final List<String> candidateList) {
+  CandidatesViewAdapter(final Context context, final List<String> candidateList) {
     this.layoutInflater = LayoutInflater.from(context);
     this.candidateList = candidateList;
   }
   
-  public interface OnCandidateListener {
+  public interface CandidateListener {
     void onCandidate(String candidate);
   }
   
-  public void setOnCandidateListener(final OnCandidateListener candidateListener) {
+  public void setCandidateListener(final CandidateListener candidateListener) {
     this.candidateListener = candidateListener;
   }
   
