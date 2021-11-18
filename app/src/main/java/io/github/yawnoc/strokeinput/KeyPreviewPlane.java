@@ -137,6 +137,9 @@ public class KeyPreviewPlane
   @Override
   public void onDraw(final Canvas canvas) {
     
+    // XXX (debug)
+    canvas.drawColor(0x80ff0000);
+    
     for (final Key key : keyList) {
       
       final int keyPreviewWidth = (int) (key.previewMagnification * key.width);
