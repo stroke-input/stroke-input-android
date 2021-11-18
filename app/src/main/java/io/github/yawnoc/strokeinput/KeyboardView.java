@@ -279,7 +279,7 @@ public class KeyboardView
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
       height = keyboard.getParentKeyboardViewHeight();
-      candidatesBarHeight = keyboard.getCandidatesBarHeight();
+      candidatesBarHeight = 0;
       popupBufferZoneHeight = keyboard.getPopupBufferZoneHeight();
       touchableTopY = keyboard.getParentKeyboardViewTouchableTopY();
     }

@@ -37,13 +37,6 @@ import io.github.yawnoc.utilities.Valuey;
 
 /*
   A keyboard that holds rows of keys, to be declared in a layout XML.
-  It also determines the vertical placement of the stroke sequence bar
-  and the candidates bar, which are separate entities to be placed
-  above the keyboard (in the parent input container).
-  TODO:
-    - Move the stroke sequence bar to InputContainer
-    - Move the candidates bar to CandidatesView
-    (which is the point of branch 'layout-rewrite')
 */
 public class Keyboard {
   
@@ -51,16 +44,10 @@ public class Keyboard {
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
   
-  private static final int STROKE_SEQUENCE_BAR_HEIGHT_DP = 0;
-  private final int strokeSequenceBarHeightPx;
-  public static final int CANDIDATES_BAR_HEIGHT_DP = 0;
-  private final int candidatesBarHeightPx;
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
-  
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   
   private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
-  
   private static final float DEFAULT_KEY_WIDTH_FRACTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
@@ -117,9 +104,6 @@ public class Keyboard {
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
     
-    strokeSequenceBarHeightPx = (int) Valuey.pxFromDp(STROKE_SEQUENCE_BAR_HEIGHT_DP, displayMetrics);
-    candidatesBarHeightPx = (int) Valuey.pxFromDp(CANDIDATES_BAR_HEIGHT_DP, displayMetrics);
-    
     defaultKeyHeightPx = (int) Valuey.pxFromDp(DEFAULT_KEY_HEIGHT_DP, displayMetrics);
     defaultKeyBorderThicknessPx = (int) Valuey.pxFromDp(DEFAULT_KEY_BORDER_THICKNESS_DP, displayMetrics);
     defaultKeyTextSizePx = (int) Valuey.pxFromSp(DEFAULT_KEY_TEXT_SIZE_SP, displayMetrics);
@@ -138,10 +122,6 @@ public class Keyboard {
   
   public int getPopupBufferZoneHeight() {
     return popupBufferZoneHeight;
-  }
-  
-  public int getCandidatesBarHeight() {
-    return candidatesBarHeightPx;
   }
   
   public int getParentKeyboardViewHeight() {
@@ -255,7 +235,7 @@ public class Keyboard {
     
     if (Build.VERSION.SDK_INT == 28 && !isFullscreenMode) {
       // API level 28 is dumb, see <https://stackoverflow.com/q/52929466>
-      int popupBufferZoneTopY = -(strokeSequenceBarHeightPx + candidatesBarHeightPx);
+      int popupBufferZoneTopY = 0;
       for (final Key key : keyList) {
         final int keyPreviewHeight = (int) (key.previewMagnification * key.height);
         popupBufferZoneTopY = Math.min(
@@ -266,7 +246,7 @@ public class Keyboard {
       popupBufferZoneHeight = -popupBufferZoneTopY;
     }
     else {
-      popupBufferZoneHeight = candidatesBarHeightPx;
+      popupBufferZoneHeight = 0;
     }
     
     for (final Key key : keyList) {
@@ -274,7 +254,7 @@ public class Keyboard {
     }
     
     parentKeyboardViewHeight = height + popupBufferZoneHeight;
-    parentKeyboardViewTouchableTopY = Math.max(0, popupBufferZoneHeight - candidatesBarHeightPx);
+    parentKeyboardViewTouchableTopY = Math.max(0, popupBufferZoneHeight);
     
   }
   
