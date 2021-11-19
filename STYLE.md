@@ -170,6 +170,30 @@ return (
 );
 ```
 
+## Switches
+
+```java
+label:
+switch (expression)
+{
+  case goodValue:
+    doGood();
+    break;
+  
+  case evilValue:
+    doEvil();
+    break;
+  
+  case neutralValue1:
+  case neutralValue2:
+    doNothing();
+    break;
+  
+  default:
+    throwHandsInTheAir();
+}
+```
+
 ### Ternaries
 
 ```java
