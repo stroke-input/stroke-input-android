@@ -3,6 +3,24 @@
 
 ## Java
 
+### Classes
+
+```java
+public class SimpleFoo
+{
+  // etc. etc.
+}
+```
+
+```java
+public class ComplicatedFoo
+  extends Bar
+  implements WiseClass.WiseInterface, FoolishClass.FoolishInterface
+{
+  // etc. etc.
+}
+```
+
 ### Comments
 
 ```java
