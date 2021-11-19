@@ -79,14 +79,11 @@ public class InputContainer
   
   public void setBackground(final boolean isFullscreen)
   {
-    if (isFullscreen)
-    {
-      setBackgroundResource(R.color.stroke_sequence_bar_fill_fullscreen);
-    }
-    else
-    {
-      setBackgroundResource(0);
-    }
+    final int backgroundResourceId =
+            isFullscreen
+              ? R.color.stroke_sequence_bar_fill_fullscreen
+              : 0; // none
+    setBackgroundResource(backgroundResourceId);
   }
   
   public void setStrokeDigitSequence(final String strokeDigitSequence)
