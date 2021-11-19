@@ -170,7 +170,7 @@ return (
 );
 ```
 
-## Switches
+### Switches
 
 ```java
 label:
