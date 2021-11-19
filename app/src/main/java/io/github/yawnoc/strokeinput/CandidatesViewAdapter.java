@@ -90,11 +90,10 @@ public class CandidatesViewAdapter
     @Override
     public void onClick(View view)
     {
-      if (candidateListener == null)
+      if (candidateListener != null)
       {
-        return;
+        candidateListener.onCandidate((String) candidateButton.getText());
       }
-      candidateListener.onCandidate((String) candidateButton.getText());
     }
     
   }
