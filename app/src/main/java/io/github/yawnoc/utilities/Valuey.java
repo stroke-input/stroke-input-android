@@ -63,8 +63,10 @@ public final class Valuey
     {
       case TypedValue.TYPE_DIMENSION:
         return array.getDimensionPixelOffset(attributeIndex, defaultValue);
+      
       case TypedValue.TYPE_FRACTION:
         return Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
+      
       default:
         return defaultValue;
     }
