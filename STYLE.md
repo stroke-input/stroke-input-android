@@ -1,7 +1,8 @@
 # Style guide
 
-- Indentation: spaces (mostly 2, but 8 for assignment continuation)
-- Maximum line length: 120
+- Maximum line length: 120 code points
+- Indentation: 2 spaces
+- Assignment continuation: 8 spaces
 
 
 ## Java
