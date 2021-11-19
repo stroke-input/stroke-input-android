@@ -91,8 +91,8 @@ public class Keyboard
   private final int screenWidth;
   private final int screenHeight;
   
-  public Keyboard(final Context context, final int layoutResourceId) {
-    
+  public Keyboard(final Context context, final int layoutResourceId)
+  {
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
     
     screenWidth = displayMetrics.widthPixels;
@@ -107,33 +107,37 @@ public class Keyboard
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
     capKeyboardHeight();
-    
   }
   
-  public List<Key> getKeyList() {
+  public List<Key> getKeyList()
+  {
     return keyList;
   }
   
-  public int getWidth() {
+  public int getWidth()
+  {
     return width;
   }
   
-  public int getHeight() {
+  public int getHeight()
+  {
     return height;
   }
   
-  public int getScreenWidth() {
+  public int getScreenWidth()
+  {
     return screenWidth;
   }
   
-  public int getScreenHeight() {
+  public int getScreenHeight()
+  {
     return screenHeight;
   }
   
-  private void makeKeyboard(final Context context, final XmlResourceParser xmlResourceParser) {
-    
-    try {
-      
+  private void makeKeyboard(final Context context, final XmlResourceParser xmlResourceParser)
+  {
+    try
+    {
       boolean inKey = false;
       boolean inRow = false;
       
@@ -146,24 +150,25 @@ public class Keyboard
       int maximumY = y;
       
       final Resources resources = context.getResources();
-      
       int event;
-      
-      while ((event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT) {
-        
-        switch (event) {
-          
+      while ((event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT)
+      {
+        switch (event)
+        {
           case XmlResourceParser.START_TAG:
             final String xmlTag = xmlResourceParser.getName();
-            switch (xmlTag) {
+            switch (xmlTag)
+            {
               case KEYBOARD_TAG:
                 parseKeyboardAttributes(resources, xmlResourceParser);
                 break;
+              
               case ROW_TAG:
                 inRow = true;
                 row = new Row(this, resources, xmlResourceParser);
                 x = row.offsetX;
                 break;
+              
               case KEY_TAG:
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
@@ -173,54 +178,49 @@ public class Keyboard
             break;
           
           case XmlResourceParser.END_TAG:
-            if (inKey) {
+            if (inKey)
+            {
               inKey = false;
               x += key.width;
               maximumX = Math.max(x, maximumX);
             }
-            else if (inRow) {
+            else if (inRow)
+            {
               inRow = false;
               y += row.keyHeight;
               maximumY = Math.max(y, maximumY);
             }
             break;
-          
         }
-        
       }
       
       width = maximumX;
       height = maximumY;
-      
     }
-    
-    catch (Exception exception) {
-      
+    catch (Exception exception)
+    {
       Log.e("Keyboard.makeKeyboard", "Exception: " + exception);
       exception.printStackTrace();
-      
     }
-    
   }
   
-  private void capKeyboardHeight() {
-    
+  private void capKeyboardHeight()
+  {
     final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
-    
-    for (final Key key : keyList) {
+    for (final Key key : keyList)
+    {
       key.y *= keyboardHeightCorrectionFactor;
       key.height *= keyboardHeightCorrectionFactor;
       key.textOffsetY *= keyboardHeightCorrectionFactor;
       key.previewMarginY *= keyboardHeightCorrectionFactor;
     }
     height *= keyboardHeightCorrectionFactor;
-    
   }
   
-  private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser) {
-    
+  private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser)
+  {
     final TypedArray attributesArray =
-      resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Keyboard);
+            resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Keyboard);
     
     fillColour = attributesArray.getColor(R.styleable.Keyboard_keyboardFillColour, DEFAULT_KEYBOARD_FILL_COLOUR);
     
@@ -228,48 +228,47 @@ public class Keyboard
     keysArePreviewable = attributesArray.getBoolean(R.styleable.Keyboard_keysArePreviewable, true);
     
     keyWidth =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Keyboard_keyWidth,
-        screenWidth,
-        (int) (DEFAULT_KEY_WIDTH_FRACTION * screenWidth)
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Keyboard_keyWidth,
+              screenWidth,
+              (int) (DEFAULT_KEY_WIDTH_FRACTION * screenWidth)
+            );
     keyHeight =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Keyboard_keyHeight,
-        screenHeight,
-        defaultKeyHeightPx
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Keyboard_keyHeight,
+              screenHeight,
+              defaultKeyHeightPx
+            );
     
     keyFillColour =
-      attributesArray.getColor(R.styleable.Keyboard_keyFillColour, DEFAULT_KEY_FILL_COLOUR);
+            attributesArray.getColor(R.styleable.Keyboard_keyFillColour, DEFAULT_KEY_FILL_COLOUR);
     keyBorderColour =
-      attributesArray.getColor(R.styleable.Keyboard_keyBorderColour, DEFAULT_KEY_BORDER_COLOUR);
+            attributesArray.getColor(R.styleable.Keyboard_keyBorderColour, DEFAULT_KEY_BORDER_COLOUR);
     keyBorderThickness =
-      attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyBorderThickness, defaultKeyBorderThicknessPx);
+            attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyBorderThickness, defaultKeyBorderThicknessPx);
     
     keyTextColour =
-      attributesArray.getColor(R.styleable.Keyboard_keyTextColour, DEFAULT_KEY_TEXT_COLOUR);
+            attributesArray.getColor(R.styleable.Keyboard_keyTextColour, DEFAULT_KEY_TEXT_COLOUR);
     keyTextSwipeColour =
-      attributesArray.getColor(R.styleable.Keyboard_keyTextSwipeColour, DEFAULT_KEY_TEXT_SWIPE_COLOUR);
+            attributesArray.getColor(R.styleable.Keyboard_keyTextSwipeColour, DEFAULT_KEY_TEXT_SWIPE_COLOUR);
     keyTextSize =
-      attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextSize, defaultKeyTextSizePx);
+            attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextSize, defaultKeyTextSizePx);
     
     keyTextOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextOffsetX, 0);
     keyTextOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextOffsetY, 0);
     
     keyPreviewMagnification =
-      attributesArray.getFloat(R.styleable.Keyboard_keyPreviewMagnification, DEFAULT_KEY_PREVIEW_MAGNIFICATION);
+            attributesArray.getFloat(R.styleable.Keyboard_keyPreviewMagnification, DEFAULT_KEY_PREVIEW_MAGNIFICATION);
     keyPreviewMarginY =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Keyboard_keyPreviewMarginY,
-        screenHeight,
-        defaultKeyPreviewMarginYPx
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Keyboard_keyPreviewMarginY,
+              screenHeight,
+              defaultKeyPreviewMarginYPx
+            );
     
     attributesArray.recycle();
-    
   }
 }
