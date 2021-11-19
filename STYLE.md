@@ -156,6 +156,20 @@ public boolean AreThereTooManyParameters(
 }
 ```
 
+### Returns
+
+```java
+return OneLiner;
+```
+
+```java
+return (
+  (isQualified || didDueDiligence && looksQualified)
+    &&
+  (thisLooksDodgy || shouldProbablyRefactorThis)
+);
+```
+
 
 ## XML
 
