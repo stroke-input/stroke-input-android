@@ -3,18 +3,29 @@
 
 ## XML
 
+### Comments
+
 ```xml
 <!--
   Multi-line comment.
   Blah blah blah.
 -->
+```
 
+```xml
 <!-- One-liner -->
+```
 
-<OneLiner attribute="value">content</OneLiner>
-<SelfClosingOneLiner attribute="value" />
+### One-liners
 
-<MultiLiner
+```xml
+<Paired attribute="value">content</Paired>
+<SelfClosing attribute="value" />
+```
+
+### Multi-liners
+
+<Paired
   attribute1="value1"
   attribute2="value2"
   attribute3="value3"
@@ -29,5 +40,5 @@
     attribute2="value2"
     attribute3="value3"
   />
-</MultiLiner>
+</Paired>
 ```
