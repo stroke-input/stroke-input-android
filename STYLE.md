@@ -34,13 +34,13 @@ public class ComplicatedFoo
 ```
 
 ```java
-  // Heading for a bunch of logically grouped declarations
-  private Foo foo;
-  private Bar bar;
+// Heading for a bunch of logically grouped declarations
+private Foo foo;
+private Bar bar;
 ```
 
 ```java
-  doSomeExtraCheck(); // short remark (e.g. bemoaning a deprecation)
+doSomeExtraCheck(); // short remark (e.g. bemoaning a deprecation)
 ```
 
 
