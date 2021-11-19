@@ -44,6 +44,30 @@ private Bar bar;
 doSomeExtraCheck(); // short remark (e.g. bemoaning a deprecation)
 ```
 
+### Conditionals
+
+```java
+if (conditionIsShort())
+{
+  // etc. etc.
+}
+else
+{
+  // etc. etc.
+}
+```
+
+```java
+if (
+  someBoolean && someOtherBoolean
+    ||
+  someInequality && AnotherInequality && BlahBlahBlah
+)
+{
+  // etc. etc.
+}
+```
+
 ### Methods
 
 ```java
