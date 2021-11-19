@@ -1,6 +1,7 @@
 # Style guide
 
-Spaces.
+- Whitespace: spaces only
+- Maximum line length: 120
 
 
 ## Java
