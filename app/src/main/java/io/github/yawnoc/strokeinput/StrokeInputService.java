@@ -941,10 +941,10 @@ public class StrokeInputService
     )
     {
       final Set<String> prefixMatchPhraseCandidateSet =
-        phraseSet.subSet(
-          phrasePrefix, false,
-          phrasePrefix + Character.MAX_VALUE, false
-        );
+              phraseSet.subSet(
+                phrasePrefix, false,
+                phrasePrefix + Character.MAX_VALUE, false
+              );
       final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
       
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
@@ -1006,8 +1006,7 @@ public class StrokeInputService
   private boolean shouldPreferTraditional()
   {
     final String savedCandidateOrderPreference =
-      MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
-    
+            MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
     return MainActivity.isTraditionalPreferred(savedCandidateOrderPreference);
   }
 }
