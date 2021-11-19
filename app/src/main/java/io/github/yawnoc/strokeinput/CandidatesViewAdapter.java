@@ -77,7 +77,6 @@ public class CandidatesViewAdapter
     extends RecyclerView.ViewHolder
     implements View.OnClickListener
   {
-    
     private final Button candidateButton;
     
     public ButtonHolder(final Button candidateButton)
@@ -95,6 +94,5 @@ public class CandidatesViewAdapter
         candidateListener.onCandidate((String) candidateButton.getText());
       }
     }
-    
   }
 }
