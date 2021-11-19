@@ -1,6 +1,28 @@
 # Style guide
 
 
+## Java
+
+### Comments
+
+```java
+/*
+  Block comments.
+  Or descriptions.
+*/
+```
+
+```java
+  // Heading for a bunch of logically grouped declarations
+  private Foo foo;
+  private Bar bar;
+```
+
+```java
+  doSomeExtraCheck(); // short remark (e.g. bemoaning a deprecation)
+```
+
+
 ## XML
 
 ### Comments
