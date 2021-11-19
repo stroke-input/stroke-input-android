@@ -18,28 +18,29 @@ import androidx.appcompat.widget.AppCompatTextView;
 public class StrokeSequenceBar
   extends AppCompatTextView
 {
-  public StrokeSequenceBar(Context context, AttributeSet attributes) {
+  public StrokeSequenceBar(Context context, AttributeSet attributes)
+  {
     super(context, attributes);
   }
   
-  public void setStrokeDigitSequence(final String strokeDigitSequence) {
-    
-    if (strokeDigitSequence.length() > 0) {
-      final String strokeSequence = (
+  public void setStrokeDigitSequence(final String strokeDigitSequence)
+  {
+    if (strokeDigitSequence.length() > 0)
+    {
+      final String strokeSequence =
         strokeDigitSequence
           .replace(StrokeInputService.STROKE_DIGIT_1, getResources().getString(R.string.stroke_1))
           .replace(StrokeInputService.STROKE_DIGIT_2, getResources().getString(R.string.stroke_2))
           .replace(StrokeInputService.STROKE_DIGIT_3, getResources().getString(R.string.stroke_3))
           .replace(StrokeInputService.STROKE_DIGIT_4, getResources().getString(R.string.stroke_4))
-          .replace(StrokeInputService.STROKE_DIGIT_5, getResources().getString(R.string.stroke_5))
-      );
+          .replace(StrokeInputService.STROKE_DIGIT_5, getResources().getString(R.string.stroke_5));
       setText(strokeSequence);
       requestLayout();
       setVisibility(VISIBLE);
     }
-    else {
+    else
+    {
       setVisibility(INVISIBLE);
     }
-    
   }
 }
