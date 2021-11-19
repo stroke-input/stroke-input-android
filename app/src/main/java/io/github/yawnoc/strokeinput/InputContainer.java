@@ -67,11 +67,14 @@ public class InputContainer
   
   public void setPopupRecessLayout(final boolean isFullscreen)
   {
-    popupRecess.setVisibility(
-      isFullscreen
-        ? GONE
-        : INVISIBLE
-    );
+    if (isFullscreen)
+    {
+      popupRecess.setVisibility(GONE);
+    }
+    else
+    {
+      popupRecess.setVisibility(INVISIBLE);
+    }
   }
   
   public void setBackground(final boolean isFullscreen)
