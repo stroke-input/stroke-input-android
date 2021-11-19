@@ -941,10 +941,10 @@ public class StrokeInputService
       return ""; // don't read passwords
     }
     
-    final String textBeforeCursorUnsafe = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
+    final String textBeforeCursor = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
     
-    if (textBeforeCursorUnsafe != null) {
-      return textBeforeCursorUnsafe;
+    if (textBeforeCursor != null) {
+      return textBeforeCursor;
     }
     else {
       return "";
