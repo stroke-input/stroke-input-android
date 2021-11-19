@@ -12,18 +12,19 @@ import java.util.Map;
 
 public final class Mappy
 {
-  private Mappy() {
+  private Mappy()
+  {
     // Do not instantiate
   }
   
-  public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap) {
-    
+  public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap)
+  {
     Map<V, K> inverseMap = new HashMap<>();
-    for (final Map.Entry<K, V> entry : forwardMap.entrySet()) {
+    for (final Map.Entry<K, V> entry : forwardMap.entrySet())
+    {
       inverseMap.put(entry.getValue(), entry.getKey());
     }
     
     return inverseMap;
-    
   }
 }
