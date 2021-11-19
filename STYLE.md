@@ -11,23 +11,23 @@
 
 <!-- One-liner -->
 
-<FitsOnOneLine attribute="value">content</FitsOnOneLine>
-<SelfClosingOneLine attribute="value" />
+<OneLiner attribute="value">content</OneLiner>
+<SelfClosingOneLiner attribute="value" />
 
-<NeedsMultipleLines
+<MultiLiner
   attribute1="value1"
   attribute2="value2"
   attribute3="value3"
 >
-  <SelfClosingElement
+  <SelfClosing1
     attribute1="value1"
     attribute2="value2"
     attribute3="value3"
   />
-  <AnotherSelfClosingElement
+  <SelfClosing2
     attribute1="value1"
     attribute2="value2"
     attribute3="value3"
   />
-</NeedsMultipleLines>
+</MultiLiner>
 ```
