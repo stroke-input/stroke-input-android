@@ -1,6 +1,6 @@
 # Style guide
 
-- Whitespace: spaces only
+- Indentation: spaces (mostly 2, but 8 for assignment continuation)
 - Maximum line length: 120
 
 
