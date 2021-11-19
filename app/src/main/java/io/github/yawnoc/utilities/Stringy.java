@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Stringy
+public final class Stringy
 {
   private Stringy() {
     // Do not instantiate

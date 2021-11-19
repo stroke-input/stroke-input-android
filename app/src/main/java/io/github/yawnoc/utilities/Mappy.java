@@ -10,7 +10,7 @@ package io.github.yawnoc.utilities;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mappy
+public final class Mappy
 {
   private Mappy() {
     // Do not instantiate
