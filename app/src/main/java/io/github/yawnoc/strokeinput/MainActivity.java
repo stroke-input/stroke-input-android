@@ -30,7 +30,6 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
-  
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
   public static final String CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST = "TRADITIONAL_FIRST";
   public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
@@ -44,8 +43,8 @@ public class MainActivity
   WebView htmlWebView;
   
   @Override
-  protected void onCreate(final Bundle savedInstanceState) {
-    
+  protected void onCreate(final Bundle savedInstanceState)
+  {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main_activity);
     
@@ -57,29 +56,31 @@ public class MainActivity
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
-    
   }
   
-  public static boolean isTraditionalPreferred(final String candidateOrderPreference) {
-    
-    if (candidateOrderPreference == null) {
+  public static boolean isTraditionalPreferred(final String candidateOrderPreference)
+  {
+    if (candidateOrderPreference == null)
+    {
       return true;
     }
     
     return !candidateOrderPreference.equals(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
-    
   }
   
-  private String loadSavedCandidateOrderPreference() {
+  private String loadSavedCandidateOrderPreference()
+  {
     return loadSavedCandidateOrderPreference(getApplicationContext());
   }
   
-  public static String loadSavedCandidateOrderPreference(final Context context) {
+  public static String loadSavedCandidateOrderPreference(final Context context)
+  {
     return
       Contexty.loadPreferenceString(context, StrokeInputService.PREFERENCES_FILE_NAME, CANDIDATE_ORDER_PREFERENCE_KEY);
   }
   
-  private void saveCandidateOrderPreference(final String candidateOrderPreference) {
+  private void saveCandidateOrderPreference(final String candidateOrderPreference)
+  {
     Contexty.savePreferenceString(
       getApplicationContext(),
       StrokeInputService.PREFERENCES_FILE_NAME,
@@ -88,63 +89,68 @@ public class MainActivity
     );
   }
   
-  private void setCandidateOrderButtonText(final String candidateOrderPreference) {
-    
+  private void setCandidateOrderButtonText(final String candidateOrderPreference)
+  {
     final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
-    final String candidateOrderButtonText = (
-      isTraditionalPreferred(candidateOrderPreference)
-        ? getString(R.string.label__main_activity__traditional_first)
-        : getString(R.string.label__main_activity__simplified_first)
-    );
-    
+    final String candidateOrderButtonText =
+            isTraditionalPreferred(candidateOrderPreference)
+              ? getString(R.string.label__main_activity__traditional_first)
+              : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
-    
   }
   
   @Override
-  public void onClick(final View view) {
-    
+  public void onClick(final View view)
+  {
     final int viewId = view.getId();
-    
-    if (viewId == R.id.source_code_button) {
+    if (viewId == R.id.source_code_button)
+    {
       Contexty.openInBrowser(this, SOURCE_CODE_URI);
     }
-    else if (viewId == R.id.help_button) {
+    else if (viewId == R.id.help_button)
+    {
       showHtmlWebView(R.string.file_name__help_html);
     }
-    else if (viewId == R.id.about_button) {
+    else if (viewId == R.id.about_button)
+    {
       showHtmlWebView(R.string.file_name__about_html);
     }
-    else if (viewId == R.id.input_method_settings_button) {
+    else if (viewId == R.id.input_method_settings_button)
+    {
       Contexty.showSystemInputMethodSettings(this);
     }
-    else if (viewId == R.id.change_keyboard_button) {
+    else if (viewId == R.id.change_keyboard_button)
+    {
       Contexty.showSystemKeyboardChanger(this);
     }
-    else if (viewId == R.id.candidate_order_button) {
+    else if (viewId == R.id.candidate_order_button)
+    {
       showCandidateOrderDialog();
     }
-    else if (viewId == R.id.traditional_first_button) {
+    else if (viewId == R.id.traditional_first_button)
+    {
       saveCandidateOrderPreference(CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST);
       setCandidateOrderButtonText(CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST);
       candidateOrderDialog.dismiss();
     }
-    else if (viewId == R.id.simplified_first_button) {
+    else if (viewId == R.id.simplified_first_button)
+    {
       saveCandidateOrderPreference(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
       setCandidateOrderButtonText(CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST);
       candidateOrderDialog.dismiss();
     }
-    
   }
   
-  private void showHtmlWebView(final String uri) {
-    
-    if (htmlWebViewContainer == null) {
+  private void showHtmlWebView(final String uri)
+  {
+    if (htmlWebViewContainer == null)
+    {
       htmlWebViewContainer = new AlertDialog.Builder(this, R.style.StrokeInputAlert);
       htmlWebViewContainer.setPositiveButton(R.string.label__main_activity__return, null);
     }
     
-    if (htmlWebView == null) {
+    if (htmlWebView == null)
+    {
       htmlWebView = new WebView(this);
       htmlWebView.setBackgroundColor(Color.TRANSPARENT);
       htmlWebView.getSettings().setBuiltInZoomControls(true);
@@ -156,15 +162,15 @@ public class MainActivity
       .setView(htmlWebView)
       .setOnDismissListener(dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView))
       .show();
-    
   }
   
-  private void showHtmlWebView(final int fileNameResourceId) {
+  private void showHtmlWebView(final int fileNameResourceId)
+  {
     showHtmlWebView(ASSETS_DIRECTORY + getString(fileNameResourceId));
   }
   
-  private void showCandidateOrderDialog() {
-    
+  private void showCandidateOrderDialog()
+  {
     candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputDialog);
     candidateOrderDialogBuilder
       .setTitle(R.string.text__main_activity__candidate_order)
@@ -179,16 +185,13 @@ public class MainActivity
     final Button simplifiedFirstButton = candidateOrderDialog.findViewById(R.id.simplified_first_button);
     
     final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
-    final int savedCandidateOrderButtonId = (
-      traditionalIsPreferred
-        ? R.id.traditional_first_button
-        : R.id.simplified_first_button
-    );
+    final int savedCandidateOrderButtonId =
+            traditionalIsPreferred
+              ? R.id.traditional_first_button
+              : R.id.simplified_first_button;
     candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
     
     traditionalFirstButton.setOnClickListener(this);
     simplifiedFirstButton.setOnClickListener(this);
-    
   }
-  
 }

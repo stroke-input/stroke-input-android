@@ -30,8 +30,8 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   A row that holds keys.
 */
-public class Row {
-  
+public class Row
+{
   private static final int DEFAULT_OFFSET_X = 0;
   
   // Row properties
@@ -54,72 +54,73 @@ public class Row {
   public final float keyPreviewMagnification;
   public final int keyPreviewMarginY;
   
-  public Row(final Keyboard parentKeyboard, final Resources resources, final XmlResourceParser xmlResourceParser) {
-    
+  public Row(final Keyboard parentKeyboard, final Resources resources, final XmlResourceParser xmlResourceParser)
+  {
     this.parentKeyboard = parentKeyboard;
     
     final TypedArray attributesArray =
-      resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Row);
+            resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Row);
     
     offsetX =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Row_rowOffsetX,
-        parentKeyboard.getScreenWidth(),
-        DEFAULT_OFFSET_X
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Row_rowOffsetX,
+              parentKeyboard.getScreenWidth(),
+              DEFAULT_OFFSET_X
+            );
     
     keysAreShiftable =
-      attributesArray.getBoolean(R.styleable.Row_keysAreShiftable, parentKeyboard.keysAreShiftable);
+            attributesArray.getBoolean(R.styleable.Row_keysAreShiftable, parentKeyboard.keysAreShiftable);
     keysArePreviewable =
-      attributesArray.getBoolean(R.styleable.Row_keysArePreviewable, parentKeyboard.keysArePreviewable);
+            attributesArray.getBoolean(R.styleable.Row_keysArePreviewable, parentKeyboard.keysArePreviewable);
     
     keyWidth =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Row_keyWidth,
-        parentKeyboard.getScreenWidth(),
-        parentKeyboard.keyWidth
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Row_keyWidth,
+              parentKeyboard.getScreenWidth(),
+              parentKeyboard.keyWidth
+            );
     keyHeight =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Row_keyHeight,
-        parentKeyboard.getScreenHeight(),
-        parentKeyboard.keyHeight
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Row_keyHeight,
+              parentKeyboard.getScreenHeight(),
+              parentKeyboard.keyHeight
+            );
     
     keyFillColour =
-      attributesArray.getColor(R.styleable.Row_keyFillColour, parentKeyboard.keyFillColour);
+            attributesArray.getColor(R.styleable.Row_keyFillColour, parentKeyboard.keyFillColour);
     keyBorderColour =
-      attributesArray.getColor(R.styleable.Row_keyBorderColour, parentKeyboard.keyBorderColour);
+            attributesArray.getColor(R.styleable.Row_keyBorderColour, parentKeyboard.keyBorderColour);
     keyBorderThickness =
-      attributesArray.getDimensionPixelSize(R.styleable.Row_keyBorderThickness, parentKeyboard.keyBorderThickness);
+            attributesArray.getDimensionPixelSize(
+              R.styleable.Row_keyBorderThickness,
+              parentKeyboard.keyBorderThickness
+            );
     
     keyTextColour =
-      attributesArray.getColor(R.styleable.Row_keyTextColour, parentKeyboard.keyTextColour);
+            attributesArray.getColor(R.styleable.Row_keyTextColour, parentKeyboard.keyTextColour);
     keyTextSwipeColour =
-      attributesArray.getColor(R.styleable.Row_keyTextSwipeColour, parentKeyboard.keyTextSwipeColour);
+            attributesArray.getColor(R.styleable.Row_keyTextSwipeColour, parentKeyboard.keyTextSwipeColour);
     keyTextSize =
-      attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextSize, parentKeyboard.keyTextSize);
+            attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextSize, parentKeyboard.keyTextSize);
     
     keyTextOffsetX =
-      attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextOffsetX, parentKeyboard.keyTextOffsetX);
+            attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextOffsetX, parentKeyboard.keyTextOffsetX);
     keyTextOffsetY =
-      attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextOffsetY, parentKeyboard.keyTextOffsetY);
+            attributesArray.getDimensionPixelSize(R.styleable.Row_keyTextOffsetY, parentKeyboard.keyTextOffsetY);
     
     keyPreviewMagnification =
-      attributesArray.getFloat(R.styleable.Row_keyPreviewMagnification, parentKeyboard.keyPreviewMagnification);
+            attributesArray.getFloat(R.styleable.Row_keyPreviewMagnification, parentKeyboard.keyPreviewMagnification);
     keyPreviewMarginY =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Row_keyPreviewMarginY,
-        parentKeyboard.getScreenHeight(),
-        parentKeyboard.keyPreviewMarginY
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Row_keyPreviewMarginY,
+              parentKeyboard.getScreenHeight(),
+              parentKeyboard.keyPreviewMarginY
+            );
     
     attributesArray.recycle();
-    
   }
-  
 }

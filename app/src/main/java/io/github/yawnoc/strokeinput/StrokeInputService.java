@@ -48,7 +48,6 @@ public class StrokeInputService
   extends InputMethodService
   implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
-  
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
   private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
@@ -74,16 +73,21 @@ public class StrokeInputService
   private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
   
   private static final String SWITCH_KEYBOARD_VALUE_TEXT_PREFIX = "SWITCH_TO_";
-  private static final String
-    SWITCH_TO_STROKES_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_KEYBOARD_NAME;
-  private static final String
-    SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_1_KEYBOARD_NAME;
-  private static final String
-    SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_2_KEYBOARD_NAME;
-  private static final String
-    SWITCH_TO_QWERTY_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
-  private static final String
-    SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT = SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
+  
+  private static final String SWITCH_TO_STROKES_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_KEYBOARD_NAME;
+  
+  private static final String SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_1_KEYBOARD_NAME;
+  
+  private static final String SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_2_KEYBOARD_NAME;
+  
+  private static final String SWITCH_TO_QWERTY_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
+  
+  private static final String SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
   
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
@@ -143,18 +147,17 @@ public class StrokeInputService
   private boolean inputIsPassword;
   
   @Override
-  public View onCreateInputView() {
-    
+  public View onCreateInputView()
+  {
     initialiseKeyboards();
     initialiseInputContainer();
     initialiseStrokeInput();
     
     return inputContainer;
-    
   }
   
-  private void initialiseKeyboards() {
-    
+  private void initialiseKeyboards()
+  {
     strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
     strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
     strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
@@ -169,15 +172,16 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
-    
   }
   
-  private Keyboard newKeyboard(final int layoutResourceId) {
+  private Keyboard newKeyboard(final int layoutResourceId)
+  {
     return new Keyboard(this, layoutResourceId);
   }
   
   @SuppressLint("InflateParams")
-  private void initialiseInputContainer() {
+  private void initialiseInputContainer()
+  {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialisePopupRecess();
     inputContainer.initialiseStrokeSequenceBar(this);
@@ -185,20 +189,23 @@ public class StrokeInputService
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
   }
   
-  private Keyboard loadSavedKeyboard() {
+  private Keyboard loadSavedKeyboard()
+  {
     final String savedKeyboardName =
-      Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
+            Contexty.loadPreferenceString(getApplicationContext(), PREFERENCES_FILE_NAME, KEYBOARD_NAME_PREFERENCE_KEY);
     final Keyboard savedKeyboard = keyboardFromName.get(savedKeyboardName);
-    if (savedKeyboard != null) {
+    if (savedKeyboard != null)
+    {
       return savedKeyboard;
     }
-    else {
+    else
+    {
       return strokesKeyboard;
     }
   }
   
-  private void initialiseStrokeInput() {
-    
+  private void initialiseStrokeInput()
+  {
     charactersFromStrokeDigitSequence = new TreeMap<>();
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
@@ -220,11 +227,11 @@ public class StrokeInputService
     loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
     
     updateCandidateOrderPreference();
-    
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-  private static boolean isCommentLine(final String line) {
+  private static boolean isCommentLine(final String line)
+  {
     return line.startsWith("#") || line.length() == 0;
   }
   
@@ -234,65 +241,59 @@ public class StrokeInputService
     final Map<String, String> charactersFromStrokeDigitSequence
   )
   {
-    
     final long startMillis = System.currentTimeMillis();
     
-    try {
-      
+    try
+    {
       final InputStream inputStream = getAssets().open(sequenceCharactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        
-        if (!isCommentLine(line)) {
-          
+      while ((line = bufferedReader.readLine()) != null)
+      {
+        if (!isCommentLine(line))
+        {
           final String[] sunderedLineArray = Stringy.sunder(line, "\t");
           final String strokeDigitSequence = sunderedLineArray[0];
           final String characters = sunderedLineArray[1];
-          
           charactersFromStrokeDigitSequence.put(strokeDigitSequence, characters);
-          
         }
-        
       }
-      
     }
-    
-    catch (IOException exception) {
+    catch (IOException exception)
+    {
       exception.printStackTrace();
     }
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(sequenceCharactersFileName, endMillis - startMillis);
-    
   }
   
-  private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet) {
-    
+  private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
+  {
     final long startMillis = System.currentTimeMillis();
     
-    try {
-      
+    try
+    {
       final InputStream inputStream = getAssets().open(charactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
+      while ((line = bufferedReader.readLine()) != null)
+      {
+        if (!isCommentLine(line))
+        {
           codePointSet.add(Stringy.getFirstCodePoint(line));
         }
       }
-      
     }
-    
-    catch (IOException exception) {
+    catch (IOException exception)
+    {
       exception.printStackTrace();
     }
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(charactersFileName, endMillis - startMillis);
-    
   }
   
   private void loadRankingData(
@@ -301,67 +302,69 @@ public class StrokeInputService
     final Set<Integer> commonCodePointSet
   )
   {
-    
     final long startMillis = System.currentTimeMillis();
     
-    try {
-      
+    try
+    {
       final InputStream inputStream = getAssets().open(rankingFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       int currentRank = 0;
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
-          for (final int codePoint : Stringy.toCodePointList(line)) {
+      while ((line = bufferedReader.readLine()) != null)
+      {
+        if (!isCommentLine(line))
+        {
+          for (final int codePoint : Stringy.toCodePointList(line))
+          {
             currentRank++;
             sortingRankFromCodePoint.put(codePoint, currentRank);
-            if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT) {
+            if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT)
+            {
               commonCodePointSet.add(codePoint);
             }
           }
         }
       }
-      
     }
-    
-    catch (IOException exception) {
+    catch (IOException exception)
+    {
       exception.printStackTrace();
     }
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
-    
   }
   
-  private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet) {
-    
+  private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
+  {
     final long startMillis = System.currentTimeMillis();
     
-    try {
-      
+    try
+    {
       final InputStream inputStream = getAssets().open(phrasesFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
       
       String line;
-      while ((line = bufferedReader.readLine()) != null) {
-        if (!isCommentLine(line)) {
+      while ((line = bufferedReader.readLine()) != null)
+      {
+        if (!isCommentLine(line))
+        {
           phraseSet.add(line);
         }
       }
-      
     }
-    
-    catch (IOException exception) {
+    catch (IOException exception)
+    {
       exception.printStackTrace();
     }
     
     final long endMillis = System.currentTimeMillis();
     sendLoadingTimeLog(phrasesFileName, endMillis - startMillis);
-    
   }
   
-  private void sendLoadingTimeLog(final String fileName, final long millis) {
+  private void sendLoadingTimeLog(final String fileName, final long millis)
+  {
     Log.i(
       "StrokeInputService",
       "Loaded '" + fileName + "' in " + millis + " milliseconds"
@@ -369,8 +372,8 @@ public class StrokeInputService
   }
   
   @Override
-  public void onStartInput(final EditorInfo editorInfo, final boolean isRestarting) {
-    
+  public void onStartInput(final EditorInfo editorInfo, final boolean isRestarting)
+  {
     super.onStartInput(editorInfo, isRestarting);
     
     inputOptionsBits = editorInfo.imeOptions;
@@ -380,19 +383,21 @@ public class StrokeInputService
     final int inputClassBits = inputTypeBits & InputType.TYPE_MASK_CLASS;
     final int inputVariationBits = inputTypeBits & InputType.TYPE_MASK_VARIATION;
     
-    switch (inputClassBits) {
-      
+    switch (inputClassBits)
+    {
       case InputType.TYPE_CLASS_NUMBER:
         inputIsPassword = inputVariationBits == InputType.TYPE_NUMBER_VARIATION_PASSWORD;
         break;
       
       case InputType.TYPE_CLASS_TEXT:
-        switch (inputVariationBits) {
+        switch (inputVariationBits)
+        {
           case InputType.TYPE_TEXT_VARIATION_PASSWORD:
           case InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD:
           case InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD:
             inputIsPassword = true;
             break;
+          
           default:
             inputIsPassword = false;
         }
@@ -400,14 +405,12 @@ public class StrokeInputService
       
       default:
         inputIsPassword = false;
-      
     }
-    
   }
   
   @Override
-  public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting) {
-    
+  public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting)
+  {
     super.onStartInputView(editorInfo, isRestarting);
     
     final boolean isFullscreen = isFullscreenMode();
@@ -419,50 +422,60 @@ public class StrokeInputService
     inputContainer.showKeyPreviewPlane(); // for phones that dismiss PopupWindow on switch app
     
     setEnterKeyDisplayText();
-    
   }
   
-  private void setEnterKeyDisplayText() {
-    
+  private void setEnterKeyDisplayText()
+  {
     String enterKeyDisplayText = null;
-    switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION) {
+    switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION)
+    {
       case EditorInfo.IME_ACTION_DONE:
         enterKeyDisplayText = getString(R.string.display_text__done);
         break;
+      
       case EditorInfo.IME_ACTION_GO:
         enterKeyDisplayText = getString(R.string.display_text__go);
         break;
+      
       case EditorInfo.IME_ACTION_NEXT:
         enterKeyDisplayText = getString(R.string.display_text__next);
         break;
+      
       case EditorInfo.IME_ACTION_PREVIOUS:
         enterKeyDisplayText = getString(R.string.display_text__previous);
         break;
+      
       case EditorInfo.IME_ACTION_SEARCH:
         enterKeyDisplayText = getString(R.string.display_text__search);
         break;
+      
       case EditorInfo.IME_ACTION_SEND:
         enterKeyDisplayText = getString(R.string.display_text__send);
         break;
     }
-    if (!enterKeyHasAction || enterKeyDisplayText == null) {
+    if (!enterKeyHasAction || enterKeyDisplayText == null)
+    {
       enterKeyDisplayText = getString(R.string.display_text__return);
     }
     
-    for (final Keyboard keyboard : keyboardSet) {
-      for (final Key key : keyboard.getKeyList()) {
-        if (key.valueText.equals(ENTER_KEY_VALUE_TEXT)) {
+    for (final Keyboard keyboard : keyboardSet)
+    {
+      for (final Key key : keyboard.getKeyList())
+      {
+        if (key.valueText.equals(ENTER_KEY_VALUE_TEXT))
+        {
           key.displayText = enterKeyDisplayText;
         }
       }
     }
-    
   }
   
   @Override
-  public void onComputeInsets(final Insets insets) {
+  public void onComputeInsets(final Insets insets)
+  {
     super.onComputeInsets(insets);
-    if (inputContainer != null) { // check needed in API level 30
+    if (inputContainer != null) // check needed in API level 30
+    {
       final int candidatesViewTop = inputContainer.getCandidatesViewTop();
       insets.visibleTopInsets = candidatesViewTop;
       insets.contentTopInsets = candidatesViewTop;
@@ -470,29 +483,30 @@ public class StrokeInputService
   }
   
   @Override
-  public void onCandidate(final String candidate) {
-    
+  public void onCandidate(final String candidate)
+  {
     final InputConnection inputConnection = getCurrentInputConnection();
-    if (inputConnection == null) {
+    if (inputConnection == null)
+    {
       return;
     }
     
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
     setCandidateListForPhraseCompletion(inputConnection);
-    
   }
   
   @Override
-  public void onKey(final String valueText) {
-    
+  public void onKey(final String valueText)
+  {
     final InputConnection inputConnection = getCurrentInputConnection();
-    if (inputConnection == null) {
+    if (inputConnection == null)
+    {
       return;
     }
     
-    switch (valueText) {
-      
+    switch (valueText)
+    {
       case STROKE_1_VALUE_TEXT:
       case STROKE_2_VALUE_TEXT:
       case STROKE_3_VALUE_TEXT:
@@ -525,139 +539,148 @@ public class StrokeInputService
       
       default:
         effectOrdinaryKey(inputConnection, valueText);
-      
     }
-    
   }
   
-  private void effectStrokeAppend(final String strokeDigit) {
-    
+  private void effectStrokeAppend(final String strokeDigit)
+  {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
     final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
-    if (newCandidateList.size() > 0) {
+    if (newCandidateList.size() > 0)
+    {
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidateList(newCandidateList);
     }
-    
   }
   
-  private void effectBackspace(final InputConnection inputConnection) {
-    
-    if (strokeDigitSequence.length() > 0) {
-      
+  private void effectBackspace(final InputConnection inputConnection)
+  {
+    if (strokeDigitSequence.length() > 0)
+    {
       final String newStrokeDigitSequence = Stringy.removeSuffix("(?s).", strokeDigitSequence);
       final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
       
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidateList(newCandidateList);
       
-      if (newStrokeDigitSequence.length() == 0) {
+      if (newStrokeDigitSequence.length() == 0)
+      {
         setCandidateListForPhraseCompletion(inputConnection);
       }
       
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
-      
     }
-    
-    else {
-      
+    else
+    {
       final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
       
-      if (upToOneCharacterBeforeCursor.length() > 0) {
+      if (upToOneCharacterBeforeCursor.length() > 0)
+      {
         final CharSequence selection = inputConnection.getSelectedText(0);
-        if (TextUtils.isEmpty(selection)) {
+        if (TextUtils.isEmpty(selection))
+        {
           inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
-        else {
+        else
+        {
           inputConnection.commitText("", 1);
         }
         setCandidateListForPhraseCompletion(inputConnection);
       }
-      else { // for apps like Termux
+      else // for apps like Termux
+      {
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
       }
       
-      final int nextBackspaceIntervalMilliseconds = (
-        Stringy.isAscii(upToOneCharacterBeforeCursor)
-          ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
-          : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8
-      );
+      final int nextBackspaceIntervalMilliseconds =
+              Stringy.isAscii(upToOneCharacterBeforeCursor)
+                ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
+                : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8;
       inputContainer.setKeyRepeatIntervalMilliseconds(nextBackspaceIntervalMilliseconds);
-      
     }
-    
   }
   
-  private void effectKeyboardSwitch(final String keyboardName) {
+  private void effectKeyboardSwitch(final String keyboardName)
+  {
     final Keyboard keyboard = keyboardFromName.get(keyboardName);
     inputContainer.setKeyboard(keyboard);
   }
   
-  private void effectSpaceKey(final InputConnection inputConnection) {
-    if (strokeDigitSequence.length() > 0) {
+  private void effectSpaceKey(final InputConnection inputConnection)
+  {
+    if (strokeDigitSequence.length() > 0)
+    {
       onCandidate(getFirstCandidate());
     }
     inputConnection.commitText(" ", 1);
   }
   
-  private void effectEnterKey(final InputConnection inputConnection) {
-    if (strokeDigitSequence.length() > 0) {
+  private void effectEnterKey(final InputConnection inputConnection)
+  {
+    if (strokeDigitSequence.length() > 0)
+    {
       onCandidate(getFirstCandidate());
     }
-    else if (enterKeyHasAction) {
+    else if (enterKeyHasAction)
+    {
       inputConnection.performEditorAction(inputOptionsBits);
     }
-    else {
+    else
+    {
       inputConnection.commitText("\n", 1);
     }
   }
   
-  private void effectOrdinaryKey(final InputConnection inputConnection, final String valueText) {
-    if (strokeDigitSequence.length() > 0) {
+  private void effectOrdinaryKey(final InputConnection inputConnection, final String valueText)
+  {
+    if (strokeDigitSequence.length() > 0)
+    {
       onCandidate(getFirstCandidate());
     }
     inputConnection.commitText(valueText, 1);
   }
   
   @Override
-  public void onLongPress(final String valueText) {
-    
-    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
+  public void onLongPress(final String valueText)
+  {
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT))
+    {
       Contexty.showSystemKeyboardChanger(this);
     }
-    
   }
   
   @Override
-  public void onSwipe(final String valueText) {
-    
-    if (valueText.equals(SPACE_BAR_VALUE_TEXT)) {
-      
+  public void onSwipe(final String valueText)
+  {
+    if (valueText.equals(SPACE_BAR_VALUE_TEXT))
+    {
       final Keyboard keyboard = inputContainer.getKeyboard();
       final String keyboardName = nameFromKeyboard.get(keyboard);
       
-      if (keyboardName == null) {
+      if (keyboardName == null)
+      {
         return;
       }
-      switch (keyboardName) {
+      switch (keyboardName)
+      {
         case STROKES_KEYBOARD_NAME:
         case STROKES_SYMBOLS_1_KEYBOARD_NAME:
         case STROKES_SYMBOLS_2_KEYBOARD_NAME:
           inputContainer.setKeyboard(qwertyKeyboard);
           break;
+        
         case QWERTY_KEYBOARD_NAME:
         case QWERTY_SYMBOLS_KEYBOARD_NAME:
           inputContainer.setKeyboard(strokesKeyboard);
           break;
       }
-      
     }
-    
   }
   
   @Override
-  public void saveKeyboard(final Keyboard keyboard) {
+  public void saveKeyboard(final Keyboard keyboard)
+  {
     final String keyboardName = nameFromKeyboard.get(keyboard);
     Contexty.savePreferenceString(
       getApplicationContext(),
@@ -667,27 +690,29 @@ public class StrokeInputService
     );
   }
   
-  private void setStrokeDigitSequence(final String strokeDigitSequence) {
+  private void setStrokeDigitSequence(final String strokeDigitSequence)
+  {
     this.strokeDigitSequence = strokeDigitSequence;
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
   
-  private void setCandidateList(final List<String> candidateList) {
+  private void setCandidateList(final List<String> candidateList)
+  {
     this.candidateList = candidateList;
     inputContainer.setCandidateList(candidateList);
   }
   
-  private void setCandidateListForPhraseCompletion(final InputConnection inputConnection) {
-    
+  private void setCandidateListForPhraseCompletion(final InputConnection inputConnection)
+  {
     List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
     
     phraseCompletionFirstCodePointList.clear();
-    for (final String phraseCompletionCandidate : phraseCompletionCandidateList) {
+    for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
+    {
       phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
     
     setCandidateList(phraseCompletionCandidateList);
-    
   }
   
   /*
@@ -743,7 +768,6 @@ public class StrokeInputService
     final List<Integer> phraseCompletionFirstCodePointList
   )
   {
-    
     final int firstCodePoint = Stringy.getFirstCodePoint(string);
     final int stringLength = string.length();
     
@@ -755,7 +779,6 @@ public class StrokeInputService
         sortingRankFromCodePoint,
         phraseCompletionFirstCodePointList
       );
-    
   }
   
   /*
@@ -769,7 +792,6 @@ public class StrokeInputService
     final List<Integer> phraseCompletionFirstCodePointList
   )
   {
-    
     final int coarseRank;
     final int fineRank;
     final int penalty;
@@ -779,42 +801,43 @@ public class StrokeInputService
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
-    final int sortingRankNonNull = (
-      sortingRank != null
-        ? sortingRank
-        : LARGISH_SORTING_RANK
-    );
+    final int sortingRankNonNull =
+            sortingRank != null
+              ? sortingRank
+              : LARGISH_SORTING_RANK;
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
-    final int unpreferredPenalty = (
-      unpreferredCodePointSet.contains(firstCodePoint)
-        ? RANKING_PENALTY_UNPREFERRED
-        : 0
-    );
+    final int unpreferredPenalty =
+            unpreferredCodePointSet.contains(firstCodePoint)
+              ? RANKING_PENALTY_UNPREFERRED
+              : 0;
     
-    if (phraseCompletionListIsEmpty) {
+    if (phraseCompletionListIsEmpty)
+    {
       coarseRank = Integer.MIN_VALUE;
       fineRank = sortingRankNonNull;
       penalty = lengthPenalty + unpreferredPenalty;
     }
-    else if (firstCodePointMatchesPhraseCompletionCandidate) {
+    else if (firstCodePointMatchesPhraseCompletionCandidate)
+    {
       coarseRank = Integer.MIN_VALUE;
       fineRank = phraseCompletionIndex;
       penalty = lengthPenalty;
     }
-    else {
+    else
+    {
       coarseRank = 0;
       fineRank = sortingRankNonNull;
       penalty = lengthPenalty + unpreferredPenalty;
     }
     
     return coarseRank + fineRank + penalty;
-    
   }
   
-  private List<String> computeCandidateList(final String strokeDigitSequence) {
-    
-    if (strokeDigitSequence.length() == 0) {
+  private List<String> computeCandidateList(final String strokeDigitSequence)
+  {
+    if (strokeDigitSequence.length() == 0)
+    {
       return Collections.emptyList();
     }
     
@@ -822,27 +845,30 @@ public class StrokeInputService
     
     final List<String> exactMatchCandidateList;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
-    if (exactMatchCharacters != null) {
+    if (exactMatchCharacters != null)
+    {
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
     }
-    else {
+    else
+    {
       exactMatchCandidateList = Collections.emptyList();
     }
     
     final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
-    final Collection<String> prefixMatchCharactersCollection = (
-      charactersFromStrokeDigitSequence
-        .subMap(
-          strokeDigitSequence, false,
-          strokeDigitSequence + Character.MAX_VALUE, false
-        )
-        .values()
-    );
+    final Collection<String> prefixMatchCharactersCollection =
+            charactersFromStrokeDigitSequence
+              .subMap(
+                strokeDigitSequence, false,
+                strokeDigitSequence + Character.MAX_VALUE, false
+              )
+              .values();
+    
     final long addAllStartMillis = System.currentTimeMillis();
-    for (final String characters : prefixMatchCharactersCollection) {
+    for (final String characters : prefixMatchCharactersCollection)
+    {
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
     final long addAllEndMillis = System.currentTimeMillis();
@@ -850,7 +876,9 @@ public class StrokeInputService
       "computeCandidateList",
       (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
     );
-    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT) {
+    
+    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
+    {
       prefixMatchCodePointSet.retainAll(commonCodePointSet);
     }
     
@@ -871,7 +899,8 @@ public class StrokeInputService
     
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
     final List<String> prefixMatchCandidateList = new ArrayList<>();
-    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount)) {
+    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount))
+    {
       prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
     }
     
@@ -880,26 +909,26 @@ public class StrokeInputService
     candidateList.addAll(prefixMatchCandidateList);
     
     return candidateList;
-    
   }
   
-  private String getFirstCandidate() {
-    
-    try {
+  private String getFirstCandidate()
+  {
+    try
+    {
       return candidateList.get(0);
     }
-    catch (IndexOutOfBoundsException exception) {
+    catch (IndexOutOfBoundsException exception)
+    {
       return "";
     }
-    
   }
   
   /*
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
   */
-  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection) {
-    
+  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection)
+  {
     updateCandidateOrderPreference();
     
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
@@ -911,15 +940,17 @@ public class StrokeInputService
     )
     {
       final Set<String> prefixMatchPhraseCandidateSet =
-        phraseSet.subSet(
-          phrasePrefix, false,
-          phrasePrefix + Character.MAX_VALUE, false
-        );
+              phraseSet.subSet(
+                phrasePrefix, false,
+                phrasePrefix + Character.MAX_VALUE, false
+              );
       final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
       
-      for (final String phraseCandidate : prefixMatchPhraseCandidateSet) {
+      for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
+      {
         final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
-        if (!phraseCompletionCandidateList.contains(phraseCompletion)) {
+        if (!phraseCompletionCandidateList.contains(phraseCompletion))
+        {
           prefixMatchPhraseCompletionList.add(phraseCompletion);
         }
       }
@@ -932,50 +963,49 @@ public class StrokeInputService
     final int candidateCount = Math.min(phraseCompletionCandidateList.size(), MAX_PHRASE_COMPLETION_COUNT);
     
     return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
-    
   }
   
-  private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount) {
-    
-    if (inputIsPassword) {
+  private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount)
+  {
+    if (inputIsPassword)
+    {
       return ""; // don't read passwords
     }
     
     final String textBeforeCursor = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
     
-    if (textBeforeCursor != null) {
+    if (textBeforeCursor != null)
+    {
       return textBeforeCursor;
     }
-    else {
+    else
+    {
       return "";
     }
-    
   }
   
-  private void updateCandidateOrderPreference() {
-    
-    if (shouldPreferTraditional()) {
+  private void updateCandidateOrderPreference()
+  {
+    if (shouldPreferTraditional())
+    {
       unpreferredCodePointSet = codePointSetSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
       commonCodePointSet = commonCodePointSetTraditional;
       phraseSet = phraseSetTraditional;
     }
-    else {
+    else
+    {
       unpreferredCodePointSet = codePointSetTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
       commonCodePointSet = commonCodePointSetSimplified;
       phraseSet = phraseSetSimplified;
     }
-    
   }
   
-  private boolean shouldPreferTraditional() {
-    
+  private boolean shouldPreferTraditional()
+  {
     final String savedCandidateOrderPreference =
-      MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
-    
+            MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
     return MainActivity.isTraditionalPreferred(savedCandidateOrderPreference);
-    
   }
-  
 }

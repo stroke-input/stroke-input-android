@@ -25,26 +25,29 @@ import java.util.List;
 public class CandidatesViewAdapter
   extends RecyclerView.Adapter<CandidatesViewAdapter.ButtonHolder>
 {
-  
   private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
   
-  CandidatesViewAdapter(final Context context, final List<String> candidateList) {
+  CandidatesViewAdapter(final Context context, final List<String> candidateList)
+  {
     this.layoutInflater = LayoutInflater.from(context);
     this.candidateList = candidateList;
   }
   
-  public interface CandidateListener {
+  public interface CandidateListener
+  {
     void onCandidate(String candidate);
   }
   
-  public void setCandidateListener(final CandidateListener candidateListener) {
+  public void setCandidateListener(final CandidateListener candidateListener)
+  {
     this.candidateListener = candidateListener;
   }
   
   @SuppressLint("NotifyDataSetChanged")
-  public void updateCandidateList(final List<String> candidateList) {
+  public void updateCandidateList(final List<String> candidateList)
+  {
     this.candidateList.clear();
     this.candidateList.addAll(candidateList);
     notifyDataSetChanged();
@@ -52,19 +55,22 @@ public class CandidatesViewAdapter
   
   @NonNull
   @Override
-  public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
+  public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType)
+  {
     final Button candidateButton = (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
     return new ButtonHolder(candidateButton);
   }
   
   @Override
-  public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex) {
+  public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex)
+  {
     final String candidate = candidateList.get(candidateIndex);
     buttonHolder.candidateButton.setText(candidate);
   }
   
   @Override
-  public int getItemCount() {
+  public int getItemCount()
+  {
     return candidateList.size();
   }
   
@@ -72,23 +78,22 @@ public class CandidatesViewAdapter
     extends RecyclerView.ViewHolder
     implements View.OnClickListener
   {
-    
     private final Button candidateButton;
     
-    public ButtonHolder(final Button candidateButton) {
+    public ButtonHolder(final Button candidateButton)
+    {
       super(candidateButton);
       candidateButton.setOnClickListener(this);
       this.candidateButton = candidateButton;
     }
     
     @Override
-    public void onClick(View view) {
-      if (candidateListener == null) {
-        return;
+    public void onClick(View view)
+    {
+      if (candidateListener != null)
+      {
+        candidateListener.onCandidate((String) candidateButton.getText());
       }
-      candidateListener.onCandidate((String) candidateButton.getText());
     }
-    
   }
-  
 }

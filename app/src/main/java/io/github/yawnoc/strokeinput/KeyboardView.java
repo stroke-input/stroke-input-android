@@ -50,7 +50,6 @@ public class KeyboardView
   extends View
   implements View.OnClickListener
 {
-  
   private static final int NONEXISTENT_POINTER_ID = -1;
   
   private static final int MESSAGE_KEY_REPEAT = 1;
@@ -105,46 +104,50 @@ public class KeyboardView
   private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
   
-  public KeyboardView(final Context context, final AttributeSet attributes) {
-    
+  public KeyboardView(final Context context, final AttributeSet attributes)
+  {
     super(context, attributes);
     
     initialiseExtendedPressHandler();
     initialiseDrawing(context);
     initialiseKeyPreviewPlane(context);
-    
   }
   
-  private void initialiseExtendedPressHandler() {
-    
+  private void initialiseExtendedPressHandler()
+  {
     resetKeyRepeatIntervalMilliseconds();
     
     extendedPressHandler =
-      new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message message) {
-          if (activeKey != null) {
-            switch (message.what) {
-              case MESSAGE_KEY_REPEAT:
-                keyboardListener.onKey(activeKey.valueText);
-                sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, keyRepeatIntervalMilliseconds);
-                break;
-              case MESSAGE_LONG_PRESS:
-                keyboardListener.onLongPress(activeKey.valueText);
-                activeKey = null;
-                activePointerId = NONEXISTENT_POINTER_ID;
-                keyPreviewPlane.dismissAllImmediately();
-                invalidate();
-                break;
-            }
-          }
-        }
-      };
+            new Handler(Looper.getMainLooper())
+            {
+              @Override
+              public void handleMessage(Message message)
+              {
+                if (activeKey != null)
+                {
+                  switch (message.what)
+                  {
+                    case MESSAGE_KEY_REPEAT:
+                      keyboardListener.onKey(activeKey.valueText);
+                      sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, keyRepeatIntervalMilliseconds);
+                      break;
+                    
+                    case MESSAGE_LONG_PRESS:
+                      keyboardListener.onLongPress(activeKey.valueText);
+                      activeKey = null;
+                      activePointerId = NONEXISTENT_POINTER_ID;
+                      keyPreviewPlane.dismissAllImmediately();
+                      invalidate();
+                      break;
+                  }
+                }
+              }
+            };
     
   }
   
-  private void initialiseDrawing(final Context context) {
-    
+  private void initialiseDrawing(final Context context)
+  {
     this.setBackgroundColor(Color.TRANSPARENT);
     
     keyboardRectangle = new Rect();
@@ -161,44 +164,47 @@ public class KeyboardView
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyTextPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME));
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
-    
   }
   
-  private void initialiseKeyPreviewPlane(final Context context) {
-    
+  private void initialiseKeyPreviewPlane(final Context context)
+  {
     keyPreviewPlane = new KeyPreviewPlane(context);
     
     final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
     keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
     keyPreviewPlanePopup.setTouchable(false);
     keyPreviewPlanePopup.setClippingEnabled(false);
-    
   }
   
   /*
     A listener for keyboard events.
   */
-  public interface KeyboardListener {
+  public interface KeyboardListener
+  {
     void onKey(String valueText);
     void onLongPress(String valueText);
     void onSwipe(String valueText);
     void saveKeyboard(Keyboard keyboard);
   }
   
-  public void setKeyboardListener(final KeyboardListener keyboardListener) {
+  public void setKeyboardListener(final KeyboardListener keyboardListener)
+  {
     this.keyboardListener = keyboardListener;
   }
   
-  public Keyboard getKeyboard() {
+  public Keyboard getKeyboard()
+  {
     return keyboard;
   }
   
-  public void setKeyboard(final Keyboard keyboard) {
+  public void setKeyboard(final Keyboard keyboard)
+  {
     keyboardListener.saveKeyboard(keyboard);
     this.keyboard = keyboard;
     keyList = keyboard.getKeyList();
     keyboardFillPaint.setColor(keyboard.fillColour);
-    if (shiftMode != SHIFT_PERSISTENT) {
+    if (shiftMode != SHIFT_PERSISTENT)
+    {
       shiftMode = SHIFT_DISABLED;
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
@@ -206,8 +212,8 @@ public class KeyboardView
   }
   
   @SuppressLint("RtlHardcoded")
-  public void showKeyPreviewPlane() {
-    
+  public void showKeyPreviewPlane()
+  {
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     final int keyboardHeight = keyboard.getHeight();
@@ -217,7 +223,8 @@ public class KeyboardView
     keyPreviewPlanePopup.setWidth(screenWidth);
     keyPreviewPlanePopup.setHeight(screenHeight);
     
-    if (getWindowToken() != null) { // check needed in API level 29
+    if (getWindowToken() != null) // check needed in API level 29
+    {
       keyPreviewPlanePopup.showAtLocation(
         this,
         Gravity.BOTTOM | Gravity.LEFT,
@@ -225,78 +232,87 @@ public class KeyboardView
         getSoftButtonsHeight()
       );
     }
-    
   }
   
-  private int getSoftButtonsHeight() {
-    
+  private int getSoftButtonsHeight()
+  {
     final int softButtonsHeight;
     final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-    if (rootWindowInsets != null) {
-      if (Build.VERSION.SDK_INT < 30) {
+    if (rootWindowInsets != null)
+    {
+      if (Build.VERSION.SDK_INT < 30)
+      {
         softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
       }
-      else {
+      else
+      {
         softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
       }
     }
-    else {
+    else
+    {
       softButtonsHeight = 0;
     }
     
     return softButtonsHeight;
-    
   }
   
-  public void resetKeyRepeatIntervalMilliseconds() {
+  public void resetKeyRepeatIntervalMilliseconds()
+  {
     keyRepeatIntervalMilliseconds = DEFAULT_KEY_REPEAT_INTERVAL_MILLISECONDS;
   }
   
-  public void setKeyRepeatIntervalMilliseconds(final int milliseconds) {
+  public void setKeyRepeatIntervalMilliseconds(final int milliseconds)
+  {
     keyRepeatIntervalMilliseconds = milliseconds;
   }
   
   @Override
-  public void onClick(final View view) {
+  public void onClick(final View view)
+  {
+    // Touch logic implemented in onTouchEvent
   }
   
   @Override
-  public void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
-    
+  public void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec)
+  {
     final int keyboardWidth;
     final int keyboardHeight;
     
-    if (keyboard != null) {
+    if (keyboard != null)
+    {
       keyboardWidth = keyboard.getWidth();
       keyboardHeight = keyboard.getHeight();
     }
-    else {
+    else
+    {
       keyboardWidth = 0;
       keyboardHeight = 0;
     }
     
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
     setMeasuredDimension(keyboardWidth, keyboardHeight);
-    
   }
   
   @Override
-  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight) {
+  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight)
+  {
     super.onSizeChanged(width, height, oldWidth, oldHeight);
     showKeyPreviewPlane();
   }
   
   @Override
-  public void onDraw(final Canvas canvas) {
-    
-    if (keyboard == null) {
+  public void onDraw(final Canvas canvas)
+  {
+    if (keyboard == null)
+    {
       return;
     }
     
     canvas.drawRect(keyboardRectangle, keyboardFillPaint);
     
-    for (final Key key : keyList) {
-      
+    for (final Key key : keyList)
+    {
       keyRectangle.set(0, 0, key.width, key.height);
       
       int keyFillColour = key.fillColour;
@@ -322,60 +338,61 @@ public class KeyboardView
       keyBorderPaint.setStrokeWidth(key.borderThickness);
       
       final int keyTextColour;
-      if (key == activeKey && swipeModeIsActivated) {
+      if (key == activeKey && swipeModeIsActivated)
+      {
         keyTextColour = key.textSwipeColour;
       }
-      else {
+      else
+      {
         keyTextColour = key.textColour;
       }
       keyTextPaint.setColor(keyTextColour);
       keyTextPaint.setTextSize(key.textSize);
       
-      final String keyDisplayText = (
-        key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT)
-          ? key.displayText
-          : key.shiftAwareDisplayText(shiftMode)
-      );
+      final String keyDisplayText =
+              key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT)
+                ? key.displayText
+                : key.shiftAwareDisplayText(shiftMode);
       
       final float keyTextX = key.width / 2f + key.textOffsetX;
       final float keyTextY = (key.height - keyTextPaint.ascent() - keyTextPaint.descent()) / 2f + key.textOffsetY;
       
       canvas.translate(key.x, key.y);
-      
       canvas.drawRect(keyRectangle, keyFillPaint);
       canvas.drawRect(keyRectangle, keyBorderPaint);
       canvas.drawText(keyDisplayText, keyTextX, keyTextY, keyTextPaint);
-      
       canvas.translate(-key.x, -key.y);
     }
-    
   }
   
   /*
     Lighten a dark colour and darken a light colour.
     Used for key press colour changes.
   */
-  public static int toPressedColour(final int colour) {
-    
+  public static int toPressedColour(final int colour)
+  {
     final float[] colourHSLArray = new float[3];
     ColorUtils.colorToHSL(colour, colourHSLArray);
     
     float colourLightness = colourHSLArray[2];
-    if (colourLightness < COLOUR_LIGHTNESS_CUTOFF) {
+    
+    if (colourLightness < COLOUR_LIGHTNESS_CUTOFF)
+    {
       colourLightness = (2 * colourLightness + 1) / 3;
     }
-    else {
+    else
+    {
       colourLightness = (2 * colourLightness) / 3;
     }
     
     colourHSLArray[2] = colourLightness;
     
     return ColorUtils.HSLToColor(colourHSLArray);
-    
   }
   
   @Override
-  protected void onDetachedFromWindow() {
+  protected void onDetachedFromWindow()
+  {
     keyPreviewPlanePopup.dismiss(); // prevent persistence of popups on screen rotate
     super.onDetachedFromWindow();
   }
@@ -389,18 +406,19 @@ public class KeyboardView
   */
   @SuppressLint("ClickableViewAccessibility")
   @Override
-  public boolean onTouchEvent(final MotionEvent event) {
-    
+  public boolean onTouchEvent(final MotionEvent event)
+  {
     final int eventPointerCount = event.getPointerCount();
     
-    if (eventPointerCount > 2) {
+    if (eventPointerCount > 2)
+    {
       sendCancelEvent();
       return true;
     }
     
     touchLogic:
-    switch (event.getActionMasked()) {
-      
+    switch (event.getActionMasked())
+    {
       case MotionEvent.ACTION_DOWN:
       case MotionEvent.ACTION_POINTER_DOWN:
         
@@ -410,37 +428,39 @@ public class KeyboardView
         final int downPointerY = (int) event.getY(downPointerIndex);
         final Key downKey = getKeyAtPoint(downPointerX, downPointerY);
         
-        if (isShiftKey(downKey)) {
+        if (isShiftKey(downKey))
+        {
           sendShiftDownEvent(downPointerId);
           break;
         }
         
-        if (activePointerId != NONEXISTENT_POINTER_ID) {
+        if (activePointerId != NONEXISTENT_POINTER_ID)
+        {
           sendUpEvent(activeKey, false);
           keyPreviewPlane.dismissLatest();
         }
-        
         sendDownEvent(downKey, downPointerId, downPointerX);
-        
         break;
       
       case MotionEvent.ACTION_MOVE:
         
-        for (int index = 0; index < eventPointerCount; index++) {
-          
+        for (int index = 0; index < eventPointerCount; index++)
+        {
           final int movePointerId = event.getPointerId(index);
           final int movePointerX = (int) event.getX(index);
           final int movePointerY = (int) event.getY(index);
           final Key moveKey = getKeyAtPoint(movePointerX, movePointerY);
           
-          if (movePointerId == activePointerId) {
-            
-            if (isShiftKey(moveKey) && !isSwipeableKey(activeKey)) {
+          if (movePointerId == activePointerId)
+          {
+            if (isShiftKey(moveKey) && !isSwipeableKey(activeKey))
+            {
               sendShiftMoveToEvent(movePointerId);
               break touchLogic;
             }
             
-            if (moveKey != activeKey || isSwipeableKey(activeKey)) {
+            if (moveKey != activeKey || isSwipeableKey(activeKey))
+            {
               sendMoveEvent(moveKey, movePointerId, movePointerX);
               break touchLogic;
             }
@@ -448,17 +468,15 @@ public class KeyboardView
             break touchLogic;
           }
           
-          if (movePointerId == shiftPointerId) {
-            
-            if (!isShiftKey(moveKey)) {
+          if (movePointerId == shiftPointerId)
+          {
+            if (!isShiftKey(moveKey))
+            {
               sendShiftMoveFromEvent(moveKey, movePointerId);
               break touchLogic;
             }
-            
           }
-          
         }
-        
         break;
       
       case MotionEvent.ACTION_UP:
@@ -470,31 +488,29 @@ public class KeyboardView
         final int upPointerY = (int) event.getY(upPointerIndex);
         final Key upKey = getKeyAtPoint(upPointerX, upPointerY);
         
-        if ((upPointerId == shiftPointerId || isShiftKey(upKey)) && !isSwipeableKey(activeKey)) {
+        if ((upPointerId == shiftPointerId || isShiftKey(upKey)) && !isSwipeableKey(activeKey))
+        {
           sendShiftUpEvent(true);
           break;
         }
         
-        if (upPointerId == activePointerId) {
+        if (upPointerId == activePointerId)
+        {
           sendUpEvent(upKey, true);
           break;
         }
-        
         break;
       
       case MotionEvent.ACTION_CANCEL:
-        
         sendCancelEvent();
-        
         break;
-      
     }
     
     return true;
-    
   }
   
-  private void sendCancelEvent() {
+  private void sendCancelEvent()
+  {
     shiftPointerId = NONEXISTENT_POINTER_ID;
     activeKey = null;
     activePointerId = NONEXISTENT_POINTER_ID;
@@ -502,14 +518,16 @@ public class KeyboardView
     invalidate();
   }
   
-  private void sendDownEvent(final Key key, final int pointerId, final int x) {
-    
-    if (isSwipeableKey(key)) {
+  private void sendDownEvent(final Key key, final int pointerId, final int x)
+  {
+    if (isSwipeableKey(key))
+    {
       pointerDownX = x;
     }
     swipeModeIsActivated = false;
     
-    if (shiftPointerId != NONEXISTENT_POINTER_ID) {
+    if (shiftPointerId != NONEXISTENT_POINTER_ID)
+    {
       shiftMode = SHIFT_HELD;
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
@@ -520,27 +538,31 @@ public class KeyboardView
     sendAppropriateExtendedPressHandlerMessage(key);
     keyPreviewPlane.showPreviewAt(key);
     invalidate();
-    
   }
   
-  private void sendMoveEvent(final Key key, final int pointerId, final int x) {
-    
+  private void sendMoveEvent(final Key key, final int pointerId, final int x)
+  {
     boolean shouldRedrawKeyboard = false;
     
-    if (swipeModeIsActivated) {
-      if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE) {
+    if (swipeModeIsActivated)
+    {
+      if (Math.abs(x - pointerDownX) < SWIPE_ACTIVATION_DISTANCE)
+      {
         swipeModeIsActivated = false;
         shouldRedrawKeyboard = true;
       }
     }
-    else if (key == activeKey && isSwipeableKey(key)) {
-      if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE) {
+    else if (key == activeKey && isSwipeableKey(key))
+    {
+      if (Math.abs(x - pointerDownX) > SWIPE_ACTIVATION_DISTANCE)
+      {
         swipeModeIsActivated = true;
         removeAllExtendedPressHandlerMessages();
         shouldRedrawKeyboard = true;
       }
     }
-    else { // move is a key change
+    else // move is a key change
+    {
       activeKey = key;
       removeAllExtendedPressHandlerMessages();
       sendAppropriateExtendedPressHandlerMessage(key);
@@ -551,31 +573,34 @@ public class KeyboardView
     
     activePointerId = pointerId;
     
-    if (shouldRedrawKeyboard) {
+    if (shouldRedrawKeyboard)
+    {
       invalidate();
     }
-    
   }
   
-  private void sendUpEvent(final Key key, final boolean shouldRedrawKeyboard) {
-    
-    if (swipeModeIsActivated) {
+  private void sendUpEvent(final Key key, final boolean shouldRedrawKeyboard)
+  {
+    if (swipeModeIsActivated)
+    {
       keyboardListener.onSwipe(activeKey.valueText);
     }
-    else if (key != null) {
-      
-      if (shiftMode != SHIFT_DISABLED && key.isShiftable) {
+    else if (key != null)
+    {
+      if (shiftMode != SHIFT_DISABLED && key.isShiftable)
+      {
         keyboardListener.onKey(key.valueTextShifted);
       }
-      else {
+      else
+      {
         keyboardListener.onKey(key.valueText);
       }
       
-      if (shiftMode == SHIFT_SINGLE) {
+      if (shiftMode == SHIFT_SINGLE)
+      {
         shiftMode = SHIFT_DISABLED;
         keyPreviewPlane.updateShiftMode(shiftMode);
       }
-      
     }
     
     activeKey = null;
@@ -583,31 +608,29 @@ public class KeyboardView
     
     removeAllExtendedPressHandlerMessages();
     resetKeyRepeatIntervalMilliseconds();
-    if (shouldRedrawKeyboard) {
+    if (shouldRedrawKeyboard)
+    {
       keyPreviewPlane.dismissLatest();
       invalidate();
     }
-    
   }
   
-  private void sendShiftDownEvent(final int pointerId) {
-    
-    if (shiftMode == SHIFT_DISABLED) {
-      shiftMode = (
-        activeKey == null
-          ? SHIFT_INITIATED
-          : SHIFT_HELD
-      );
+  private void sendShiftDownEvent(final int pointerId)
+  {
+    if (shiftMode == SHIFT_DISABLED)
+    {
+      shiftMode =
+              activeKey == null
+                ? SHIFT_INITIATED
+                : SHIFT_HELD;
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     shiftPointerId = pointerId;
-    
     invalidate();
-    
   }
   
-  private void sendShiftMoveToEvent(final int pointerId) {
-    
+  private void sendShiftMoveToEvent(final int pointerId)
+  {
     shiftMode = SHIFT_HELD;
     shiftPointerId = pointerId;
     keyPreviewPlane.updateShiftMode(shiftMode);
@@ -618,11 +641,10 @@ public class KeyboardView
     removeAllExtendedPressHandlerMessages();
     keyPreviewPlane.dismissLatest();
     invalidate();
-    
   }
   
-  private void sendShiftMoveFromEvent(final Key key, final int pointerId) {
-    
+  private void sendShiftMoveFromEvent(final Key key, final int pointerId)
+  {
     sendShiftUpEvent(false);
     
     activeKey = key;
@@ -633,18 +655,20 @@ public class KeyboardView
     resetKeyRepeatIntervalMilliseconds();
     keyPreviewPlane.movePreviewTo(key);
     invalidate();
-    
   }
   
-  private void sendShiftUpEvent(boolean shouldRedrawKeyboard) {
-    
-    switch (shiftMode) {
+  private void sendShiftUpEvent(boolean shouldRedrawKeyboard)
+  {
+    switch (shiftMode)
+    {
       case SHIFT_SINGLE:
         shiftMode = SHIFT_PERSISTENT;
         break;
+      
       case SHIFT_INITIATED:
         shiftMode = SHIFT_SINGLE;
         break;
+      
       case SHIFT_PERSISTENT:
       case SHIFT_HELD:
         shiftMode = SHIFT_DISABLED;
@@ -653,51 +677,59 @@ public class KeyboardView
     shiftPointerId = NONEXISTENT_POINTER_ID;
     keyPreviewPlane.updateShiftMode(shiftMode);
     
-    if (shouldRedrawKeyboard) {
+    if (shouldRedrawKeyboard)
+    {
       invalidate();
     }
-    
   }
   
-  private Key getKeyAtPoint(final int x, final int y) {
-    
-    for (final Key key : keyList) {
-      if (key.containsPoint(x, y)) {
+  private Key getKeyAtPoint(final int x, final int y)
+  {
+    for (final Key key : keyList)
+    {
+      if (key.containsPoint(x, y))
+      {
         return key;
       }
     }
     
     return null;
-    
   }
   
-  private boolean isShiftKey(final Key key) {
+  private boolean isShiftKey(final Key key)
+  {
     return key != null && key.valueText.equals(StrokeInputService.SHIFT_KEY_VALUE_TEXT);
   }
   
-  private boolean isSwipeableKey(final Key key) {
+  private boolean isSwipeableKey(final Key key)
+  {
     return key != null && key.isSwipeable;
   }
   
-  private void sendAppropriateExtendedPressHandlerMessage(final Key key) {
-    if (key == null) {
+  private void sendAppropriateExtendedPressHandlerMessage(final Key key)
+  {
+    if (key == null)
+    {
       return;
     }
-    if (key.isRepeatable) {
+    if (key.isRepeatable)
+    {
       sendExtendedPressHandlerMessage(MESSAGE_KEY_REPEAT, KEY_REPEAT_START_MILLISECONDS);
     }
-    else if (key.isLongPressable) {
+    else if (key.isLongPressable)
+    {
       sendExtendedPressHandlerMessage(MESSAGE_LONG_PRESS, KEY_LONG_PRESS_MILLISECONDS);
     }
   }
   
-  private void sendExtendedPressHandlerMessage(final int messageWhat, final long delayMilliseconds) {
+  private void sendExtendedPressHandlerMessage(final int messageWhat, final long delayMilliseconds)
+  {
     final Message message = extendedPressHandler.obtainMessage(messageWhat);
     extendedPressHandler.sendMessageDelayed(message, delayMilliseconds);
   }
   
-  private void removeAllExtendedPressHandlerMessages() {
+  private void removeAllExtendedPressHandlerMessages()
+  {
     extendedPressHandler.removeCallbacksAndMessages(null);
   }
-  
 }

@@ -30,8 +30,8 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   An individual key.
 */
-public class Key {
-  
+public class Key
+{
   // Key behaviour
   public boolean isLongPressable;
   public boolean isRepeatable; // overrides isLongPressable
@@ -67,7 +67,8 @@ public class Key {
   // Key meta-properties
   private final Keyboard grandparentKeyboard;
   
-  public Key(final Row parentRow) {
+  public Key(final Row parentRow)
+  {
     grandparentKeyboard = parentRow.parentKeyboard;
     width = parentRow.keyWidth;
     height = parentRow.keyHeight;
@@ -80,14 +81,13 @@ public class Key {
     final XmlResourceParser xmlResourceParser
   )
   {
-    
     this(parentRow);
     
     this.x = x;
     this.y = y;
     
     final TypedArray attributesArray =
-      resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
+            resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
     
     isLongPressable = attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
     isRepeatable = attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
@@ -99,35 +99,42 @@ public class Key {
     
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);
-    if (displayText == null) {
+    if (displayText == null)
+    {
       displayText = valueText;
     }
+    
     valueTextShifted = attributesArray.getString(R.styleable.Key_keyValueTextShifted);
-    if (isShiftable && valueTextShifted == null) {
+    if (isShiftable && valueTextShifted == null)
+    {
       valueTextShifted = displayText.toUpperCase();
     }
-    else if (valueTextShifted == null) {
+    else if (valueTextShifted == null)
+    {
       valueTextShifted = displayText;
     }
     
     width =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Key_keyWidth,
-        grandparentKeyboard.getScreenWidth(),
-        parentRow.keyWidth
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Key_keyWidth,
+              grandparentKeyboard.getScreenWidth(),
+              parentRow.keyWidth
+            );
     height =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Key_keyHeight,
-        grandparentKeyboard.getScreenHeight(),
-        parentRow.keyHeight
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Key_keyHeight,
+              grandparentKeyboard.getScreenHeight(),
+              parentRow.keyHeight
+            );
     
-    fillColour = attributesArray.getColor(R.styleable.Key_keyFillColour, parentRow.keyFillColour);
-    borderColour = attributesArray.getColor(R.styleable.Key_keyBorderColour, parentRow.keyBorderColour);
-    borderThickness = attributesArray.getDimensionPixelSize(R.styleable.Key_keyBorderThickness, parentRow.keyBorderThickness);
+    fillColour =
+            attributesArray.getColor(R.styleable.Key_keyFillColour, parentRow.keyFillColour);
+    borderColour =
+            attributesArray.getColor(R.styleable.Key_keyBorderColour, parentRow.keyBorderColour);
+    borderThickness =
+            attributesArray.getDimensionPixelSize(R.styleable.Key_keyBorderThickness, parentRow.keyBorderThickness);
     
     textColour = attributesArray.getColor(R.styleable.Key_keyTextColour, parentRow.keyTextColour);
     textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
@@ -136,23 +143,23 @@ public class Key {
     textOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
     
     previewMagnification =
-      attributesArray.getFloat(
-        R.styleable.Key_keyPreviewMagnification,
-        parentRow.keyPreviewMagnification
-      );
+            attributesArray.getFloat(
+              R.styleable.Key_keyPreviewMagnification,
+              parentRow.keyPreviewMagnification
+            );
     previewMarginY =
-      Valuey.getDimensionOrFraction(
-        attributesArray,
-        R.styleable.Key_keyPreviewMarginY,
-        grandparentKeyboard.getScreenHeight(),
-        parentRow.keyPreviewMarginY
-      );
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Key_keyPreviewMarginY,
+              grandparentKeyboard.getScreenHeight(),
+              parentRow.keyPreviewMarginY
+            );
     
     attributesArray.recycle();
-    
   }
   
-  public boolean containsPoint(final int x, final int y) {
+  public boolean containsPoint(final int x, final int y)
+  {
     return (
       (this.isExtendedLeft || this.x <= x)
         &&
@@ -162,12 +169,15 @@ public class Key {
     );
   }
   
-  public String shiftAwareDisplayText(final int shiftMode) {
-    return (
-      (shiftMode == KeyboardView.SHIFT_DISABLED)
-        ? this.displayText
-        : this.valueTextShifted
-    );
+  public String shiftAwareDisplayText(final int shiftMode)
+  {
+    if (shiftMode == KeyboardView.SHIFT_DISABLED)
+    {
+      return displayText;
+    }
+    else
+    {
+      return valueTextShifted;
+    }
   }
-  
 }

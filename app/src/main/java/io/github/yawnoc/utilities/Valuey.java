@@ -24,21 +24,25 @@ import android.content.res.TypedArray;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
-public class Valuey {
-  
-  private Valuey() {
+public final class Valuey
+{
+  private Valuey()
+  {
     // Do not instantiate
   }
   
-  public static float clipValueToRange(final float value, final float rangeMin, final float rangeMax) {
+  public static float clipValueToRange(final float value, final float rangeMin, final float rangeMax)
+  {
     return Math.max(rangeMin, Math.min(rangeMax, value));
   }
   
-  public static float pxFromDp(final float dp, final DisplayMetrics displayMetrics) {
+  public static float pxFromDp(final float dp, final DisplayMetrics displayMetrics)
+  {
     return dp * displayMetrics.density;
   }
   
-  public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics) {
+  public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics)
+  {
     return sp * displayMetrics.scaledDensity;
   }
   
@@ -49,21 +53,22 @@ public class Valuey {
     final int defaultValue
   )
   {
-    
     final TypedValue value = array.peekValue(attributeIndex);
-    if (value == null) {
+    if (value == null)
+    {
       return defaultValue;
     }
     
-    switch (value.type) {
+    switch (value.type)
+    {
       case TypedValue.TYPE_DIMENSION:
         return array.getDimensionPixelOffset(attributeIndex, defaultValue);
+      
       case TypedValue.TYPE_FRACTION:
         return Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
+      
       default:
         return defaultValue;
     }
-    
   }
-  
 }

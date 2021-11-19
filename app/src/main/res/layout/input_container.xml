@@ -12,9 +12,8 @@
   android:layout_height="wrap_content"
   android:orientation="vertical"
 >
-  
   <!--
-    Needed because API level 28 is dumb:
+    Popup recess needed because API level 28 is dumb:
     it clips popups to the containing InputContainer,
     even if `setClippingEnabled(false)` is used.
     See <https://stackoverflow.com/a/53326786>.
@@ -24,7 +23,6 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/height__popup_recess"
   />
-  
   <io.github.yawnoc.strokeinput.StrokeSequenceBar
     android:id="@+id/stroke_sequence_bar"
     android:layout_width="wrap_content"
@@ -41,18 +39,15 @@
     android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
     tools:ignore="RtlHardcoded"
   />
-  
   <io.github.yawnoc.strokeinput.CandidatesView
     android:id="@+id/candidates_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height__candidate_button"
     android:background="@color/candidate_button_fill"
   />
-  
   <io.github.yawnoc.strokeinput.KeyboardView
     android:id="@+id/keyboard_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
   />
-  
 </io.github.yawnoc.strokeinput.InputContainer>

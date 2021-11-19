@@ -21,27 +21,28 @@ import java.util.ArrayList;
 public class CandidatesView
   extends RecyclerView
 {
-  
-  // View properties
   private CandidatesViewAdapter candidatesViewAdapter;
   
-  public CandidatesView(final Context context, final AttributeSet attributes) {
+  public CandidatesView(final Context context, final AttributeSet attributes)
+  {
     super(context, attributes);
     initialiseCandidatesViewAdapter(context);
   }
   
-  public CandidatesViewAdapter getCandidatesViewAdapter() {
+  public CandidatesViewAdapter getCandidatesViewAdapter()
+  {
     return candidatesViewAdapter;
   }
   
-  private void initialiseCandidatesViewAdapter(final Context context) {
+  private void initialiseCandidatesViewAdapter(final Context context)
+  {
     candidatesViewAdapter = new CandidatesViewAdapter(context, new ArrayList<>());
     setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     setAdapter(candidatesViewAdapter);
   }
   
-  public void setCandidateListener(final CandidatesViewAdapter.CandidateListener candidateListener) {
+  public void setCandidateListener(final CandidatesViewAdapter.CandidateListener candidateListener)
+  {
     candidatesViewAdapter.setCandidateListener(candidateListener);
   }
-  
 }
