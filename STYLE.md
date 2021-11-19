@@ -1,5 +1,7 @@
 # Style guide
 
+Spaces.
+
 
 ## Java
 
