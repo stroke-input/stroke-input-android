@@ -16,7 +16,8 @@ import android.view.inputmethod.InputMethodManager;
 
 public final class Contexty
 {
-  private Contexty() {
+  private Contexty()
+  {
     // Do not instantiate
   }
   
@@ -43,18 +44,21 @@ public final class Contexty
     preferencesEditor.apply();
   }
   
-  public static void showSystemInputMethodSettings(final Context context) {
+  public static void showSystemInputMethodSettings(final Context context)
+  {
     final Intent inputMethodSettingsIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
     context.startActivity(inputMethodSettingsIntent);
   }
   
-  public static void showSystemKeyboardChanger(final Context context) {
+  public static void showSystemKeyboardChanger(final Context context)
+  {
     final InputMethodManager inputMethodManager =
-      (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.showInputMethodPicker();
   }
   
-  public static void openInBrowser(final Context context, final String uri) {
+  public static void openInBrowser(final Context context, final String uri)
+  {
     final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     context.startActivity(browserIntent);
   }
