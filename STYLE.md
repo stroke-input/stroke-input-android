@@ -68,6 +68,26 @@ if (
 }
 ```
 
+## Loops
+
+```java
+for (int index = 0; index < count; index++)
+{
+  // etc. etc.
+}
+```
+
+```java
+for (
+  int index = verboseButDescriptiveInitialValue;
+  areYouSureYouAreSure(index);
+  cruelAndUnusualAndVerboseIncrement(index);
+)
+{
+  // etc. etc.
+}
+```
+
 ### Methods
 
 ```java
