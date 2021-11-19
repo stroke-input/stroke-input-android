@@ -1,33 +1,41 @@
-plugins {
+plugins
+{
   id 'com.android.application'
 }
 
-android {
+android
+{
   compileSdkVersion 30
   buildToolsVersion "30.0.3"
-  defaultConfig {
+  defaultConfig
+  {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
     targetSdkVersion 30
     versionCode 20
     versionName "0.7.5"
   }
-  buildTypes {
-    release {
+  buildTypes
+  {
+    release
+    {
       minifyEnabled true
       shrinkResources true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
-  compileOptions {
+  compileOptions
+  {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
-  aaptOptions {
+  aaptOptions
+  {
     ignoreAssetsPattern '*.cmd:*.inc'
   }
 }
 
-dependencies {
+dependencies
+{
   implementation 'com.google.android.material:material:1.4.0'
 }
