@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class CandidatesView
   extends RecyclerView
 {
-  // View properties
   private CandidatesViewAdapter candidatesViewAdapter;
   
   public CandidatesView(final Context context, final AttributeSet attributes) {
