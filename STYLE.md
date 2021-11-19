@@ -68,7 +68,7 @@ if (
 }
 ```
 
-## Loops
+### Loops
 
 ```java
 for (int index = 0; index < count; index++)
