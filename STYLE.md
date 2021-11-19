@@ -7,6 +7,24 @@
 
 ## Java
 
+### Arithmetic
+
+```java
+positionForTheNextElection =
+        descriptivelyNamedDefaultPosition
+          - NAYSAYER_POSITIONAL_INFLUENCE * naysayerCount
+          + YEASAYER_POSITIONAL_INFLUENCE * yeasayerCount;
+```
+
+```java
+totalQuantity =
+        descriptivelyNamedTerm
+          +
+        SOME_RATE * whateverIsDimensionallyConsistent
+          +
+        (justDo - whateverGroupingOrIndentation / feelsLogical);
+```
+
 ### Assignments
 
 ```java
