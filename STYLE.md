@@ -170,6 +170,15 @@ return (
 );
 ```
 
+### Ternaries
+
+```java
+final Foo foo =
+        isThisConditionalSatisfied
+          ? yesValue
+          : noValue;
+```
+
 
 ## XML
 
