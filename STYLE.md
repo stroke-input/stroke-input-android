@@ -7,6 +7,36 @@
 
 ## Java
 
+### Assignments
+
+```java
+Foo foo = fitsOnOneLine;
+```
+
+```java
+final FunnyObject descriptivelyNamedInstance =
+        (FunnyObject) anotherDescriptivelyNamedInstanceThatNeedsCasting;
+```
+
+```java
+final String corruptedText =
+        originalText
+          .makeImperfectCopy()
+          .makeImperfectCopy()
+          .makeImperfectCopy()
+          .makeImperfectCopy()
+        ;
+```
+
+```java
+final int dollarFigure =
+        (int) someMethodThatReturnsFloat(
+          verboseButDescriptiveMattress,
+          verboseButDescriptivePillow,
+          verboseButDescriptiveSheet
+        );
+```
+
 ### Classes
 
 ```java
