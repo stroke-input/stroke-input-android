@@ -194,6 +194,34 @@ switch (expression)
 }
 ```
 
+```java
+moreComplicated:
+switch (expression)
+{
+  case multipleBreaksInConditionals:
+    
+    leaveBlankLineAbove();
+    if (conditional)
+    {
+      doSomething();
+      break;
+    }
+    
+    if (anotherConditional)
+    {
+      doAnotherThing();
+      break;
+    }
+    
+    doSomeOtherStuff();
+    break;
+  
+  case singleBreak:
+    takeSighOfRelief();
+    break;
+}
+```
+
 ### Ternaries
 
 ```java
