@@ -12,6 +12,7 @@
 <!-- One-liner -->
 
 <FitsOnOneLine attribute="value">content</FitsOnOneLine>
+<SelfClosingOneLine attribute="value" />
 
 <NeedsMultipleLines
   attribute1="value1"
