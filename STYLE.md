@@ -43,6 +43,27 @@ private Bar bar;
 doSomeExtraCheck(); // short remark (e.g. bemoaning a deprecation)
 ```
 
+### Methods
+
+```java
+public void doSomething()
+{
+  // etc. etc.
+}
+```
+
+```java
+public boolean AreThereTooManyParameters(
+  final Body commonLaw,
+  final Contract misleadingOrDeceptiveAgreement,
+  final Party greedyDeveloper,
+  final Party peasant
+)
+{
+  // etc. etc.
+}
+```
+
 
 ## XML
 
