@@ -10,8 +10,8 @@ package io.github.yawnoc.utilities;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mappy {
-  
+public class Mappy
+{
   private Mappy() {
     // Do not instantiate
   }
@@ -26,5 +26,4 @@ public class Mappy {
     return inverseMap;
     
   }
-  
 }

@@ -24,8 +24,8 @@ import android.content.res.TypedArray;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
-public class Valuey {
-  
+public class Valuey
+{
   private Valuey() {
     // Do not instantiate
   }
@@ -65,5 +65,4 @@ public class Valuey {
     }
     
   }
-  
 }

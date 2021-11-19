@@ -28,7 +28,6 @@ import io.github.yawnoc.utilities.Valuey;
 public class KeyPreviewPlane
   extends View
 {
-  
   private static final int DISMISSAL_DELAY_MILLISECONDS = 20;
   
   // Properties
@@ -182,5 +181,4 @@ public class KeyPreviewPlane
     }
     
   }
-  
 }

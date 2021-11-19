@@ -25,7 +25,6 @@ import java.util.List;
 public class CandidatesViewAdapter
   extends RecyclerView.Adapter<CandidatesViewAdapter.ButtonHolder>
 {
-  
   private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
@@ -90,5 +89,4 @@ public class CandidatesViewAdapter
     }
     
   }
-  
 }

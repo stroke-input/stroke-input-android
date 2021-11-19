@@ -30,8 +30,8 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   An individual key.
 */
-public class Key {
-  
+public class Key
+{
   // Key behaviour
   public boolean isLongPressable;
   public boolean isRepeatable; // overrides isLongPressable
@@ -169,5 +169,4 @@ public class Key {
         : this.valueTextShifted
     );
   }
-  
 }

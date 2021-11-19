@@ -48,7 +48,6 @@ public class StrokeInputService
   extends InputMethodService
   implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
-  
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
   private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
@@ -977,5 +976,4 @@ public class StrokeInputService
     return MainActivity.isTraditionalPreferred(savedCandidateOrderPreference);
     
   }
-  
 }

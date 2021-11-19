@@ -50,7 +50,6 @@ public class KeyboardView
   extends View
   implements View.OnClickListener
 {
-  
   private static final int NONEXISTENT_POINTER_ID = -1;
   
   private static final int MESSAGE_KEY_REPEAT = 1;
@@ -699,5 +698,4 @@ public class KeyboardView
   private void removeAllExtendedPressHandlerMessages() {
     extendedPressHandler.removeCallbacksAndMessages(null);
   }
-  
 }

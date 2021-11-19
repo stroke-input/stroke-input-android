@@ -30,7 +30,6 @@ public class MainActivity
   extends AppCompatActivity
   implements View.OnClickListener
 {
-  
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
   public static final String CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST = "TRADITIONAL_FIRST";
   public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
@@ -190,5 +189,4 @@ public class MainActivity
     simplifiedFirstButton.setOnClickListener(this);
     
   }
-  
 }

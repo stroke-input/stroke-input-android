@@ -18,7 +18,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 public class StrokeSequenceBar
   extends AppCompatTextView
 {
-  
   public StrokeSequenceBar(Context context, AttributeSet attributes) {
     super(context, attributes);
   }
@@ -43,5 +42,4 @@ public class StrokeSequenceBar
     }
     
   }
-  
 }

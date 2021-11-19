@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Stringy {
-  
+public class Stringy
+{
   private Stringy() {
     // Do not instantiate
   }
@@ -119,5 +119,4 @@ public class Stringy {
     return new String[]{substringBeforeDelimiter, substringAfterDelimiter};
     
   }
-  
 }

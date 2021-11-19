@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class CandidatesView
   extends RecyclerView
 {
-  
   // View properties
   private CandidatesViewAdapter candidatesViewAdapter;
   
@@ -43,5 +42,4 @@ public class CandidatesView
   public void setCandidateListener(final CandidatesViewAdapter.CandidateListener candidateListener) {
     candidatesViewAdapter.setCandidateListener(candidateListener);
   }
-  
 }

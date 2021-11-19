@@ -30,8 +30,8 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   A row that holds keys.
 */
-public class Row {
-  
+public class Row
+{
   private static final int DEFAULT_OFFSET_X = 0;
   
   // Row properties
@@ -121,5 +121,4 @@ public class Row {
     attributesArray.recycle();
     
   }
-  
 }

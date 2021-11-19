@@ -14,8 +14,8 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
 
-public final class Contexty {
-  
+public final class Contexty
+{
   private Contexty() {
     // Do not instantiate
   }
@@ -58,5 +58,4 @@ public final class Contexty {
     final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
     context.startActivity(browserIntent);
   }
-  
 }

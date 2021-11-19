@@ -25,7 +25,6 @@ import java.util.List;
 public class InputContainer
   extends LinearLayout
 {
-  
   // Container properties
   private View popupRecess;
   private StrokeSequenceBar strokeSequenceBar;
@@ -106,5 +105,4 @@ public class InputContainer
   public void showKeyPreviewPlane() {
     keyboardView.showKeyPreviewPlane();
   }
-  
 }

@@ -37,8 +37,8 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   A keyboard that holds rows of keys, to be declared in a layout XML.
 */
-public class Keyboard {
-  
+public class Keyboard
+{
   private static final String KEYBOARD_TAG = "Keyboard";
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
@@ -272,5 +272,4 @@ public class Keyboard {
     attributesArray.recycle();
     
   }
-  
 }
