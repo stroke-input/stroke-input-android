@@ -801,11 +801,10 @@ public class StrokeInputService
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
-    final int sortingRankNonNull = (
-      sortingRank != null
-        ? sortingRank
-        : LARGISH_SORTING_RANK
-    );
+    final int sortingRankNonNull =
+            sortingRank != null
+              ? sortingRank
+              : LARGISH_SORTING_RANK;
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
