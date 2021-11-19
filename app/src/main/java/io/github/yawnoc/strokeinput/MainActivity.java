@@ -75,9 +75,8 @@ public class MainActivity
   
   public static String loadSavedCandidateOrderPreference(final Context context)
   {
-    return (
-      Contexty.loadPreferenceString(context, StrokeInputService.PREFERENCES_FILE_NAME, CANDIDATE_ORDER_PREFERENCE_KEY)
-    );
+    return
+      Contexty.loadPreferenceString(context, StrokeInputService.PREFERENCES_FILE_NAME, CANDIDATE_ORDER_PREFERENCE_KEY);
   }
   
   private void saveCandidateOrderPreference(final String candidateOrderPreference)
