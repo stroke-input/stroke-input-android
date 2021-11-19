@@ -38,15 +38,18 @@
 <!-- One-liner -->
 ```
 
-### One-liners
+### Elements
+
+One-liners:
 
 ```xml
 <Paired attribute="value">content</Paired>
 <SelfClosing attribute="value" />
 ```
 
-### Multi-liners
+Multi-liners:
 
+```xml
 <Paired
   attribute1="value1"
   attribute2="value2"
