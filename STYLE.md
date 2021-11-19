@@ -166,6 +166,8 @@ return OneLiner;
 return (
   (isQualified || didDueDiligence && looksQualified)
     &&
+  horriblyComplicatedBooleanThingy
+    &&
   (thisLooksDodgy || shouldProbablyRefactorThis)
 );
 ```
