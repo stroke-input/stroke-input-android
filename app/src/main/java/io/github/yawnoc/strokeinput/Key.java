@@ -87,7 +87,7 @@ public class Key
     this.y = y;
     
     final TypedArray attributesArray =
-      resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
+            resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
     
     isLongPressable = attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
     isRepeatable = attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
