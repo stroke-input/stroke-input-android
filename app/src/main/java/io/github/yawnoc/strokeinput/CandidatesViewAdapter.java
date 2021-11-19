@@ -35,7 +35,8 @@ public class CandidatesViewAdapter
     this.candidateList = candidateList;
   }
   
-  public interface CandidateListener {
+  public interface CandidateListener
+  {
     void onCandidate(String candidate);
   }
   

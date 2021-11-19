@@ -581,7 +581,8 @@ public class StrokeInputService
         {
           inputConnection.deleteSurroundingTextInCodePoints(1, 0);
         }
-        else {
+        else
+        {
           inputConnection.commitText("", 1);
         }
         setCandidateListForPhraseCompletion(inputConnection);
@@ -852,7 +853,8 @@ public class StrokeInputService
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
     }
-    else {
+    else
+    {
       exactMatchCandidateList = Collections.emptyList();
     }
     
@@ -977,7 +979,8 @@ public class StrokeInputService
     {
       return textBeforeCursor;
     }
-    else {
+    else
+    {
       return "";
     }
   }
