@@ -172,6 +172,20 @@ return (
 );
 ```
 
+```java
+return
+  someReallyLongMethodCall(whichFitsOnOneLine, ifNotOnTheSameLineAsReturn);
+```
+
+```java
+return
+  someReallyReallyReallyLongMethodCall(
+    whichWillNotFitOnOneLine,
+    evenIfNotOnTheSameLineAsReturn,
+    becauseItIsReallyReallyReallyLong
+  );
+```
+
 ### Switches
 
 ```java
