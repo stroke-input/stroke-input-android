@@ -171,10 +171,13 @@ public class Key
   
   public String shiftAwareDisplayText(final int shiftMode)
   {
-    return (
-      (shiftMode == KeyboardView.SHIFT_DISABLED)
-        ? this.displayText
-        : this.valueTextShifted
-    );
+    if (shiftMode == KeyboardView.SHIFT_DISABLED)
+    {
+      return displayText;
+    }
+    else
+    {
+      return valueTextShifted;
+    }
   }
 }
