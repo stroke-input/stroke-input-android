@@ -42,8 +42,7 @@ final String corruptedText =
           .makeImperfectCopy()
           .makeImperfectCopy()
           .makeImperfectCopy()
-          .makeImperfectCopy()
-        ;
+          .makeImperfectCopy();
 ```
 
 ```java
