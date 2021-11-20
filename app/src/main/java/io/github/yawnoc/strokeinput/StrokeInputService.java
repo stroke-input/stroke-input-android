@@ -594,7 +594,7 @@ public class StrokeInputService
       }
       
       final int nextBackspaceIntervalMilliseconds =
-              Stringy.isAscii(upToOneCharacterBeforeCursor)
+              (Stringy.isAscii(upToOneCharacterBeforeCursor))
                 ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
                 : BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8;
       inputContainer.setKeyRepeatIntervalMilliseconds(nextBackspaceIntervalMilliseconds);
@@ -802,13 +802,13 @@ public class StrokeInputService
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
     final int sortingRankNonNull =
-            sortingRank != null
+            (sortingRank != null)
               ? sortingRank
               : LARGISH_SORTING_RANK;
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
-            unpreferredCodePointSet.contains(firstCodePoint)
+            (unpreferredCodePointSet.contains(firstCodePoint))
               ? RANKING_PENALTY_UNPREFERRED
               : 0;
     

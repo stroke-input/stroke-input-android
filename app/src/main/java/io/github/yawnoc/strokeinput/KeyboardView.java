@@ -350,7 +350,7 @@ public class KeyboardView
       keyTextPaint.setTextSize(key.textSize);
       
       final String keyDisplayText =
-              key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT)
+              (key.valueText.equals(StrokeInputService.ENTER_KEY_VALUE_TEXT))
                 ? key.displayText
                 : key.shiftAwareDisplayText(shiftMode);
       
@@ -620,7 +620,7 @@ public class KeyboardView
     if (shiftMode == SHIFT_DISABLED)
     {
       shiftMode =
-              activeKey == null
+              (activeKey == null)
                 ? SHIFT_INITIATED
                 : SHIFT_HELD;
       keyPreviewPlane.updateShiftMode(shiftMode);

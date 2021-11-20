@@ -80,7 +80,7 @@ public class InputContainer
   public void setBackground(final boolean isFullscreen)
   {
     final int backgroundResourceId =
-            isFullscreen
+            (isFullscreen)
               ? R.color.stroke_sequence_bar_fill_fullscreen
               : 0; // none
     setBackgroundResource(backgroundResourceId);

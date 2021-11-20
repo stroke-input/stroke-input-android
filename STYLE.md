@@ -242,7 +242,7 @@ switch (expression)
 
 ```java
 final Foo foo =
-        isThisConditionalSatisfied
+        (isThisConditionalSatisfied)
           ? yesValue
           : noValue;
 ```

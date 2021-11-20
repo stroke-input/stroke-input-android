@@ -93,7 +93,7 @@ public class MainActivity
   {
     final TextView candidateOrderButton = findViewById(R.id.candidate_order_button);
     final String candidateOrderButtonText =
-            isTraditionalPreferred(candidateOrderPreference)
+            (isTraditionalPreferred(candidateOrderPreference))
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
@@ -186,7 +186,7 @@ public class MainActivity
     
     final boolean traditionalIsPreferred = isTraditionalPreferred(loadSavedCandidateOrderPreference());
     final int savedCandidateOrderButtonId =
-            traditionalIsPreferred
+            (traditionalIsPreferred)
               ? R.id.traditional_first_button
               : R.id.simplified_first_button;
     candidateOrderRadioGroup.check(savedCandidateOrderButtonId);
