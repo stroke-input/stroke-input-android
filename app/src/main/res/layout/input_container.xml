@@ -37,6 +37,7 @@
     android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
     android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
     android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
+    android:theme="@style/Theme.AppCompat"
     tools:ignore="RtlHardcoded"
   />
   <io.github.yawnoc.strokeinput.CandidatesView
