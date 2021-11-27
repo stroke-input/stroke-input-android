@@ -318,7 +318,10 @@ public class StrokeInputService
           for (final int codePoint : Stringy.toCodePointList(line))
           {
             currentRank++;
-            sortingRankFromCodePoint.put(codePoint, currentRank);
+            if (!sortingRankFromCodePoint.containsKey(codePoint))
+            {
+              sortingRankFromCodePoint.put(codePoint, currentRank);
+            }
             if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT)
             {
               commonCodePointSet.add(codePoint);
