@@ -3,7 +3,7 @@
 {: \CC-BY-4.0 : b<https://creativecommons.org/licenses/by/4.0/> :}
 {: \CC0 : b<https://creativecommons.org/publicdomain/zero/1.0/> :}
 
-{: \stroke-input-version: v0.7.5 :}
+{: \stroke-input-version: v0.8.0 :}
 {: \stroke-input-url :
   https://github.com/stroke-input/stroke-input-android
 :}

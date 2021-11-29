@@ -3,6 +3,13 @@
 
 ## [Unreleased]
 
+
+## [v0.8.0] Beta-ready (2021-11-29)
+
+- Actually implemented stroke input and candidates
+  (only the phrase set is incomplete)
+- Refactored `InputContainer` god-class into four separate classes
+  (`InputContainer`, `StrokeSequenceBar`, `CandidatesView`, `KeyboardView`)
 - Updated keyboard font to [Stroke Input Keyboard v1.8.1]
   (adds right-handed magnifying glass)
 - Changed search magnifying glass to right-handed
@@ -185,7 +192,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.5...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.8.0...HEAD
+[v0.8.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.5...v0.8.0
 [v0.7.5]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.4...v0.7.5
 [v0.7.4]:
