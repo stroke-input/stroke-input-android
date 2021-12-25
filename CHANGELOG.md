@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
 
 
