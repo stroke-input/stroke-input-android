@@ -11,7 +11,7 @@
 - Added (non-fullwidth) middle dot key (`U+00B7`)
 - Added tone letter keys (`U+02E5` to `U+02E9`)
 - Removed useless key `U+`
-- Shuffled around some symbol keys
+- Rearranged placement of symbol keys
 
 
 ## [v0.8.0] Beta-ready (2021-11-29)
