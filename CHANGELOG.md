@@ -7,6 +7,7 @@
 - Bumped Android Gradle Plugin to 7.0.4
 - Added tone marker symbols keyboard
 - Added tortoise shell bracket keys (`U+3014` and `U+3015`)
+- Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)
 - Removed useless key `U+`
 - Shuffled around some symbol keys
 
