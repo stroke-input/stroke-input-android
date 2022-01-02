@@ -12,19 +12,18 @@
     app:keyTextSize="@dimen/font_size__strokes_digit"
     app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
   >
-    <!-- Ideographic description characters: U+2FF0 to U+2FF4 -->
+    <!-- Ideographic description characters: U+2FF0 to U+2FF3 -->
     <Key app:keyValueText="⿰" />
     <Key app:keyValueText="⿱" />
     <Key app:keyValueText="⿲" />
     <Key app:keyValueText="⿳" />
-    <Key app:keyValueText="⿴" />
   </Row>
   <Row>
-    <!-- Ideographic description characters: U+2FF5 to U+2FF8 -->
+    <!-- Ideographic description characters: U+2FF4 to U+2FF7 -->
+    <Key app:keyValueText="⿴" />
     <Key app:keyValueText="⿵" />
     <Key app:keyValueText="⿶" />
     <Key app:keyValueText="⿷" />
-    <Key app:keyValueText="⿸" />
     <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
@@ -43,7 +42,8 @@
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
-    <!-- Ideographic description characters: U+2FF9 to U+2FFB -->
+    <!-- Ideographic description characters: U+2FF8 to U+2FFB -->
+    <Key app:keyValueText="⿸" />
     <Key app:keyValueText="⿹" />
     <Key app:keyValueText="⿺" />
     <Key app:keyValueText="⿻" />
