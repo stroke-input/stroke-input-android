@@ -47,8 +47,6 @@
     <Key app:keyValueText="⿹" />
     <Key app:keyValueText="⿺" />
     <Key app:keyValueText="⿻" />
-    <!-- Code point prefix -->
-    <Key app:keyValueText="U+" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
