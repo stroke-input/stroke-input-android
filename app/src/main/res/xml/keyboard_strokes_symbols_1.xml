@@ -32,11 +32,6 @@
       app:keyValueText="："
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
-    <!-- Angle brackets: U+3008 to U+300B -->
-    <Key app:keyValueText="〈" />
-    <Key app:keyValueText="〉" />
-    <Key app:keyValueText="《" />
-    <Key app:keyValueText="》" />
     <!-- Tortoise shell brackets: U+3014, U+3015 -->
     <!-- TODO: font glyphs -->
     <Key app:keyValueText="〔" />
@@ -51,22 +46,31 @@
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
   </Row>
-  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
+  <Row>
     <!-- Switch to strokes symbols 2 keyboard -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_2"
       app:keyDisplayText="1/3"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
       app:keyIsPreviewable="false"
     />
+    <!-- Angle brackets: U+3008 to U+300B -->
+    <Key app:keyValueText="〈" />
+    <Key app:keyValueText="〉" />
+    <Key app:keyValueText="《" />
+    <Key app:keyValueText="》" />
     <!-- U+301C WAVE DASH -->
     <Key
       app:keyValueText="〜"
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
     <!-- U+2026 HORIZONTAL ELLIPSIS -->
-    <Key app:keyValueText="…" />
+    <Key
+      app:keyValueText="…"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
