@@ -70,6 +70,8 @@
     <Key app:keyValueText="…" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
     <Key app:keyValueText="　" />
+    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
+    <Key app:keyValueText="・" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
