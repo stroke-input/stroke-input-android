@@ -5,7 +5,8 @@
 
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
-- Removed useless key `U+` and reflowed SYMBOLS_2 keyboard
+- Added tone marker symbols keyboard
+- Removed useless key `U+` and reflowed ideographic description keyboard
 
 
 ## [v0.8.0] Beta-ready (2021-11-29)
