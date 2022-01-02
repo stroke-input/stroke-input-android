@@ -17,6 +17,11 @@
     <Key app:keyValueText="⿱" />
     <Key app:keyValueText="⿲" />
     <Key app:keyValueText="⿳" />
+    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
+    <Key
+      app:keyValueText="々"
+      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
+    />
   </Row>
   <Row>
     <!-- Ideographic description characters: U+2FF4 to U+2FF7 -->
