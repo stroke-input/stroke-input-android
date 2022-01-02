@@ -54,17 +54,24 @@
       app:keyIsPreviewable="false"
     />
   </Row>
-  <Row>
+  <Row app:keyWidth="@dimen/key_width__digit">
     <!-- Switch to strokes symbols 3 keyboard -->
     <Key
       app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_3"
       app:keyDisplayText="2/3"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
       app:keyIsPreviewable="false"
     />
+    <!-- U+00B7 MIDDLE DOT -->
+    <!-- TODO: font glyph -->
+    <Key app:keyValueText="·" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key app:keyValueText="・" />
+    <Key
+      app:keyValueText="・"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
