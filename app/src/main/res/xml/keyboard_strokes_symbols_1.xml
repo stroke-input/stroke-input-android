@@ -37,7 +37,7 @@
     <Key app:keyValueText="〉" />
     <Key app:keyValueText="《" />
     <Key app:keyValueText="》" />
-    <!-- Tortoise shell brackets: U+3014 to U+3015 -->
+    <!-- Tortoise shell brackets: U+3014, U+3015 -->
     <!-- TODO: font glyphs -->
     <Key app:keyValueText="〔" />
     <Key app:keyValueText="〕" />
