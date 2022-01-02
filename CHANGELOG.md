@@ -6,6 +6,7 @@
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
 - Added tone marker symbols keyboard
+- Added tortoise shell bracket keys (`U+3014` and `U+3015`)
 - Removed useless key `U+`
 - Shuffled around some symbol keys
 

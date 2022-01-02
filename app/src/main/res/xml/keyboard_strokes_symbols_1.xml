@@ -37,11 +37,10 @@
     <Key app:keyValueText="〉" />
     <Key app:keyValueText="《" />
     <Key app:keyValueText="》" />
-    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key
-      app:keyValueText="・"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
+    <!-- Tortoise shell brackets: U+3014 to U+3015 -->
+    <!-- TODO: font glyphs -->
+    <Key app:keyValueText="〔" />
+    <Key app:keyValueText="〕" />
     <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
