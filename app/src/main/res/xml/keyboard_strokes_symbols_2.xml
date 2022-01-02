@@ -30,6 +30,8 @@
       app:keyValueText="〭"
       app:keyDisplayText="入〭"
     />
+    <!-- U+3000 IDEOGRAPHIC SPACE -->
+    <Key app:keyValueText="　" />
   </Row>
   <Row app:keyWidth="@dimen/key_width__digit">
     <!-- Modifier tone letters: U+A700 to U+A707 -->

@@ -67,8 +67,6 @@
     />
     <!-- U+2026 HORIZONTAL ELLIPSIS -->
     <Key app:keyValueText="…" />
-    <!-- U+3000 IDEOGRAPHIC SPACE -->
-    <Key app:keyValueText="　" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
     <Key app:keyValueText="・" />
   </Row>
