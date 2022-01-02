@@ -63,6 +63,8 @@
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
+    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
+    <Key app:keyValueText="・" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
