@@ -15,16 +15,16 @@
     <!-- Round brackets: U+FF08, U+FF09 -->
     <Key app:keyValueText="（" />
     <Key app:keyValueText="）" />
-    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
-    <Key app:keyValueText="【" />
-    <Key app:keyValueText="】" />
-    <Key app:keyValueText="〖" />
-    <Key app:keyValueText="〗" />
     <!-- Corner brackets: U+300C to U+300F -->
     <Key app:keyValueText="「" />
     <Key app:keyValueText="」" />
     <Key app:keyValueText="『" />
     <Key app:keyValueText="』" />
+    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
+    <Key app:keyValueText="【" />
+    <Key app:keyValueText="】" />
+    <Key app:keyValueText="〖" />
+    <Key app:keyValueText="〗" />
   </Row>
   <Row>
     <!-- U+FF1A FULLWIDTH COLON -->
