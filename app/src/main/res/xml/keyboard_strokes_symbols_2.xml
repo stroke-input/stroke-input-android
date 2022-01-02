@@ -64,6 +64,13 @@
       app:keyWidth="@dimen/key_width__strokes_stroke"
       app:keyIsPreviewable="false"
     />
+    <!-- Tone letters: U+02E5 to U+02E9 -->
+    <!-- TODO: font glyphs -->
+    <Key app:keyValueText="˥" />
+    <Key app:keyValueText="˦" />
+    <Key app:keyValueText="˧" />
+    <Key app:keyValueText="˨" />
+    <Key app:keyValueText="˩" />
     <!-- U+00B7 MIDDLE DOT -->
     <!-- TODO: font glyph -->
     <Key app:keyValueText="·" />

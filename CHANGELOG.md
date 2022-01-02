@@ -9,6 +9,7 @@
 - Added tortoise shell bracket keys (`U+3014` and `U+3015`)
 - Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)
 - Added (non-fullwidth) middle dot key (`U+00B7`)
+- Added tone letter keys (`U+02E5` to `U+02E9`)
 - Removed useless key `U+`
 - Shuffled around some symbol keys
 
