@@ -34,10 +34,10 @@
     />
   </Row>
   <Row>
-    <!-- Switch to strokes symbols 1 keyboard -->
+    <!-- Switch to strokes symbols 3 keyboard -->
     <Key
-      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_1"
-      app:keyDisplayText="2/2"
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_3"
+      app:keyDisplayText="2/3"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"

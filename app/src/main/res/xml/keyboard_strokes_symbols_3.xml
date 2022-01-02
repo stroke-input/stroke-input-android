@@ -2,7 +2,7 @@
 <Keyboard
   xmlns:app="http://schemas.android.com/apk/res-auto"
   app:keyHeight="@dimen/key_height__strokes"
-  app:keyWidth="@dimen/key_width__digit"
+  app:keyWidth="@dimen/key_width__strokes_stroke"
   app:keyTextSize="@dimen/font_size__strokes"
   app:keyTextOffsetY="@dimen/baseline_correction__strokes"
   app:keyFillColour="@color/key_fill"
@@ -12,36 +12,18 @@
     app:keyTextSize="@dimen/font_size__strokes_digit"
     app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
   >
-    <!-- Round brackets: U+FF08, U+FF09 -->
-    <Key app:keyValueText="（" />
-    <Key app:keyValueText="）" />
-    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
-    <Key app:keyValueText="【" />
-    <Key app:keyValueText="】" />
-    <Key app:keyValueText="〖" />
-    <Key app:keyValueText="〗" />
-    <!-- Corner brackets: U+300C to U+300F -->
-    <Key app:keyValueText="「" />
-    <Key app:keyValueText="」" />
-    <Key app:keyValueText="『" />
-    <Key app:keyValueText="』" />
+    <!-- Ideographic description characters: U+2FF0 to U+2FF3 -->
+    <Key app:keyValueText="⿰" />
+    <Key app:keyValueText="⿱" />
+    <Key app:keyValueText="⿲" />
+    <Key app:keyValueText="⿳" />
   </Row>
   <Row>
-    <!-- U+FF1A FULLWIDTH COLON -->
-    <Key
-      app:keyValueText="："
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- Angle brackets: U+3008 to U+300B -->
-    <Key app:keyValueText="〈" />
-    <Key app:keyValueText="〉" />
-    <Key app:keyValueText="《" />
-    <Key app:keyValueText="》" />
-    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key
-      app:keyValueText="・"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
+    <!-- Ideographic description characters: U+2FF4 to U+2FF7 -->
+    <Key app:keyValueText="⿴" />
+    <Key app:keyValueText="⿵" />
+    <Key app:keyValueText="⿶" />
+    <Key app:keyValueText="⿷" />
     <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
@@ -49,33 +31,22 @@
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
       app:keyIsPreviewable="false"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
   </Row>
-  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
-    <!-- Switch to strokes symbols 2 keyboard -->
+  <Row>
+    <!-- Switch to strokes symbols 1 keyboard -->
     <Key
-      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_2"
-      app:keyDisplayText="1/3"
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_1"
+      app:keyDisplayText="3/3"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
       app:keyIsPreviewable="false"
     />
-    <!-- U+301C WAVE DASH -->
-    <Key
-      app:keyValueText="〜"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- U+2026 HORIZONTAL ELLIPSIS -->
-    <Key app:keyValueText="…" />
-    <!-- U+3000 IDEOGRAPHIC SPACE -->
-    <Key app:keyValueText="　" />
-    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key
-      app:keyValueText="々"
-      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
+    <!-- Ideographic description characters: U+2FF8 to U+2FFB -->
+    <Key app:keyValueText="⿸" />
+    <Key app:keyValueText="⿹" />
+    <Key app:keyValueText="⿺" />
+    <Key app:keyValueText="⿻" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
