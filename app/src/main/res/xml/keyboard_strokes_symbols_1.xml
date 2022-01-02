@@ -70,12 +70,6 @@
     <Key app:keyValueText="…" />
     <!-- U+3000 IDEOGRAPHIC SPACE -->
     <Key app:keyValueText="　" />
-    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key
-      app:keyValueText="々"
-      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
