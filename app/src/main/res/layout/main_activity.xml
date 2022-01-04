@@ -52,6 +52,7 @@
       android:importantForAutofill="no"
       android:inputType="text"
       android:textSize="@dimen/font_size__main_activity"
+      android:layout_marginBottom="@dimen/margin_bottom__main_activity__input"
       android:minHeight="@dimen/min_height__main_activity__input"
     />
     <Button
