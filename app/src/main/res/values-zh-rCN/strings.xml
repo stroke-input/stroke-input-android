@@ -1,7 +1,7 @@
 <resources>
   <!-- Main activity -->
   <string name="app_name">笔画输入法</string>
-  <string name="text__main_activity__welcome">欢迎使用笔画输入法！</string>
+  <string name="label__main_activity__welcome">欢迎使用笔画输入法！</string>
   <string name="label__main_activity__source_code_button">源码</string>
   <string name="label__main_activity__help_button">说明</string>
   <string name="label__main_activity__about_button">关于</string>

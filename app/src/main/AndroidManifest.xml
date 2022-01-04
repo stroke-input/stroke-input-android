@@ -33,7 +33,7 @@
     </service>
     <activity
       android:name=".MainActivity"
-      android:label="@string/text__main_activity__welcome"
+      android:label="@string/label__main_activity__welcome"
       android:windowSoftInputMode="stateHidden"
       android:exported="true"
     >
