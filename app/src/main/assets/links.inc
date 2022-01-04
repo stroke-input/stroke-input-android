@@ -32,7 +32,7 @@
   https://github.com/stroke-input/stroke-input-data
 @@
 
-{: \keyboard-font-version : v1.8.1 :}
+{: \keyboard-font-version : v1.9.0 :}
 @@[Stroke Input Keyboard]
   https://github.com/stroke-input/stroke-input-font
 @@

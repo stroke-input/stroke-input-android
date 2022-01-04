@@ -13,7 +13,6 @@
     app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
   >
     <!-- Ideographic tone marks: U+302A to U+302D -->
-    <!-- TODO: font glyphs -->
     <Key
       app:keyValueText="〪"
       app:keyDisplayText="平〪"
@@ -35,7 +34,6 @@
   </Row>
   <Row app:keyWidth="@dimen/key_width__digit">
     <!-- Modifier tone letters: U+A700 to U+A707 -->
-    <!-- TODO: font glyphs -->
     <Key app:keyValueText="꜀" /> <!-- 陰平 -->
     <Key app:keyValueText="꜁" /> <!-- 陽平 -->
     <Key app:keyValueText="꜂" /> <!-- 陰上 -->
@@ -65,14 +63,12 @@
       app:keyIsPreviewable="false"
     />
     <!-- Tone letters: U+02E5 to U+02E9 -->
-    <!-- TODO: font glyphs -->
     <Key app:keyValueText="˥" />
     <Key app:keyValueText="˦" />
     <Key app:keyValueText="˧" />
     <Key app:keyValueText="˨" />
     <Key app:keyValueText="˩" />
     <!-- U+00B7 MIDDLE DOT -->
-    <!-- TODO: font glyph -->
     <Key app:keyValueText="·" />
     <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
     <Key

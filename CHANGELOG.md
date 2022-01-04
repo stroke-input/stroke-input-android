@@ -5,6 +5,8 @@
 
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
+- Updated keyboard font to [Stroke Input Keyboard v1.9.0]
+  (adds glyphs for tone markers etc.)
 - Added tone marker symbols keyboard
 - Added tortoise shell bracket keys (`U+3014` and `U+3015`)
 - Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)
@@ -244,6 +246,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Keyboard v1.9.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.9.0
 [Stroke Input Keyboard v1.8.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.8.1
 [Stroke Input Keyboard v1.7.0]:

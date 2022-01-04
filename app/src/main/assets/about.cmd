@@ -65,7 +65,7 @@ Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 
 ### [Stroke Input Keyboard] (\keyboard-font-version) ###
 ----{.notice}
-©~2021 Conway \+
+©~2021--2022 Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----
