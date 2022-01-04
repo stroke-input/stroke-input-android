@@ -36,6 +36,8 @@ public class MainActivity
   
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
+  private static final String PRIVACY_POLICY_URI =
+          "https://github.com/stroke-input/stroke-input-android/blob/master/PRIVACY.md";
   
   AlertDialog.Builder candidateOrderDialogBuilder;
   Dialog candidateOrderDialog;
@@ -51,6 +53,7 @@ public class MainActivity
     findViewById(R.id.source_code_button).setOnClickListener(this);
     findViewById(R.id.help_button).setOnClickListener(this);
     findViewById(R.id.about_button).setOnClickListener(this);
+    findViewById(R.id.privacy_button).setOnClickListener(this);
     findViewById(R.id.input_method_settings_button).setOnClickListener(this);
     findViewById(R.id.change_keyboard_button).setOnClickListener(this);
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
@@ -114,6 +117,10 @@ public class MainActivity
     else if (viewId == R.id.about_button)
     {
       showHtmlWebView(R.string.file_name__about_html);
+    }
+    else if (viewId == R.id.privacy_button)
+    {
+      Contexty.openInBrowser(this, PRIVACY_POLICY_URI);
     }
     else if (viewId == R.id.input_method_settings_button)
     {
