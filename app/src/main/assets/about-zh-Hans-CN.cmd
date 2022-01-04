@@ -14,7 +14,7 @@
 __[笔画输入法]__是自由软件，恕无担保。
 ----
 ----{.notice}
-©~2021~{Conway} \+
+©~\stroke-input-year {Conway} \+
 以 {GPL-3.0-only} 授权，见\GPL-3.0-only。 \+
 ----
 ----

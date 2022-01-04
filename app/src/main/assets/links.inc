@@ -4,6 +4,7 @@
 {: \CC0 : b<https://creativecommons.org/publicdomain/zero/1.0/> :}
 
 {: \stroke-input-version: v0.8.0 :}
+{: \stroke-input-year: 2021--2022 :}
 {: \stroke-input-url :
   https://github.com/stroke-input/stroke-input-android
 :}

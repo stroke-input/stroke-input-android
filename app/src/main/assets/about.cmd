@@ -12,7 +12,7 @@
 __[Stroke Input Method]__ is free software with ABSOLUTELY NO WARRANTY.
 ----
 ----{.notice}
-©~2021~Conway \+
+©~\stroke-input-year Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----

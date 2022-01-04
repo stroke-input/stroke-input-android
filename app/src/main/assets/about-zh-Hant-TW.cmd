@@ -14,7 +14,7 @@
 __[筆畫輸入法]__為自由軟體，恕無擔保。
 ----
 ----{.notice}
-©~2021~{Conway} \+
+©~\stroke-input-year {Conway} \+
 以 {GPL-3.0-only} 授權，見\GPL-3.0-only。 \+
 ----
 ----
