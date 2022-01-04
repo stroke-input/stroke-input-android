@@ -5,6 +5,7 @@
 
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
+- Improve Main Activity layout order
 - Updated keyboard font to [Stroke Input Keyboard v1.9.0]
   (adds glyphs for tone markers etc.)
 - Added tone marker symbols keyboard
