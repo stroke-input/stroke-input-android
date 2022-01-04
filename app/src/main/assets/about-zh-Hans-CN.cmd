@@ -30,7 +30,7 @@ __[笔画输入法]__是自由软件，恕无担保。
 
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
-©~2021 {Android} 开源项目 \+
+©~\material-year {Android} 开源项目 \+
 以 {Apache-2.0} 授权，见\Apache-2.0。 \+
 ----
 
@@ -56,7 +56,7 @@ __[笔画输入法]__是自由软件，恕无担保。
 
 #### `sequence-characters.txt` ####
 ----{.notice}
-©~2021 Conway \+
+©~\sequence-characters-year Conway \+
 以 {CC-BY-4.0} 授权，见\CC-BY-4.0。 \+
 ----
 
@@ -65,7 +65,7 @@ __[笔画输入法]__是自由软件，恕无担保。
 
 ### [Stroke Input Keyboard] (\keyboard-font-version) ###
 ----{.notice}
-©~2021--2022 Conway \+
+©~\keyboard-font-year Conway \+
 以 {GPL-3.0-only} 授权，见\GPL-3.0-only。 \+
 ----
 ----

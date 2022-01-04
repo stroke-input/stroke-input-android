@@ -24,16 +24,19 @@
 @@
 
 {: \material-version : v1.4.0 :}
+{: \material-year : 2021 :}
 @@[Material Components For Android]
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
 {: \stroke-data-version : v0.4.3 :}
+{: \sequence-characters-year : 2021 :}
 @@[Conway Stroke Data]
   https://github.com/stroke-input/stroke-input-data
 @@
 
 {: \keyboard-font-version : v1.9.0 :}
+{: \keyboard-font-year : 2021--2022 :}
 @@[Stroke Input Keyboard]
   https://github.com/stroke-input/stroke-input-font
 @@

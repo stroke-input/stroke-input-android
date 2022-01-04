@@ -30,7 +30,7 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
-©~2021 The Android Open Source Project \+
+©~\material-year The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
 ----
 
@@ -56,7 +56,7 @@ Released into the Public Domain, see \CC0.
 
 #### `sequence-characters.txt` ####
 ----{.notice}
-©~2021 Conway \+
+©~\sequence-characters-year Conway \+
 Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 ----
 
@@ -65,7 +65,7 @@ Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 
 ### [Stroke Input Keyboard] (\keyboard-font-version) ###
 ----{.notice}
-©~2021--2022 Conway \+
+©~\keyboard-font-year Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----
