@@ -17,11 +17,6 @@
     android:gravity="center_horizontal"
     android:padding="@dimen/padding__main_activity"
   >
-    <TextView
-      style="@style/MainActivityText"
-      android:text="@string/text__main_activity__welcome"
-      android:paddingTop="0dp"
-    />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/source_code_button"
