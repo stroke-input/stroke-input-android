@@ -1,4 +1,4 @@
-# Privacy Policy for Stroke Input Method
+# Privacy Policy
 
 
 This app (Stroke Input Method) does not collect any personal data.
