@@ -4,6 +4,7 @@
   <dimen name="font_size__main_activity">16sp</dimen>
   <dimen name="font_size__main_activity__button">13sp</dimen>
   <dimen name="padding__main_activity">12dp</dimen>
+  <dimen name="padding_top__main_activity__text_first">0dp</dimen>
   <dimen name="padding_top__main_activity__text">8dp</dimen>
   <dimen name="padding_bottom__main_activity__text">4dp</dimen>
   <dimen name="inset_vertical__main_activity__button">4dp</dimen>

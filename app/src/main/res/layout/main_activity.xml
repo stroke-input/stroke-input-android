@@ -20,6 +20,7 @@
     <TextView
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__input_method_settings"
+      android:paddingTop="@dimen/padding_top__main_activity__text_first"
     />
     <Button
       style="@style/MainActivityButton"
