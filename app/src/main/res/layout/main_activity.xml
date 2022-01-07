@@ -46,15 +46,11 @@
       android:text="@string/label__main_activity__traditional_first"
     />
     <EditText
-      android:layout_height="match_parent"
-      android:layout_width="match_parent"
+      style="@style/MainActivityInput"
       android:hint="@string/hint__main_activity__test_input"
       android:importantForAutofill="no"
       android:inputType="text"
-      android:textSize="@dimen/font_size__main_activity"
-      android:paddingHorizontal="@dimen/padding_horizontal__main_activity__text"
       android:layout_marginBottom="@dimen/margin_bottom__main_activity__input"
-      android:minHeight="@dimen/min_height__main_activity__input"
     />
     <Button
       style="@style/MainActivityButton"

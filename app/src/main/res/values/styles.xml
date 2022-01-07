@@ -17,6 +17,14 @@
     <item name="android:insetBottom">@dimen/inset_vertical__main_activity__button</item>
     <item name="android:minHeight">@dimen/min_height__main_activity__button</item>
   </style>
+  <style name="MainActivityInput">
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:textSize">@dimen/font_size__main_activity</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:minHeight">@dimen/min_height__main_activity__input</item>
+  </style>
   <style name="CandidateOrderDialogButton">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">match_parent</item>
