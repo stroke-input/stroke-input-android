@@ -11,6 +11,7 @@
   <string name="text__main_activity__change_keyboard">2. 若現有之輸入法無以轉鍵盤：</string>
   <string name="label__main_activity__change_keyboard_button">轉鍵盤</string>
   <string name="text__main_activity__candidate_order">3. 字選次序：</string>
+  <string name="label__main_activity__candidate_order">字選次序</string>
   <string name="label__main_activity__traditional_first">繁體排在前面</string>
   <string name="label__main_activity__simplified_first">簡體排在前面</string>
   <string name="hint__main_activity__test_input">4. 在此測試輸入</string>
