@@ -48,6 +48,7 @@ public class MainActivity
   protected void onCreate(final Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
+    setTitle(R.string.label__main_activity__welcome);
     setContentView(R.layout.main_activity);
     
     findViewById(R.id.source_code_button).setOnClickListener(this);
