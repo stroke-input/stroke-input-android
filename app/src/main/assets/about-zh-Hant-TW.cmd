@@ -11,7 +11,7 @@
 # 筆畫輸入法 (\stroke-input-version) #
 
 ----
-__[筆畫輸入法]__為自由軟體，恕無擔保。
+__[筆畫輸入法]__為自由開源軟體，恕無擔保。
 ----
 ----{.notice}
 ©~\stroke-input-year {Conway} \+

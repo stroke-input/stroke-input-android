@@ -9,7 +9,8 @@
 # Stroke Input Method (\stroke-input-version) #
 
 ----
-__[Stroke Input Method]__ is free software with ABSOLUTELY NO WARRANTY.
+__[Stroke Input Method]__ is free and open-source software
+with ABSOLUTELY NO WARRANTY.
 ----
 ----{.notice}
 ©~\stroke-input-year Conway \+
