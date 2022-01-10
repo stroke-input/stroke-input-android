@@ -6,7 +6,7 @@
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
 - Bumped targetSdkVersion to 31
-- Improve Main Activity layout order
+- Improved Main Activity layout order
 - Made minor improvements to About
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
