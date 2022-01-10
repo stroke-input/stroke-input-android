@@ -10,6 +10,8 @@
 - Made minor improvements to About
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
+- Updated stroke input data to [Conway Stroke Data v1.0.1]
+  (officially completes the stroke/phrase data set)
 - Updated keyboard font to [Stroke Input Font v2.0.0]
   (name change; adds glyphs for tone markers etc.)
 - Added tone marker symbols keyboard
@@ -250,6 +252,9 @@ the actual functionality has not been implemented yet.
   https://github.com/stroke-input/stroke-input-android/compare/v0.1.0...v0.1.1
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
+
+[Conway Stroke Data v1.0.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
 
 [Stroke Input Font v2.0.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.0
