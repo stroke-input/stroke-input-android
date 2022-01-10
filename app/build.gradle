@@ -5,13 +5,13 @@ plugins
 
 android
 {
-  compileSdkVersion 30
+  compileSdkVersion 31
   buildToolsVersion "30.0.3"
   defaultConfig
   {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
-    targetSdkVersion 30
+    targetSdkVersion 31
     versionCode 21
     versionName "0.8.0"
   }
