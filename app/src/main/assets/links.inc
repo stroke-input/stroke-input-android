@@ -35,7 +35,7 @@
   https://github.com/stroke-input/stroke-input-data
 @@
 
-{: \stroke-font-version : v2.0.0 :}
+{: \stroke-font-version : v2.0.1 :}
 {: \stroke-font-year : 2021--2022 :}
 @@[Stroke Input Font]
   https://github.com/stroke-input/stroke-input-font

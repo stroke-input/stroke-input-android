@@ -5,7 +5,7 @@
 
 - Updated stroke input data to [Conway Stroke Data v1.0.1]
   (officially completes the stroke/phrase data set)
-- Updated keyboard font to [Stroke Input Font v2.0.0]
+- Updated keyboard font to [Stroke Input Font v2.0.1]
   (name change; adds glyphs for tone markers etc.)
 
 - Rearranged placement of symbol keys
@@ -260,8 +260,8 @@ the actual functionality has not been implemented yet.
 [Conway Stroke Data v1.0.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
 
-[Stroke Input Font v2.0.0]:
-  https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.0
+[Stroke Input Font v2.0.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.1
 [Stroke Input Keyboard v1.9.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.9.0
 [Stroke Input Keyboard v1.8.1]:
