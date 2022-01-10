@@ -31,6 +31,34 @@
 ''''
 
 
+## Examples ##
+
+''''
+|^
+==
+  ; Character
+  ; Stroke sequence
+|:{lang=zh-Hant}
+==
+  , 天
+  ,{.stroke-key}
+    \stroke-1\stroke-1\stroke-3\stroke-4
+==
+  , 下
+  ,{.stroke-key}
+    \stroke-1\stroke-2\stroke-4
+==
+  , 為
+  ,{.stroke-key}
+    \stroke-4\stroke-3\stroke-5\stroke-5\stroke-5\
+    \stroke-4\stroke-4\stroke-4\stroke-4
+==
+  , 公
+  ,{.stroke-key}
+    \stroke-3\stroke-4\stroke-5\stroke-4
+''''
+
+
 ## Miscellaneous ##
 
 ''''

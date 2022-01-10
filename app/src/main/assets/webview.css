@@ -58,7 +58,6 @@ html {
 kbd {
   border: 2px grey solid;
   display: inline-block;
-  font-family: 'Stroke Input Font', sans-serif;
   margin: 0 0.15em;
   min-width: 1em;
   padding: 0.25em 0.3em 0.1em;
@@ -72,7 +71,7 @@ table {
   border-collapse: collapse;
   line-height: 1.4;
 }
-td {
+td, th {
   border: 1px solid white;
   padding: 0.5em;
 }
@@ -84,6 +83,7 @@ td {
 }
 
 .stroke-key {
+  font-family: 'Stroke Input Font', sans-serif;
   color: var(--umbrella-yellow);
   font-weight: bold;
 }
