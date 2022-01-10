@@ -7,6 +7,7 @@
 - Bumped Android Gradle Plugin to 7.0.4
 - Bumped targetSdkVersion to 31
 - Improve Main Activity layout order
+- Made minor improvements to About
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
 - Updated keyboard font to [Stroke Input Font v2.0.0]
