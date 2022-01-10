@@ -6,8 +6,8 @@
 }
 
 @font-face {
-  font-family: 'Stroke Input Keyboard';
-  src: url('StrokeInputKeyboard.ttf') format('truetype');
+  font-family: 'Stroke Input Font';
+  src: url('StrokeInputFont.ttf') format('truetype');
 }
 
 body {
@@ -58,7 +58,7 @@ html {
 kbd {
   border: 2px grey solid;
   display: inline-block;
-  font-family: 'Stroke Input Keyboard', sans-serif;
+  font-family: 'Stroke Input Font', sans-serif;
   margin: 0 0.15em;
   min-width: 1em;
   padding: 0.25em 0.3em 0.1em;

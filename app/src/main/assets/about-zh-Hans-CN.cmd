@@ -63,9 +63,9 @@ __[笔画输入法]__是自由软件，恕无担保。
 
 ## 键盘字体 ##
 
-### [Stroke Input Keyboard] (\keyboard-font-version) ###
+### [Stroke Input Font] (\stroke-font-version) ###
 ----{.notice}
-©~\keyboard-font-year Conway \+
+©~\stroke-font-year Conway \+
 以 {GPL-3.0-only} 授权，见\GPL-3.0-only。 \+
 ----
 ----

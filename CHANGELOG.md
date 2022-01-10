@@ -9,8 +9,8 @@
 - Improve Main Activity layout order
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
-- Updated keyboard font to [Stroke Input Keyboard v1.9.0]
-  (adds glyphs for tone markers etc.)
+- Updated keyboard font to [Stroke Input Font v2.0.0]
+  (name change; adds glyphs for tone markers etc.)
 - Added tone marker symbols keyboard
 - Added tortoise shell bracket keys (`U+3014` and `U+3015`)
 - Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)

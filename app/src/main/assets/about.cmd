@@ -63,9 +63,9 @@ Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 
 ## Keyboard font ##
 
-### [Stroke Input Keyboard] (\keyboard-font-version) ###
+### [Stroke Input Font] (\stroke-font-version) ###
 ----{.notice}
-©~\keyboard-font-year Conway \+
+©~\stroke-font-year Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----
