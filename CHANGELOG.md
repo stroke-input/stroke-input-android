@@ -3,24 +3,27 @@
 
 ## [Unreleased]
 
-- Migrated from aaptOptions to androidResources
-- Bumped Android Gradle Plugin to 7.0.4
-- Bumped targetSdkVersion to 31
-- Improved Main Activity layout order
-- Made minor improvements to About
-- Added numbering to Main Activity instructions for clarity
-- Added Privacy Policy button to Main Activity
 - Updated stroke input data to [Conway Stroke Data v1.0.1]
   (officially completes the stroke/phrase data set)
 - Updated keyboard font to [Stroke Input Font v2.0.0]
   (name change; adds glyphs for tone markers etc.)
+
+- Rearranged placement of symbol keys
+- Improved Main Activity layout order
 - Added tone marker symbols keyboard
 - Added tortoise shell bracket keys (`U+3014` and `U+3015`)
 - Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)
 - Added (non-fullwidth) middle dot key (`U+00B7`)
 - Added tone letter keys (`U+02E5` to `U+02E9`)
 - Removed useless key `U+`
-- Rearranged placement of symbol keys
+
+- Made minor improvements to About
+- Added numbering to Main Activity instructions for clarity
+- Added Privacy Policy button to Main Activity
+
+- Migrated from aaptOptions to androidResources
+- Bumped Android Gradle Plugin to 7.0.4
+- Bumped targetSdkVersion to 31
 
 
 ## [v0.8.0] Beta-ready (2021-11-29)
