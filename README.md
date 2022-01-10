@@ -1,12 +1,7 @@
-# stroke-input-android
+# Stroke Input Method (Chinese keyboard) for Android
 
-An attempt at making an Android custom keyboard
-for the Stroke Input Method (筆畫輸入法) in Chinese.
-
-I do not expect this to be completed any time soon.
-
-Utilises the "yawnoc" stroke data set
-that I am currently compiling in [stroke-input-data].
+A minimalist keyboard for Chinese-language enthusiasts
+who want to use the stroke input method (筆畫輸入法).
 
 
 ## License
