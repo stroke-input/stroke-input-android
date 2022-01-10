@@ -33,6 +33,33 @@
 ''''
 
 
+## 例子 ##
+
+''''
+|^
+==
+  ; 字
+  ; 笔顺
+|:
+==
+  , 天
+  ,{.stroke-key}
+    \stroke-1\stroke-1\stroke-3\stroke-4
+==
+  , 下
+  ,{.stroke-key}
+    \stroke-1\stroke-2\stroke-4
+==
+  , 为
+  ,{.stroke-key}
+    \stroke-4\stroke-3\stroke-5\stroke-4
+==
+  , 公
+  ,{.stroke-key}
+    \stroke-3\stroke-4\stroke-5\stroke-4
+''''
+
+
 ## 杂项 ##
 
 ''''
