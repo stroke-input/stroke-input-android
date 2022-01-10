@@ -17,6 +17,7 @@
 - Added tone letter keys (`U+02E5` to `U+02E9`)
 - Removed useless key `U+`
 
+- Added stroke sequence examples to Help
 - Made minor improvements to About
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
