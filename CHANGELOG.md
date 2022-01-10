@@ -251,6 +251,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Stroke Input Font v2.0.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.0
 [Stroke Input Keyboard v1.9.0]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.9.0
 [Stroke Input Keyboard v1.8.1]:
