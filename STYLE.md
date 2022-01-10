@@ -108,7 +108,7 @@ else
 if (
   someBoolean && someOtherBoolean
     ||
-  someInequality && AnotherInequality && BlahBlahBlah
+  someInequality && anotherInequality && blahBlahBlah
 )
 {
   // etc. etc.
