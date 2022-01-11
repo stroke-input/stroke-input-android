@@ -8,7 +8,6 @@
 package io.github.yawnoc.utilities;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +15,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import io.github.yawnoc.strokeinput.R;
 
@@ -71,13 +71,15 @@ public final class Contexty
     }
     catch (ActivityNotFoundException exception)
     {
-      final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputDialog);
-      alertDialogBuilder
-        .setMessage(context.getString(R.string.message__error__no_browser, uri))
-        .setPositiveButton(R.string.label__main_activity__return, null);
+      final TextView alertTextView = new TextView(context);
+      alertTextView.setText(context.getString(R.string.message__error__no_browser, uri));
+      alertTextView.setTextIsSelectable(true);
       
-      final Dialog candidateOrderDialog = alertDialogBuilder.create();
-      candidateOrderDialog.show();
+      final AlertDialog.Builder alertTextViewContainer = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
+      alertTextViewContainer
+        .setPositiveButton(R.string.label__main_activity__return, null)
+        .setView(alertTextView)
+        .show();
     }
   }
 }
