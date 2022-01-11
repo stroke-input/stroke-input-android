@@ -24,7 +24,7 @@
   <string name="hint__main_activity__test_input">4. Test input here</string>
   <string name="label__main_activity__return">Return</string>
   <!-- Error messages -->
-  <string name="message__error__no_browser">Could not launch a browser and navigate to &lt;%1$s&gt;.</string>
+  <string name="message__error__browser">Could not launch a browser and navigate to &lt;%1$s&gt;.</string>
   <string name="message__error__webview">Could not launch WebView.</string>
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>

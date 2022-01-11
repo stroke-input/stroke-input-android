@@ -90,7 +90,7 @@ public final class Contexty
     }
     catch (Exception exception)
     {
-      showErrorMessage(context, context.getString(R.string.message__error__no_browser, uri));
+      showErrorMessage(context, context.getString(R.string.message__error__browser, uri));
     }
   }
 }
