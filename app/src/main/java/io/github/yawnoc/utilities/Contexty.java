@@ -59,8 +59,8 @@ public final class Contexty
     
     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
     alertDialogBuilder
-            .setPositiveButton(R.string.label__main_activity__return, null)
-            .setView(alertTextView);
+      .setPositiveButton(R.string.label__main_activity__return, null)
+      .setView(alertTextView);
     
     final Dialog alertDialog = alertDialogBuilder.create();
     final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
