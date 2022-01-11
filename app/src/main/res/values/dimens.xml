@@ -17,6 +17,10 @@
   <dimen name="padding__candidate_order_dialog">12dp</dimen>
   <dimen name="font_size__candidate_order_dialog__button">18sp</dimen>
   <dimen name="padding__candidate_order_dialog__button">4dp</dimen>
+  <!-- Error messages -->
+  <dimen name="font_size__error_message">16dp</dimen>
+  <dimen name="padding_horizontal__error_message">16dp</dimen>
+  <dimen name="padding_top__error_message">10dp</dimen>
   <!-- Key height -->
   <dimen name="key_height__strokes">60dp</dimen>
   <dimen name="key_height__strokes_digit">56dp</dimen>

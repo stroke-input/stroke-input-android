@@ -33,10 +33,17 @@
   </style>
   <style name="StrokeInputAlert" parent="Theme.StrokeInput">
     <item name="android:windowBackground">@color/very_dark_grey</item>
+    <item name="android:backgroundDimEnabled">true</item>
   </style>
   <style name="StrokeInputDialog" parent="Theme.MaterialComponents.Dialog.Alert">
     <item name="android:windowMinWidthMinor">@dimen/min_width__candidate_order_dialog</item>
     <item name="android:windowBackground">@color/very_dark_grey</item>
+  </style>
+  <style name="StrokeInputMessage" parent="Theme.StrokeInput">
+    <item name="android:textSize">@dimen/font_size__error_message</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__error_message</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__error_message</item>
+    <item name="android:paddingTop">@dimen/padding_top__error_message</item>
   </style>
   <style name="StrokeInputText" parent="android:Widget.EditText">
     <item name="android:textColor">?android:textColor</item>

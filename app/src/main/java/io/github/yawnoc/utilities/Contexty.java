@@ -8,12 +8,15 @@
 package io.github.yawnoc.utilities;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.Settings;
+import android.view.ContextThemeWrapper;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
@@ -71,15 +74,19 @@ public final class Contexty
     }
     catch (ActivityNotFoundException exception)
     {
-      final TextView alertTextView = new TextView(context);
+      final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
       alertTextView.setText(context.getString(R.string.message__error__no_browser, uri));
       alertTextView.setTextIsSelectable(true);
       
-      final AlertDialog.Builder alertTextViewContainer = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
-      alertTextViewContainer
+      final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
+      alertDialogBuilder
         .setPositiveButton(R.string.label__main_activity__return, null)
-        .setView(alertTextView)
-        .show();
+        .setView(alertTextView);
+      
+      final Dialog alertDialog = alertDialogBuilder.create();
+      final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
+      alertDialog.show();
+      alertDialog.getWindow().setLayout(dialog_size, dialog_size);
     }
   }
 }
