@@ -157,19 +157,26 @@ public class MainActivity
       htmlWebViewContainer.setPositiveButton(R.string.label__main_activity__return, null);
     }
     
-    if (htmlWebView == null)
+    try
     {
-      htmlWebView = new WebView(this);
-      htmlWebView.setBackgroundColor(Color.TRANSPARENT);
-      htmlWebView.getSettings().setBuiltInZoomControls(true);
-      htmlWebView.getSettings().setDisplayZoomControls(false);
+      if (htmlWebView == null)
+      {
+        htmlWebView = new WebView(this);
+        htmlWebView.setBackgroundColor(Color.TRANSPARENT);
+        htmlWebView.getSettings().setBuiltInZoomControls(true);
+        htmlWebView.getSettings().setDisplayZoomControls(false);
+      }
+      
+      htmlWebView.loadUrl(uri);
+      htmlWebViewContainer
+        .setView(htmlWebView)
+        .setOnDismissListener(dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView))
+        .show();
     }
-    
-    htmlWebView.loadUrl(uri);
-    htmlWebViewContainer
-      .setView(htmlWebView)
-      .setOnDismissListener(dialog -> ((ViewGroup) htmlWebView.getParent()).removeView(htmlWebView))
-      .show();
+    catch (Exception exception)
+    {
+      Contexty.showErrorMessage(this, getString(R.string.message__error__webview));
+    }
   }
   
   private void showHtmlWebView(final int fileNameResourceId)

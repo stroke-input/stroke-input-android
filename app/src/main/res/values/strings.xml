@@ -25,6 +25,7 @@
   <string name="label__main_activity__return">Return</string>
   <!-- Error messages -->
   <string name="message__error__no_browser">Could not launch a browser and navigate to &lt;%1$s&gt;.</string>
+  <string name="message__error__webview">Could not launch WebView.</string>
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>
   <string name="file_name__about_html">about.html</string>
