@@ -16,6 +16,8 @@
   <string name="label__main_activity__simplified_first">簡體排在前面</string>
   <string name="hint__main_activity__test_input">4. 在此測試輸入</string>
   <string name="label__main_activity__return">回</string>
+  <!-- Error messages -->
+  <string name="message__error__no_browser">無法開啟瀏覽器前往&lt;%1$s&gt;。</string>
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help-zh-Hant-TW.html</string>
   <string name="file_name__about_html">about-zh-Hant-TW.html</string>

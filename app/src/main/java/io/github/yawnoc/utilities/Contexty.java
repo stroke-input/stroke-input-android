@@ -7,12 +7,17 @@
 
 package io.github.yawnoc.utilities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.Settings;
 import android.view.inputmethod.InputMethodManager;
+
+import io.github.yawnoc.strokeinput.R;
 
 public final class Contexty
 {
@@ -60,6 +65,19 @@ public final class Contexty
   public static void openInBrowser(final Context context, final String uri)
   {
     final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-    context.startActivity(browserIntent);
+    try
+    {
+      context.startActivity(browserIntent);
+    }
+    catch (ActivityNotFoundException exception)
+    {
+      final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputDialog);
+      alertDialogBuilder
+        .setMessage(context.getString(R.string.message__error__no_browser, uri))
+        .setPositiveButton(R.string.label__main_activity__return, null);
+      
+      final Dialog candidateOrderDialog = alertDialogBuilder.create();
+      candidateOrderDialog.show();
+    }
   }
 }
