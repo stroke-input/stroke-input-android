@@ -51,6 +51,23 @@ public final class Contexty
     preferencesEditor.apply();
   }
   
+  public static void showErrorMessage(final Context context, final String message)
+  {
+    final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
+    alertTextView.setText(message);
+    alertTextView.setTextIsSelectable(true);
+    
+    final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
+    alertDialogBuilder
+            .setPositiveButton(R.string.label__main_activity__return, null)
+            .setView(alertTextView);
+    
+    final Dialog alertDialog = alertDialogBuilder.create();
+    final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
+    alertDialog.show();
+    alertDialog.getWindow().setLayout(dialog_size, dialog_size);
+  }
+  
   public static void showSystemInputMethodSettings(final Context context)
   {
     final Intent inputMethodSettingsIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
@@ -73,19 +90,7 @@ public final class Contexty
     }
     catch (Exception exception)
     {
-      final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
-      alertTextView.setText(context.getString(R.string.message__error__no_browser, uri));
-      alertTextView.setTextIsSelectable(true);
-      
-      final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
-      alertDialogBuilder
-        .setPositiveButton(R.string.label__main_activity__return, null)
-        .setView(alertTextView);
-      
-      final Dialog alertDialog = alertDialogBuilder.create();
-      final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
-      alertDialog.show();
-      alertDialog.getWindow().setLayout(dialog_size, dialog_size);
+      showErrorMessage(context, context.getString(R.string.message__error__no_browser, uri));
     }
   }
 }
