@@ -9,7 +9,6 @@ package io.github.yawnoc.utilities;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -72,7 +71,7 @@ public final class Contexty
     {
       context.startActivity(browserIntent);
     }
-    catch (ActivityNotFoundException exception)
+    catch (Exception exception)
     {
       final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
       alertTextView.setText(context.getString(R.string.message__error__no_browser, uri));
