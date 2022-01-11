@@ -676,6 +676,7 @@ public class StrokeInputService
         case STROKES_KEYBOARD_NAME:
         case STROKES_SYMBOLS_1_KEYBOARD_NAME:
         case STROKES_SYMBOLS_2_KEYBOARD_NAME:
+        case STROKES_SYMBOLS_3_KEYBOARD_NAME:
           inputContainer.setKeyboard(qwertyKeyboard);
           break;
         
