@@ -10,6 +10,7 @@ package io.github.yawnoc.utilities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public final class Stringy
 {
@@ -31,6 +32,11 @@ public final class Stringy
   public static String removeSuffixRegex(final String suffixRegex, final String string)
   {
     return string.replaceFirst(suffixRegex + "$", "");
+  }
+  
+  public static String removePrefix(final String prefix, final String string)
+  {
+    return removePrefixRegex(Pattern.quote(prefix), string);
   }
   
   /*

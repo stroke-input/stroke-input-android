@@ -519,7 +519,7 @@ public class StrokeInputService
       case STROKE_3_VALUE_TEXT:
       case STROKE_4_VALUE_TEXT:
       case STROKE_5_VALUE_TEXT:
-        final String strokeDigit = Stringy.removePrefixRegex(STROKE_KEY_VALUE_TEXT_PREFIX, valueText);
+        final String strokeDigit = Stringy.removePrefix(STROKE_KEY_VALUE_TEXT_PREFIX, valueText);
         effectStrokeAppend(strokeDigit);
         break;
       
@@ -533,7 +533,7 @@ public class StrokeInputService
       case SWITCH_TO_STROKES_SYMBOLS_3_VALUE_TEXT:
       case SWITCH_TO_QWERTY_VALUE_TEXT:
       case SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT:
-        final String keyboardName = Stringy.removePrefixRegex(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
+        final String keyboardName = Stringy.removePrefix(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
         effectKeyboardSwitch(keyboardName);
         break;
       
@@ -957,7 +957,7 @@ public class StrokeInputService
       
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
       {
-        final String phraseCompletion = Stringy.removePrefixRegex(phrasePrefix, phraseCandidate);
+        final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
         if (!phraseCompletionCandidateList.contains(phraseCompletion))
         {
           prefixMatchPhraseCompletionList.add(phraseCompletion);
