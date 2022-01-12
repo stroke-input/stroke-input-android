@@ -8,6 +8,7 @@
 - Made candidate order dialog style consistent with overall style
 - Added fallback alert when openInBrowser fails
 - Added fallback alert when WebView fails
+- Fixed unnecessary overdraw for candidate buttons
 
 
 ## [v0.9.0] Phrases complete (2022-01-11)
