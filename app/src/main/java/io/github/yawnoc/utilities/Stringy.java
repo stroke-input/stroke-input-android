@@ -23,7 +23,7 @@ public final class Stringy
     return string.matches("\\p{ASCII}*");
   }
   
-  public static String removePrefix(final String prefixRegex, final String string)
+  public static String removePrefixRegex(final String prefixRegex, final String string)
   {
     return string.replaceFirst("^" + prefixRegex, "");
   }
