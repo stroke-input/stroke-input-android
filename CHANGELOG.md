@@ -6,6 +6,7 @@
 - Fixed swipe space bar for SYMBOLS_3 keyboard
 - Added fallback alert when openInBrowser fails
 - Added fallback alert when WebView fails
+- Removed restriction on phrase completion candidate count
 
 
 ## [v0.9.0] Phrases complete (2022-01-11)

@@ -110,7 +110,6 @@ public class StrokeInputService
   private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
   private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
   private static final int MAX_PREFIX_MATCH_COUNT = 20;
-  private static final int MAX_PHRASE_COMPLETION_COUNT = 25;
   private static final int MAX_PHRASE_LENGTH = 6;
   
   Keyboard strokesKeyboard;
@@ -970,9 +969,7 @@ public class StrokeInputService
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
     
-    final int candidateCount = Math.min(phraseCompletionCandidateList.size(), MAX_PHRASE_COMPLETION_COUNT);
-    
-    return new ArrayList<>(phraseCompletionCandidateList.subList(0, candidateCount));
+    return phraseCompletionCandidateList;
   }
   
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount)
