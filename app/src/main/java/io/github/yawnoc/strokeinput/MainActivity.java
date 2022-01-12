@@ -186,14 +186,16 @@ public class MainActivity
   
   private void showCandidateOrderDialog()
   {
-    candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputDialog);
+    candidateOrderDialogBuilder = new AlertDialog.Builder(this, R.style.StrokeInputAlert);
     candidateOrderDialogBuilder
       .setTitle(R.string.label__main_activity__candidate_order)
       .setView(R.layout.candidate_order_dialog)
       .setCancelable(true);
     
     candidateOrderDialog = candidateOrderDialogBuilder.create();
+    final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
     candidateOrderDialog.show();
+    candidateOrderDialog.getWindow().setLayout(dialog_size, dialog_size);
     
     final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
     final Button traditionalFirstButton = candidateOrderDialog.findViewById(R.id.traditional_first_button);
