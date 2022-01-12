@@ -39,6 +39,12 @@ __[筆畫輸入法]__為自由開源軟體，恕無擔保。
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `sequence-characters.txt` ####
+----{.notice}
+©~\sequence-characters-year Conway \+
+以 {CC-BY-4.0} 授權，見\CC-BY-4.0。 \+
+----
+
 #### `characters-traditional.txt` \+ `characters-simplified.txt` ####
 ----{.notice}
 獻以為公，見\CC0。
@@ -52,12 +58,6 @@ __[筆畫輸入法]__為自由開源軟體，恕無擔保。
 #### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
 ----{.notice}
 獻以為公，見\CC0。
-----
-
-#### `sequence-characters.txt` ####
-----{.notice}
-©~\sequence-characters-year Conway \+
-以 {CC-BY-4.0} 授權，見\CC-BY-4.0。 \+
 ----
 
 

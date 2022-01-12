@@ -10,6 +10,7 @@
 - Added fallback alert when WebView fails
 - Fixed unnecessary overdraw for candidate buttons
 - Changed regex prefix removal to literal prefix removal where possible
+- Improved About listings order/layout
 
 
 ## [v0.9.0] Phrases complete (2022-01-11)

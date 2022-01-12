@@ -40,6 +40,12 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ### [Conway Stroke Data] (\stroke-data-version) ###
 
+#### `sequence-characters.txt` ####
+----{.notice}
+©~\sequence-characters-year Conway \+
+Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
+----
+
 #### `characters-traditional.txt` \+ `characters-simplified.txt` ####
 ----{.notice}
 Released into the Public Domain, see \CC0.
@@ -53,12 +59,6 @@ Released into the Public Domain, see \CC0.
 #### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
 ----{.notice}
 Released into the Public Domain, see \CC0.
-----
-
-#### `sequence-characters.txt` ####
-----{.notice}
-©~\sequence-characters-year Conway \+
-Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 ----
 
 
