@@ -6,9 +6,12 @@ who want to use the stroke input method (筆畫輸入法).
 
 ## License
 
-This repository is licensed under GPL-3.0-only, see [LICENSE].
+**Copyright 2021–2022 Conway** <br>
+Licensed under the GNU General Public License v3.0 (GPL-3.0-only). <br>
+This is free software with NO WARRANTY etc. etc., see [LICENSE]. <br>
 
-For detailed copyright information, see [app/src/main/assets/about.html].
+For detailed copyright information in relation to dependencies,
+see [app/src/main/assets/about.html].
 
 
 ## Assets
