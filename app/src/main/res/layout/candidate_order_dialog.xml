@@ -14,12 +14,12 @@
   android:padding="@dimen/padding__candidate_order_dialog"
 >
   <RadioButton
-    style="@style/CandidateOrderDialogButton"
+    style="@style/StrokeInputDialogButton"
     android:id="@+id/traditional_first_button"
     android:text="@string/label__main_activity__traditional_first"
   />
   <RadioButton
-    style="@style/CandidateOrderDialogButton"
+    style="@style/StrokeInputDialogButton"
     android:id="@+id/simplified_first_button"
     android:text="@string/label__main_activity__simplified_first"
   />

@@ -25,11 +25,11 @@
     <item name="android:paddingRight">@dimen/padding_horizontal__main_activity__text</item>
     <item name="android:minHeight">@dimen/min_height__main_activity__input</item>
   </style>
-  <style name="CandidateOrderDialogButton" parent="Theme.StrokeInput">
+  <style name="StrokeInputDialogButton" parent="Theme.StrokeInput">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">match_parent</item>
-    <item name="android:textSize">@dimen/font_size__candidate_order_dialog__button</item>
-    <item name="android:padding">@dimen/padding__candidate_order_dialog__button</item>
+    <item name="android:textSize">@dimen/font_size__dialog_button</item>
+    <item name="android:padding">@dimen/padding__dialog_button</item>
   </style>
   <style name="StrokeInputAlert" parent="Theme.StrokeInput">
     <item name="android:windowBackground">@color/very_dark_grey</item>
