@@ -46,17 +46,14 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
 ----
 
-#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
-----{.notice}
-Released into the Public Domain, see \CC0.
-----
-
-#### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
-----{.notice}
-Released into the Public Domain, see \CC0.
-----
-
-#### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
+####
+  `characters-traditional.txt` \+
+  `characters-simplified.txt` \+
+  `phrases-traditional.txt` \+
+  `phrases-simplified.txt` \+
+  `ranking-traditional.txt` \+
+  `ranking-simplified.txt` \+
+####
 ----{.notice}
 Released into the Public Domain, see \CC0.
 ----

@@ -45,17 +45,14 @@ __[笔画输入法]__是自由开源软件，恕无担保。
 以 {CC-BY-4.0} 授权，见\CC-BY-4.0。 \+
 ----
 
-#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
-----{.notice}
-献以为公，见\CC0。
-----
-
-#### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
-----{.notice}
-献以为公，见\CC0。
-----
-
-#### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
+####
+  `characters-traditional.txt` \+
+  `characters-simplified.txt` \+
+  `phrases-traditional.txt` \+
+  `phrases-simplified.txt` \+
+  `ranking-traditional.txt` \+
+  `ranking-simplified.txt` \+
+####
 ----{.notice}
 献以为公，见\CC0。
 ----

@@ -45,17 +45,14 @@ __[筆畫輸入法]__為自由開源軟體，恕無擔保。
 以 {CC-BY-4.0} 授權，見\CC-BY-4.0。 \+
 ----
 
-#### `characters-traditional.txt` \+ `characters-simplified.txt` ####
-----{.notice}
-獻以為公，見\CC0。
-----
-
-#### `phrases-traditional.txt` \+ `phrases-simplified.txt` ####
-----{.notice}
-獻以為公，見\CC0。
-----
-
-#### `ranking-traditional.txt` \+ `ranking-simplified.txt` ####
+####
+  `characters-traditional.txt` \+
+  `characters-simplified.txt` \+
+  `phrases-traditional.txt` \+
+  `phrases-simplified.txt` \+
+  `ranking-traditional.txt` \+
+  `ranking-simplified.txt` \+
+####
 ----{.notice}
 獻以為公，見\CC0。
 ----
