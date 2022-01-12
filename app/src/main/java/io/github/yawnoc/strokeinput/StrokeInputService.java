@@ -565,7 +565,7 @@ public class StrokeInputService
   {
     if (strokeDigitSequence.length() > 0)
     {
-      final String newStrokeDigitSequence = Stringy.removeSuffix("(?s).", strokeDigitSequence);
+      final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
       final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
       
       setStrokeDigitSequence(newStrokeDigitSequence);
