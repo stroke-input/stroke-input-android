@@ -3,17 +3,28 @@
 
 ## [Unreleased]
 
-- Fixed swipe space bar for SYMBOLS_3 keyboard
-- Removed restriction on phrase completion candidate count
-- Made candidate order dialog style consistent with overall style
-- Added fallback alert when openInBrowser fails
-- Added fallback alert when WebView fails
-- Fixed unnecessary overdraw for candidate buttons
-- Changed regex prefix removal to literal prefix removal where possible
+### Dependencies
+
 - Update stroke input data to [Conway Stroke Data v1.1.0]
   (成語動畫廊, HK place names, etc.)
+
+### Behaviour
+
+- Fixed swipe space bar for SYMBOLS_3 keyboard
+- Fixed unnecessary overdraw for candidate buttons
+- Removed restriction on phrase completion candidate count
+- Added fallback alert when openInBrowser fails
+- Added fallback alert when WebView fails
+
+### Appearance
+
+- Made candidate order dialog style consistent with overall style
 - Increased keyboard height max fraction to 0.5
 - Improved About listings order/layout
+
+### Code improvement
+
+- Changed regex prefix removal to literal prefix removal where possible
 
 
 ## [v0.9.0] Phrases complete (2022-01-11)
