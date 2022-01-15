@@ -12,6 +12,7 @@
 - Changed regex prefix removal to literal prefix removal where possible
 - Update stroke input data to [Conway Stroke Data v1.1.0]
   (成語動畫廊, HK place names, etc.)
+- Increased keyboard height max fraction to 0.5
 - Improved About listings order/layout
 
 

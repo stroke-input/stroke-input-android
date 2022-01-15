@@ -46,7 +46,7 @@ public class Keyboard
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
   
-  private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.45f;
+  private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
   private static final float DEFAULT_KEY_WIDTH_FRACTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
