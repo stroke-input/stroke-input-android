@@ -599,6 +599,7 @@ public class StrokeInputService
       {
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
+        setCandidateListForPhraseCompletion(inputConnection);
       }
       
       final int nextBackspaceIntervalMilliseconds =

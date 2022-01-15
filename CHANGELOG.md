@@ -13,6 +13,7 @@
 - Fixed swipe space bar for SYMBOLS_3 keyboard
 - Fixed unnecessary overdraw for candidate buttons
 - Removed restriction on phrase completion candidate count
+- Made backspace clear candidates in Termux and similar apps
 - Added fallback alert when openInBrowser fails
 - Added fallback alert when WebView fails
 
