@@ -18,10 +18,14 @@
 
 ## [v0.9.0] Phrases complete (2022-01-11)
 
+### Dependencies
+
 - Updated stroke input data to [Conway Stroke Data v1.0.1]
   (officially completes the stroke/phrase data set)
 - Updated keyboard font to [Stroke Input Font v2.0.1]
   (name change; adds glyphs for tone markers etc.)
+
+### Layout
 
 - Rearranged placement of symbol keys
 - Improved Main Activity layout order
@@ -32,10 +36,14 @@
 - Added tone letter keys (`U+02E5` to `U+02E9`)
 - Removed useless key `U+`
 
+### Main Activity
+
 - Added stroke sequence examples to Help
 - Made minor improvements to About
 - Added numbering to Main Activity instructions for clarity
 - Added Privacy Policy button to Main Activity
+
+### Gradle
 
 - Migrated from aaptOptions to androidResources
 - Bumped Android Gradle Plugin to 7.0.4
