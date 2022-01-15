@@ -593,14 +593,14 @@ public class StrokeInputService
         {
           inputConnection.commitText("", 1);
         }
-        setCandidateListForPhraseCompletion(inputConnection);
       }
       else // for apps like Termux
       {
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
-        setCandidateListForPhraseCompletion(inputConnection);
       }
+      
+      setCandidateListForPhraseCompletion(inputConnection);
       
       final int nextBackspaceIntervalMilliseconds =
               (Stringy.isAscii(upToOneCharacterBeforeCursor))
