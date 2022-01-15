@@ -10,6 +10,8 @@
 - Added fallback alert when WebView fails
 - Fixed unnecessary overdraw for candidate buttons
 - Changed regex prefix removal to literal prefix removal where possible
+- Update stroke input data to [Conway Stroke Data v1.1.0]
+  (成語動畫廊, HK place names, etc.)
 - Improved About listings order/layout
 
 
@@ -271,6 +273,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.1.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.1.0
 [Conway Stroke Data v1.0.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
 
