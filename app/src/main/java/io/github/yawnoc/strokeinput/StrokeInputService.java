@@ -500,7 +500,7 @@ public class StrokeInputService
     
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
-    setCandidateListForPhraseCompletion(inputConnection);
+    setPhraseCompletionCandidateList(inputConnection);
   }
   
   @Override
@@ -573,7 +573,7 @@ public class StrokeInputService
       
       if (newStrokeDigitSequence.length() == 0)
       {
-        setCandidateListForPhraseCompletion(inputConnection);
+        setPhraseCompletionCandidateList(inputConnection);
       }
       
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
@@ -600,7 +600,7 @@ public class StrokeInputService
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
       }
       
-      setCandidateListForPhraseCompletion(inputConnection);
+      setPhraseCompletionCandidateList(inputConnection);
       
       final int nextBackspaceIntervalMilliseconds =
               (Stringy.isAscii(upToOneCharacterBeforeCursor))
@@ -712,7 +712,7 @@ public class StrokeInputService
     inputContainer.setCandidateList(candidateList);
   }
   
-  private void setCandidateListForPhraseCompletion(final InputConnection inputConnection)
+  private void setPhraseCompletionCandidateList(final InputConnection inputConnection)
   {
     List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
     
