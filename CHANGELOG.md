@@ -5,7 +5,7 @@
 
 ### Dependencies
 
-- Update stroke input data to [Conway Stroke Data v1.1.0]
+- Updated stroke input data to [Conway Stroke Data v1.1.0]
   (成語動畫廊, HK place names, etc.)
 
 ### Behaviour
