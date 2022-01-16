@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.1]
+
 ### Dependencies
 
 - Updated stroke input data to [Conway Stroke Data v1.2.1]
@@ -255,7 +258,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.1...HEAD
+[v0.9.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.0...v0.9.1
 [v0.9.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.8.0...v0.9.0
 [v0.8.0]:
