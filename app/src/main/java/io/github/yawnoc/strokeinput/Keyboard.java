@@ -62,7 +62,7 @@ public class Keyboard
   private final int defaultKeyTextSizePx;
   
   private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
-  private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 16;
+  private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 24;
   private final int defaultKeyPreviewMarginYPx;
   
   // Keyboard properties

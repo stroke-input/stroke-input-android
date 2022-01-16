@@ -23,6 +23,7 @@
 - Fixed initial focus on EditText for API 28+
 - Increased keyboard key heights
 - Increased keyboard height max fraction to 0.5
+- Increased key preview vertical margin
 - Improved About listings order/layout
 
 ### Code improvement
