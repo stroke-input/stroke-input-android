@@ -21,10 +21,10 @@
   <dimen name="padding_horizontal__error_message">16dp</dimen>
   <dimen name="padding_top__error_message">10dp</dimen>
   <!-- Key height (strokes_digit + 2 * strokes + strokes_space_bar == 5 * qwerty) -->
-  <dimen name="key_height__strokes_digit">56dp</dimen>
-  <dimen name="key_height__strokes">60dp</dimen>
-  <dimen name="key_height__strokes_space_bar">54dp</dimen>
-  <dimen name="key_height__qwerty">46dp</dimen>
+  <dimen name="key_height__strokes_digit">60dp</dimen>
+  <dimen name="key_height__strokes">70dp</dimen>
+  <dimen name="key_height__strokes_space_bar">60dp</dimen>
+  <dimen name="key_height__qwerty">52dp</dimen>
   <!-- Key width -->
   <dimen name="key_width__digit">10%</dimen>
   <dimen name="key_width__space_bar">40%</dimen>
