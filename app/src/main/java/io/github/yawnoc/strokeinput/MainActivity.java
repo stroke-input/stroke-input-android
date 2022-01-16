@@ -60,6 +60,7 @@ public class MainActivity
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
+    findViewById(R.id.test_input).requestFocus();
   }
   
   public static boolean isTraditionalPreferred(final String candidateOrderPreference)

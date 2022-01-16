@@ -47,6 +47,7 @@
     />
     <EditText
       style="@style/MainActivityInput"
+      android:id="@+id/test_input"
       android:hint="@string/hint__main_activity__test_input"
       android:importantForAutofill="no"
       android:inputType="text"
