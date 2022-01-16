@@ -5,8 +5,8 @@
 
 ### Dependencies
 
-- Updated stroke input data to [Conway Stroke Data v1.1.0]
-  (成語動畫廊, HK place names, etc.)
+- Updated stroke input data to [Conway Stroke Data v1.2.1]
+  (成語動畫廊, HK place names, non-BMP characters in 通用规范汉字表, etc.)
 
 ### Behaviour
 
@@ -294,8 +294,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
-[Conway Stroke Data v1.1.0]:
-  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.1.0
+[Conway Stroke Data v1.2.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.2.1
 [Conway Stroke Data v1.0.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
 
