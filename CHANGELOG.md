@@ -22,6 +22,7 @@
 
 - Made candidate order dialog style consistent with overall style
 - Fixed initial focus on EditText for API 28+
+- Increased candidate button font size
 - Increased keyboard key heights
 - Increased keyboard height max fraction to 0.5
 - Increased key preview vertical margin
