@@ -464,6 +464,7 @@ public class StrokeInputService
         }
       }
     }
+    inputContainer.redrawKeyboard();
   }
   
   @Override

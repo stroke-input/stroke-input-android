@@ -13,6 +13,7 @@
   (fixes unnecessary reloading when screen is rotated during input)
 - Fixed API level 31+ fullscreen not working
   after rotate whilst keyboard showing
+- Fixed enter key display text not updating properly
 
 
 ## [v0.9.1]

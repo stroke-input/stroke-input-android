@@ -117,6 +117,11 @@ public class InputContainer
     keyboardView.setKeyRepeatIntervalMilliseconds(millis);
   }
   
+  public void redrawKeyboard()
+  {
+    keyboardView.invalidate();
+  }
+  
   public void showKeyPreviewPlane()
   {
     keyboardView.showKeyPreviewPlane();
