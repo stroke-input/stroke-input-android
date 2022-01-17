@@ -179,12 +179,12 @@ public class StrokeInputService
   @Override
   public View onCreateInputView()
   {
-    strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
-    strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
-    strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
-    strokesSymbols3Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_3);
-    qwertyKeyboard = newKeyboard(R.xml.keyboard_qwerty);
-    qwertySymbolsKeyboard = newKeyboard(R.xml.keyboard_qwerty_symbols);
+    strokesKeyboard = new Keyboard(this, R.xml.keyboard_strokes);
+    strokesSymbols1Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_1);
+    strokesSymbols2Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_2);
+    strokesSymbols3Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_3);
+    qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
+    qwertySymbolsKeyboard = new Keyboard(this, R.xml.keyboard_qwerty_symbols);
     
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, STROKES_KEYBOARD_NAME);
@@ -198,11 +198,6 @@ public class StrokeInputService
     
     initialiseInputContainer();
     return inputContainer;
-  }
-  
-  private Keyboard newKeyboard(final int layoutResourceId)
-  {
-    return new Keyboard(this, layoutResourceId);
   }
   
   @SuppressLint("InflateParams")
