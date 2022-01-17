@@ -11,6 +11,8 @@
 
 - Moved loading of Stroke Data from `onCreateInputView` to `onCreate`
   (fixes unnecessary reloading when screen is rotated during input)
+- Fixed API level 31+ fullscreen not working
+  after rotate whilst keyboard showing
 
 
 ## [v0.9.1]
