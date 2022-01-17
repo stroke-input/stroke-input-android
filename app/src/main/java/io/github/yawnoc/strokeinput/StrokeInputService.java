@@ -179,13 +179,6 @@ public class StrokeInputService
   @Override
   public View onCreateInputView()
   {
-    initialiseKeyboards();
-    initialiseInputContainer();
-    return inputContainer;
-  }
-  
-  private void initialiseKeyboards()
-  {
     strokesKeyboard = newKeyboard(R.xml.keyboard_strokes);
     strokesSymbols1Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_1);
     strokesSymbols2Keyboard = newKeyboard(R.xml.keyboard_strokes_symbols_2);
@@ -202,6 +195,9 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
+    
+    initialiseInputContainer();
+    return inputContainer;
   }
   
   private Keyboard newKeyboard(final int layoutResourceId)
