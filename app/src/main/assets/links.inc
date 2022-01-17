@@ -23,7 +23,7 @@
     core/java/android/inputmethodservice/KeyboardView.java
 @@
 
-{: \material-version : v1.4.0 :}
+{: \material-version : v1.5.0 :}
 {: \material-year : 2021 :}
 @@[Material Components For Android]
   https://mvnrepository.com/artifact/com.google.android.material/material

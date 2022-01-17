@@ -3,6 +3,10 @@
 
 ## [Unreleased]
 
+### Dependencies
+
+- Updated Material Components to v1.5.0
+
 
 ## [v0.9.1]
 
