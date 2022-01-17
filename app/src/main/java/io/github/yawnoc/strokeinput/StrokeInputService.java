@@ -152,7 +152,28 @@ public class StrokeInputService
   public void onCreate()
   {
     super.onCreate();
-    initialiseStrokeInput();
+    
+    charactersFromStrokeDigitSequence = new TreeMap<>();
+    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
+    
+    codePointSetTraditional = new HashSet<>();
+    codePointSetSimplified = new HashSet<>();
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
+    
+    sortingRankFromCodePointTraditional = new HashMap<>();
+    sortingRankFromCodePointSimplified = new HashMap<>();
+    commonCodePointSetTraditional = new HashSet<>();
+    commonCodePointSetSimplified = new HashSet<>();
+    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
+    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
+    
+    phraseSetTraditional = new TreeSet<>();
+    phraseSetSimplified = new TreeSet<>();
+    loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
+    loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    
+    updateCandidateOrderPreference();
   }
   
   @Override
@@ -211,31 +232,6 @@ public class StrokeInputService
     {
       return strokesKeyboard;
     }
-  }
-  
-  private void initialiseStrokeInput()
-  {
-    charactersFromStrokeDigitSequence = new TreeMap<>();
-    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
-    
-    codePointSetTraditional = new HashSet<>();
-    codePointSetSimplified = new HashSet<>();
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
-    
-    sortingRankFromCodePointTraditional = new HashMap<>();
-    sortingRankFromCodePointSimplified = new HashMap<>();
-    commonCodePointSetTraditional = new HashSet<>();
-    commonCodePointSetSimplified = new HashSet<>();
-    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
-    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
-    
-    phraseSetTraditional = new TreeSet<>();
-    phraseSetSimplified = new TreeSet<>();
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
-    
-    updateCandidateOrderPreference();
   }
   
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
