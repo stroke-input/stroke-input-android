@@ -176,6 +176,7 @@ public class StrokeInputService
     updateCandidateOrderPreference();
   }
   
+  @SuppressLint("InflateParams")
   @Override
   public View onCreateInputView()
   {
@@ -196,18 +197,13 @@ public class StrokeInputService
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
     
-    initialiseInputContainer();
-    return inputContainer;
-  }
-  
-  @SuppressLint("InflateParams")
-  private void initialiseInputContainer()
-  {
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialisePopupRecess();
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
+    
+    return inputContainer;
   }
   
   private Keyboard loadSavedKeyboard()
