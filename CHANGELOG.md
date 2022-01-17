@@ -7,6 +7,11 @@
 
 - Updated Material Components to v1.5.0
 
+### Behaviour
+
+- Moved loading of Stroke Data from `onCreateInputView` to `onCreate`
+  (fixes unnecessary reloading when screen is rotated during input)
+
 
 ## [v0.9.1]
 

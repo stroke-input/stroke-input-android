@@ -149,12 +149,17 @@ public class StrokeInputService
   private boolean inputIsPassword;
   
   @Override
+  public void onCreate()
+  {
+    super.onCreate();
+    initialiseStrokeInput();
+  }
+  
+  @Override
   public View onCreateInputView()
   {
     initialiseKeyboards();
     initialiseInputContainer();
-    initialiseStrokeInput();
-    
     return inputContainer;
   }
   
