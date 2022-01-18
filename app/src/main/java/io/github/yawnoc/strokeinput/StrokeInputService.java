@@ -869,15 +869,16 @@ public class StrokeInputService
               )
               .values();
     
-    final long addStartMilliseconds = System.currentTimeMillis();
+    final long addCodePointsStartMilliseconds = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection)
     {
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
-    final long addEndMilliseconds = System.currentTimeMillis();
+    final long addCodePointsEndMilliseconds = System.currentTimeMillis();
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Added code points to set in %d ms", addEndMilliseconds - addStartMilliseconds));
+      final long durationMilliseconds = addCodePointsEndMilliseconds - addCodePointsStartMilliseconds;
+      Log.d(LOG_TAG, String.format("Added code points to set in %d ms", durationMilliseconds));
     }
     
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
@@ -886,7 +887,7 @@ public class StrokeInputService
     }
     
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
-    final long sortStartMilliseconds = System.currentTimeMillis();
+    final long sortPrefixMatchesStartMilliseconds = System.currentTimeMillis();
     prefixMatchCandidateCodePointList.sort(
       candidateCodePointComparator(
         unpreferredCodePointSet,
@@ -894,10 +895,11 @@ public class StrokeInputService
         phraseCompletionFirstCodePointList
       )
     );
-    final long sortEndMilliseconds = System.currentTimeMillis();
+    final long sortPrefixMatchesEndMilliseconds = System.currentTimeMillis();
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", sortEndMilliseconds - sortStartMilliseconds));
+      final long durationMilliseconds = sortPrefixMatchesEndMilliseconds - sortPrefixMatchesStartMilliseconds;
+      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", durationMilliseconds));
     }
     
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
