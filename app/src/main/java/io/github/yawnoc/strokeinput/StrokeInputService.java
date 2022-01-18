@@ -888,10 +888,7 @@ public class StrokeInputService
       )
     );
     final long sortEndMillis = System.currentTimeMillis();
-    Log.d(
-      "computeCandidateList",
-      (sortEndMillis - sortStartMillis) + " milliseconds (Collections.sort)"
-    );
+    Log.d(LOG_TAG, String.format("Sorted prefix matches in %d milliseconds", sortEndMillis - sortStartMillis));
     
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
     final List<String> prefixMatchCandidateList = new ArrayList<>();
