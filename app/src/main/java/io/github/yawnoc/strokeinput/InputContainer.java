@@ -112,9 +112,9 @@ public class InputContainer
     keyboardView.setKeyboard(keyboard);
   }
   
-  public void setKeyRepeatIntervalMilliseconds(final int millis)
+  public void setKeyRepeatIntervalMilliseconds(final int milliseconds)
   {
-    keyboardView.setKeyRepeatIntervalMilliseconds(millis);
+    keyboardView.setKeyRepeatIntervalMilliseconds(milliseconds);
   }
   
   public void redrawKeyboard()
