@@ -25,7 +25,7 @@ public class StringyTest
     final StringBuilder stringBuilder = new StringBuilder(ASCII_END_CODE_POINT - ASCII_START_CODE_POINT + 1);
     for (int codePoint = ASCII_START_CODE_POINT; codePoint <= ASCII_END_CODE_POINT; codePoint++)
     {
-      stringBuilder.append(Stringy.toString(codePoint));
+      stringBuilder.appendCodePoint(codePoint);
     }
     
     return stringBuilder.toString();
