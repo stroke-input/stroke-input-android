@@ -865,13 +865,13 @@ public class StrokeInputService
               )
               .values();
     
-    final long addAllStartMillis = System.currentTimeMillis();
+    final long addStartMillis = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection)
     {
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
-    final long addAllEndMillis = System.currentTimeMillis();
-    Log.d(LOG_TAG, String.format("Added code points to set in %d milliseconds", addAllEndMillis - addAllStartMillis));
+    final long addEndMillis = System.currentTimeMillis();
+    Log.d(LOG_TAG, String.format("Added code points to set in %d milliseconds", addEndMillis - addStartMillis));
     
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
