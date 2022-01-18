@@ -13,6 +13,30 @@ import org.junit.Test;
 
 public class StringyTest
 {
+  private static final int ASCII_START_CODE_POINT = 0x0000;
+  private static final int ASCII_END_CODE_POINT = 0x007F;
+  
+  @Test
+  public void isAscii_isCorrect()
+  {
+    assertTrue(Stringy.isAscii(""));
+    assertTrue(Stringy.isAscii("abc 123 #@% +-*/ ,:;.?!"));
+    assertTrue(Stringy.isAscii("\"\\"));
+    
+    final StringBuilder stringBuilder = new StringBuilder(ASCII_END_CODE_POINT - ASCII_START_CODE_POINT + 1);
+    for (int codePoint = ASCII_START_CODE_POINT; codePoint <= ASCII_END_CODE_POINT; codePoint++)
+    {
+      stringBuilder.append(Stringy.toString(codePoint));
+    }
+    final String fullAsciiString = stringBuilder.toString();
+    assertTrue(Stringy.isAscii(fullAsciiString));
+    
+    assertFalse(Stringy.isAscii(Stringy.toString(ASCII_END_CODE_POINT + 1)));
+    assertFalse(Stringy.isAscii(fullAsciiString + "文"));
+    assertFalse(Stringy.isAscii("一"));
+    assertFalse(Stringy.isAscii("U+FF0C FULLWIDTH COMMA ，"));
+  }
+  
   @Test
   public void toString_isCorrect()
   {
