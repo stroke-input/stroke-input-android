@@ -11,6 +11,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class StringyTest
 {
   private static final int ASCII_START_CODE_POINT = 0x0000;
@@ -72,6 +76,19 @@ public class StringyTest
   {
     assertEquals(Stringy.getFirstCodePoint("ABC"), 0x0041);
     assertEquals(Stringy.getFirstCodePoint("天下為公"), 0x5929);
+  }
+  
+  @Test
+  public void toCodePointList_isCorrect()
+  {
+    assertEquals(
+      Stringy.toCodePointList(fullAsciiString()),
+      IntStream.rangeClosed(ASCII_START_CODE_POINT, ASCII_END_CODE_POINT).boxed().collect(Collectors.toList())
+    );
+    assertEquals(
+      Stringy.toCodePointList("天下為公"),
+      Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C)
+    );
   }
   
   @Test
