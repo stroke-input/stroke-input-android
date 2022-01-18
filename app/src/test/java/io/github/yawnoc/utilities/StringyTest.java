@@ -55,6 +55,15 @@ public class StringyTest
   }
   
   @Test
+  public void removePrefix_isCorrect()
+  {
+    assertEquals(Stringy.removePrefix("[a-z]+", "abc xyz"), "abc xyz");
+    assertEquals(Stringy.removePrefix("1", "234"), "234");
+    assertEquals(Stringy.removePrefix("2", "234"), "34");
+    assertEquals(Stringy.removePrefix("WELL_", "WELL_SCREW_YOU"), "SCREW_YOU");
+  }
+  
+  @Test
   public void toString_isCorrect()
   {
     assertEquals(Stringy.toString(0x0000), "\0");
