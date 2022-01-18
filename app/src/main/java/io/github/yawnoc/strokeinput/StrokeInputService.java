@@ -46,6 +46,8 @@ public class StrokeInputService
   extends InputMethodService
   implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
+  private static final String LOG_TAG = "StrokeInputService";
+  
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
   private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
@@ -360,10 +362,7 @@ public class StrokeInputService
   
   private void sendLoadingTimeLog(final String fileName, final long millis)
   {
-    Log.i(
-      "StrokeInputService",
-      "Loaded '" + fileName + "' in " + millis + " milliseconds"
-    );
+    Log.d(LOG_TAG, String.format("Loaded %s in %d milliseconds", fileName, millis));
   }
   
   @Override
