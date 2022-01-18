@@ -14,6 +14,7 @@
 - Fixed API level 31+ fullscreen not working
   after rotate whilst keyboard showing
 - Fixed enter key display text not updating properly
+- Wrapped duration debug logs with `if (BuildConfig.DEBUG)`
 
 
 ## [v0.9.1]

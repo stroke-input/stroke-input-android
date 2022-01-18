@@ -362,7 +362,10 @@ public class StrokeInputService
   
   private void sendLoadingTimeLog(final String fileName, final long millis)
   {
-    Log.d(LOG_TAG, String.format("Loaded %s in %d milliseconds", fileName, millis));
+    if (BuildConfig.DEBUG)
+    {
+      Log.d(LOG_TAG, String.format("Loaded %s in %d milliseconds", fileName, millis));
+    }
   }
   
   @Override
@@ -871,7 +874,10 @@ public class StrokeInputService
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
     final long addEndMillis = System.currentTimeMillis();
-    Log.d(LOG_TAG, String.format("Added code points to set in %d milliseconds", addEndMillis - addStartMillis));
+    if (BuildConfig.DEBUG)
+    {
+      Log.d(LOG_TAG, String.format("Added code points to set in %d milliseconds", addEndMillis - addStartMillis));
+    }
     
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
@@ -888,7 +894,10 @@ public class StrokeInputService
       )
     );
     final long sortEndMillis = System.currentTimeMillis();
-    Log.d(LOG_TAG, String.format("Sorted prefix matches in %d milliseconds", sortEndMillis - sortStartMillis));
+    if (BuildConfig.DEBUG)
+    {
+      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d milliseconds", sortEndMillis - sortStartMillis));
+    }
     
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
     final List<String> prefixMatchCandidateList = new ArrayList<>();
