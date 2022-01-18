@@ -38,6 +38,15 @@ public class StringyTest
   }
   
   @Test
+  public void removePrefixRegex_isCorrect()
+  {
+    assertEquals(Stringy.removePrefixRegex(".", "\n123"), "\n123");
+    assertEquals(Stringy.removePrefixRegex("(?s).", "\n123"), "123");
+    assertEquals(Stringy.removePrefixRegex("[a-z]+", "abc xyz"), " xyz");
+    assertEquals(Stringy.removePrefixRegex("[a-z]+", "123 456"), "123 456");
+  }
+  
+  @Test
   public void toString_isCorrect()
   {
     assertEquals("\0", Stringy.toString(0x0000));
