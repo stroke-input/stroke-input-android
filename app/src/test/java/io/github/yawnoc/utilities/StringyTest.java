@@ -17,13 +17,13 @@ import java.util.stream.IntStream;
 
 public class StringyTest
 {
-  private static final int ASCII_START_CODE_POINT = 0x0000;
-  private static final int ASCII_END_CODE_POINT = 0x007F;
+  private static final int ASCII_CODE_POINT_START = 0x0000;
+  private static final int ASCII_CODE_POINT_END = 0x007F;
   
   private static String fullAsciiString()
   {
-    final StringBuilder stringBuilder = new StringBuilder(ASCII_END_CODE_POINT - ASCII_START_CODE_POINT + 1);
-    for (int codePoint = ASCII_START_CODE_POINT; codePoint <= ASCII_END_CODE_POINT; codePoint++)
+    final StringBuilder stringBuilder = new StringBuilder(ASCII_CODE_POINT_END - ASCII_CODE_POINT_START + 1);
+    for (int codePoint = ASCII_CODE_POINT_START; codePoint <= ASCII_CODE_POINT_END; codePoint++)
     {
       stringBuilder.appendCodePoint(codePoint);
     }
@@ -39,7 +39,7 @@ public class StringyTest
     assertTrue(Stringy.isAscii("\"\\"));
     assertTrue(Stringy.isAscii(fullAsciiString()));
     
-    assertFalse(Stringy.isAscii(Stringy.toString(ASCII_END_CODE_POINT + 1)));
+    assertFalse(Stringy.isAscii(Stringy.toString(ASCII_CODE_POINT_END + 1)));
     assertFalse(Stringy.isAscii(fullAsciiString() + "文"));
     assertFalse(Stringy.isAscii("一"));
     assertFalse(Stringy.isAscii("U+FF0C FULLWIDTH COMMA ，"));
@@ -83,7 +83,7 @@ public class StringyTest
   {
     assertEquals(
       Stringy.toCodePointList(fullAsciiString()),
-      IntStream.rangeClosed(ASCII_START_CODE_POINT, ASCII_END_CODE_POINT).boxed().collect(Collectors.toList())
+      IntStream.rangeClosed(ASCII_CODE_POINT_START, ASCII_CODE_POINT_END).boxed().collect(Collectors.toList())
     );
     assertEquals(
       Stringy.toCodePointList("天下為公"),
