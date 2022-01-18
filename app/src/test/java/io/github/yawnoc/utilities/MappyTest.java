@@ -30,5 +30,6 @@ public class MappyTest
     inverseMap.put("three", 3);
     
     assertEquals(Mappy.invertMap(forwardMap), inverseMap);
+    assertEquals(Mappy.invertMap(inverseMap), forwardMap);
   }
 }
