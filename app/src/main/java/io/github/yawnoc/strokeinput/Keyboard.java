@@ -26,7 +26,6 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.Xml;
 
 import java.util.ArrayList;
@@ -199,7 +198,6 @@ public class Keyboard
     }
     catch (Exception exception)
     {
-      Log.e("Keyboard.makeKeyboard", "Exception: " + exception);
       exception.printStackTrace();
     }
   }
