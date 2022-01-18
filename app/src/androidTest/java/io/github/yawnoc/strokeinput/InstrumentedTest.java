@@ -1,3 +1,10 @@
+/*
+  Copyright 2022 Conway
+  Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
+  This is free software with NO WARRANTY etc. etc.,
+  see LICENSE or <https://www.gnu.org/licenses/>.
+*/
+
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
@@ -10,16 +17,15 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+/*
+ An instrumented test, to be executed on an Android device or emulator.
+*/
 @RunWith(AndroidJUnit4.class)
-public class InstrumentedTest {
+public class InstrumentedTest
+{
   @Test
-  public void useAppContext() {
-    // Context of the app under test.
+  public void useAppContext()
+  {
     Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
     assertEquals("io.github.yawnoc.strokeinput", appContext.getPackageName());
   }
