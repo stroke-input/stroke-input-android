@@ -871,10 +871,7 @@ public class StrokeInputService
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
     final long addAllEndMillis = System.currentTimeMillis();
-    Log.d(
-      "computeCandidateList",
-      (addAllEndMillis - addAllStartMillis) + " milliseconds (Stringy.addCodePointsToSet)"
-    );
+    Log.d(LOG_TAG, String.format("Added code points to set in %d milliseconds", addAllEndMillis - addAllStartMillis));
     
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
