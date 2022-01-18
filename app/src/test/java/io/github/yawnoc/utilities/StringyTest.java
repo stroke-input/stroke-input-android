@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -19,6 +20,10 @@ public class StringyTest
 {
   private static final int ASCII_CODE_POINT_START = 0x0000;
   private static final int ASCII_CODE_POINT_END = 0x007F;
+  private static final List<Integer> ASCII_CODE_POINT_RANGE =
+          IntStream.rangeClosed(ASCII_CODE_POINT_START, ASCII_CODE_POINT_END)
+            .boxed()
+            .collect(Collectors.toList());
   
   private static String fullAsciiString()
   {
@@ -83,7 +88,7 @@ public class StringyTest
   {
     assertEquals(
       Stringy.toCodePointList(fullAsciiString()),
-      IntStream.rangeClosed(ASCII_CODE_POINT_START, ASCII_CODE_POINT_END).boxed().collect(Collectors.toList())
+      ASCII_CODE_POINT_RANGE
     );
     assertEquals(
       Stringy.toCodePointList("天下為公"),
