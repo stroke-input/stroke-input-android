@@ -64,6 +64,13 @@ public class StringyTest
   }
   
   @Test
+  public void getFirstCodePoint_isCorrect()
+  {
+    assertEquals(Stringy.getFirstCodePoint("ABC"), 0x0041);
+    assertEquals(Stringy.getFirstCodePoint("天下為公"), 0x5929);
+  }
+  
+  @Test
   public void toString_isCorrect()
   {
     assertEquals(Stringy.toString(0x0000), "\0");
