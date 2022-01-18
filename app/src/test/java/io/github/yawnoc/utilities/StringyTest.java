@@ -86,14 +86,8 @@ public class StringyTest
   @Test
   public void toCodePointList_isCorrect()
   {
-    assertEquals(
-      Stringy.toCodePointList(fullAsciiString()),
-      ASCII_CODE_POINT_RANGE
-    );
-    assertEquals(
-      Stringy.toCodePointList("天下為公"),
-      Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C)
-    );
+    assertEquals(Stringy.toCodePointList(fullAsciiString()), ASCII_CODE_POINT_RANGE);
+    assertEquals(Stringy.toCodePointList("天下為公"), Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C));
   }
   
   @Test
