@@ -235,7 +235,7 @@ public class StrokeInputService
     final Map<String, String> charactersFromStrokeDigitSequence
   )
   {
-    final long startMillis = System.currentTimeMillis();
+    final long startMilliseconds = System.currentTimeMillis();
     
     try
     {
@@ -259,13 +259,13 @@ public class StrokeInputService
       exception.printStackTrace();
     }
     
-    final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(sequenceCharactersFileName, endMillis - startMillis);
+    final long endMilliseconds = System.currentTimeMillis();
+    sendLoadingTimeLog(sequenceCharactersFileName, endMilliseconds - startMilliseconds);
   }
   
   private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
   {
-    final long startMillis = System.currentTimeMillis();
+    final long startMilliseconds = System.currentTimeMillis();
     
     try
     {
@@ -286,8 +286,8 @@ public class StrokeInputService
       exception.printStackTrace();
     }
     
-    final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(charactersFileName, endMillis - startMillis);
+    final long endMilliseconds = System.currentTimeMillis();
+    sendLoadingTimeLog(charactersFileName, endMilliseconds - startMilliseconds);
   }
   
   private void loadRankingData(
@@ -296,7 +296,7 @@ public class StrokeInputService
     final Set<Integer> commonCodePointSet
   )
   {
-    final long startMillis = System.currentTimeMillis();
+    final long startMilliseconds = System.currentTimeMillis();
     
     try
     {
@@ -329,13 +329,13 @@ public class StrokeInputService
       exception.printStackTrace();
     }
     
-    final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(rankingFileName, endMillis - startMillis);
+    final long endMilliseconds = System.currentTimeMillis();
+    sendLoadingTimeLog(rankingFileName, endMilliseconds - startMilliseconds);
   }
   
   private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
   {
-    final long startMillis = System.currentTimeMillis();
+    final long startMilliseconds = System.currentTimeMillis();
     
     try
     {
@@ -356,15 +356,15 @@ public class StrokeInputService
       exception.printStackTrace();
     }
     
-    final long endMillis = System.currentTimeMillis();
-    sendLoadingTimeLog(phrasesFileName, endMillis - startMillis);
+    final long endMilliseconds = System.currentTimeMillis();
+    sendLoadingTimeLog(phrasesFileName, endMilliseconds - startMilliseconds);
   }
   
-  private void sendLoadingTimeLog(final String fileName, final long millis)
+  private void sendLoadingTimeLog(final String fileName, final long milliseconds)
   {
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Loaded %s in %d ms", fileName, millis));
+      Log.d(LOG_TAG, String.format("Loaded %s in %d ms", fileName, milliseconds));
     }
   }
   
@@ -868,15 +868,15 @@ public class StrokeInputService
               )
               .values();
     
-    final long addStartMillis = System.currentTimeMillis();
+    final long addStartMilliseconds = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection)
     {
       Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
     }
-    final long addEndMillis = System.currentTimeMillis();
+    final long addEndMilliseconds = System.currentTimeMillis();
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Added code points to set in %d ms", addEndMillis - addStartMillis));
+      Log.d(LOG_TAG, String.format("Added code points to set in %d ms", addEndMilliseconds - addStartMilliseconds));
     }
     
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
@@ -885,7 +885,7 @@ public class StrokeInputService
     }
     
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
-    final long sortStartMillis = System.currentTimeMillis();
+    final long sortStartMilliseconds = System.currentTimeMillis();
     prefixMatchCandidateCodePointList.sort(
       candidateCodePointComparator(
         unpreferredCodePointSet,
@@ -893,10 +893,10 @@ public class StrokeInputService
         phraseCompletionFirstCodePointList
       )
     );
-    final long sortEndMillis = System.currentTimeMillis();
+    final long sortEndMilliseconds = System.currentTimeMillis();
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", sortEndMillis - sortStartMillis));
+      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", sortEndMilliseconds - sortStartMilliseconds));
     }
     
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
