@@ -24,17 +24,10 @@ public class StringyTest
           IntStream.rangeClosed(ASCII_CODE_POINT_START, ASCII_CODE_POINT_END)
             .boxed()
             .collect(Collectors.toList());
-  
-  private static String fullAsciiString()
-  {
-    final StringBuilder stringBuilder = new StringBuilder(ASCII_CODE_POINT_END - ASCII_CODE_POINT_START + 1);
-    for (int codePoint = ASCII_CODE_POINT_START; codePoint <= ASCII_CODE_POINT_END; codePoint++)
-    {
-      stringBuilder.appendCodePoint(codePoint);
-    }
-    
-    return stringBuilder.toString();
-  }
+  private static final String ASCII_FULL_STRING =
+          IntStream.rangeClosed(ASCII_CODE_POINT_START, ASCII_CODE_POINT_END)
+            .mapToObj(codePoint -> Character.toString((char) codePoint))
+            .collect(Collectors.joining());
   
   @Test
   public void isAscii_isCorrect()
@@ -42,10 +35,10 @@ public class StringyTest
     assertTrue(Stringy.isAscii(""));
     assertTrue(Stringy.isAscii("abc 123 #@% +-*/ ,:;.?!"));
     assertTrue(Stringy.isAscii("\"\\"));
-    assertTrue(Stringy.isAscii(fullAsciiString()));
+    assertTrue(Stringy.isAscii(ASCII_FULL_STRING));
     
     assertFalse(Stringy.isAscii(Stringy.toString(ASCII_CODE_POINT_END + 1)));
-    assertFalse(Stringy.isAscii(fullAsciiString() + "文"));
+    assertFalse(Stringy.isAscii(ASCII_FULL_STRING + "文"));
     assertFalse(Stringy.isAscii("一"));
     assertFalse(Stringy.isAscii("U+FF0C FULLWIDTH COMMA ，"));
   }
@@ -86,7 +79,7 @@ public class StringyTest
   @Test
   public void toCodePointList_isCorrect()
   {
-    assertEquals(Stringy.toCodePointList(fullAsciiString()), ASCII_CODE_POINT_RANGE);
+    assertEquals(Stringy.toCodePointList(ASCII_FULL_STRING), ASCII_CODE_POINT_RANGE);
     assertEquals(Stringy.toCodePointList("天下為公"), Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C));
   }
   
