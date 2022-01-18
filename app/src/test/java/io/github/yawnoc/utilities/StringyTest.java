@@ -47,6 +47,14 @@ public class StringyTest
   }
   
   @Test
+  public void removeSuffixRegex_isCorrect()
+  {
+    assertEquals(Stringy.removeSuffixRegex(".", "12345"), "1234");
+    assertEquals(Stringy.removeSuffixRegex("[a-z]+", "abc xyz"), "abc ");
+    assertEquals(Stringy.removeSuffixRegex("[a-z]+", "123 456"), "123 456");
+  }
+  
+  @Test
   public void toString_isCorrect()
   {
     assertEquals(Stringy.toString(0x0000), "\0");
