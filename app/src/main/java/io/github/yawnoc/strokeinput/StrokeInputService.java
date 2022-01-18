@@ -260,7 +260,7 @@ public class StrokeInputService
     }
     
     final long endMilliseconds = System.currentTimeMillis();
-    sendLoadingTimeLog(sequenceCharactersFileName, endMilliseconds - startMilliseconds);
+    sendLoadingTimeLog(sequenceCharactersFileName, startMilliseconds, endMilliseconds);
   }
   
   private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
@@ -287,7 +287,7 @@ public class StrokeInputService
     }
     
     final long endMilliseconds = System.currentTimeMillis();
-    sendLoadingTimeLog(charactersFileName, endMilliseconds - startMilliseconds);
+    sendLoadingTimeLog(charactersFileName, startMilliseconds, endMilliseconds);
   }
   
   private void loadRankingData(
@@ -330,7 +330,7 @@ public class StrokeInputService
     }
     
     final long endMilliseconds = System.currentTimeMillis();
-    sendLoadingTimeLog(rankingFileName, endMilliseconds - startMilliseconds);
+    sendLoadingTimeLog(rankingFileName, startMilliseconds, endMilliseconds);
   }
   
   private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
@@ -357,14 +357,15 @@ public class StrokeInputService
     }
     
     final long endMilliseconds = System.currentTimeMillis();
-    sendLoadingTimeLog(phrasesFileName, endMilliseconds - startMilliseconds);
+    sendLoadingTimeLog(phrasesFileName, startMilliseconds, endMilliseconds);
   }
   
-  private void sendLoadingTimeLog(final String fileName, final long milliseconds)
+  private void sendLoadingTimeLog(final String fileName, final long startMilliseconds, final long endMilliseconds)
   {
     if (BuildConfig.DEBUG)
     {
-      Log.d(LOG_TAG, String.format("Loaded %s in %d ms", fileName, milliseconds));
+      final long durationMilliseconds = endMilliseconds - startMilliseconds;
+      Log.d(LOG_TAG, String.format("Loaded %s in %d ms", fileName, durationMilliseconds));
     }
   }
   
