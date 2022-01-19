@@ -114,4 +114,15 @@ public class StringyTest
     assertEquals(Stringy.toCharacterList("ABC"), Arrays.asList("A", "B", "C"));
     assertEquals(Stringy.toCharacterList("天下為公"), Arrays.asList("天", "下", "為", "公"));
   }
+  
+  @Test
+  public void sunder_isCorrect()
+  {
+    assertArrayEquals(Stringy.sunder("abc 123", " "), new String[]{"abc", "123"});
+    assertArrayEquals(Stringy.sunder("abc\t123", "\t"), new String[]{"abc", "123"});
+    assertArrayEquals(Stringy.sunder("abc:::123", ":::"), new String[]{"abc", "123"});
+    
+    assertArrayEquals(Stringy.sunder("abc123", " "), new String[]{"abc123", ""});
+    assertArrayEquals(Stringy.sunder(" abc123", " "), new String[]{"", "abc123"});
+  }
 }
