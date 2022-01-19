@@ -12,7 +12,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -81,6 +84,19 @@ public class StringyTest
   {
     assertEquals(Stringy.toCodePointList(ASCII_FULL_STRING), ASCII_CODE_POINT_RANGE);
     assertEquals(Stringy.toCodePointList("天下為公"), Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C));
+  }
+  
+  @Test
+  public void addCodePointsToSet_isCorrect()
+  {
+    final int SOME_CODE_POINT = 0x1234;
+    final Set<Integer> commonsCodePointSet = new HashSet<>(Collections.singletonList(SOME_CODE_POINT));
+    Stringy.addCodePointsToSet("天下為公", commonsCodePointSet);
+    assertEquals(commonsCodePointSet, new HashSet<>(Arrays.asList(SOME_CODE_POINT, 0x5929, 0x4E0B, 0x70BA, 0x516C)));
+    
+    final Set<Integer> asciiFullCodePointSet = new HashSet<>();
+    Stringy.addCodePointsToSet(ASCII_FULL_STRING, asciiFullCodePointSet);
+    assertEquals(asciiFullCodePointSet, new HashSet<>(ASCII_CODE_POINT_RANGE));
   }
   
   @Test
