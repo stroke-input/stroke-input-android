@@ -107,4 +107,11 @@ public class StringyTest
     assertEquals(Stringy.toString(0x2B8B8), "\uD86E\uDCB8"); // 𫢸
     assertEquals(Stringy.toString(0x2CE93), "\uD873\uDE93"); // 𬺓
   }
+  
+  @Test
+  public void toCharacterList_isCorrect()
+  {
+    assertEquals(Stringy.toCharacterList("ABC"), Arrays.asList("A", "B", "C"));
+    assertEquals(Stringy.toCharacterList("天下為公"), Arrays.asList("天", "下", "為", "公"));
+  }
 }
