@@ -127,15 +127,15 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private NavigableMap<String, String> charactersFromStrokeDigitSequence;
-  private Set<Integer> codePointSetTraditional;
-  private Set<Integer> codePointSetSimplified;
-  private Map<Integer, Integer> sortingRankFromCodePointTraditional;
-  private Map<Integer, Integer> sortingRankFromCodePointSimplified;
-  private Set<Integer> commonCodePointSetTraditional;
-  private Set<Integer> commonCodePointSetSimplified;
-  private NavigableSet<String> phraseSetTraditional;
-  private NavigableSet<String> phraseSetSimplified;
+  private NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
+  private Set<Integer> codePointSetTraditional = new HashSet<>();
+  private Set<Integer> codePointSetSimplified = new HashSet<>();
+  private Map<Integer, Integer> sortingRankFromCodePointTraditional = new HashMap<>();
+  private Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
+  private Set<Integer> commonCodePointSetTraditional = new HashSet<>();
+  private Set<Integer> commonCodePointSetSimplified = new HashSet<>();
+  private NavigableSet<String> phraseSetTraditional = new TreeSet<>();
+  private NavigableSet<String> phraseSetSimplified = new TreeSet<>();
   
   private Set<Integer> unpreferredCodePointSet;
   private Map<Integer, Integer> sortingRankFromCodePoint;
@@ -155,23 +155,14 @@ public class StrokeInputService
   {
     super.onCreate();
     
-    charactersFromStrokeDigitSequence = new TreeMap<>();
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     
-    codePointSetTraditional = new HashSet<>();
-    codePointSetSimplified = new HashSet<>();
     loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
     loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
     
-    sortingRankFromCodePointTraditional = new HashMap<>();
-    sortingRankFromCodePointSimplified = new HashMap<>();
-    commonCodePointSetTraditional = new HashSet<>();
-    commonCodePointSetSimplified = new HashSet<>();
     loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
     loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
     
-    phraseSetTraditional = new TreeSet<>();
-    phraseSetSimplified = new TreeSet<>();
     loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
     loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
     
