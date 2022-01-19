@@ -16,6 +16,10 @@
 - Fixed enter key display text not updating properly
 - Wrapped duration debug logs with `if (BuildConfig.DEBUG)`
 
+### Code improvement
+
+- Added unit testing for Mappy and Stringy
+
 
 ## [v0.9.1]
 
