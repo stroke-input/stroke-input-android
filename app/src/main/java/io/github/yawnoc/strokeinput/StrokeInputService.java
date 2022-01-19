@@ -127,15 +127,15 @@ public class StrokeInputService
   
   private InputContainer inputContainer;
   
-  private NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
-  private Set<Integer> codePointSetTraditional = new HashSet<>();
-  private Set<Integer> codePointSetSimplified = new HashSet<>();
-  private Map<Integer, Integer> sortingRankFromCodePointTraditional = new HashMap<>();
-  private Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
-  private Set<Integer> commonCodePointSetTraditional = new HashSet<>();
-  private Set<Integer> commonCodePointSetSimplified = new HashSet<>();
-  private NavigableSet<String> phraseSetTraditional = new TreeSet<>();
-  private NavigableSet<String> phraseSetSimplified = new TreeSet<>();
+  private final NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
+  private final Set<Integer> codePointSetTraditional = new HashSet<>();
+  private final Set<Integer> codePointSetSimplified = new HashSet<>();
+  private final Map<Integer, Integer> sortingRankFromCodePointTraditional = new HashMap<>();
+  private final Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
+  private final Set<Integer> commonCodePointSetTraditional = new HashSet<>();
+  private final Set<Integer> commonCodePointSetSimplified = new HashSet<>();
+  private final NavigableSet<String> phraseSetTraditional = new TreeSet<>();
+  private final NavigableSet<String> phraseSetSimplified = new TreeSet<>();
   
   private Set<Integer> unpreferredCodePointSet;
   private Map<Integer, Integer> sortingRankFromCodePoint;
