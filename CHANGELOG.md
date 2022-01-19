@@ -18,7 +18,7 @@
 
 ### Code improvement
 
-- Added unit testing for Mappy and Stringy
+- Added unit testing for Mappy, Stringy, and Valuey
 
 
 ## [v0.9.1]
