@@ -23,7 +23,7 @@
 - Added unit testing for Mappy, Stringy, and Valuey
 
 
-## [v0.9.1]
+## [v0.9.1] Bigger keys and behavioural tweaks (2022-01-17)
 
 ### Dependencies
 
