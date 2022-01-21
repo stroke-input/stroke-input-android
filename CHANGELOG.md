@@ -5,6 +5,8 @@
 
 ### Dependencies
 
+- Update stroke input data to [Conway Stroke Data v1.3.0]
+  (some Extension B dialectal terms)
 - Updated Material Components to v1.5.0
 
 ### Behaviour
@@ -321,6 +323,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.3.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.3.0
 [Conway Stroke Data v1.2.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.2.1
 [Conway Stroke Data v1.0.1]:
