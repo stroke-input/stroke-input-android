@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.2] Fixes and unit testing (2022-01-21)
+
 ### Dependencies
 
 - Update stroke input data to [Conway Stroke Data v1.3.0]
@@ -277,7 +280,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.2...HEAD
+[v0.9.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.1...v0.9.2
 [v0.9.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.0...v0.9.1
 [v0.9.0]:
