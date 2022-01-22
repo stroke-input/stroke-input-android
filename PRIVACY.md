@@ -11,3 +11,8 @@ In particular:
 - This app does not learn user input for candidate prediction.
   Candidates are generated deterministically;
   there is no model/AI to train.
+
+You are welcome and encouraged to inspect the source code at
+<<https://github.com/stroke-input/stroke-input-android>>.
+Should you find any vulnerabilities or privacy concerns,
+please report to <<yawnocdev@pm.me>>.
