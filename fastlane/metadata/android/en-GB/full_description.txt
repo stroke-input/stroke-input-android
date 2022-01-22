@@ -1,0 +1,13 @@
+<p>This keyboard app lets you input Chinese characters by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).</p>
+<p>It is a minimalist implementation with the following features:</p>
+<ul>
+  <li>Good character support (over 28k characters) including vernacular Cantonese</li>
+  <li>User preference for traditional or simplified characters</li>
+  <li>No ads</li>
+  <li>No permissions</li>
+  <li>No tracking or telemetry</li>
+  <li>Deterministic candidate generation which doesn't learn user input</li>
+</ul>
+<p>After installing the app, launch and follow the prompts to enable Stroke Input Method in your system settings. There will be a default warning shown — this is normal.</p>
+<p>This app is free and open-source software, licensed under the GNU General Public License v3.0 (GPL-3.0-only).</p>
+<p>You are welcome and encouraged to inspect the source code: <a href="https://github.com/stroke-input/stroke-input-android">https://github.com/stroke-input/stroke-input-android</a></p>
