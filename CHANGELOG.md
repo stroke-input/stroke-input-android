@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.3] Initial store release (2022-01-22)
+
 No code changes. Just some housekeeping for release on Play Store.
 
 
@@ -282,7 +285,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.2...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...HEAD
+[v0.9.3]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.2...v0.9.3
 [v0.9.2]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.1...v0.9.2
 [v0.9.1]:
