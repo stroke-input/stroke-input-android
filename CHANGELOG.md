@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+No code changes. Just some housekeeping for release on Play Store.
+
 
 ## [v0.9.2] Fixes and unit testing (2022-01-21)
 

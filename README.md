@@ -1,7 +1,6 @@
-# Stroke Input Method (Chinese keyboard) for Android
+# Stroke Input Method (筆畫輸入法) for Android
 
-A minimalist keyboard for Chinese-language enthusiasts
-who want to use the stroke input method (筆畫輸入法).
+A minimalist Chinese keyboard implementing the stroke input method (筆畫輸入法).
 
 
 ## License
