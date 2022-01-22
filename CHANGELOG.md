@@ -3,6 +3,101 @@
 
 ## [Unreleased]
 
+
+## [v0.9.2] Fixes and unit testing (2022-01-21)
+
+### Dependencies
+
+- Update stroke input data to [Conway Stroke Data v1.3.0]
+  (some Extension B dialectal terms)
+- Updated Material Components to v1.5.0
+
+### Behaviour
+
+- Moved loading of Stroke Data from `onCreateInputView` to `onCreate`
+  (fixes unnecessary reloading when screen is rotated during input)
+- Fixed API level 31+ fullscreen not working
+  after rotate whilst keyboard showing
+- Fixed enter key display text not updating properly
+- Wrapped duration debug logs with `if (BuildConfig.DEBUG)`
+
+### Code improvement
+
+- Added unit testing for Mappy, Stringy, and Valuey
+
+
+## [v0.9.1] Bigger keys and behavioural tweaks (2022-01-17)
+
+### Dependencies
+
+- Updated stroke input data to [Conway Stroke Data v1.2.1]
+  (成語動畫廊, HK place names, non-BMP characters in 通用规范汉字表, etc.)
+
+### Behaviour
+
+- Fixed swipe space bar for SYMBOLS_3 keyboard
+- Fixed unnecessary overdraw for candidate buttons
+- Increased (stroke sequence) prefix match candidate count
+- Removed restriction on phrase completion candidate count
+- Made backspace clear candidates in Termux and similar apps
+- Added fallback alert when openInBrowser fails
+- Added fallback alert when WebView fails
+
+### Appearance
+
+- Made candidate order dialog style consistent with overall style
+- Fixed initial focus on EditText for API 28+
+- Increased candidate button height and font size
+- Increased keyboard key heights
+- Increased keyboard height max fraction to 0.5
+- Increased key preview vertical margin
+- Improved About listings order/layout
+
+### Code improvement
+
+- Changed regex prefix removal to literal prefix removal where possible
+
+
+## [v0.9.0] Phrases complete (2022-01-11)
+
+### Dependencies
+
+- Updated stroke input data to [Conway Stroke Data v1.0.1]
+  (officially completes the stroke/phrase data set)
+- Updated keyboard font to [Stroke Input Font v2.0.1]
+  (name change; adds glyphs for tone markers etc.)
+
+### Layout
+
+- Rearranged placement of symbol keys
+- Improved Main Activity layout order
+- Added tone marker symbols keyboard
+- Added tortoise shell bracket keys (`U+3014` and `U+3015`)
+- Added Mainlandia quotation mark keys (`U+2018`, `U+2019`, `U+201C`, `U+201D`)
+- Added (non-fullwidth) middle dot key (`U+00B7`)
+- Added tone letter keys (`U+02E5` to `U+02E9`)
+- Removed useless key `U+`
+
+### Main Activity
+
+- Added stroke sequence examples to Help
+- Made minor improvements to About
+- Added numbering to Main Activity instructions for clarity
+- Added Privacy Policy button to Main Activity
+
+### Gradle
+
+- Migrated from aaptOptions to androidResources
+- Bumped Android Gradle Plugin to 7.0.4
+- Bumped targetSdkVersion to 31
+
+
+## [v0.8.0] Beta-ready (2021-11-29)
+
+- Actually implemented stroke input and candidates
+  (only the phrase set is incomplete)
+- Refactored `InputContainer` god-class into four separate classes
+  (`InputContainer`, `StrokeSequenceBar`, `CandidatesView`, `KeyboardView`)
 - Updated keyboard font to [Stroke Input Keyboard v1.8.1]
   (adds right-handed magnifying glass)
 - Changed search magnifying glass to right-handed
@@ -185,7 +280,15 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.7.5...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.2...HEAD
+[v0.9.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.1...v0.9.2
+[v0.9.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.0...v0.9.1
+[v0.9.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.8.0...v0.9.0
+[v0.8.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.7.5...v0.8.0
 [v0.7.5]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.7.4...v0.7.5
 [v0.7.4]:
@@ -225,6 +328,17 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.3.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.3.0
+[Conway Stroke Data v1.2.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.2.1
+[Conway Stroke Data v1.0.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
+
+[Stroke Input Font v2.0.1]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.1
+[Stroke Input Keyboard v1.9.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v1.9.0
 [Stroke Input Keyboard v1.8.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v1.8.1
 [Stroke Input Keyboard v1.7.0]:

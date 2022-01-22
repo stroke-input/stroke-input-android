@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2021–2022 Conway
+  Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
+  This is free software with NO WARRANTY etc. etc.,
+  see LICENSE or <https://www.gnu.org/licenses/>.
+-->
+<Button style="@style/CandidateButton">
+</Button>

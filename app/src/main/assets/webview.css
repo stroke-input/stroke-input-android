@@ -6,8 +6,8 @@
 }
 
 @font-face {
-  font-family: 'Stroke Input Keyboard';
-  src: url('stroke_input_keyboard.ttf') format('truetype');
+  font-family: 'Stroke Input Font';
+  src: url('StrokeInputFont.ttf') format('truetype');
 }
 
 body {
@@ -45,6 +45,9 @@ h2 {
 h3 {
   font-size: 1.1em;
 }
+h4 {
+  margin-bottom: 0;
+}
 
 html {
   background: grey;
@@ -55,7 +58,6 @@ html {
 kbd {
   border: 2px grey solid;
   display: inline-block;
-  font-family: 'Stroke Input Keyboard', sans-serif;
   margin: 0 0.15em;
   min-width: 1em;
   padding: 0.25em 0.3em 0.1em;
@@ -69,17 +71,19 @@ table {
   border-collapse: collapse;
   line-height: 1.4;
 }
-td {
+td, th {
   border: 1px solid white;
   padding: 0.5em;
 }
 
 .notice {
   border: 1px solid white;
+  margin-top: 0.5em;
   padding: 0.5em;
 }
 
 .stroke-key {
+  font-family: 'Stroke Input Font', sans-serif;
   color: var(--umbrella-yellow);
   font-weight: bold;
 }

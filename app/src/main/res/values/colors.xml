@@ -12,4 +12,11 @@
   <color name="space_bar_text">#FFA3A3A3</color>
   <color name="key_fill">#FF181818</color>
   <color name="enter_key_fill">#FF00CE00</color>
+  <!-- Stroke sequence bar -->
+  <color name="stroke_sequence_bar_text">@color/umbrella_yellow</color>
+  <color name="stroke_sequence_bar_fill">#8D000000</color>
+  <color name="stroke_sequence_bar_fill_fullscreen">#FF666666</color>
+  <!-- Candidate button -->
+  <color name="candidate_button_text">@color/umbrella_orange</color>
+  <color name="candidate_button_fill">@android:color/black</color>
 </resources>

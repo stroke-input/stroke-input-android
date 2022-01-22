@@ -25,18 +25,18 @@ import io.github.yawnoc.utilities.Valuey;
 /*
   A plane for key previews, to be displayed in a PopupWindow.
 */
-public class KeyPreviewPlane extends View {
-  
+public class KeyPreviewPlane
+  extends View
+{
   private static final int DISMISSAL_DELAY_MILLISECONDS = 20;
   
   // Properties
   private int width;
   private int height;
   private int keyboardHeight;
-  private int popupBufferZoneHeight;
   private final List<Key> keyList = new ArrayList<>();
   private Key latestKey;
-  private int shiftMode = InputContainer.SHIFT_DISABLED;
+  private int shiftMode = KeyboardView.SHIFT_DISABLED;
   
   // Delayed dismissal
   private Handler dismissalHandler;
@@ -47,29 +47,31 @@ public class KeyPreviewPlane extends View {
   private Paint keyPreviewBorderPaint;
   private Paint keyPreviewTextPaint;
   
-  public KeyPreviewPlane(final Context context) {
-    
+  public KeyPreviewPlane(final Context context)
+  {
     super(context);
     
-    initialiseDismissing();
+    initialiseDismissalHandler();
     initialiseDrawing(context);
   }
   
-  private void initialiseDismissing() {
-    
+  private void initialiseDismissalHandler()
+  {
     dismissalHandler =
-      new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message message) {
-          Key key = (Key) message.obj;
-          keyList.remove(key);
-          invalidate();
-        }
-      };
+            new Handler(Looper.getMainLooper())
+            {
+              @Override
+              public void handleMessage(Message message)
+              {
+                Key key = (Key) message.obj;
+                keyList.remove(key);
+                invalidate();
+              }
+            };
   }
   
-  private void initialiseDrawing(final Context context) {
-    
+  private void initialiseDrawing(final Context context)
+  {
     keyPreviewRectangle = new Rect();
     
     keyPreviewFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -80,10 +82,7 @@ public class KeyPreviewPlane extends View {
     
     keyPreviewTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyPreviewTextPaint.setTypeface(
-      Typeface.createFromAsset(
-        context.getAssets(),
-        InputContainer.KEYBOARD_FONT
-      )
+      Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME)
     );
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
   }
@@ -91,122 +90,97 @@ public class KeyPreviewPlane extends View {
   public void updateDimensions(
     final int width,
     final int height,
-    final int keyboardHeight,
-    final int popupBufferZoneHeight
+    final int keyboardHeight
   )
   {
     this.width = width;
     this.height = height;
     this.keyboardHeight = keyboardHeight;
-    this.popupBufferZoneHeight = popupBufferZoneHeight;
   }
   
-  public void updateShiftMode(final int shiftMode) {
+  public void updateShiftMode(final int shiftMode)
+  {
     this.shiftMode = shiftMode;
     invalidate();
   }
   
-  public void show(final Key key) {
-    if (key != null && !keyList.contains(key) && key.isPreviewable) {
+  public void showPreviewAt(final Key key)
+  {
+    if (key != null && !keyList.contains(key) && key.isPreviewable)
+    {
       keyList.add(key);
     }
     latestKey = key;
     invalidate();
   }
   
-  public void move(final Key key) {
+  public void movePreviewTo(final Key key)
+  {
     keyList.remove(latestKey);
-    show(key);
+    showPreviewAt(key);
   }
   
-  public void dismissLatest() {
+  public void dismissLatest()
+  {
     Message dismissalMessage = new Message();
     dismissalMessage.obj = latestKey;
-    dismissalHandler.sendMessageDelayed(
-      dismissalMessage,
-      DISMISSAL_DELAY_MILLISECONDS
-    );
+    dismissalHandler.sendMessageDelayed(dismissalMessage, DISMISSAL_DELAY_MILLISECONDS);
     latestKey = null;
   }
   
-  public void dismissAllImmediately() {
+  public void dismissAllImmediately()
+  {
     keyList.clear();
     latestKey = null;
     invalidate();
   }
   
   @Override
-  public void onDraw(final Canvas canvas) {
-    
-    for (final Key key : keyList) {
-      
-      final int keyPreviewWidth =
-        (int) (key.previewMagnification * key.width);
-      final int keyPreviewHeight =
-        (int) (key.previewMagnification * key.height);
+  public void onDraw(final Canvas canvas)
+  {
+    for (final Key key : keyList)
+    {
+      final int keyPreviewWidth = (int) (key.previewMagnification * key.width);
+      final int keyPreviewHeight = (int) (key.previewMagnification * key.height);
       
       keyPreviewRectangle.set(0, 0, keyPreviewWidth, keyPreviewHeight);
       
-      keyPreviewFillPaint.setColor(
-        InputContainer.toPressedColour(key.fillColour)
-      );
+      keyPreviewFillPaint.setColor(KeyboardView.toPressedColour(key.fillColour));
       keyPreviewBorderPaint.setColor(key.borderColour);
       keyPreviewBorderPaint.setStrokeWidth(key.borderThickness);
       
-      final float keyPreviewTextSize =
-        key.previewMagnification * key.textSize;
+      final float keyPreviewTextSize = key.previewMagnification * key.textSize;
       
       keyPreviewTextPaint.setColor(key.textColour);
       keyPreviewTextPaint.setTextSize(keyPreviewTextSize);
       
-      final String keyPreviewDisplayText =
-        key.shiftAwareDisplayText(shiftMode);
+      final String keyPreviewDisplayText = key.shiftAwareDisplayText(shiftMode);
       
-      final int keyPreviewTextOffsetX =
-        (int) (key.previewMagnification * key.textOffsetX);
-      final int keyPreviewTextOffsetY =
-        (int) (key.previewMagnification * key.textOffsetY);
+      final int keyPreviewTextOffsetX = (int) (key.previewMagnification * key.textOffsetX);
+      final int keyPreviewTextOffsetY = (int) (key.previewMagnification * key.textOffsetY);
       
-      final float keyPreviewTextX = (
-        keyPreviewWidth / 2f
-          + keyPreviewTextOffsetX
-      );
-      final float keyPreviewTextY = (
-        (
-          keyPreviewHeight
-            - keyPreviewTextPaint.ascent()
-            - keyPreviewTextPaint.descent()
-        ) / 2f
-          + keyPreviewTextOffsetY
-      );
+      final float keyPreviewTextX = keyPreviewWidth / 2f + keyPreviewTextOffsetX;
+      final float keyPreviewTextY =
+              (keyPreviewHeight - keyPreviewTextPaint.ascent() - keyPreviewTextPaint.descent()) / 2f
+                +
+              keyPreviewTextOffsetY;
       
       final int previewX =
-        (int) Valuey.clipValueToRange(
-          key.x - (keyPreviewWidth - key.width) / 2f,
-          key.borderThickness,
-          this.width - keyPreviewWidth - key.borderThickness
-        );
-      final int previewY = (
-        key.y
-          - keyPreviewHeight - key.previewMarginY
-          + this.height - keyboardHeight - popupBufferZoneHeight
-      );
+              (int) Valuey.clipValueToRange(
+                key.x - (keyPreviewWidth - key.width) / 2f,
+                key.borderThickness,
+                this.width - keyPreviewWidth - key.borderThickness
+              );
+      final int previewY =
+              key.y
+                - keyPreviewHeight - key.previewMarginY
+                + this.height - keyboardHeight;
       
       canvas.translate(previewX, previewY);
-      
       canvas.drawRect(keyPreviewRectangle, keyPreviewFillPaint);
       canvas.drawRect(keyPreviewRectangle, keyPreviewBorderPaint);
-      canvas.drawText(
-        keyPreviewDisplayText,
-        keyPreviewTextX,
-        keyPreviewTextY,
-        keyPreviewTextPaint
-      );
-      
+      canvas.drawText(keyPreviewDisplayText, keyPreviewTextX, keyPreviewTextY, keyPreviewTextPaint);
       canvas.translate(-previewX, -previewY);
-      
     }
-    
   }
-  
 }

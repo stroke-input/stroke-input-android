@@ -1,34 +1,40 @@
 <resources>
   <!-- Main activity -->
   <string name="app_name">Stroke Input Method</string>
-  <string name="text__main_activity__welcome">
-    Welcome to Stroke Input Method!
-  </string>
+  <string name="label__main_activity__welcome">Welcome to Stroke Input Method!</string>
   <string name="label__main_activity__source_code_button">Source code</string>
   <string name="label__main_activity__help_button">Help</string>
   <string name="label__main_activity__about_button">About</string>
+  <string name="label__main_activity__privacy_button">Privacy Policy</string>
   <string name="text__main_activity__input_method_settings">
-    If you have installed Stroke Input Method for the first time,
+    1. If you have installed Stroke Input Method for the first time,
     you must manually enable it in the system settings before it can be used:
   </string>
-  <string name="label__main_activity__input_method_settings_button">
-    Input method settings
+  <string name="label__main_activity__input_method_settings_button">Input method settings</string>
+  <string name="text__main_activity__change_keyboard">
+    2. If your existing input method provides no means of changing keyboards:
   </string>
-  <string name="text__main_activity__switch_keyboard">
-    If your existing input method provides no means of switching keyboards:
+  <string name="label__main_activity__change_keyboard_button">Change keyboard</string>
+  <string name="text__main_activity__candidate_order">
+    3. Candidate order:
   </string>
-  <string name="label__main_activity__switch_keyboard_button">
-    Switch keyboard
-  </string>
-  <string name="hint__main_activity__test_input">
-    Test input here
-  </string>
-  <string name="label__main_activity__return">
-    Return
-  </string>
+  <string name="label__main_activity__candidate_order">Candidate order</string>
+  <string name="label__main_activity__traditional_first">Traditional first</string>
+  <string name="label__main_activity__simplified_first">Simplified first</string>
+  <string name="hint__main_activity__test_input">4. Test input here</string>
+  <string name="label__main_activity__return">Return</string>
+  <!-- Error messages -->
+  <string name="message__error__browser">Could not launch a browser and navigate to &lt;%1$s&gt;.</string>
+  <string name="message__error__webview">Could not launch WebView.</string>
   <!-- Asset file names for localisation -->
   <string name="file_name__help_html">help.html</string>
   <string name="file_name__about_html">about.html</string>
+  <!-- CJK strokes: U+31D0, U+31D1, U+31D2, U+31D4, U+31D6 -->
+  <string name="stroke_1" translatable="false">㇐</string> <!-- STROKE H -->
+  <string name="stroke_2" translatable="false">㇑</string> <!-- STROKE S -->
+  <string name="stroke_3" translatable="false">㇒</string> <!-- STROKE P -->
+  <string name="stroke_4" translatable="false">㇔</string> <!-- STROKE D -->
+  <string name="stroke_5" translatable="false">㇖</string> <!-- STROKE HG -->
   <!-- Backspace: U+232B ERASE TO THE LEFT -->
   <string name="display_text__backspace" translatable="false">⌫</string>
   <!-- Switch to strokes: U+31D0, U+31D1, U+31D2 -->

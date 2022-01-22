@@ -15,16 +15,16 @@
     <!-- Round brackets: U+FF08, U+FF09 -->
     <Key app:keyValueText="（" />
     <Key app:keyValueText="）" />
-    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
-    <Key app:keyValueText="【" />
-    <Key app:keyValueText="】" />
-    <Key app:keyValueText="〖" />
-    <Key app:keyValueText="〗" />
     <!-- Corner brackets: U+300C to U+300F -->
     <Key app:keyValueText="「" />
     <Key app:keyValueText="」" />
     <Key app:keyValueText="『" />
     <Key app:keyValueText="』" />
+    <!-- Lenticular brackets: U+3010, U+3011, U+3016, U+3017 -->
+    <Key app:keyValueText="【" />
+    <Key app:keyValueText="】" />
+    <Key app:keyValueText="〖" />
+    <Key app:keyValueText="〗" />
   </Row>
   <Row>
     <!-- U+FF1A FULLWIDTH COLON -->
@@ -32,38 +32,14 @@
       app:keyValueText="："
       app:keyWidth="@dimen/key_width__strokes_stroke"
     />
-    <!-- U+301C WAVE DASH -->
-    <Key
-      app:keyValueText="〜"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
-    <Key
-      app:keyValueText="々"
-      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
-      app:keyWidth="@dimen/key_width__strokes_stroke"
-    />
-    <!-- Angle brackets: U+3008 to U+300B -->
-    <Key app:keyValueText="〈" />
-    <Key app:keyValueText="〉" />
-    <Key app:keyValueText="《" />
-    <Key app:keyValueText="》" />
-  </Row>
-  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
-    <!-- Switch to strokes symbols 2 keyboard -->
-    <Key
-      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_2"
-      app:keyDisplayText="1/2"
-      app:keyTextSize="@dimen/font_size__switch_key"
-      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
-      app:keyIsPreviewable="false"
-    />
-    <!-- U+2026 HORIZONTAL ELLIPSIS -->
-    <Key app:keyValueText="…" />
-    <!-- U+3000 IDEOGRAPHIC SPACE -->
-    <Key app:keyValueText="　" />
-    <!-- U+30FB KATAKANA MIDDLE DOT (because it is fullwidth) -->
-    <Key app:keyValueText="・" />
+    <!-- Quotation marks: U+2018, U+2019, U+201C, U+201D -->
+    <Key app:keyValueText="‘" />
+    <Key app:keyValueText="’" />
+    <Key app:keyValueText="“" />
+    <Key app:keyValueText="”" />
+    <!-- Tortoise shell brackets: U+3014, U+3015 -->
+    <Key app:keyValueText="〔" />
+    <Key app:keyValueText="〕" />
     <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
@@ -71,6 +47,33 @@
       app:keyIsRepeatable="true"
       app:keyTextSize="@dimen/font_size__strokes_backspace"
       app:keyIsPreviewable="false"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
+  </Row>
+  <Row>
+    <!-- Switch to strokes symbols 2 keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_2"
+      app:keyDisplayText="1/3"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Angle brackets: U+3008 to U+300B -->
+    <Key app:keyValueText="〈" />
+    <Key app:keyValueText="〉" />
+    <Key app:keyValueText="《" />
+    <Key app:keyValueText="》" />
+    <!-- U+301C WAVE DASH -->
+    <Key
+      app:keyValueText="〜"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
+    />
+    <!-- U+2026 HORIZONTAL ELLIPSIS -->
+    <Key
+      app:keyValueText="…"
+      app:keyWidth="@dimen/key_width__strokes_stroke"
     />
   </Row>
   <Row
@@ -111,7 +114,6 @@
     <!-- Enter key -->
     <Key
       app:keyValueText="ENTER"
-      app:keyIsLongPressable="true"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyTextOffsetY="@dimen/baseline_correction__strokes_enter_key"
       app:keyFillColour="@color/enter_key_fill"

@@ -1,5 +1,5 @@
-{+ links.txt +}
-{+ keys.txt +}
+{+ links.inc +}
+{+ keys.inc +}
 
 %%
   %title Help
@@ -31,6 +31,34 @@
 ''''
 
 
+## Examples ##
+
+''''
+|^
+==
+  ; Character
+  ; Stroke sequence
+|:{lang=zh-Hant}
+==
+  , 天
+  ,{.stroke-key}
+    \stroke-1\stroke-1\stroke-3\stroke-4
+==
+  , 下
+  ,{.stroke-key}
+    \stroke-1\stroke-2\stroke-4
+==
+  , 為
+  ,{.stroke-key}
+    \stroke-4\stroke-3\stroke-5\stroke-5\stroke-5\
+    \stroke-4\stroke-4\stroke-4\stroke-4
+==
+  , 公
+  ,{.stroke-key}
+    \stroke-3\stroke-4\stroke-5\stroke-4
+''''
+
+
 ## Miscellaneous ##
 
 ''''
@@ -40,9 +68,6 @@
 ==
   , Long press \space-bar-en
   , Change to other keyboard
-==
-  , Long press \enter-key
-  , Testing use only
 ''''
 
 

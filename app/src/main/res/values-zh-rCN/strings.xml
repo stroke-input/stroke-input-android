@@ -1,0 +1,28 @@
+<resources>
+  <!-- Main activity -->
+  <string name="app_name">笔画输入法</string>
+  <string name="label__main_activity__welcome">欢迎使用笔画输入法！</string>
+  <string name="label__main_activity__source_code_button">源码</string>
+  <string name="label__main_activity__help_button">说明</string>
+  <string name="label__main_activity__about_button">关于</string>
+  <string name="label__main_activity__privacy_button">隐私政策</string>
+  <string name="text__main_activity__input_method_settings">1. 若首次安装笔画输入法，必先在系统设置人手启动，方能使用：</string>
+  <string name="label__main_activity__input_method_settings_button">输入法设置</string>
+  <string name="text__main_activity__change_keyboard">2. 若现有的输入法没办法转键盘：</string>
+  <string name="label__main_activity__change_keyboard_button">转键盘</string>
+  <string name="text__main_activity__candidate_order">3. 字选次序：</string>
+  <string name="label__main_activity__candidate_order">字选次序</string>
+  <string name="label__main_activity__traditional_first">繁体排在前面</string>
+  <string name="label__main_activity__simplified_first">简体排在前面</string>
+  <string name="hint__main_activity__test_input">4. 在此测试输入</string>
+  <string name="label__main_activity__return">返回</string>
+  <!-- Error messages -->
+  <string name="message__error__browser">无法开启浏览器前往&lt;%1$s&gt;。</string>
+  <string name="message__error__webview">无法开启 WebView.</string>
+  <!-- Asset file names for localisation -->
+  <string name="file_name__help_html">help-zh-Hans-CN.html</string>
+  <string name="file_name__about_html">about-zh-Hans-CN.html</string>
+  <!-- Space bar display text (triangles: U+25C0, U+25B6) -->
+  <string name="display_text__qwerty_space_bar">◀ 英文 ▶</string>
+  <string name="display_text__strokes_space_bar">◀ 中文 ▶</string>
+</resources>

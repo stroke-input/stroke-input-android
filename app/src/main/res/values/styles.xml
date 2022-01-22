@@ -4,22 +4,52 @@
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:textSize">@dimen/font_size__main_activity</item>
-    <item name="android:paddingTop">
-      @dimen/padding_top__main_activity__text
-    </item>
-    <item name="android:paddingBottom">
-      @dimen/padding_bottom__main_activity__text
-    </item>
+    <item name="android:paddingTop">@dimen/padding_top__main_activity__text</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:paddingBottom">@dimen/padding_bottom__main_activity__text</item>
   </style>
   <style name="MainActivityButton">
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_width">wrap_content</item>
-    <item name="android:textSize">
-      @dimen/font_size__main_activity__button
-    </item>
+    <item name="android:textSize">@dimen/font_size__main_activity__button</item>
+    <item name="android:insetTop">@dimen/inset_vertical__main_activity__button</item>
+    <item name="android:insetBottom">@dimen/inset_vertical__main_activity__button</item>
+    <item name="android:minHeight">@dimen/min_height__main_activity__button</item>
+  </style>
+  <style name="MainActivityInput">
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:textSize">@dimen/font_size__main_activity</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__main_activity__text</item>
+    <item name="android:minHeight">@dimen/min_height__main_activity__input</item>
+  </style>
+  <style name="CandidateButton">
+    <item name="android:layout_height">@dimen/height__candidate_button</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:textColor">@color/candidate_button_text</item>
+    <item name="android:textSize">@dimen/font_size__candidate_button</item>
+    <item name="android:background">@color/candidate_button_fill</item>
+    <item name="android:minWidth">@dimen/min_width__candidate_button</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__candidate_button</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__candidate_button</item>
+  </style>
+  <style name="StrokeInputDialogButton" parent="Theme.StrokeInput">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:textSize">@dimen/font_size__dialog_button</item>
+    <item name="android:padding">@dimen/padding__dialog_button</item>
   </style>
   <style name="StrokeInputAlert" parent="Theme.StrokeInput">
     <item name="android:windowBackground">@color/very_dark_grey</item>
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
+  <style name="StrokeInputMessage" parent="Theme.StrokeInput">
+    <item name="android:textSize">@dimen/font_size__error_message</item>
+    <item name="android:paddingLeft">@dimen/padding_horizontal__error_message</item>
+    <item name="android:paddingRight">@dimen/padding_horizontal__error_message</item>
+    <item name="android:paddingTop">@dimen/padding_top__error_message</item>
   </style>
   <style name="StrokeInputText" parent="android:Widget.EditText">
     <item name="android:textColor">?android:textColor</item>

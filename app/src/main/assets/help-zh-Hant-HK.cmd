@@ -1,6 +1,6 @@
-{+ links.txt +}
-{+ lang.txt +}
-{+ keys.txt +}
+{+ links.inc +}
+{+ lang.inc +}
+{+ keys.inc +}
 
 %%
   %lang zh-Hant-HK
@@ -33,6 +33,34 @@
 ''''
 
 
+## 例子 ##
+
+''''
+|^
+==
+  ; 字
+  ; 筆順
+|:
+==
+  , 天
+  ,{.stroke-key}
+    \stroke-1\stroke-1\stroke-3\stroke-4
+==
+  , 下
+  ,{.stroke-key}
+    \stroke-1\stroke-2\stroke-4
+==
+  , 為
+  ,{.stroke-key}
+    \stroke-4\stroke-3\stroke-5\stroke-5\stroke-5\
+    \stroke-4\stroke-4\stroke-4\stroke-4
+==
+  , 公
+  ,{.stroke-key}
+    \stroke-3\stroke-4\stroke-5\stroke-4
+''''
+
+
 ## 雜項 ##
 
 ''''
@@ -41,10 +69,7 @@
   , 轉語言
 ==
   , 長撳 \space-bar-zh
-  , 轉其他鍵盤
-==
-  , 長撳 \enter-key
-  , 測試專用
+  , 轉至其他鍵盤
 ''''
 
 

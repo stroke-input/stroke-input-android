@@ -1,4 +1,4 @@
-{+ links.txt +}
+{+ links.inc +}
 
 %%
   %title About
@@ -9,10 +9,11 @@
 # Stroke Input Method (\stroke-input-version) #
 
 ----
-__[Stroke Input Method]__ is free software with ABSOLUTELY NO WARRANTY.
+__[Stroke Input Method]__ is free and open-source software
+with ABSOLUTELY NO WARRANTY.
 ----
 ----{.notice}
-©~2021~Conway \+
+©~\stroke-input-year Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----
@@ -30,16 +31,39 @@ Licensed under Apache-2.0, see \Apache-2.0. \+
 
 ### [Material Components For Android] (\material-version) ###
 ----{.notice}
-©~2021 The Android Open Source Project \+
+©~\material-year The Android Open Source Project \+
 Licensed under Apache-2.0, see \Apache-2.0. \+
+----
+
+
+## Stroke input data ##
+
+### [Conway Stroke Data] (\stroke-data-version) ###
+
+#### `sequence-characters.txt` ####
+----{.notice}
+©~\sequence-characters-year Conway \+
+Licensed under CC-BY-4.0, see \CC-BY-4.0. \+
+----
+
+####
+  `characters-traditional.txt` \+
+  `characters-simplified.txt` \+
+  `phrases-traditional.txt` \+
+  `phrases-simplified.txt` \+
+  `ranking-traditional.txt` \+
+  `ranking-simplified.txt` \+
+####
+----{.notice}
+Released into the Public Domain, see \CC0.
 ----
 
 
 ## Keyboard font ##
 
-### [Stroke Input Keyboard] (\keyboard-font-version) ###
+### [Stroke Input Font] (\stroke-font-version) ###
 ----{.notice}
-©~2021 Conway \+
+©~\stroke-font-year Conway \+
 Licensed under GPL-3.0-only, see \GPL-3.0-only. \+
 ----
 ----

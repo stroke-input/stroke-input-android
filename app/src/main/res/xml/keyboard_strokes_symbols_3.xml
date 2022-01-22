@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height__strokes"
+  app:keyWidth="@dimen/key_width__strokes_stroke"
+  app:keyTextSize="@dimen/font_size__strokes"
+  app:keyTextOffsetY="@dimen/baseline_correction__strokes"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row
+    app:keyHeight="@dimen/key_height__strokes_digit"
+    app:keyTextSize="@dimen/font_size__strokes_digit"
+    app:keyTextOffsetY="@dimen/baseline_correction__strokes_digit"
+  >
+    <!-- Ideographic description characters: U+2FF0 to U+2FF3 -->
+    <Key app:keyValueText="⿰" />
+    <Key app:keyValueText="⿱" />
+    <Key app:keyValueText="⿲" />
+    <Key app:keyValueText="⿳" />
+    <!-- U+3005 IDEOGRAPHIC ITERATION MARK -->
+    <Key
+      app:keyValueText="々"
+      app:keyTextSize="@dimen/font_size__strokes_ditto_key"
+    />
+  </Row>
+  <Row>
+    <!-- Ideographic description characters: U+2FF4 to U+2FF7 -->
+    <Key app:keyValueText="⿴" />
+    <Key app:keyValueText="⿵" />
+    <Key app:keyValueText="⿶" />
+    <Key app:keyValueText="⿷" />
+    <!-- Backspace -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="@string/display_text__backspace"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__strokes_backspace"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+  <Row>
+    <!-- Switch to strokes symbols 1 keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES_SYMBOLS_1"
+      app:keyDisplayText="3/3"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Ideographic description characters: U+2FF8 to U+2FFB -->
+    <Key app:keyValueText="⿸" />
+    <Key app:keyValueText="⿹" />
+    <Key app:keyValueText="⿺" />
+    <Key app:keyValueText="⿻" />
+  </Row>
+  <Row
+    app:keyHeight="@dimen/key_height__strokes_space_bar"
+    app:keyWidth="@dimen/key_width__strokes_stroke"
+  >
+    <!-- Switch to strokes keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_STROKES"
+      app:keyDisplayText="@string/display_text__switch_to_strokes"
+      app:keyTextColour="@color/stroke_key_text"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Comma -->
+    <Key
+      app:keyValueText="@string/value_text__strokes_comma"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Space bar -->
+    <Key
+      app:keyValueText="SPACE"
+      app:keyDisplayText="@string/display_text__strokes_space_bar"
+      app:keyIsLongPressable="true"
+      app:keyIsSwipeable="true"
+      app:keyTextSize="@dimen/font_size__space_bar"
+      app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width__space_bar"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Full stop -->
+    <Key
+      app:keyValueText="@string/value_text__strokes_full_stop"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Enter key -->
+    <Key
+      app:keyValueText="ENTER"
+      app:keyTextSize="@dimen/font_size__enter_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__strokes_enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+</Keyboard>

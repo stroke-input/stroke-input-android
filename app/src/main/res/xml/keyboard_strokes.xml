@@ -27,49 +27,27 @@
   <Row app:keyWidth="@dimen/key_width__strokes_stroke">
     <!-- U+FF1B FULLWIDTH SEMICOLON -->
     <Key app:keyValueText="；" />
-    <!-- U+31D0 CJK STROKE H -->
+    <!-- Stroke 1 -->
     <Key
       app:keyValueText="STROKE_1"
-      app:keyDisplayText="㇐"
+      app:keyDisplayText="@string/stroke_1"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- U+31D1 CJK STROKE S -->
+    <!-- Stroke 2 -->
     <Key
       app:keyValueText="STROKE_2"
-      app:keyDisplayText="㇑"
+      app:keyDisplayText="@string/stroke_2"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- U+31D2 CJK STROKE P -->
+    <!-- Stroke 3 -->
     <Key
       app:keyValueText="STROKE_3"
-      app:keyDisplayText="㇒"
+      app:keyDisplayText="@string/stroke_3"
       app:keyTextSize="@dimen/font_size__strokes_stroke"
       app:keyTextColour="@color/stroke_key_text"
     />
-    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
-    <Key app:keyValueText="！" />
-  </Row>
-  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
-    <!-- U+3001 IDEOGRAPHIC COMMA -->
-    <Key app:keyValueText="、" />
-    <!-- U+31D4 CJK STROKE D -->
-    <Key
-      app:keyValueText="STROKE_4"
-      app:keyDisplayText="㇔"
-      app:keyTextSize="@dimen/font_size__strokes_stroke"
-      app:keyTextColour="@color/stroke_key_text"
-    />
-    <!-- U+31D6 CJK STROKE HG -->
-    <Key
-      app:keyValueText="STROKE_5"
-      app:keyDisplayText="㇖"
-      app:keyTextSize="@dimen/font_size__strokes_stroke"
-      app:keyTextColour="@color/stroke_key_text"
-    />
-    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
-    <Key app:keyValueText="？" />
     <!-- Backspace -->
     <Key
       app:keyValueText="BACKSPACE"
@@ -78,6 +56,28 @@
       app:keyTextSize="@dimen/font_size__strokes_backspace"
       app:keyIsPreviewable="false"
     />
+  </Row>
+  <Row app:keyWidth="@dimen/key_width__strokes_stroke">
+    <!-- U+3001 IDEOGRAPHIC COMMA -->
+    <Key app:keyValueText="、" />
+    <!-- Stroke 4 -->
+    <Key
+      app:keyValueText="STROKE_4"
+      app:keyDisplayText="@string/stroke_4"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
+      app:keyTextColour="@color/stroke_key_text"
+    />
+    <!-- Stroke 5 -->
+    <Key
+      app:keyValueText="STROKE_5"
+      app:keyDisplayText="@string/stroke_5"
+      app:keyTextSize="@dimen/font_size__strokes_stroke"
+      app:keyTextColour="@color/stroke_key_text"
+    />
+    <!-- U+FF1F FULLWIDTH QUESTION MARK -->
+    <Key app:keyValueText="？" />
+    <!-- U+FF01 FULLWIDTH EXCLAMATION MARK -->
+    <Key app:keyValueText="！" />
   </Row>
   <Row
     app:keyHeight="@dimen/key_height__strokes_space_bar"
@@ -116,7 +116,6 @@
     <!-- Enter key -->
     <Key
       app:keyValueText="ENTER"
-      app:keyIsLongPressable="true"
       app:keyTextSize="@dimen/font_size__enter_key"
       app:keyTextOffsetY="@dimen/baseline_correction__strokes_enter_key"
       app:keyFillColour="@color/enter_key_fill"

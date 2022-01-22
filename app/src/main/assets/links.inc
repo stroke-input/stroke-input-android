@@ -1,12 +1,16 @@
 {: \GPL-3.0-only : b<https://www.gnu.org/licenses/> :}
 {: \Apache-2.0 : b<https://www.apache.org/licenses/LICENSE-2.0.html> :}
+{: \CC-BY-4.0 : b<https://creativecommons.org/licenses/by/4.0/> :}
+{: \CC0 : b<https://creativecommons.org/publicdomain/zero/1.0/> :}
 
-{: \stroke-input-version: v0.7.5 :}
+{: \stroke-input-version: v0.9.2 :}
+{: \stroke-input-year: 2021--2022 :}
 {: \stroke-input-url :
   https://github.com/stroke-input/stroke-input-android
 :}
 @@[Stroke Input Method] \stroke-input-url @@
 @@[筆畫輸入法] \stroke-input-url @@
+@@[笔画输入法] \stroke-input-url @@
 
 @@[`Keyboard.java`]
   https://android.googlesource.com/platform/frameworks/base/+/\
@@ -19,13 +23,21 @@
     core/java/android/inputmethodservice/KeyboardView.java
 @@
 
-{: \material-version : v1.4.0 :}
+{: \material-version : v1.5.0 :}
+{: \material-year : 2021 :}
 @@[Material Components For Android]
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
-{: \keyboard-font-version : v1.8.1 :}
-@@[Stroke Input Keyboard]
+{: \stroke-data-version : v1.3.0 :}
+{: \sequence-characters-year : 2021--2022 :}
+@@[Conway Stroke Data]
+  https://github.com/stroke-input/stroke-input-data
+@@
+
+{: \stroke-font-version : v2.0.1 :}
+{: \stroke-font-year : 2021--2022 :}
+@@[Stroke Input Font]
   https://github.com/stroke-input/stroke-input-font
 @@
 
