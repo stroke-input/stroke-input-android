@@ -4,6 +4,9 @@ A minimalist Chinese keyboard implementing the stroke input method (筆畫輸入
 
 ![Screenshot of the keyboard during stroke input.](stroke-input-screenshot.png)
 
+- Google Play: currently "in review".
+- F-Droid: coming soon
+
 
 ## License
 
