@@ -5,12 +5,16 @@ by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).
 
 ![Screenshot of the keyboard during stroke input.](stroke-input-screenshot.png)
 
-Features:
+
+## Features
 
 * Good character support (over 28k characters) including vernacular Cantonese
 * User preference for traditional or simplified characters
 * No permissions, tracking, etc.
 * Deterministic candidate generation which doesn't learn user input
+
+
+## Releases
 
 [
   <img
