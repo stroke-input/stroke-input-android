@@ -1,8 +1,16 @@
 # Stroke Input Method (筆畫輸入法) for Android
 
-A minimalist Chinese keyboard implementing the stroke input method (筆畫輸入法).
+A minimalist Chinese keyboard where you input characters
+by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).
 
 ![Screenshot of the keyboard during stroke input.](stroke-input-screenshot.png)
+
+Features:
+
+* Good character support (over 28k characters) including vernacular Cantonese
+* User preference for traditional or simplified characters
+* No permissions, tracking, etc.
+* Deterministic candidate generation which doesn't learn user input
 
 [
   <img
