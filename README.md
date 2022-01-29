@@ -1,5 +1,7 @@
 # Stroke Input Method (筆畫輸入法) for Android
 
+![App logo.](app/src/main/res/mipmap-hdpi/icon_launcher.png)
+
 A minimalist Chinese keyboard where you input characters
 by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).
 
