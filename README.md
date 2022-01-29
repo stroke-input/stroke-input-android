@@ -18,14 +18,20 @@ by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).
 
 [
   <img
+    alt="Get it on F-Droid."
+    src="https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on.png"
+    width="240"
+    height="auto">
+][f-droid]
+[
+  <img
     alt="Get it on Google Play."
     src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
     width="240"
     height="auto">
 ][google-play]
 
-(F-Droid: coming soon)
-
+[f-droid]: https://f-droid.org/en/packages/io.github.yawnoc.strokeinput/
 [google-play]: https://play.google.com/store/apps/details?id=io.github.yawnoc.strokeinput
 
 
