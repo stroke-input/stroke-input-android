@@ -7,6 +7,10 @@ by typing stroke sequences (e.g. 天 is ㇐㇐㇒㇔).
 
 ![Screenshot of the keyboard during stroke input.](stroke-input-screenshot.png)
 
+Uses [Conway Stroke Data].
+
+[Conway Stroke Data]: https://github.com/stroke-input/stroke-input-data
+
 
 ## Features
 
