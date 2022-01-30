@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Simplified privacy policy
+
 
 ## [v0.9.3] Initial store release (2022-01-22)
 
