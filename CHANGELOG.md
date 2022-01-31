@@ -8,6 +8,18 @@
 - Simplified privacy policy
 - Added fastlane (with some translation)
 
+**NOTE:**
+F-Droid fastlane changelog `26.txt`
+has changes [c23d584a57...v0.9.4] rather than [v0.9.3...v0.9.4]
+because there was an issue with fastlane not detecting en-GB,
+see <<https://gitlab.com/yawnoc/f-droid-data/-/commit/2fbdc28f6f>>
+and <<https://gitlab.com/fdroid/fdroidserver/-/issues/813#note_822427606>>.
+
+[c23d584a57...v0.9.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/c23d584a57...v0.9.4
+[v0.9.3...v0.9.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...v0.9.4
+
 
 ## [v0.9.3] Initial store release (2022-01-22)
 
