@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.4.0]
+  (adds phrases 功架, 安裝)
 - Simplified privacy policy
 - Added fastlane (with some translation)
 
@@ -338,6 +340,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.4.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.4.0
 [Conway Stroke Data v1.3.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.3.0
 [Conway Stroke Data v1.2.1]:
