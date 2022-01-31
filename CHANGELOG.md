@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.4] (26) 安裝功架 (2022-01-31)
+
 - Updated stroke input data to [Conway Stroke Data v1.4.0]
   (adds phrases 功架, 安裝)
 - Simplified privacy policy
@@ -302,7 +305,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.4...HEAD
+[v0.9.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...v0.9.4
 [v0.9.3]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.2...v0.9.3
 [v0.9.2]:
