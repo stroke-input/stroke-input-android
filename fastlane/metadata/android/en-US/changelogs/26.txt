@@ -1,0 +1,2 @@
+* Added phrases 功架, 安裝
+* Added fastlane partial translation to (hopefully) make app appear in Latest
