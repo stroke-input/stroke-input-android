@@ -14,4 +14,3 @@
 此鍵盤為自由開源軟件，以 GPL-3.0-only 授權。
 
 歡迎並鼓勵考察原碼： https://github.com/stroke-input/stroke-input-android
-
