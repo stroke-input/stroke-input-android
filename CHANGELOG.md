@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Simplified privacy policy
+- Added fastlane (with some translation)
 
 
 ## [v0.9.3] Initial store release (2022-01-22)
