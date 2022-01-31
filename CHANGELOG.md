@@ -21,12 +21,12 @@ and <<https://gitlab.com/fdroid/fdroidserver/-/issues/813#note_822427606>>.
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...v0.9.4
 
 
-## [v0.9.3] Initial store release (2022-01-22)
+## [v0.9.3] (25) Initial store release (2022-01-22)
 
 No code changes. Just some housekeeping for release on Play Store.
 
 
-## [v0.9.2] Fixes and unit testing (2022-01-21)
+## [v0.9.2] (24) Fixes and unit testing (2022-01-21)
 
 ### Dependencies
 
@@ -48,7 +48,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Added unit testing for Mappy, Stringy, and Valuey
 
 
-## [v0.9.1] Bigger keys and behavioural tweaks (2022-01-17)
+## [v0.9.1] (23) Bigger keys and behavioural tweaks (2022-01-17)
 
 ### Dependencies
 
@@ -80,7 +80,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Changed regex prefix removal to literal prefix removal where possible
 
 
-## [v0.9.0] Phrases complete (2022-01-11)
+## [v0.9.0] (22) Phrases complete (2022-01-11)
 
 ### Dependencies
 
@@ -114,7 +114,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Bumped targetSdkVersion to 31
 
 
-## [v0.8.0] Beta-ready (2021-11-29)
+## [v0.8.0] (21) Beta-ready (2021-11-29)
 
 - Actually implemented stroke input and candidates
   (only the phrase set is incomplete)
@@ -125,12 +125,12 @@ No code changes. Just some housekeeping for release on Play Store.
 - Changed search magnifying glass to right-handed
 
 
-## [v0.7.5] Android 11 fix (2021-08-13)
+## [v0.7.5] (20) Android 11 fix (2021-08-13)
 
 - Fixed crash on Android 11 (API level 30)
 
 
-## [v0.7.4] Enter key display (2021-08-11)
+## [v0.7.4] (19) Enter key display (2021-08-11)
 
 - Upgraded Android Gradle Plugin to 7.0.0
 - Implemented action-dependent enter-key display
@@ -138,7 +138,7 @@ No code changes. Just some housekeeping for release on Play Store.
   (adds enter-key action glyphs)
 
 
-## [v0.7.3] Symbols reshuffle (2021-08-09)
+## [v0.7.3] (18) Symbols reshuffle (2021-08-09)
 
 - Reshuffled and changed existing symbols keys
 - Added second symbols keyboard for ideographic description characters
@@ -149,7 +149,7 @@ No code changes. Just some housekeeping for release on Play Store.
   a wide version of the open box glyph)
 
 
-## [v0.7.2] Clipped previews fix (2021-08-08)
+## [v0.7.2] (17) Clipped previews fix (2021-08-08)
 
 - Limited keyboard height to 50% of screen
 - Allocated space above keyboard for candidates bar
@@ -158,12 +158,12 @@ No code changes. Just some housekeeping for release on Play Store.
 - Fixed key preview vertical position on devices with soft buttons
 
 
-## [v0.7.1] Key previews shift fix (2021-07-30)
+## [v0.7.1] (16) Key previews shift fix (2021-07-30)
 
 - Fixed key previews not updating on certain shift mode changes
 
 
-## [v0.7.0] Key previews II (2021-07-30)
+## [v0.7.0] (15) Key previews II (2021-07-30)
 
 - Re-implemented key preview popups
   - Fixed popup lag (noticeable delay before appearing)
@@ -173,13 +173,13 @@ No code changes. Just some housekeeping for release on Play Store.
 - Fixed missing logic for touch event cancel action
 
 
-## [v0.6.4] Key previews (2021-07-24)
+## [v0.6.4] (14) Key previews (2021-07-24)
 
 - Implemented key preview popups
 - Improved organisation of utility classes
 
 
-## [v0.6.3] App icon (2021-07-23)
+## [v0.6.3] (13) App icon (2021-07-23)
 
 - Made Help and About HTML web views zoomable
 - Updated keyboard font to [Stroke Input Keyboard v1.5.1]
@@ -187,7 +187,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Changed launcher icon to 5-strokes logo
 
 
-## [v0.6.2] Code cleanup (2021-07-21)
+## [v0.6.2] (12) Code cleanup (2021-07-21)
 
 - Simplified structure of Main Activity layout XML
 - Removed unused dependencies (AppCompat, ConstraintLayout)
@@ -195,7 +195,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Moved Keyboard.Row and Keyboard.Key to their own classes
 
 
-## [v0.6.1] User interface improvements (2021-07-20)
+## [v0.6.1] (11) User interface improvements (2021-07-20)
 
 - Updated keyboard font to [Stroke Input Keyboard v1.4.0]
   (adds glyph `U+82F1 英` for localised space bar)
@@ -208,7 +208,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Implemented extended keys to left/right edge (`a`, `l`, `¢`)
 
 
-## [v0.6.0] Touch logic rewrite (2021-07-17)
+## [v0.6.0] (10) Touch logic rewrite (2021-07-17)
 
 - Rewrote touch logic:
   - Fixed broken logic for second moving pointer
@@ -220,7 +220,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Added toggleable debug mode showing currently pressed key and active pointer
 
 
-## [v0.5.2] Dark theme (2021-07-14)
+## [v0.5.2] (9) Dark theme (2021-07-14)
 
 - Implemented dark theme for main activity and About
 - Made About show full screen on mobile
@@ -228,7 +228,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Made stroke keys text colour match theme (umbrella yellow)
 
 
-## [v0.5.1] Visual improvements (2021-07-13)
+## [v0.5.1] (8) Visual improvements (2021-07-13)
 
 - Updated keyboard font to [Stroke Input Keyboard v1.3.1]
   (adds glyphs for qwerty symbols etc.)
@@ -237,7 +237,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Fixed keyboard background bounds (fill only the keyboard, not the whole view)
 
 
-## [v0.5.0] Implemented qwerty (2021-07-12)
+## [v0.5.0] (7) Implemented qwerty (2021-07-12)
 
 - Implemented qwerty keyboard (swipe space bar to switch)
 - Implemented horizontal swiping of a key
@@ -249,7 +249,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Reduced main activity padding sizes
 
 
-## [v0.4.0] Symbols keyboard and fixes (2021-07-09)
+## [v0.4.0] (6) Symbols keyboard and fixes (2021-07-09)
 
 - Added symbols keyboard and implemented switching to it
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
@@ -264,7 +264,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Made parameters/variables final where possible
 
 
-## [v0.3.0] Basic keyboard behaviour (2021-07-08)
+## [v0.3.0] (5) Basic keyboard behaviour (2021-07-08)
 
 Implemented everything that a normal (non-stroke-input) keyboard should do.
 
@@ -275,7 +275,7 @@ Implemented everything that a normal (non-stroke-input) keyboard should do.
 - Removed key attribute `displayIcon`
 
 
-## [v0.2.0] Default key behaviour (2021-07-06)
+## [v0.2.0] (4) Default key behaviour (2021-07-06)
 
 - Implemented default key behaviour (commit `valueText`)
 - Updated keyboard font to [Stroke Input Keyboard v1.2.0]
@@ -286,14 +286,14 @@ Implemented everything that a normal (non-stroke-input) keyboard should do.
 - Cleaned up `README.md`
 
 
-## [v0.1.1] New keyboard font (2021-06-29)
+## [v0.1.1] (3) New keyboard font (2021-06-29)
 
 - Updated `README.md` links given GitHub organisation move
 - Changed keyboard font to [Stroke Input Keyboard v1.1.0]
 - Made key text offsets inherit from Row from Keyboard
 
 
-## [v0.1.0] Implemented drawing (2021-06-27)
+## [v0.1.0] (2) Implemented drawing (2021-06-27)
 
 This milestone marks the successful re-implementation
 of the drawing part of AOSP's `Keyboard.java` and `KeyboardView.java`.
