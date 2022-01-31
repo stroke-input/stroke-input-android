@@ -1,2 +1,3 @@
 * Added phrases 功架, 安裝
 * Added fastlane partial translation to (hopefully) make app appear in Latest
+* Made fastlane description plain text, see https://gitlab.com/fdroid/fdroid-website/-/issues/247#note_825610220
