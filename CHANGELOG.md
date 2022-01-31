@@ -18,7 +18,7 @@ No code changes. Just some housekeeping for release on Play Store.
 
 ### Dependencies
 
-- Update stroke input data to [Conway Stroke Data v1.3.0]
+- Updated stroke input data to [Conway Stroke Data v1.3.0]
   (some Extension B dialectal terms)
 - Updated Material Components to v1.5.0
 
@@ -243,7 +243,7 @@ No code changes. Just some housekeeping for release on Play Store.
 - Fixed NullPointerException for `onSinglePointerTouchEvent` of null key
 - Fixed key press colour change dependent on activity background
 - Implemented abort on move outside keyboard (by adding 1 px gutter)
-- Update keyboard font to [Stroke Input Keyboard v1.2.1]
+- Updated keyboard font to [Stroke Input Keyboard v1.2.1]
 - Improved "switch to symbols" label aesthetics
 - Reduced space bar height
 - Reduced digit row key height
