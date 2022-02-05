@@ -29,7 +29,7 @@
   https://mvnrepository.com/artifact/com.google.android.material/material
 @@
 
-{: \stroke-data-version : v1.4.0 :}
+{: \stroke-data-version : v1.4.1 :}
 {: \sequence-characters-year : 2021--2022 :}
 @@[Conway Stroke Data]
   https://github.com/stroke-input/stroke-input-data

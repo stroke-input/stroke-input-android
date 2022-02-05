@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.4.1]
+  (fixes incorrect stroke sequences for 膒膓膔膕膖膗膘膙膛膜膝膞膟)
+
 
 ## [v0.9.4] (26) 安裝功架 (2022-01-31)
 
@@ -357,6 +360,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.4.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.4.1
 [Conway Stroke Data v1.4.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.4.0
 [Conway Stroke Data v1.3.0]:
