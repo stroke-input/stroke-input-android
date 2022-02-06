@@ -1,5 +1,7 @@
 # Privacy Policy
 
+(If there be any discrepancy between the English and the Chinese versions,
+the English version shall prevail.)
 
 This app (Stroke Input Method) does not collect any personal data.
 
