@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 - Updated stroke input data to [Conway Stroke Data v1.4.1]
-  (fixes incorrect stroke sequences for 膒膓膔膕膖膗膘膙膛膜膝膞膟)
+  (fixes incorrect stroke sequences for meat-beside in 膒膓膔膕膖膗膘膙膛膜膝膞膟)
 
 
 ## [v0.9.4] (26) 安裝功架 (2022-01-31)
