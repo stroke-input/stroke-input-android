@@ -1,6 +1,6 @@
 # 私隱政策
 
-[(English version)](PRIVACY.md)
+[(English version)](PRIVACY.md#privacy-policy)
 
 （凡中英文有出入者，則以英文為主。）
 
