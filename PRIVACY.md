@@ -1,5 +1,7 @@
 # Privacy Policy
 
+[(中文版)](PRIVACY-zh.md)
+
 (If there be any discrepancy between the English and the Chinese versions,
 the English version shall prevail.)
 
