@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.5] (27) Stroke fixes for 膝 'knee' etc. (2022-02-06)
+
 - Updated stroke input data to [Conway Stroke Data v1.4.1]
   - Fixes incorrect stroke sequences for meat-beside
     in 膒膓膔膕膖膗膘膙膛膜膝膞膟
@@ -309,7 +312,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.4...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.5...HEAD
+[v0.9.5]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.4...v0.9.5
 [v0.9.4]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.3...v0.9.4
 [v0.9.3]:
