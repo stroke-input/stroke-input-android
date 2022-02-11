@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android Gradle Plugin to 7.1.1
+
 
 ## [v0.9.5] (27) Stroke fixes for 膝 'knee' etc. (2022-02-06)
 
