@@ -5,13 +5,13 @@ plugins
 
 android
 {
-  compileSdkVersion 31
+  compileSdkVersion 32
   buildToolsVersion "30.0.3"
   defaultConfig
   {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
-    targetSdkVersion 31
+    targetSdkVersion 32
     versionCode 27
     versionName "0.9.5"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
