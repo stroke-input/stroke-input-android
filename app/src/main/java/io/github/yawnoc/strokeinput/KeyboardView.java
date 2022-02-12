@@ -199,21 +199,6 @@ public class KeyboardView
     this.keyPreviewPlane = keyPreviewPlane;
   }
   
-  @SuppressLint("RtlHardcoded")
-  public void showKeyPreviewPlane()
-  {
-    if (BuildConfig.DEBUG)
-    {
-      return; // TODO: reimplement key previews without blocking touches on API 31+
-    }
-    
-    final int screenWidth = keyboard.getScreenWidth();
-    final int screenHeight = keyboard.getScreenHeight();
-    final int keyboardHeight = keyboard.getHeight();
-    
-    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight);
-  }
-  
   private int getSoftButtonsHeight()
   {
     final int softButtonsHeight;
@@ -272,13 +257,6 @@ public class KeyboardView
     
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
     setMeasuredDimension(keyboardWidth, keyboardHeight);
-  }
-  
-  @Override
-  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight)
-  {
-    super.onSizeChanged(width, height, oldWidth, oldHeight);
-    showKeyPreviewPlane();
   }
   
   @Override

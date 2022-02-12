@@ -124,9 +124,4 @@ public class InputContainer
   {
     keyboardView.invalidate();
   }
-  
-  public void showKeyPreviewPlane()
-  {
-    keyboardView.showKeyPreviewPlane();
-  }
 }
