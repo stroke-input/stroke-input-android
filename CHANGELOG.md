@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+### User
+
+- Fixed blocking of touches outside keyboard in API 31 (Android 12) or later
+
+### Developer
+
 - Upgraded Android Gradle Plugin to 7.1.1
 - Upgraded targetSdkVersion to 32
 
