@@ -1,6 +1,14 @@
 name: Build debug APK for Stroke Input Method
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "LICENSE"
+      - "*.md"
+      - "fastlane/**"
+  pull_request:
+    branches: [master]
 
 jobs:
   build:
