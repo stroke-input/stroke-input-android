@@ -97,11 +97,12 @@ public class KeyPreviewPlane
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
-  public void updateDimensions(final int keyboardWidth, final int keyboardHeight)
+  public void updateDimensions(final int inputContainerWidth, final int inputContainerHeight, final int keyboardHeight)
   {
-    setLayoutParams(new FrameLayout.LayoutParams(keyboardWidth, keyboardHeight));
-    this.width = keyboardWidth;
-    this.height = keyboardHeight;
+    width = inputContainerWidth;
+    height = inputContainerHeight;
+    setLayoutParams(new FrameLayout.LayoutParams(width, height));
+    
     this.keyboardHeight = keyboardHeight;
   }
   

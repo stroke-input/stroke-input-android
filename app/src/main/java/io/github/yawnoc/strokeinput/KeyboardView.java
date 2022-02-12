@@ -69,6 +69,7 @@ public class KeyboardView
   
   // View properties
   private KeyboardListener keyboardListener;
+  private InputContainer inputContainer;
   private KeyPreviewPlane keyPreviewPlane;
   private Keyboard keyboard;
   private List<Key> keyList;
@@ -176,6 +177,11 @@ public class KeyboardView
     this.keyboardListener = keyboardListener;
   }
   
+  public void setInputContainer(final InputContainer inputContainer)
+  {
+    this.inputContainer = inputContainer;
+  }
+  
   public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
   {
     this.keyPreviewPlane = keyPreviewPlane;
@@ -244,7 +250,6 @@ public class KeyboardView
   {
     final int keyboardWidth;
     final int keyboardHeight;
-    
     if (keyboard != null)
     {
       keyboardWidth = keyboard.getWidth();
@@ -255,9 +260,12 @@ public class KeyboardView
       keyboardWidth = 0;
       keyboardHeight = 0;
     }
-    
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
-    keyPreviewPlane.updateDimensions(keyboardWidth, keyboardHeight);
+    
+    final int inputContainerWidth = inputContainer.getMeasuredWidth();
+    final int inputContainerHeight = inputContainer.getMeasuredHeight();
+    keyPreviewPlane.updateDimensions(inputContainerWidth, inputContainerHeight, keyboardHeight);
+    
     setMeasuredDimension(keyboardWidth, keyboardHeight);
   }
   
