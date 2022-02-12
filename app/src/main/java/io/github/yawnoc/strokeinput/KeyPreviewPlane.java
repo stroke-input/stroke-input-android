@@ -181,7 +181,7 @@ public class KeyPreviewPlane
               );
       final int previewY =
               (int) Valuey.clipValueToRange(
-                key.y - key.previewMarginY,
+                key.y - keyPreviewHeight - key.previewMarginY + (height - keyboardHeight),
                 0,
                 height
               );
