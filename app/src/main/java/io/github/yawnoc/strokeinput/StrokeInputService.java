@@ -399,8 +399,7 @@ public class StrokeInputService
     super.onStartInputView(editorInfo, isRestarting);
     
     updateFullscreenMode(); // needed in API level 31+ so that fullscreen works after rotate whilst keyboard showing
-    final boolean isFullscreen = isFullscreenMode();
-    inputContainer.setBackground(isFullscreen);
+    inputContainer.setBackground(isFullscreenMode());
     
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
     inputContainer.setCandidateList(candidateList);
