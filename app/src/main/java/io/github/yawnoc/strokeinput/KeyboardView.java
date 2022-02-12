@@ -36,7 +36,6 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import androidx.core.graphics.ColorUtils;
@@ -163,16 +162,6 @@ public class KeyboardView
     keyTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     keyTextPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), KEYBOARD_FONT_FILE_NAME));
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
-  }
-  
-  private void initialiseKeyPreviewPlane(final Context context)
-  {
-    keyPreviewPlane = new KeyPreviewPlane(context);
-    
-    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
-    keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
-    keyPreviewPlanePopup.setTouchable(false);
-    keyPreviewPlanePopup.setClippingEnabled(false);
   }
   
   /*
