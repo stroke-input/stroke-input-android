@@ -18,6 +18,7 @@ import java.util.List;
 /*
   A container that holds:
     1. Touchable input plane:
+      - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
       - Stroke sequence bar
       - Candidates view
       - Keyboard view
@@ -27,6 +28,7 @@ public class InputContainer
   extends FrameLayout
 {
   // Container properties
+  private View popupRecess;
   private StrokeSequenceBar strokeSequenceBar;
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
@@ -35,6 +37,11 @@ public class InputContainer
   public InputContainer(final Context context, final AttributeSet attributes)
   {
     super(context, attributes);
+  }
+  
+  public void initialisePopupRecess()
+  {
+    popupRecess = findViewById(R.id.popup_recess);
   }
   
   public void initialiseStrokeSequenceBar(final Context context)
@@ -59,6 +66,18 @@ public class InputContainer
     keyboardView.setKeyPreviewPlane(findViewById(R.id.key_preview_plane));
     keyboardView.setKeyboardListener(keyboardListener);
     keyboardView.setKeyboard(keyboard);
+  }
+  
+  public void setPopupRecessLayout(final boolean isFullscreen)
+  {
+    if (isFullscreen)
+    {
+      popupRecess.setVisibility(GONE);
+    }
+    else
+    {
+      popupRecess.setVisibility(INVISIBLE);
+    }
   }
   
   public void setBackground(final boolean isFullscreen)
