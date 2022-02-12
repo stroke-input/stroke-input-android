@@ -13,7 +13,7 @@
   android:orientation="vertical"
 >
   <LinearLayout
-    android:id="@+id/touchable_input_plane"
+    android:id="@+id/main_input_plane"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"

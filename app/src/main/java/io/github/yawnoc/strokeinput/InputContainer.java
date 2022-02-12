@@ -17,7 +17,7 @@ import java.util.List;
 
 /*
   A container that holds:
-    1. Touchable input plane:
+    1. Main input plane:
       - Popup recess
       - Stroke sequence bar
       - Candidates view
