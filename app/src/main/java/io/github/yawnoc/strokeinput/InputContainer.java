@@ -63,6 +63,7 @@ public class InputContainer
   )
   {
     keyboardView = findViewById(R.id.keyboard_view);
+    keyboardView.setKeyPreviewPlane(findViewById(R.id.key_preview_plane));
     keyboardView.setKeyboardListener(keyboardListener);
     keyboardView.setKeyboard(keyboard);
   }

@@ -70,6 +70,7 @@ public class KeyboardView
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // View properties
+  private KeyPreviewPlane keyPreviewPlane;
   private KeyboardListener keyboardListener;
   private Keyboard keyboard;
   private List<Key> keyList;
@@ -101,7 +102,6 @@ public class KeyboardView
   private Paint keyTextPaint;
   
   // Key preview plane
-  private KeyPreviewPlane keyPreviewPlane;
   private PopupWindow keyPreviewPlanePopup;
   
   public KeyboardView(final Context context, final AttributeSet attributes)
@@ -110,7 +110,6 @@ public class KeyboardView
     
     initialiseExtendedPressHandler();
     initialiseDrawing(context);
-    initialiseKeyPreviewPlane(context);
   }
   
   private void initialiseExtendedPressHandler()
@@ -209,6 +208,11 @@ public class KeyboardView
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
+  }
+  
+  public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
+  {
+    this.keyPreviewPlane = keyPreviewPlane;
   }
   
   @SuppressLint("RtlHardcoded")

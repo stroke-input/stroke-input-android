@@ -59,6 +59,9 @@ public class KeyPreviewPlane
   public KeyPreviewPlane(final Context context, final AttributeSet attributes)
   {
     super(context, attributes);
+    
+    initialiseDismissalHandler();
+    initialiseDrawing(context);
   }
   
   private void initialiseDismissalHandler()
