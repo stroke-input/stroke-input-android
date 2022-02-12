@@ -1,4 +1,4 @@
-name: Build debug APK for Stroke Input Method
+name: Build app-debug.apk
 
 on:
   push:
