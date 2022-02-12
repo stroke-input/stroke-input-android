@@ -22,6 +22,7 @@ import java.util.List;
       - Stroke sequence bar
       - Candidates view
       - Keyboard view
+    2. Key preview plane
 */
 public class InputContainer
   extends FrameLayout

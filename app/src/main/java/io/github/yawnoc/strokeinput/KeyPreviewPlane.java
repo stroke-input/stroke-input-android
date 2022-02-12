@@ -15,6 +15,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -53,6 +54,11 @@ public class KeyPreviewPlane
     
     initialiseDismissalHandler();
     initialiseDrawing(context);
+  }
+  
+  public KeyPreviewPlane(final Context context, final AttributeSet attributes)
+  {
+    super(context, attributes);
   }
   
   private void initialiseDismissalHandler()
