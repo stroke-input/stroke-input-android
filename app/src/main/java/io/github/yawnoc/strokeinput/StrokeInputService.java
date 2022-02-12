@@ -188,7 +188,6 @@ public class StrokeInputService
     keyboardSet = nameFromKeyboard.keySet();
     
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
-    inputContainer.initialisePopupRecess();
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
@@ -401,7 +400,6 @@ public class StrokeInputService
     
     updateFullscreenMode(); // needed in API level 31+ so that fullscreen works after rotate whilst keyboard showing
     final boolean isFullscreen = isFullscreenMode();
-    inputContainer.setPopupRecessLayout(isFullscreen);
     inputContainer.setBackground(isFullscreen);
     
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);

@@ -52,8 +52,6 @@
   <dimen name="baseline_correction__qwerty_backspace">1.75dp</dimen>
   <!-- Row horizontal offset -->
   <dimen name="horizontal_offset__qwerty_row_2">5%</dimen>
-  <!-- Popup recess -->
-  <dimen name="height__popup_recess">100dp</dimen>
   <!-- Stroke sequence bar -->
   <dimen name="font_size__stroke_sequence_bar">15sp</dimen>
   <dimen name="padding_top__stroke_sequence_bar">3dp</dimen>
