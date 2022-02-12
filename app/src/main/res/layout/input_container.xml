@@ -51,7 +51,7 @@
   <io.github.yawnoc.strokeinput.KeyPreviewPlane
     android:id="@+id/key_preview_plane"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="bottom"
   />
 </io.github.yawnoc.strokeinput.InputContainer>

@@ -17,6 +17,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +103,7 @@ public class KeyPreviewPlane
     final int keyboardHeight
   )
   {
+    setLayoutParams(new FrameLayout.LayoutParams(width, height));
     this.width = width;
     this.height = height;
     this.keyboardHeight = keyboardHeight;

@@ -260,6 +260,13 @@ public class KeyboardView
   }
   
   @Override
+  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight)
+  {
+    super.onSizeChanged(width, height, oldWidth, oldHeight);
+    keyPreviewPlane.updateDimensions(keyboard.getWidth(), keyboard.getHeight(), keyboard.getHeight());
+  }
+  
+  @Override
   public void onDraw(final Canvas canvas)
   {
     if (keyboard == null)
