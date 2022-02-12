@@ -11,19 +11,20 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import java.util.List;
 
 /*
   A container that holds:
-    - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
-    - Stroke sequence bar
-    - Candidates view
-    - Keyboard view
+    1. Touchable input plane:
+      - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
+      - Stroke sequence bar
+      - Candidates view
+      - Keyboard view
 */
 public class InputContainer
-  extends LinearLayout
+  extends FrameLayout
 {
   // Container properties
   private View popupRecess;
