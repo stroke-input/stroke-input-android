@@ -214,6 +214,11 @@ public class KeyboardView
   @SuppressLint("RtlHardcoded")
   public void showKeyPreviewPlane()
   {
+    if (BuildConfig.DEBUG)
+    {
+      return; // TODO: reimplement key previews without blocking touches on API 31+
+    }
+    
     final int screenWidth = keyboard.getScreenWidth();
     final int screenHeight = keyboard.getScreenHeight();
     final int keyboardHeight = keyboard.getHeight();
