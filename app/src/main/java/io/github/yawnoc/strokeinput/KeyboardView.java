@@ -68,8 +68,8 @@ public class KeyboardView
   private static final float COLOUR_LIGHTNESS_CUTOFF = 0.7f;
   
   // View properties
-  private KeyPreviewPlane keyPreviewPlane;
   private KeyboardListener keyboardListener;
+  private KeyPreviewPlane keyPreviewPlane;
   private Keyboard keyboard;
   private List<Key> keyList;
   
@@ -176,6 +176,11 @@ public class KeyboardView
     this.keyboardListener = keyboardListener;
   }
   
+  public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
+  {
+    this.keyPreviewPlane = keyPreviewPlane;
+  }
+  
   public Keyboard getKeyboard()
   {
     return keyboard;
@@ -193,11 +198,6 @@ public class KeyboardView
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
-  }
-  
-  public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
-  {
-    this.keyPreviewPlane = keyPreviewPlane;
   }
   
   private int getSoftButtonsHeight()
