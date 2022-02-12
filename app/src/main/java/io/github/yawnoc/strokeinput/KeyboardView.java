@@ -27,14 +27,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowInsets;
 import android.widget.LinearLayout;
 
 import androidx.core.graphics.ColorUtils;
@@ -205,29 +203,6 @@ public class KeyboardView
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
-  }
-  
-  private int getSoftButtonsHeight()
-  {
-    final int softButtonsHeight;
-    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-    if (rootWindowInsets != null)
-    {
-      if (Build.VERSION.SDK_INT < 30)
-      {
-        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
-      }
-      else
-      {
-        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
-      }
-    }
-    else
-    {
-      softButtonsHeight = 0;
-    }
-    
-    return softButtonsHeight;
   }
   
   public void resetKeyRepeatIntervalMilliseconds()
