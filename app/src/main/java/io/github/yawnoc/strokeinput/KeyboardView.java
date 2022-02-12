@@ -35,6 +35,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.LinearLayout;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -69,7 +70,7 @@ public class KeyboardView
   
   // View properties
   private KeyboardListener keyboardListener;
-  private InputContainer inputContainer;
+  private LinearLayout mainInputPlane;
   private KeyPreviewPlane keyPreviewPlane;
   private Keyboard keyboard;
   private List<Key> keyList;
@@ -177,9 +178,9 @@ public class KeyboardView
     this.keyboardListener = keyboardListener;
   }
   
-  public void setInputContainer(final InputContainer inputContainer)
+  public void setMainInputPlane(final LinearLayout mainInputPlane)
   {
-    this.inputContainer = inputContainer;
+    this.mainInputPlane = mainInputPlane;
   }
   
   public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
@@ -262,9 +263,9 @@ public class KeyboardView
     }
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
     
-    final int inputContainerWidth = inputContainer.getMeasuredWidth();
-    final int inputContainerHeight = inputContainer.getMeasuredHeight();
-    keyPreviewPlane.updateDimensions(inputContainerWidth, inputContainerHeight, keyboardHeight);
+    final int mainInputPlaneWidth = mainInputPlane.getMeasuredWidth();
+    final int mainInputPlaneHeight = mainInputPlane.getMeasuredHeight();
+    keyPreviewPlane.updateDimensions(mainInputPlaneWidth, mainInputPlaneHeight, keyboardHeight);
     
     setMeasuredDimension(keyboardWidth, keyboardHeight);
   }
