@@ -32,11 +32,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
-import android.widget.PopupWindow;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -99,9 +97,6 @@ public class KeyboardView
   private Paint keyFillPaint;
   private Paint keyBorderPaint;
   private Paint keyTextPaint;
-  
-  // Key preview plane
-  private PopupWindow keyPreviewPlanePopup;
   
   public KeyboardView(final Context context, final AttributeSet attributes)
   {
@@ -217,19 +212,6 @@ public class KeyboardView
     final int keyboardHeight = keyboard.getHeight();
     
     keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight);
-    keyPreviewPlanePopup.dismiss();
-    keyPreviewPlanePopup.setWidth(screenWidth);
-    keyPreviewPlanePopup.setHeight(screenHeight);
-    
-    if (getWindowToken() != null) // check needed in API level 29
-    {
-      keyPreviewPlanePopup.showAtLocation(
-        this,
-        Gravity.BOTTOM | Gravity.LEFT,
-        0,
-        getSoftButtonsHeight()
-      );
-    }
   }
   
   private int getSoftButtonsHeight()
@@ -386,13 +368,6 @@ public class KeyboardView
     colourHSLArray[2] = colourLightness;
     
     return ColorUtils.HSLToColor(colourHSLArray);
-  }
-  
-  @Override
-  protected void onDetachedFromWindow()
-  {
-    keyPreviewPlanePopup.dismiss(); // prevent persistence of popups on screen rotate
-    super.onDetachedFromWindow();
   }
   
   /*

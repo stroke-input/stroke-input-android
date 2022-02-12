@@ -24,7 +24,7 @@ import java.util.List;
 import io.github.yawnoc.utilities.Valuey;
 
 /*
-  A plane for key previews, to be displayed in a PopupWindow.
+  A plane for key previews.
 */
 public class KeyPreviewPlane
   extends View
