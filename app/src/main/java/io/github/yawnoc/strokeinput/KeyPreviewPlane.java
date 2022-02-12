@@ -179,9 +179,11 @@ public class KeyPreviewPlane
                 this.width - keyPreviewWidth - key.borderThickness
               );
       final int previewY =
-              key.y
-                - keyPreviewHeight - key.previewMarginY
-                + this.height - keyboardHeight;
+              (int) Valuey.clipValueToRange(
+                key.y - key.previewMarginY,
+                0,
+                height
+              );
       
       canvas.translate(previewX, previewY);
       canvas.drawRect(keyPreviewRectangle, keyPreviewFillPaint);

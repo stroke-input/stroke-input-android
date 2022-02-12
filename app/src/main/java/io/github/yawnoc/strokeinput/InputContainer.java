@@ -18,7 +18,7 @@ import java.util.List;
 /*
   A container that holds:
     1. Touchable input plane:
-      - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
+      - Popup recess
       - Stroke sequence bar
       - Candidates view
       - Keyboard view

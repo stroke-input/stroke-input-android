@@ -17,12 +17,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
   >
-    <!--
-      Popup recess needed because API level 28 is dumb:
-      it clips popups to the containing InputContainer,
-      even if `setClippingEnabled(false)` is used.
-      See <https://stackoverflow.com/a/53326786>.
-    -->
     <View
       android:id="@+id/popup_recess"
       android:layout_width="match_parent"
