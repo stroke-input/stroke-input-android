@@ -256,14 +256,8 @@ public class KeyboardView
     }
     
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
+    keyPreviewPlane.updateDimensions(keyboardWidth, keyboardHeight, keyboardHeight);
     setMeasuredDimension(keyboardWidth, keyboardHeight);
-  }
-  
-  @Override
-  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight)
-  {
-    super.onSizeChanged(width, height, oldWidth, oldHeight);
-    keyPreviewPlane.updateDimensions(keyboard.getWidth(), keyboard.getHeight(), keyboard.getHeight());
   }
   
   @Override
