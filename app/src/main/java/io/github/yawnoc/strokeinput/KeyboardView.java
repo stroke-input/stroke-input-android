@@ -42,6 +42,7 @@ import java.util.List;
 
 /*
   A view that holds a keyboard.
+  Touch logic is implemented here.
 */
 public class KeyboardView
   extends View
