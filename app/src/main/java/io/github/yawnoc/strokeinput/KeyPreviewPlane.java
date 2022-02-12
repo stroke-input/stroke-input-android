@@ -15,7 +15,9 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ import java.util.List;
 import io.github.yawnoc.utilities.Valuey;
 
 /*
-  A plane for key previews, to be displayed in a PopupWindow.
+  A plane for key previews.
 */
 public class KeyPreviewPlane
   extends View
@@ -50,6 +52,14 @@ public class KeyPreviewPlane
   public KeyPreviewPlane(final Context context)
   {
     super(context);
+    
+    initialiseDismissalHandler();
+    initialiseDrawing(context);
+  }
+  
+  public KeyPreviewPlane(final Context context, final AttributeSet attributes)
+  {
+    super(context, attributes);
     
     initialiseDismissalHandler();
     initialiseDrawing(context);
@@ -87,14 +97,12 @@ public class KeyPreviewPlane
     keyPreviewTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
-  public void updateDimensions(
-    final int width,
-    final int height,
-    final int keyboardHeight
-  )
+  public void updateDimensions(final int mainInputPlaneWidth, final int mainInputPlaneHeight, final int keyboardHeight)
   {
-    this.width = width;
-    this.height = height;
+    width = mainInputPlaneWidth;
+    height = mainInputPlaneHeight;
+    setLayoutParams(new FrameLayout.LayoutParams(width, height));
+    
     this.keyboardHeight = keyboardHeight;
   }
   
@@ -172,9 +180,11 @@ public class KeyPreviewPlane
                 this.width - keyPreviewWidth - key.borderThickness
               );
       final int previewY =
-              key.y
-                - keyPreviewHeight - key.previewMarginY
-                + this.height - keyboardHeight;
+              (int) Valuey.clipValueToRange(
+                key.y - keyPreviewHeight - key.previewMarginY + (height - keyboardHeight),
+                0,
+                height
+              );
       
       canvas.translate(previewX, previewY);
       canvas.drawRect(keyPreviewRectangle, keyPreviewFillPaint);

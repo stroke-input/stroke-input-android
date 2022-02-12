@@ -12,43 +12,51 @@
   android:layout_height="wrap_content"
   android:orientation="vertical"
 >
-  <!--
-    Popup recess needed because API level 28 is dumb:
-    it clips popups to the containing InputContainer,
-    even if `setClippingEnabled(false)` is used.
-    See <https://stackoverflow.com/a/53326786>.
-  -->
-  <View
-    android:id="@+id/popup_recess"
+  <LinearLayout
+    android:id="@+id/main_input_plane"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/height__popup_recess"
-  />
-  <io.github.yawnoc.strokeinput.StrokeSequenceBar
-    android:id="@+id/stroke_sequence_bar"
-    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:visibility="invisible"
-    android:textColor="@color/stroke_sequence_bar_text"
-    android:textSize="@dimen/font_size__stroke_sequence_bar"
-    android:ellipsize="start"
-    android:singleLine="true"
-    android:background="@color/stroke_sequence_bar_fill"
-    android:paddingTop="@dimen/padding_top__stroke_sequence_bar"
-    android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
-    android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
-    android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
-    android:theme="@style/Theme.AppCompat"
-    tools:ignore="RtlHardcoded"
-  />
-  <io.github.yawnoc.strokeinput.CandidatesView
-    android:id="@+id/candidates_view"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+  >
+    <View
+      android:id="@+id/popup_recess"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height__popup_recess"
+    />
+    <io.github.yawnoc.strokeinput.StrokeSequenceBar
+      android:id="@+id/stroke_sequence_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      android:textColor="@color/stroke_sequence_bar_text"
+      android:textSize="@dimen/font_size__stroke_sequence_bar"
+      android:ellipsize="start"
+      android:singleLine="true"
+      android:background="@color/stroke_sequence_bar_fill"
+      android:paddingTop="@dimen/padding_top__stroke_sequence_bar"
+      android:paddingLeft="@dimen/padding_left__stroke_sequence_bar"
+      android:paddingRight="@dimen/padding_right__stroke_sequence_bar"
+      android:paddingBottom="@dimen/padding_bottom__stroke_sequence_bar"
+      android:theme="@style/Theme.AppCompat"
+      tools:ignore="RtlHardcoded"
+    />
+    <io.github.yawnoc.strokeinput.CandidatesView
+      android:id="@+id/candidates_view"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/height__candidate_button"
+      android:background="@color/candidate_button_fill"
+    />
+    <io.github.yawnoc.strokeinput.KeyboardView
+      android:id="@+id/keyboard_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+    />
+  </LinearLayout>
+  <io.github.yawnoc.strokeinput.KeyPreviewPlane
+    android:id="@+id/key_preview_plane"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/height__candidate_button"
-    android:background="@color/candidate_button_fill"
-  />
-  <io.github.yawnoc.strokeinput.KeyboardView
-    android:id="@+id/keyboard_view"
-    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
   />
 </io.github.yawnoc.strokeinput.InputContainer>

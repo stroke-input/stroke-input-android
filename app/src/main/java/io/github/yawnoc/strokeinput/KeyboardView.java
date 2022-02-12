@@ -27,17 +27,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowInsets;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -45,6 +41,7 @@ import java.util.List;
 
 /*
   A view that holds a keyboard.
+  Touch logic is implemented here.
 */
 public class KeyboardView
   extends View
@@ -71,6 +68,8 @@ public class KeyboardView
   
   // View properties
   private KeyboardListener keyboardListener;
+  private LinearLayout mainInputPlane;
+  private KeyPreviewPlane keyPreviewPlane;
   private Keyboard keyboard;
   private List<Key> keyList;
   
@@ -100,17 +99,12 @@ public class KeyboardView
   private Paint keyBorderPaint;
   private Paint keyTextPaint;
   
-  // Key preview plane
-  private KeyPreviewPlane keyPreviewPlane;
-  private PopupWindow keyPreviewPlanePopup;
-  
   public KeyboardView(final Context context, final AttributeSet attributes)
   {
     super(context, attributes);
     
     initialiseExtendedPressHandler();
     initialiseDrawing(context);
-    initialiseKeyPreviewPlane(context);
   }
   
   private void initialiseExtendedPressHandler()
@@ -166,16 +160,6 @@ public class KeyboardView
     keyTextPaint.setTextAlign(Paint.Align.CENTER);
   }
   
-  private void initialiseKeyPreviewPlane(final Context context)
-  {
-    keyPreviewPlane = new KeyPreviewPlane(context);
-    
-    final int popup_size = LinearLayout.LayoutParams.WRAP_CONTENT;
-    keyPreviewPlanePopup = new PopupWindow(keyPreviewPlane, popup_size, popup_size);
-    keyPreviewPlanePopup.setTouchable(false);
-    keyPreviewPlanePopup.setClippingEnabled(false);
-  }
-  
   /*
     A listener for keyboard events.
   */
@@ -190,6 +174,16 @@ public class KeyboardView
   public void setKeyboardListener(final KeyboardListener keyboardListener)
   {
     this.keyboardListener = keyboardListener;
+  }
+  
+  public void setMainInputPlane(final LinearLayout mainInputPlane)
+  {
+    this.mainInputPlane = mainInputPlane;
+  }
+  
+  public void setKeyPreviewPlane(final KeyPreviewPlane keyPreviewPlane)
+  {
+    this.keyPreviewPlane = keyPreviewPlane;
   }
   
   public Keyboard getKeyboard()
@@ -209,52 +203,6 @@ public class KeyboardView
       keyPreviewPlane.updateShiftMode(shiftMode);
     }
     requestLayout();
-  }
-  
-  @SuppressLint("RtlHardcoded")
-  public void showKeyPreviewPlane()
-  {
-    final int screenWidth = keyboard.getScreenWidth();
-    final int screenHeight = keyboard.getScreenHeight();
-    final int keyboardHeight = keyboard.getHeight();
-    
-    keyPreviewPlane.updateDimensions(screenWidth, screenHeight, keyboardHeight);
-    keyPreviewPlanePopup.dismiss();
-    keyPreviewPlanePopup.setWidth(screenWidth);
-    keyPreviewPlanePopup.setHeight(screenHeight);
-    
-    if (getWindowToken() != null) // check needed in API level 29
-    {
-      keyPreviewPlanePopup.showAtLocation(
-        this,
-        Gravity.BOTTOM | Gravity.LEFT,
-        0,
-        getSoftButtonsHeight()
-      );
-    }
-  }
-  
-  private int getSoftButtonsHeight()
-  {
-    final int softButtonsHeight;
-    final WindowInsets rootWindowInsets = this.getRootWindowInsets();
-    if (rootWindowInsets != null)
-    {
-      if (Build.VERSION.SDK_INT < 30)
-      {
-        softButtonsHeight = rootWindowInsets.getSystemWindowInsetBottom(); // deprecated in API level 30
-      }
-      else
-      {
-        softButtonsHeight = rootWindowInsets.getInsets(WindowInsets.Type.navigationBars()).bottom;
-      }
-    }
-    else
-    {
-      softButtonsHeight = 0;
-    }
-    
-    return softButtonsHeight;
   }
   
   public void resetKeyRepeatIntervalMilliseconds()
@@ -278,7 +226,6 @@ public class KeyboardView
   {
     final int keyboardWidth;
     final int keyboardHeight;
-    
     if (keyboard != null)
     {
       keyboardWidth = keyboard.getWidth();
@@ -289,16 +236,13 @@ public class KeyboardView
       keyboardWidth = 0;
       keyboardHeight = 0;
     }
-    
     keyboardRectangle.set(0, 0, keyboardWidth, keyboardHeight);
+    
+    final int mainInputPlaneWidth = mainInputPlane.getMeasuredWidth();
+    final int mainInputPlaneHeight = mainInputPlane.getMeasuredHeight();
+    keyPreviewPlane.updateDimensions(mainInputPlaneWidth, mainInputPlaneHeight, keyboardHeight);
+    
     setMeasuredDimension(keyboardWidth, keyboardHeight);
-  }
-  
-  @Override
-  public void onSizeChanged(final int width, final int height, final int oldWidth, final int oldHeight)
-  {
-    super.onSizeChanged(width, height, oldWidth, oldHeight);
-    showKeyPreviewPlane();
   }
   
   @Override
@@ -388,13 +332,6 @@ public class KeyboardView
     colourHSLArray[2] = colourLightness;
     
     return ColorUtils.HSLToColor(colourHSLArray);
-  }
-  
-  @Override
-  protected void onDetachedFromWindow()
-  {
-    keyPreviewPlanePopup.dismiss(); // prevent persistence of popups on screen rotate
-    super.onDetachedFromWindow();
   }
   
   /*

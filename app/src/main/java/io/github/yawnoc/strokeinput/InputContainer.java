@@ -11,19 +11,21 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import java.util.List;
 
 /*
   A container that holds:
-    - Popup recess (needed because API level 28 is dumb, see <https://stackoverflow.com/a/53326786>)
-    - Stroke sequence bar
-    - Candidates view
-    - Keyboard view
+    1. Main input plane:
+      - Popup recess
+      - Stroke sequence bar
+      - Candidates view
+      - Keyboard view
+    2. Key preview plane (overlaid)
 */
 public class InputContainer
-  extends LinearLayout
+  extends FrameLayout
 {
   // Container properties
   private View popupRecess;
@@ -62,6 +64,8 @@ public class InputContainer
   {
     keyboardView = findViewById(R.id.keyboard_view);
     keyboardView.setKeyboardListener(keyboardListener);
+    keyboardView.setMainInputPlane(findViewById(R.id.main_input_plane));
+    keyboardView.setKeyPreviewPlane(findViewById(R.id.key_preview_plane));
     keyboardView.setKeyboard(keyboard);
   }
   
@@ -120,10 +124,5 @@ public class InputContainer
   public void redrawKeyboard()
   {
     keyboardView.invalidate();
-  }
-  
-  public void showKeyPreviewPlane()
-  {
-    keyboardView.showKeyPreviewPlane();
   }
 }
