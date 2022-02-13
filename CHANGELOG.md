@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.6] (28) Fix for blocked touches (2022-02-13)
+
 ### User
 
 - Fixed blocking of touches outside keyboard in API 31 (Android 12) or later
@@ -322,7 +325,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.5...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.6...HEAD
+[v0.9.6]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.5...v0.9.6
 [v0.9.5]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.4...v0.9.5
 [v0.9.4]:
