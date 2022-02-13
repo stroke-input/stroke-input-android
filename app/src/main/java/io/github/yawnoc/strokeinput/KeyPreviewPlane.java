@@ -182,8 +182,8 @@ public class KeyPreviewPlane
       final int previewY =
               (int) Valuey.clipValueToRange(
                 key.y - keyPreviewHeight - key.previewMarginY + (height - keyboardHeight),
-                0,
-                height
+                key.borderThickness,
+                height - keyPreviewHeight - key.borderThickness
               );
       
       canvas.translate(previewX, previewY);
