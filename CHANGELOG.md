@@ -6,6 +6,7 @@
 ### User
 
 - Fixed blocking of touches outside keyboard in API 31 (Android 12) or later
+- Added Help section explaining retraction of keyboard with Back Button/Gesture
 
 ### Developer
 

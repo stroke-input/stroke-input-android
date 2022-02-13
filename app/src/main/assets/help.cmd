@@ -71,6 +71,13 @@
 ''''
 
 
+## Retract keyboard ##
+
+----
+Use the system __Back Button__ (or __Back Gesture__) to retract the keyboard.
+----
+
+
 <footer>
   This page's [CMD] source: \cmd-source
 </footer>
