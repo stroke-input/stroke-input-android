@@ -26,6 +26,7 @@ import io.github.yawnoc.utilities.Valuey;
 
 /*
   A plane for key previews.
+  Matches the dimensions of its sibling, the main input plane.
 */
 public class KeyPreviewPlane
   extends View
