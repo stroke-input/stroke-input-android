@@ -54,23 +54,23 @@ see [app/src/main/assets/about.html].
 <table>
   <tbody>
     <tr>
-      <td><kbd>㇐</kbd></td>
+      <td>㇐</td>
       <td>horizontal; raise</td>
     </tr>
     <tr>
-      <td><kbd>㇑</kbd></td>
+      <td>㇑</td>
       <td>vertical; vertical-with-hook</td>
     </tr>
     <tr>
-      <td><kbd>㇒</kbd></td>
+      <td>㇒</td>
       <td>left-slash</td>
     </tr>
     <tr>
-      <td><kbd>㇔</kbd></td>
+      <td>㇔</td>
       <td>right-press; dot</td>
     </tr>
     <tr>
-      <td><kbd>㇖</kbd></td>
+      <td>㇖</td>
       <td>turn; bend</td>
     </tr>
   </tbody>
@@ -90,11 +90,11 @@ see [app/src/main/assets/about.html].
 <table>
   <tbody>
     <tr>
-      <td>Horizontally swipe <kbd>space bar</kbd></td>
+      <td>Horizontally swipe space-bar</td>
       <td>Change language</td>
     </tr>
     <tr>
-      <td>Long press <kbd>space bar</kbd></td>
+      <td>Long press space-bar</td>
       <td>Change to other keyboard</td>
     </tr>
   </tbody>
