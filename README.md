@@ -100,6 +100,10 @@ see [app/src/main/assets/about.html].
   </tbody>
 </table>
 
+### Retract keyboard
+
+Use the system <b>Back Button</b> (or <b>Back Gesture</b>) to retract the keyboard.
+
 
 ## Assets (for devs)
 
