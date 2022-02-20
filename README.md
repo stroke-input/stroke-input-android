@@ -47,6 +47,36 @@ For detailed copyright information in relation to dependencies,
 see [app/src/main/assets/about.html].
 
 
+## Help (for users)
+
+### Strokes
+
+<table>
+  <tbody>
+    <tr>
+      <td><kbd>㇐</kbd></td>
+      <td>horizontal; raise</td>
+    </tr>
+    <tr>
+      <td><kbd>㇑</kbd></td>
+      <td>vertical; vertical-with-hook</td>
+    </tr>
+    <tr>
+      <td><kbd>㇒</kbd></td>
+      <td>left-slash</td>
+    </tr>
+    <tr>
+      <td><kbd>㇔</kbd></td>
+      <td>right-press; dot</td>
+    </tr>
+    <tr>
+      <td><kbd>㇖</kbd></td>
+      <td>turn; bend</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Assets (for devs)
 
 ### `*.cmd` (CMD)
