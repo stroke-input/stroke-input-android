@@ -85,6 +85,21 @@ see [app/src/main/assets/about.html].
 | 為 | ㇔㇒㇖㇖㇖㇔㇔㇔㇔ |
 | 公 | ㇒㇔㇖㇔ |
 
+### Miscellaneous
+
+<table>
+  <tbody>
+    <tr>
+      <td>Horizontally swipe <kbd>space bar</kbd></td>
+      <td>Change language</td>
+    </tr>
+    <tr>
+      <td>Long press <kbd>space bar</kbd></td>
+      <td>Change to other keyboard</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Assets (for devs)
 
