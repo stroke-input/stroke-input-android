@@ -76,6 +76,15 @@ see [app/src/main/assets/about.html].
   </tbody>
 </table>
 
+### Examples
+
+| Character | Stroke sequence |
+| - | - |
+| 天 | ㇐㇐㇒㇔ |
+| 下 | ㇐㇑㇔ |
+| 為 | ㇔㇒㇖㇖㇖㇔㇔㇔㇔ |
+| 公 | ㇒㇔㇖㇔ |
+
 
 ## Assets (for devs)
 
