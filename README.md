@@ -47,7 +47,7 @@ For detailed copyright information in relation to dependencies,
 see [app/src/main/assets/about.html].
 
 
-## Assets
+## Assets (for devs)
 
 ### `*.cmd` (CMD)
 
