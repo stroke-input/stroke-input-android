@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.7] (29) 樹熊侍應 (2022-02-26)
+
 - Updated stroke input data to [Conway Stroke Data v1.5.0]
   (adds phrases 侍應, 樹熊)
 
@@ -328,7 +331,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.6...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.7...HEAD
+[v0.9.7]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.6...v0.9.7
 [v0.9.6]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.5...v0.9.6
 [v0.9.5]:
