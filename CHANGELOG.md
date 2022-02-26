@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.5.0]
+  (adds phrases 侍應, 樹熊)
+
 
 ## [v0.9.6] (28) Fix for blocked touches (2022-02-13)
 
@@ -381,6 +384,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.5.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.5.0
 [Conway Stroke Data v1.4.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.4.1
 [Conway Stroke Data v1.4.0]:
