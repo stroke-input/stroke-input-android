@@ -1,0 +1,3 @@
+* Fixed space bar for first candidate emitting an unwanted space
+
+Many thanks to @leavfin0 (GitHub) for reporting.
