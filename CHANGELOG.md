@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.8] (30) Space bar fix (2022-03-07)
+
 - Fixed space bar for first candidate emitting an extra space
 
 
@@ -333,7 +336,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.7...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...HEAD
+[v0.9.8]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.7...v0.9.8
 [v0.9.7]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.6...v0.9.7
 [v0.9.6]:
