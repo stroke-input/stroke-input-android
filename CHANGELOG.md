@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android Gradle Plugin to 7.1.2
+
 
 ## [v0.9.8] (30) Space bar fix (2022-03-07)
 
