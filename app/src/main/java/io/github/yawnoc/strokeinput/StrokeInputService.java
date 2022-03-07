@@ -602,7 +602,10 @@ public class StrokeInputService
     {
       onCandidate(getFirstCandidate());
     }
-    inputConnection.commitText(" ", 1);
+    else
+    {
+      inputConnection.commitText(" ", 1);
+    }
   }
   
   private void effectEnterKey(final InputConnection inputConnection)

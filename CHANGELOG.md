@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed space bar for first candidate emitting an extra space
+
 
 ## [v0.9.7] (29) 樹熊侍應 (2022-02-26)
 
