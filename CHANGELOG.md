@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 
-## [v0.9.9] (31) 奇難雜症 (2022-03-26)
+## <s>[v0.9.9] (31) 奇難雜症 (2022-03-26)</s>
 
 - Updated stroke input data to [Conway Stroke Data v1.6.0]
   (adds phrases 奇難雜症, 床下底, 擺低, 放低, 放工, 漏低)
