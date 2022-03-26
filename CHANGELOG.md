@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.9] (31) 奇難雜症 (2022-03-26)
+
 - Updated stroke input data to [Conway Stroke Data v1.6.0]
   (adds phrases 奇難雜症, 床下底, 擺低, 放低, 放工, 漏低)
 - Upgraded Android Gradle Plugin to 7.1.2
@@ -340,7 +343,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.9...HEAD
+[v0.9.9]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...v0.9.9
 [v0.9.8]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.7...v0.9.8
 [v0.9.7]:
