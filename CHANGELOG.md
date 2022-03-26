@@ -4,6 +4,12 @@
 ## [Unreleased]
 
 
+## [v0.9.10] (32) 奇難雜症 (2022-03-26)
+
+**NOTE:** v0.9.9 (31) was cancelled
+because Conway forgot to add fastlane changelog `31.txt`.
+
+
 ## <s>[v0.9.9] (31) 奇難雜症 (2022-03-26)</s>
 
 - Updated stroke input data to [Conway Stroke Data v1.6.0]
@@ -343,7 +349,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.9...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.10...HEAD
+[v0.9.10]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.9...v0.9.10
 [v0.9.9]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...v0.9.9
 [v0.9.8]:
