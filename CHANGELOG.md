@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.11] (33) 較為爆煲 (2022-04-23)
+
 - Updated stroke input data to [Conway Stroke Data v1.7.0]
   (adds phrases 較為, 爆煲)
 - Upgraded Android Gradle Plugin to 7.1.3
@@ -354,7 +357,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.10...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...HEAD
+[v0.9.11]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.10...v0.9.11
 [v0.9.10]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.9...v0.9.10
 [v0.9.9]:
