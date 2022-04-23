@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.7.0]
+  (adds phrases 較為, 爆煲)
+
 
 ## [v0.9.10] (32) 奇難雜症 (2022-03-26)
 
@@ -413,6 +416,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.7.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.7.0
 [Conway Stroke Data v1.6.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.6.0
 [Conway Stroke Data v1.5.0]:
