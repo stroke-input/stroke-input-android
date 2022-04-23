@@ -5,6 +5,7 @@
 
 - Updated stroke input data to [Conway Stroke Data v1.7.0]
   (adds phrases 較為, 爆煲)
+- Upgraded Android Gradle Plugin to 7.1.3
 
 
 ## [v0.9.10] (32) 奇難雜症 (2022-03-26)
