@@ -1,0 +1,57 @@
+OrdinaryDictionaryReplacement: #license-links
+- queue_position: BEFORE #explicit-links
+- apply_mode: SIMULTANEOUS
+* [gpl-3] --> b<https://www.gnu.org/licenses/>
+* [apache-2] --> b<https://www.apache.org/licenses/LICENSE-2.0.html>
+* [cc-by-4] --> b<https://creativecommons.org/licenses/by/4.0/>
+* [cc0] --> b<https://creativecommons.org/publicdomain/zero/1.0/>
+
+OrdinaryDictionaryReplacement: #software-properties
+- queue_position: BEFORE #explicit-links
+- apply_mode: SIMULTANEOUS
+* \stroke-input-version --> v0.9.11
+* \stroke-input-years --> 2021--2022
+* \material-version --> v1.5.0
+* \material-years --> 2021
+* \stroke-data-version --> v1.7.0
+* \sequence-characters-years --> 2021--2022
+* \stroke-font-version --> v2.0.1
+* \stroke-font-years --> 2021--2022
+
+OrdinaryDictionaryReplacement: #link-definitions
+- queue_position: BEFORE #backslash-escapes
+- apply_mode: SEQUENTIAL
+- concluding_replacements:
+    #inline-code
+* @LINK_DEFINITIONS -->
+    [Stroke Input Method]: \stroke-input-url
+    [筆畫輸入法]: \stroke-input-url
+    [笔画输入法]: \stroke-input-url
+    [`Keyboard.java`]:
+      https://android.googlesource.com/platform/frameworks/base/+/\
+        33f921769531968a3ba9bc73fb2410f95868cb8d/\
+        core/java/android/inputmethodservice/Keyboard.java
+    [`KeyboardView.java`]:
+      https://android.googlesource.com/platform/frameworks/base/+/\
+        33f921769531968a3ba9bc73fb2410f95868cb8d/\
+        core/java/android/inputmethodservice/KeyboardView.java
+    [Material Components For Android]:
+      https://mvnrepository.com/artifact/com.google.android.material/material
+    [Conway Stroke Data]:
+      https://github.com/stroke-input/stroke-input-data
+    [Stroke Input Font]:
+      https://github.com/stroke-input/stroke-input-font
+    [2015 version of Noto Sans CJK TC]: \noto-cjk-url
+    [2015 版 <span class="en">Noto Sans CJK TC</span>]: \noto-cjk-url
+    [CMD]: https://github.com/conway-markdown/conway-markdown
+* \stroke-input-url -->
+    https://github.com/stroke-input/stroke-input-android
+* \noto-cjk-url -->
+    https://github.com/googlefonts/noto-cjk/\
+      tree/2663656870e92c0dcbe891590681815ebb509c05
+
+OrdinaryDictionaryReplacement: #cmd-source-link
+- queue_position: BEFORE #cmd-properties
+- apply_mode: SEQUENTIAL
+* [cmd-source] -->
+    b<https://github.com/stroke-input/stroke-input-android/blob/master/%cmd-name.cmd>
