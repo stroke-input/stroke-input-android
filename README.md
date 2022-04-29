@@ -113,14 +113,13 @@ These are [Conway-Markdown (CMD)] files,
 used to compile the HTML files by running Conway-Markdown
 whilst in the root directory of this repository.
 
+### `*.cmdr` (CMD Rules)
+
+These are files containing CMD Rules used by the CMD files.
+
 ### `*.html` (HTML)
 
 These are the actual About and Help files that get served in the app.
-
-### `*.inc` (Inclusions)
-
-These are files containing common [Conway-Markdown (CMD)]
-for inclusion in the CMD files.
 
 ### `*.txt` (Text)
 
