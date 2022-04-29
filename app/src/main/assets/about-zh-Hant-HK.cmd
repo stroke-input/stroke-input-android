@@ -7,8 +7,6 @@ OrdinaryDictionaryReplacement: #boilerplate-properties-override
 - apply_mode: SIMULTANEOUS
 * %lang --> zh-Hant-HK
 * %title --> 關於
-* %head-elements-after-viewport -->
-    <link rel="stylesheet" href="webview.css">
 
 %%%
 

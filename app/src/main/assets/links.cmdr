@@ -1,3 +1,9 @@
+OrdinaryDictionaryReplacement: #stylesheet
+- queue_position: BEFORE #boilerplate-properties
+- apply_mode: SIMULTANEOUS
+* %head-elements-after-viewport -->
+    <link rel="stylesheet" href="webview.css">
+
 OrdinaryDictionaryReplacement: #license-links
 - queue_position: BEFORE #explicit-links
 - apply_mode: SIMULTANEOUS

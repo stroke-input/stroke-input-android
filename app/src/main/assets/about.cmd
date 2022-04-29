@@ -5,8 +5,6 @@ OrdinaryDictionaryReplacement: #boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 - apply_mode: SIMULTANEOUS
 * %title --> About
-* %head-elements-after-viewport -->
-    <link rel="stylesheet" href="webview.css">
 
 %%%
 
