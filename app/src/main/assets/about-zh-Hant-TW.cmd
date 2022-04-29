@@ -70,7 +70,7 @@ __[筆畫輸入法]__為自由開源軟體，恕無擔保。
 以 {GPL-3.0-only} 授權，見[gpl-3]。 <br>
 ----
 ----
-修改自 [2015 版 <span class="en">Noto Sans CJK TC</span>]，即：
+修改自 [2015 版 {Noto Sans CJK TC}]，即：
 ----
 ----{.notice}
 ©~2015 谷歌、等 <br>

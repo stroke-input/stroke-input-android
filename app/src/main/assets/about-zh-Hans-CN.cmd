@@ -70,7 +70,7 @@ __[笔画输入法]__是自由开源软件，恕无担保。
 以 {GPL-3.0-only} 授权，见[gpl-3]。 <br>
 ----
 ----
-修改自 [2015 版 <span class="en">Noto Sans CJK TC</span>]，即：
+修改自 [2015 版 {Noto Sans CJK TC}]，即：
 ----
 ----{.notice}
 ©~2015 谷歌、等 <br>

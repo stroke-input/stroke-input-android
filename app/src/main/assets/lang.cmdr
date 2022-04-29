@@ -8,7 +8,7 @@ RegexDictionaryReplacement: #link-definition-lang-en
     --> \g<anchoring_whitespace>\g<bracketed_label>{lang=en}\g<colon>
 
 FixedDelimitersReplacement: #span-lang-en
-- queue_position: BEFORE #whitespace
+- queue_position: AFTER #link-definitions
 - syntax_type: INLINE
 - opening_delimiter: {
 - attribute_specifications: lang=en
