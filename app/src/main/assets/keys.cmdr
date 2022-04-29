@@ -1,0 +1,14 @@
+OrdinaryDictionaryReplacement: #strokes
+- queue_position: BEFORE #whitespace
+- apply_mode: SIMULTANEOUS
+* \stroke-1 --> ㇐
+* \stroke-2 --> ㇑
+* \stroke-3 --> ㇒
+* \stroke-4 --> ㇔
+* \stroke-5 --> ㇖
+
+OrdinaryDictionaryReplacement: #space-bar
+- queue_position: BEFORE #whitespace
+- apply_mode: SIMULTANEOUS
+* \space-bar-en --> <kbd class="space-bar">◀ English ▶</kbd>
+* \space-bar-zh --> <kbd class="space-bar">◀ 中文 ▶</kbd>
