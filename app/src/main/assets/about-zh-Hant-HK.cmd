@@ -79,5 +79,5 @@ __[筆畫輸入法]__為自由開源軟件，恕無擔保。
 
 
 <footer>
-  此頁之 [CMD] 源碼： \cmd-source
+  此頁之 [CMD] 源碼： [cmd-source]
 </footer>
