@@ -50,14 +50,13 @@ Licensed under Apache-2.0, see [apache-2]. <br>
 Licensed under CC-BY-4.0, see [cc-by-4]. <br>
 ----
 
-<h4>
+####
   `characters-traditional.txt` <br>
   `characters-simplified.txt` <br>
   `phrases-traditional.txt` <br>
   `phrases-simplified.txt` <br>
   `ranking-traditional.txt` <br>
   `ranking-simplified.txt` <br>
-</h4>
 
 ----{.notice}
 Released into the Public Domain, see [cc0].

@@ -49,14 +49,14 @@ __[筆畫輸入法]__為自由開源軟件，恕無擔保。
 以 {CC-BY-4.0} 授權，見[cc-by-4]。 <br>
 ----
 
-<h4>
+####
   `characters-traditional.txt` <br>
   `characters-simplified.txt` <br>
   `phrases-traditional.txt` <br>
   `phrases-simplified.txt` <br>
   `ranking-traditional.txt` <br>
   `ranking-simplified.txt` <br>
-</h4>
+
 ----{.notice}
 獻以為公，見[cc0]。
 ----

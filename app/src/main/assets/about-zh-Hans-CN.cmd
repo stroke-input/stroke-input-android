@@ -49,14 +49,14 @@ __[笔画输入法]__是自由开源软件，恕无担保。
 以 {CC-BY-4.0} 授权，见[cc-by-4]。 <br>
 ----
 
-<h4>
+####
   `characters-traditional.txt` <br>
   `characters-simplified.txt` <br>
   `phrases-traditional.txt` <br>
   `phrases-simplified.txt` <br>
   `ranking-traditional.txt` <br>
   `ranking-simplified.txt` <br>
-</h4>
+
 ----{.notice}
 献以为公，见[cc0]。
 ----
