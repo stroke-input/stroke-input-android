@@ -60,4 +60,7 @@ OrdinaryDictionaryReplacement: #cmd-source-link
 - queue_position: BEFORE #cmd-properties
 - apply_mode: SEQUENTIAL
 * [cmd-source] -->
-    b<https://github.com/stroke-input/stroke-input-android/blob/master/%cmd-name.cmd>
+    [<code>%cmd-basename.cmd</code>](
+      https://github.com/stroke-input/stroke-input-android/blob/master/\
+        %cmd-name.cmd
+    )
