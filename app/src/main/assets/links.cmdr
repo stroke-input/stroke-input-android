@@ -17,8 +17,8 @@ OrdinaryDictionaryReplacement: #software-properties
 - apply_mode: SIMULTANEOUS
 * \stroke-input-version --> v0.9.11
 * \stroke-input-years --> 2021--2022
-* \material-version --> v1.5.0
-* \material-years --> 2021
+* \material-version --> v1.6.0
+* \material-years --> 2022
 * \stroke-data-version --> v1.7.0
 * \sequence-characters-years --> 2021--2022
 * \stroke-font-version --> v2.0.1

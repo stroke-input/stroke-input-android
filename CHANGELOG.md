@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+### Developer
+
+- Upgraded Material Components for Android to 1.6.0
 - Updated CMD to v4 syntax
 
 
