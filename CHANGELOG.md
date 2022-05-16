@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated CMD to v4 syntax
+
 
 ## [v0.9.11] (33) 較為爆煲 (2022-04-23)
 
