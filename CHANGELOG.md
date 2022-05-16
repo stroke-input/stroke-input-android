@@ -11,7 +11,7 @@ because Conway forgot to add fastlane changelog `34.txt`.
 Stupid Conway.
 
 
-## <s>[v0.9.12] (34) 暢順彈牙 (2022-05-16)</s>
+## <s>v0.9.12 (34) 暢順彈牙 (2022-05-16)</s>
 
 ### User
 
@@ -38,7 +38,7 @@ Stupid Conway.
 because Conway forgot to add fastlane changelog `31.txt`.
 
 
-## <s>[v0.9.9] (31) 奇難雜症 (2022-03-26)</s>
+## <s>v0.9.9 (31) 奇難雜症 (2022-03-26)</s>
 
 - Updated stroke input data to [Conway Stroke Data v1.6.0]
   (adds phrases 奇難雜症, 床下底, 擺低, 放低, 放工, 漏低)
@@ -379,15 +379,11 @@ the actual functionality has not been implemented yet.
 [Unreleased]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.13...HEAD
 [v0.9.13]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.12...v0.9.13
-[v0.9.12]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...v0.9.12
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...v0.9.13
 [v0.9.11]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.10...v0.9.11
 [v0.9.10]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.9...v0.9.10
-[v0.9.9]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...v0.9.9
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.8...v0.9.10
 [v0.9.8]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.7...v0.9.8
 [v0.9.7]:
