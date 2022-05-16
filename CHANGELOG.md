@@ -4,6 +4,13 @@
 ## [Unreleased]
 
 
+## [v0.9.13] (35) 暢順彈牙 (2022-05-16)
+
+**NOTE:** v0.9.12 (34) was cancelled
+because Conway forgot to add fastlane changelog `34.txt`.
+Stupid Conway.
+
+
 ## <s>[v0.9.12] (34) 暢順彈牙 (2022-05-16)</s>
 
 ### User
@@ -370,7 +377,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.12...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.13...HEAD
+[v0.9.13]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.12...v0.9.13
 [v0.9.12]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...v0.9.12
 [v0.9.11]:
