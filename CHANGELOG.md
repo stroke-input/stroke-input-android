@@ -3,6 +3,11 @@
 
 ## [Unreleased]
 
+### User
+
+- Updated stroke input data to [Conway Stroke Data v1.8.0]
+  (adds phrases 暢順, 彈牙, 避彈衣)
+
 ### Developer
 
 - Upgraded Material Components for Android to 1.6.0
@@ -428,6 +433,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.8.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.8.0
 [Conway Stroke Data v1.7.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.7.0
 [Conway Stroke Data v1.6.0]:
