@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.12] (34) 暢順彈牙 (2022-05-16)
+
 ### User
 
 - Updated stroke input data to [Conway Stroke Data v1.8.0]
@@ -367,7 +370,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.12...HEAD
+[v0.9.12]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...v0.9.12
 [v0.9.11]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.10...v0.9.11
 [v0.9.10]:
