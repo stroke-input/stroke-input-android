@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.14] (36) Off you go Scott Morrison (2022-05-21)
+
 - Updated stroke input data to [Conway Stroke Data v1.9.0]
   (adds phrases 好在, 好彩)
 
@@ -380,7 +383,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.13...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.14...HEAD
+[v0.9.14]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.13...v0.9.14
 [v0.9.13]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.11...v0.9.13
 [v0.9.11]:
