@@ -1,10 +1,10 @@
-OrdinaryDictionaryReplacement: #stylesheet
+OrdinaryDictionaryReplacement: #.links.stylesheet
 - queue_position: BEFORE #boilerplate-properties
 - apply_mode: SIMULTANEOUS
 * %head-elements-after-viewport -->
     <link rel="stylesheet" href="webview.css">
 
-OrdinaryDictionaryReplacement: #license-links
+OrdinaryDictionaryReplacement: #.links.license-links
 - queue_position: BEFORE #explicit-links
 - apply_mode: SIMULTANEOUS
 * [gpl-3] --> b<https://www.gnu.org/licenses/>
@@ -12,7 +12,7 @@ OrdinaryDictionaryReplacement: #license-links
 * [cc-by-4] --> b<https://creativecommons.org/licenses/by/4.0/>
 * [cc0] --> b<https://creativecommons.org/publicdomain/zero/1.0/>
 
-OrdinaryDictionaryReplacement: #software-properties
+OrdinaryDictionaryReplacement: #.links.software-properties
 - queue_position: BEFORE #explicit-links
 - apply_mode: SIMULTANEOUS
 * \stroke-input-version --> v0.9.14
@@ -24,7 +24,7 @@ OrdinaryDictionaryReplacement: #software-properties
 * \stroke-font-version --> v2.0.1
 * \stroke-font-years --> 2021--2022
 
-OrdinaryDictionaryReplacement: #link-definitions
+OrdinaryDictionaryReplacement: #.links.link-definitions
 - queue_position: BEFORE #backslash-escapes
 - apply_mode: SEQUENTIAL
 - concluding_replacements:
@@ -56,7 +56,7 @@ OrdinaryDictionaryReplacement: #link-definitions
     https://github.com/googlefonts/noto-cjk/\
       tree/2663656870e92c0dcbe891590681815ebb509c05
 
-OrdinaryDictionaryReplacement: #cmd-source-link
+OrdinaryDictionaryReplacement: #.links.cmd-source-link
 - queue_position: BEFORE #cmd-properties
 - apply_mode: SEQUENTIAL
 * [cmd-source] -->

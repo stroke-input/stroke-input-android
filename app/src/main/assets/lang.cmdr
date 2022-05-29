@@ -1,14 +1,14 @@
 # To be loaded after `links.cmdr`.
 
-RegexDictionaryReplacement: #link-definition-lang-en
-- queue_position: AFTER #link-definitions
+RegexDictionaryReplacement: #.lang.link-definition-lang-en
+- queue_position: AFTER #.links.link-definitions
 * (?P<anchoring_whitespace> ^ [^\S\n]* )
   (?P<bracketed_label> \[ [!-~]+? \] )
   (?P<colon> [:] )
     --> \g<anchoring_whitespace>\g<bracketed_label>{lang=en}\g<colon>
 
-FixedDelimitersReplacement: #span-lang-en
-- queue_position: AFTER #link-definitions
+FixedDelimitersReplacement: #.lang.span-lang-en
+- queue_position: AFTER #.links.link-definitions
 - syntax_type: INLINE
 - opening_delimiter: {
 - attribute_specifications: lang=en

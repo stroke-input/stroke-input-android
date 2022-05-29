@@ -2,7 +2,7 @@
 < keys.cmdr
 < typography.cmdr
 
-OrdinaryDictionaryReplacement: #boilerplate-properties-override
+OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 - queue_position: BEFORE #boilerplate-properties
 - apply_mode: SIMULTANEOUS
 * %lang --> zh-Hans-CN
