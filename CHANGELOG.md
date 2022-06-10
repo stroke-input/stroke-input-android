@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.10.0]
+  (adds phrases 屋企, 屋企人, 直程, 直頭, 流感針, 豬流感, 折腰, 緊絀)
+
 
 ## [v0.9.14] (36) Off you go Scott Morrison (2022-05-21)
 
@@ -451,6 +454,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.10.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.10.0
 [Conway Stroke Data v1.9.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.9.0
 [Conway Stroke Data v1.8.0]:
