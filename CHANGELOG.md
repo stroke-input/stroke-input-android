@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.15] (37) 屋企直程 (2022-06-10)
+
 - Updated stroke input data to [Conway Stroke Data v1.10.0]
   (adds phrases 屋企, 屋企人, 直程, 直頭, 流感針, 豬流感, 折腰, 緊絀)
 
@@ -386,7 +389,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.14...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.15...HEAD
+[v0.9.15]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.14...v0.9.15
 [v0.9.14]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.13...v0.9.14
 [v0.9.13]:
