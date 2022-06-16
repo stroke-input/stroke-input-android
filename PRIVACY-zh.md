@@ -7,5 +7,5 @@
 
 ---
 
-[English version of Privacy Policy](PRIVACY.md#privacy-policy)
+[English version of Privacy Policy](PRIVACY.md#privacy-policy) <br>
 （凡中英文有出入者，則以英文為主。）
