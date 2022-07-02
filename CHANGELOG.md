@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.16] (38) 債主清盤 (2022-07-02)
+
 - Updated stroke input data to [Conway Stroke Data v1.11.0]
   (adds phrases 債主, 清盤)
 
@@ -392,7 +395,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.15...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.16...HEAD
+[v0.9.16]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.15...v0.9.16
 [v0.9.15]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.14...v0.9.15
 [v0.9.14]:
