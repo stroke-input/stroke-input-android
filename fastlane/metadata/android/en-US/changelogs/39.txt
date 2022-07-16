@@ -1,0 +1,4 @@
+* Allowed 4th stroke vertical for U+62DC 拜
+  (Many thanks to @Greenactivist (GitHub) for reporting.)
+* Allowed left component 才 for U+6275 扵
+* Added phrases 悉數, 掌上壓
