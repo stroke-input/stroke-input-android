@@ -3,6 +3,10 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.12.0]
+  - Allows 4th stroke ㇑ for U+62DC 拜
+  - Allows left 才 for U+6275 扵
+  - Adds phrases 悉數, 掌上壓
 - Upgraded Material Components for Android to 1.6.1
 
 
@@ -469,6 +473,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.12.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.12.0
 [Conway Stroke Data v1.11.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.11.0
 [Conway Stroke Data v1.10.0]:
