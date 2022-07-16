@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.17] (39) 拜扵悉數 (2022-07-16)
+
 - Updated stroke input data to [Conway Stroke Data v1.12.0]
   - Allows 4th stroke ㇑ for U+62DC 拜
   - Allows left 才 for U+6275 扵
@@ -401,7 +404,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.16...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.17...HEAD
+[v0.9.17]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.16...v0.9.17
 [v0.9.16]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.15...v0.9.16
 [v0.9.15]:
