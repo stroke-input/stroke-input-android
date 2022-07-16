@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Material Components for Android to 1.6.1
+
 
 ## [v0.9.16] (38) 債主清盤 (2022-07-02)
 
