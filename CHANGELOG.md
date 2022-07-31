@@ -3,6 +3,14 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.13.0]
+  - Fixes inconsistent leniency for 3rd stroke of 亦-above
+  - Fixes missing leniency for last stroke of U+4F5F 佟
+  - Fixes missing 衮袞-leniency in U+78D9 磙, U+3665 㙥
+  - Fixes missing 青靑-leniency in U+775B 睛
+  - Fixes missing 黄黃-leniency in U+9ECB 黋
+  - Adds phrases 起屋, 起樓, 秋葵
+
 
 ## [v0.9.17] (39) 拜扵悉數 (2022-07-16)
 
@@ -478,6 +486,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.13.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.13.0
 [Conway Stroke Data v1.12.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.12.0
 [Conway Stroke Data v1.11.0]:
