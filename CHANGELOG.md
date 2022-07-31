@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.18] (40) 秋葵起樓 (2022-07-31)
+
 - Updated stroke input data to [Conway Stroke Data v1.13.0]
   - Fixes inconsistent leniency for 3rd stroke of 亦-above
   - Fixes missing leniency for last stroke of U+4F5F 佟
@@ -412,7 +415,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.17...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.18...HEAD
+[v0.9.18]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.17...v0.9.18
 [v0.9.17]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.16...v0.9.17
 [v0.9.16]:
