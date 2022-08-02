@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.19] (41) Stroke fix for 莉 (2022-08-02)
+
 - Update stroke input data to [Conway Stroke Data v1.13.1]
   (fixes stroke sequence for U+8389 莉)
 
@@ -418,7 +421,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.18...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.19...HEAD
+[v0.9.19]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.18...v0.9.19
 [v0.9.18]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.17...v0.9.18
 [v0.9.17]:
