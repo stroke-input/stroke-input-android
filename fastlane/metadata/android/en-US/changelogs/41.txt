@@ -1,0 +1,2 @@
+* Fixed stroke sequence for U+8389 莉
+Many thanks to Alex for reporting. Apologies for the delay.
