@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Update stroke input data to [Conway Stroke Data v1.13.1]
+  (fixes stroke sequence for U+8389 莉)
+
 
 ## [v0.9.18] (40) 秋葵起樓 (2022-07-31)
 
@@ -491,6 +494,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.13.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.13.1
 [Conway Stroke Data v1.13.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.13.0
 [Conway Stroke Data v1.12.0]:
