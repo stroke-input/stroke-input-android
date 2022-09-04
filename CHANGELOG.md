@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.20] (42) 早前騙案 (2022-09-04)
+
 - Update stroke input data to [Conway Stroke Data v1.14.0]
   - Raises ranking of 機
   - Adds phrases 早前, 騙案, 對路
@@ -427,7 +430,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.19...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.20...HEAD
+[v0.9.20]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.19...v0.9.20
 [v0.9.19]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.18...v0.9.19
 [v0.9.18]:
