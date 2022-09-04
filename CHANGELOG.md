@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+- Update stroke input data to [Conway Stroke Data v1.14.0]
+  - Raises ranking of 機
+  - Adds phrases 早前, 騙案, 對路
+  - Adds phrases 一旦, 一早, 一時, 一條, 一條龍, 一概, 一概而論, 一模一樣, 一貫, 一連, 一點
+  - Adds phrases 一年 etc., 一日 etc., 一月 etc., 一號 etc.
+
 
 ## [v0.9.19] (41) Stroke fix for 莉 (2022-08-02)
 
@@ -499,6 +505,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.14.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.14.0
 [Conway Stroke Data v1.13.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.13.1
 [Conway Stroke Data v1.13.0]:
