@@ -5,6 +5,7 @@
 
 - Update stroke input data to [Conway Stroke Data v1.15.0]
   (adds phrases 保重, 英皇壽辰)
+- Updated Android Gradle Plugin to 7.2.2
 
 
 ## [v0.9.20] (42) 早前騙案 (2022-09-04)
