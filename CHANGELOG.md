@@ -3,14 +3,14 @@
 
 ## [Unreleased]
 
-- Update stroke input data to [Conway Stroke Data v1.15.0]
+- Updated stroke input data to [Conway Stroke Data v1.15.0]
   (adds phrases 保重, 英皇壽辰)
 - Updated Android Gradle Plugin to 7.2.2
 
 
 ## [v0.9.20] (42) 早前騙案 (2022-09-04)
 
-- Update stroke input data to [Conway Stroke Data v1.14.0]
+- Updated stroke input data to [Conway Stroke Data v1.14.0]
   - Raises ranking of 機
   - Adds phrases 早前, 騙案, 對路
   - Adds phrases 一旦, 一早, 一時, 一條, 一條龍, 一概, 一概而論, 一模一樣, 一貫, 一連, 一點
@@ -19,7 +19,7 @@
 
 ## [v0.9.19] (41) Stroke fix for 莉 (2022-08-02)
 
-- Update stroke input data to [Conway Stroke Data v1.13.1]
+- Updated stroke input data to [Conway Stroke Data v1.13.1]
   (fixes stroke sequence for U+8389 莉)
 
 
