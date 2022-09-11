@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.21] (43) God save the King (2022-09-11)
+
 - Updated stroke input data to [Conway Stroke Data v1.15.0]
   (adds phrases 保重, 英皇壽辰)
 - Updated Android Gradle Plugin to 7.2.2
@@ -434,7 +437,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.20...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.21..HEAD
+[v0.9.21]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.20...v0.9.21
 [v0.9.20]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.19...v0.9.20
 [v0.9.19]:
