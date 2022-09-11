@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Update stroke input data to [Conway Stroke Data v1.15.0]
+  (adds phrases 保重, 英皇壽辰)
+
 
 ## [v0.9.20] (42) 早前騙案 (2022-09-04)
 
@@ -510,6 +513,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.15.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.15.0
 [Conway Stroke Data v1.14.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.14.0
 [Conway Stroke Data v1.13.1]:
