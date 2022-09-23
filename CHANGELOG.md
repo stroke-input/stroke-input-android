@@ -3,6 +3,18 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.16.0]
+  - Adds phrases 喊露, 打喊露
+  - Adds phrases 七七八八, 七彩
+  - Adds phrases 九十後, 九重
+  - Adds phrase 了結
+  - Adds phrases 二進制, 十進制, 進制
+  - Adds phrases 人事部, 人名, 人均
+  - Adds phrase 兒科
+  - Adds phrases 入伙, 入住, 入味, etc.
+  - Adds phrases 刁蠻, 力度, 叉腰
+  - Adds phrase 幾點
+
 
 ## [v0.9.21] (43) God save the King (2022-09-11)
 
@@ -519,6 +531,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.16.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.16.0
 [Conway Stroke Data v1.15.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.15.0
 [Conway Stroke Data v1.14.0]:
