@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.22] (44) 打喊露 (2022-09-23)
+
 - Updated stroke input data to [Conway Stroke Data v1.16.0]
   - Adds phrases 喊露, 打喊露
   - Adds phrases 七七八八, 七彩
@@ -449,7 +452,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.21..HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.22..HEAD
+[v0.9.22]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.21...v0.9.22
 [v0.9.21]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.20...v0.9.21
 [v0.9.20]:
