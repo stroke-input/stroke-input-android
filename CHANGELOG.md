@@ -8,6 +8,7 @@
   - Adds phrases 乾透, 俐落
   - Adds phrases 凡塵, 凡間
   - Adds phrase 幹道
+- Upgraded Material Components For Android to v1.7.0
 
 
 ## [v0.9.22] (44) 打喊露 (2022-09-23)
