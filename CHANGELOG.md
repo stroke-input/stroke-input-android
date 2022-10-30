@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.17.0]
+  - Adds phrases 大佬, 大堂, 大會, 大禍, 大蒜, 大難
+  - Adds phrases 乾透, 俐落
+  - Adds phrases 凡塵, 凡間
+  - Adds phrase 幹道
+
 
 ## [v0.9.22] (44) 打喊露 (2022-09-23)
 
@@ -536,6 +542,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.17.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.17.0
 [Conway Stroke Data v1.16.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.16.0
 [Conway Stroke Data v1.15.0]:
