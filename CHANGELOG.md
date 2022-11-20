@@ -3,6 +3,11 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.18.0]
+  - Adds phrase 器重
+  - Adds phrase 鬥木
+  - Adds phrase 軟熟
+
 
 ## [v0.9.23] (45) 乾透 (2022-10-30)
 
@@ -548,6 +553,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.18.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.18.0
 [Conway Stroke Data v1.17.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.17.0
 [Conway Stroke Data v1.16.0]:
