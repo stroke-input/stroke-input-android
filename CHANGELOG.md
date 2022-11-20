@@ -8,6 +8,7 @@
   - Adds phrase 鬥木
   - Adds phrase 軟熟
 - Updated androidx.test.ext:junit to v1.1.4
+- Updated androidx.test.espresso:espresso-core to v3.5.0
 
 
 ## [v0.9.23] (45) 乾透 (2022-10-30)
