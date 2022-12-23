@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.25] (47) 落街插蘇 (2022-12-23)
+
 - Updated stroke input data to [Conway Stroke Data v1.19.0]
   (adds phrases 落街, 插蘇)
 
@@ -475,7 +478,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.24...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.25...HEAD
+[v0.9.25]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.24...v0.9.25
 [v0.9.24]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.23...v0.9.24
 [v0.9.23]:
