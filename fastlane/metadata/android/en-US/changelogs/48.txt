@@ -1,0 +1,3 @@
+* Added characters 𡀔𡅅
+* Added characters 𠮿𠯆𠯢𠯫𠯻𠯿𠰍𠰠𠰴𠰺𠰻𠱼𠲍𠲖𠲵𠲸𠳓𠳔𠳝𠳭𠳿𠴨𠴱𠴲𠵅𠵆𠵌𠵎𠵘𠵱𠵴𠶖𠷈𠸄𠸍𠸖𠸝𠹤𠹵𠹶𠹹𠺕𠺖𠼝𠼦𠼻𠽟𠾐𠾶𡂴𡂿𡃏
+* Added phrase 指擬
