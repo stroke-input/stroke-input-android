@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.26] (48) Mouth besides (2023-01-15)
+
 - Updated stroke input data to [Conway Stroke Data v1.20.0]
   - Adds characters 𡀔𡅅 (Jyutping-recommended particles)
   - Adds characters 𠮿𠯆𠯢𠯫𠯻𠯿𠰍𠰠𠰴𠰺𠰻𠱼𠲍𠲖𠲵𠲸𠳓𠳔𠳝𠳭𠳿𠴨𠴱𠴲𠵅𠵆𠵌𠵎𠵘𠵱𠵴𠶖𠷈𠸄𠸍𠸖𠸝𠹤𠹵𠹶𠹹𠺕𠺖𠼝𠼦𠼻𠽟𠾐𠾶𡂴𡂿𡃏
@@ -485,7 +488,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.25...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.26...HEAD
+[v0.9.26]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.25...v0.9.26
 [v0.9.25]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.24...v0.9.25
 [v0.9.24]:
