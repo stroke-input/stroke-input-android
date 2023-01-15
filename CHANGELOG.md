@@ -3,6 +3,10 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.20.0]
+  - Adds characters 𡀔𡅅 (Jyutping-recommended particles)
+  - Adds characters 𠮿𠯆𠯢𠯫𠯻𠯿𠰍𠰠𠰴𠰺𠰻𠱼𠲍𠲖𠲵𠲸𠳓𠳔𠳝𠳭𠳿𠴨𠴱𠴲𠵅𠵆𠵌𠵎𠵘𠵱𠵴𠶖𠷈𠸄𠸍𠸖𠸝𠹤𠹵𠹶𠹹𠺕𠺖𠼝𠼦𠼻𠽟𠾐𠾶𡂴𡂿𡃏
+  - Adds phrase 指擬
 - Updated androidx.test.ext:junit to v1.1.5
 - Updated androidx.test.espresso:espresso-core to v3.5.1
 
@@ -571,6 +575,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.20.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.20.0
 [Conway Stroke Data v1.19.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.19.0
 [Conway Stroke Data v1.18.0]:
