@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated androidx.test.ext:junit to v1.1.5
+
 
 ## [v0.9.25] (47) 落街插蘇 (2022-12-23)
 
