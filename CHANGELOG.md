@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+- Sorted unranked candidates by code point plus CJK Block penalty
+  (fixes [Candidate order changes between Android 7 and 8])
+
+[Candidate order changes between Android 7 and 8]:
+  https://github.com/stroke-input/stroke-input-android/issues/12
+
 
 ## [v0.9.26] (48) Mouth besides (2023-01-15)
 

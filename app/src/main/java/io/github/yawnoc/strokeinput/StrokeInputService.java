@@ -108,9 +108,13 @@ public class StrokeInputService
   private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
   
   private static final int LAG_PREVENTION_CODE_POINT_COUNT = 1400;
-  private static final int LARGISH_SORTING_RANK = 3000;
-  private static final int RANKING_PENALTY_PER_CHAR = 2 * LARGISH_SORTING_RANK;
-  private static final int RANKING_PENALTY_UNPREFERRED = 10 * LARGISH_SORTING_RANK;
+  private static final int CJK_MAIN_CODE_POINT_START = 0x4E00;
+  private static final int CJK_MAIN_CODE_POINT_END = 0x9FFF;
+  private static final int CJK_EXTENSION_CODE_POINT_MIN = 0x3400;
+  private static final int CJK_EXTENSION_CODE_POINT_MAX = 0x2CEAF;
+  private static final int RANKING_PENALTY_CJK_EXTENSION = CJK_MAIN_CODE_POINT_END - CJK_EXTENSION_CODE_POINT_MIN + 1;
+  private static final int RANKING_PENALTY_PER_CHAR = 2 * CJK_EXTENSION_CODE_POINT_MAX;
+  private static final int RANKING_PENALTY_UNPREFERRED = 10 * CJK_EXTENSION_CODE_POINT_MAX;
   private static final int MAX_PREFIX_MATCH_COUNT = 30;
   private static final int MAX_PHRASE_LENGTH = 6;
   
@@ -794,10 +798,14 @@ public class StrokeInputService
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
     
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
+    final int cjkBlockPenalty =
+            (firstCodePoint < CJK_MAIN_CODE_POINT_START || firstCodePoint > CJK_MAIN_CODE_POINT_END)
+              ? RANKING_PENALTY_CJK_EXTENSION
+              : 0;
     final int sortingRankNonNull =
             (sortingRank != null)
               ? sortingRank
-              : LARGISH_SORTING_RANK;
+              : firstCodePoint + cjkBlockPenalty;
     
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
