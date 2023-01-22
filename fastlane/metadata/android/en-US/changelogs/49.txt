@@ -1,0 +1,2 @@
+* Introduced sorting of unranked candidates by code point (with penalty for CJK Extension blocks). Fixes inconsistent candidate order between Android 7 and 8
+* Added phrase 山埃

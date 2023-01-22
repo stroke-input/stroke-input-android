@@ -3,7 +3,7 @@
 
 ## [Unreleased]
 
-- Sorted unranked candidates by code point plus CJK Block penalty
+- Sorted unranked candidates by code point plus CJK Extension Block penalty
   (fixes [Candidate order changes between Android 7 and 8])
 - Updated stroke input data to [Conway Stroke Data v1.21.0]
   (adds phrase 山埃)
