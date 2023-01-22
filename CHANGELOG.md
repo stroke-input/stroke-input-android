@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v0.9.27] (49) Sorted cyanide (2023-01-22)
+
 - Sorted unranked candidates by code point plus CJK Extension Block penalty
   (fixes [Candidate order changes between Android 7 and 8])
 - Updated stroke input data to [Conway Stroke Data v1.21.0]
@@ -496,7 +499,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.26...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.27...HEAD
+[v0.9.27]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.26...v0.9.27
 [v0.9.26]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.25...v0.9.26
 [v0.9.25]:
