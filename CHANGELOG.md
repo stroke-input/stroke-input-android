@@ -5,6 +5,8 @@
 
 - Sorted unranked candidates by code point plus CJK Block penalty
   (fixes [Candidate order changes between Android 7 and 8])
+- Updated stroke input data to [Conway Stroke Data v1.21.0]
+  (adds phrase 山埃)
 
 [Candidate order changes between Android 7 and 8]:
   https://github.com/stroke-input/stroke-input-android/issues/12
@@ -586,6 +588,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.21.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.21.0
 [Conway Stroke Data v1.20.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.20.0
 [Conway Stroke Data v1.19.0]:
