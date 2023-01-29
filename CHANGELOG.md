@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed missing heading rows in Help tables
+
 
 ## [v0.9.27] (49) Sorted cyanide (2023-01-22)
 

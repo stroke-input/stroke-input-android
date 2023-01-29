@@ -17,6 +17,11 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ## Strokes
 
 ''''
+|^
+//
+  ; Key
+  ; Stroke
+|:
 //
   , <kbd class="stroke-key" lang="zh-Hant">\stroke-1</kbd>
   , horizontal; raise
@@ -66,6 +71,11 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ## Miscellaneous
 
 ''''
+|^
+//
+  ; Action
+  ; Function
+|:
 //
   , Horizontally swipe \space-bar-en
   , Change language

@@ -54,30 +54,13 @@ see [app/src/main/assets/about.html].
 
 ### Strokes
 
-<table>
-  <tbody>
-    <tr>
-      <td>㇐</td>
-      <td>horizontal; raise</td>
-    </tr>
-    <tr>
-      <td>㇑</td>
-      <td>vertical; vertical-with-hook</td>
-    </tr>
-    <tr>
-      <td>㇒</td>
-      <td>left-slash</td>
-    </tr>
-    <tr>
-      <td>㇔</td>
-      <td>right-press; dot</td>
-    </tr>
-    <tr>
-      <td>㇖</td>
-      <td>turn; bend</td>
-    </tr>
-  </tbody>
-</table>
+| Key | Stroke |
+| - | - |
+| ㇐ | horizontal; raise |
+| ㇑ | vertical; vertical-with-hook |
+| ㇒ | left-slash |
+| ㇔ | right-press; dot |
+| ㇖ | turn; bend |
 
 ### Examples
 
@@ -90,18 +73,10 @@ see [app/src/main/assets/about.html].
 
 ### Miscellaneous
 
-<table>
-  <tbody>
-    <tr>
-      <td>Horizontally swipe space-bar</td>
-      <td>Change language</td>
-    </tr>
-    <tr>
-      <td>Long press space-bar</td>
-      <td>Change to other keyboard</td>
-    </tr>
-  </tbody>
-</table>
+| Action | Function |
+| - | - |
+| Horizontally swipe space-bar | Change language |
+| Long press space-bar | Change to other keyboard |
 
 ### Retract keyboard
 

@@ -18,6 +18,11 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ## 笔画
 
 ''''
+|^
+//
+  ; 键
+  ; 笔画
+|:
 //
   , <kbd class="stroke-key">\stroke-1</kbd>
   , 横、提
@@ -66,6 +71,11 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ## 杂项
 
 ''''
+|^
+//
+  ; 动作
+  ; 功能
+|:
 //
   , 横扫 \space-bar-zh
   , 转语言
