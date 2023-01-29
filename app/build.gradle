@@ -12,8 +12,8 @@ android
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
     targetSdkVersion 32
-    versionCode 49
-    versionName "0.9.27"
+    versionCode 50
+    versionName "1.0.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes

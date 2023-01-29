@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.0.0] (50) First stable (2023-01-29)
+
 - Fixed missing heading rows in Help tables
 - Updated stroke input data to [Conway Stroke Data v1.22.0]
   (adds phrases 等埋, 休憩)
@@ -503,7 +506,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v0.9.27...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.0.0...HEAD
+[v1.0.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v0.9.27...v1.0.0
 [v0.9.27]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.26...v0.9.27
 [v0.9.26]:
