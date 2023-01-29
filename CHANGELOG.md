@@ -4,6 +4,8 @@
 ## [Unreleased]
 
 - Fixed missing heading rows in Help tables
+- Updated stroke input data to [Conway Stroke Data v1.22.0]
+  (adds phrases 等埋, 休憩)
 
 
 ## [v0.9.27] (49) Sorted cyanide (2023-01-22)
@@ -595,6 +597,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.22.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.22.0
 [Conway Stroke Data v1.21.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.21.0
 [Conway Stroke Data v1.20.0]:
