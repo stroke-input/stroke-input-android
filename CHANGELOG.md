@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Upgraded targetSdkVersion to 33
+- Upgraded Material Components For Android to v1.8.0
 
 
 ## [v1.1.0] (51, 52) 夠鐘 (2023-03-06)
