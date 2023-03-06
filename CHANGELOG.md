@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.1.0] (51) 夠鐘 (2023-03-06)
+
 - Update stroke input data to [Conway Stroke Data v1.24.0]
   (adds phrases 圍裙, 攞位, 揀位, 揀選, 夠鐘, 夠瞓, 唔夠)
 - Suppressed `dataExtractionRules` API 31+ warning
@@ -510,7 +513,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.0.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.1.0...HEAD
+[v1.1.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.0.0...v1.1.0
 [v1.0.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v0.9.27...v1.0.0
 [v0.9.27]:
