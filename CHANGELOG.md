@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 
-## [v1.1.0] (51) 夠鐘 (2023-03-06)
+## [v1.1.0] (51, 52) 夠鐘 (2023-03-06)
 
 - Update stroke input data to [Conway Stroke Data v1.24.0]
   (adds phrases 圍裙, 攞位, 揀位, 揀選, 夠鐘, 夠瞓, 唔夠)
