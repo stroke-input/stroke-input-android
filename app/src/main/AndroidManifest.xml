@@ -7,6 +7,7 @@
 -->
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   package="io.github.yawnoc.strokeinput"
 >
   <application
@@ -18,6 +19,7 @@
     android:roundIcon="@mipmap/icon_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.StrokeInput"
+    tools:targetApi="s"
   >
     <service
       android:name=".StrokeInputService"

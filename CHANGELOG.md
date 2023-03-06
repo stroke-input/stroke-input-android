@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Suppressed `dataExtractionRules` API 31+ warning
+
 
 ## [v1.0.0] (50) First stable (2023-01-29)
 
