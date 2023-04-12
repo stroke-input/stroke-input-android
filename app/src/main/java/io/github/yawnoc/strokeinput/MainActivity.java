@@ -67,7 +67,6 @@ public class MainActivity
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
     final SeekBar keyboardHeightAdjustmentSeekBar = findViewById(R.id.keyboard_height_adjustment_seek_bar);
-    final TextView keyboardHeightAdjustmentDisplayText = findViewById(R.id.keyboard_height_adjustment_display_text);
     
     keyboardHeightAdjustmentSeekBar.setOnSeekBarChangeListener(
       new SeekBar.OnSeekBarChangeListener()
@@ -78,8 +77,7 @@ public class MainActivity
           final float adjustmentFactor =
                   KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN
                   + ((float) newProgress) / seekBar.getMax() * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
-          final String adjustmentPercentage = NumberFormat.getPercentInstance().format(adjustmentFactor);
-          keyboardHeightAdjustmentDisplayText.setText(adjustmentPercentage);
+          setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
         }
         
         @Override
@@ -140,6 +138,13 @@ public class MainActivity
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
+  }
+  
+  private void setKeyboardHeightAdjustmentDisplayText(final float adjustmentFactor)
+  {
+    final TextView keyboardHeightAdjustmentDisplay = findViewById(R.id.keyboard_height_adjustment_display);
+    final String adjustmentDisplayText = NumberFormat.getPercentInstance().format(adjustmentFactor);
+    keyboardHeightAdjustmentDisplay.setText(adjustmentDisplayText);
   }
   
   @Override
