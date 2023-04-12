@@ -45,6 +45,30 @@
       android:id="@+id/candidate_order_button"
       android:text="@string/label__main_activity__traditional_first"
     />
+    <!-- TODO: make nice -->
+    <TextView
+      style="@style/MainActivityText"
+      android:text="XXX. Keyboard height adjustment (keyboard excluding the candidates bar occupies at most half the screen):"
+    />
+    <LinearLayout
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="horizontal"
+      android:gravity="center_horizontal"
+      android:padding="@dimen/padding__main_activity"
+    >
+      <SeekBar
+        android:layout_width="196dp"
+        android:layout_height="24dp"
+        android:max="20"
+        android:progress="10"
+      />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="XXX%"
+      />
+    </LinearLayout>
     <EditText
       style="@style/MainActivityInput"
       android:id="@+id/test_input"
