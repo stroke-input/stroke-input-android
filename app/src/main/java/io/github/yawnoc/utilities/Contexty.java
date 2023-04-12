@@ -35,7 +35,14 @@ public final class Contexty
   )
   {
     final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
-    return preferences.getString(preferenceKey, null);
+    try
+    {
+      return preferences.getString(preferenceKey, null);
+    }
+    catch (ClassCastException exception)
+    {
+      return null;
+    }
   }
   
   public static void savePreferenceString(
