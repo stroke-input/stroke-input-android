@@ -72,11 +72,11 @@ public class MainActivity
       new SeekBar.OnSeekBarChangeListener()
       {
         @Override
-        public void onProgressChanged(SeekBar seekBar, int newProgress, boolean isUserChange)
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean isUserChange)
         {
           final float adjustmentFactor =
                   KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN
-                  + ((float) newProgress) / seekBar.getMax() * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
+                  + ((float) progress) / seekBar.getMax() * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
           setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
         }
         
