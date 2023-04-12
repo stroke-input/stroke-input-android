@@ -74,9 +74,7 @@ public class MainActivity
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean isUserChange)
         {
-          final float adjustmentFactor =
-                  KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN
-                  + ((float) progress) / seekBar.getMax() * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
+          final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(progress);
           setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
         }
         
@@ -138,6 +136,13 @@ public class MainActivity
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
+  }
+  
+  private float keyboardHeightAdjustmentProgressToFactor(final int progress)
+  {
+    final int maxProgress = getResources().getInteger(R.integer.keyboard_height_adjustment_max_progress);
+    final float progressFraction = ((float) progress) / maxProgress;
+    return KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN + progressFraction * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
   }
   
   private void setKeyboardHeightAdjustmentDisplayText(final float adjustmentFactor)
