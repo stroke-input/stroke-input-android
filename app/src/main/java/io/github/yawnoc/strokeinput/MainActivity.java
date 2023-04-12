@@ -38,6 +38,8 @@ public class MainActivity
   public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
   
   public static final String KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY = "keyboardHeightAdjustmentProgress";
+  public static final int KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS = 10;
+  public static final int KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS = 20;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN = 0.5f;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX = 1.5f;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE =
@@ -168,10 +170,9 @@ public class MainActivity
     );
   }
   
-  private float keyboardHeightAdjustmentProgressToFactor(final int progress)
+  public static float keyboardHeightAdjustmentProgressToFactor(final int progress)
   {
-    final int maxProgress = getResources().getInteger(R.integer.keyboard_height_adjustment_max_progress);
-    final float progressFraction = ((float) progress) / maxProgress;
+    final float progressFraction = ((float) progress) / KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS;
     return KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN + progressFraction * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
   }
   

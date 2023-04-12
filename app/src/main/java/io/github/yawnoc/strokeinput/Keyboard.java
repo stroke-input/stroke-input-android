@@ -65,6 +65,7 @@ public class Keyboard
   private final int defaultKeyPreviewMarginYPx;
   
   // Keyboard properties
+  private final Context applicationContext;
   private int width;
   private int height;
   private final List<Key> keyList;
@@ -93,6 +94,7 @@ public class Keyboard
   public Keyboard(final Context context, final int layoutResourceId)
   {
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    applicationContext = context.getApplicationContext();
     
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
@@ -204,7 +206,14 @@ public class Keyboard
   
   private void adjustKeyboardHeight()
   {
-    final float actualAdjustmentFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
+    final int userAdjustmentProgress =
+            MainActivity.loadSavedKeyboardHeightAdjustmentProgress(
+              applicationContext,
+              MainActivity.KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
+            );
+    final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);
+    final float actualAdjustmentFactor =
+            Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     for (final Key key : keyList)
     {
       key.y *= actualAdjustmentFactor;
