@@ -96,11 +96,7 @@ public class MainActivity
     
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
     
-    final int adjustmentProgress =
-            loadSavedKeyboardHeightAdjustmentProgress(
-              getApplicationContext(),
-              KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
-            );
+    final int adjustmentProgress = loadSavedKeyboardHeightAdjustmentProgress(getApplicationContext());
     final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(adjustmentProgress);
     keyboardHeightAdjustmentSeekBar.setMax(KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS);
     keyboardHeightAdjustmentSeekBar.setProgress(adjustmentProgress);
@@ -150,14 +146,14 @@ public class MainActivity
     candidateOrderButton.setText(candidateOrderButtonText);
   }
   
-  public static int loadSavedKeyboardHeightAdjustmentProgress(final Context context, final int defaultProgress)
+  public static int loadSavedKeyboardHeightAdjustmentProgress(final Context context)
   {
     return
       Contexty.loadPreferenceInt(
         context,
         StrokeInputService.PREFERENCES_FILE_NAME,
         KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
-        defaultProgress
+        KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
       );
   }
   

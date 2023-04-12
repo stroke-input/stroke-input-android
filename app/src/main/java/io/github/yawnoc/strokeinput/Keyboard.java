@@ -206,11 +206,7 @@ public class Keyboard
   
   private void adjustKeyboardHeight()
   {
-    final int userAdjustmentProgress =
-            MainActivity.loadSavedKeyboardHeightAdjustmentProgress(
-              applicationContext,
-              MainActivity.KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
-            );
+    final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
     final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);
     final float actualAdjustmentFactor =
             Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
