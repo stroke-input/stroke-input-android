@@ -69,7 +69,6 @@ public class MainActivity
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
     final SeekBar keyboardHeightAdjustmentSeekBar = findViewById(R.id.keyboard_height_adjustment_seek_bar);
-    
     keyboardHeightAdjustmentSeekBar.setOnSeekBarChangeListener(
       new SeekBar.OnSeekBarChangeListener()
       {
@@ -92,11 +91,18 @@ public class MainActivity
         }
       }
     );
-    keyboardHeightAdjustmentSeekBar.setProgress(0); // TODO: use constant
-    keyboardHeightAdjustmentSeekBar.setProgress(10); // TODO: use constant
     
-    // TODO: set keyboard height adjustment seek bar
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
+    
+    final int adjustmentProgress =
+            loadSavedKeyboardHeightAdjustmentProgress(
+              getApplicationContext(),
+              getResources().getInteger(R.integer.keyboard_height_adjustment_default_progress)
+            );
+    final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(adjustmentProgress);
+    keyboardHeightAdjustmentSeekBar.setProgress(adjustmentProgress);
+    setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
+    
     findViewById(R.id.test_input).requestFocus();
   }
   
@@ -139,6 +145,17 @@ public class MainActivity
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
+  }
+  
+  public static int loadSavedKeyboardHeightAdjustmentProgress(final Context context, final int defaultProgress)
+  {
+    return
+      Contexty.loadPreferenceInt(
+        context,
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+        defaultProgress
+      );
   }
   
   private void saveKeyboardHeightAdjustmentProgress(final int keyboardHeightAdjustmentProgress)

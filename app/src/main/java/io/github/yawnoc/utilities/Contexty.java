@@ -51,6 +51,17 @@ public final class Contexty
     preferencesEditor.apply();
   }
   
+  public static int loadPreferenceInt(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final int defaultValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    return preferences.getInt(preferenceKey, defaultValue);
+  }
+  
   public static void savePreferenceInt(
     final Context context,
     final String preferenceFileName,
