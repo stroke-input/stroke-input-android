@@ -61,8 +61,6 @@
         android:id="@+id/keyboard_height_adjustment_seek_bar"
         android:layout_width="196dp"
         android:layout_height="24dp"
-        android:max="@integer/keyboard_height_adjustment_max_progress"
-        android:progress="@integer/keyboard_height_adjustment_default_progress"
       />
       <TextView
         android:id="@+id/keyboard_height_adjustment_display"

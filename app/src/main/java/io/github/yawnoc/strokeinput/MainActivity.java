@@ -99,9 +99,10 @@ public class MainActivity
     final int adjustmentProgress =
             loadSavedKeyboardHeightAdjustmentProgress(
               getApplicationContext(),
-              getResources().getInteger(R.integer.keyboard_height_adjustment_default_progress)
+              KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
             );
     final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(adjustmentProgress);
+    keyboardHeightAdjustmentSeekBar.setMax(KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS);
     keyboardHeightAdjustmentSeekBar.setProgress(adjustmentProgress);
     setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
     
