@@ -36,6 +36,8 @@ public class MainActivity
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
   public static final String CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST = "TRADITIONAL_FIRST";
   public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
+  
+  public static final String KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY = "keyboardHeightAdjustmentProgress";
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN = 0.5f;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX = 1.5f;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE =
@@ -74,6 +76,7 @@ public class MainActivity
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean isUserChange)
         {
+          saveKeyboardHeightAdjustmentProgress(progress);
           final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(progress);
           setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
         }
@@ -136,6 +139,16 @@ public class MainActivity
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
+  }
+  
+  private void saveKeyboardHeightAdjustmentProgress(final int keyboardHeightAdjustmentProgress)
+  {
+    Contexty.savePreferenceInt(
+      getApplicationContext(),
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+        keyboardHeightAdjustmentProgress
+    );
   }
   
   private float keyboardHeightAdjustmentProgressToFactor(final int progress)

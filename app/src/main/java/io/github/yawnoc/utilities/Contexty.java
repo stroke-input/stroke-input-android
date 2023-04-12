@@ -51,6 +51,19 @@ public final class Contexty
     preferencesEditor.apply();
   }
   
+  public static void savePreferenceInt(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final int preferenceValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    SharedPreferences.Editor preferencesEditor = preferences.edit();
+    preferencesEditor.putInt(preferenceKey, preferenceValue);
+    preferencesEditor.apply();
+  }
+  
   public static void showErrorMessage(final Context context, final String message)
   {
     final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
