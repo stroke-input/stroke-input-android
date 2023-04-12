@@ -204,15 +204,15 @@ public class Keyboard
   
   private void adjustKeyboardHeight()
   {
-    final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
+    final float adjustmentFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
     for (final Key key : keyList)
     {
-      key.y *= keyboardHeightCorrectionFactor;
-      key.height *= keyboardHeightCorrectionFactor;
-      key.textOffsetY *= keyboardHeightCorrectionFactor;
-      key.previewMarginY *= keyboardHeightCorrectionFactor;
+      key.y *= adjustmentFactor;
+      key.height *= adjustmentFactor;
+      key.textOffsetY *= adjustmentFactor;
+      key.previewMarginY *= adjustmentFactor;
     }
-    height *= keyboardHeightCorrectionFactor;
+    height *= adjustmentFactor;
   }
   
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser)
