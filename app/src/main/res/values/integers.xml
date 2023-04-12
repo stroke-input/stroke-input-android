@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="keyboard_height_adjustment_max_progress">20</integer>
+  <integer name="keyboard_height_adjustment_default_progress">10</integer>
+</resources>
