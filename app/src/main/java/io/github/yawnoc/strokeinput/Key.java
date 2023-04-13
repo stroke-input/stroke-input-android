@@ -56,7 +56,7 @@ public class Key
   public int textSwipeColour;
   public int textSize;
   public int textOffsetX;
-  public int textOffsetY;
+  public int textOffsetY, naturalTextOffsetY;
   public float previewMagnification;
   public int previewMarginY;
   
@@ -140,7 +140,8 @@ public class Key
     textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
     textSize = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextSize, parentRow.keyTextSize);
     textOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
-    textOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
+    textOffsetY = naturalTextOffsetY =
+            attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
     
     previewMagnification =
             attributesArray.getFloat(
