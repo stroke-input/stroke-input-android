@@ -99,6 +99,10 @@ public class MainActivity
         @Override
         public void onStopTrackingTouch(SeekBar seekBar)
         {
+          // Show the keyboard
+          final InputMethodManager inputMethodManager =
+                  (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+          inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
         }
       }
     );
