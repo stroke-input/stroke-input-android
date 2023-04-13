@@ -46,7 +46,7 @@ public class Key
   
   // Key dimensions
   public int width;
-  public int height;
+  public int height, naturalHeight;
   
   // Key styles
   public int fillColour;
@@ -71,7 +71,7 @@ public class Key
   {
     grandparentKeyboard = parentRow.parentKeyboard;
     width = parentRow.keyWidth;
-    height = parentRow.keyHeight;
+    height = naturalHeight = parentRow.keyHeight;
   }
   
   public Key(final Row parentRow,
@@ -121,7 +121,7 @@ public class Key
               grandparentKeyboard.getScreenWidth(),
               parentRow.keyWidth
             );
-    height =
+    height = naturalHeight =
             Valuey.getDimensionOrFraction(
               attributesArray,
               R.styleable.Key_keyHeight,

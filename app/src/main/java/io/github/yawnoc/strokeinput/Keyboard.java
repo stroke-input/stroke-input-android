@@ -213,7 +213,7 @@ public class Keyboard
     for (final Key key : keyList)
     {
       key.y *= actualAdjustmentFactor;
-      key.height *= actualAdjustmentFactor;
+      key.height = (int) (key.naturalHeight * actualAdjustmentFactor);
       key.textOffsetY *= actualAdjustmentFactor;
       key.previewMarginY *= actualAdjustmentFactor;
     }
