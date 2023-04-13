@@ -403,6 +403,12 @@ public class StrokeInputService
   {
     super.onStartInputView(editorInfo, isRestarting);
     
+    for (final Keyboard keyboard : keyboardSet)
+    {
+      keyboard.adjustKeyboardHeight();
+    }
+    inputContainer.adjustHeight();
+    
     updateFullscreenMode(); // needed in API level 31+ so that fullscreen works after rotate whilst keyboard showing
     final boolean isFullscreen = isFullscreenMode();
     inputContainer.setPopupRecessLayout(isFullscreen);

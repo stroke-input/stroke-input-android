@@ -204,7 +204,7 @@ public class Keyboard
     }
   }
   
-  private void adjustKeyboardHeight()
+  public void adjustKeyboardHeight()
   {
     final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
     final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);

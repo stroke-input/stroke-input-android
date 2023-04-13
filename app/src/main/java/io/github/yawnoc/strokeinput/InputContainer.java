@@ -90,6 +90,11 @@ public class InputContainer
     setBackgroundResource(backgroundResourceId);
   }
   
+  public void adjustHeight()
+  {
+    keyboardView.requestLayout();
+  }
+  
   public void setStrokeDigitSequence(final String strokeDigitSequence)
   {
     strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
