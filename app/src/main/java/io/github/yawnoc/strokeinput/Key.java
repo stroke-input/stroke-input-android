@@ -62,7 +62,7 @@ public class Key
   
   // Key position
   public int x;
-  public int y;
+  public int y, naturalY;
   
   // Key meta-properties
   private final Keyboard grandparentKeyboard;
@@ -84,7 +84,7 @@ public class Key
     this(parentRow);
     
     this.x = x;
-    this.y = y;
+    this.y = naturalY = y;
     
     final TypedArray attributesArray =
             resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);

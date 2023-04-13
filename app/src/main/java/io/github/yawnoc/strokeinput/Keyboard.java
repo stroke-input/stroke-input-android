@@ -212,7 +212,7 @@ public class Keyboard
             Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / naturalHeight);
     for (final Key key : keyList)
     {
-      key.y *= actualAdjustmentFactor;
+      key.y = (int) (key.naturalY * actualAdjustmentFactor);
       key.height = (int) (key.naturalHeight * actualAdjustmentFactor);
       key.textOffsetY *= actualAdjustmentFactor;
       key.previewMarginY *= actualAdjustmentFactor;
