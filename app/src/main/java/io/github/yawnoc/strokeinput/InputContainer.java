@@ -11,6 +11,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 import java.util.List;
@@ -93,6 +94,18 @@ public class InputContainer
   public void updateHeight()
   {
     keyboardView.requestLayout();
+    getViewTreeObserver().addOnPreDrawListener( // otherwise downsized keyboard won't fall to the bottom
+      new ViewTreeObserver.OnPreDrawListener()
+      {
+        @Override
+        public boolean onPreDraw()
+        {
+          getViewTreeObserver().removeOnPreDrawListener(this);
+          requestLayout();
+          return false;
+        }
+      }
+    );
   }
   
   public void setStrokeDigitSequence(final String strokeDigitSequence)
