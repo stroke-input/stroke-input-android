@@ -58,6 +58,7 @@
       android:padding="@dimen/padding__main_activity"
     >
       <SeekBar
+        style="@style/MainActivitySeekBar"
         android:id="@+id/keyboard_height_adjustment_seek_bar"
         android:layout_width="196dp"
         android:layout_height="24dp"
