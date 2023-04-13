@@ -60,8 +60,8 @@
       <SeekBar
         style="@style/MainActivitySeekBar"
         android:id="@+id/keyboard_height_adjustment_seek_bar"
-        android:layout_width="196dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/width__main_activity__seek_bar"
+        android:layout_height="@dimen/height__main_activity__seek_bar"
       />
       <TextView
         android:id="@+id/keyboard_height_adjustment_display"
