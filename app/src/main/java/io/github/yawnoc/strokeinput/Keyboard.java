@@ -67,7 +67,7 @@ public class Keyboard
   // Keyboard properties
   private final Context applicationContext;
   private int width;
-  private int height;
+  private int height, naturalHeight;
   private final List<Key> keyList;
   public int fillColour;
   
@@ -196,7 +196,7 @@ public class Keyboard
       }
       
       width = maximumX;
-      height = maximumY;
+      height = naturalHeight = maximumY;
     }
     catch (Exception exception)
     {
@@ -209,7 +209,7 @@ public class Keyboard
     final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
     final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);
     final float actualAdjustmentFactor =
-            Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
+            Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / naturalHeight);
     for (final Key key : keyList)
     {
       key.y *= actualAdjustmentFactor;
@@ -217,7 +217,7 @@ public class Keyboard
       key.textOffsetY *= actualAdjustmentFactor;
       key.previewMarginY *= actualAdjustmentFactor;
     }
-    height *= actualAdjustmentFactor;
+    height = (int) (naturalHeight * actualAdjustmentFactor);
   }
   
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser)
