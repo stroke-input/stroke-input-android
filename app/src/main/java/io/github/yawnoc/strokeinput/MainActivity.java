@@ -16,6 +16,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -85,6 +86,14 @@ public class MainActivity
         @Override
         public void onStartTrackingTouch(SeekBar seekBar)
         {
+          // Retract the keyboard
+          final View focusView = getCurrentFocus();
+          if (focusView != null)
+          {
+            final InputMethodManager inputMethodManager =
+                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+          }
         }
         
         @Override
