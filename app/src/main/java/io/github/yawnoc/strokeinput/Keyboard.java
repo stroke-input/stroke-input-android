@@ -215,7 +215,7 @@ public class Keyboard
       key.y = (int) (key.naturalY * actualAdjustmentFactor);
       key.height = (int) (key.naturalHeight * actualAdjustmentFactor);
       key.textOffsetY = (int) (key.naturalTextOffsetY * actualAdjustmentFactor);
-      key.previewMarginY *= actualAdjustmentFactor;
+      key.previewMarginY = (int) (key.naturalPreviewMarginY * actualAdjustmentFactor);
     }
     height = (int) (naturalHeight * actualAdjustmentFactor);
   }
