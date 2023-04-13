@@ -407,7 +407,7 @@ public class StrokeInputService
     {
       keyboard.adjustKeyboardHeight();
     }
-    inputContainer.adjustHeight();
+    inputContainer.updateHeight();
     
     updateFullscreenMode(); // needed in API level 31+ so that fullscreen works after rotate whilst keyboard showing
     final boolean isFullscreen = isFullscreenMode();

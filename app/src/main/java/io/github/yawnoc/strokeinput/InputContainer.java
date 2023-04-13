@@ -90,7 +90,7 @@ public class InputContainer
     setBackgroundResource(backgroundResourceId);
   }
   
-  public void adjustHeight()
+  public void updateHeight()
   {
     keyboardView.requestLayout();
   }
