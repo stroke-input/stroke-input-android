@@ -86,23 +86,19 @@ public class MainActivity
         @Override
         public void onStartTrackingTouch(SeekBar seekBar)
         {
-          // Retract the keyboard
+        }
+        
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar)
+        {
           final View focusView = getCurrentFocus();
           if (focusView != null)
           {
             final InputMethodManager inputMethodManager =
                     (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
           }
-        }
-        
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar)
-        {
-          // Show the keyboard
-          final InputMethodManager inputMethodManager =
-                  (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-          inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
         }
       }
     );
