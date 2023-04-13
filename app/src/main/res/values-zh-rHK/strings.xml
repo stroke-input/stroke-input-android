@@ -14,6 +14,7 @@
   <string name="label__main_activity__candidate_order">字選次序</string>
   <string name="label__main_activity__traditional_first">繁體行先</string>
   <string name="label__main_activity__simplified_first">簡體行先</string>
+  <string name="text__main_activity__keyboard_height_adjustment">4. 調校鍵盤高度（至多佔畫面一半，字選欄另計）：</string>
   <string name="hint__main_activity__test_input">5. 在此測試輸入</string>
   <string name="label__main_activity__return">回</string>
   <!-- Error messages -->

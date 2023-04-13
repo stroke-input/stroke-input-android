@@ -48,7 +48,7 @@
     <!-- TODO: make nice -->
     <TextView
       style="@style/MainActivityText"
-      android:text="XXX. Keyboard height adjustment (keyboard excluding the candidates bar occupies at most half the screen):"
+      android:text="@string/text__main_activity__keyboard_height_adjustment"
     />
     <LinearLayout
       android:layout_height="wrap_content"

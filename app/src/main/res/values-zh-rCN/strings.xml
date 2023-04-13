@@ -14,6 +14,7 @@
   <string name="label__main_activity__candidate_order">字选次序</string>
   <string name="label__main_activity__traditional_first">繁体排在前面</string>
   <string name="label__main_activity__simplified_first">简体排在前面</string>
+  <string name="text__main_activity__keyboard_height_adjustment">4. 调整键盘高度（最多占屏幕的一半，字选栏另计）：</string>
   <string name="hint__main_activity__test_input">5. 在此测试输入</string>
   <string name="label__main_activity__return">返回</string>
   <!-- Error messages -->
