@@ -17,6 +17,7 @@
 - Upgraded targetSdkVersion to 33
 - Upgraded Android Gradle Plugin to 7.4.2
 - Upgraded Material Components For Android to v1.8.0
+- Split launcher icon paths to fix 'long vector path' warning
 
 
 ## [v1.1.0] (51, 52) 夠鐘 (2023-03-06)
