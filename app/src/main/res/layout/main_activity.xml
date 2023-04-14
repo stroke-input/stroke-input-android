@@ -50,11 +50,10 @@
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__keyboard_height_adjustment"
     />
-    <LinearLayout
+    <RelativeLayout
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
       android:orientation="horizontal"
-      android:gravity="center_horizontal"
       android:padding="@dimen/padding__main_activity"
     >
       <SeekBar
@@ -62,6 +61,7 @@
         android:id="@+id/keyboard_height_adjustment_seek_bar"
         android:layout_width="@dimen/width__main_activity__seek_bar"
         android:layout_height="@dimen/height__main_activity__seek_bar"
+        android:layout_centerHorizontal="true"
       />
       <TextView
         android:id="@+id/keyboard_height_adjustment_display"
@@ -70,8 +70,9 @@
         android:minEms="3"
         android:gravity="start"
         android:textAlignment="gravity"
+        android:layout_toEndOf="@id/keyboard_height_adjustment_seek_bar"
       />
-    </LinearLayout>
+    </RelativeLayout>
     <EditText
       style="@style/MainActivityInput"
       android:id="@+id/test_input"
