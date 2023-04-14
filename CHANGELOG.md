@@ -9,6 +9,7 @@
 - Applied max width 488dp to Welcome screen
   (so that input box isn't overwide in landscape mode)
 - Improved wording of Step 1 (replace 'first time' with 'newly')
+- Moved 'Source Code' button to second last
 - Added external link icon to 'Source Code' and 'Privacy Policy' buttons
   (to make it obvious that they will spawn a browser)
 
