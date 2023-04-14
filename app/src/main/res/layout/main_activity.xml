@@ -87,6 +87,7 @@
       style="@style/MainActivityButton"
       android:id="@+id/source_code_button"
       android:text="@string/label__main_activity__source_code_button"
+      android:drawableEnd="@drawable/icon_external_link"
     />
     <Button
       style="@style/MainActivityButton"
@@ -102,6 +103,7 @@
       style="@style/MainActivityButton"
       android:id="@+id/privacy_button"
       android:text="@string/label__main_activity__privacy_button"
+      android:drawableEnd="@drawable/icon_external_link"
     />
   </LinearLayout>
 </ScrollView>
