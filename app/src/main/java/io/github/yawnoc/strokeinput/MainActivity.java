@@ -16,10 +16,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.text.NumberFormat;
 
 import io.github.yawnoc.utilities.Contexty;
 
@@ -33,6 +37,14 @@ public class MainActivity
   public static final String CANDIDATE_ORDER_PREFERENCE_KEY = "candidateOrderPreference";
   public static final String CANDIDATE_ORDER_PREFER_TRADITIONAL_FIRST = "TRADITIONAL_FIRST";
   public static final String CANDIDATE_ORDER_PREFER_SIMPLIFIED_FIRST = "SIMPLIFIED_FIRST";
+  
+  public static final String KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY = "keyboardHeightAdjustmentProgress";
+  public static final int KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS = 10;
+  public static final int KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS = 20;
+  public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN = 0.5f;
+  public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX = 1.5f;
+  public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE =
+          KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX - KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN;
   
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
@@ -59,7 +71,46 @@ public class MainActivity
     findViewById(R.id.change_keyboard_button).setOnClickListener(this);
     findViewById(R.id.candidate_order_button).setOnClickListener(this);
     
+    final SeekBar keyboardHeightAdjustmentSeekBar = findViewById(R.id.keyboard_height_adjustment_seek_bar);
+    keyboardHeightAdjustmentSeekBar.setOnSeekBarChangeListener(
+      new SeekBar.OnSeekBarChangeListener()
+      {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean isUserChange)
+        {
+          saveKeyboardHeightAdjustmentProgress(progress);
+          final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(progress);
+          setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
+        }
+        
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar)
+        {
+        }
+        
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar)
+        {
+          final View focusView = getCurrentFocus();
+          if (focusView != null)
+          {
+            final InputMethodManager inputMethodManager =
+                    (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
+          }
+        }
+      }
+    );
+    
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
+    
+    final int adjustmentProgress = loadSavedKeyboardHeightAdjustmentProgress(getApplicationContext());
+    final float adjustmentFactor = keyboardHeightAdjustmentProgressToFactor(adjustmentProgress);
+    keyboardHeightAdjustmentSeekBar.setMax(KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS);
+    keyboardHeightAdjustmentSeekBar.setProgress(adjustmentProgress);
+    setKeyboardHeightAdjustmentDisplayText(adjustmentFactor);
+    
     findViewById(R.id.test_input).requestFocus();
   }
   
@@ -102,6 +153,40 @@ public class MainActivity
               ? getString(R.string.label__main_activity__traditional_first)
               : getString(R.string.label__main_activity__simplified_first);
     candidateOrderButton.setText(candidateOrderButtonText);
+  }
+  
+  public static int loadSavedKeyboardHeightAdjustmentProgress(final Context context)
+  {
+    return
+      Contexty.loadPreferenceInt(
+        context,
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+        KEYBOARD_HEIGHT_ADJUSTMENT_DEFAULT_PROGRESS
+      );
+  }
+  
+  private void saveKeyboardHeightAdjustmentProgress(final int keyboardHeightAdjustmentProgress)
+  {
+    Contexty.savePreferenceInt(
+      getApplicationContext(),
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+        keyboardHeightAdjustmentProgress
+    );
+  }
+  
+  public static float keyboardHeightAdjustmentProgressToFactor(final int progress)
+  {
+    final float progressFraction = ((float) progress) / KEYBOARD_HEIGHT_ADJUSTMENT_MAX_PROGRESS;
+    return KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN + progressFraction * KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE;
+  }
+  
+  private void setKeyboardHeightAdjustmentDisplayText(final float adjustmentFactor)
+  {
+    final TextView keyboardHeightAdjustmentDisplay = findViewById(R.id.keyboard_height_adjustment_display);
+    final String adjustmentDisplayText = "× " + NumberFormat.getInstance().format(adjustmentFactor);
+    keyboardHeightAdjustmentDisplay.setText(adjustmentDisplayText);
   }
   
   @Override

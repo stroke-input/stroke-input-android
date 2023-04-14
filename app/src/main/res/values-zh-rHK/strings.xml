@@ -6,7 +6,7 @@
   <string name="label__main_activity__help_button">説明</string>
   <string name="label__main_activity__about_button">關於</string>
   <string name="label__main_activity__privacy_button">私隱政策</string>
-  <string name="text__main_activity__input_method_settings">1. 若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：</string>
+  <string name="text__main_activity__input_method_settings">1. 若新安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：</string>
   <string name="label__main_activity__input_method_settings_button">輸入法設定</string>
   <string name="text__main_activity__change_keyboard">2. 若現有之輸入法無以轉鍵盤：</string>
   <string name="label__main_activity__change_keyboard_button">轉鍵盤</string>
@@ -14,7 +14,8 @@
   <string name="label__main_activity__candidate_order">字選次序</string>
   <string name="label__main_activity__traditional_first">繁體行先</string>
   <string name="label__main_activity__simplified_first">簡體行先</string>
-  <string name="hint__main_activity__test_input">4. 在此測試輸入</string>
+  <string name="text__main_activity__keyboard_height_adjustment">4. 調校鍵盤高度（至多佔畫面一半，字選欄另計）：</string>
+  <string name="hint__main_activity__test_input">5. 在此測試輸入</string>
   <string name="label__main_activity__return">回</string>
   <!-- Error messages -->
   <string name="message__error__browser">無法開啟瀏覽器前往&lt;%1$s&gt;。</string>

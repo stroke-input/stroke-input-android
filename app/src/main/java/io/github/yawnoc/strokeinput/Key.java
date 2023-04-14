@@ -46,7 +46,7 @@ public class Key
   
   // Key dimensions
   public int width;
-  public int height;
+  public int height, naturalHeight;
   
   // Key styles
   public int fillColour;
@@ -56,13 +56,13 @@ public class Key
   public int textSwipeColour;
   public int textSize;
   public int textOffsetX;
-  public int textOffsetY;
+  public int textOffsetY, naturalTextOffsetY;
   public float previewMagnification;
-  public int previewMarginY;
+  public int previewMarginY, naturalPreviewMarginY;
   
   // Key position
   public int x;
-  public int y;
+  public int y, naturalY;
   
   // Key meta-properties
   private final Keyboard grandparentKeyboard;
@@ -71,7 +71,7 @@ public class Key
   {
     grandparentKeyboard = parentRow.parentKeyboard;
     width = parentRow.keyWidth;
-    height = parentRow.keyHeight;
+    height = naturalHeight = parentRow.keyHeight;
   }
   
   public Key(final Row parentRow,
@@ -84,7 +84,7 @@ public class Key
     this(parentRow);
     
     this.x = x;
-    this.y = y;
+    this.y = naturalY = y;
     
     final TypedArray attributesArray =
             resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
@@ -121,7 +121,7 @@ public class Key
               grandparentKeyboard.getScreenWidth(),
               parentRow.keyWidth
             );
-    height =
+    height = naturalHeight =
             Valuey.getDimensionOrFraction(
               attributesArray,
               R.styleable.Key_keyHeight,
@@ -140,14 +140,15 @@ public class Key
     textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
     textSize = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextSize, parentRow.keyTextSize);
     textOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
-    textOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
+    textOffsetY = naturalTextOffsetY =
+            attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
     
     previewMagnification =
             attributesArray.getFloat(
               R.styleable.Key_keyPreviewMagnification,
               parentRow.keyPreviewMagnification
             );
-    previewMarginY =
+    previewMarginY = naturalPreviewMarginY =
             Valuey.getDimensionOrFraction(
               attributesArray,
               R.styleable.Key_keyPreviewMarginY,

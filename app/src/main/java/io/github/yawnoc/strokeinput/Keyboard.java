@@ -65,8 +65,9 @@ public class Keyboard
   private final int defaultKeyPreviewMarginYPx;
   
   // Keyboard properties
+  private final Context applicationContext;
   private int width;
-  private int height;
+  private int height, naturalHeight;
   private final List<Key> keyList;
   public int fillColour;
   
@@ -93,6 +94,7 @@ public class Keyboard
   public Keyboard(final Context context, final int layoutResourceId)
   {
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    applicationContext = context.getApplicationContext();
     
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
@@ -105,7 +107,7 @@ public class Keyboard
     keyList = new ArrayList<>();
     
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
-    capKeyboardHeight();
+    adjustKeyboardHeight();
   }
   
   public List<Key> getKeyList()
@@ -194,7 +196,7 @@ public class Keyboard
       }
       
       width = maximumX;
-      height = maximumY;
+      height = naturalHeight = maximumY;
     }
     catch (Exception exception)
     {
@@ -202,17 +204,20 @@ public class Keyboard
     }
   }
   
-  private void capKeyboardHeight()
+  public void adjustKeyboardHeight()
   {
-    final float keyboardHeightCorrectionFactor = Math.min(1, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / height);
+    final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
+    final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);
+    final float actualAdjustmentFactor =
+            Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / naturalHeight);
     for (final Key key : keyList)
     {
-      key.y *= keyboardHeightCorrectionFactor;
-      key.height *= keyboardHeightCorrectionFactor;
-      key.textOffsetY *= keyboardHeightCorrectionFactor;
-      key.previewMarginY *= keyboardHeightCorrectionFactor;
+      key.y = (int) (key.naturalY * actualAdjustmentFactor);
+      key.height = (int) (key.naturalHeight * actualAdjustmentFactor);
+      key.textOffsetY = (int) (key.naturalTextOffsetY * actualAdjustmentFactor);
+      key.previewMarginY = (int) (key.naturalPreviewMarginY * actualAdjustmentFactor);
     }
-    height *= keyboardHeightCorrectionFactor;
+    height = (int) (naturalHeight * actualAdjustmentFactor);
   }
   
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser)

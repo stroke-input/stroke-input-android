@@ -12,7 +12,10 @@
 >
   <LinearLayout
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:minWidth="@dimen/max_width__main_activity"
+    android:maxWidth="@dimen/max_width__main_activity"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="@dimen/padding__main_activity"
@@ -45,6 +48,33 @@
       android:id="@+id/candidate_order_button"
       android:text="@string/label__main_activity__traditional_first"
     />
+    <TextView
+      style="@style/MainActivityText"
+      android:text="@string/text__main_activity__keyboard_height_adjustment"
+    />
+    <RelativeLayout
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="horizontal"
+      android:padding="@dimen/padding__main_activity"
+    >
+      <SeekBar
+        style="@style/MainActivitySeekBar"
+        android:id="@+id/keyboard_height_adjustment_seek_bar"
+        android:layout_width="@dimen/width__main_activity__seek_bar"
+        android:layout_height="@dimen/height__main_activity__seek_bar"
+        android:layout_centerHorizontal="true"
+      />
+      <TextView
+        android:id="@+id/keyboard_height_adjustment_display"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:minEms="3"
+        android:gravity="start"
+        android:textAlignment="gravity"
+        android:layout_toEndOf="@id/keyboard_height_adjustment_seek_bar"
+      />
+    </RelativeLayout>
     <EditText
       style="@style/MainActivityInput"
       android:id="@+id/test_input"
@@ -52,11 +82,6 @@
       android:importantForAutofill="no"
       android:inputType="text"
       android:layout_marginBottom="@dimen/margin_bottom__main_activity__input"
-    />
-    <Button
-      style="@style/MainActivityButton"
-      android:id="@+id/source_code_button"
-      android:text="@string/label__main_activity__source_code_button"
     />
     <Button
       style="@style/MainActivityButton"
@@ -70,8 +95,15 @@
     />
     <Button
       style="@style/MainActivityButton"
+      android:id="@+id/source_code_button"
+      android:text="@string/label__main_activity__source_code_button"
+      android:drawableEnd="@drawable/icon_external_link"
+    />
+    <Button
+      style="@style/MainActivityButton"
       android:id="@+id/privacy_button"
       android:text="@string/label__main_activity__privacy_button"
+      android:drawableEnd="@drawable/icon_external_link"
     />
   </LinearLayout>
 </ScrollView>

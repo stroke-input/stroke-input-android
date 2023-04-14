@@ -35,7 +35,14 @@ public final class Contexty
   )
   {
     final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
-    return preferences.getString(preferenceKey, null);
+    try
+    {
+      return preferences.getString(preferenceKey, null);
+    }
+    catch (ClassCastException exception)
+    {
+      return null;
+    }
   }
   
   public static void savePreferenceString(
@@ -48,6 +55,37 @@ public final class Contexty
     final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
     SharedPreferences.Editor preferencesEditor = preferences.edit();
     preferencesEditor.putString(preferenceKey, preferenceValue);
+    preferencesEditor.apply();
+  }
+  
+  public static int loadPreferenceInt(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final int defaultValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    try
+    {
+      return preferences.getInt(preferenceKey, defaultValue);
+    }
+    catch (ClassCastException exception)
+    {
+      return defaultValue;
+    }
+  }
+  
+  public static void savePreferenceInt(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final int preferenceValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    SharedPreferences.Editor preferencesEditor = preferences.edit();
+    preferencesEditor.putInt(preferenceKey, preferenceValue);
     preferencesEditor.apply();
   }
   
