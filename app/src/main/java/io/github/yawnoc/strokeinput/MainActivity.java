@@ -185,7 +185,7 @@ public class MainActivity
   private void setKeyboardHeightAdjustmentDisplayText(final float adjustmentFactor)
   {
     final TextView keyboardHeightAdjustmentDisplay = findViewById(R.id.keyboard_height_adjustment_display);
-    final String adjustmentDisplayText = NumberFormat.getPercentInstance().format(adjustmentFactor);
+    final String adjustmentDisplayText = "× " + NumberFormat.getInstance().format(adjustmentFactor);
     keyboardHeightAdjustmentDisplay.setText(adjustmentDisplayText);
   }
   
