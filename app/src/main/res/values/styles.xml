@@ -3,6 +3,7 @@
   <style name="MainActivityText">
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
+    <item name="android:maxWidth">@dimen/max_width__main_activity</item>
     <item name="android:textSize">@dimen/font_size__main_activity</item>
     <item name="android:paddingTop">@dimen/padding_top__main_activity__text</item>
     <item name="android:paddingLeft">@dimen/padding_horizontal__main_activity__text</item>
