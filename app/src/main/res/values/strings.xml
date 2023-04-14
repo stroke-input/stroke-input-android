@@ -22,7 +22,7 @@
   <string name="label__main_activity__traditional_first">Traditional first</string>
   <string name="label__main_activity__simplified_first">Simplified first</string>
   <string name="text__main_activity__keyboard_height_adjustment">
-    4. Adjust keyboard height (capped at half the screen height, not counting the candidates bar)
+    4. Adjust keyboard height (capped at taking up half the screen, not counting the candidates bar)
   </string>
   <string name="hint__main_activity__test_input">5. Test input here</string>
   <string name="label__main_activity__return">Return</string>
