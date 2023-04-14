@@ -8,6 +8,7 @@
 - Added keyboard height adjustment option
 - Applied max width 488dp to Welcome screen
   (so that input box isn't overwide in landscape mode)
+- Improved wording of Step 1 (replace 'first time' with 'newly')
 
 ### Developer
 

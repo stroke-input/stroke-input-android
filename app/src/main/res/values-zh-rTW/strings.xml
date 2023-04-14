@@ -6,7 +6,7 @@
   <string name="label__main_activity__help_button">說明</string>
   <string name="label__main_activity__about_button">關於</string>
   <string name="label__main_activity__privacy_button">隱私政策</string>
-  <string name="text__main_activity__input_method_settings">1. 若首次安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：</string>
+  <string name="text__main_activity__input_method_settings">1. 若新安裝筆畫輸入法，必先在系統設定人手啟動，方能使用：</string>
   <string name="label__main_activity__input_method_settings_button">輸入法設定</string>
   <string name="text__main_activity__change_keyboard">2. 若現有之輸入法無以轉鍵盤：</string>
   <string name="label__main_activity__change_keyboard_button">轉鍵盤</string>

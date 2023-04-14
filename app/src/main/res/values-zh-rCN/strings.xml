@@ -6,7 +6,7 @@
   <string name="label__main_activity__help_button">说明</string>
   <string name="label__main_activity__about_button">关于</string>
   <string name="label__main_activity__privacy_button">隐私政策</string>
-  <string name="text__main_activity__input_method_settings">1. 若首次安装笔画输入法，必先在系统设置人手启动，方能使用：</string>
+  <string name="text__main_activity__input_method_settings">1. 若新安装笔画输入法，必先在系统设置人手启动，方能使用：</string>
   <string name="label__main_activity__input_method_settings_button">输入法设置</string>
   <string name="text__main_activity__change_keyboard">2. 若现有的输入法没办法转键盘：</string>
   <string name="label__main_activity__change_keyboard_button">转键盘</string>

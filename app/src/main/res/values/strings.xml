@@ -7,7 +7,7 @@
   <string name="label__main_activity__about_button">About</string>
   <string name="label__main_activity__privacy_button">Privacy Policy</string>
   <string name="text__main_activity__input_method_settings">
-    1. If you have installed Stroke Input Method for the first time,
+    1. If you have newly installed Stroke Input Method,
     you must manually enable it in the system settings before it can be used:
   </string>
   <string name="label__main_activity__input_method_settings_button">Input method settings</string>
