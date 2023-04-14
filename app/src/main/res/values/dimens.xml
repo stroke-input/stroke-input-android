@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- Main activity -->
+  <dimen name="max_width__main_activity">488dp</dimen>
   <dimen name="font_size__main_activity">16sp</dimen>
   <dimen name="font_size__main_activity__button">13sp</dimen>
   <dimen name="height__main_activity__seek_bar">24dp</dimen>

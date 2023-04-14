@@ -3,6 +3,13 @@
 
 ## [Unreleased]
 
+### User
+
+- Applied max width 488dp to Welcome screen
+  (so that input box isn't overwide in landscape mode)
+
+### Developer
+
 - Upgraded targetSdkVersion to 33
 - Upgraded Android Gradle Plugin to 7.4.2
 - Upgraded Material Components For Android to v1.8.0
