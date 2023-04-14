@@ -45,7 +45,6 @@
       android:id="@+id/candidate_order_button"
       android:text="@string/label__main_activity__traditional_first"
     />
-    <!-- TODO: make nice -->
     <TextView
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__keyboard_height_adjustment"
