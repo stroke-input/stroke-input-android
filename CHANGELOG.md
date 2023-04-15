@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.0] (53) Keyboard height adjustment (2023-04-15)
+
 ### User
 
 - Added keyboard height adjustment option
@@ -533,7 +536,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.1.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.0...HEAD
+[v1.2.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.1.0...v1.2.0
 [v1.1.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.0.0...v1.1.0
 [v1.0.0]:
