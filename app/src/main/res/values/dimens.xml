@@ -12,6 +12,7 @@
   <dimen name="padding_bottom__main_activity__text">4dp</dimen>
   <dimen name="margin_end__main_activity__adjustment_text">36dp</dimen>
   <dimen name="margin_horizontal__main_activity__seek_bar">24dp</dimen>
+  <dimen name="margin_top__main_activity__input">8dp</dimen>
   <dimen name="margin_bottom__main_activity__input">12dp</dimen>
   <dimen name="inset_vertical__main_activity__button">4dp</dimen>
   <dimen name="min_height__main_activity__button">48dp</dimen>
