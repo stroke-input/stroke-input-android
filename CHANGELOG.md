@@ -6,6 +6,8 @@
 ### User
 
 - Added keyboard height adjustment option
+- Updated stroke input data to [Conway Stroke Data v1.25.0]
+  (adds phrases 即管, 細個, 嗰陣, 嗰陣時, 舊陣時, 侷限)
 - Improved Welcome screen layout
   - Applied max width 488dp so that input box isn't overwide in landscape mode
   - Increased spacing between numbered items
@@ -629,6 +631,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.25.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.25.0
 [Conway Stroke Data v1.24.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.24.0
 [Conway Stroke Data v1.22.0]:
