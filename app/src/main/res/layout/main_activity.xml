@@ -56,6 +56,8 @@
       android:id="@+id/keyboard_height_adjustment_display"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
+      android:layout_gravity="end"
+      android:layout_marginEnd="@dimen/margin_end__main_activity__adjustment_text"
       android:minEms="3"
       android:gravity="start"
       android:textAlignment="gravity"
