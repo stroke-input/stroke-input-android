@@ -7,7 +7,7 @@
   <dimen name="height__main_activity__seek_bar">24dp</dimen>
   <dimen name="padding__main_activity">12dp</dimen>
   <dimen name="padding_top__main_activity__text_first">0dp</dimen>
-  <dimen name="padding_top__main_activity__text">8dp</dimen>
+  <dimen name="padding_top__main_activity__text">12dp</dimen>
   <dimen name="padding_horizontal__main_activity__text">4dp</dimen>
   <dimen name="padding_bottom__main_activity__text">4dp</dimen>
   <dimen name="margin_end__main_activity__adjustment_text">36dp</dimen>

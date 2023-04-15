@@ -6,8 +6,9 @@
 ### User
 
 - Added keyboard height adjustment option
-- Applied max width 488dp to Welcome screen
-  (so that input box isn't overwide in landscape mode)
+- Improved Welcome screen layout
+  - Applied max width 488dp so that input box isn't overwide in landscape mode
+  - Increased spacing between numbered items
 - Improved wording of Step 1 (replace 'first time' with 'newly')
 - Moved 'Source Code' button to second last
 - Added external link icon to 'Source Code' and 'Privacy Policy' buttons
