@@ -1,0 +1,6 @@
+* Added keyboard height adjustment option
+* Added phrases 即管, 細個, 嗰陣, 嗰陣時, 舊陣時, 侷限
+* Improved Welcome screen layout (max width, increased spacing)
+* Improved wording of Step 1
+* Moved 'Source Code' button to second last
+* Added external link icon to 'Source Code' and 'Privacy Policy' buttons
