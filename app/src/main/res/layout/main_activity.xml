@@ -52,29 +52,21 @@
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__keyboard_height_adjustment"
     />
-    <RelativeLayout
-      android:layout_height="wrap_content"
+    <TextView
+      android:id="@+id/keyboard_height_adjustment_display"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:minEms="3"
+      android:gravity="start"
+      android:textAlignment="gravity"
+    />
+    <SeekBar
+      style="@style/MainActivitySeekBar"
+      android:id="@+id/keyboard_height_adjustment_seek_bar"
       android:layout_width="match_parent"
-      android:orientation="horizontal"
-      android:padding="@dimen/padding__main_activity"
-    >
-      <SeekBar
-        style="@style/MainActivitySeekBar"
-        android:id="@+id/keyboard_height_adjustment_seek_bar"
-        android:layout_width="@dimen/width__main_activity__seek_bar"
-        android:layout_height="@dimen/height__main_activity__seek_bar"
-        android:layout_centerHorizontal="true"
-      />
-      <TextView
-        android:id="@+id/keyboard_height_adjustment_display"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:minEms="3"
-        android:gravity="start"
-        android:textAlignment="gravity"
-        android:layout_toEndOf="@id/keyboard_height_adjustment_seek_bar"
-      />
-    </RelativeLayout>
+      android:layout_height="@dimen/height__main_activity__seek_bar"
+      android:layout_marginHorizontal="20dp"
+    />
     <EditText
       style="@style/MainActivityInput"
       android:id="@+id/test_input"
