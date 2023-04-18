@@ -91,6 +91,7 @@ public class MainActivity
         @Override
         public void onStopTrackingTouch(SeekBar seekBar)
         {
+          // Hide and reshow keyboard to trigger height readjustment
           final View focusView = getCurrentFocus();
           if (focusView != null)
           {
