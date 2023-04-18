@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Fixed missing monochrome icon (for Android 13 themed icons)
+- Changed to non-breaking space in height multiplier display
 - Moved package from Android manifest to build files
 
 
