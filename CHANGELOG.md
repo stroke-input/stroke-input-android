@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Moved package from Android manifest to build files
+
 
 ## [v1.2.0] (53) Keyboard height adjustment (2023-04-15)
 

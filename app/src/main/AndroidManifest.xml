@@ -8,7 +8,6 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  package="io.github.yawnoc.strokeinput"
 >
   <application
     android:allowBackup="false"

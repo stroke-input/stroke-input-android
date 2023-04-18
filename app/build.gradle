@@ -34,6 +34,7 @@ android
   {
     ignoreAssetsPattern '*.cmd:*.cmdr'
   }
+  namespace 'io.github.yawnoc.strokeinput'
 }
 
 dependencies
