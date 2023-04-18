@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Fixed missing monochrome icon (for Android 13 themed icons)
 - Moved package from Android manifest to build files
 
 
