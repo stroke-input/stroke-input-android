@@ -66,6 +66,11 @@ kbd {
   white-space: pre;
 }
 
+sup {
+  line-height: 0;
+  padding: 0 0.05em;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;

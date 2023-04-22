@@ -88,10 +88,10 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ## Retract keyboard
 
 ----
-Use the system __Back Button__ (or __Back Gesture__) to retract the keyboard.
+Use the system __Back Button__ (or __Back Gesture__<sup>†</sup>) to retract the keyboard.
 ----
 ----
-(If Android~13 __Gesture Navigation__ is inconvenient,
+(<sup>†</sup>If Android~13 __Gesture Navigation__ is inconvenient,
 consider reverting to __3-Button Navigation__ and using the __Back Button__.)
 ----
 
