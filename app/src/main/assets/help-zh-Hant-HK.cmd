@@ -91,6 +91,9 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ----
 以系統__返回掣__（或__返回手勢__）而收回鍵盤。
 ----
+----
+（若 Android~13 __手勢導覽__不便，可考慮復還__三按鈕導覽__，並使用__反回掣__。）
+----
 
 
 <footer>

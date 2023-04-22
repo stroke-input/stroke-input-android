@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Fixed missing monochrome icon (for Android 13 themed icons)
+- Clarified Back Gesture vs 3-Button Navigation and Back Button in Help
 - Changed to non-breaking space in height multiplier display
 - Moved package from Android manifest to build files
 - Upgraded GitHub Actions to Node.js 16

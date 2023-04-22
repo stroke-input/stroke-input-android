@@ -90,6 +90,9 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ----
 用系统__返回按钮__（或__返回手势__）来收回键盘。
 ----
+----
+（若 Android~13 __手势导航__不便，可考虑复还__“三按钮”导航__，并使用__返回按钮__。）
+----
 
 
 <footer>
