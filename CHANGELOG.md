@@ -6,6 +6,7 @@
 - Fixed missing monochrome icon (for Android 13 themed icons)
 - Changed to non-breaking space in height multiplier display
 - Moved package from Android manifest to build files
+- Upgraded GitHub Actions to Node.js 16
 
 
 ## [v1.2.0] (53) Keyboard height adjustment (2023-04-15)
