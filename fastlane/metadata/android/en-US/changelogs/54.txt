@@ -1,0 +1,2 @@
+* Fixed missing monochrome icon (for Android 13 themed icons)
+* Clarified Back Gesture vs revert to 3-Button Navigation in Help
