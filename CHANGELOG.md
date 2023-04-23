@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.1] (54) Monochrome icon (2023-04-23)
+
 - Fixed missing monochrome icon (for Android 13 themed icons)
 - Clarified Back Gesture vs 3-Button Navigation and Back Button in Help
 - Changed to non-breaking space in height multiplier display
@@ -542,7 +545,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1...HEAD
+[v1.2.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.0...v1.2.1
 [v1.2.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.1.0...v1.2.0
 [v1.1.0]:
