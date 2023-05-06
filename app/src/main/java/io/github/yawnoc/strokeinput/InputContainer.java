@@ -34,30 +34,30 @@ public class InputContainer
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
   private KeyboardView keyboardView;
-  
+
   public InputContainer(final Context context, final AttributeSet attributes)
   {
     super(context, attributes);
   }
-  
+
   public void initialisePopupRecess()
   {
     popupRecess = findViewById(R.id.popup_recess);
   }
-  
+
   public void initialiseStrokeSequenceBar(final Context context)
   {
     strokeSequenceBar = findViewById(R.id.stroke_sequence_bar);
     strokeSequenceBar.setTypeface(Typeface.createFromAsset(context.getAssets(), KeyboardView.KEYBOARD_FONT_FILE_NAME));
   }
-  
+
   public void initialiseCandidatesView(final CandidatesViewAdapter.CandidateListener candidateListener)
   {
     candidatesView = findViewById(R.id.candidates_view);
     candidatesView.setCandidateListener(candidateListener);
     candidatesViewAdapter = candidatesView.getCandidatesViewAdapter();
   }
-  
+
   public void initialiseKeyboardView(
     final KeyboardView.KeyboardListener keyboardListener,
     final Keyboard keyboard
@@ -69,7 +69,7 @@ public class InputContainer
     keyboardView.setKeyPreviewPlane(findViewById(R.id.key_preview_plane));
     keyboardView.setKeyboard(keyboard);
   }
-  
+
   public void setPopupRecessLayout(final boolean isFullscreen)
   {
     if (isFullscreen)
@@ -81,7 +81,7 @@ public class InputContainer
       popupRecess.setVisibility(INVISIBLE);
     }
   }
-  
+
   public void setBackground(final boolean isFullscreen)
   {
     final int backgroundResourceId =
@@ -90,7 +90,7 @@ public class InputContainer
               : 0; // none
     setBackgroundResource(backgroundResourceId);
   }
-  
+
   public void updateHeight()
   {
     keyboardView.requestLayout();
@@ -107,38 +107,38 @@ public class InputContainer
       }
     );
   }
-  
+
   public void setStrokeDigitSequence(final String strokeDigitSequence)
   {
     strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
   }
-  
+
   public void setCandidateList(final List<String> candidateList)
   {
     candidatesViewAdapter.updateCandidateList(candidateList);
     candidatesView.scrollToPosition(0);
   }
-  
+
   public int getCandidatesViewTop()
   {
     return candidatesView.getTop();
   }
-  
+
   public Keyboard getKeyboard()
   {
     return keyboardView.getKeyboard();
   }
-  
+
   public void setKeyboard(final Keyboard keyboard)
   {
     keyboardView.setKeyboard(keyboard);
   }
-  
+
   public void setKeyRepeatIntervalMilliseconds(final int milliseconds)
   {
     keyboardView.setKeyRepeatIntervalMilliseconds(milliseconds);
   }
-  
+
   public void redrawKeyboard()
   {
     keyboardView.invalidate();

@@ -43,11 +43,11 @@ public class Key
   public String valueText;
   public String displayText; // overrides valueText drawn
   public String valueTextShifted; // overrides displayText drawn when shifted
-  
+
   // Key dimensions
   public int width;
   public int height, naturalHeight;
-  
+
   // Key styles
   public int fillColour;
   public int borderColour;
@@ -59,21 +59,21 @@ public class Key
   public int textOffsetY, naturalTextOffsetY;
   public float previewMagnification;
   public int previewMarginY, naturalPreviewMarginY;
-  
+
   // Key position
   public int x;
   public int y, naturalY;
-  
+
   // Key meta-properties
   private final Keyboard grandparentKeyboard;
-  
+
   public Key(final Row parentRow)
   {
     grandparentKeyboard = parentRow.parentKeyboard;
     width = parentRow.keyWidth;
     height = naturalHeight = parentRow.keyHeight;
   }
-  
+
   public Key(final Row parentRow,
     final int x,
     final int y,
@@ -82,13 +82,13 @@ public class Key
   )
   {
     this(parentRow);
-    
+
     this.x = x;
     this.y = naturalY = y;
-    
+
     final TypedArray attributesArray =
             resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
-    
+
     isLongPressable = attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
     isRepeatable = attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);
     isSwipeable = attributesArray.getBoolean(R.styleable.Key_keyIsSwipeable, false);
@@ -96,14 +96,14 @@ public class Key
     isExtendedLeft = attributesArray.getBoolean(R.styleable.Key_keyIsExtendedLeft, false);
     isExtendedRight = attributesArray.getBoolean(R.styleable.Key_keyIsExtendedRight, false);
     isPreviewable = attributesArray.getBoolean(R.styleable.Key_keyIsPreviewable, parentRow.keysArePreviewable);
-    
+
     valueText = attributesArray.getString(R.styleable.Key_keyValueText);
     displayText = attributesArray.getString(R.styleable.Key_keyDisplayText);
     if (displayText == null)
     {
       displayText = valueText;
     }
-    
+
     valueTextShifted = attributesArray.getString(R.styleable.Key_keyValueTextShifted);
     if (isShiftable && valueTextShifted == null)
     {
@@ -113,7 +113,7 @@ public class Key
     {
       valueTextShifted = displayText;
     }
-    
+
     width =
             Valuey.getDimensionOrFraction(
               attributesArray,
@@ -128,21 +128,21 @@ public class Key
               grandparentKeyboard.getScreenHeight(),
               parentRow.keyHeight
             );
-    
+
     fillColour =
             attributesArray.getColor(R.styleable.Key_keyFillColour, parentRow.keyFillColour);
     borderColour =
             attributesArray.getColor(R.styleable.Key_keyBorderColour, parentRow.keyBorderColour);
     borderThickness =
             attributesArray.getDimensionPixelSize(R.styleable.Key_keyBorderThickness, parentRow.keyBorderThickness);
-    
+
     textColour = attributesArray.getColor(R.styleable.Key_keyTextColour, parentRow.keyTextColour);
     textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
     textSize = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextSize, parentRow.keyTextSize);
     textOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
     textOffsetY = naturalTextOffsetY =
             attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
-    
+
     previewMagnification =
             attributesArray.getFloat(
               R.styleable.Key_keyPreviewMagnification,
@@ -155,10 +155,10 @@ public class Key
               grandparentKeyboard.getScreenHeight(),
               parentRow.keyPreviewMarginY
             );
-    
+
     attributesArray.recycle();
   }
-  
+
   public boolean containsPoint(final int x, final int y)
   {
     return (
@@ -169,7 +169,7 @@ public class Key
       this.y <= y && y <= this.y + this.height
     );
   }
-  
+
   public String shiftAwareDisplayText(final int shiftMode)
   {
     if (shiftMode == KeyboardView.SHIFT_DISABLED)

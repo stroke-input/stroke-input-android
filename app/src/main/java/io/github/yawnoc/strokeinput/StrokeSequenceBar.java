@@ -22,7 +22,7 @@ public class StrokeSequenceBar
   {
     super(context, attributes);
   }
-  
+
   public void setStrokeDigitSequence(final String strokeDigitSequence)
   {
     if (strokeDigitSequence.length() > 0)

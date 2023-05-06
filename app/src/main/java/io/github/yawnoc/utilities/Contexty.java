@@ -27,7 +27,7 @@ public final class Contexty
   {
     // Do not instantiate
   }
-  
+
   public static String loadPreferenceString(
     final Context context,
     final String preferenceFileName,
@@ -44,7 +44,7 @@ public final class Contexty
       return null;
     }
   }
-  
+
   public static void savePreferenceString(
     final Context context,
     final String preferenceFileName,
@@ -57,7 +57,7 @@ public final class Contexty
     preferencesEditor.putString(preferenceKey, preferenceValue);
     preferencesEditor.apply();
   }
-  
+
   public static int loadPreferenceInt(
     final Context context,
     final String preferenceFileName,
@@ -75,7 +75,7 @@ public final class Contexty
       return defaultValue;
     }
   }
-  
+
   public static void savePreferenceInt(
     final Context context,
     final String preferenceFileName,
@@ -88,37 +88,37 @@ public final class Contexty
     preferencesEditor.putInt(preferenceKey, preferenceValue);
     preferencesEditor.apply();
   }
-  
+
   public static void showErrorMessage(final Context context, final String message)
   {
     final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));
     alertTextView.setText(message);
     alertTextView.setTextIsSelectable(true);
-    
+
     final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.StrokeInputAlert);
     alertDialogBuilder
       .setPositiveButton(R.string.label__main_activity__return, null)
       .setView(alertTextView);
-    
+
     final Dialog alertDialog = alertDialogBuilder.create();
     final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
     alertDialog.show();
     alertDialog.getWindow().setLayout(dialog_size, dialog_size);
   }
-  
+
   public static void showSystemInputMethodSettings(final Context context)
   {
     final Intent inputMethodSettingsIntent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
     context.startActivity(inputMethodSettingsIntent);
   }
-  
+
   public static void showSystemKeyboardChanger(final Context context)
   {
     final InputMethodManager inputMethodManager =
             (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     inputMethodManager.showInputMethodPicker();
   }
-  
+
   public static void openInBrowser(final Context context, final String uri)
   {
     final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));

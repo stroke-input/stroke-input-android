@@ -30,22 +30,22 @@ public final class Valuey
   {
     // Do not instantiate
   }
-  
+
   public static float clipValueToRange(final float value, final float rangeMin, final float rangeMax)
   {
     return Math.max(rangeMin, Math.min(rangeMax, value));
   }
-  
+
   public static float pxFromDp(final float dp, final DisplayMetrics displayMetrics)
   {
     return dp * displayMetrics.density;
   }
-  
+
   public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics)
   {
     return sp * displayMetrics.scaledDensity;
   }
-  
+
   public static int getDimensionOrFraction(
     final TypedArray array,
     final int attributeIndex,
@@ -58,15 +58,15 @@ public final class Valuey
     {
       return defaultValue;
     }
-    
+
     switch (value.type)
     {
       case TypedValue.TYPE_DIMENSION:
         return array.getDimensionPixelOffset(attributeIndex, defaultValue);
-      
+
       case TypedValue.TYPE_FRACTION:
         return Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
-      
+
       default:
         return defaultValue;
     }

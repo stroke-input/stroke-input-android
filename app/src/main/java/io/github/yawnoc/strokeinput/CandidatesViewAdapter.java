@@ -28,23 +28,23 @@ public class CandidatesViewAdapter
   private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
   private final List<String> candidateList;
-  
+
   CandidatesViewAdapter(final Context context, final List<String> candidateList)
   {
     this.layoutInflater = LayoutInflater.from(context);
     this.candidateList = candidateList;
   }
-  
+
   public interface CandidateListener
   {
     void onCandidate(String candidate);
   }
-  
+
   public void setCandidateListener(final CandidateListener candidateListener)
   {
     this.candidateListener = candidateListener;
   }
-  
+
   @SuppressLint("NotifyDataSetChanged")
   public void updateCandidateList(final List<String> candidateList)
   {
@@ -52,7 +52,7 @@ public class CandidatesViewAdapter
     this.candidateList.addAll(candidateList);
     notifyDataSetChanged();
   }
-  
+
   @NonNull
   @Override
   public ButtonHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType)
@@ -60,33 +60,33 @@ public class CandidatesViewAdapter
     final Button candidateButton = (Button) layoutInflater.inflate(R.layout.candidate_button, viewGroup, false);
     return new ButtonHolder(candidateButton);
   }
-  
+
   @Override
   public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex)
   {
     final String candidate = candidateList.get(candidateIndex);
     buttonHolder.candidateButton.setText(candidate);
   }
-  
+
   @Override
   public int getItemCount()
   {
     return candidateList.size();
   }
-  
+
   public class ButtonHolder
     extends RecyclerView.ViewHolder
     implements View.OnClickListener
   {
     private final Button candidateButton;
-    
+
     public ButtonHolder(final Button candidateButton)
     {
       super(candidateButton);
       candidateButton.setOnClickListener(this);
       this.candidateButton = candidateButton;
     }
-    
+
     @Override
     public void onClick(View view)
     {

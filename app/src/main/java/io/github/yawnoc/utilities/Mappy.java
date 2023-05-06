@@ -16,7 +16,7 @@ public final class Mappy
   {
     // Do not instantiate
   }
-  
+
   public static <V, K> Map<V, K> invertMap(Map<K, V> forwardMap)
   {
     Map<V, K> inverseMap = new HashMap<>();
@@ -24,7 +24,7 @@ public final class Mappy
     {
       inverseMap.put(entry.getValue(), entry.getKey());
     }
-    
+
     return inverseMap;
   }
 }

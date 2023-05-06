@@ -41,36 +41,36 @@ public class Keyboard
   private static final String KEYBOARD_TAG = "Keyboard";
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
-  
+
   private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
-  
+
   private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
   private static final float DEFAULT_KEY_WIDTH_FRACTION = 0.1f;
   private static final int DEFAULT_KEY_HEIGHT_DP = 64;
   private final int defaultKeyHeightPx;
-  
+
   private static final int DEFAULT_KEY_FILL_COLOUR = Color.BLACK;
   private static final int DEFAULT_KEY_BORDER_COLOUR = Color.GRAY;
   private static final int DEFAULT_KEY_BORDER_THICKNESS_DP = 2;
   private final int defaultKeyBorderThicknessPx;
-  
+
   private static final int DEFAULT_KEY_TEXT_COLOUR = Color.WHITE;
   private static final int DEFAULT_KEY_TEXT_SWIPE_COLOUR = Color.RED;
   private static final int DEFAULT_KEY_TEXT_SIZE_SP = 32;
   private final int defaultKeyTextSizePx;
-  
+
   private static final float DEFAULT_KEY_PREVIEW_MAGNIFICATION = 1.2f;
   private static final int DEFAULT_KEY_PREVIEW_MARGIN_Y_DP = 24;
   private final int defaultKeyPreviewMarginYPx;
-  
+
   // Keyboard properties
   private final Context applicationContext;
   private int width;
   private int height, naturalHeight;
   private final List<Key> keyList;
   public int fillColour;
-  
+
   // Key properties
   public boolean keysAreShiftable;
   public boolean keysArePreviewable;
@@ -86,70 +86,70 @@ public class Keyboard
   public int keyTextOffsetY;
   public float keyPreviewMagnification;
   public int keyPreviewMarginY;
-  
+
   // Screen properties
   private final int screenWidth;
   private final int screenHeight;
-  
+
   public Keyboard(final Context context, final int layoutResourceId)
   {
     final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
     applicationContext = context.getApplicationContext();
-    
+
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
-    
+
     defaultKeyHeightPx = (int) Valuey.pxFromDp(DEFAULT_KEY_HEIGHT_DP, displayMetrics);
     defaultKeyBorderThicknessPx = (int) Valuey.pxFromDp(DEFAULT_KEY_BORDER_THICKNESS_DP, displayMetrics);
     defaultKeyTextSizePx = (int) Valuey.pxFromSp(DEFAULT_KEY_TEXT_SIZE_SP, displayMetrics);
     defaultKeyPreviewMarginYPx = (int) Valuey.pxFromDp(DEFAULT_KEY_PREVIEW_MARGIN_Y_DP, displayMetrics);
-    
+
     keyList = new ArrayList<>();
-    
+
     makeKeyboard(context, context.getResources().getXml(layoutResourceId));
     adjustKeyboardHeight();
   }
-  
+
   public List<Key> getKeyList()
   {
     return keyList;
   }
-  
+
   public int getWidth()
   {
     return width;
   }
-  
+
   public int getHeight()
   {
     return height;
   }
-  
+
   public int getScreenWidth()
   {
     return screenWidth;
   }
-  
+
   public int getScreenHeight()
   {
     return screenHeight;
   }
-  
+
   private void makeKeyboard(final Context context, final XmlResourceParser xmlResourceParser)
   {
     try
     {
       boolean inKey = false;
       boolean inRow = false;
-      
+
       int x = 0;
       int y = KEYBOARD_GUTTER_HEIGHT_PX;
       Key key = null;
       Row row = null;
-      
+
       int maximumX = x;
       int maximumY = y;
-      
+
       final Resources resources = context.getResources();
       int event;
       while ((event = xmlResourceParser.next()) != XmlResourceParser.END_DOCUMENT)
@@ -163,13 +163,13 @@ public class Keyboard
               case KEYBOARD_TAG:
                 parseKeyboardAttributes(resources, xmlResourceParser);
                 break;
-              
+
               case ROW_TAG:
                 inRow = true;
                 row = new Row(this, resources, xmlResourceParser);
                 x = row.offsetX;
                 break;
-              
+
               case KEY_TAG:
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
@@ -177,7 +177,7 @@ public class Keyboard
                 break;
             }
             break;
-          
+
           case XmlResourceParser.END_TAG:
             if (inKey)
             {
@@ -194,7 +194,7 @@ public class Keyboard
             break;
         }
       }
-      
+
       width = maximumX;
       height = naturalHeight = maximumY;
     }
@@ -203,7 +203,7 @@ public class Keyboard
       exception.printStackTrace();
     }
   }
-  
+
   public void adjustKeyboardHeight()
   {
     final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
@@ -219,17 +219,17 @@ public class Keyboard
     }
     height = (int) (naturalHeight * actualAdjustmentFactor);
   }
-  
+
   private void parseKeyboardAttributes(final Resources resources, final XmlResourceParser xmlResourceParser)
   {
     final TypedArray attributesArray =
             resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Keyboard);
-    
+
     fillColour = attributesArray.getColor(R.styleable.Keyboard_keyboardFillColour, DEFAULT_KEYBOARD_FILL_COLOUR);
-    
+
     keysAreShiftable = attributesArray.getBoolean(R.styleable.Keyboard_keysAreShiftable, false);
     keysArePreviewable = attributesArray.getBoolean(R.styleable.Keyboard_keysArePreviewable, true);
-    
+
     keyWidth =
             Valuey.getDimensionOrFraction(
               attributesArray,
@@ -244,24 +244,24 @@ public class Keyboard
               screenHeight,
               defaultKeyHeightPx
             );
-    
+
     keyFillColour =
             attributesArray.getColor(R.styleable.Keyboard_keyFillColour, DEFAULT_KEY_FILL_COLOUR);
     keyBorderColour =
             attributesArray.getColor(R.styleable.Keyboard_keyBorderColour, DEFAULT_KEY_BORDER_COLOUR);
     keyBorderThickness =
             attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyBorderThickness, defaultKeyBorderThicknessPx);
-    
+
     keyTextColour =
             attributesArray.getColor(R.styleable.Keyboard_keyTextColour, DEFAULT_KEY_TEXT_COLOUR);
     keyTextSwipeColour =
             attributesArray.getColor(R.styleable.Keyboard_keyTextSwipeColour, DEFAULT_KEY_TEXT_SWIPE_COLOUR);
     keyTextSize =
             attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextSize, defaultKeyTextSizePx);
-    
+
     keyTextOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextOffsetX, 0);
     keyTextOffsetY = attributesArray.getDimensionPixelSize(R.styleable.Keyboard_keyTextOffsetY, 0);
-    
+
     keyPreviewMagnification =
             attributesArray.getFloat(R.styleable.Keyboard_keyPreviewMagnification, DEFAULT_KEY_PREVIEW_MAGNIFICATION);
     keyPreviewMarginY =
@@ -271,7 +271,7 @@ public class Keyboard
               screenHeight,
               defaultKeyPreviewMarginYPx
             );
-    
+
     attributesArray.recycle();
   }
 }

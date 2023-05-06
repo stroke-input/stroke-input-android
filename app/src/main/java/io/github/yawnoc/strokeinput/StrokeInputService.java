@@ -47,58 +47,58 @@ public class StrokeInputService
   implements CandidatesViewAdapter.CandidateListener, KeyboardView.KeyboardListener
 {
   private static final String LOG_TAG = "StrokeInputService";
-  
+
   public static final String SHIFT_KEY_VALUE_TEXT = "SHIFT";
   public static final String ENTER_KEY_VALUE_TEXT = "ENTER";
   private static final String BACKSPACE_VALUE_TEXT = "BACKSPACE";
   private static final String SPACE_BAR_VALUE_TEXT = "SPACE";
-  
+
   public static final String STROKE_DIGIT_1 = "1";
   public static final String STROKE_DIGIT_2 = "2";
   public static final String STROKE_DIGIT_3 = "3";
   public static final String STROKE_DIGIT_4 = "4";
   public static final String STROKE_DIGIT_5 = "5";
-  
+
   private static final String STROKE_KEY_VALUE_TEXT_PREFIX = "STROKE_";
   private static final String STROKE_1_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_1;
   private static final String STROKE_2_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_2;
   private static final String STROKE_3_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_3;
   private static final String STROKE_4_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_4;
   private static final String STROKE_5_VALUE_TEXT = STROKE_KEY_VALUE_TEXT_PREFIX + STROKE_DIGIT_5;
-  
+
   private static final String STROKES_KEYBOARD_NAME = "STROKES";
   private static final String STROKES_SYMBOLS_1_KEYBOARD_NAME = "STROKES_SYMBOLS_1";
   private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";
   private static final String STROKES_SYMBOLS_3_KEYBOARD_NAME = "STROKES_SYMBOLS_3";
   private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
   private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
-  
+
   private static final String SWITCH_KEYBOARD_VALUE_TEXT_PREFIX = "SWITCH_TO_";
-  
+
   private static final String SWITCH_TO_STROKES_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_KEYBOARD_NAME;
-  
+
   private static final String SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_1_KEYBOARD_NAME;
-  
+
   private static final String SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_2_KEYBOARD_NAME;
-  
+
   private static final String SWITCH_TO_STROKES_SYMBOLS_3_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + STROKES_SYMBOLS_3_KEYBOARD_NAME;
-  
+
   private static final String SWITCH_TO_QWERTY_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
-  
+
   private static final String SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
-  
+
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
-  
+
   public static final String PREFERENCES_FILE_NAME = "preferences.txt";
   private static final String KEYBOARD_NAME_PREFERENCE_KEY = "keyboardName";
-  
+
   private static final String SEQUENCE_CHARACTERS_FILE_NAME = "sequence-characters.txt";
   private static final String CHARACTERS_FILE_NAME_TRADITIONAL = "characters-traditional.txt";
   private static final String CHARACTERS_FILE_NAME_SIMPLIFIED = "characters-simplified.txt";
@@ -106,7 +106,7 @@ public class StrokeInputService
   private static final String RANKING_FILE_NAME_SIMPLIFIED = "ranking-simplified.txt";
   private static final String PHRASES_FILE_NAME_TRADITIONAL = "phrases-traditional.txt";
   private static final String PHRASES_FILE_NAME_SIMPLIFIED = "phrases-simplified.txt";
-  
+
   private static final int LAG_PREVENTION_CODE_POINT_COUNT = 1400;
   private static final int CJK_MAIN_CODE_POINT_START = 0x4E00;
   private static final int CJK_MAIN_CODE_POINT_END = 0x9FFF;
@@ -117,20 +117,20 @@ public class StrokeInputService
   private static final int RANKING_PENALTY_UNPREFERRED = 10 * CJK_EXTENSION_CODE_POINT_MAX;
   private static final int MAX_PREFIX_MATCH_COUNT = 30;
   private static final int MAX_PHRASE_LENGTH = 6;
-  
+
   Keyboard strokesKeyboard;
   Keyboard strokesSymbols1Keyboard;
   Keyboard strokesSymbols2Keyboard;
   Keyboard strokesSymbols3Keyboard;
   Keyboard qwertyKeyboard;
   Keyboard qwertySymbolsKeyboard;
-  
+
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
   private Set<Keyboard> keyboardSet;
-  
+
   private InputContainer inputContainer;
-  
+
   private final NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
   private final Set<Integer> codePointSetTraditional = new HashSet<>();
   private final Set<Integer> codePointSetSimplified = new HashSet<>();
@@ -140,25 +140,25 @@ public class StrokeInputService
   private final Set<Integer> commonCodePointSetSimplified = new HashSet<>();
   private final NavigableSet<String> phraseSetTraditional = new TreeSet<>();
   private final NavigableSet<String> phraseSetSimplified = new TreeSet<>();
-  
+
   private Set<Integer> unpreferredCodePointSet;
   private Map<Integer, Integer> sortingRankFromCodePoint;
   private Set<Integer> commonCodePointSet;
   private NavigableSet<String> phraseSet;
-  
+
   private String strokeDigitSequence = "";
   private List<String> candidateList = new ArrayList<>();
   private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
-  
+
   private int inputOptionsBits;
   private boolean enterKeyHasAction;
   private boolean inputIsPassword;
-  
+
   @Override
   public void onCreate()
   {
     super.onCreate();
-    
+
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
     loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
     loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
@@ -166,10 +166,10 @@ public class StrokeInputService
     loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
     loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
     loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
-    
+
     updateCandidateOrderPreference();
   }
-  
+
   @SuppressLint("InflateParams")
   @Override
   public View onCreateInputView()
@@ -180,7 +180,7 @@ public class StrokeInputService
     strokesSymbols3Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_3);
     qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
     qwertySymbolsKeyboard = new Keyboard(this, R.xml.keyboard_qwerty_symbols);
-    
+
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, STROKES_KEYBOARD_NAME);
     nameFromKeyboard.put(strokesSymbols1Keyboard, STROKES_SYMBOLS_1_KEYBOARD_NAME);
@@ -190,16 +190,16 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboardSet = nameFromKeyboard.keySet();
-    
+
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialisePopupRecess();
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
-    
+
     return inputContainer;
   }
-  
+
   private Keyboard loadSavedKeyboard()
   {
     final String savedKeyboardName =
@@ -214,13 +214,13 @@ public class StrokeInputService
       return strokesKeyboard;
     }
   }
-  
+
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   private static boolean isCommentLine(final String line)
   {
     return line.startsWith("#") || line.length() == 0;
   }
-  
+
   @SuppressWarnings("SameParameterValue")
   private void loadSequenceCharactersDataIntoMap(
     final String sequenceCharactersFileName,
@@ -228,12 +228,12 @@ public class StrokeInputService
   )
   {
     final long startMilliseconds = System.currentTimeMillis();
-    
+
     try
     {
       final InputStream inputStream = getAssets().open(sequenceCharactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
+
       String line;
       while ((line = bufferedReader.readLine()) != null)
       {
@@ -250,20 +250,20 @@ public class StrokeInputService
     {
       exception.printStackTrace();
     }
-    
+
     final long endMilliseconds = System.currentTimeMillis();
     sendLoadingTimeLog(sequenceCharactersFileName, startMilliseconds, endMilliseconds);
   }
-  
+
   private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
   {
     final long startMilliseconds = System.currentTimeMillis();
-    
+
     try
     {
       final InputStream inputStream = getAssets().open(charactersFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
+
       String line;
       while ((line = bufferedReader.readLine()) != null)
       {
@@ -277,11 +277,11 @@ public class StrokeInputService
     {
       exception.printStackTrace();
     }
-    
+
     final long endMilliseconds = System.currentTimeMillis();
     sendLoadingTimeLog(charactersFileName, startMilliseconds, endMilliseconds);
   }
-  
+
   private void loadRankingData(
     final String rankingFileName,
     final Map<Integer, Integer> sortingRankFromCodePoint,
@@ -289,12 +289,12 @@ public class StrokeInputService
   )
   {
     final long startMilliseconds = System.currentTimeMillis();
-    
+
     try
     {
       final InputStream inputStream = getAssets().open(rankingFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
+
       int currentRank = 0;
       String line;
       while ((line = bufferedReader.readLine()) != null)
@@ -320,20 +320,20 @@ public class StrokeInputService
     {
       exception.printStackTrace();
     }
-    
+
     final long endMilliseconds = System.currentTimeMillis();
     sendLoadingTimeLog(rankingFileName, startMilliseconds, endMilliseconds);
   }
-  
+
   private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
   {
     final long startMilliseconds = System.currentTimeMillis();
-    
+
     try
     {
       final InputStream inputStream = getAssets().open(phrasesFileName);
       final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-      
+
       String line;
       while ((line = bufferedReader.readLine()) != null)
       {
@@ -347,11 +347,11 @@ public class StrokeInputService
     {
       exception.printStackTrace();
     }
-    
+
     final long endMilliseconds = System.currentTimeMillis();
     sendLoadingTimeLog(phrasesFileName, startMilliseconds, endMilliseconds);
   }
-  
+
   private void sendLoadingTimeLog(final String fileName, final long startMilliseconds, final long endMilliseconds)
   {
     if (BuildConfig.DEBUG)
@@ -360,25 +360,25 @@ public class StrokeInputService
       Log.d(LOG_TAG, String.format("Loaded %s in %d ms", fileName, durationMilliseconds));
     }
   }
-  
+
   @Override
   public void onStartInput(final EditorInfo editorInfo, final boolean isRestarting)
   {
     super.onStartInput(editorInfo, isRestarting);
-    
+
     inputOptionsBits = editorInfo.imeOptions;
     enterKeyHasAction = (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
-    
+
     final int inputTypeBits = editorInfo.inputType;
     final int inputClassBits = inputTypeBits & InputType.TYPE_MASK_CLASS;
     final int inputVariationBits = inputTypeBits & InputType.TYPE_MASK_VARIATION;
-    
+
     switch (inputClassBits)
     {
       case InputType.TYPE_CLASS_NUMBER:
         inputIsPassword = inputVariationBits == InputType.TYPE_NUMBER_VARIATION_PASSWORD;
         break;
-      
+
       case InputType.TYPE_CLASS_TEXT:
         switch (inputVariationBits)
         {
@@ -387,39 +387,39 @@ public class StrokeInputService
           case InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD:
             inputIsPassword = true;
             break;
-          
+
           default:
             inputIsPassword = false;
         }
         break;
-      
+
       default:
         inputIsPassword = false;
     }
   }
-  
+
   @Override
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting)
   {
     super.onStartInputView(editorInfo, isRestarting);
-    
+
     for (final Keyboard keyboard : keyboardSet)
     {
       keyboard.adjustKeyboardHeight();
     }
     inputContainer.updateHeight();
-    
+
     updateFullscreenMode(); // needed in API level 31+ so that fullscreen works after rotate whilst keyboard showing
     final boolean isFullscreen = isFullscreenMode();
     inputContainer.setPopupRecessLayout(isFullscreen);
     inputContainer.setBackground(isFullscreen);
-    
+
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
     inputContainer.setCandidateList(candidateList);
-    
+
     setEnterKeyDisplayText();
   }
-  
+
   private void setEnterKeyDisplayText()
   {
     String enterKeyDisplayText = null;
@@ -428,23 +428,23 @@ public class StrokeInputService
       case EditorInfo.IME_ACTION_DONE:
         enterKeyDisplayText = getString(R.string.display_text__done);
         break;
-      
+
       case EditorInfo.IME_ACTION_GO:
         enterKeyDisplayText = getString(R.string.display_text__go);
         break;
-      
+
       case EditorInfo.IME_ACTION_NEXT:
         enterKeyDisplayText = getString(R.string.display_text__next);
         break;
-      
+
       case EditorInfo.IME_ACTION_PREVIOUS:
         enterKeyDisplayText = getString(R.string.display_text__previous);
         break;
-      
+
       case EditorInfo.IME_ACTION_SEARCH:
         enterKeyDisplayText = getString(R.string.display_text__search);
         break;
-      
+
       case EditorInfo.IME_ACTION_SEND:
         enterKeyDisplayText = getString(R.string.display_text__send);
         break;
@@ -453,7 +453,7 @@ public class StrokeInputService
     {
       enterKeyDisplayText = getString(R.string.display_text__return);
     }
-    
+
     for (final Keyboard keyboard : keyboardSet)
     {
       for (final Key key : keyboard.getKeyList())
@@ -466,7 +466,7 @@ public class StrokeInputService
     }
     inputContainer.redrawKeyboard();
   }
-  
+
   @Override
   public void onComputeInsets(final Insets insets)
   {
@@ -478,7 +478,7 @@ public class StrokeInputService
       insets.contentTopInsets = candidatesViewTop;
     }
   }
-  
+
   @Override
   public void onCandidate(final String candidate)
   {
@@ -487,12 +487,12 @@ public class StrokeInputService
     {
       return;
     }
-    
+
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
     setPhraseCompletionCandidateList(inputConnection);
   }
-  
+
   @Override
   public void onKey(final String valueText)
   {
@@ -501,7 +501,7 @@ public class StrokeInputService
     {
       return;
     }
-    
+
     switch (valueText)
     {
       case STROKE_1_VALUE_TEXT:
@@ -512,11 +512,11 @@ public class StrokeInputService
         final String strokeDigit = Stringy.removePrefix(STROKE_KEY_VALUE_TEXT_PREFIX, valueText);
         effectStrokeAppend(strokeDigit);
         break;
-      
+
       case BACKSPACE_VALUE_TEXT:
         effectBackspace(inputConnection);
         break;
-      
+
       case SWITCH_TO_STROKES_VALUE_TEXT:
       case SWITCH_TO_STROKES_SYMBOLS_1_VALUE_TEXT:
       case SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT:
@@ -526,20 +526,20 @@ public class StrokeInputService
         final String keyboardName = Stringy.removePrefix(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
         effectKeyboardSwitch(keyboardName);
         break;
-      
+
       case SPACE_BAR_VALUE_TEXT:
         effectSpaceKey(inputConnection);
         break;
-      
+
       case ENTER_KEY_VALUE_TEXT:
         effectEnterKey(inputConnection);
         break;
-      
+
       default:
         effectOrdinaryKey(inputConnection, valueText);
     }
   }
-  
+
   private void effectStrokeAppend(final String strokeDigit)
   {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
@@ -550,28 +550,28 @@ public class StrokeInputService
       setCandidateList(newCandidateList);
     }
   }
-  
+
   private void effectBackspace(final InputConnection inputConnection)
   {
     if (strokeDigitSequence.length() > 0)
     {
       final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
       final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
-      
+
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidateList(newCandidateList);
-      
+
       if (newStrokeDigitSequence.length() == 0)
       {
         setPhraseCompletionCandidateList(inputConnection);
       }
-      
+
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
     }
     else
     {
       final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
-      
+
       if (upToOneCharacterBeforeCursor.length() > 0)
       {
         final CharSequence selection = inputConnection.getSelectedText(0);
@@ -589,9 +589,9 @@ public class StrokeInputService
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
       }
-      
+
       setPhraseCompletionCandidateList(inputConnection);
-      
+
       final int nextBackspaceIntervalMilliseconds =
               (Stringy.isAscii(upToOneCharacterBeforeCursor))
                 ? BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII
@@ -599,13 +599,13 @@ public class StrokeInputService
       inputContainer.setKeyRepeatIntervalMilliseconds(nextBackspaceIntervalMilliseconds);
     }
   }
-  
+
   private void effectKeyboardSwitch(final String keyboardName)
   {
     final Keyboard keyboard = keyboardFromName.get(keyboardName);
     inputContainer.setKeyboard(keyboard);
   }
-  
+
   private void effectSpaceKey(final InputConnection inputConnection)
   {
     if (strokeDigitSequence.length() > 0)
@@ -617,7 +617,7 @@ public class StrokeInputService
       inputConnection.commitText(" ", 1);
     }
   }
-  
+
   private void effectEnterKey(final InputConnection inputConnection)
   {
     if (strokeDigitSequence.length() > 0)
@@ -633,7 +633,7 @@ public class StrokeInputService
       inputConnection.commitText("\n", 1);
     }
   }
-  
+
   private void effectOrdinaryKey(final InputConnection inputConnection, final String valueText)
   {
     if (strokeDigitSequence.length() > 0)
@@ -642,7 +642,7 @@ public class StrokeInputService
     }
     inputConnection.commitText(valueText, 1);
   }
-  
+
   @Override
   public void onLongPress(final String valueText)
   {
@@ -651,7 +651,7 @@ public class StrokeInputService
       Contexty.showSystemKeyboardChanger(this);
     }
   }
-  
+
   @Override
   public void onSwipe(final String valueText)
   {
@@ -659,7 +659,7 @@ public class StrokeInputService
     {
       final Keyboard keyboard = inputContainer.getKeyboard();
       final String keyboardName = nameFromKeyboard.get(keyboard);
-      
+
       if (keyboardName == null)
       {
         return;
@@ -672,7 +672,7 @@ public class StrokeInputService
         case STROKES_SYMBOLS_3_KEYBOARD_NAME:
           inputContainer.setKeyboard(qwertyKeyboard);
           break;
-        
+
         case QWERTY_KEYBOARD_NAME:
         case QWERTY_SYMBOLS_KEYBOARD_NAME:
           inputContainer.setKeyboard(strokesKeyboard);
@@ -680,7 +680,7 @@ public class StrokeInputService
       }
     }
   }
-  
+
   @Override
   public void saveKeyboard(final Keyboard keyboard)
   {
@@ -692,32 +692,32 @@ public class StrokeInputService
       keyboardName
     );
   }
-  
+
   private void setStrokeDigitSequence(final String strokeDigitSequence)
   {
     this.strokeDigitSequence = strokeDigitSequence;
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
-  
+
   private void setCandidateList(final List<String> candidateList)
   {
     this.candidateList = candidateList;
     inputContainer.setCandidateList(candidateList);
   }
-  
+
   private void setPhraseCompletionCandidateList(final InputConnection inputConnection)
   {
     List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
-    
+
     phraseCompletionFirstCodePointList.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
     {
       phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
-    
+
     setCandidateList(phraseCompletionCandidateList);
   }
-  
+
   /*
     Candidate comparator for a string.
   */
@@ -738,7 +738,7 @@ public class StrokeInputService
           )
       );
   }
-  
+
   /*
     Candidate comparator for a code point.
   */
@@ -760,7 +760,7 @@ public class StrokeInputService
           )
       );
   }
-  
+
   /*
     Compute the candidate rank for a string.
   */
@@ -773,7 +773,7 @@ public class StrokeInputService
   {
     final int firstCodePoint = Stringy.getFirstCodePoint(string);
     final int stringLength = string.length();
-    
+
     return
       computeCandidateRank(
         firstCodePoint,
@@ -783,7 +783,7 @@ public class StrokeInputService
         phraseCompletionFirstCodePointList
       );
   }
-  
+
   /*
     Compute the candidate rank for a string with a given first code point and length.
   */
@@ -798,11 +798,11 @@ public class StrokeInputService
     final int coarseRank;
     final int fineRank;
     final int penalty;
-    
+
     final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
     final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
-    
+
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
     final int cjkBlockPenalty =
             (firstCodePoint < CJK_MAIN_CODE_POINT_START || firstCodePoint > CJK_MAIN_CODE_POINT_END)
@@ -812,13 +812,13 @@ public class StrokeInputService
             (sortingRank != null)
               ? sortingRank
               : firstCodePoint + cjkBlockPenalty;
-    
+
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
             (unpreferredCodePointSet.contains(firstCodePoint))
               ? RANKING_PENALTY_UNPREFERRED
               : 0;
-    
+
     if (phraseCompletionListIsEmpty)
     {
       coarseRank = Integer.MIN_VALUE;
@@ -837,19 +837,19 @@ public class StrokeInputService
       fineRank = sortingRankNonNull;
       penalty = lengthPenalty + unpreferredPenalty;
     }
-    
+
     return coarseRank + fineRank + penalty;
   }
-  
+
   private List<String> computeCandidateList(final String strokeDigitSequence)
   {
     if (strokeDigitSequence.length() == 0)
     {
       return Collections.emptyList();
     }
-    
+
     updateCandidateOrderPreference();
-    
+
     final List<String> exactMatchCandidateList;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
@@ -863,7 +863,7 @@ public class StrokeInputService
     {
       exactMatchCandidateList = Collections.emptyList();
     }
-    
+
     final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
     final Collection<String> prefixMatchCharactersCollection =
             charactersFromStrokeDigitSequence
@@ -872,7 +872,7 @@ public class StrokeInputService
                 strokeDigitSequence + Character.MAX_VALUE, false
               )
               .values();
-    
+
     final long addCodePointsStartMilliseconds = System.currentTimeMillis();
     for (final String characters : prefixMatchCharactersCollection)
     {
@@ -884,12 +884,12 @@ public class StrokeInputService
       final long durationMilliseconds = addCodePointsEndMilliseconds - addCodePointsStartMilliseconds;
       Log.d(LOG_TAG, String.format("Added code points to set in %d ms", durationMilliseconds));
     }
-    
+
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
       prefixMatchCodePointSet.retainAll(commonCodePointSet);
     }
-    
+
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
     final long sortPrefixMatchesStartMilliseconds = System.currentTimeMillis();
     prefixMatchCandidateCodePointList.sort(
@@ -905,21 +905,21 @@ public class StrokeInputService
       final long durationMilliseconds = sortPrefixMatchesEndMilliseconds - sortPrefixMatchesStartMilliseconds;
       Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", durationMilliseconds));
     }
-    
+
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
     final List<String> prefixMatchCandidateList = new ArrayList<>();
     for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount))
     {
       prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
     }
-    
+
     final List<String> candidateList = new ArrayList<>();
     candidateList.addAll(exactMatchCandidateList);
     candidateList.addAll(prefixMatchCandidateList);
-    
+
     return candidateList;
   }
-  
+
   private String getFirstCandidate()
   {
     try
@@ -931,7 +931,7 @@ public class StrokeInputService
       return "";
     }
   }
-  
+
   /*
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
@@ -939,9 +939,9 @@ public class StrokeInputService
   private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection)
   {
     updateCandidateOrderPreference();
-    
+
     final List<String> phraseCompletionCandidateList = new ArrayList<>();
-    
+
     for (
       String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
       phrasePrefix.length() > 0;
@@ -954,7 +954,7 @@ public class StrokeInputService
                 phrasePrefix + Character.MAX_VALUE, false
               );
       final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
-      
+
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
       {
         final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
@@ -968,19 +968,19 @@ public class StrokeInputService
       );
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
-    
+
     return phraseCompletionCandidateList;
   }
-  
+
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount)
   {
     if (inputIsPassword)
     {
       return ""; // don't read passwords
     }
-    
+
     final String textBeforeCursor = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
-    
+
     if (textBeforeCursor != null)
     {
       return textBeforeCursor;
@@ -990,7 +990,7 @@ public class StrokeInputService
       return "";
     }
   }
-  
+
   private void updateCandidateOrderPreference()
   {
     if (shouldPreferTraditional())
@@ -1008,7 +1008,7 @@ public class StrokeInputService
       phraseSet = phraseSetSimplified;
     }
   }
-  
+
   private boolean shouldPreferTraditional()
   {
     final String savedCandidateOrderPreference =

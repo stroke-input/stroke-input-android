@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Removed trailing whitespace in source Java files
+
 
 ## [v1.2.1] (54) Monochrome icon (2023-04-23)
 

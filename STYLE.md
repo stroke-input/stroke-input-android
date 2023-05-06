@@ -195,16 +195,16 @@ switch (expression)
   case goodValue:
     doGood();
     break;
-  
+
   case evilValue:
     doEvil();
     break;
-  
+
   case neutralValue1:
   case neutralValue2:
     doNothing();
     break;
-  
+
   default:
     throwHandsInTheAir();
 }
@@ -215,23 +215,23 @@ moreComplicated:
 switch (expression)
 {
   case multipleBreaksInConditionals:
-    
+
     leaveBlankLineAbove();
     if (conditional)
     {
       doSomething();
       break;
     }
-    
+
     if (anotherConditional)
     {
       doAnotherThing();
       break;
     }
-    
+
     doSomeOtherStuff();
     break;
-  
+
   case singleBreak:
     takeSighOfRelief();
     break;
