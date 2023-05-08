@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Increased gutter height under candidates bar from 1px to 4dp
 - Made candidate button text/background colours swap on press
 - Removed trailing whitespace in source Java files
 

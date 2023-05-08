@@ -42,8 +42,9 @@ public class Keyboard
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
 
-  private static final int KEYBOARD_GUTTER_HEIGHT_PX = 1;
   private static final int DEFAULT_KEYBOARD_FILL_COLOUR = Color.BLACK;
+  private static final int KEYBOARD_GUTTER_HEIGHT_DP = 4;
+  private final int keyboardGutterHeightPx;
 
   private static final float KEYBOARD_HEIGHT_MAX_FRACTION = 0.5f;
   private static final float DEFAULT_KEY_WIDTH_FRACTION = 0.1f;
@@ -99,6 +100,7 @@ public class Keyboard
     screenWidth = displayMetrics.widthPixels;
     screenHeight = displayMetrics.heightPixels;
 
+    keyboardGutterHeightPx = (int) Valuey.pxFromDp(KEYBOARD_GUTTER_HEIGHT_DP, displayMetrics);
     defaultKeyHeightPx = (int) Valuey.pxFromDp(DEFAULT_KEY_HEIGHT_DP, displayMetrics);
     defaultKeyBorderThicknessPx = (int) Valuey.pxFromDp(DEFAULT_KEY_BORDER_THICKNESS_DP, displayMetrics);
     defaultKeyTextSizePx = (int) Valuey.pxFromSp(DEFAULT_KEY_TEXT_SIZE_SP, displayMetrics);
@@ -143,7 +145,7 @@ public class Keyboard
       boolean inRow = false;
 
       int x = 0;
-      int y = KEYBOARD_GUTTER_HEIGHT_PX;
+      int y = keyboardGutterHeightPx;
       Key key = null;
       Row row = null;
 
