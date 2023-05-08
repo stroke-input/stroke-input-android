@@ -17,7 +17,8 @@
   <color name="stroke_sequence_bar_fill">#8D000000</color>
   <color name="stroke_sequence_bar_fill_fullscreen">#FF666666</color>
   <!-- Candidate button -->
-  <color name="candidate_button_text">@color/umbrella_orange</color>
+  <color name="candidate_button_text_unpressed">@color/umbrella_orange</color>
+  <color name="candidate_button_text_pressed">@android:color/black</color>
   <color name="candidate_button_fill_unpressed">@android:color/black</color>
   <color name="candidate_button_fill_pressed">@color/umbrella_orange</color>
 </resources>

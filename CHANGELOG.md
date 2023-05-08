@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Made candidate button text/background colours swap on press
 - Removed trailing whitespace in source Java files
 
 
