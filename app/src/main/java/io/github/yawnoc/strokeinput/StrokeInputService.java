@@ -638,7 +638,7 @@ public class StrokeInputService
   {
     if (strokeDigitSequence.length() > 0)
     {
-      onCandidate(getFirstCandidate());
+      return;
     }
     inputConnection.commitText(valueText, 1);
   }

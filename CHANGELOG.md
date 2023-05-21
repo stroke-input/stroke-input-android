@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Stopped ordinary keys (digits and punctuation) committing first candidate.
+  Now only space bar, enter, and the candidate buttons themselves
+  will commit a candidate
 - Increased candidates bar height by 5%
 - Increased gutter height under candidates bar from 1px to 4dp
 - Made candidate button text/background colours swap on press
