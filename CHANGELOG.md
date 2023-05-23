@@ -16,6 +16,10 @@
 
 - Fixed gradle vs wrapper version mismatch
 - Fixed missing gradle `distributionSha256Sum`
+
+
+## [v1.2.1-whitespace] (54) Whitespace changes (2023-05-06)
+
 - Removed trailing whitespace in source Java files
 
 
@@ -560,7 +564,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1-whitespace...HEAD
+[v1.2.1-whitespace]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1...v1.2.1-whitespace
 [v1.2.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.0...v1.2.1
 [v1.2.0]:
