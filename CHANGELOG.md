@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.2] (55) Candidate ease (2023-05-27)
+
 ### User
 
 - Stopped ordinary keys (digits and punctuation) committing first candidate.
@@ -565,7 +568,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1-whitespace...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.2...HEAD
+[v1.2.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.1-whitespace...v1.2.2
 [v1.2.1-whitespace]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.1...v1.2.1-whitespace
 [v1.2.1]:
