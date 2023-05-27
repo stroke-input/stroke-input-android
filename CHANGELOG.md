@@ -16,6 +16,7 @@
 
 - Fixed gradle vs wrapper version mismatch
 - Fixed missing gradle `distributionSha256Sum`
+- Upgraded Material Components For Android to v1.9.0
 
 
 ## [v1.2.1-whitespace] (54) Whitespace changes (2023-05-06)
