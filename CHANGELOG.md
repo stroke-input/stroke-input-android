@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.3] (56) 清補涼 (2023-06-27)
+
 - Update stroke input data to [Conway Stroke Data v1.26.0]
   (adds phrases 清補涼, 芡實, 茨實, 南杏, 北杏, 黨參)
 
@@ -571,7 +574,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.2...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.3...HEAD
+[v1.2.3]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.2...v1.2.3
 [v1.2.2]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.1-whitespace...v1.2.2
 [v1.2.1-whitespace]:
