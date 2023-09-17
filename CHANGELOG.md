@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.4] (57) 詐諦上堂 (2023-09-17)
+
 - Update stroke input data to [Conway Stroke Data v1.27.0]
   (adds phrases 上堂, 落堂, 詐諦)
 
@@ -577,7 +580,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.3...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.4...HEAD
+[v1.2.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.3...v1.2.4
 [v1.2.3]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.2...v1.2.3
 [v1.2.2]:
