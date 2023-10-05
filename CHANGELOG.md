@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.5] (58) 肚餓 (2023-10-05)
+
 - Update stroke input data to [Conway Stroke Data v1.28.0]
   (adds phrase 肚餓)
 
@@ -583,7 +586,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.4...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.5...HEAD
+[v1.2.5]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.4...v1.2.5
 [v1.2.4]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.3...v1.2.4
 [v1.2.3]:
