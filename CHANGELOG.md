@@ -3,25 +3,25 @@
 
 ## [Unreleased]
 
-- Update stroke input data to [Conway Stroke Data v1.29.0]
+- Updated stroke input data to [Conway Stroke Data v1.29.0]
   (adds phrases 食夾棍, 爆坼)
 
 
 ## [v1.2.5] (58) 肚餓 (2023-10-05)
 
-- Update stroke input data to [Conway Stroke Data v1.28.0]
+- Updated stroke input data to [Conway Stroke Data v1.28.0]
   (adds phrase 肚餓)
 
 
 ## [v1.2.4] (57) 詐諦上堂 (2023-09-17)
 
-- Update stroke input data to [Conway Stroke Data v1.27.0]
+- Updated stroke input data to [Conway Stroke Data v1.27.0]
   (adds phrases 上堂, 落堂, 詐諦)
 
 
 ## [v1.2.3] (56) 清補涼 (2023-06-27)
 
-- Update stroke input data to [Conway Stroke Data v1.26.0]
+- Updated stroke input data to [Conway Stroke Data v1.26.0]
   (adds phrases 清補涼, 芡實, 茨實, 南杏, 北杏, 黨參)
 
 
@@ -82,7 +82,7 @@
 
 ## [v1.1.0] (51, 52) 夠鐘 (2023-03-06)
 
-- Update stroke input data to [Conway Stroke Data v1.24.0]
+- Updated stroke input data to [Conway Stroke Data v1.24.0]
   (adds phrases 圍裙, 攞位, 揀位, 揀選, 夠鐘, 夠瞓, 唔夠)
 - Suppressed `dataExtractionRules` API 31+ warning
 
