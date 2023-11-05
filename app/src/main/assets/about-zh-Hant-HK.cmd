@@ -15,7 +15,7 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 # 筆畫輸入法 (\stroke-input-version)
 
 ----
-__[筆畫輸入法]__為自由開源軟件，恕無擔保。
+__[筆畫輸入法]__為自由開源軟件，而恕無擔保。
 ----
 ----{.notice}
 ©~\stroke-input-years {Conway} <br>

@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Improved About Chinese lead sentence wording
+
 
 ## [v1.2.6] (59) 食夾棍 (2023-10-28)
 
