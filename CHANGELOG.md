@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Update stroke input data to [Conway Stroke Data v1.30.0]
+  (adds phrases 㨆莊, 過莊, 紅頭十, 伶冧六, 大頭六, 六公, 覺意, 唔覺意, 冧咗, 揩花)
 - Improved About Chinese lead sentence wording
 
 
@@ -708,6 +710,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.30.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.30.0
 [Conway Stroke Data v1.29.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.29.0
 [Conway Stroke Data v1.28.0]:
