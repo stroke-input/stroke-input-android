@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android SDK to Level 34
+
 
 ## [v1.2.7] (60) 㨆莊 (2023-11-05)
 
