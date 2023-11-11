@@ -5,11 +5,11 @@ plugins
 
 android
 {
-  compileSdkVersion 34
   defaultConfig
   {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
+    compileSdk 34
     targetSdkVersion 34
     versionCode 60
     versionName "1.2.7"
