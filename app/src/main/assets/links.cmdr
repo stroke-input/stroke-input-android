@@ -33,34 +33,20 @@ OrdinaryDictionaryReplacement: #.links.link-definitions
     [Stroke Input Method]: \stroke-input-url
     [筆畫輸入法]: \stroke-input-url
     [笔画输入法]: \stroke-input-url
-    [`Keyboard.java`]:
-      https://android.googlesource.com/platform/frameworks/base/+/\
-        33f921769531968a3ba9bc73fb2410f95868cb8d/\
-        core/java/android/inputmethodservice/Keyboard.java
-    [`KeyboardView.java`]:
-      https://android.googlesource.com/platform/frameworks/base/+/\
-        33f921769531968a3ba9bc73fb2410f95868cb8d/\
-        core/java/android/inputmethodservice/KeyboardView.java
-    [Material Components For Android]:
-      https://mvnrepository.com/artifact/com.google.android.material/material
-    [Conway Stroke Data]:
-      https://github.com/stroke-input/stroke-input-data
-    [Stroke Input Font]:
-      https://github.com/stroke-input/stroke-input-font
+    [`Keyboard.java`]: https://android.googlesource.com/platform/frameworks/base/+/33f921769531968a3ba9bc73fb2410f95868cb8d/core/java/android/inputmethodservice/Keyboard.java
+    [`KeyboardView.java`]: https://android.googlesource.com/platform/frameworks/base/+/33f921769531968a3ba9bc73fb2410f95868cb8d/core/java/android/inputmethodservice/KeyboardView.java
+    [Material Components For Android]: https://mvnrepository.com/artifact/com.google.android.material/material
+    [Conway Stroke Data]: https://github.com/stroke-input/stroke-input-data
+    [Stroke Input Font]: https://github.com/stroke-input/stroke-input-font
     [2015 version of Noto Sans CJK TC]: \noto-cjk-url
     [2015 版 {Noto Sans CJK TC}]: \noto-cjk-url
     [CMD]: https://github.com/conway-markdown/conway-markdown
 * \stroke-input-url -->
     https://github.com/stroke-input/stroke-input-android
 * \noto-cjk-url -->
-    https://github.com/googlefonts/noto-cjk/\
-      tree/2663656870e92c0dcbe891590681815ebb509c05
+    https://github.com/googlefonts/noto-cjk/tree/2663656870e92c0dcbe891590681815ebb509c05
 
 OrdinaryDictionaryReplacement: #.links.cmd-source-link
 - queue_position: BEFORE #cmd-properties
 - apply_mode: SEQUENTIAL
-* [cmd-source] -->
-    [<code>%cmd-basename.cmd</code>](
-      https://github.com/stroke-input/stroke-input-android/blob/master/\
-        %cmd-name.cmd
-    )
+* [cmd-source] --> [<code>%cmd-basename.cmd</code>](https://github.com/stroke-input/stroke-input-android/blob/master/%cmd-name.cmd)
