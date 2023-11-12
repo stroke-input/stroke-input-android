@@ -18,6 +18,14 @@ allprojects
     google()
     mavenCentral()
   }
+  tasks.withType(JavaCompile).tap
+  {
+    configureEach
+    {
+      options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+  }
+
 }
 
 tasks.register('clean', Delete)
