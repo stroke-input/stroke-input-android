@@ -5,6 +5,7 @@
 
 - Upgraded Android SDK to Level 34
 - Upgraded Android Gradle Plugin to 8.1.3
+- Upgraded Material Components For Android to 1.10.0
 
 
 ## [v1.2.7] (60) 㨆莊 (2023-11-05)
