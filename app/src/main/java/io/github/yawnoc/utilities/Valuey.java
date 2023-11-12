@@ -43,7 +43,8 @@ public final class Valuey
 
   public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics)
   {
-    return sp * displayMetrics.scaledDensity;
+    // `sp * displayMetrics.scaledDensity` is nicer, but scaledDensity is deprecated in API level 34
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, displayMetrics);
   }
 
   public static int getDimensionOrFraction(
