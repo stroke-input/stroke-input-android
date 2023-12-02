@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.8] (61) 過海 (2023-12-03)
+
 - Updated stroke input data to [Conway Stroke Data v1.31.0]
   - Fixes incorrect stroke sequence for U+6D77 海
   - Adds phrases 牛肉丸, 牛肉球, 寄艙, 過海
@@ -609,7 +612,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.7...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.8...HEAD
+[v1.2.8]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.7...v1.2.8
 [v1.2.7]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.6...v1.2.7
 [v1.2.6]:
