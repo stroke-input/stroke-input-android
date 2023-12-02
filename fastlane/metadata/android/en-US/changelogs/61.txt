@@ -1,0 +1,3 @@
+* Fixed stroke sequence for U+6D77 海
+* Added phrases 牛肉丸, 牛肉球, 寄艙, 過海
+* Upgraded target API Level to 34 (Android 14)
