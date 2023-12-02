@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.31.0]
+  - Fixes incorrect stroke sequence for U+6D77 海
+  - Adds phrases 牛肉丸, 牛肉球, 寄艙, 過海
 - Upgraded Android SDK to Level 34
 - Upgraded Android Gradle Plugin to 8.1.4
 - Upgraded Material Components For Android to 1.10.0
@@ -13,7 +16,7 @@
 
 ## [v1.2.7] (60) 㨆莊 (2023-11-05)
 
-- Update stroke input data to [Conway Stroke Data v1.30.0]
+- Updated stroke input data to [Conway Stroke Data v1.30.0]
   (adds phrases 㨆莊, 過莊, 紅頭十, 伶冧六, 大頭六, 六公, 覺意, 唔覺意, 冧咗, 揩花)
 - Improved About Chinese lead sentence wording
 
@@ -722,6 +725,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.31.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.31.0
 [Conway Stroke Data v1.30.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.30.0
 [Conway Stroke Data v1.29.0]:
