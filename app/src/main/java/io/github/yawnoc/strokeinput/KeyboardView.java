@@ -35,6 +35,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
 
 import java.util.List;
@@ -115,7 +116,7 @@ public class KeyboardView
             new Handler(Looper.getMainLooper())
             {
               @Override
-              public void handleMessage(Message message)
+              public void handleMessage(@NonNull Message message)
               {
                 if (activeKey != null)
                 {
@@ -246,7 +247,7 @@ public class KeyboardView
   }
 
   @Override
-  public void onDraw(final Canvas canvas)
+  public void onDraw(@NonNull final Canvas canvas)
   {
     if (keyboard == null)
     {

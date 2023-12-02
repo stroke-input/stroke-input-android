@@ -7,6 +7,7 @@
 - Upgraded Android Gradle Plugin to 8.1.4
 - Upgraded Material Components For Android to 1.10.0
 - Fixed `DisplayMetrics.scaledDensity` deprecated in API level 34
+- Fixed Java "nullability problems" (using `@NonNull`)
 
 
 ## [v1.2.7] (60) 㨆莊 (2023-11-05)

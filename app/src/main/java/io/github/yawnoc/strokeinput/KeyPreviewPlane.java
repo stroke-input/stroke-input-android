@@ -19,6 +19,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +74,7 @@ public class KeyPreviewPlane
             new Handler(Looper.getMainLooper())
             {
               @Override
-              public void handleMessage(Message message)
+              public void handleMessage(@NonNull Message message)
               {
                 Key key = (Key) message.obj;
                 keyList.remove(key);
@@ -145,7 +147,7 @@ public class KeyPreviewPlane
   }
 
   @Override
-  public void onDraw(final Canvas canvas)
+  public void onDraw(@NonNull final Canvas canvas)
   {
     for (final Key key : keyList)
     {
