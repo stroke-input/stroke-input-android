@@ -24,6 +24,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.Objects;
 
 import io.github.yawnoc.utilities.Contexty;
 
@@ -282,7 +283,7 @@ public class MainActivity
     candidateOrderDialog = candidateOrderDialogBuilder.create();
     final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
     candidateOrderDialog.show();
-    candidateOrderDialog.getWindow().setLayout(dialog_size, dialog_size);
+    Objects.requireNonNull(candidateOrderDialog.getWindow()).setLayout(dialog_size, dialog_size);
 
     final RadioGroup candidateOrderRadioGroup = candidateOrderDialog.findViewById(R.id.candidate_order_radio_group);
     final Button traditionalFirstButton = candidateOrderDialog.findViewById(R.id.traditional_first_button);

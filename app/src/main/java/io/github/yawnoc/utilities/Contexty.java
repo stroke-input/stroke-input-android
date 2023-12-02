@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import io.github.yawnoc.strokeinput.R;
 
 public final class Contexty
@@ -103,7 +105,7 @@ public final class Contexty
     final Dialog alertDialog = alertDialogBuilder.create();
     final int dialog_size = ViewGroup.LayoutParams.WRAP_CONTENT;
     alertDialog.show();
-    alertDialog.getWindow().setLayout(dialog_size, dialog_size);
+    Objects.requireNonNull(alertDialog.getWindow()).setLayout(dialog_size, dialog_size);
   }
 
   public static void showSystemInputMethodSettings(final Context context)
