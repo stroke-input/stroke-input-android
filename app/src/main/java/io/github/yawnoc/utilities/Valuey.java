@@ -1,5 +1,5 @@
 /*
-  Copyright 2021 Conway
+  Copyright 2021, 2023 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -43,7 +43,8 @@ public final class Valuey
 
   public static float pxFromSp(final float sp, final DisplayMetrics displayMetrics)
   {
-    return sp * displayMetrics.scaledDensity;
+    // `sp * displayMetrics.scaledDensity` is nicer, but scaledDensity is deprecated in API level 34
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, displayMetrics);
   }
 
   public static int getDimensionOrFraction(
