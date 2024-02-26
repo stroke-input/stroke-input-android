@@ -150,7 +150,6 @@ public class StrokeInputService
   private List<String> candidateList = new ArrayList<>();
   private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
 
-  private int inputOptionsBits;
   private int inputActionsBits;
   private boolean enterKeyHasAction;
   private boolean inputIsPassword;
@@ -367,7 +366,7 @@ public class StrokeInputService
   {
     super.onStartInput(editorInfo, isRestarting);
 
-    inputOptionsBits = editorInfo.imeOptions;
+    final int inputOptionsBits = editorInfo.imeOptions;
     inputActionsBits = inputOptionsBits & EditorInfo.IME_MASK_ACTION;
     enterKeyHasAction = (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
 
