@@ -1,5 +1,5 @@
 /*
-  Copyright 2021--2023 Conway
+  Copyright 2021--2024 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -151,6 +151,7 @@ public class StrokeInputService
   private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
 
   private int inputOptionsBits;
+  private int inputActionsBits;
   private boolean enterKeyHasAction;
   private boolean inputIsPassword;
 
@@ -367,6 +368,7 @@ public class StrokeInputService
     super.onStartInput(editorInfo, isRestarting);
 
     inputOptionsBits = editorInfo.imeOptions;
+    inputActionsBits = inputOptionsBits & EditorInfo.IME_MASK_ACTION;
     enterKeyHasAction = (inputOptionsBits & EditorInfo.IME_FLAG_NO_ENTER_ACTION) == 0;
 
     final int inputTypeBits = editorInfo.inputType;
@@ -423,7 +425,7 @@ public class StrokeInputService
   private void setEnterKeyDisplayText()
   {
     String enterKeyDisplayText = null;
-    switch (inputOptionsBits & EditorInfo.IME_MASK_ACTION)
+    switch (inputActionsBits)
     {
       case EditorInfo.IME_ACTION_DONE:
         enterKeyDisplayText = getString(R.string.display_text__done);
@@ -626,7 +628,7 @@ public class StrokeInputService
     }
     else if (enterKeyHasAction)
     {
-      inputConnection.performEditorAction(inputOptionsBits);
+      inputConnection.performEditorAction(inputActionsBits);
     }
     else
     {

@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed enter key to search not working in Google Play Store / crashing Aurora Store
+
 
 ## [v1.2.8] (61) 過海 (2023-12-03)
 
