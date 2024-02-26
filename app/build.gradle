@@ -11,8 +11,8 @@ android
     minSdkVersion 24
     compileSdk 34
     targetSdkVersion 34
-    versionCode 61
-    versionName "1.2.8"
+    versionCode 62
+    versionName "1.2.9"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes

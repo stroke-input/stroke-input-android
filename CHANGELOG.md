@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.9] (62) Enter key fix (2024-02-27)
+
 - Fixed enter key to search not working in Google Play Store / crashing Aurora Store
 
 
@@ -614,7 +617,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.8...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.9...HEAD
+[v1.2.9]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.8...v1.2.9
 [v1.2.8]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.7...v1.2.8
 [v1.2.7]:
