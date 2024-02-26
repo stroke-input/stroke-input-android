@@ -1,0 +1,1 @@
+* Fixed enter key to search not working in Google Play Store / crashing Aurora Store
