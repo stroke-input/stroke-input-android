@@ -24,7 +24,7 @@ Uses [Conway Stroke Data].
 
 [<img
     alt="Get it on F-Droid."
-    src="https://gitlab.com/fdroid/artwork/-/raw/master/badge/get-it-on.png"
+    src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
     width="240"
     height="auto">][f-droid]
 [<img
