@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 
-## [v1.2.10] (63) Enter key fix (2024-05-17)
+## [v1.2.10] (63) Cursed be BroadcastReceiver (2024-05-17)
 
 - Updated stroke input data to [Conway Stroke Data v1.32.0]
   - Adds phrases 吖嘛, 拗撬, 詏撬, 揞口費, 幫襯, 搽𢰸, 鏨刺
