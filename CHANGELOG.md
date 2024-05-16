@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Removed DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION (screw you Google)
 - Upgraded Material Components For Android to 1.12.0
 
 
