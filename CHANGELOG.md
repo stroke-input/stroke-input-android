@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Material Components For Android to 1.12.0
+
 
 ## [v1.2.9] (62) Enter key fix (2024-02-27)
 
