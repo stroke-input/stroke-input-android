@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.2.10] (63) Enter key fix (2024-05-17)
+
 - Updated stroke input data to [Conway Stroke Data v1.32.0]
   - Adds phrases 吖嘛, 拗撬, 詏撬, 揞口費, 幫襯, 搽𢰸, 鏨刺
   - Adds phrases 鐺底, 𥋇眼, 插贓嫁禍, 尋日, 黐鐺, 黐脷根
@@ -629,7 +632,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.9...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.10...HEAD
+[v1.2.10]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.9...v1.2.10
 [v1.2.9]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.8...v1.2.9
 [v1.2.8]:
