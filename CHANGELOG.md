@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android SDK to Level 35
+
 
 ## [v1.2.10] (63) Cursed be BroadcastReceiver (2024-05-17)
 

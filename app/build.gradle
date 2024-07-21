@@ -9,8 +9,8 @@ android
   {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
-    compileSdk 34
-    targetSdkVersion 34
+    compileSdk 35
+    targetSdkVersion 35
     versionCode 63
     versionName "1.2.10"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
