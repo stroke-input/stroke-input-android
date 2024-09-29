@@ -1,0 +1,4 @@
+* Allowed left-first order in 攀燓..., 學覺..., 興釁..., 與舉..., etc.
+* Allowed ㇑㇐㇐ instead of ㇐㇑㇐ in 里, 黑, etc.
+* Allowed ㇒ second-last instead of last in 必 etc.
+* Added phrases 審計署 and 統計署 (to complement -處 equivalents)
