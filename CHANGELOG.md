@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.33.1]
+  - Allows left-first order in 攀燓..., 學覺..., 興釁..., 與舉..., etc.
+  - Allows ㇑㇐㇐ instead of ㇐㇑㇐ in 里, 黑, etc.
+  - Allows ㇒ second-last instead of last in 必 etc.
+  - Adds phrases 審計署 and 統計署 (to complement -處 equivalents)
+
 
 ## [v1.2.10] (63) Cursed be BroadcastReceiver (2024-05-17)
 
@@ -754,6 +760,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.33.1]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.33.1
 [Conway Stroke Data v1.32.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.32.0
 [Conway Stroke Data v1.31.0]:
