@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.3.0] (64) 攀燓學覺里黑必 (2024-09-29)
+
 - Updated stroke input data to [Conway Stroke Data v1.33.1]
   - Allows left-first order in 攀燓..., 學覺..., 興釁..., 與舉..., etc.
   - Allows ㇑㇐㇐ instead of ㇐㇑㇐ in 里, 黑, etc.
@@ -638,7 +641,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.2.10...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.3.0...HEAD
+[v1.3.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.2.10...v1.3.0
 [v1.2.10]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.9...v1.2.10
 [v1.2.9]:
