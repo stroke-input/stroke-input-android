@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.3.1] (65) CMD v5.0.0 (2024-10-02)
+
 - Updated links for Conway-Markdown slug rename
 
 
@@ -643,7 +646,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.3.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.3.1...HEAD
+[v1.3.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.3.0...v1.3.1
 [v1.3.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.2.10...v1.3.0
 [v1.2.10]:
