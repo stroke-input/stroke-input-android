@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated links for Conway-Markdown slug rename
+
 
 ## [v1.3.0] (64) 攀燓學覺里黑必 (2024-09-29)
 

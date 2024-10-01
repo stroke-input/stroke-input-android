@@ -88,7 +88,7 @@ Use the system <b>Back Button</b> (or <b>Back Gesture</b>) to retract the keyboa
 ### `*.cmd` (CMD)
 
 These are [Conway-Markdown (CMD)] files,
-used to compile the HTML files by running Conway-Markdown
+used to compile the HTML files by running `cmd --all`
 whilst in the root directory of this repository.
 
 ### `*.cmdr` (CMD Rules)
@@ -123,4 +123,4 @@ This is the stylesheet for the HTML files that get served in the app.
 [app/src/main/assets/about.html]:
   https://htmlpreview.github.io/?https://github.com/stroke-input/stroke-input-android/blob/master/app/src/main/assets/about.html
 [Conway-Markdown (CMD)]:
-  https://github.com/conway-markdown/conway-markdown
+  https://github.com/conwaymd/conwaymd
