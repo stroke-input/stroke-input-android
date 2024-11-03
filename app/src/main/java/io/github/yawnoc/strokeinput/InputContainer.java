@@ -8,11 +8,17 @@
 package io.github.yawnoc.strokeinput;
 
 import android.content.Context;
+import android.graphics.Insets;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
 import android.widget.FrameLayout;
+
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
@@ -23,6 +29,7 @@ import java.util.List;
       - Stroke sequence bar
       - Candidates view
       - Keyboard view
+      - Bottom spacer (needed in API level 35+ due to edge-to-edge)
     2. Key preview plane (overlaid)
 */
 public class InputContainer
@@ -34,6 +41,23 @@ public class InputContainer
   private CandidatesView candidatesView;
   private CandidatesViewAdapter candidatesViewAdapter;
   private KeyboardView keyboardView;
+  private View bottomSpacer;
+
+  @Override
+  public WindowInsets onApplyWindowInsets(WindowInsets insets)
+  {
+    super.onApplyWindowInsets(insets);
+
+    if (Build.VERSION.SDK_INT >= 35) // bottom spacing for edge-to-edge
+    {
+      final Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+      ViewGroup.LayoutParams layoutParameters = bottomSpacer.getLayoutParams();
+      layoutParameters.height = systemBars.bottom;
+      bottomSpacer.setLayoutParams(layoutParameters);
+    }
+
+    return insets;
+  }
 
   public InputContainer(final Context context, final AttributeSet attributes)
   {
@@ -68,6 +92,11 @@ public class InputContainer
     keyboardView.setMainInputPlane(findViewById(R.id.main_input_plane));
     keyboardView.setKeyPreviewPlane(findViewById(R.id.key_preview_plane));
     keyboardView.setKeyboard(keyboard);
+  }
+
+  public void initialiseBottomSpacer()
+  {
+    bottomSpacer = findViewById(R.id.bottom_spacer);
   }
 
   public void setPopupRecessLayout(final boolean isFullscreen)
@@ -141,6 +170,7 @@ public class InputContainer
 
   public void redrawKeyboard()
   {
+    keyboardView.requestLayout();
     keyboardView.invalidate();
   }
 }

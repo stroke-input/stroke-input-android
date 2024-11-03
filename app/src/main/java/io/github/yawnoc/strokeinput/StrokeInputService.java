@@ -196,6 +196,7 @@ public class StrokeInputService
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
+    inputContainer.initialiseBottomSpacer();
 
     return inputContainer;
   }
@@ -403,6 +404,18 @@ public class StrokeInputService
   public void onStartInputView(final EditorInfo editorInfo, final boolean isRestarting)
   {
     super.onStartInputView(editorInfo, isRestarting);
+
+    inputContainer.post( // await layout so that width is available
+      () ->
+      {
+        final int inputContainerWidth = inputContainer.getWidth();
+        for (final Keyboard keyboard : keyboardSet)
+        {
+          keyboard.correctKeyboardWidth(inputContainerWidth); // needed in API level 35+ due to edge-to-edge breakage
+        }
+        inputContainer.redrawKeyboard(); // key preview plane initialisation is buggy in landscape mode
+      }
+    );
 
     for (final Keyboard keyboard : keyboardSet)
     {
