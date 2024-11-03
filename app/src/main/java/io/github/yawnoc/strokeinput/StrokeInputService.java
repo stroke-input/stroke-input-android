@@ -412,6 +412,7 @@ public class StrokeInputService
         {
           keyboard.correctKeyboardWidth(inputContainerWidth); // needed in API level 35+ due to edge-to-edge breakage
         }
+        inputContainer.redrawKeyboard(); // key preview plane initialisation is buggy in landscape mode
       }
     );
 

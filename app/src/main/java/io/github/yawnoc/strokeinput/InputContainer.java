@@ -141,6 +141,7 @@ public class InputContainer
 
   public void redrawKeyboard()
   {
+    keyboardView.requestLayout();
     keyboardView.invalidate();
   }
 }
