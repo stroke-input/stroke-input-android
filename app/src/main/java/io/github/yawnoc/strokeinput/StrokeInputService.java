@@ -196,6 +196,7 @@ public class StrokeInputService
     inputContainer.initialiseStrokeSequenceBar(this);
     inputContainer.initialiseCandidatesView(this);
     inputContainer.initialiseKeyboardView(this, loadSavedKeyboard());
+    inputContainer.initialiseBottomSpacer();
 
     return inputContainer;
   }
