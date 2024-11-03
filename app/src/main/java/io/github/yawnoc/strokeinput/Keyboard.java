@@ -94,7 +94,8 @@ public class Keyboard
 
   public Keyboard(final Context context, final int layoutResourceId)
   {
-    final DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+    final Resources resources = context.getResources();
+    final DisplayMetrics displayMetrics = resources.getDisplayMetrics();
     applicationContext = context.getApplicationContext();
 
     screenWidth = displayMetrics.widthPixels;
@@ -108,7 +109,7 @@ public class Keyboard
 
     keyList = new ArrayList<>();
 
-    makeKeyboard(context, context.getResources().getXml(layoutResourceId));
+    makeKeyboard(context, resources.getXml(layoutResourceId));
     adjustKeyboardHeight();
   }
 
