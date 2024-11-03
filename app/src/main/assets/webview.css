@@ -1,5 +1,5 @@
 :root{
-  --umbrella-orange: #FFCE73;
+  --umbrella-blue: #BBBBFF;
   --umbrella-yellow: #FFFF80;
   --key-fill: #181818;
   --enter-key-fill: #00CE00;
@@ -25,7 +25,7 @@ body:lang(zh) {
 }
 
 a {
-  color: var(--umbrella-orange);
+  color: var(--umbrella-blue);
 }
 
 footer {

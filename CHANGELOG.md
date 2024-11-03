@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Changed Help/About link colour to blue
+
 
 ## [v1.3.1] (65) CMD v5.0.0 (2024-10-02)
 
