@@ -45,7 +45,7 @@ public class Key
   public String valueTextShifted; // overrides displayText drawn when shifted
 
   // Key dimensions
-  public int width;
+  public int width, naturalWidth;
   public int height, naturalHeight;
 
   // Key styles
@@ -55,13 +55,13 @@ public class Key
   public int textColour;
   public int textSwipeColour;
   public int textSize;
-  public int textOffsetX;
+  public int textOffsetX, naturalTextOffsetX;
   public int textOffsetY, naturalTextOffsetY;
   public float previewMagnification;
   public int previewMarginY, naturalPreviewMarginY;
 
   // Key position
-  public int x;
+  public int x, naturalX;
   public int y, naturalY;
 
   // Key meta-properties
@@ -70,7 +70,7 @@ public class Key
   public Key(final Row parentRow)
   {
     grandparentKeyboard = parentRow.parentKeyboard;
-    width = parentRow.keyWidth;
+    width = naturalWidth = parentRow.keyWidth;
     height = naturalHeight = parentRow.keyHeight;
   }
 
@@ -83,7 +83,7 @@ public class Key
   {
     this(parentRow);
 
-    this.x = x;
+    this.x = naturalX = x;
     this.y = naturalY = y;
 
     final TypedArray attributesArray =
@@ -114,7 +114,7 @@ public class Key
       valueTextShifted = displayText;
     }
 
-    width =
+    width = naturalWidth =
             Valuey.getDimensionOrFraction(
               attributesArray,
               R.styleable.Key_keyWidth,
@@ -139,7 +139,8 @@ public class Key
     textColour = attributesArray.getColor(R.styleable.Key_keyTextColour, parentRow.keyTextColour);
     textSwipeColour = attributesArray.getColor(R.styleable.Key_keyTextSwipeColour, parentRow.keyTextSwipeColour);
     textSize = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextSize, parentRow.keyTextSize);
-    textOffsetX = attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
+    textOffsetX = naturalTextOffsetX =
+            attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetX, parentRow.keyTextOffsetX);
     textOffsetY = naturalTextOffsetY =
             attributesArray.getDimensionPixelSize(R.styleable.Key_keyTextOffsetY, parentRow.keyTextOffsetY);
 

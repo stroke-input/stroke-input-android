@@ -404,6 +404,17 @@ public class StrokeInputService
   {
     super.onStartInputView(editorInfo, isRestarting);
 
+    inputContainer.post( // await layout so that width is available
+      () ->
+      {
+        final int inputContainerWidth = inputContainer.getWidth();
+        for (final Keyboard keyboard : keyboardSet)
+        {
+          keyboard.correctKeyboardWidth(inputContainerWidth); // needed in API level 35+ due to edge-to-edge breakage
+        }
+      }
+    );
+
     for (final Keyboard keyboard : keyboardSet)
     {
       keyboard.adjustKeyboardHeight();

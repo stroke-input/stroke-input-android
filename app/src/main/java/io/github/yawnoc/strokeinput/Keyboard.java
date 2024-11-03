@@ -207,6 +207,17 @@ public class Keyboard
     }
   }
 
+  public void correctKeyboardWidth(int inputContainerWidth)
+  {
+    final float correctionFactor = ((float) inputContainerWidth) / screenWidth;
+    for (final Key key : keyList)
+    {
+      key.x = (int) (key.naturalX * correctionFactor);
+      key.width = (int) (key.naturalWidth * correctionFactor);
+      key.textOffsetX = (int) (key.naturalTextOffsetX * correctionFactor);
+    }
+  }
+
   public void adjustKeyboardHeight()
   {
     final int userAdjustmentProgress = MainActivity.loadSavedKeyboardHeightAdjustmentProgress(applicationContext);
