@@ -21,4 +21,6 @@
   <color name="candidate_button_text_pressed">@android:color/black</color>
   <color name="candidate_button_fill_unpressed">@android:color/black</color>
   <color name="candidate_button_fill_pressed">@color/umbrella_orange</color>
+  <!-- Bottom spacer -->
+  <color name="bottom_spacer_fill">@android:color/black</color>
 </resources>
