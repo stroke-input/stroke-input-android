@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.core.view.WindowInsetsCompat;
 
@@ -24,16 +24,17 @@ import java.util.List;
 
 /*
   A container that holds:
-    1. Main input plane:
-      - Popup recess
-      - Stroke sequence bar
-      - Candidates view
-      - Keyboard view
-      - Bottom spacer (needed in API level 35+ due to edge-to-edge)
-    2. Key preview plane (overlaid)
+    1. Main input block:
+       (a) Main input plane:
+           - Popup recess
+           - Stroke sequence bar
+           - Candidates view
+           - Keyboard view
+       (b) Key preview plane (overlaid)
+    2. Bottom spacer (needed in API level 35+ due to edge-to-edge)
 */
 public class InputContainer
-  extends FrameLayout
+  extends LinearLayout
 {
   // Container properties
   private View popupRecess;
