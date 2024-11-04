@@ -31,7 +31,7 @@ import java.util.List;
            - Candidates view
            - Keyboard view
        (b) Key preview plane (overlaid)
-    2. Bottom spacer (needed in API level 35+ due to edge-to-edge)
+    2. Bottom spacer (needed in API level 35+ for edge-to-edge bottom padding)
 */
 public class InputContainer
   extends LinearLayout
@@ -49,7 +49,7 @@ public class InputContainer
   {
     super.onApplyWindowInsets(insets);
 
-    if (Build.VERSION.SDK_INT >= 35) // bottom spacing for edge-to-edge
+    if (Build.VERSION.SDK_INT >= 35) // needed in API level 35+ for edge-to-edge bottom padding
     {
       final Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
       ViewGroup.LayoutParams layoutParameters = bottomSpacer.getLayoutParams();

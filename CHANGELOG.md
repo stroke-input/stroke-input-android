@@ -5,7 +5,7 @@
 
 - Upgraded Android SDK to Level 35
   - Implemented keyboard edge-to-edge padding (bottom spacer)
-  - Opted out of Main Activity edge-to-edge
+  - Opted out of Main Activity edge-to-edge (screw you Google)
 - Fixed buggy key preview initialisation in landscape mode
 - Changed Help/About link colour to blue
 
