@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.4.0] (66) Cursed be edge-to-edge (2024-11-04)
+
 - Upgraded Android SDK to Level 35
   - Implemented keyboard edge-to-edge padding (bottom spacer)
   - Opted out of Main Activity edge-to-edge (screw you Google)
@@ -652,7 +655,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.3.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.0...HEAD
+[v1.4.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.3.1...v1.4.0
 [v1.3.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.3.0...v1.3.1
 [v1.3.0]:
