@@ -3,6 +3,11 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v1.34.0]
+  - Adds phrases 喼汁, 矮瓜, 蜜棗
+  - Adds phrases 縮骨, 縮骨遮
+  - Adds phrases 生鏽, 不鏽鋼
+
 
 ## [v1.4.0] (66) Cursed be edge-to-edge (2024-11-04)
 
@@ -783,6 +788,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v1.34.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v1.34.0
 [Conway Stroke Data v1.33.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.33.1
 [Conway Stroke Data v1.32.0]:
