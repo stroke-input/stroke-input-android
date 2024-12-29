@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.4.1] (67) 不鏽鋼 (2024-12-29)
+
 - Updated stroke input data to [Conway Stroke Data v1.34.0]
   - Adds phrases 喼汁, 矮瓜, 蜜棗
   - Adds phrases 縮骨, 縮骨遮
@@ -660,7 +663,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.4.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.1...HEAD
+[v1.4.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.0...v1.4.1
 [v1.4.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.3.1...v1.4.0
 [v1.3.1]:
