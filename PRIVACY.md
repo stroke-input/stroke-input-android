@@ -9,6 +9,6 @@ please report to <<yawnocdev@pm.me>>.
 
 ---
 
-[私隱政策（中文版）](PRIVACY-zh.md#私隱政策) <br>
+[私隱政策（中文版）](PRIVACY-zh.md#私隱政策中文版) <br>
 (If there be any discrepancy between the English and the Chinese,
 the English version shall prevail.)
