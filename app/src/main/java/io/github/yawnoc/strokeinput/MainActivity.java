@@ -50,7 +50,7 @@ public class MainActivity
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
   private static final String PRIVACY_POLICY_URI =
-          "https://github.com/stroke-input/stroke-input-android/blob/master/PRIVACY.md#privacy-policy";
+          "https://github.com/stroke-input/stroke-input-android/blob/master/PRIVACY.md#privacy-policy-english-version";
 
   AlertDialog.Builder candidateOrderDialogBuilder;
   Dialog candidateOrderDialog;

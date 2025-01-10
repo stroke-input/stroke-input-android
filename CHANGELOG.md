@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Tweaked privacy policy punctuation (English) and wording (Chinese)
+- Updated privacy policy button URL anchor for said tweak
+
 
 ## [v1.4.1] (67) 不鏽鋼 (2024-12-29)
 
