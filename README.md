@@ -36,8 +36,8 @@ Uses [Conway Stroke Data].
 [f-droid]: https://f-droid.org/en/packages/io.github.yawnoc.strokeinput/
 [google-play]: https://play.google.com/store/apps/details?id=io.github.yawnoc.strokeinput
 
-- [English version of Privacy Policy](PRIVACY.md#privacy-policy)
-- [私隱政策中文版](PRIVACY-zh.md#私隱政策)
+- [Privacy Policy (English version)](PRIVACY.md#privacy-policy)
+- [私隱政策（中文版）](PRIVACY-zh.md#私隱政策)
 
 
 ## License
