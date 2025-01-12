@@ -141,10 +141,10 @@ public class StrokeInputService
   private final NavigableSet<String> phrasesTraditional = new TreeSet<>();
   private final NavigableSet<String> phrasesSimplified = new TreeSet<>();
 
-  private Set<Integer> unpreferredCodePointSet;
+  private Set<Integer> unpreferredCodePoints;
   private Map<Integer, Integer> sortingRankFromCodePoint;
-  private Set<Integer> commonCodePointSet;
-  private NavigableSet<String> phraseSet;
+  private Set<Integer> commonCodePoints;
+  private NavigableSet<String> phrases;
 
   private String strokeDigitSequence = "";
   private List<String> candidates = new ArrayList<>();
@@ -326,7 +326,7 @@ public class StrokeInputService
     sendLoadingTimeLog(rankingFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadPhrasesData(final String phrasesFileName, final Set<String> phraseSet)
+  private void loadPhrasesData(final String phrasesFileName, final Set<String> phrases)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
@@ -340,7 +340,7 @@ public class StrokeInputService
       {
         if (!isCommentLine(line))
         {
-          phraseSet.add(line);
+          phrases.add(line);
         }
       }
     }
@@ -872,7 +872,7 @@ public class StrokeInputService
       exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
-        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
+        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
       );
     }
     else
@@ -894,13 +894,13 @@ public class StrokeInputService
     prefixMatchCodePointSet.removeAll(exactMatchCodePointSet);
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
-      prefixMatchCodePointSet.retainAll(commonCodePointSet);
+      prefixMatchCodePointSet.retainAll(commonCodePoints);
     }
 
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
     prefixMatchCandidateCodePointList.sort(
       candidateCodePointComparator(
-        unpreferredCodePointSet,
+              unpreferredCodePoints,
         sortingRankFromCodePoint,
         phraseCompletionFirstCodePointList
       )
@@ -949,7 +949,7 @@ public class StrokeInputService
     )
     {
       final Set<String> prefixMatchPhraseCandidateSet =
-              phraseSet.subSet(
+              phrases.subSet(
                 phrasePrefix, false,
                 phrasePrefix + Character.MAX_VALUE, false
               );
@@ -964,7 +964,7 @@ public class StrokeInputService
         }
       }
       prefixMatchPhraseCompletionList.sort(
-        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, Collections.emptyList())
+        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, Collections.emptyList())
       );
       phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
     }
@@ -995,17 +995,17 @@ public class StrokeInputService
   {
     if (shouldPreferTraditional())
     {
-      unpreferredCodePointSet = codePointsSimplified;
+      unpreferredCodePoints = codePointsSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
-      commonCodePointSet = commonCodePointsTraditional;
-      phraseSet = phrasesTraditional;
+      commonCodePoints = commonCodePointsTraditional;
+      phrases = phrasesTraditional;
     }
     else
     {
-      unpreferredCodePointSet = codePointsTraditional;
+      unpreferredCodePoints = codePointsTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
-      commonCodePointSet = commonCodePointsSimplified;
-      phraseSet = phrasesSimplified;
+      commonCodePoints = commonCodePointsSimplified;
+      phrases = phrasesSimplified;
     }
   }
 
