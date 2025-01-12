@@ -148,7 +148,7 @@ public class StrokeInputService
 
   private String strokeDigitSequence = "";
   private List<String> candidates = new ArrayList<>();
-  private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
+  private final List<Integer> phraseCompletionFirstCodePoints = new ArrayList<>();
 
   private int inputActionsBits;
   private boolean enterKeyHasAction;
@@ -723,10 +723,10 @@ public class StrokeInputService
   {
     List<String> phraseCompletionCandidateList = computePhraseCompletionCandidates(inputConnection);
 
-    phraseCompletionFirstCodePointList.clear();
+    phraseCompletionFirstCodePoints.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
     {
-      phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
+      phraseCompletionFirstCodePoints.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
 
     setCandidates(phraseCompletionCandidateList);
@@ -872,7 +872,7 @@ public class StrokeInputService
       exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
-        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
+        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
       );
     }
     else
@@ -899,11 +899,7 @@ public class StrokeInputService
 
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
     prefixMatchCandidateCodePointList.sort(
-      candidateCodePointComparator(
-              unpreferredCodePoints,
-        sortingRankFromCodePoint,
-        phraseCompletionFirstCodePointList
-      )
+      candidateCodePointComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
     );
 
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
