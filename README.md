@@ -42,7 +42,7 @@ Uses [Conway Stroke Data].
 
 ## License
 
-**Copyright 2021–2024 Conway** <br>
+**Copyright 2021–2025 Conway** <br>
 Licensed under the GNU General Public License v3.0 (GPL-3.0-only). <br>
 This is free software with NO WARRANTY etc. etc., see [LICENSE]. <br>
 
