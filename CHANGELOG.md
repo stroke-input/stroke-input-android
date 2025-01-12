@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.4.2] (68) 煮者 (2025-01-12)
+
 - Fixed candidate duplication when exact match is also a prefix match (者, 煮)
 - Rewrote `addCodePointsToSet` as `toCodePointSet`
 - Eliminated suffix Hungarian notation outside method names
@@ -674,7 +677,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.4.1...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.2...HEAD
+[v1.4.2]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.1...v1.4.2
 [v1.4.1]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.4.0...v1.4.1
 [v1.4.0]:
