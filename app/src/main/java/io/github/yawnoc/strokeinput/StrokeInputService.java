@@ -557,11 +557,11 @@ public class StrokeInputService
   private void effectStrokeAppend(final String strokeDigit)
   {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
-    final List<String> newCandidateList = computeCandidates(newStrokeDigitSequence);
-    if (newCandidateList.size() > 0)
+    final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
+    if (newCandidates.size() > 0)
     {
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidates(newCandidateList);
+      setCandidates(newCandidates);
     }
   }
 
@@ -570,10 +570,10 @@ public class StrokeInputService
     if (strokeDigitSequence.length() > 0)
     {
       final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
-      final List<String> newCandidateList = computeCandidates(newStrokeDigitSequence);
+      final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
 
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidates(newCandidateList);
+      setCandidates(newCandidates);
 
       if (newStrokeDigitSequence.length() == 0)
       {
@@ -721,15 +721,15 @@ public class StrokeInputService
 
   private void setPhraseCompletionCandidates(final InputConnection inputConnection)
   {
-    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidates(inputConnection);
+    List<String> phraseCompletionCandidates = computePhraseCompletionCandidates(inputConnection);
 
     phraseCompletionFirstCodePoints.clear();
-    for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
+    for (final String phraseCompletionCandidate : phraseCompletionCandidates)
     {
       phraseCompletionFirstCodePoints.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
 
-    setCandidates(phraseCompletionCandidateList);
+    setCandidates(phraseCompletionCandidates);
   }
 
   /*
@@ -738,7 +738,7 @@ public class StrokeInputService
   private Comparator<String> candidateComparator(
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     return
@@ -748,7 +748,7 @@ public class StrokeInputService
             string,
             unpreferredCodePointSet,
             sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
+            phraseCompletionFirstCodePoints
           )
       );
   }
@@ -759,7 +759,7 @@ public class StrokeInputService
   private Comparator<Integer> candidateCodePointComparator(
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     return
@@ -770,7 +770,7 @@ public class StrokeInputService
             1,
             unpreferredCodePointSet,
             sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
+            phraseCompletionFirstCodePoints
           )
       );
   }
@@ -782,7 +782,7 @@ public class StrokeInputService
     final String string,
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     final int firstCodePoint = Stringy.getFirstCodePoint(string);
@@ -794,7 +794,7 @@ public class StrokeInputService
         stringLength,
         unpreferredCodePointSet,
         sortingRankFromCodePoint,
-        phraseCompletionFirstCodePointList
+        phraseCompletionFirstCodePoints
       );
   }
 
@@ -806,15 +806,15 @@ public class StrokeInputService
     final int stringLength,
     final Set<Integer> unpreferredCodePointSet,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     final int coarseRank;
     final int fineRank;
     final int penalty;
 
-    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
-    final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
+    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePoints.size() == 0;
+    final int phraseCompletionIndex = phraseCompletionFirstCodePoints.indexOf(firstCodePoint);
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
 
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
@@ -865,20 +865,20 @@ public class StrokeInputService
     updateCandidateOrderPreference();
 
     final Set<Integer> exactMatchCodePointSet;
-    final List<String> exactMatchCandidateList;
+    final List<String> exactMatchCandidates;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
     {
       exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
-      exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
-      exactMatchCandidateList.sort(
+      exactMatchCandidates = Stringy.toCharacterList(exactMatchCharacters);
+      exactMatchCandidates.sort(
         candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
       );
     }
     else
     {
       exactMatchCodePointSet = Collections.emptySet();
-      exactMatchCandidateList = Collections.emptyList();
+      exactMatchCandidates = Collections.emptyList();
     }
 
     final Collection<String> prefixMatchCharactersCollection =
@@ -897,21 +897,21 @@ public class StrokeInputService
       prefixMatchCodePointSet.retainAll(commonCodePoints);
     }
 
-    final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
-    prefixMatchCandidateCodePointList.sort(
+    final List<Integer> prefixMatchCandidateCodePoints = new ArrayList<>(prefixMatchCodePointSet);
+    prefixMatchCandidateCodePoints.sort(
       candidateCodePointComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
     );
 
-    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
-    final List<String> prefixMatchCandidateList = new ArrayList<>();
-    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount))
+    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePoints.size(), MAX_PREFIX_MATCH_COUNT);
+    final List<String> prefixMatchCandidates = new ArrayList<>();
+    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePoints.subList(0, prefixMatchCount))
     {
-      prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
+      prefixMatchCandidates.add(Stringy.toString(prefixMatchCodePoint));
     }
 
     final List<String> candidates = new ArrayList<>();
-    candidates.addAll(exactMatchCandidateList);
-    candidates.addAll(prefixMatchCandidateList);
+    candidates.addAll(exactMatchCandidates);
+    candidates.addAll(prefixMatchCandidates);
 
     return candidates;
   }
@@ -936,7 +936,7 @@ public class StrokeInputService
   {
     updateCandidateOrderPreference();
 
-    final List<String> phraseCompletionCandidateList = new ArrayList<>();
+    final List<String> phraseCompletionCandidates = new ArrayList<>();
 
     for (
       String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
@@ -949,23 +949,23 @@ public class StrokeInputService
                 phrasePrefix, false,
                 phrasePrefix + Character.MAX_VALUE, false
               );
-      final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
+      final List<String> prefixMatchPhraseCompletions = new ArrayList<>();
 
       for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
       {
         final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
-        if (!phraseCompletionCandidateList.contains(phraseCompletion))
+        if (!phraseCompletionCandidates.contains(phraseCompletion))
         {
-          prefixMatchPhraseCompletionList.add(phraseCompletion);
+          prefixMatchPhraseCompletions.add(phraseCompletion);
         }
       }
-      prefixMatchPhraseCompletionList.sort(
+      prefixMatchPhraseCompletions.sort(
         candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, Collections.emptyList())
       );
-      phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
+      phraseCompletionCandidates.addAll(prefixMatchPhraseCompletions);
     }
 
-    return phraseCompletionCandidateList;
+    return phraseCompletionCandidates;
   }
 
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount)
