@@ -147,7 +147,7 @@ public class StrokeInputService
   private NavigableSet<String> phraseSet;
 
   private String strokeDigitSequence = "";
-  private List<String> candidateList = new ArrayList<>();
+  private List<String> candidates = new ArrayList<>();
   private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
 
   private int inputActionsBits;
@@ -429,7 +429,7 @@ public class StrokeInputService
     inputContainer.setBackground(isFullscreen);
 
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
-    inputContainer.setCandidateList(candidateList);
+    inputContainer.setCandidateList(candidates);
 
     setEnterKeyDisplayText();
   }
@@ -561,7 +561,7 @@ public class StrokeInputService
     if (newCandidateList.size() > 0)
     {
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidateList(newCandidateList);
+      setCandidates(newCandidateList);
     }
   }
 
@@ -573,7 +573,7 @@ public class StrokeInputService
       final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
 
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidateList(newCandidateList);
+      setCandidates(newCandidateList);
 
       if (newStrokeDigitSequence.length() == 0)
       {
@@ -713,10 +713,10 @@ public class StrokeInputService
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
 
-  private void setCandidateList(final List<String> candidateList)
+  private void setCandidates(final List<String> candidates)
   {
-    this.candidateList = candidateList;
-    inputContainer.setCandidateList(candidateList);
+    this.candidates = candidates;
+    inputContainer.setCandidateList(candidates);
   }
 
   private void setPhraseCompletionCandidateList(final InputConnection inputConnection)
@@ -729,7 +729,7 @@ public class StrokeInputService
       phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
 
-    setCandidateList(phraseCompletionCandidateList);
+    setCandidates(phraseCompletionCandidateList);
   }
 
   /*
@@ -913,18 +913,18 @@ public class StrokeInputService
       prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
     }
 
-    final List<String> candidateList = new ArrayList<>();
-    candidateList.addAll(exactMatchCandidateList);
-    candidateList.addAll(prefixMatchCandidateList);
+    final List<String> candidates = new ArrayList<>();
+    candidates.addAll(exactMatchCandidateList);
+    candidates.addAll(prefixMatchCandidateList);
 
-    return candidateList;
+    return candidates;
   }
 
   private String getFirstCandidate()
   {
     try
     {
-      return candidateList.get(0);
+      return candidates.get(0);
     }
     catch (IndexOutOfBoundsException exception)
     {

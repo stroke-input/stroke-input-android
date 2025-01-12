@@ -143,9 +143,9 @@ public class InputContainer
     strokeSequenceBar.setStrokeDigitSequence(strokeDigitSequence);
   }
 
-  public void setCandidateList(final List<String> candidateList)
+  public void setCandidateList(final List<String> candidates)
   {
-    candidatesViewAdapter.updateCandidateList(candidateList);
+    candidatesViewAdapter.updateCandidateList(candidates);
     candidatesView.scrollToPosition(0);
   }
 

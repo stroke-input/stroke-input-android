@@ -27,12 +27,12 @@ public class CandidatesViewAdapter
 {
   private CandidateListener candidateListener;
   private final LayoutInflater layoutInflater;
-  private final List<String> candidateList;
+  private final List<String> candidates;
 
-  CandidatesViewAdapter(final Context context, final List<String> candidateList)
+  CandidatesViewAdapter(final Context context, final List<String> candidates)
   {
     this.layoutInflater = LayoutInflater.from(context);
-    this.candidateList = candidateList;
+    this.candidates = candidates;
   }
 
   public interface CandidateListener
@@ -46,10 +46,10 @@ public class CandidatesViewAdapter
   }
 
   @SuppressLint("NotifyDataSetChanged")
-  public void updateCandidateList(final List<String> candidateList)
+  public void updateCandidateList(final List<String> candidates)
   {
-    this.candidateList.clear();
-    this.candidateList.addAll(candidateList);
+    this.candidates.clear();
+    this.candidates.addAll(candidates);
     notifyDataSetChanged();
   }
 
@@ -64,14 +64,14 @@ public class CandidatesViewAdapter
   @Override
   public void onBindViewHolder(@NonNull final ButtonHolder buttonHolder, final int candidateIndex)
   {
-    final String candidate = candidateList.get(candidateIndex);
+    final String candidate = candidates.get(candidateIndex);
     buttonHolder.candidateButton.setText(candidate);
   }
 
   @Override
   public int getItemCount()
   {
-    return candidateList.size();
+    return candidates.size();
   }
 
   public class ButtonHolder
