@@ -127,28 +127,28 @@ public class StrokeInputService
 
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
-  private Set<Keyboard> keyboardSet;
+  private Set<Keyboard> keyboards;
 
   private InputContainer inputContainer;
 
   private final NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
-  private final Set<Integer> codePointSetTraditional = new HashSet<>();
-  private final Set<Integer> codePointSetSimplified = new HashSet<>();
+  private final Set<Integer> codePointsTraditional = new HashSet<>();
+  private final Set<Integer> codePointsSimplified = new HashSet<>();
   private final Map<Integer, Integer> sortingRankFromCodePointTraditional = new HashMap<>();
   private final Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
-  private final Set<Integer> commonCodePointSetTraditional = new HashSet<>();
-  private final Set<Integer> commonCodePointSetSimplified = new HashSet<>();
-  private final NavigableSet<String> phraseSetTraditional = new TreeSet<>();
-  private final NavigableSet<String> phraseSetSimplified = new TreeSet<>();
+  private final Set<Integer> commonCodePointsTraditional = new HashSet<>();
+  private final Set<Integer> commonCodePointsSimplified = new HashSet<>();
+  private final NavigableSet<String> phrasesTraditional = new TreeSet<>();
+  private final NavigableSet<String> phrasesSimplified = new TreeSet<>();
 
-  private Set<Integer> unpreferredCodePointSet;
+  private Set<Integer> unpreferredCodePoints;
   private Map<Integer, Integer> sortingRankFromCodePoint;
-  private Set<Integer> commonCodePointSet;
-  private NavigableSet<String> phraseSet;
+  private Set<Integer> commonCodePoints;
+  private NavigableSet<String> phrases;
 
   private String strokeDigitSequence = "";
-  private List<String> candidateList = new ArrayList<>();
-  private final List<Integer> phraseCompletionFirstCodePointList = new ArrayList<>();
+  private List<String> candidates = new ArrayList<>();
+  private final List<Integer> phraseCompletionFirstCodePoints = new ArrayList<>();
 
   private int inputActionsBits;
   private boolean enterKeyHasAction;
@@ -159,13 +159,13 @@ public class StrokeInputService
   {
     super.onCreate();
 
-    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
-    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
-    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    loadSequenceCharactersData(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
+    loadCharactersData(CHARACTERS_FILE_NAME_TRADITIONAL, codePointsTraditional);
+    loadCharactersData(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointsSimplified);
+    loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointsTraditional);
+    loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointsSimplified);
+    loadPhrasesData(PHRASES_FILE_NAME_TRADITIONAL, phrasesTraditional);
+    loadPhrasesData(PHRASES_FILE_NAME_SIMPLIFIED, phrasesSimplified);
 
     updateCandidateOrderPreference();
   }
@@ -189,7 +189,7 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertyKeyboard, QWERTY_KEYBOARD_NAME);
     nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
-    keyboardSet = nameFromKeyboard.keySet();
+    keyboards = nameFromKeyboard.keySet();
 
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialisePopupRecess();
@@ -223,7 +223,7 @@ public class StrokeInputService
   }
 
   @SuppressWarnings("SameParameterValue")
-  private void loadSequenceCharactersDataIntoMap(
+  private void loadSequenceCharactersData(
     final String sequenceCharactersFileName,
     final Map<String, String> charactersFromStrokeDigitSequence
   )
@@ -256,7 +256,7 @@ public class StrokeInputService
     sendLoadingTimeLog(sequenceCharactersFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
+  private void loadCharactersData(final String charactersFileName, final Set<Integer> codePoints)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
@@ -270,7 +270,7 @@ public class StrokeInputService
       {
         if (!isCommentLine(line))
         {
-          codePointSet.add(Stringy.getFirstCodePoint(line));
+          codePoints.add(Stringy.getFirstCodePoint(line));
         }
       }
     }
@@ -286,7 +286,7 @@ public class StrokeInputService
   private void loadRankingData(
     final String rankingFileName,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final Set<Integer> commonCodePointSet
+    final Set<Integer> commonCodePoints
   )
   {
     final long startMilliseconds = System.currentTimeMillis();
@@ -311,7 +311,7 @@ public class StrokeInputService
             }
             if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT)
             {
-              commonCodePointSet.add(codePoint);
+              commonCodePoints.add(codePoint);
             }
           }
         }
@@ -326,7 +326,7 @@ public class StrokeInputService
     sendLoadingTimeLog(rankingFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
+  private void loadPhrasesData(final String phrasesFileName, final Set<String> phrases)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
@@ -340,7 +340,7 @@ public class StrokeInputService
       {
         if (!isCommentLine(line))
         {
-          phraseSet.add(line);
+          phrases.add(line);
         }
       }
     }
@@ -409,7 +409,7 @@ public class StrokeInputService
       () ->
       {
         final int inputContainerWidth = inputContainer.getWidth();
-        for (final Keyboard keyboard : keyboardSet)
+        for (final Keyboard keyboard : keyboards)
         {
           keyboard.correctKeyboardWidth(inputContainerWidth); // needed in API level 35+ due to edge-to-edge breakage
         }
@@ -417,7 +417,7 @@ public class StrokeInputService
       }
     );
 
-    for (final Keyboard keyboard : keyboardSet)
+    for (final Keyboard keyboard : keyboards)
     {
       keyboard.adjustKeyboardHeight();
     }
@@ -429,7 +429,7 @@ public class StrokeInputService
     inputContainer.setBackground(isFullscreen);
 
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
-    inputContainer.setCandidateList(candidateList);
+    inputContainer.setCandidates(candidates);
 
     setEnterKeyDisplayText();
   }
@@ -468,9 +468,9 @@ public class StrokeInputService
       enterKeyDisplayText = getString(R.string.display_text__return);
     }
 
-    for (final Keyboard keyboard : keyboardSet)
+    for (final Keyboard keyboard : keyboards)
     {
-      for (final Key key : keyboard.getKeyList())
+      for (final Key key : keyboard.getKeys())
       {
         if (key.valueText.equals(ENTER_KEY_VALUE_TEXT))
         {
@@ -504,7 +504,7 @@ public class StrokeInputService
 
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
-    setPhraseCompletionCandidateList(inputConnection);
+    setPhraseCompletionCandidates(inputConnection);
   }
 
   @Override
@@ -557,11 +557,11 @@ public class StrokeInputService
   private void effectStrokeAppend(final String strokeDigit)
   {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
-    final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
-    if (newCandidateList.size() > 0)
+    final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
+    if (newCandidates.size() > 0)
     {
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidateList(newCandidateList);
+      setCandidates(newCandidates);
     }
   }
 
@@ -570,14 +570,14 @@ public class StrokeInputService
     if (strokeDigitSequence.length() > 0)
     {
       final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
-      final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
+      final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
 
       setStrokeDigitSequence(newStrokeDigitSequence);
-      setCandidateList(newCandidateList);
+      setCandidates(newCandidates);
 
       if (newStrokeDigitSequence.length() == 0)
       {
-        setPhraseCompletionCandidateList(inputConnection);
+        setPhraseCompletionCandidates(inputConnection);
       }
 
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
@@ -604,7 +604,7 @@ public class StrokeInputService
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
       }
 
-      setPhraseCompletionCandidateList(inputConnection);
+      setPhraseCompletionCandidates(inputConnection);
 
       final int nextBackspaceIntervalMilliseconds =
               (Stringy.isAscii(upToOneCharacterBeforeCursor))
@@ -713,32 +713,32 @@ public class StrokeInputService
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
   }
 
-  private void setCandidateList(final List<String> candidateList)
+  private void setCandidates(final List<String> candidates)
   {
-    this.candidateList = candidateList;
-    inputContainer.setCandidateList(candidateList);
+    this.candidates = candidates;
+    inputContainer.setCandidates(candidates);
   }
 
-  private void setPhraseCompletionCandidateList(final InputConnection inputConnection)
+  private void setPhraseCompletionCandidates(final InputConnection inputConnection)
   {
-    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
+    List<String> phraseCompletionCandidates = computePhraseCompletionCandidates(inputConnection);
 
-    phraseCompletionFirstCodePointList.clear();
-    for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
+    phraseCompletionFirstCodePoints.clear();
+    for (final String phraseCompletionCandidate : phraseCompletionCandidates)
     {
-      phraseCompletionFirstCodePointList.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
+      phraseCompletionFirstCodePoints.add(Stringy.getFirstCodePoint(phraseCompletionCandidate));
     }
 
-    setCandidateList(phraseCompletionCandidateList);
+    setCandidates(phraseCompletionCandidates);
   }
 
   /*
     Candidate comparator for a string.
   */
   private Comparator<String> candidateComparator(
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     return
@@ -746,9 +746,9 @@ public class StrokeInputService
         string ->
           computeCandidateRank(
             string,
-            unpreferredCodePointSet,
+            unpreferredCodePoints,
             sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
+            phraseCompletionFirstCodePoints
           )
       );
   }
@@ -757,9 +757,9 @@ public class StrokeInputService
     Candidate comparator for a code point.
   */
   private Comparator<Integer> candidateCodePointComparator(
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     return
@@ -768,9 +768,9 @@ public class StrokeInputService
           computeCandidateRank(
             codePoint,
             1,
-            unpreferredCodePointSet,
+            unpreferredCodePoints,
             sortingRankFromCodePoint,
-            phraseCompletionFirstCodePointList
+            phraseCompletionFirstCodePoints
           )
       );
   }
@@ -780,9 +780,9 @@ public class StrokeInputService
   */
   private int computeCandidateRank(
     final String string,
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     final int firstCodePoint = Stringy.getFirstCodePoint(string);
@@ -792,9 +792,9 @@ public class StrokeInputService
       computeCandidateRank(
         firstCodePoint,
         stringLength,
-        unpreferredCodePointSet,
+        unpreferredCodePoints,
         sortingRankFromCodePoint,
-        phraseCompletionFirstCodePointList
+        phraseCompletionFirstCodePoints
       );
   }
 
@@ -804,17 +804,17 @@ public class StrokeInputService
   private int computeCandidateRank(
     final int firstCodePoint,
     final int stringLength,
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final List<Integer> phraseCompletionFirstCodePointList
+    final List<Integer> phraseCompletionFirstCodePoints
   )
   {
     final int coarseRank;
     final int fineRank;
     final int penalty;
 
-    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
-    final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
+    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePoints.size() == 0;
+    final int phraseCompletionIndex = phraseCompletionFirstCodePoints.indexOf(firstCodePoint);
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
 
     final Integer sortingRank = sortingRankFromCodePoint.get(firstCodePoint);
@@ -829,11 +829,11 @@ public class StrokeInputService
 
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
-            (unpreferredCodePointSet.contains(firstCodePoint))
+            (unpreferredCodePoints.contains(firstCodePoint))
               ? RANKING_PENALTY_UNPREFERRED
               : 0;
 
-    if (phraseCompletionListIsEmpty)
+    if (phraseCompletionsIsEmpty)
     {
       coarseRank = Integer.MIN_VALUE;
       fineRank = sortingRankNonNull;
@@ -855,7 +855,7 @@ public class StrokeInputService
     return coarseRank + fineRank + penalty;
   }
 
-  private List<String> computeCandidateList(final String strokeDigitSequence)
+  private List<String> computeCandidates(final String strokeDigitSequence)
   {
     if (strokeDigitSequence.length() == 0)
     {
@@ -864,21 +864,21 @@ public class StrokeInputService
 
     updateCandidateOrderPreference();
 
-    final Set<Integer> exactMatchCodePointSet;
-    final List<String> exactMatchCandidateList;
+    final Set<Integer> exactMatchCodePoints;
+    final List<String> exactMatchCandidates;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
     {
-      exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
-      exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
-      exactMatchCandidateList.sort(
-        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
+      exactMatchCodePoints = Stringy.toCodePointSet(exactMatchCharacters);
+      exactMatchCandidates = Stringy.toCharacterList(exactMatchCharacters);
+      exactMatchCandidates.sort(
+        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
       );
     }
     else
     {
-      exactMatchCodePointSet = Collections.emptySet();
-      exactMatchCandidateList = Collections.emptyList();
+      exactMatchCodePoints = Collections.emptySet();
+      exactMatchCandidates = Collections.emptyList();
     }
 
     final Collection<String> prefixMatchCharactersCollection =
@@ -889,42 +889,38 @@ public class StrokeInputService
               )
               .values();
 
-    final Set<Integer> prefixMatchCodePointSet = Stringy.toCodePointSet(prefixMatchCharactersCollection);
+    final Set<Integer> prefixMatchCodePoints = Stringy.toCodePointSet(prefixMatchCharactersCollection);
 
-    prefixMatchCodePointSet.removeAll(exactMatchCodePointSet);
-    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
+    prefixMatchCodePoints.removeAll(exactMatchCodePoints);
+    if (prefixMatchCodePoints.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
-      prefixMatchCodePointSet.retainAll(commonCodePointSet);
+      prefixMatchCodePoints.retainAll(commonCodePoints);
     }
 
-    final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
-    prefixMatchCandidateCodePointList.sort(
-      candidateCodePointComparator(
-        unpreferredCodePointSet,
-        sortingRankFromCodePoint,
-        phraseCompletionFirstCodePointList
-      )
+    final List<Integer> prefixMatchCandidateCodePoints = new ArrayList<>(prefixMatchCodePoints);
+    prefixMatchCandidateCodePoints.sort(
+      candidateCodePointComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
     );
 
-    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
-    final List<String> prefixMatchCandidateList = new ArrayList<>();
-    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePointList.subList(0, prefixMatchCount))
+    final int prefixMatchCount = Math.min(prefixMatchCandidateCodePoints.size(), MAX_PREFIX_MATCH_COUNT);
+    final List<String> prefixMatchCandidates = new ArrayList<>();
+    for (final int prefixMatchCodePoint : prefixMatchCandidateCodePoints.subList(0, prefixMatchCount))
     {
-      prefixMatchCandidateList.add(Stringy.toString(prefixMatchCodePoint));
+      prefixMatchCandidates.add(Stringy.toString(prefixMatchCodePoint));
     }
 
-    final List<String> candidateList = new ArrayList<>();
-    candidateList.addAll(exactMatchCandidateList);
-    candidateList.addAll(prefixMatchCandidateList);
+    final List<String> candidates = new ArrayList<>();
+    candidates.addAll(exactMatchCandidates);
+    candidates.addAll(prefixMatchCandidates);
 
-    return candidateList;
+    return candidates;
   }
 
   private String getFirstCandidate()
   {
     try
     {
-      return candidateList.get(0);
+      return candidates.get(0);
     }
     catch (IndexOutOfBoundsException exception)
     {
@@ -936,11 +932,11 @@ public class StrokeInputService
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
   */
-  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection)
+  private List<String> computePhraseCompletionCandidates(final InputConnection inputConnection)
   {
     updateCandidateOrderPreference();
 
-    final List<String> phraseCompletionCandidateList = new ArrayList<>();
+    final List<String> phraseCompletionCandidates = new ArrayList<>();
 
     for (
       String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
@@ -948,28 +944,28 @@ public class StrokeInputService
       phrasePrefix = Stringy.removePrefixRegex("(?s).", phrasePrefix)
     )
     {
-      final Set<String> prefixMatchPhraseCandidateSet =
-              phraseSet.subSet(
+      final Set<String> prefixMatchPhraseCandidates =
+              phrases.subSet(
                 phrasePrefix, false,
                 phrasePrefix + Character.MAX_VALUE, false
               );
-      final List<String> prefixMatchPhraseCompletionList = new ArrayList<>();
+      final List<String> prefixMatchPhraseCompletions = new ArrayList<>();
 
-      for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
+      for (final String phraseCandidate : prefixMatchPhraseCandidates)
       {
         final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
-        if (!phraseCompletionCandidateList.contains(phraseCompletion))
+        if (!phraseCompletionCandidates.contains(phraseCompletion))
         {
-          prefixMatchPhraseCompletionList.add(phraseCompletion);
+          prefixMatchPhraseCompletions.add(phraseCompletion);
         }
       }
-      prefixMatchPhraseCompletionList.sort(
-        candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, Collections.emptyList())
+      prefixMatchPhraseCompletions.sort(
+        candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, Collections.emptyList())
       );
-      phraseCompletionCandidateList.addAll(prefixMatchPhraseCompletionList);
+      phraseCompletionCandidates.addAll(prefixMatchPhraseCompletions);
     }
 
-    return phraseCompletionCandidateList;
+    return phraseCompletionCandidates;
   }
 
   private String getTextBeforeCursor(final InputConnection inputConnection, final int characterCount)
@@ -995,17 +991,17 @@ public class StrokeInputService
   {
     if (shouldPreferTraditional())
     {
-      unpreferredCodePointSet = codePointSetSimplified;
+      unpreferredCodePoints = codePointsSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
-      commonCodePointSet = commonCodePointSetTraditional;
-      phraseSet = phraseSetTraditional;
+      commonCodePoints = commonCodePointsTraditional;
+      phrases = phrasesTraditional;
     }
     else
     {
-      unpreferredCodePointSet = codePointSetTraditional;
+      unpreferredCodePoints = codePointsTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
-      commonCodePointSet = commonCodePointSetSimplified;
-      phraseSet = phraseSetSimplified;
+      commonCodePoints = commonCodePointsSimplified;
+      phrases = phrasesSimplified;
     }
   }
 

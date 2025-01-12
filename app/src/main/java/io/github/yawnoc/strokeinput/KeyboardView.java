@@ -72,7 +72,7 @@ public class KeyboardView
   private LinearLayout mainInputPlane;
   private KeyPreviewPlane keyPreviewPlane;
   private Keyboard keyboard;
-  private List<Key> keyList;
+  private List<Key> keys;
 
   // Active key
   private Key activeKey;
@@ -196,7 +196,7 @@ public class KeyboardView
   {
     keyboardListener.saveKeyboard(keyboard);
     this.keyboard = keyboard;
-    keyList = keyboard.getKeyList();
+    keys = keyboard.getKeys();
     keyboardFillPaint.setColor(keyboard.fillColour);
     if (shiftMode != SHIFT_PERSISTENT)
     {
@@ -256,7 +256,7 @@ public class KeyboardView
 
     canvas.drawRect(keyboardRectangle, keyboardFillPaint);
 
-    for (final Key key : keyList)
+    for (final Key key : keys)
     {
       keyRectangle.set(0, 0, key.width, key.height);
 
@@ -623,7 +623,7 @@ public class KeyboardView
 
   private Key getKeyAtPoint(final int x, final int y)
   {
-    for (final Key key : keyList)
+    for (final Key key : keys)
     {
       if (key.containsPoint(x, y))
       {

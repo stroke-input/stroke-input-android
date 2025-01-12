@@ -54,17 +54,17 @@ public final class Stringy
   */
   public static List<Integer> toCodePointList(final String string)
   {
-    final List<Integer> codePointList = new ArrayList<>();
+    final List<Integer> codePoints = new ArrayList<>();
 
     final int charCount = string.length();
     for (int charIndex = 0; charIndex < charCount;)
     {
       final int codePoint = string.codePointAt(charIndex);
-      codePointList.add(codePoint);
+      codePoints.add(codePoint);
       charIndex += Character.charCount(codePoint);
     }
 
-    return codePointList;
+    return codePoints;
   }
 
   /*
@@ -72,17 +72,17 @@ public final class Stringy
   */
   public static Set<Integer> toCodePointSet(final String string)
   {
-    final Set<Integer> codePointSet = new HashSet<>();
+    final Set<Integer> codePoints = new HashSet<>();
 
     final int charCount = string.length();
     for (int charIndex = 0; charIndex < charCount;)
     {
       final int codePoint = string.codePointAt(charIndex);
-      codePointSet.add(codePoint);
+      codePoints.add(codePoint);
       charIndex += Character.charCount(codePoint);
     }
 
-    return codePointSet;
+    return codePoints;
   }
 
   /*
@@ -90,14 +90,14 @@ public final class Stringy
   */
   public static Set<Integer> toCodePointSet(final Collection<String> stringCollection)
   {
-    final Set<Integer> codePointSet = new HashSet<>();
+    final Set<Integer> codePoints = new HashSet<>();
 
     for (final String string : stringCollection)
     {
-      codePointSet.addAll(toCodePointSet(string));
+      codePoints.addAll(toCodePointSet(string));
     }
 
-    return codePointSet;
+    return codePoints;
   }
 
   /*
@@ -113,20 +113,18 @@ public final class Stringy
   */
   public static List<String> toCharacterList(final String string)
   {
-    final List<String> characterList = new ArrayList<>();
+    final List<String> characters = new ArrayList<>();
 
     final int codePointCount = string.codePointCount(0, string.length());
     for (int codePointIndex = 0; codePointIndex < codePointCount; codePointIndex++)
     {
-      characterList.add(
-        string.substring(
-          string.offsetByCodePoints(0, codePointIndex),
-          string.offsetByCodePoints(0, codePointIndex + 1)
-        )
-      );
+      final int startIndex = string.offsetByCodePoints(0, codePointIndex);
+      final int endIndex = string.offsetByCodePoints(0, codePointIndex + 1);
+      final String character = string.substring(startIndex, endIndex);
+      characters.add(character);
     }
 
-    return characterList;
+    return characters;
   }
 
   /*

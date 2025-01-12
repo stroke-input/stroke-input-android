@@ -39,7 +39,7 @@ public class KeyPreviewPlane
   private int width;
   private int height;
   private int keyboardHeight;
-  private final List<Key> keyList = new ArrayList<>();
+  private final List<Key> keys = new ArrayList<>();
   private Key latestKey;
   private int shiftMode = KeyboardView.SHIFT_DISABLED;
 
@@ -77,7 +77,7 @@ public class KeyPreviewPlane
               public void handleMessage(@NonNull Message message)
               {
                 Key key = (Key) message.obj;
-                keyList.remove(key);
+                keys.remove(key);
                 invalidate();
               }
             };
@@ -117,9 +117,9 @@ public class KeyPreviewPlane
 
   public void showPreviewAt(final Key key)
   {
-    if (key != null && !keyList.contains(key) && key.isPreviewable)
+    if (key != null && !keys.contains(key) && key.isPreviewable)
     {
-      keyList.add(key);
+      keys.add(key);
     }
     latestKey = key;
     invalidate();
@@ -127,7 +127,7 @@ public class KeyPreviewPlane
 
   public void movePreviewTo(final Key key)
   {
-    keyList.remove(latestKey);
+    keys.remove(latestKey);
     showPreviewAt(key);
   }
 
@@ -141,7 +141,7 @@ public class KeyPreviewPlane
 
   public void dismissAllImmediately()
   {
-    keyList.clear();
+    keys.clear();
     latestKey = null;
     invalidate();
   }
@@ -149,7 +149,7 @@ public class KeyPreviewPlane
   @Override
   public void onDraw(@NonNull final Canvas canvas)
   {
-    for (final Key key : keyList)
+    for (final Key key : keys)
     {
       final int keyPreviewWidth = (int) (key.previewMagnification * key.width);
       final int keyPreviewHeight = (int) (key.previewMagnification * key.height);

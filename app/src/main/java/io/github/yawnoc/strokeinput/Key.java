@@ -167,7 +167,9 @@ public class Key
         &&
       (this.isExtendedRight || x <= this.x + this.width)
         &&
-      this.y <= y && y <= this.y + this.height
+      this.y <= y
+        &&
+      y <= this.y + this.height
     );
   }
 

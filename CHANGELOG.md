@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Rewrote `addCodePointsToSet` as `toCodePointSet`
+- Eliminated suffix Hungarian notation outside method names
 - Tweaked Help > Miscellaneous explanations
   - Put Function column before Action column in table
   - Moved 'Retract keyboard' explanation into table
