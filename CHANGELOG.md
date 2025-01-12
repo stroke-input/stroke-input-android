@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Fixed candidate duplication when exact match is also a prefix match (者, 煮)
 - Rewrote `addCodePointsToSet` as `toCodePointSet`
 - Eliminated suffix Hungarian notation outside method names
 - Tweaked Help > Miscellaneous explanations
