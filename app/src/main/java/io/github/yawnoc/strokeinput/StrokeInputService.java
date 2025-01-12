@@ -864,10 +864,12 @@ public class StrokeInputService
 
     updateCandidateOrderPreference();
 
+    final Set<Integer> exactMatchCodePointSet;
     final List<String> exactMatchCandidateList;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
     {
+      exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
       exactMatchCandidateList = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidateList.sort(
         candidateComparator(unpreferredCodePointSet, sortingRankFromCodePoint, phraseCompletionFirstCodePointList)
@@ -875,6 +877,7 @@ public class StrokeInputService
     }
     else
     {
+      exactMatchCodePointSet = Collections.emptySet();
       exactMatchCandidateList = Collections.emptyList();
     }
 
@@ -888,6 +891,7 @@ public class StrokeInputService
 
     final Set<Integer> prefixMatchCodePointSet = Stringy.toCodePointSet(prefixMatchCharactersCollection);
 
+    prefixMatchCodePointSet.removeAll(exactMatchCodePointSet);
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
       prefixMatchCodePointSet.retainAll(commonCodePointSet);
