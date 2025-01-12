@@ -813,7 +813,7 @@ public class StrokeInputService
     final int fineRank;
     final int penalty;
 
-    final boolean phraseCompletionListIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
+    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePointList.size() == 0;
     final int phraseCompletionIndex = phraseCompletionFirstCodePointList.indexOf(firstCodePoint);
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
 
@@ -833,7 +833,7 @@ public class StrokeInputService
               ? RANKING_PENALTY_UNPREFERRED
               : 0;
 
-    if (phraseCompletionListIsEmpty)
+    if (phraseCompletionsIsEmpty)
     {
       coarseRank = Integer.MIN_VALUE;
       fineRank = sortingRankNonNull;
