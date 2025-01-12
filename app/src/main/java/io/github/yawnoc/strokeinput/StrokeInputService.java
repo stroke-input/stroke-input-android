@@ -132,8 +132,8 @@ public class StrokeInputService
   private InputContainer inputContainer;
 
   private final NavigableMap<String, String> charactersFromStrokeDigitSequence = new TreeMap<>();
-  private final Set<Integer> codePointSetTraditional = new HashSet<>();
-  private final Set<Integer> codePointSetSimplified = new HashSet<>();
+  private final Set<Integer> codePointsTraditional = new HashSet<>();
+  private final Set<Integer> codePointsSimplified = new HashSet<>();
   private final Map<Integer, Integer> sortingRankFromCodePointTraditional = new HashMap<>();
   private final Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
   private final Set<Integer> commonCodePointSetTraditional = new HashSet<>();
@@ -160,8 +160,8 @@ public class StrokeInputService
     super.onCreate();
 
     loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointSetTraditional);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointSetSimplified);
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointsTraditional);
+    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointsSimplified);
     loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
     loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
     loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
@@ -995,14 +995,14 @@ public class StrokeInputService
   {
     if (shouldPreferTraditional())
     {
-      unpreferredCodePointSet = codePointSetSimplified;
+      unpreferredCodePointSet = codePointsSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
       commonCodePointSet = commonCodePointSetTraditional;
       phraseSet = phraseSetTraditional;
     }
     else
     {
-      unpreferredCodePointSet = codePointSetTraditional;
+      unpreferredCodePointSet = codePointsTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
       commonCodePointSet = commonCodePointSetSimplified;
       phraseSet = phraseSetSimplified;
