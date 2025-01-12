@@ -886,14 +886,7 @@ public class StrokeInputService
               )
               .values();
 
-    final long addCodePointsStartMilliseconds = System.currentTimeMillis();
     final Set<Integer> prefixMatchCodePointSet = Stringy.toCodePointSet(prefixMatchCharactersCollection);
-    final long addCodePointsEndMilliseconds = System.currentTimeMillis();
-    if (BuildConfig.DEBUG)
-    {
-      final long durationMilliseconds = addCodePointsEndMilliseconds - addCodePointsStartMilliseconds;
-      Log.d(LOG_TAG, String.format("Added code points to set in %d ms", durationMilliseconds));
-    }
 
     if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
@@ -901,7 +894,6 @@ public class StrokeInputService
     }
 
     final List<Integer> prefixMatchCandidateCodePointList = new ArrayList<>(prefixMatchCodePointSet);
-    final long sortPrefixMatchesStartMilliseconds = System.currentTimeMillis();
     prefixMatchCandidateCodePointList.sort(
       candidateCodePointComparator(
         unpreferredCodePointSet,
@@ -909,12 +901,6 @@ public class StrokeInputService
         phraseCompletionFirstCodePointList
       )
     );
-    final long sortPrefixMatchesEndMilliseconds = System.currentTimeMillis();
-    if (BuildConfig.DEBUG)
-    {
-      final long durationMilliseconds = sortPrefixMatchesEndMilliseconds - sortPrefixMatchesStartMilliseconds;
-      Log.d(LOG_TAG, String.format("Sorted prefix matches in %d ms", durationMilliseconds));
-    }
 
     final int prefixMatchCount = Math.min(prefixMatchCandidateCodePointList.size(), MAX_PREFIX_MATCH_COUNT);
     final List<String> prefixMatchCandidateList = new ArrayList<>();
