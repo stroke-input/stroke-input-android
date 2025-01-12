@@ -54,17 +54,17 @@ public final class Stringy
   */
   public static List<Integer> toCodePointList(final String string)
   {
-    final List<Integer> codePointList = new ArrayList<>();
+    final List<Integer> codePoints = new ArrayList<>();
 
     final int charCount = string.length();
     for (int charIndex = 0; charIndex < charCount;)
     {
       final int codePoint = string.codePointAt(charIndex);
-      codePointList.add(codePoint);
+      codePoints.add(codePoint);
       charIndex += Character.charCount(codePoint);
     }
 
-    return codePointList;
+    return codePoints;
   }
 
   /*
@@ -113,12 +113,12 @@ public final class Stringy
   */
   public static List<String> toCharacterList(final String string)
   {
-    final List<String> characterList = new ArrayList<>();
+    final List<String> characters = new ArrayList<>();
 
     final int codePointCount = string.codePointCount(0, string.length());
     for (int codePointIndex = 0; codePointIndex < codePointCount; codePointIndex++)
     {
-      characterList.add(
+      characters.add(
         string.substring(
           string.offsetByCodePoints(0, codePointIndex),
           string.offsetByCodePoints(0, codePointIndex + 1)
@@ -126,7 +126,7 @@ public final class Stringy
       );
     }
 
-    return characterList;
+    return characters;
   }
 
   /*
