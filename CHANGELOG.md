@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Put function column first in Help > Miscellaneous table
 - Tweaked privacy policy punctuation (English) and wording (Chinese)
 - Updated privacy policy button URL anchor for said tweak
 

@@ -73,15 +73,15 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ''''
 |^
 //
-  ; Action
   ; Function
+  ; Action
 |:
 //
-  , Horizontally swipe \space-bar-en
   , Change language
+  , Horizontally swipe \space-bar-en
 //
-  , Long press \space-bar-en
   , Change to other keyboard
+  , Long press \space-bar-en
 ''''
 
 

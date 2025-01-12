@@ -74,15 +74,15 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
 ''''
 |^
 //
-  ; 動作
   ; 功能
+  ; 動作
 |:
 //
-  , 橫掃 \space-bar-zh
   , 轉語言
+  , 橫掃 \space-bar-zh
 //
-  , 長撳 \space-bar-zh
   , 轉至其他鍵盤
+  , 長撳 \space-bar-zh
 ''''
 
 
