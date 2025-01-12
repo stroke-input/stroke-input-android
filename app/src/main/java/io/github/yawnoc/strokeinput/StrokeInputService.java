@@ -159,13 +159,13 @@ public class StrokeInputService
   {
     super.onCreate();
 
-    loadSequenceCharactersDataIntoMap(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_TRADITIONAL, codePointsTraditional);
-    loadCharactersIntoCodePointSet(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointsSimplified);
+    loadSequenceCharactersData(SEQUENCE_CHARACTERS_FILE_NAME, charactersFromStrokeDigitSequence);
+    loadCharactersData(CHARACTERS_FILE_NAME_TRADITIONAL, codePointsTraditional);
+    loadCharactersData(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointsSimplified);
     loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointSetTraditional);
     loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointSetSimplified);
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadPhrasesIntoSet(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    loadPhrasesData(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
+    loadPhrasesData(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
 
     updateCandidateOrderPreference();
   }
@@ -223,7 +223,7 @@ public class StrokeInputService
   }
 
   @SuppressWarnings("SameParameterValue")
-  private void loadSequenceCharactersDataIntoMap(
+  private void loadSequenceCharactersData(
     final String sequenceCharactersFileName,
     final Map<String, String> charactersFromStrokeDigitSequence
   )
@@ -256,7 +256,7 @@ public class StrokeInputService
     sendLoadingTimeLog(sequenceCharactersFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadCharactersIntoCodePointSet(final String charactersFileName, final Set<Integer> codePointSet)
+  private void loadCharactersData(final String charactersFileName, final Set<Integer> codePointSet)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
@@ -326,7 +326,7 @@ public class StrokeInputService
     sendLoadingTimeLog(rankingFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadPhrasesIntoSet(final String phrasesFileName, final Set<String> phraseSet)
+  private void loadPhrasesData(final String phrasesFileName, final Set<String> phraseSet)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
