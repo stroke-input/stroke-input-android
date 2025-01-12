@@ -127,7 +127,7 @@ public class StrokeInputService
 
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
-  private Set<Keyboard> keyboardSet;
+  private Set<Keyboard> keyboards;
 
   private InputContainer inputContainer;
 
@@ -189,7 +189,7 @@ public class StrokeInputService
     nameFromKeyboard.put(qwertyKeyboard, QWERTY_KEYBOARD_NAME);
     nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
-    keyboardSet = nameFromKeyboard.keySet();
+    keyboards = nameFromKeyboard.keySet();
 
     inputContainer = (InputContainer) getLayoutInflater().inflate(R.layout.input_container, null);
     inputContainer.initialisePopupRecess();
@@ -409,7 +409,7 @@ public class StrokeInputService
       () ->
       {
         final int inputContainerWidth = inputContainer.getWidth();
-        for (final Keyboard keyboard : keyboardSet)
+        for (final Keyboard keyboard : keyboards)
         {
           keyboard.correctKeyboardWidth(inputContainerWidth); // needed in API level 35+ due to edge-to-edge breakage
         }
@@ -417,7 +417,7 @@ public class StrokeInputService
       }
     );
 
-    for (final Keyboard keyboard : keyboardSet)
+    for (final Keyboard keyboard : keyboards)
     {
       keyboard.adjustKeyboardHeight();
     }
@@ -468,7 +468,7 @@ public class StrokeInputService
       enterKeyDisplayText = getString(R.string.display_text__return);
     }
 
-    for (final Keyboard keyboard : keyboardSet)
+    for (final Keyboard keyboard : keyboards)
     {
       for (final Key key : keyboard.getKeys())
       {
