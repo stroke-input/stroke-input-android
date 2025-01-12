@@ -23,12 +23,12 @@ public class MappyTest
     forwardMap.put(1, "one");
     forwardMap.put(2, "two");
     forwardMap.put(3, "three");
-    
+
     final Map<String, Integer> inverseMap = new HashMap<>();
     inverseMap.put("one", 1);
     inverseMap.put("two", 2);
     inverseMap.put("three", 3);
-    
+
     assertEquals(Mappy.invertMap(forwardMap), inverseMap);
     assertEquals(Mappy.invertMap(inverseMap), forwardMap);
   }

@@ -40,13 +40,13 @@ public class StringyTest
     assertTrue(Stringy.isAscii("abc 123 #@% +-*/ ,:;.?!"));
     assertTrue(Stringy.isAscii("\"\\"));
     assertTrue(Stringy.isAscii(ASCII_FULL_STRING));
-    
+
     assertFalse(Stringy.isAscii(Stringy.toString(ASCII_CODE_POINT_END + 1)));
     assertFalse(Stringy.isAscii(ASCII_FULL_STRING + "文"));
     assertFalse(Stringy.isAscii("一"));
     assertFalse(Stringy.isAscii("U+FF0C FULLWIDTH COMMA ，"));
   }
-  
+
   @Test
   public void removePrefixRegex_isCorrect()
   {
@@ -55,7 +55,7 @@ public class StringyTest
     assertEquals(Stringy.removePrefixRegex("[a-z]+", "abc xyz"), " xyz");
     assertEquals(Stringy.removePrefixRegex("[a-z]+", "123 456"), "123 456");
   }
-  
+
   @Test
   public void removeSuffixRegex_isCorrect()
   {
@@ -63,7 +63,7 @@ public class StringyTest
     assertEquals(Stringy.removeSuffixRegex("[a-z]+", "abc xyz"), "abc ");
     assertEquals(Stringy.removeSuffixRegex("[a-z]+", "123 456"), "123 456");
   }
-  
+
   @Test
   public void removePrefix_isCorrect()
   {
@@ -72,21 +72,21 @@ public class StringyTest
     assertEquals(Stringy.removePrefix("2", "234"), "34");
     assertEquals(Stringy.removePrefix("WELL_", "WELL_SCREW_YOU"), "SCREW_YOU");
   }
-  
+
   @Test
   public void getFirstCodePoint_isCorrect()
   {
     assertEquals(Stringy.getFirstCodePoint("ABC"), 0x0041);
     assertEquals(Stringy.getFirstCodePoint("天下為公"), 0x5929);
   }
-  
+
   @Test
   public void toCodePointList_isCorrect()
   {
     assertEquals(Stringy.toCodePointList(ASCII_FULL_STRING), ASCII_CODE_POINT_RANGE);
     assertEquals(Stringy.toCodePointList("天下為公"), Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C));
   }
-  
+
   @Test
   public void toCodePointSet_isCorrect()
   {
@@ -103,17 +103,17 @@ public class StringyTest
   public void toString_isCorrect()
   {
     assertEquals(Stringy.toString(0x0000), "\0");
-    
+
     assertEquals(Stringy.toString(0x0030), "0");
     assertEquals("!", Stringy.toString(0x0021));
     assertEquals("A", Stringy.toString(0x0041));
-    
+
     assertEquals(Stringy.toString(0x3007), "〇");
     assertEquals(Stringy.toString(0x3400), "㐀");
     assertEquals(Stringy.toString(0x4DB5), "䶵");
     assertEquals(Stringy.toString(0x4E00), "一");
     assertEquals(Stringy.toString(0x9FD0), "鿐");
-    
+
     assertEquals(Stringy.toString(0x2000B), "\uD840\uDC0B"); // 𠀋
     assertEquals(Stringy.toString(0x2A6B2), "\uD869\uDEB2"); // 𪚲
     assertEquals(Stringy.toString(0x2A7DD), "\uD869\uDFDD"); // 𪟝
@@ -123,21 +123,21 @@ public class StringyTest
     assertEquals(Stringy.toString(0x2B8B8), "\uD86E\uDCB8"); // 𫢸
     assertEquals(Stringy.toString(0x2CE93), "\uD873\uDE93"); // 𬺓
   }
-  
+
   @Test
   public void toCharacterList_isCorrect()
   {
     assertEquals(Stringy.toCharacterList("ABC"), Arrays.asList("A", "B", "C"));
     assertEquals(Stringy.toCharacterList("天下為公"), Arrays.asList("天", "下", "為", "公"));
   }
-  
+
   @Test
   public void sunder_isCorrect()
   {
     assertArrayEquals(Stringy.sunder("abc 123", " "), new String[]{"abc", "123"});
     assertArrayEquals(Stringy.sunder("abc\t123", "\t"), new String[]{"abc", "123"});
     assertArrayEquals(Stringy.sunder("abc:::123", ":::"), new String[]{"abc", "123"});
-    
+
     assertArrayEquals(Stringy.sunder("abc123", " "), new String[]{"abc123", ""});
     assertArrayEquals(Stringy.sunder(" abc123", " "), new String[]{"", "abc123"});
   }
