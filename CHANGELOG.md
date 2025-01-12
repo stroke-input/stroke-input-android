@@ -3,7 +3,9 @@
 
 ## [Unreleased]
 
-- Put function column first in Help > Miscellaneous table
+- Tweaked Help > Miscellaneous explanations
+  - Put Function column before Action column in table
+  - Moved 'Retract keyboard' explanation into table
 - Tweaked privacy policy punctuation (English) and wording (Chinese)
 - Updated privacy policy button URL anchor for said tweak
 

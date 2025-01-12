@@ -78,22 +78,15 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
   ; 動作
 |:
 //
+  , 收回鍵盤
+  , 以系統返回按鈕（或返回手勢）
+//
   , 轉語言
   , 橫掃 \space-bar-zh
 //
   , 轉至其他鍵盤
   , 長按 \space-bar-zh
 ''''
-
-
-## 收回鍵盤
-
-----
-以系統__返回按鈕__（或__返回手勢__<sup>†</sup>）而收回鍵盤。
-----
-----
-（<sup>†</sup>若 Android~13+ __手勢操作__不便，可考慮復還__三按鈕操作__，並使用__返回按鈕__。）
-----
 
 
 <footer>

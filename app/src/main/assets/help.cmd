@@ -77,23 +77,15 @@ OrdinaryDictionaryReplacement: #.boilerplate-properties-override
   ; Action
 |:
 //
+  , Retract keyboard
+  , Use system Back Button (or Back Gesture)
+//
   , Change language
   , Horizontally swipe \space-bar-en
 //
   , Change to other keyboard
   , Long press \space-bar-en
 ''''
-
-
-## Retract keyboard
-
-----
-Use the system __Back Button__ (or __Back Gesture__<sup>†</sup>) to retract the keyboard.
-----
-----
-(<sup>†</sup>If Android~13+ __Gesture Navigation__ is inconvenient,
-consider reverting to __3-Button Navigation__ and using the __Back Button__.)
-----
 
 
 <footer>
