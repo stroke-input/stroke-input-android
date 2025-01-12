@@ -256,7 +256,7 @@ public class StrokeInputService
     sendLoadingTimeLog(sequenceCharactersFileName, startMilliseconds, endMilliseconds);
   }
 
-  private void loadCharactersData(final String charactersFileName, final Set<Integer> codePointSet)
+  private void loadCharactersData(final String charactersFileName, final Set<Integer> codePoints)
   {
     final long startMilliseconds = System.currentTimeMillis();
 
@@ -270,7 +270,7 @@ public class StrokeInputService
       {
         if (!isCommentLine(line))
         {
-          codePointSet.add(Stringy.getFirstCodePoint(line));
+          codePoints.add(Stringy.getFirstCodePoint(line));
         }
       }
     }
@@ -286,7 +286,7 @@ public class StrokeInputService
   private void loadRankingData(
     final String rankingFileName,
     final Map<Integer, Integer> sortingRankFromCodePoint,
-    final Set<Integer> commonCodePointSet
+    final Set<Integer> commonCodePoints
   )
   {
     final long startMilliseconds = System.currentTimeMillis();
@@ -311,7 +311,7 @@ public class StrokeInputService
             }
             if (currentRank < LAG_PREVENTION_CODE_POINT_COUNT)
             {
-              commonCodePointSet.add(codePoint);
+              commonCodePoints.add(codePoint);
             }
           }
         }
@@ -736,7 +736,7 @@ public class StrokeInputService
     Candidate comparator for a string.
   */
   private Comparator<String> candidateComparator(
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
     final List<Integer> phraseCompletionFirstCodePoints
   )
@@ -746,7 +746,7 @@ public class StrokeInputService
         string ->
           computeCandidateRank(
             string,
-            unpreferredCodePointSet,
+            unpreferredCodePoints,
             sortingRankFromCodePoint,
             phraseCompletionFirstCodePoints
           )
@@ -757,7 +757,7 @@ public class StrokeInputService
     Candidate comparator for a code point.
   */
   private Comparator<Integer> candidateCodePointComparator(
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
     final List<Integer> phraseCompletionFirstCodePoints
   )
@@ -768,7 +768,7 @@ public class StrokeInputService
           computeCandidateRank(
             codePoint,
             1,
-            unpreferredCodePointSet,
+            unpreferredCodePoints,
             sortingRankFromCodePoint,
             phraseCompletionFirstCodePoints
           )
@@ -780,7 +780,7 @@ public class StrokeInputService
   */
   private int computeCandidateRank(
     final String string,
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
     final List<Integer> phraseCompletionFirstCodePoints
   )
@@ -792,7 +792,7 @@ public class StrokeInputService
       computeCandidateRank(
         firstCodePoint,
         stringLength,
-        unpreferredCodePointSet,
+        unpreferredCodePoints,
         sortingRankFromCodePoint,
         phraseCompletionFirstCodePoints
       );
@@ -804,7 +804,7 @@ public class StrokeInputService
   private int computeCandidateRank(
     final int firstCodePoint,
     final int stringLength,
-    final Set<Integer> unpreferredCodePointSet,
+    final Set<Integer> unpreferredCodePoints,
     final Map<Integer, Integer> sortingRankFromCodePoint,
     final List<Integer> phraseCompletionFirstCodePoints
   )
@@ -829,7 +829,7 @@ public class StrokeInputService
 
     final int lengthPenalty = (stringLength - 1) * RANKING_PENALTY_PER_CHAR;
     final int unpreferredPenalty =
-            (unpreferredCodePointSet.contains(firstCodePoint))
+            (unpreferredCodePoints.contains(firstCodePoint))
               ? RANKING_PENALTY_UNPREFERRED
               : 0;
 
@@ -864,12 +864,12 @@ public class StrokeInputService
 
     updateCandidateOrderPreference();
 
-    final Set<Integer> exactMatchCodePointSet;
+    final Set<Integer> exactMatchCodePoints;
     final List<String> exactMatchCandidates;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
     {
-      exactMatchCodePointSet = Stringy.toCodePointSet(exactMatchCharacters);
+      exactMatchCodePoints = Stringy.toCodePointSet(exactMatchCharacters);
       exactMatchCandidates = Stringy.toCharacterList(exactMatchCharacters);
       exactMatchCandidates.sort(
         candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
@@ -877,7 +877,7 @@ public class StrokeInputService
     }
     else
     {
-      exactMatchCodePointSet = Collections.emptySet();
+      exactMatchCodePoints = Collections.emptySet();
       exactMatchCandidates = Collections.emptyList();
     }
 
@@ -889,15 +889,15 @@ public class StrokeInputService
               )
               .values();
 
-    final Set<Integer> prefixMatchCodePointSet = Stringy.toCodePointSet(prefixMatchCharactersCollection);
+    final Set<Integer> prefixMatchCodePoints = Stringy.toCodePointSet(prefixMatchCharactersCollection);
 
-    prefixMatchCodePointSet.removeAll(exactMatchCodePointSet);
-    if (prefixMatchCodePointSet.size() > LAG_PREVENTION_CODE_POINT_COUNT)
+    prefixMatchCodePoints.removeAll(exactMatchCodePoints);
+    if (prefixMatchCodePoints.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
-      prefixMatchCodePointSet.retainAll(commonCodePoints);
+      prefixMatchCodePoints.retainAll(commonCodePoints);
     }
 
-    final List<Integer> prefixMatchCandidateCodePoints = new ArrayList<>(prefixMatchCodePointSet);
+    final List<Integer> prefixMatchCandidateCodePoints = new ArrayList<>(prefixMatchCodePoints);
     prefixMatchCandidateCodePoints.sort(
       candidateCodePointComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
     );
@@ -944,14 +944,14 @@ public class StrokeInputService
       phrasePrefix = Stringy.removePrefixRegex("(?s).", phrasePrefix)
     )
     {
-      final Set<String> prefixMatchPhraseCandidateSet =
+      final Set<String> prefixMatchPhraseCandidates =
               phrases.subSet(
                 phrasePrefix, false,
                 phrasePrefix + Character.MAX_VALUE, false
               );
       final List<String> prefixMatchPhraseCompletions = new ArrayList<>();
 
-      for (final String phraseCandidate : prefixMatchPhraseCandidateSet)
+      for (final String phraseCandidate : prefixMatchPhraseCandidates)
       {
         final String phraseCompletion = Stringy.removePrefix(phrasePrefix, phraseCandidate);
         if (!phraseCompletionCandidates.contains(phraseCompletion))
