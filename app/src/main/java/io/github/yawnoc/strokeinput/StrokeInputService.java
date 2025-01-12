@@ -878,7 +878,6 @@ public class StrokeInputService
       exactMatchCandidateList = Collections.emptyList();
     }
 
-    final Set<Integer> prefixMatchCodePointSet = new HashSet<>();
     final Collection<String> prefixMatchCharactersCollection =
             charactersFromStrokeDigitSequence
               .subMap(
@@ -888,10 +887,7 @@ public class StrokeInputService
               .values();
 
     final long addCodePointsStartMilliseconds = System.currentTimeMillis();
-    for (final String characters : prefixMatchCharactersCollection)
-    {
-      Stringy.addCodePointsToSet(characters, prefixMatchCodePointSet);
-    }
+    final Set<Integer> prefixMatchCodePointSet = Stringy.toCodePointSet(prefixMatchCharactersCollection);
     final long addCodePointsEndMilliseconds = System.currentTimeMillis();
     if (BuildConfig.DEBUG)
     {

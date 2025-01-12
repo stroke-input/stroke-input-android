@@ -12,10 +12,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -87,18 +85,17 @@ public class StringyTest
   }
   
   @Test
-  public void addCodePointsToSet_isCorrect()
+  public void toCodePointSet_isCorrect()
   {
-    final int SOME_CODE_POINT = 0x1234;
-    final Set<Integer> commonsCodePointSet = new HashSet<>(Collections.singletonList(SOME_CODE_POINT));
-    Stringy.addCodePointsToSet("天下為公", commonsCodePointSet);
-    assertEquals(commonsCodePointSet, new HashSet<>(Arrays.asList(SOME_CODE_POINT, 0x5929, 0x4E0B, 0x70BA, 0x516C)));
-    
-    final Set<Integer> asciiFullCodePointSet = new HashSet<>();
-    Stringy.addCodePointsToSet(ASCII_FULL_STRING, asciiFullCodePointSet);
-    assertEquals(asciiFullCodePointSet, new HashSet<>(ASCII_CODE_POINT_RANGE));
+    assertEquals(Stringy.toCodePointSet(ASCII_FULL_STRING), new HashSet<>(ASCII_CODE_POINT_RANGE));
+    assertEquals(Stringy.toCodePointSet("天下為公"), new HashSet<>(Arrays.asList(0x5929, 0x4E0B, 0x70BA, 0x516C)));
+
+    assertEquals(
+      Stringy.toCodePointSet(Arrays.asList("ABC", "天地玄黃", "BCD")),
+      new HashSet<>(Arrays.asList(0x41, 0x42, 0x43, 0x5929, 0x5730, 0x7384, 0x9EC3, 0x44))
+    );
   }
-  
+
   @Test
   public void toString_isCorrect()
   {

@@ -8,6 +8,8 @@
 package io.github.yawnoc.utilities;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -66,17 +68,36 @@ public final class Stringy
   }
 
   /*
-    Add the (unicode) code points of a string to a set
+    Convert a string to a set of (unicode) code points.
   */
-  public static void addCodePointsToSet(final String string, final Set<Integer> set)
+  public static Set<Integer> toCodePointSet(final String string)
   {
+    final Set<Integer> codePointSet = new HashSet<>();
+
     final int charCount = string.length();
     for (int charIndex = 0; charIndex < charCount;)
     {
       final int codePoint = string.codePointAt(charIndex);
-      set.add(codePoint);
+      codePointSet.add(codePoint);
       charIndex += Character.charCount(codePoint);
     }
+
+    return codePointSet;
+  }
+
+  /*
+    Convert a collection of strings to a set of (unicode) code points.
+  */
+  public static Set<Integer> toCodePointSet(final Collection<String> stringCollection)
+  {
+    final Set<Integer> codePointSet = new HashSet<>();
+
+    for (final String string : stringCollection)
+    {
+      codePointSet.addAll(toCodePointSet(string));
+    }
+
+    return codePointSet;
   }
 
   /*

@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Rewrote `addCodePointsToSet` as `toCodePointSet`
 - Tweaked Help > Miscellaneous explanations
   - Put Function column before Action column in table
   - Moved 'Retract keyboard' explanation into table
