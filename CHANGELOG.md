@@ -6,11 +6,13 @@
 - Fixed candidate duplication when exact match is also a prefix match (者, 煮)
 - Rewrote `addCodePointsToSet` as `toCodePointSet`
 - Eliminated suffix Hungarian notation outside method names
-- Tweaked Help > Miscellaneous explanations
+- Improved Help > Miscellaneous table
   - Put Function column before Action column in table
   - Moved 'Retract keyboard' explanation into table
-- Tweaked privacy policy punctuation (English) and wording (Chinese)
-- Updated privacy policy button URL anchor for said tweak
+- Made minor edits to Privacy Policy
+  - English: added parenthetical "(English version)"
+  - Chinese: added parenthetical "（中文版）", reduced "不會" to "不", expanded "英文" to "英文版"
+- Updated privacy policy button URL anchor for said minor edits
 
 
 ## [v1.4.1] (67) 不鏽鋼 (2024-12-29)

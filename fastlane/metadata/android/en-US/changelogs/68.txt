@@ -1,0 +1,5 @@
+* Fixed duplicate candidates when exact match is also a prefix match (者, 煮)
+* Improved Help > Miscellaneous table
+* Made minor edits to Privacy Policy
+  * English: added parenthetical "(English version)"
+  * Chinese: added parenthetical "（中文版）", reduced "不會" to "不", expanded "英文" to "英文版"
