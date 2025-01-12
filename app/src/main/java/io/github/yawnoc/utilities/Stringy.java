@@ -118,12 +118,10 @@ public final class Stringy
     final int codePointCount = string.codePointCount(0, string.length());
     for (int codePointIndex = 0; codePointIndex < codePointCount; codePointIndex++)
     {
-      characters.add(
-        string.substring(
-          string.offsetByCodePoints(0, codePointIndex),
-          string.offsetByCodePoints(0, codePointIndex + 1)
-        )
-      );
+      final int startIndex = string.offsetByCodePoints(0, codePointIndex);
+      final int endIndex = string.offsetByCodePoints(0, codePointIndex + 1);
+      final String character = string.substring(startIndex, endIndex);
+      characters.add(character);
     }
 
     return characters;
