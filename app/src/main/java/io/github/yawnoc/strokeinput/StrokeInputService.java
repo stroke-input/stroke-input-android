@@ -429,7 +429,7 @@ public class StrokeInputService
     inputContainer.setBackground(isFullscreen);
 
     inputContainer.setStrokeDigitSequence(strokeDigitSequence);
-    inputContainer.setCandidateList(candidates);
+    inputContainer.setCandidates(candidates);
 
     setEnterKeyDisplayText();
   }
@@ -504,7 +504,7 @@ public class StrokeInputService
 
     inputConnection.commitText(candidate, 1);
     setStrokeDigitSequence("");
-    setPhraseCompletionCandidateList(inputConnection);
+    setPhraseCompletionCandidates(inputConnection);
   }
 
   @Override
@@ -557,7 +557,7 @@ public class StrokeInputService
   private void effectStrokeAppend(final String strokeDigit)
   {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
-    final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
+    final List<String> newCandidateList = computeCandidates(newStrokeDigitSequence);
     if (newCandidateList.size() > 0)
     {
       setStrokeDigitSequence(newStrokeDigitSequence);
@@ -570,14 +570,14 @@ public class StrokeInputService
     if (strokeDigitSequence.length() > 0)
     {
       final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
-      final List<String> newCandidateList = computeCandidateList(newStrokeDigitSequence);
+      final List<String> newCandidateList = computeCandidates(newStrokeDigitSequence);
 
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidates(newCandidateList);
 
       if (newStrokeDigitSequence.length() == 0)
       {
-        setPhraseCompletionCandidateList(inputConnection);
+        setPhraseCompletionCandidates(inputConnection);
       }
 
       inputContainer.setKeyRepeatIntervalMilliseconds(BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8);
@@ -604,7 +604,7 @@ public class StrokeInputService
         inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
       }
 
-      setPhraseCompletionCandidateList(inputConnection);
+      setPhraseCompletionCandidates(inputConnection);
 
       final int nextBackspaceIntervalMilliseconds =
               (Stringy.isAscii(upToOneCharacterBeforeCursor))
@@ -716,12 +716,12 @@ public class StrokeInputService
   private void setCandidates(final List<String> candidates)
   {
     this.candidates = candidates;
-    inputContainer.setCandidateList(candidates);
+    inputContainer.setCandidates(candidates);
   }
 
-  private void setPhraseCompletionCandidateList(final InputConnection inputConnection)
+  private void setPhraseCompletionCandidates(final InputConnection inputConnection)
   {
-    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidateList(inputConnection);
+    List<String> phraseCompletionCandidateList = computePhraseCompletionCandidates(inputConnection);
 
     phraseCompletionFirstCodePointList.clear();
     for (final String phraseCompletionCandidate : phraseCompletionCandidateList)
@@ -855,7 +855,7 @@ public class StrokeInputService
     return coarseRank + fineRank + penalty;
   }
 
-  private List<String> computeCandidateList(final String strokeDigitSequence)
+  private List<String> computeCandidates(final String strokeDigitSequence)
   {
     if (strokeDigitSequence.length() == 0)
     {
@@ -936,7 +936,7 @@ public class StrokeInputService
     Compute the phrase completion candidate list.
     Longer matches with the text before the cursor are ranked earlier.
   */
-  private List<String> computePhraseCompletionCandidateList(final InputConnection inputConnection)
+  private List<String> computePhraseCompletionCandidates(final InputConnection inputConnection)
   {
     updateCandidateOrderPreference();
 

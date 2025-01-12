@@ -46,7 +46,7 @@ public class CandidatesViewAdapter
   }
 
   @SuppressLint("NotifyDataSetChanged")
-  public void updateCandidateList(final List<String> candidates)
+  public void updateCandidates(final List<String> candidates)
   {
     this.candidates.clear();
     this.candidates.addAll(candidates);
