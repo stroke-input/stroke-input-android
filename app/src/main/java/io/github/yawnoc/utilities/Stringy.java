@@ -72,17 +72,17 @@ public final class Stringy
   */
   public static Set<Integer> toCodePointSet(final String string)
   {
-    final Set<Integer> codePointSet = new HashSet<>();
+    final Set<Integer> codePoints = new HashSet<>();
 
     final int charCount = string.length();
     for (int charIndex = 0; charIndex < charCount;)
     {
       final int codePoint = string.codePointAt(charIndex);
-      codePointSet.add(codePoint);
+      codePoints.add(codePoint);
       charIndex += Character.charCount(codePoint);
     }
 
-    return codePointSet;
+    return codePoints;
   }
 
   /*
@@ -90,14 +90,14 @@ public final class Stringy
   */
   public static Set<Integer> toCodePointSet(final Collection<String> stringCollection)
   {
-    final Set<Integer> codePointSet = new HashSet<>();
+    final Set<Integer> codePoints = new HashSet<>();
 
     for (final String string : stringCollection)
     {
-      codePointSet.addAll(toCodePointSet(string));
+      codePoints.addAll(toCodePointSet(string));
     }
 
-    return codePointSet;
+    return codePoints;
   }
 
   /*
