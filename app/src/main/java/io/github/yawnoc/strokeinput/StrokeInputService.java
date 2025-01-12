@@ -138,8 +138,8 @@ public class StrokeInputService
   private final Map<Integer, Integer> sortingRankFromCodePointSimplified = new HashMap<>();
   private final Set<Integer> commonCodePointsTraditional = new HashSet<>();
   private final Set<Integer> commonCodePointsSimplified = new HashSet<>();
-  private final NavigableSet<String> phraseSetTraditional = new TreeSet<>();
-  private final NavigableSet<String> phraseSetSimplified = new TreeSet<>();
+  private final NavigableSet<String> phrasesTraditional = new TreeSet<>();
+  private final NavigableSet<String> phrasesSimplified = new TreeSet<>();
 
   private Set<Integer> unpreferredCodePointSet;
   private Map<Integer, Integer> sortingRankFromCodePoint;
@@ -164,8 +164,8 @@ public class StrokeInputService
     loadCharactersData(CHARACTERS_FILE_NAME_SIMPLIFIED, codePointsSimplified);
     loadRankingData(RANKING_FILE_NAME_TRADITIONAL, sortingRankFromCodePointTraditional, commonCodePointsTraditional);
     loadRankingData(RANKING_FILE_NAME_SIMPLIFIED, sortingRankFromCodePointSimplified, commonCodePointsSimplified);
-    loadPhrasesData(PHRASES_FILE_NAME_TRADITIONAL, phraseSetTraditional);
-    loadPhrasesData(PHRASES_FILE_NAME_SIMPLIFIED, phraseSetSimplified);
+    loadPhrasesData(PHRASES_FILE_NAME_TRADITIONAL, phrasesTraditional);
+    loadPhrasesData(PHRASES_FILE_NAME_SIMPLIFIED, phrasesSimplified);
 
     updateCandidateOrderPreference();
   }
@@ -998,14 +998,14 @@ public class StrokeInputService
       unpreferredCodePointSet = codePointsSimplified;
       sortingRankFromCodePoint = sortingRankFromCodePointTraditional;
       commonCodePointSet = commonCodePointsTraditional;
-      phraseSet = phraseSetTraditional;
+      phraseSet = phrasesTraditional;
     }
     else
     {
       unpreferredCodePointSet = codePointsTraditional;
       sortingRankFromCodePoint = sortingRankFromCodePointSimplified;
       commonCodePointSet = commonCodePointsSimplified;
-      phraseSet = phraseSetSimplified;
+      phraseSet = phrasesSimplified;
     }
   }
 
