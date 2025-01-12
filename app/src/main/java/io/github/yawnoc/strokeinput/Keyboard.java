@@ -69,7 +69,7 @@ public class Keyboard
   private final Context applicationContext;
   private int width;
   private int height, naturalHeight;
-  private final List<Key> keyList;
+  private final List<Key> keys;
   public int fillColour;
 
   // Key properties
@@ -107,15 +107,15 @@ public class Keyboard
     defaultKeyTextSizePx = (int) Valuey.pxFromSp(DEFAULT_KEY_TEXT_SIZE_SP, displayMetrics);
     defaultKeyPreviewMarginYPx = (int) Valuey.pxFromDp(DEFAULT_KEY_PREVIEW_MARGIN_Y_DP, displayMetrics);
 
-    keyList = new ArrayList<>();
+    keys = new ArrayList<>();
 
     makeKeyboard(context, resources.getXml(layoutResourceId));
     adjustKeyboardHeight();
   }
 
-  public List<Key> getKeyList()
+  public List<Key> getKeys()
   {
-    return keyList;
+    return keys;
   }
 
   public int getWidth()
@@ -176,7 +176,7 @@ public class Keyboard
               case KEY_TAG:
                 inKey = true;
                 key = new Key(row, x, y, resources, xmlResourceParser);
-                keyList.add(key);
+                keys.add(key);
                 break;
             }
             break;
@@ -210,7 +210,7 @@ public class Keyboard
   public void correctKeyboardWidth(int inputContainerWidth)
   {
     final float correctionFactor = ((float) inputContainerWidth) / screenWidth;
-    for (final Key key : keyList)
+    for (final Key key : keys)
     {
       key.x = (int) (key.naturalX * correctionFactor);
       key.width = (int) (key.naturalWidth * correctionFactor);
@@ -224,7 +224,7 @@ public class Keyboard
     final float userAdjustmentFactor = MainActivity.keyboardHeightAdjustmentProgressToFactor(userAdjustmentProgress);
     final float actualAdjustmentFactor =
             Math.min(userAdjustmentFactor, KEYBOARD_HEIGHT_MAX_FRACTION * screenHeight / naturalHeight);
-    for (final Key key : keyList)
+    for (final Key key : keys)
     {
       key.y = (int) (key.naturalY * actualAdjustmentFactor);
       key.height = (int) (key.naturalHeight * actualAdjustmentFactor);

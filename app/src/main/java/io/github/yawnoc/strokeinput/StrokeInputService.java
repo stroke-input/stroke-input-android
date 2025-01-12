@@ -470,7 +470,7 @@ public class StrokeInputService
 
     for (final Keyboard keyboard : keyboardSet)
     {
-      for (final Key key : keyboard.getKeyList())
+      for (final Key key : keyboard.getKeys())
       {
         if (key.valueText.equals(ENTER_KEY_VALUE_TEXT))
         {
