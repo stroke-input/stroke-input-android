@@ -73,14 +73,11 @@ see [app/src/main/assets/about.html].
 
 ### Miscellaneous
 
-| Action | Function |
+| Function | Action |
 | - | - |
-| Horizontally swipe space-bar | Change language |
-| Long press space-bar | Change to other keyboard |
-
-### Retract keyboard
-
-Use the system <b>Back Button</b> (or <b>Back Gesture</b>) to retract the keyboard.
+| Retract keyboard | Use system Back Button (or Back Gesture) |
+| Change language | Horizontally swipe space-bar |
+| Change to other keyboard | Long press space-bar |
 
 
 ## Assets (for devs)
