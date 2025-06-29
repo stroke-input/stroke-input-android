@@ -249,7 +249,7 @@ public class StrokeInputService
     }
     catch (IOException exception)
     {
-      exception.printStackTrace();
+      Log.e(LOG_TAG, "loadSequenceCharactersData failed", exception);
     }
 
     final long endMilliseconds = System.currentTimeMillis();
@@ -276,7 +276,7 @@ public class StrokeInputService
     }
     catch (IOException exception)
     {
-      exception.printStackTrace();
+      Log.e(LOG_TAG, "loadCharactersData failed", exception);
     }
 
     final long endMilliseconds = System.currentTimeMillis();
@@ -319,7 +319,7 @@ public class StrokeInputService
     }
     catch (IOException exception)
     {
-      exception.printStackTrace();
+      Log.e(LOG_TAG, "loadRankingData failed", exception);
     }
 
     final long endMilliseconds = System.currentTimeMillis();
@@ -346,7 +346,7 @@ public class StrokeInputService
     }
     catch (IOException exception)
     {
-      exception.printStackTrace();
+      Log.e(LOG_TAG, "loadPhrasesData failed", exception);
     }
 
     final long endMilliseconds = System.currentTimeMillis();

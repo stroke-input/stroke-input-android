@@ -11,6 +11,7 @@
 
 - Upgraded Android Gradle Plugin to 8.10.1
 - Fixed various Gradle-related deprecations
+- Replaced `printStackTrace()` with logging
 
 
 ## [v1.4.2] (68) 煮者 (2025-01-12)

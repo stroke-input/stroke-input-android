@@ -26,6 +26,7 @@ import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.Xml;
 
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Keyboard
 {
+  private static final String LOG_TAG = "Keyboard";
+
   private static final String KEYBOARD_TAG = "Keyboard";
   private static final String ROW_TAG = "Row";
   private static final String KEY_TAG = "Key";
@@ -203,7 +206,7 @@ public class Keyboard
     }
     catch (Exception exception)
     {
-      exception.printStackTrace();
+      Log.e(LOG_TAG, "makeKeyboard failed", exception);
     }
   }
 
