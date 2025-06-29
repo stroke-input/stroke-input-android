@@ -1,0 +1,1 @@
+* Fixed keyboard failing to spawn in Android 16
