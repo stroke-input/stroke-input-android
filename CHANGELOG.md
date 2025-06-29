@@ -3,6 +3,12 @@
 
 ## [Unreleased]
 
+### User
+
+- Fixed keyboard failing to spawn in Android 16
+
+### Developer
+
 - Upgraded Android Gradle Plugin to 8.10.1
 - Fixed various Gradle-related deprecations
 
