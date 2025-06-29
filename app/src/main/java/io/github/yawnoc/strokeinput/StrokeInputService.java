@@ -219,7 +219,7 @@ public class StrokeInputService
   @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   private static boolean isCommentLine(final String line)
   {
-    return line.startsWith("#") || line.length() == 0;
+    return line.startsWith("#") || line.isEmpty();
   }
 
   @SuppressWarnings("SameParameterValue")
@@ -565,7 +565,7 @@ public class StrokeInputService
   {
     final String newStrokeDigitSequence = strokeDigitSequence + strokeDigit;
     final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
-    if (newCandidates.size() > 0)
+    if (!newCandidates.isEmpty())
     {
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidates(newCandidates);
@@ -574,7 +574,7 @@ public class StrokeInputService
 
   private void effectBackspace(final InputConnection inputConnection)
   {
-    if (strokeDigitSequence.length() > 0)
+    if (!strokeDigitSequence.isEmpty())
     {
       final String newStrokeDigitSequence = Stringy.removeSuffixRegex("(?s).", strokeDigitSequence);
       final List<String> newCandidates = computeCandidates(newStrokeDigitSequence);
@@ -582,7 +582,7 @@ public class StrokeInputService
       setStrokeDigitSequence(newStrokeDigitSequence);
       setCandidates(newCandidates);
 
-      if (newStrokeDigitSequence.length() == 0)
+      if (newStrokeDigitSequence.isEmpty())
       {
         setPhraseCompletionCandidates(inputConnection);
       }
@@ -593,7 +593,7 @@ public class StrokeInputService
     {
       final String upToOneCharacterBeforeCursor = getTextBeforeCursor(inputConnection, 1);
 
-      if (upToOneCharacterBeforeCursor.length() > 0)
+      if (!upToOneCharacterBeforeCursor.isEmpty())
       {
         final CharSequence selection = inputConnection.getSelectedText(0);
         if (TextUtils.isEmpty(selection))
@@ -629,7 +629,7 @@ public class StrokeInputService
 
   private void effectSpaceKey(final InputConnection inputConnection)
   {
-    if (strokeDigitSequence.length() > 0)
+    if (!strokeDigitSequence.isEmpty())
     {
       onCandidate(getFirstCandidate());
     }
@@ -641,7 +641,7 @@ public class StrokeInputService
 
   private void effectEnterKey(final InputConnection inputConnection)
   {
-    if (strokeDigitSequence.length() > 0)
+    if (!strokeDigitSequence.isEmpty())
     {
       onCandidate(getFirstCandidate());
     }
@@ -657,7 +657,7 @@ public class StrokeInputService
 
   private void effectOrdinaryKey(final InputConnection inputConnection, final String valueText)
   {
-    if (strokeDigitSequence.length() > 0)
+    if (!strokeDigitSequence.isEmpty())
     {
       return;
     }
@@ -820,7 +820,7 @@ public class StrokeInputService
     final int fineRank;
     final int penalty;
 
-    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePoints.size() == 0;
+    final boolean phraseCompletionsIsEmpty = phraseCompletionFirstCodePoints.isEmpty();
     final int phraseCompletionIndex = phraseCompletionFirstCodePoints.indexOf(firstCodePoint);
     final boolean firstCodePointMatchesPhraseCompletionCandidate = phraseCompletionIndex > 0;
 
@@ -864,7 +864,7 @@ public class StrokeInputService
 
   private List<String> computeCandidates(final String strokeDigitSequence)
   {
-    if (strokeDigitSequence.length() == 0)
+    if (strokeDigitSequence.isEmpty())
     {
       return Collections.emptyList();
     }
@@ -947,7 +947,7 @@ public class StrokeInputService
 
     for (
       String phrasePrefix = getTextBeforeCursor(inputConnection, MAX_PHRASE_LENGTH - 1);
-      phrasePrefix.length() > 0;
+      !phrasePrefix.isEmpty();
       phrasePrefix = Stringy.removePrefixRegex("(?s).", phrasePrefix)
     )
     {
