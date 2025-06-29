@@ -494,6 +494,13 @@ public class StrokeInputService
   }
 
   @Override
+  public boolean onEvaluateInputViewShown()
+  {
+    super.onEvaluateInputViewShown();
+    return true; // override needed in API level 36
+  }
+
+  @Override
   public void onCandidate(final String candidate)
   {
     final InputConnection inputConnection = getCurrentInputConnection();
