@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.4.3] (69) Cursed be Android 16 (2025-06-29)
+
 ### User
 
 - Fixed keyboard failing to spawn in Android 16
@@ -688,7 +691,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.4.2...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.3...HEAD
+[v1.4.3]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.2...v1.4.3
 [v1.4.2]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.4.1...v1.4.2
 [v1.4.1]:
