@@ -93,13 +93,13 @@ public class MainActivity
         @Override
         public void onStopTrackingTouch(SeekBar seekBar)
         {
-          // Hide and reshow keyboard to trigger height readjustment
+          // Trigger height readjustment and ensure keyboard shown
           final View focusView = getCurrentFocus();
           if (focusView != null)
           {
             final InputMethodManager inputMethodManager =
                     (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            inputMethodManager.restartInput(focusView);
             inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
           }
         }

@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Fixed keyboard height not immediately updating in Android 16
+
 
 ## [v1.4.3] (69) Cursed be Android 16 (2025-06-29)
 
