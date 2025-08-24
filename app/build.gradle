@@ -11,8 +11,8 @@ android
     minSdkVersion 24
     compileSdk 35
     targetSdkVersion 35
-    versionCode 69
-    versionName "1.4.3"
+    versionCode 70
+    versionName "1.4.4"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildFeatures

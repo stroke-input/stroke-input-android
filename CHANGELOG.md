@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.4.4] (70) Cursed be Android 16 again (2025-08-24)
+
 - Fixed keyboard height not immediately updating in Android 16
 
 
@@ -693,7 +696,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.4.3...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.4...HEAD
+[v1.4.4]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.3...v1.4.4
 [v1.4.3]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.4.2...v1.4.3
 [v1.4.2]:
