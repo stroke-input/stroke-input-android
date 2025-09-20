@@ -1,0 +1,2 @@
+* Upgraded target API Level to 36 (Android 16)
+* Changed Help/About pages to non-fullscreen to avoid edge-to-edge breakage
