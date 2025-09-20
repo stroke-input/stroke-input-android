@@ -9,7 +9,7 @@ android
   {
     applicationId "io.github.yawnoc.strokeinput"
     minSdkVersion 24
-    compileSdk 35
+    compileSdk = 35
     targetSdkVersion 35
     versionCode 70
     versionName "1.4.4"
