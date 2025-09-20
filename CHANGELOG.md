@@ -4,6 +4,7 @@
 ## [Unreleased]
 
 - Upgraded Android Gradle Plugin to 8.13.0
+- Upgraded Material Components For Android to 1.13.0
 - Upgraded androidx.test.ext:junit to 1.3.0
 - Upgraded androidx.test.espresso:espresso-core to 3.7.0
 
