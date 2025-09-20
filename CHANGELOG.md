@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.5.0] (71) Cursed be Android 16 for ever and ever (2025-09-21)
+
 - Upgraded Android SDK to Level 36
   - Changed Help/About pages to non-fullscreen to avoid edge-to-edge breakage
 - Upgraded Android Gradle Plugin to 8.13.0
@@ -703,7 +706,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.4.4...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.5.0...HEAD
+[v1.5.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.4.4...v1.5.0
 [v1.4.4]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.4.3...v1.4.4
 [v1.4.3]:
