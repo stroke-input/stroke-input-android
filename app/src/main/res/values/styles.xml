@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="NoEdgeToEdge">
-    <!-- API 34 or earlier does not need `android:windowOptOutEdgeToEdgeEnforcement` -->
-  </style>
   <style name="MainActivityText">
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
