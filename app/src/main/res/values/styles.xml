@@ -48,7 +48,7 @@
     <item name="android:padding">@dimen/padding__dialog_button</item>
   </style>
   <style name="StrokeInputAlert" parent="Theme.StrokeInput">
-    <item name="android:fitsSystemWindows">true</item>
+    <item name="android:windowIsFloating">true</item>
     <item name="android:windowBackground">@color/very_dark_grey</item>
     <item name="android:backgroundDimEnabled">true</item>
   </style>
