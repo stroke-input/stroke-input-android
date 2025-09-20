@@ -3,6 +3,13 @@
 
 ## [Unreleased]
 
+- Upgraded Android SDK to Level 36
+  - Changed Help/About pages to non-fullscreen to avoid edge-to-edge breakage
+- Upgraded Android Gradle Plugin to 8.13.0
+- Upgraded Material Components For Android to 1.13.0
+- Upgraded androidx.test.ext:junit to 1.3.0
+- Upgraded androidx.test.espresso:espresso-core to 3.7.0
+
 
 ## [v1.4.4] (70) Cursed be Android 16 again (2025-08-24)
 

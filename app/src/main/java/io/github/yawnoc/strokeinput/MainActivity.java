@@ -61,7 +61,6 @@ public class MainActivity
   protected void onCreate(final Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    getTheme().applyStyle(R.style.NoEdgeToEdge, false);
     setTitle(R.string.label__main_activity__welcome);
     setContentView(R.layout.main_activity);
 

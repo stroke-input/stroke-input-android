@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright 2021–2023 Conway
+  Copyright 2021–2023, 2025 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -9,6 +9,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
+  android:fitsSystemWindows="true"
 >
   <LinearLayout
     android:layout_height="wrap_content"
