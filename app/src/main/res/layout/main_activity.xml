@@ -79,6 +79,10 @@
       android:layout_marginTop="@dimen/margin_top__main_activity__input"
       android:layout_marginBottom="@dimen/margin_bottom__main_activity__input"
     />
+    <TextView
+      style="@style/MainActivityText"
+      android:text="@string/text__main_activity__optional_candidates"
+    />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/help_button"
