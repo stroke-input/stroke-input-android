@@ -25,6 +25,8 @@
   </style>
   <style name="MainActivitySwitch">
     <item name="android:textColor">@color/umbrella_orange</item>
+    <item name="android:layout_marginLeft">@dimen/margin_horizontal__main_activity__switch</item>
+    <item name="android:layout_marginRight">@dimen/margin_horizontal__main_activity__switch</item>
   </style>
   <style name="MainActivityInput">
     <item name="android:layout_height">match_parent</item>
