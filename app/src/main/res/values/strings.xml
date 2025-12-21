@@ -26,7 +26,7 @@
   </string>
   <string name="hint__main_activity__test_input">5. Test input here</string>
   <string name="text__main_activity__optional_candidates">
-    6. (Advanced) Allow the following candidates (which may not have system font support):
+    6. (Advanced) Allow the following candidates (may not have system font support):
   </string>
   <string name="label__main_activity__return">Return</string>
   <!-- Error messages -->
