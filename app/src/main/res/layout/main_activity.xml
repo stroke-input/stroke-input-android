@@ -83,6 +83,42 @@
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__optional_candidates"
     />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+9FD1...U+9FD5\n鿑鿒鿓鿔鿕"
+    />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+9FD6...U+9FE9\n鿖鿗鿘鿙鿚鿛鿜鿝鿞鿟鿠鿡鿢鿣鿤鿥鿦鿧鿨鿩"
+    />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+9FEA...U+9FEF\n鿪鿫鿬鿭鿮鿯"
+    />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+4DB6...U+4DBF\n䶶䶷䶸䶹䶺䶻䶼䶽䶾䶿"
+    />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+20024\n𠀤"
+    />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+      style="@style/MainActivitySwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="U+2B7F7\n𫟷"
+    />
     <Button
       style="@style/MainActivityButton"
       android:id="@+id/help_button"

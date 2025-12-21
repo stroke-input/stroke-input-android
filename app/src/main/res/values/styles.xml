@@ -23,6 +23,9 @@
     <item name="android:progressTint">@color/umbrella_orange</item>
     <item name="android:progressBackgroundTint">@color/umbrella_grey</item>
   </style>
+  <style name="MainActivitySwitch">
+    <item name="android:textColor">@color/umbrella_orange</item>
+  </style>
   <style name="MainActivityInput">
     <item name="android:layout_height">match_parent</item>
     <item name="android:layout_width">match_parent</item>
