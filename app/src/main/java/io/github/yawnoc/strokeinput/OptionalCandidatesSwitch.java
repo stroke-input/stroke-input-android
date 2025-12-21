@@ -24,7 +24,7 @@ import io.github.yawnoc.utilities.Stringy;
 public class OptionalCandidatesSwitch
   extends SwitchMaterial
 {
-  final String characters;
+  public final String characters;
 
   public OptionalCandidatesSwitch(Context context, AttributeSet attributes)
   {

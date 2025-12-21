@@ -91,6 +91,37 @@ public final class Contexty
     preferencesEditor.apply();
   }
 
+  public static boolean loadPreferenceBoolean(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final boolean defaultValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    try
+    {
+      return preferences.getBoolean(preferenceKey, defaultValue);
+    }
+    catch (ClassCastException exception)
+    {
+      return defaultValue;
+    }
+  }
+
+  public static void savePreferenceBoolean(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final boolean preferenceValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    SharedPreferences.Editor preferencesEditor = preferences.edit();
+    preferencesEditor.putBoolean(preferenceKey, preferenceValue);
+    preferencesEditor.apply();
+  }
+
   public static void showErrorMessage(final Context context, final String message)
   {
     final TextView alertTextView = new TextView(new ContextThemeWrapper(context, R.style.StrokeInputMessage));

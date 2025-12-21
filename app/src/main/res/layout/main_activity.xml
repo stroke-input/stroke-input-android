@@ -87,6 +87,7 @@
     <!-- Tail end of CJK Unified Ideographs (1/4): U+9FD1 to U+9FD5 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_1_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="鿑"
@@ -95,6 +96,7 @@
     <!-- Tail end of CJK Unified Ideographs (2/4): U+9FD6 to U+9FE9 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_2_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="鿖"
@@ -103,6 +105,7 @@
     <!-- Tail end of CJK Unified Ideographs (3/4): U+9FEA to U+9FEF -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_3_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="鿪"
@@ -111,6 +114,7 @@
     <!-- Tail end of CJK Unified Ideographs (4/4): U+9FF0 to U+9FFF -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_4_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="鿰"
@@ -119,6 +123,7 @@
     <!-- Tail end of CJK Unified Ideographs Extension A: U+4DB6 to U+4DBF -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_extension_a_tail_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="䶶"
@@ -127,6 +132,7 @@
     <!-- Selected characters from CJK Unified Ideographs Extension B (Kangxi explanatory 並): U+20024 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_kangxi_bengx_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="𠀤"
@@ -135,6 +141,7 @@
     <!-- Selected characters from CJK Unified Ideographs Extension B (simplified 鉝): U+20024 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
+      android:id="@+id/optional_simplified_livermorium_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       app:minimumCandidate="𫟷"
