@@ -127,7 +127,7 @@ public class MainActivity
     {
       final OptionalCandidatesSwitch optionalCandidatesSwitch = findViewById(optionalCandidateSwitchId);
       final String characters = optionalCandidatesSwitch.characters;
-      final boolean isAllowed = loadSavedOptionalCandidatesPreference(characters);
+      final boolean isAllowed = loadSavedOptionalCandidatesPreference(this, characters);
 
       optionalCandidatesSwitch.setOnCheckedChangeListener(
         (buttonView, isChecked) -> saveOptionalCandidatesPreference(characters, isChecked)
@@ -223,11 +223,11 @@ public class MainActivity
     keyboardHeightAdjustmentDisplay.setText(adjustmentDisplayText);
   }
 
-  private boolean loadSavedOptionalCandidatesPreference(final String characters)
+  private static boolean loadSavedOptionalCandidatesPreference(final Context context, final String characters)
   {
     return
       Contexty.loadPreferenceBoolean(
-        getApplicationContext(),
+        context,
         StrokeInputService.PREFERENCES_FILE_NAME,
         OPTIONAL_CANDIDATES_PREFERENCE_KEY_PREFIX + characters,
         false
@@ -249,13 +249,13 @@ public class MainActivity
     return loadSavedOptionalCandidatesPreferences(getApplicationContext());
   }
 
-  public Map<String, Boolean> loadSavedOptionalCandidatesPreferences(final Context context)
+  public static Map<String, Boolean> loadSavedOptionalCandidatesPreferences(final Context context)
   {
     final Map<String, Boolean> isAllowedFromCharacters = new HashMap<>();
 
     for (final String characters : optionalCharactersList)
     {
-      isAllowedFromCharacters.put(characters, loadSavedOptionalCandidatesPreference(characters));
+      isAllowedFromCharacters.put(characters, loadSavedOptionalCandidatesPreference(context, characters));
     }
 
     return isAllowedFromCharacters;
