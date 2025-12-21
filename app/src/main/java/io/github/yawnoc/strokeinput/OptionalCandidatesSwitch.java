@@ -24,49 +24,51 @@ import io.github.yawnoc.utilities.Stringy;
 public class OptionalCandidatesSwitch
   extends SwitchMaterial
 {
-  final int minimumCodePoint;
-  final int maximumCodePoint;
+  final String characters;
 
   public OptionalCandidatesSwitch(Context context, AttributeSet attributes)
   {
     super(context, attributes);
 
+    final String minimumCandidate;
+    final String maximumCandidate;
+    final String unicodeRange;
+
     try (final TypedArray attributesArray =
                  context.getTheme().obtainStyledAttributes(attributes, R.styleable.OptionalCandidatesSwitch, 0, 0))
     {
-      final String minimumCandidate = attributesArray.getString(R.styleable.OptionalCandidatesSwitch_minimumCandidate);
-      final String maximumCandidate = attributesArray.getString(R.styleable.OptionalCandidatesSwitch_maximumCandidate);
-
-      if (minimumCandidate == null || maximumCandidate == null)
-      {
-        minimumCodePoint = -1;
-        maximumCodePoint = -1;
-      }
-      else
-      {
-        minimumCodePoint = Stringy.getFirstCodePoint(minimumCandidate);
-        maximumCodePoint = Stringy.getFirstCodePoint(maximumCandidate);
-      }
+      minimumCandidate = attributesArray.getString(R.styleable.OptionalCandidatesSwitch_minimumCandidate);
+      maximumCandidate = attributesArray.getString(R.styleable.OptionalCandidatesSwitch_maximumCandidate);
     }
 
-    final String rangeTextStart =
-            (minimumCodePoint < 0)
-              ? ""
-              : Stringy.toUnicodeNotation(minimumCodePoint);
-    final String rangeTextToEnd =
-            (maximumCodePoint == minimumCodePoint)
-              ? ""
-              : "–" + Stringy.toUnicodeNotation(maximumCodePoint); // separated by U+2013 EN DASH
-
-    final List<String> characters = new ArrayList<>();
-    for (int codePoint = minimumCodePoint; codePoint <= maximumCodePoint; codePoint++)
+    if (minimumCandidate == null || maximumCandidate == null)
     {
-      characters.add(Stringy.toString(codePoint));
+      characters = "";
+      unicodeRange = "";
+    }
+    else
+    {
+      final int minimumCodePoint = Stringy.getFirstCodePoint(minimumCandidate);
+      final int maximumCodePoint = Stringy.getFirstCodePoint(maximumCandidate);
+
+      final List<String> charactersList = new ArrayList<>();
+      for (int codePoint = minimumCodePoint; codePoint <= maximumCodePoint; codePoint++)
+      {
+        charactersList.add(Stringy.toString(codePoint));
+      }
+
+      characters = String.join("", charactersList);
+
+      final String unicodeRangeStart = Stringy.toUnicodeNotation(minimumCodePoint);
+      final String unicodeRangeToEnd =
+              (maximumCodePoint == minimumCodePoint)
+                ? ""
+                : "–" + Stringy.toUnicodeNotation(maximumCodePoint); // separated by U+2013 EN DASH
+
+      unicodeRange = unicodeRangeStart + unicodeRangeToEnd;
     }
 
-    final String rangeText = rangeTextStart + rangeTextToEnd;
-    final String charactersText = String.join("", characters);
-    final String switchText = rangeText + "\n" + charactersText;
+    final String switchText = unicodeRange + "\n" + characters;
 
     super.setText(switchText);
   }
