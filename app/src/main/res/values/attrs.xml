@@ -58,4 +58,8 @@
     <attr name="keyPreviewMagnification" />
     <attr name="keyPreviewMarginY" />
   </declare-styleable>
+  <declare-styleable name="OptionalCandidatesSwitch">
+    <attr name="minimumCandidate" format="string" />
+    <attr name="maximumCandidate" format="string" />
+  </declare-styleable>
 </resources>

@@ -1,5 +1,5 @@
 /*
-  Copyright 2022 Conway
+  Copyright 2022, 2025 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -122,6 +122,14 @@ public class StringyTest
     assertEquals(Stringy.toString(0x2B81C), "\uD86E\uDC1C"); // 𫠜
     assertEquals(Stringy.toString(0x2B8B8), "\uD86E\uDCB8"); // 𫢸
     assertEquals(Stringy.toString(0x2CE93), "\uD873\uDE93"); // 𬺓
+  }
+
+  @Test
+  public void toUnicodeNotation_isCorrect()
+  {
+    assertEquals(Stringy.toUnicodeNotation(65), "U+0041");
+    assertEquals(Stringy.toUnicodeNotation(19968), "U+4E00");
+    assertEquals(Stringy.toUnicodeNotation(131072), "U+20000");
   }
 
   @Test

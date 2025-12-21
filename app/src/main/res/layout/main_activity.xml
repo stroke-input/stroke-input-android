@@ -7,6 +7,7 @@
 -->
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:fitsSystemWindows="true"
@@ -83,41 +84,53 @@
       style="@style/MainActivityText"
       android:text="@string/text__main_activity__optional_candidates"
     />
+    <!-- Tail end of CJK Unified Ideographs (1/3): U+9FD1 to U+9FD5 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+9FD1...U+9FD5\n鿑鿒鿓鿔鿕"
+      app:minimumCandidate="鿑"
+      app:maximumCandidate="鿕"
     />
+    <!-- Tail end of CJK Unified Ideographs (2/3): U+9FD6 to U+9FE9 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+9FD6...U+9FE9\n鿖鿗鿘鿙鿚鿛鿜鿝鿞鿟鿠鿡鿢鿣鿤鿥鿦鿧鿨鿩"
+      app:minimumCandidate="鿖"
+      app:maximumCandidate="鿩"
     />
+    <!-- Tail end of CJK Unified Ideographs (3/3): U+9FEA to U+9FEF -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+9FEA...U+9FEF\n鿪鿫鿬鿭鿮鿯"
+      app:minimumCandidate="鿪"
+      app:maximumCandidate="鿯"
     />
+    <!-- Tail end of CJK Unified Ideographs Extension A: U+4DB6 to U+4DBF -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+4DB6...U+4DBF\n䶶䶷䶸䶹䶺䶻䶼䶽䶾䶿"
+      app:minimumCandidate="䶶"
+      app:maximumCandidate="䶿"
     />
+    <!-- Selected characters from CJK Unified Ideographs Extension B (Kangxi explanatory 並): U+20024 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+20024\n𠀤"
+      app:minimumCandidate="𠀤"
+      app:maximumCandidate="𠀤"
     />
+    <!-- Selected characters from CJK Unified Ideographs Extension B (simplified 鉝): U+20024 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="U+2B7F7\n𫟷"
+      app:minimumCandidate="𫟷"
+      app:maximumCandidate="𫟷"
       android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
     />
     <Button

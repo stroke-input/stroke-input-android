@@ -109,6 +109,14 @@ public final class Stringy
   }
 
   /*
+    Convert a code point to Unicode `U+` notation.
+  */
+  public static String toUnicodeNotation(final int codePoint)
+  {
+    return String.format("U+%04X", codePoint);
+  }
+
+  /*
     Convert a string to a list of (unicode) characters.
   */
   public static List<String> toCharacterList(final String string)
