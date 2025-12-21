@@ -172,9 +172,9 @@ public class MainActivity
   {
     Contexty.savePreferenceInt(
       getApplicationContext(),
-        StrokeInputService.PREFERENCES_FILE_NAME,
-        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
-        keyboardHeightAdjustmentProgress
+      StrokeInputService.PREFERENCES_FILE_NAME,
+      KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+      keyboardHeightAdjustmentProgress
     );
   }
 
