@@ -90,6 +90,7 @@
       android:id="@+id/optional_main_tail_1_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_top__main_activity__switch_first"
       app:minimumCandidate="鿑"
       app:maximumCandidate="鿕"
     />
@@ -144,9 +145,9 @@
       android:id="@+id/optional_simplified_livermorium_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
       app:minimumCandidate="𫟷"
       app:maximumCandidate="𫟷"
-      android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
     />
     <Button
       style="@style/MainActivityButton"

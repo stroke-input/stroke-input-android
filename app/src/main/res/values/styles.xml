@@ -24,7 +24,9 @@
     <item name="android:progressBackgroundTint">@color/umbrella_grey</item>
   </style>
   <style name="MainActivitySwitch">
+    <item name="android:textSize">@dimen/font_size__main_activity</item>
     <item name="android:textColor">@color/umbrella_orange</item>
+    <item name="android:layout_marginTop">@dimen/margin_top__main_activity__switch</item>
     <item name="android:layout_marginLeft">@dimen/margin_horizontal__main_activity__switch</item>
     <item name="android:layout_marginRight">@dimen/margin_horizontal__main_activity__switch</item>
   </style>

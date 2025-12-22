@@ -14,8 +14,10 @@
   <dimen name="margin_horizontal__main_activity__seek_bar">24dp</dimen>
   <dimen name="margin_top__main_activity__input">8dp</dimen>
   <dimen name="margin_bottom__main_activity__input">12dp</dimen>
-  <dimen name="margin_horizontal__main_activity__switch">20dp</dimen>
-  <dimen name="margin_bottom__main_activity__switch_last">12dp</dimen>
+  <dimen name="margin_top__main_activity__switch_first">14dp</dimen>
+  <dimen name="margin_top__main_activity__switch">10dp</dimen>
+  <dimen name="margin_horizontal__main_activity__switch">48dp</dimen>
+  <dimen name="margin_bottom__main_activity__switch_last">24dp</dimen>
   <dimen name="inset_vertical__main_activity__button">4dp</dimen>
   <dimen name="min_height__main_activity__button">48dp</dimen>
   <dimen name="min_height__main_activity__input">48dp</dimen>
