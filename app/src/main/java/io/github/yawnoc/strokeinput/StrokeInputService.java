@@ -871,13 +871,29 @@ public class StrokeInputService
 
     updateCandidateOrderPreference();
 
+    final Set<Integer> prohibitedCodePoints = new HashSet<>();
+    final Set<String> prohibitedCharacters = new HashSet<>();
+    for (final Map.Entry<String, Boolean> entry : isAllowedFromCharacters().entrySet())
+    {
+      final String optionalCharacters = entry.getKey();
+      final boolean isAllowed = entry.getValue();
+      if (!isAllowed)
+      {
+        prohibitedCodePoints.addAll(Stringy.toCodePointSet(optionalCharacters));
+        prohibitedCharacters.addAll(Stringy.toCharacterList(optionalCharacters));
+      }
+    }
+
     final Set<Integer> exactMatchCodePoints;
     final List<String> exactMatchCandidates;
     final String exactMatchCharacters = charactersFromStrokeDigitSequence.get(strokeDigitSequence);
     if (exactMatchCharacters != null)
     {
       exactMatchCodePoints = Stringy.toCodePointSet(exactMatchCharacters);
+      exactMatchCodePoints.removeAll(prohibitedCodePoints);
+
       exactMatchCandidates = Stringy.toCharacterList(exactMatchCharacters);
+      exactMatchCandidates.removeAll(prohibitedCharacters);
       exactMatchCandidates.sort(
         candidateComparator(unpreferredCodePoints, sortingRankFromCodePoint, phraseCompletionFirstCodePoints)
       );
@@ -899,6 +915,7 @@ public class StrokeInputService
     final Set<Integer> prefixMatchCodePoints = Stringy.toCodePointSet(prefixMatchCharactersCollection);
 
     prefixMatchCodePoints.removeAll(exactMatchCodePoints);
+    prefixMatchCodePoints.removeAll(prohibitedCodePoints);
     if (prefixMatchCodePoints.size() > LAG_PREVENTION_CODE_POINT_COUNT)
     {
       prefixMatchCodePoints.retainAll(commonCodePoints);
@@ -1017,5 +1034,10 @@ public class StrokeInputService
     final String savedCandidateOrderPreference =
             MainActivity.loadSavedCandidateOrderPreference(getApplicationContext());
     return MainActivity.isTraditionalPreferred(savedCandidateOrderPreference);
+  }
+
+  private Map<String, Boolean> isAllowedFromCharacters()
+  {
+    return MainActivity.loadSavedOptionalCandidatesPreferences(getApplicationContext());
   }
 }

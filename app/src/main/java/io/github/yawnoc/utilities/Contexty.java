@@ -1,5 +1,5 @@
 /*
-  Copyright 2021--2023 Conway
+  Copyright 2021--2023, 2025 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -88,6 +88,37 @@ public final class Contexty
     final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
     SharedPreferences.Editor preferencesEditor = preferences.edit();
     preferencesEditor.putInt(preferenceKey, preferenceValue);
+    preferencesEditor.apply();
+  }
+
+  public static boolean loadPreferenceBoolean(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final boolean defaultValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    try
+    {
+      return preferences.getBoolean(preferenceKey, defaultValue);
+    }
+    catch (ClassCastException exception)
+    {
+      return defaultValue;
+    }
+  }
+
+  public static void savePreferenceBoolean(
+    final Context context,
+    final String preferenceFileName,
+    final String preferenceKey,
+    final boolean preferenceValue
+  )
+  {
+    final SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
+    SharedPreferences.Editor preferencesEditor = preferences.edit();
+    preferencesEditor.putBoolean(preferenceKey, preferenceValue);
     preferencesEditor.apply();
   }
 

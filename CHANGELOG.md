@@ -3,6 +3,18 @@
 
 ## [Unreleased]
 
+- Fulfilled full coverage of Basic Multilingual Plane
+  by adding toggle settings for *optional* characters
+  (which may not have system font support)
+- Updated stroke input data to [Conway Stroke Data v2.0.0]
+  - Adds *optional* characters U+9FD1 鿑 to U+9FFF 鿿
+  - Adds *optional* characters U+4DB6 䶶 to U+4DBF 䶿
+  - Adds *optional* character 𠀤
+  - Adds character 𠮟
+  - Adds characters 𠂇𠦝𡯂𤴓𦉪𨸏
+  - Adds characters 𠓗𠓾𣁾𤾩
+  - Adds *optional* character 𫟷
+
 
 ## [v1.5.0] (71) Cursed be Android 16 for ever and ever (2025-09-21)
 
@@ -844,6 +856,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v2.0.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v2.0.0
 [Conway Stroke Data v1.34.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.34.0
 [Conway Stroke Data v1.33.1]:

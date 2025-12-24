@@ -16,6 +16,7 @@
   <string name="label__main_activity__simplified_first">簡體排在前面</string>
   <string name="text__main_activity__keyboard_height_adjustment">4. 調整鍵盤高度（最多佔螢幕一半，字選欄另計）：</string>
   <string name="hint__main_activity__test_input">5. 在此測試輸入</string>
+  <string name="text__main_activity__optional_candidates">6. （高級）容許以下字選（或未得到系統字型支援）：</string>
   <string name="label__main_activity__return">回</string>
   <!-- Error messages -->
   <string name="message__error__browser">無法開啟瀏覽器前往&lt;%1$s&gt;。</string>

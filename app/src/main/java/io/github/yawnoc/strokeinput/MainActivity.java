@@ -24,6 +24,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import io.github.yawnoc.utilities.Contexty;
@@ -46,6 +51,19 @@ public class MainActivity
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX = 1.5f;
   public static final float KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_RANGE =
           KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MAX - KEYBOARD_HEIGHT_ADJUSTMENT_FACTOR_MIN;
+
+  public static final String OPTIONAL_CANDIDATES_PREFERENCE_KEY_PREFIX = "optionalCandidatesPreference_";
+  private static final List<Integer> OPTIONAL_CANDIDATES_SWITCH_IDS =
+          Arrays.asList(
+            R.id.optional_main_tail_1_switch,
+            R.id.optional_main_tail_2_switch,
+            R.id.optional_main_tail_3_switch,
+            R.id.optional_main_tail_4_switch,
+            R.id.optional_extension_a_tail_switch,
+            R.id.optional_kangxi_bengx_switch,
+            R.id.optional_simplified_livermorium_switch
+          );
+  private static final List<String> optionalCharactersList = new ArrayList<>();
 
   private static final String ASSETS_DIRECTORY = "file:///android_asset/";
   private static final String SOURCE_CODE_URI = "https://github.com/stroke-input/stroke-input-android";
@@ -104,6 +122,20 @@ public class MainActivity
         }
       }
     );
+
+    for (final int optionalCandidateSwitchId : OPTIONAL_CANDIDATES_SWITCH_IDS)
+    {
+      final OptionalCandidatesSwitch optionalCandidatesSwitch = findViewById(optionalCandidateSwitchId);
+      final String characters = optionalCandidatesSwitch.characters;
+      final boolean isAllowed = loadSavedOptionalCandidatesPreference(this, characters);
+
+      optionalCandidatesSwitch.setOnCheckedChangeListener(
+        (buttonView, isChecked) -> saveOptionalCandidatesPreference(characters, isChecked)
+      );
+
+      optionalCandidatesSwitch.setChecked(isAllowed);
+      optionalCharactersList.add(characters);
+    }
 
     setCandidateOrderButtonText(loadSavedCandidateOrderPreference());
 
@@ -172,9 +204,9 @@ public class MainActivity
   {
     Contexty.savePreferenceInt(
       getApplicationContext(),
-        StrokeInputService.PREFERENCES_FILE_NAME,
-        KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
-        keyboardHeightAdjustmentProgress
+      StrokeInputService.PREFERENCES_FILE_NAME,
+      KEYBOARD_HEIGHT_ADJUSTMENT_PROGRESS_KEY,
+      keyboardHeightAdjustmentProgress
     );
   }
 
@@ -189,6 +221,39 @@ public class MainActivity
     final TextView keyboardHeightAdjustmentDisplay = findViewById(R.id.keyboard_height_adjustment_display);
     final String adjustmentDisplayText = "×\u00A0" + NumberFormat.getInstance().format(adjustmentFactor);
     keyboardHeightAdjustmentDisplay.setText(adjustmentDisplayText);
+  }
+
+  private static boolean loadSavedOptionalCandidatesPreference(final Context context, final String characters)
+  {
+    return
+      Contexty.loadPreferenceBoolean(
+        context,
+        StrokeInputService.PREFERENCES_FILE_NAME,
+        OPTIONAL_CANDIDATES_PREFERENCE_KEY_PREFIX + characters,
+        false
+      );
+  }
+
+  private void saveOptionalCandidatesPreference(final String characters, final boolean isAllowed)
+  {
+    Contexty.savePreferenceBoolean(
+      getApplicationContext(),
+      StrokeInputService.PREFERENCES_FILE_NAME,
+      OPTIONAL_CANDIDATES_PREFERENCE_KEY_PREFIX + characters,
+      isAllowed
+    );
+  }
+
+  public static Map<String, Boolean> loadSavedOptionalCandidatesPreferences(final Context context)
+  {
+    final Map<String, Boolean> isAllowedFromCharacters = new HashMap<>();
+
+    for (final String characters : optionalCharactersList)
+    {
+      isAllowedFromCharacters.put(characters, loadSavedOptionalCandidatesPreference(context, characters));
+    }
+
+    return isAllowedFromCharacters;
   }
 
   @Override

@@ -7,6 +7,7 @@
 -->
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:fitsSystemWindows="true"
@@ -78,6 +79,75 @@
       android:inputType="text"
       android:layout_marginTop="@dimen/margin_top__main_activity__input"
       android:layout_marginBottom="@dimen/margin_bottom__main_activity__input"
+    />
+    <TextView
+      style="@style/MainActivityText"
+      android:text="@string/text__main_activity__optional_candidates"
+    />
+    <!-- Tail end of CJK Unified Ideographs (1/4): U+9FD1 to U+9FD5 -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_1_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_top__main_activity__switch_first"
+      app:minimumCandidate="鿑"
+      app:maximumCandidate="鿕"
+    />
+    <!-- Tail end of CJK Unified Ideographs (2/4): U+9FD6 to U+9FE9 -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_2_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:minimumCandidate="鿖"
+      app:maximumCandidate="鿩"
+    />
+    <!-- Tail end of CJK Unified Ideographs (3/4): U+9FEA to U+9FEF -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_3_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:minimumCandidate="鿪"
+      app:maximumCandidate="鿯"
+    />
+    <!-- Tail end of CJK Unified Ideographs (4/4): U+9FF0 to U+9FFF -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_main_tail_4_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:minimumCandidate="鿰"
+      app:maximumCandidate="鿿"
+    />
+    <!-- Tail end of CJK Unified Ideographs Extension A: U+4DB6 to U+4DBF -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_extension_a_tail_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:minimumCandidate="䶶"
+      app:maximumCandidate="䶿"
+    />
+    <!-- Selected characters from CJK Unified Ideographs Extension B (Kangxi explanatory 並): U+20024 -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_kangxi_bengx_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:minimumCandidate="𠀤"
+      app:maximumCandidate="𠀤"
+    />
+    <!-- Selected characters from CJK Unified Ideographs Extension B (simplified 鉝): U+20024 -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_simplified_livermorium_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
+      app:minimumCandidate="𫟷"
+      app:maximumCandidate="𫟷"
     />
     <Button
       style="@style/MainActivityButton"
