@@ -244,11 +244,6 @@ public class MainActivity
     );
   }
 
-  private Map<String, Boolean> loadSavedOptionalCandidatesPreferences()
-  {
-    return loadSavedOptionalCandidatesPreferences(getApplicationContext());
-  }
-
   public static Map<String, Boolean> loadSavedOptionalCandidatesPreferences(final Context context)
   {
     final Map<String, Boolean> isAllowedFromCharacters = new HashMap<>();
