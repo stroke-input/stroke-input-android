@@ -40,7 +40,7 @@
     </service>
     <activity
       android:name=".MainActivity"
-      android:windowSoftInputMode="stateHidden"
+      android:windowSoftInputMode="stateHidden|adjustResize"
       android:exported="true"
     >
       <intent-filter>
