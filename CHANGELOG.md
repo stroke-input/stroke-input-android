@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.6.0] (72) Optional characters for BMP completeness (2025-12-26)
+
 - Fulfilled full coverage of Basic Multilingual Plane
   by adding toggle settings for *optional* characters
   (which may not have system font support)
@@ -719,7 +722,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.5.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.6.0...HEAD
+[v1.6.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.5.0...v1.6.0
 [v1.5.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.4.4...v1.5.0
 [v1.4.4]:
