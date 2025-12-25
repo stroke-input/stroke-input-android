@@ -139,7 +139,7 @@
       app:minimumCandidate="𠀤"
       app:maximumCandidate="𠀤"
     />
-    <!-- Selected characters from CJK Unified Ideographs Extension B (simplified 鉝): U+2B7F7 -->
+    <!-- Selected characters from CJK Unified Ideographs Extension B (simplified 鉝 "livermorium"): U+2B7F7 -->
     <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
       style="@style/MainActivitySwitch"
       android:id="@+id/optional_simplified_livermorium_switch"
