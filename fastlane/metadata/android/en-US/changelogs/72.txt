@@ -1,0 +1,8 @@
+* Added characters 𠮟 (mouth-beside-seven), 𠂇𠦝𡯂𤴓𦉪𨸏 (critical components), and 𠓗𠓾𣁾𤾩 (selected triplications)
+* Added toggle settings for *optional* characters:
+  - For full coverage of the Basic Multilingual Plane:
+    * U+9FD1 鿑 to U+9FFF 鿿 (tail end of CJK Unified Ideographs)
+    * U+4DB6 䶶 to U+4DBF 䶿 (tail end of Extension A)
+  - For highly technical users:
+    * U+20024 𠀤 (Kangxi explanatory 並)
+    * U+2B7F7 𫟷 (simplified 鉝 "livermorium")
