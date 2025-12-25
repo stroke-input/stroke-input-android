@@ -8,11 +8,15 @@
 package io.github.yawnoc.strokeinput;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +85,24 @@ public class MainActivity
     super.onCreate(savedInstanceState);
     setTitle(R.string.label__main_activity__welcome);
     setContentView(R.layout.main_activity);
+
+    if (Build.VERSION.SDK_INT >= 35) // needed in API level 35+ for edge-to-edge padding
+    {
+      ViewCompat.setOnApplyWindowInsetsListener(
+        findViewById(R.id.main_activity_root),
+        (view, windowInsets) ->
+        {
+          final Insets paddingInsets =
+                  windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars()
+                    | WindowInsetsCompat.Type.displayCutout()
+                    | WindowInsetsCompat.Type.ime()
+                  );
+          view.setPadding(paddingInsets.left, paddingInsets.top, paddingInsets.right, paddingInsets.bottom);
+          return windowInsets;
+        }
+      );
+    }
 
     findViewById(R.id.source_code_button).setOnClickListener(this);
     findViewById(R.id.help_button).setOnClickListener(this);
