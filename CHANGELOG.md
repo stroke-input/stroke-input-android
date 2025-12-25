@@ -14,6 +14,7 @@
   - Adds characters 𠂇𠦝𡯂𤴓𦉪𨸏
   - Adds characters 𠓗𠓾𣁾𤾩
   - Adds *optional* character 𫟷
+- Upgraded Android Gradle Plugin to 8.13.2
 
 
 ## [v1.5.0] (71) Cursed be Android 16 for ever and ever (2025-09-21)
