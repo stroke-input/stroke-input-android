@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded `JavaVersion.VERSION_1_8` to `JavaVersion.VERSION_17`
+
 
 ## [v1.6.0] (72) Optional characters for BMP completeness (2025-12-26)
 
