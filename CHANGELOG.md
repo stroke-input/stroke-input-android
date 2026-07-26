@@ -3,6 +3,7 @@
 
 ## [Unreleased]
 
+- Upgraded Android SDK to Level 37
 - Upgraded `JavaVersion.VERSION_1_8` to `JavaVersion.VERSION_17`
 
 
