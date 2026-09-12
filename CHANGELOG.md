@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v2.0.2]
+  - Fixes missing 8-stroke form of U+58F3 壳 (unification of ⿱士冗 and ⿱士⿳冖一几).
+  - Fixes 儕塵嬙摯賾 should be traditional only
 - Upgraded Android SDK to Level 37
 - Upgraded Android Gradle Plugin to 9.4.0
 - Upgraded Material Components For Android to 1.14.0
@@ -867,6 +870,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v2.0.2]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v2.0.2
 [Conway Stroke Data v2.0.0]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v2.0.0
 [Conway Stroke Data v1.34.0]:
