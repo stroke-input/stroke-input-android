@@ -1,5 +1,5 @@
 /*
-  Copyright 2021--2025 Conway
+  Copyright 2021--2026 Conway
   Licensed under the GNU General Public License v3.0 (GPL-3.0-only).
   This is free software with NO WARRANTY etc. etc.,
   see LICENSE or <https://www.gnu.org/licenses/>.
@@ -117,7 +117,7 @@ public class MainActivity
             final InputMethodManager inputMethodManager =
                     (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.restartInput(focusView);
-            inputMethodManager.showSoftInput(findViewById(R.id.test_input), InputMethodManager.SHOW_IMPLICIT);
+            inputMethodManager.showSoftInput(findViewById(R.id.test_input), 0);
           }
         }
       }

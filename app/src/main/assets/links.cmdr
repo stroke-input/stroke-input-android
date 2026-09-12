@@ -16,7 +16,7 @@ OrdinaryDictionaryReplacement: #.links.software-properties
 - queue_position: BEFORE #explicit-links
 - apply_mode: SIMULTANEOUS
 * \stroke-input-version --> v1.6.0
-* \stroke-input-years --> 2021--2025
+* \stroke-input-years --> 2021--2026
 * \material-version --> v1.14.0
 * \material-years --> 2026
 * \stroke-data-version --> v2.0.0
