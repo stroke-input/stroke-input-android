@@ -4,7 +4,7 @@
 ## [Unreleased]
 
 - Upgraded Android SDK to Level 37
-- Upgraded Android Gradle Plugin to 9.3.1
+- Upgraded Android Gradle Plugin to 9.4.0
 - Upgraded Material Components For Android to 1.14.0
 - Upgraded `JavaVersion.VERSION_1_8` to `JavaVersion.VERSION_17`
 
