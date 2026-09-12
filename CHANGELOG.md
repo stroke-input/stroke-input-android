@@ -4,7 +4,10 @@
 ## [Unreleased]
 
 
-## [v1.6.1] (73) 八畫壳 (2026-09-12)
+**NOTE:** v1.6.1 (73) was cancelled
+because Conway forgot to add fastlane changelog `73.txt`.
+
+<s>## [v1.6.1] (73) 八畫壳 (2026-09-12)</s>
 
 - Updated stroke input data to [Conway Stroke Data v2.0.2]
   - Fixes missing 8-stroke form of U+58F3 壳 (unification of ⿱士冗 and ⿱士⿳冖一几).
@@ -367,7 +370,7 @@ because Conway forgot to add fastlane changelog `34.txt`.
 Stupid Conway.
 
 
-## <s>v0.9.12 (34) 暢順彈牙 (2022-05-16)</s>
+<s>## v0.9.12 (34) 暢順彈牙 (2022-05-16)</s>
 
 ### User
 
@@ -394,7 +397,7 @@ Stupid Conway.
 because Conway forgot to add fastlane changelog `31.txt`.
 
 
-## <s>v0.9.9 (31) 奇難雜症 (2022-03-26)</s>
+<s>## v0.9.9 (31) 奇難雜症 (2022-03-26)</s>
 
 - Updated stroke input data to [Conway Stroke Data v1.6.0]
   (adds phrases 奇難雜症, 床下底, 擺低, 放低, 放工, 漏低)
