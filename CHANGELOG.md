@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.6.1] (73) 八畫壳 (2026-09-12)
+
 - Updated stroke input data to [Conway Stroke Data v2.0.2]
   - Fixes missing 8-stroke form of U+58F3 壳 (unification of ⿱士冗 and ⿱士⿳冖一几).
   - Fixes 儕塵嬙摯賾 should be traditional only
@@ -730,7 +733,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.6.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.6.1...HEAD
+[v1.6.1]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.6.0...v1.6.1
 [v1.6.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.5.0...v1.6.0
 [v1.5.0]:
