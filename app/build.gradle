@@ -17,14 +17,14 @@ android
   }
   buildFeatures
   {
-    buildConfig true
+    buildConfig = true
   }
   buildTypes
   {
     release
     {
-      minifyEnabled true
-      shrinkResources true
+      minifyEnabled = true
+      shrinkResources = true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
@@ -35,9 +35,9 @@ android
   }
   androidResources
   {
-    ignoreAssetsPattern '*.cmd:*.cmdr'
+    ignoreAssetsPattern = '*.cmd:*.cmdr'
   }
-  namespace 'io.github.yawnoc.strokeinput'
+  namespace = 'io.github.yawnoc.strokeinput'
 }
 
 dependencies
