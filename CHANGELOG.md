@@ -10,7 +10,7 @@ because Conway forgot to add fastlane changelog `73.txt`.
 <s>## [v1.6.1] (73) 八畫壳 (2026-09-12)</s>
 
 - Updated stroke input data to [Conway Stroke Data v2.0.2]
-  - Fixes missing 8-stroke form of U+58F3 壳 (unification of ⿱士冗 and ⿱士⿳冖一几).
+  - Fixes missing 8-stroke form of U+58F3 壳 (unification of ⿱士冗 and ⿱士⿳冖一几)
   - Fixes 儕塵嬙摯賾 should be traditional only
 - Upgraded Android SDK to Level 37
 - Upgraded Android Gradle Plugin to 9.4.0
