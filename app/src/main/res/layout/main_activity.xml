@@ -145,9 +145,18 @@
       android:id="@+id/optional_simplified_livermorium_switch"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
       app:minimumCandidate="𫟷"
       app:maximumCandidate="𫟷"
+    />
+    <!-- Selected characters from CJK Unified Ideographs Extension G (for biangbiang noodles): U+30EDD to U+30EDE -->
+    <io.github.yawnoc.strokeinput.OptionalCandidatesSwitch
+      style="@style/MainActivitySwitch"
+      android:id="@+id/optional_biangbiang_switch"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom__main_activity__switch_last"
+      app:minimumCandidate="𰻝"
+      app:maximumCandidate="𰻞"
     />
     <Button
       style="@style/MainActivityButton"

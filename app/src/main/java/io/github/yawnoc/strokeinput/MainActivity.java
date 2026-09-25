@@ -61,7 +61,8 @@ public class MainActivity
             R.id.optional_main_tail_4_switch,
             R.id.optional_extension_a_tail_switch,
             R.id.optional_kangxi_bengx_switch,
-            R.id.optional_simplified_livermorium_switch
+            R.id.optional_simplified_livermorium_switch,
+            R.id.optional_biangbiang_switch
           );
   private static final List<String> optionalCharactersList = new ArrayList<>();
 
