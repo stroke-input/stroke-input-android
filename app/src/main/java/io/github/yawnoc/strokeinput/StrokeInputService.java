@@ -436,33 +436,16 @@ public class StrokeInputService
 
   private void setEnterKeyDisplayText()
   {
-    String enterKeyDisplayText = null;
-    switch (inputActionsBits)
+    String enterKeyDisplayText = switch (inputActionsBits)
     {
-      case EditorInfo.IME_ACTION_DONE:
-        enterKeyDisplayText = getString(R.string.display_text__done);
-        break;
-
-      case EditorInfo.IME_ACTION_GO:
-        enterKeyDisplayText = getString(R.string.display_text__go);
-        break;
-
-      case EditorInfo.IME_ACTION_NEXT:
-        enterKeyDisplayText = getString(R.string.display_text__next);
-        break;
-
-      case EditorInfo.IME_ACTION_PREVIOUS:
-        enterKeyDisplayText = getString(R.string.display_text__previous);
-        break;
-
-      case EditorInfo.IME_ACTION_SEARCH:
-        enterKeyDisplayText = getString(R.string.display_text__search);
-        break;
-
-      case EditorInfo.IME_ACTION_SEND:
-        enterKeyDisplayText = getString(R.string.display_text__send);
-        break;
-    }
+      case EditorInfo.IME_ACTION_DONE -> getString(R.string.display_text__done);
+      case EditorInfo.IME_ACTION_GO -> getString(R.string.display_text__go);
+      case EditorInfo.IME_ACTION_NEXT -> getString(R.string.display_text__next);
+      case EditorInfo.IME_ACTION_PREVIOUS -> getString(R.string.display_text__previous);
+      case EditorInfo.IME_ACTION_SEARCH -> getString(R.string.display_text__search);
+      case EditorInfo.IME_ACTION_SEND -> getString(R.string.display_text__send);
+      default -> null;
+    };
     if (!enterKeyHasAction || enterKeyDisplayText == null)
     {
       enterKeyDisplayText = getString(R.string.display_text__return);

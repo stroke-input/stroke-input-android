@@ -6,6 +6,8 @@
 - Updated stroke input data to [Conway Stroke Data v2.1.0]
   - Adds U+30EDE 𰻞 and U+30EDD 𰻝 (biangbiang noodles)
 - Upgraded Android Gradle Plugin to 9.4.1
+- Simplified code with patterns available in Java 17
+  - Enhanced switch expressions
 
 
 ## [v1.6.2] (74) 八畫壳 (2026-09-12)

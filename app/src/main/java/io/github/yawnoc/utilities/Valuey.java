@@ -60,16 +60,15 @@ public final class Valuey
       return defaultValue;
     }
 
-    switch (value.type)
+    return switch (value.type)
     {
-      case TypedValue.TYPE_DIMENSION:
-        return array.getDimensionPixelOffset(attributeIndex, defaultValue);
+      case TypedValue.TYPE_DIMENSION ->
+              array.getDimensionPixelOffset(attributeIndex, defaultValue);
 
-      case TypedValue.TYPE_FRACTION:
-        return Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
+      case TypedValue.TYPE_FRACTION ->
+              Math.round(array.getFraction(attributeIndex, baseValue, baseValue, defaultValue));
 
-      default:
-        return defaultValue;
-    }
+      default -> defaultValue;
+    };
   }
 }
