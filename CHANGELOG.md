@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Updated stroke input data to [Conway Stroke Data v2.1.0]
+  - Adds U+30EDE 𰻞 and U+30EDD 𰻝 (biangbiang noodles)
 - Upgraded Android Gradle Plugin to 9.4.1
 
 
@@ -882,6 +884,8 @@ the actual functionality has not been implemented yet.
 [v0.1.0]:
   https://github.com/stroke-input/stroke-input-android/releases/tag/v0.1.0
 
+[Conway Stroke Data v2.1.0]:
+  https://github.com/stroke-input/stroke-input-data/releases/tag/v2.1.0
 [Conway Stroke Data v2.0.2]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v2.0.2
 [Conway Stroke Data v2.0.0]:
