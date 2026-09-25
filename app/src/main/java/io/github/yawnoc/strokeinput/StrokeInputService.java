@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.NavigableSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -984,14 +985,7 @@ public class StrokeInputService
 
     final String textBeforeCursor = (String) inputConnection.getTextBeforeCursor(characterCount, 0);
 
-    if (textBeforeCursor != null)
-    {
-      return textBeforeCursor;
-    }
-    else
-    {
-      return "";
-    }
+    return Objects.requireNonNullElse(textBeforeCursor, "");
   }
 
   private void updateCandidateOrderPreference()
