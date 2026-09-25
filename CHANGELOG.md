@@ -3,6 +3,8 @@
 
 ## [Unreleased]
 
+- Upgraded Android Gradle Plugin to 9.4.1
+
 
 ## [v1.6.2] (74) 八畫壳 (2026-09-12)
 
