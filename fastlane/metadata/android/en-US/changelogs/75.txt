@@ -1,0 +1,3 @@
+* Added *optional* characters U+30EDE 𰻞 and U+30EDD 𰻝 for biangbiang noodles
+
+Many thanks to @MattHoward-GH (GitHub) for commenting.
