@@ -92,9 +92,9 @@
   <Row
     app:keyWidth="@dimen/key_width__strokes_stroke"
   >
-    <!-- Switch to qwerty symbols keyboard -->
+    <!-- Switch to qwerty symbols 1 keyboard -->
     <Key
-      app:keyValueText="SWITCH_TO_QWERTY_SYMBOLS"
+      app:keyValueText="SWITCH_TO_QWERTY_SYMBOLS_1"
       app:keyDisplayText="!@#"
       app:keyTextSize="@dimen/font_size__switch_key"
       app:keyTextOffsetY="@dimen/baseline_correction__switch_key"

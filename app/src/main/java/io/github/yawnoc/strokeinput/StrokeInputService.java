@@ -72,7 +72,7 @@ public class StrokeInputService
   private static final String STROKES_SYMBOLS_2_KEYBOARD_NAME = "STROKES_SYMBOLS_2";
   private static final String STROKES_SYMBOLS_3_KEYBOARD_NAME = "STROKES_SYMBOLS_3";
   private static final String QWERTY_KEYBOARD_NAME = "QWERTY";
-  private static final String QWERTY_SYMBOLS_KEYBOARD_NAME = "QWERTY_SYMBOLS";
+  private static final String QWERTY_SYMBOLS_1_KEYBOARD_NAME = "QWERTY_SYMBOLS_1";
 
   private static final String SWITCH_KEYBOARD_VALUE_TEXT_PREFIX = "SWITCH_TO_";
 
@@ -91,8 +91,8 @@ public class StrokeInputService
   private static final String SWITCH_TO_QWERTY_VALUE_TEXT =
           SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_KEYBOARD_NAME;
 
-  private static final String SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT =
-          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_KEYBOARD_NAME;
+  private static final String SWITCH_TO_QWERTY_SYMBOLS_1_VALUE_TEXT =
+          SWITCH_KEYBOARD_VALUE_TEXT_PREFIX + QWERTY_SYMBOLS_1_KEYBOARD_NAME;
 
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_ASCII = 50;
   private static final int BACKSPACE_REPEAT_INTERVAL_MILLISECONDS_UTF_8 = 100;
@@ -124,7 +124,7 @@ public class StrokeInputService
   Keyboard strokesSymbols2Keyboard;
   Keyboard strokesSymbols3Keyboard;
   Keyboard qwertyKeyboard;
-  Keyboard qwertySymbolsKeyboard;
+  Keyboard qwertySymbols1Keyboard;
 
   private Map<Keyboard, String> nameFromKeyboard;
   private Map<String, Keyboard> keyboardFromName;
@@ -180,7 +180,7 @@ public class StrokeInputService
     strokesSymbols2Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_2);
     strokesSymbols3Keyboard = new Keyboard(this, R.xml.keyboard_strokes_symbols_3);
     qwertyKeyboard = new Keyboard(this, R.xml.keyboard_qwerty);
-    qwertySymbolsKeyboard = new Keyboard(this, R.xml.keyboard_qwerty_symbols);
+    qwertySymbols1Keyboard = new Keyboard(this, R.xml.keyboard_qwerty_symbols_1);
 
     nameFromKeyboard = new HashMap<>();
     nameFromKeyboard.put(strokesKeyboard, STROKES_KEYBOARD_NAME);
@@ -188,7 +188,7 @@ public class StrokeInputService
     nameFromKeyboard.put(strokesSymbols2Keyboard, STROKES_SYMBOLS_2_KEYBOARD_NAME);
     nameFromKeyboard.put(strokesSymbols3Keyboard, STROKES_SYMBOLS_3_KEYBOARD_NAME);
     nameFromKeyboard.put(qwertyKeyboard, QWERTY_KEYBOARD_NAME);
-    nameFromKeyboard.put(qwertySymbolsKeyboard, QWERTY_SYMBOLS_KEYBOARD_NAME);
+    nameFromKeyboard.put(qwertySymbols1Keyboard, QWERTY_SYMBOLS_1_KEYBOARD_NAME);
     keyboardFromName = Mappy.invertMap(nameFromKeyboard);
     keyboards = nameFromKeyboard.keySet();
 
@@ -527,7 +527,7 @@ public class StrokeInputService
       case SWITCH_TO_STROKES_SYMBOLS_2_VALUE_TEXT:
       case SWITCH_TO_STROKES_SYMBOLS_3_VALUE_TEXT:
       case SWITCH_TO_QWERTY_VALUE_TEXT:
-      case SWITCH_TO_QWERTY_SYMBOLS_VALUE_TEXT:
+      case SWITCH_TO_QWERTY_SYMBOLS_1_VALUE_TEXT:
         final String keyboardName = Stringy.removePrefix(SWITCH_KEYBOARD_VALUE_TEXT_PREFIX, valueText);
         effectKeyboardSwitch(keyboardName);
         break;
@@ -679,7 +679,7 @@ public class StrokeInputService
           break;
 
         case QWERTY_KEYBOARD_NAME:
-        case QWERTY_SYMBOLS_KEYBOARD_NAME:
+        case QWERTY_SYMBOLS_1_KEYBOARD_NAME:
           inputContainer.setKeyboard(strokesKeyboard);
           break;
       }
