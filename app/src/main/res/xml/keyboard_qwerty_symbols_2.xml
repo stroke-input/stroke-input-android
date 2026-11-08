@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  app:keyHeight="@dimen/key_height__qwerty"
+  app:keyWidth="@dimen/key_width__digit"
+  app:keyTextSize="@dimen/font_size__qwerty"
+  app:keyTextOffsetY="@dimen/baseline_correction__qwerty"
+  app:keyFillColour="@color/key_fill"
+>
+  <Row>
+    <Key app:keyValueText="ā" /> <!-- U+0101 LATIN SMALL LETTER A WITH MACRON -->
+    <Key app:keyValueText="á" /> <!-- U+00E1 LATIN SMALL LETTER A WITH ACUTE -->
+    <Key app:keyValueText="ǎ" /> <!-- U+01CE LATIN SMALL LETTER A WITH CARON -->
+    <Key app:keyValueText="à" /> <!-- U+00E0 LATIN SMALL LETTER A WITH GRAVE -->
+    <Key app:keyValueText="ō" /> <!-- U+014D LATIN SMALL LETTER O WITH MACRON -->
+    <Key app:keyValueText="ó" /> <!-- U+00F3 LATIN SMALL LETTER O WITH ACUTE -->
+    <Key app:keyValueText="ǒ" /> <!-- U+01D2 LATIN SMALL LETTER O WITH CARON -->
+    <Key app:keyValueText="ò" /> <!-- U+00F2 LATIN SMALL LETTER O WITH GRAVE -->
+    <!-- TODO: spacer -->
+    <Key app:keyValueText="ʻ" /> <!-- U+02BB MODIFIER LETTER TURNED COMMA -->
+  </Row>
+  <Row>
+    <Key app:keyValueText="ē" /> <!-- U+0113 LATIN SMALL LETTER E WITH MACRON -->
+    <Key app:keyValueText="é" /> <!-- U+00E9 LATIN SMALL LETTER E WITH ACUTE -->
+    <Key app:keyValueText="ě" /> <!-- U+011B LATIN SMALL LETTER E WITH CARON -->
+    <Key app:keyValueText="è" /> <!-- U+00E8 LATIN SMALL LETTER E WITH GRAVE -->
+    <Key app:keyValueText="ū" /> <!-- U+016B LATIN SMALL LETTER U WITH MACRON -->
+    <Key app:keyValueText="ú" /> <!-- U+00FA LATIN SMALL LETTER U WITH ACUTE -->
+    <Key app:keyValueText="ǔ" /> <!-- U+01D4 LATIN SMALL LETTER U WITH CARON -->
+    <Key app:keyValueText="ù" /> <!-- U+00F9 LATIN SMALL LETTER U WITH GRAVE -->
+    <!-- TODO: spacer -->
+    <Key app:keyValueText="ê" /> <!-- U+00EA LATIN SMALL LETTER E WITH CIRCUMFLEX -->
+  </Row>
+  <Row>
+    <Key app:keyValueText="ī" /> <!-- U+012B LATIN SMALL LETTER I WITH MACRON -->
+    <Key app:keyValueText="í" /> <!-- U+00ED LATIN SMALL LETTER I WITH ACUTE -->
+    <Key app:keyValueText="ǐ" /> <!-- U+01D0 LATIN SMALL LETTER I WITH CARON -->
+    <Key app:keyValueText="ì" /> <!-- U+00EC LATIN SMALL LETTER I WITH GRAVE -->
+    <Key app:keyValueText="ǖ" /> <!-- U+01D6 LATIN SMALL LETTER U WITH DIAERESIS AND MACRON -->
+    <Key app:keyValueText="ǘ" /> <!-- U+01D8 LATIN SMALL LETTER U WITH DIAERESIS AND ACUTE -->
+    <Key app:keyValueText="ǚ" /> <!-- U+01DA LATIN SMALL LETTER U WITH DIAERESIS AND CARON -->
+    <Key app:keyValueText="ǜ" /> <!-- U+01DC LATIN SMALL LETTER U WITH DIAERESIS AND GRAVE -->
+    <Key app:keyValueText="ü" /> <!-- U+00FC LATIN SMALL LETTER U WITH DIAERESIS -->
+    <Key app:keyValueText="ŭ" /> <!-- U+016D LATIN SMALL LETTER U WITH BREVE -->
+  </Row>
+  <Row>
+    <!-- Switch to qwerty symbols 1 keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_QWERTY_SYMBOLS_1"
+      app:keyDisplayText="2/2"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyWidth="@dimen/key_width__qwerty_shift"
+      app:keyIsPreviewable="false"
+    />
+    <Key app:keyValueText="€" /> <!-- U+20AC EURO SIGN -->
+    <!-- TODO: spacer -->
+    <!-- Backspace -->
+    <Key
+      app:keyValueText="BACKSPACE"
+      app:keyDisplayText="@string/display_text__backspace"
+      app:keyIsRepeatable="true"
+      app:keyTextSize="@dimen/font_size__qwerty_backspace"
+      app:keyTextOffsetY="@dimen/baseline_correction__qwerty_backspace"
+      app:keyWidth="@dimen/key_width__qwerty_shift"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+  <Row
+    app:keyWidth="@dimen/key_width__strokes_stroke"
+  >
+    <!-- Switch to qwerty keyboard -->
+    <Key
+      app:keyValueText="SWITCH_TO_QWERTY"
+      app:keyDisplayText="ABC"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Comma -->
+    <Key
+      app:keyValueText="@string/value_text__qwerty_comma"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Space bar -->
+    <Key
+      app:keyValueText="SPACE"
+      app:keyDisplayText="@string/display_text__qwerty_space_bar"
+      app:keyIsLongPressable="true"
+      app:keyIsSwipeable="true"
+      app:keyTextSize="@dimen/font_size__space_bar"
+      app:keyTextOffsetY="@dimen/baseline_correction__space_bar"
+      app:keyTextColour="@color/space_bar_text"
+      app:keyWidth="@dimen/key_width__space_bar"
+      app:keyIsPreviewable="false"
+    />
+    <!-- Full stop -->
+    <Key
+      app:keyValueText="@string/value_text__qwerty_full_stop"
+      app:keyWidth="@dimen/key_width__digit"
+    />
+    <!-- Enter key -->
+    <Key
+      app:keyValueText="ENTER"
+      app:keyTextSize="@dimen/font_size__enter_key"
+      app:keyFillColour="@color/enter_key_fill"
+      app:keyIsPreviewable="false"
+    />
+  </Row>
+</Keyboard>

@@ -44,15 +44,18 @@
     <Key app:keyValueText="&quot;" />
     <Key app:keyValueText="'" />
   </Row>
-  <Row
-    app:rowOffsetX="@dimen/horizontal_offset__qwerty_row_2"
-  >
+  <Row>
+    <!-- Switch to qwerty symbols 2 keyboard -->
     <Key
-      app:keyValueText="¢"
-      app:keyIsExtendedLeft="true"
-    /> <!-- U+00A2 CENT SIGN -->
-    <Key app:keyValueText="¥"/> <!-- U+00A5 YEN SIGN -->
-    <Key app:keyValueText="€" /> <!-- U+20AC EURO SIGN -->
+      app:keyValueText="SWITCH_TO_QWERTY_SYMBOLS_2"
+      app:keyDisplayText="1/2"
+      app:keyTextSize="@dimen/font_size__switch_key"
+      app:keyTextOffsetY="@dimen/baseline_correction__switch_key"
+      app:keyWidth="@dimen/key_width__qwerty_shift"
+      app:keyIsPreviewable="false"
+    />
+    <Key app:keyValueText="¢" /> <!-- U+00A2 CENT SIGN -->
+    <Key app:keyValueText="¥" /> <!-- U+00A5 YEN SIGN -->
     <Key app:keyValueText="£" /> <!-- U+00A3 POUND SIGN -->
     <Key app:keyValueText="&lt;" />
     <Key app:keyValueText="&gt;" />
