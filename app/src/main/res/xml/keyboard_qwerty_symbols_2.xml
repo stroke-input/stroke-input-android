@@ -16,8 +16,10 @@
     <Key app:keyValueText="ó" /> <!-- U+00F3 LATIN SMALL LETTER O WITH ACUTE -->
     <Key app:keyValueText="ǒ" /> <!-- U+01D2 LATIN SMALL LETTER O WITH CARON -->
     <Key app:keyValueText="ò" /> <!-- U+00F2 LATIN SMALL LETTER O WITH GRAVE -->
-    <!-- TODO: spacer -->
-    <Key app:keyValueText="ʻ" /> <!-- U+02BB MODIFIER LETTER TURNED COMMA -->
+    <Key
+      app:keyValueText="ʻ"
+      app:keyOffsetX="@dimen/key_width__digit"
+    /> <!-- U+02BB MODIFIER LETTER TURNED COMMA -->
   </Row>
   <Row>
     <Key app:keyValueText="ē" /> <!-- U+0113 LATIN SMALL LETTER E WITH MACRON -->
@@ -28,8 +30,10 @@
     <Key app:keyValueText="ú" /> <!-- U+00FA LATIN SMALL LETTER U WITH ACUTE -->
     <Key app:keyValueText="ǔ" /> <!-- U+01D4 LATIN SMALL LETTER U WITH CARON -->
     <Key app:keyValueText="ù" /> <!-- U+00F9 LATIN SMALL LETTER U WITH GRAVE -->
-    <!-- TODO: spacer -->
-    <Key app:keyValueText="ê" /> <!-- U+00EA LATIN SMALL LETTER E WITH CIRCUMFLEX -->
+    <Key
+      app:keyValueText="ê"
+      app:keyOffsetX="@dimen/key_width__digit"
+    /> <!-- U+00EA LATIN SMALL LETTER E WITH CIRCUMFLEX -->
   </Row>
   <Row>
     <Key app:keyValueText="ī" /> <!-- U+012B LATIN SMALL LETTER I WITH MACRON -->
@@ -54,9 +58,9 @@
       app:keyIsPreviewable="false"
     />
     <Key app:keyValueText="€" /> <!-- U+20AC EURO SIGN -->
-    <!-- TODO: spacer -->
     <!-- Backspace -->
     <Key
+      app:keyOffsetX="@dimen/key_spacing_width__qwerty_symbols_2_backspace"
       app:keyValueText="BACKSPACE"
       app:keyDisplayText="@string/display_text__backspace"
       app:keyIsRepeatable="true"
