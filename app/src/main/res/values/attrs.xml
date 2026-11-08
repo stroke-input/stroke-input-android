@@ -35,6 +35,7 @@
     <attr name="keyPreviewMarginY" />
   </declare-styleable>
   <declare-styleable name="Key">
+    <attr name="keyOffsetX" format="dimension|fraction" />
     <attr name="keyIsLongPressable" format="boolean" />
     <attr name="keyIsRepeatable" format="boolean" />
     <attr name="keyIsSwipeable" format="boolean" />
