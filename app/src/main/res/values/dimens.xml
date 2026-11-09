@@ -41,6 +41,7 @@
   <dimen name="key_width__qwerty_shift">15%</dimen>
   <!-- Key spacing width -->
   <dimen name="key_spacing_width__qwerty_symbols_2_backspace">60%</dimen>
+  <dimen name="key_spacing_width__qwerty_symbols_3_backspace">70%</dimen>
   <!-- Key text font size -->
   <dimen name="font_size__switch_key">20dp</dimen>
   <dimen name="font_size__space_bar">18dp</dimen>
