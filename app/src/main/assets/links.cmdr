@@ -21,8 +21,8 @@ OrdinaryDictionaryReplacement: #.links.software-properties
 * \material-years --> 2026
 * \stroke-data-version --> v2.1.0
 * \sequence-characters-years --> 2021--2026
-* \stroke-font-version --> v2.0.1
-* \stroke-font-years --> 2021--2022
+* \stroke-font-version --> v2.1.0
+* \stroke-font-years --> 2021--2022, 2026
 
 OrdinaryDictionaryReplacement: #.links.link-definitions
 - queue_position: BEFORE #backslash-escapes
