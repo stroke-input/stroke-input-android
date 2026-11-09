@@ -61,6 +61,7 @@
   <dimen name="baseline_correction__strokes_enter_key">0.25dp</dimen>
   <dimen name="baseline_correction__qwerty">0.75dp</dimen>
   <dimen name="baseline_correction__qwerty_digit">1dp</dimen>
+  <dimen name="baseline_correction__qwerty_romanisation">1.75dp</dimen>
   <dimen name="baseline_correction__qwerty_backspace">1.75dp</dimen>
   <!-- Row horizontal offset -->
   <dimen name="horizontal_offset__qwerty_row_2">5%</dimen>

@@ -7,7 +7,9 @@
   app:keyTextOffsetY="@dimen/baseline_correction__qwerty"
   app:keyFillColour="@color/key_fill"
 >
-  <Row>
+  <Row
+    app:keyTextOffsetY="@dimen/baseline_correction__qwerty_romanisation"
+  >
     <Key app:keyValueText="ā" /> <!-- U+0101 LATIN SMALL LETTER A WITH MACRON -->
     <Key app:keyValueText="á" /> <!-- U+00E1 LATIN SMALL LETTER A WITH ACUTE -->
     <Key app:keyValueText="ǎ" /> <!-- U+01CE LATIN SMALL LETTER A WITH CARON -->
@@ -21,7 +23,9 @@
       app:keyOffsetX="@dimen/key_width__digit"
     /> <!-- U+02BB MODIFIER LETTER TURNED COMMA -->
   </Row>
-  <Row>
+  <Row
+    app:keyTextOffsetY="@dimen/baseline_correction__qwerty_romanisation"
+  >
     <Key app:keyValueText="ē" /> <!-- U+0113 LATIN SMALL LETTER E WITH MACRON -->
     <Key app:keyValueText="é" /> <!-- U+00E9 LATIN SMALL LETTER E WITH ACUTE -->
     <Key app:keyValueText="ě" /> <!-- U+011B LATIN SMALL LETTER E WITH CARON -->
@@ -35,7 +39,9 @@
       app:keyOffsetX="@dimen/key_width__digit"
     /> <!-- U+00EA LATIN SMALL LETTER E WITH CIRCUMFLEX -->
   </Row>
-  <Row>
+  <Row
+    app:keyTextOffsetY="@dimen/baseline_correction__qwerty_romanisation"
+  >
     <Key app:keyValueText="ī" /> <!-- U+012B LATIN SMALL LETTER I WITH MACRON -->
     <Key app:keyValueText="í" /> <!-- U+00ED LATIN SMALL LETTER I WITH ACUTE -->
     <Key app:keyValueText="ǐ" /> <!-- U+01D0 LATIN SMALL LETTER I WITH CARON -->
