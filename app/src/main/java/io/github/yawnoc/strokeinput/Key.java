@@ -32,6 +32,11 @@ import io.github.yawnoc.utilities.Valuey;
 */
 public class Key
 {
+  private static final int DEFAULT_OFFSET_X = 0;
+
+  // Key properties
+  public int offsetX;
+
   // Key behaviour
   public boolean isLongPressable;
   public boolean isRepeatable; // overrides isLongPressable
@@ -83,11 +88,19 @@ public class Key
   {
     this(parentRow);
 
-    this.x = naturalX = x;
-    this.y = naturalY = y;
-
     final TypedArray attributesArray =
             resources.obtainAttributes(Xml.asAttributeSet(xmlResourceParser), R.styleable.Key);
+
+    offsetX =
+            Valuey.getDimensionOrFraction(
+              attributesArray,
+              R.styleable.Key_keyOffsetX,
+              grandparentKeyboard.getScreenWidth(),
+              DEFAULT_OFFSET_X
+            );
+
+    this.x = naturalX = x + offsetX;
+    this.y = naturalY = y;
 
     isLongPressable = attributesArray.getBoolean(R.styleable.Key_keyIsLongPressable, false);
     isRepeatable = attributesArray.getBoolean(R.styleable.Key_keyIsRepeatable, false);

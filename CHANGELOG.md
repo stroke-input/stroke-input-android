@@ -3,6 +3,11 @@
 
 ## [Unreleased]
 
+- Added additional qwerty symbols keyboards for Mandarin romanisation
+  (both Pinyin and Wade–Giles)
+- Updated keyboard font to [Stroke Input Font v2.1.0]
+  (toned pinyin letters + Wade–Giles letters and aspirate mark)
+
 
 ## [v1.7.0] (75) Biangbiang noodles (2026-09-27)
 
@@ -969,6 +974,8 @@ the actual functionality has not been implemented yet.
 [Conway Stroke Data v1.0.1]:
   https://github.com/stroke-input/stroke-input-data/releases/tag/v1.0.1
 
+[Stroke Input Font v2.1.0]:
+  https://github.com/stroke-input/stroke-input-font/releases/tag/v2.1.0
 [Stroke Input Font v2.0.1]:
   https://github.com/stroke-input/stroke-input-font/releases/tag/v2.0.1
 [Stroke Input Keyboard v1.9.0]:

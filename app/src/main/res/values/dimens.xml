@@ -39,6 +39,9 @@
   <dimen name="key_width__space_bar">40%</dimen>
   <dimen name="key_width__strokes_stroke">20%</dimen>
   <dimen name="key_width__qwerty_shift">15%</dimen>
+  <!-- Key spacing width -->
+  <dimen name="key_spacing_width__qwerty_symbols_2_backspace">60%</dimen>
+  <dimen name="key_spacing_width__qwerty_symbols_3_backspace">70%</dimen>
   <!-- Key text font size -->
   <dimen name="font_size__switch_key">20dp</dimen>
   <dimen name="font_size__space_bar">18dp</dimen>
@@ -58,6 +61,7 @@
   <dimen name="baseline_correction__strokes_enter_key">0.25dp</dimen>
   <dimen name="baseline_correction__qwerty">0.75dp</dimen>
   <dimen name="baseline_correction__qwerty_digit">1dp</dimen>
+  <dimen name="baseline_correction__qwerty_romanisation">1.75dp</dimen>
   <dimen name="baseline_correction__qwerty_backspace">1.75dp</dimen>
   <!-- Row horizontal offset -->
   <dimen name="horizontal_offset__qwerty_row_2">5%</dimen>
