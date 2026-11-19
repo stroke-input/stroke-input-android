@@ -3,6 +3,9 @@
 
 ## [Unreleased]
 
+
+## [v1.8.0] (76) Qwerty symbols for romanisation (2026-11-19)
+
 - Added additional qwerty symbols keyboards for Mandarin romanisation
   (both Pinyin and Wade–Giles)
 - Updated keyboard font to [Stroke Input Font v2.1.0]
@@ -753,7 +756,9 @@ the actual functionality has not been implemented yet.
 
 
 [Unreleased]:
-  https://github.com/stroke-input/stroke-input-android/compare/v1.7.0...HEAD
+  https://github.com/stroke-input/stroke-input-android/compare/v1.8.0...HEAD
+[v1.8.0]:
+  https://github.com/stroke-input/stroke-input-android/compare/v1.7.0...v1.8.0
 [v1.7.0]:
   https://github.com/stroke-input/stroke-input-android/compare/v1.6.2...v1.7.0
 [v1.6.2]:
